@@ -1,0 +1,248 @@
+{
+  "captured_at": "2026-10-10T15:22:58.169143+00:00",
+  "core_chain_accepted": false,
+  "selected_model": null,
+  "platform": {
+    "version": "v2.7.0",
+    "commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
+    "docker_desktop_installed": true,
+    "docker_engine": "UNAVAILABLE_WSL_NOT_ENABLED",
+    "upstream_changes": "loopback-only port bindings; no service or SQL changes"
+  },
+  "automated_tests": {
+    "tests": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "real_sse": {
+    "passed": true,
+    "actual_calls": 6,
+    "scope": "isolated SSE tool layer, including one injected technical storage timeout"
+  },
+  "business_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  },
+  "downloaded_models": {
+    "qwen3:4b-q4_K_M": {
+      "manifest_digest": "sha256:2bfd38a7daaf4b1037efe517ccb73d1a3bbd4822cf89f1a82be1569050a114e0",
+      "verified": true,
+      "total_bytes": 2620788260
+    },
+    "qwen3:8b-q4_K_M": {
+      "manifest_digest": "sha256:500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "verified": true,
+      "total_bytes": 5225388164
+    }
+  },
+  "model_parameter_checks": {
+    "gov-qwen3-4b:ctx8192-v1": {
+      "parameters": "top_p                          0.95\nnum_ctx                        8192\nnum_predict                    1024\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.1\ntop_k                          20",
+      "details": {
+        "parent_model": "qwen3:4b-q4_K_M",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "model_info": {
+        "general.architecture": "qwen3",
+        "general.basename": "Qwen3",
+        "general.file_type": 15,
+        "general.parameter_count": 4022468096,
+        "general.quantization_version": 2,
+        "general.size_label": "4B",
+        "general.type": "model",
+        "qwen3.attention.head_count": 32,
+        "qwen3.attention.head_count_kv": 8,
+        "qwen3.attention.key_length": 128,
+        "qwen3.attention.layer_norm_rms_epsilon": 1e-06,
+        "qwen3.attention.value_length": 128,
+        "qwen3.block_count": 36,
+        "qwen3.context_length": 40960,
+        "qwen3.embedding_length": 2560,
+        "qwen3.feed_forward_length": 9728,
+        "qwen3.rope.freq_base": 1000000,
+        "tokenizer.ggml.add_bos_token": false,
+        "tokenizer.ggml.bos_token_id": 151643,
+        "tokenizer.ggml.eos_token_id": 151645,
+        "tokenizer.ggml.merges": [],
+        "tokenizer.ggml.model": "gpt2",
+        "tokenizer.ggml.padding_token_id": 151643,
+        "tokenizer.ggml.pre": "qwen2",
+        "tokenizer.ggml.token_type": [],
+        "tokenizer.ggml.tokens": []
+      },
+      "duration_ms": 47378.3,
+      "response": {
+        "id": "chatcmpl-777",
+        "object": "chat.completion",
+        "created": 1791645710,
+        "model": "gov-qwen3-4b:ctx8192-v1",
+        "system_fingerprint": "fp_ollama",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "READY"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 26,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens": 2,
+          "total_tokens": 28
+        }
+      },
+      "loaded": {
+        "models": [
+          {
+            "name": "gov-qwen3-4b:ctx8192-v1",
+            "model": "gov-qwen3-4b:ctx8192-v1",
+            "size": 3996867624,
+            "digest": "6cd67b06bb2fc5fe4c6dfb44b19c1f3255cdd44f5b5acb6c547bd166006a1902",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "4.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-10T23:26:50.5138638+08:00",
+            "size_vram": 3996867624,
+            "context_length": 8192
+          }
+        ]
+      },
+      "scope": "model parameter and OpenAI endpoint check, not Agent acceptance"
+    },
+    "gov-qwen3-8b:ctx8192-v1": {
+      "parameters": "num_ctx                        8192\nnum_predict                    1024\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.1\ntop_k                          20\ntop_p                          0.95",
+      "details": {
+        "parent_model": "qwen3:8b-q4_K_M",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M"
+      },
+      "model_info": {
+        "general.architecture": "qwen3",
+        "general.basename": "Qwen3",
+        "general.file_type": 15,
+        "general.license": "apache-2.0",
+        "general.parameter_count": 8190735360,
+        "general.quantization_version": 2,
+        "general.size_label": "8B",
+        "general.type": "model",
+        "qwen3.attention.head_count": 32,
+        "qwen3.attention.head_count_kv": 8,
+        "qwen3.attention.key_length": 128,
+        "qwen3.attention.layer_norm_rms_epsilon": 1e-06,
+        "qwen3.attention.value_length": 128,
+        "qwen3.block_count": 36,
+        "qwen3.context_length": 40960,
+        "qwen3.embedding_length": 4096,
+        "qwen3.feed_forward_length": 12288,
+        "qwen3.rope.freq_base": 1000000,
+        "tokenizer.ggml.add_bos_token": false,
+        "tokenizer.ggml.bos_token_id": 151643,
+        "tokenizer.ggml.eos_token_id": 151645,
+        "tokenizer.ggml.merges": [],
+        "tokenizer.ggml.model": "gpt2",
+        "tokenizer.ggml.padding_token_id": 151643,
+        "tokenizer.ggml.pre": "qwen2",
+        "tokenizer.ggml.token_type": [],
+        "tokenizer.ggml.tokens": []
+      },
+      "duration_ms": 3820.54,
+      "response": {
+        "id": "chatcmpl-247",
+        "object": "chat.completion",
+        "created": 1791645714,
+        "model": "gov-qwen3-8b:ctx8192-v1",
+        "system_fingerprint": "fp_ollama",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "READY"
+            },
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 26,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens": 2,
+          "total_tokens": 28
+        }
+      },
+      "loaded": {
+        "models": [
+          {
+            "name": "gov-qwen3-8b:ctx8192-v1",
+            "model": "gov-qwen3-8b:ctx8192-v1",
+            "size": 6186378198,
+            "digest": "7d3aebf7235771c1e2341bc4a0862c84f46c671b1c6a7948389cfdb7c1b3c85d",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "8.2B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-10T23:26:54.4614+08:00",
+            "size_vram": 6186378198,
+            "context_length": 8192
+          }
+        ]
+      },
+      "scope": "model parameter and OpenAI endpoint check, not Agent acceptance"
+    }
+  },
+  "native_accounts_created": 0,
+  "native_agents_created": 0,
+  "native_core_cases_executed": 0,
+  "native_ui_verified": false,
+  "blocked_work": [
+    "Nexent containers",
+    "real native account provisioning",
+    "native UI checks",
+    "40 native core runs",
+    "additional native fault tests",
+    "model selection"
+  ],
+  "blocker": {
+    "code": "ADMIN_REQUIRED_FOR_WSL2",
+    "evidence": "Windows optional features disabled; WSL installer returned 0x80073d28",
+    "next_action": "In Administrator PowerShell run wsl --install --no-distribution; follow Windows restart instructions, then rerun scripts/deploy.ps1"
+  },
+  "excluded": [
+    "official business asset import",
+    "mock policies/cases/application materials",
+    "BT01-BT16 acceptance",
+    "business accuracy or algorithm validation"
+  ]
+}

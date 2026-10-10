@@ -1,0 +1,22 @@
+services:
+  gov-blank-mcp:
+    build: .
+    container_name: gov-blank-mcp
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8765:8765"
+    env_file:
+      - .runtime/mcp.env
+    volumes:
+      - ./.runtime/mcp:/runtime
+    networks:
+      - nexent
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+networks:
+  nexent:
+    external: true
+    name: nexent_network
