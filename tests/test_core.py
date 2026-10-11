@@ -80,6 +80,34 @@ def test_transient_timeout_recovers_on_second_attempt(tools, monkeypatch):
     assert len(attempts) == 2
 
 
+def test_real_sqlite_lock_retries_twice_then_stops(tools, monkeypatch):
+    tools.store.timeout = .02
+    attempts = []
+    counts = tools.store.counts
+    def counted():
+        attempts.append(1)
+        return counts()
+    monkeypatch.setattr(tools.store, "counts", counted)
+    with closing(sqlite3.connect(tools.store.path)) as lock:
+        lock.execute("BEGIN EXCLUSIVE")
+        try:
+            value = tools.search_evidence("test-tenant", "citizen-id")
+        finally:
+            lock.rollback()
+    assert len(attempts) == 2
+    assert (value["status"], value["message_code"], value["data"]["attempts"]) == ("ERROR", "TOOL_TIMEOUT", 2)
+
+
+def test_nonlock_sqlite_error_is_not_retried(tools, monkeypatch):
+    attempts = []
+    def invalid():
+        attempts.append(1)
+        raise sqlite3.OperationalError("no such table: evidence")
+    monkeypatch.setattr(tools.store, "counts", invalid)
+    assert tools.search_evidence("test-tenant", "citizen-id")["message_code"] == "CONFIG_OR_STORAGE_UNAVAILABLE"
+    assert len(attempts) == 1
+
+
 def test_nonempty_storage_is_rejected(tools):
     # This test uses an empty technical row, never a policy or business example.
     with closing(sqlite3.connect(tools.store.path)) as db:

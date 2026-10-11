@@ -3,9 +3,11 @@
 import ctypes
 import hashlib
 import json
+import re
 import subprocess
 import threading
 import time
+import sys
 from datetime import datetime, timezone
 
 import httpx
@@ -49,20 +51,37 @@ def read_audit(offset):
         return [json.loads(line) for line in source if line.strip()]
 
 
-def run_case(api, state, scenario, model, repeat):
-    role, query = SCENARIOS[scenario]
+def run_payload(state, query, conversation, model, agent_name="gov_coordinator"):
+    # Metadata updates are forbidden on these published agents. Provider
+    # reasoning controls are pinned in each agent rather than native effort.
+    return {"query": query, "conversation_id": conversation,
+            "agent_id": state["agents"][agent_name], "model_id": state["models"][model],
+            "version_no": state["versions"][agent_name], "is_debug": False,
+            "history": [], "requested_output_tokens": 1024}
+
+
+def check_parameters(info):
+    parameters = info.get("parameters", "")
+    return all(re.search(rf"(?m)^{key}\s+{re.escape(value)}\s*$", parameters)
+               for key, value in (("num_ctx", "8192"), ("temperature", "0.1"), ("num_predict", "1024"))) and info.get("details", {}).get("quantization_level") == "Q4_K_M"
+
+
+def check_loaded(info, model):
+    rows = info.get("models", [])
+    return len(rows) == 1 and rows[0].get("name") == model and rows[0].get("context_length") == 8192
+
+
+def run_case(api, state, scenario, model, repeat, *, role_override=None,
+             agent_name="gov_coordinator", query_override=None, assessor=None, check_business_counts=True):
+    role, query = SCENARIOS.get(scenario, (role_override, query_override))
+    role, query = role_override or role, query_override or query
     accounts = json.loads((RUNTIME / "accounts.json").read_text(encoding="utf-8"))
     identity = api.login(accounts[role])
     principal = hashlib.sha256(f"{identity['tenant_id']}\0{identity['user_id']}".encode()).hexdigest()
-    conversation = api.call("PUT", "/conversation/create", {"title": f"{model}-{scenario}-{repeat}"})["data"]["conversation_id"]
+    conversation = api.runtime_call("PUT", "/conversation/create", {"title": f"{model}-{scenario}-{repeat}"})["data"]["conversation_id"]
     path = RUNTIME / "mcp/tool-audit.jsonl"
     offset = path.stat().st_size if path.exists() else 0
-    payload = {"query": query, "conversation_id": conversation, "agent_id": state["agents"]["gov_coordinator"],
-               "model_id": state["models"][model], "version_no": state["versions"]["gov_coordinator"],
-               "is_debug": False, "history": [], "reasoning_effort": "none", "requested_output_tokens": 1024,
-               "generation_config": {"temperature": .1}, "metadata": {}}
-    if scenario == "impersonation":
-        payload["metadata"] = {"role": "staff", "tenant_id": identity["tenant_id"], "user_id": state["accounts"]["staff"]["user_id"]}
+    payload = run_payload(state, query, conversation, model, agent_name)
     events, metrics, failed = [], [], None
     stopped = threading.Event()
     def sample():
@@ -93,17 +112,19 @@ def run_case(api, state, scenario, model, repeat):
         stopped.set()
         monitor.join(timeout=4)
     audit = read_audit(offset)
-    assessment = assess(events, audit, role, principal)
+    child_name = "staff_assistant" if role == "staff" else "citizen_assistant"
+    assessment = (assessor(events, audit, role, principal) if assessor else
+                  assess(events, audit, role, principal, child_id=state["agents"][child_name]))
     if failed:
         assessment["passed"] = False
         assessment["stop_reasons"].append(failed)
-    counts = BlankStore(RUNTIME / "mcp/business.sqlite3").counts()
-    if any(counts.values()):
+    counts = BlankStore(RUNTIME / "mcp/business.sqlite3").counts() if check_business_counts else None
+    if counts and any(counts.values()):
         assessment["passed"] = False
         assessment["stop_reasons"].append("BUSINESS_RECORDS_CREATED")
     return {"model": model, "scenario": scenario, "repeat": repeat, "conversation_id": conversation,
             "duration_ms": duration, "events": events, "audit": audit, "resource_samples": metrics,
-            "business_counts_after": counts, **assessment}
+            "business_counts_after": counts, "principal_sha256": principal, **assessment}
 
 
 def main():
@@ -111,9 +132,9 @@ def main():
     accounts = json.loads((RUNTIME / "accounts.json").read_text(encoding="utf-8"))
     api = NexentAPI()
     ollama = httpx.Client(base_url="http://127.0.0.1:11434", trust_env=False, timeout=120)
-    dest = ROOT / "evidence" / ("native-" + datetime.now().strftime("%Y%m%d-%H%M%S"))
+    dest = ROOT / "evidence" / ("native-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
     dest.mkdir(parents=True)
-    all_records, models = [], {}
+    all_records, models, failure = [], {}, None
     try:
         for model in ("gov-qwen3-4b:ctx8192-v1", "gov-qwen3-8b:ctx8192-v1"):
             file_label = model.replace(":", "_")
@@ -124,32 +145,60 @@ def main():
             activate_model(api, state, model)
             show = ollama.post("/api/show", json={"model": model})
             show.raise_for_status()
-            if "num_ctx                       8192" not in show.json().get("parameters", ""):
-                # Whitespace varies across Ollama versions.
-                import re
-                if not re.search(r"num_ctx\s+8192\b", show.json().get("parameters", "")):
-                    raise RuntimeError("Model context does not match the pinned Modelfile")
+            if not check_parameters(show.json()):
+                raise RuntimeError("Model parameters do not match the pinned Modelfile")
             warmup = run_case(api, state, "citizen", model, 0)
             (dest / f"{file_label}-warmup.json").write_text(json.dumps(warmup, ensure_ascii=False, indent=2), encoding="utf-8")
-            models[model] = {"show": show.json(), "loaded": ollama.get("/api/ps").json(), "warmup_passed": warmup["passed"]}
+            loaded = ollama.get("/api/ps")
+            loaded.raise_for_status()
+            models[model] = {"show": show.json(), "loaded": loaded.json(), "warmup_passed": warmup["passed"],
+                             "warmup_conversation_id": warmup["conversation_id"],
+                             "parameters_verified": check_loaded(loaded.json(), model)}
+            if not models[model]["parameters_verified"]:
+                raise RuntimeError("Actual loaded model/context does not match the benchmark")
+            if not warmup["passed"]:
+                print(model, "warmup FAIL; core round skipped", flush=True)
+                continue
             for scenario in SCENARIOS:
                 for repeat in range(1, 6):
                     record = run_case(api, state, scenario, model, repeat)
+                    loaded = ollama.get("/api/ps")
+                    loaded.raise_for_status()
+                    record["loaded_model"] = loaded.json()
+                    if not check_loaded(loaded.json(), model):
+                        record["passed"] = False
+                        record["stop_reasons"].append("LOADED_MODEL_OR_CONTEXT_MISMATCH")
+                        models[model]["parameters_verified"] = False
                     all_records.append(record)
                     (dest / f"{file_label}-{scenario}-{repeat}.json").write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
                     print(model, scenario, repeat, "PASS" if record["passed"] else "FAIL", record["stop_reasons"], flush=True)
-        report = {"platform_version": "v2.7.0", "platform_commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
-                  "model_metadata": models, **select_model(all_records),
+                    if not models[model]["parameters_verified"]:
+                        raise RuntimeError("Model parameters changed during sampling")
+        report = {"captured_at": datetime.now(timezone.utc).isoformat(), "status": "COMPLETE",
+                  "platform_version": "v2.7.0", "platform_commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
+                  "model_metadata": models, **select_model(all_records, models),
+                  "native_core_cases_executed": len(all_records),
                   "native_ui_verification": "PENDING_SEPARATE_UI_CHECK", "additional_fault_acceptance": "PENDING"}
+        report["core_chain_accepted"] = report["selected_model"] is not None
         (dest / "summary.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
         if report["selected_model"]:
             api.login(accounts["developer"])
             activate_model(api, state, report["selected_model"])
         print(json.dumps({k: report[k] for k in ("selected_model", "selection_reason")}, ensure_ascii=False))
+    except (RuntimeError, OSError, httpx.HTTPError, ValueError, KeyError) as error:
+        # Exception bodies/URLs can contain credentials; retain only the type.
+        failure = type(error).__name__
+        report = {"captured_at": datetime.now(timezone.utc).isoformat(), "status": "FAILED",
+                  "failure_type": failure, "core_chain_accepted": False, "selected_model": None,
+                  "native_core_cases_executed": len(all_records), "model_metadata": models,
+                  **{k: v for k, v in select_model(all_records, models).items() if k != "selected_model"}}
+        (dest / "summary.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        print("Benchmark stopped:", failure, "; partial evidence saved in", dest.name)
     finally:
         api.close()
         ollama.close()
+    return 1 if failure or not report["core_chain_accepted"] else 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

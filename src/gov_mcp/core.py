@@ -20,8 +20,9 @@ def result(status: str, code: str, **data) -> dict:
 
 
 class BlankStore:
-    def __init__(self, path: Path):
+    def __init__(self, path: Path, timeout: float = 2):
         self.path = path
+        self.timeout = timeout
         path.parent.mkdir(parents=True, exist_ok=True)
         with closing(sqlite3.connect(path)) as db:
             db.executescript(
@@ -32,11 +33,17 @@ class BlankStore:
 
     def counts(self) -> dict:
         # Runtime tools never mutate business tables.
-        with closing(sqlite3.connect(f"{self.path.resolve().as_uri()}?mode=ro", uri=True, timeout=2)) as db:
-            return {
-                name: db.execute(f"SELECT COUNT(*) FROM {name}").fetchone()[0]
-                for name in ("evidence", "cases", "materials")
-            }
+        try:
+            with closing(sqlite3.connect(f"{self.path.resolve().as_uri()}?mode=ro", uri=True, timeout=self.timeout)) as db:
+                return {
+                    name: db.execute(f"SELECT COUNT(*) FROM {name}").fetchone()[0]
+                    for name in ("evidence", "cases", "materials")
+                }
+        except sqlite3.OperationalError as error:
+            # Extended busy/locked codes retain the base code in the low byte.
+            if getattr(error, "sqlite_errorcode", 0) & 0xff in (sqlite3.SQLITE_BUSY, sqlite3.SQLITE_LOCKED):
+                raise TimeoutError("Business storage lock deadline exceeded") from error
+            raise
 
 
 class GovernmentTools:

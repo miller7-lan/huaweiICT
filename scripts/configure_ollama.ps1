@@ -1,6 +1,8 @@
 $ErrorActionPreference = 'Stop'
 $TaskRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $TaskRoot
+& (Join-Path $TaskRoot '.venv/Scripts/python.exe') scripts/private_runtime.py
+if ($LASTEXITCODE -ne 0) { throw 'Private runtime directory setup failed.' }
 $OllamaHome = Join-Path $env:LOCALAPPDATA 'Programs/Ollama'
 $Ollama = Join-Path $OllamaHome 'ollama.exe'
 if (-not (Test-Path -LiteralPath $Ollama)) { throw 'Expected Windows Ollama installation was not found.' }

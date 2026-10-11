@@ -1,0 +1,99 @@
+{
+  "captured_at": "2026-10-11T07:42:28.839358+00:00",
+  "services": {
+    "config": true,
+    "runtime": true,
+    "mcp": true,
+    "ui": true,
+    "container_ollama": true
+  },
+  "containers": [
+    {
+      "Names": "nexent-config",
+      "Image": "nexent/nexent:v2.7.0",
+      "Status": "Up 16 seconds",
+      "Ports": "127.0.0.1:5010->5010/tcp"
+    },
+    {
+      "Names": "nexent-runtime",
+      "Image": "nexent/nexent:v2.7.0",
+      "Status": "Up 16 seconds",
+      "Ports": "127.0.0.1:5014->5014/tcp"
+    },
+    {
+      "Names": "nexent-northbound",
+      "Image": "nexent/nexent:v2.7.0",
+      "Status": "Up 9 minutes",
+      "Ports": "127.0.0.1:5013->5013/tcp"
+    },
+    {
+      "Names": "nexent-mcp",
+      "Image": "nexent/nexent:v2.7.0",
+      "Status": "Up 9 minutes",
+      "Ports": "127.0.0.1:5011->5011/tcp, 127.0.0.1:5015->5015/tcp"
+    },
+    {
+      "Names": "nexent-web",
+      "Image": "nexent/nexent-web:v2.7.0",
+      "Status": "Up 9 minutes",
+      "Ports": "127.0.0.1:3000->3000/tcp"
+    },
+    {
+      "Names": "supabase-auth-mini",
+      "Image": "supabase/gotrue:v2.170.0",
+      "Status": "Up 11 minutes (healthy)",
+      "Ports": ""
+    },
+    {
+      "Names": "supabase-kong-mini",
+      "Image": "kong:2.8.1",
+      "Status": "Up 11 minutes (healthy)",
+      "Ports": "127.0.0.1:8000->8000/tcp, 127.0.0.1:8443->8443/tcp"
+    },
+    {
+      "Names": "supabase-db-mini",
+      "Image": "supabase/postgres:15.8.1.060",
+      "Status": "Up 11 minutes (healthy)",
+      "Ports": "127.0.0.1:5436->5436/tcp"
+    },
+    {
+      "Names": "nexent-postgresql",
+      "Image": "postgres:15-alpine",
+      "Status": "Up 13 minutes",
+      "Ports": "127.0.0.1:5434->5432/tcp"
+    },
+    {
+      "Names": "nexent-redis",
+      "Image": "redis:alpine",
+      "Status": "Up 13 minutes (healthy)",
+      "Ports": "127.0.0.1:6379->6379/tcp"
+    },
+    {
+      "Names": "nexent-elasticsearch",
+      "Image": "docker.elastic.co/elasticsearch/elasticsearch:8.17.4",
+      "Status": "Up 13 minutes (healthy)",
+      "Ports": "127.0.0.1:9210->9200/tcp, 127.0.0.1:9310->9300/tcp"
+    },
+    {
+      "Names": "gov-blank-mcp",
+      "Image": "e51b6b113da6",
+      "Status": "Up 14 minutes (healthy)",
+      "Ports": "127.0.0.1:8765->8765/tcp"
+    },
+    {
+      "Names": "nexent-minio",
+      "Image": "ict-minio:RELEASE.2023-12-20T01-00-02Z-source",
+      "Status": "Up 15 minutes",
+      "Ports": "127.0.0.1:9010->9000/tcp, 127.0.0.1:9011->9001/tcp"
+    }
+  ],
+  "super_admin_exists": false,
+  "native_state_present": false,
+  "business_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  },
+  "account_operations": "deferred to user; no signup or login performed by the repair agent",
+  "scope": "deployment readiness only; native Agent/UI/fault acceptance remains pending"
+}

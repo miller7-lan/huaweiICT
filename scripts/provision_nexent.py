@@ -2,18 +2,20 @@
 
 import argparse
 import json
+from urllib.parse import quote
 
-from nexent_api import NexentAPI, ROOT, RUNTIME, activate_model, save_state
+from nexent_api import NexentAPI, ROOT, RUNTIME, activate_model, nonthinking_params, save_state
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config-url", default="http://127.0.0.1:5010")
+    parser.add_argument("--runtime-url", default="http://127.0.0.1:5014")
     args = parser.parse_args()
     accounts = json.loads((RUNTIME / "accounts.json").read_text(encoding="utf-8"))
     path = RUNTIME / "nexent-state.json"
     state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"accounts": {}, "models": {}}
-    api = NexentAPI(args.config_url)
+    api = NexentAPI(args.config_url, args.runtime_url)
     try:
         api.login(accounts["super_admin"])
         if "tenant_id" not in state:
@@ -45,13 +47,21 @@ def main():
         existing = api.call("GET", "/model/list")["data"]
         for model in ("gov-qwen3-4b:ctx8192-v1", "gov-qwen3-8b:ctx8192-v1"):
             matches = [m for m in existing if m["display_name"] == model]
+            settings = {"context_window_tokens": 8192, "max_output_tokens": 1024,
+                        "default_output_reserve_tokens": 1024, "temperature": .1, "concurrency_limit": 1,
+                        "extra_params": nonthinking_params()}
             if not matches:
                 api.call("POST", "/model/create", {"model_factory": "OpenAI-API-Compatible", "model_name": model,
                     "display_name": model, "model_type": "llm", "base_url": "http://host.docker.internal:11434/v1",
-                    "api_key": "ollama", "context_window_tokens": 8192, "max_output_tokens": 1024,
-                    "default_output_reserve_tokens": 1024, "temperature": .1, "concurrency_limit": 1})
+                    "api_key": "ollama", **settings})
                 existing = api.call("GET", "/model/list")["data"]
                 matches = [m for m in existing if m["display_name"] == model]
+            else:
+                # Recovery also pins existing native rows, including thinking
+                # defaults that would otherwise leak into an unknown model alias.
+                api.call("POST", "/model/update?display_name=" + quote(model, safe=""), settings)
+            if len(matches) != 1:
+                raise RuntimeError("Native model name is missing or ambiguous")
             state["models"][model] = matches[0]["model_id"]
             save_state(state)
         api.login(accounts["developer"])
@@ -64,7 +74,7 @@ def main():
         api.call("GET", "/tool/scan_tool")
         if "agents" not in state:
             # Recover a prior completed import by exact names before creating new resources.
-            agents = api.call("GET", "/agent/list")
+            agents = api.call("GET", "/agent/list?tenant_id=" + quote(state["tenant_id"], safe=""))
             if isinstance(agents, dict):
                 agents = agents.get("data", agents.get("agents", []))
             wanted = {"gov_coordinator", "citizen_assistant", "staff_assistant"}

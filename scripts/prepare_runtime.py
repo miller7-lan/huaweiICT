@@ -4,11 +4,13 @@ import json
 import secrets
 from pathlib import Path
 
+from private_runtime import ensure_private_directory
+
 
 def main():
     root = Path(__file__).resolve().parents[1]
     runtime = root / ".runtime"
-    runtime.mkdir(exist_ok=True)
+    ensure_private_directory(runtime)
     token_file = runtime / "mcp-token.txt"
     if not token_file.exists():
         token_file.write_text(secrets.token_urlsafe(48), encoding="utf-8")

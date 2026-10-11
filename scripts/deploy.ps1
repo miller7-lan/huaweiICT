@@ -1,4 +1,4 @@
-param([ValidateSet('general','mainland')][string]$RegistryProfile = 'general')
+param([ValidateSet('general','mainland')][string]$RegistryProfile = 'general', [switch]$ProvisionAccounts, [switch]$BuildMinioFromSource)
 $ErrorActionPreference = 'Stop'
 $TaskRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $TaskRoot
@@ -17,15 +17,34 @@ if ($PinnedCommit -ne '519b9b17c7f4cbc623256ac318ea96a20f33772e') { throw 'Nexen
 if ($LASTEXITCODE -ne 0) { throw 'Runtime preparation failed.' }
 & $Python scripts/prepare_deploy.py
 if ($LASTEXITCODE -ne 0) { throw 'Deployment preparation failed.' }
+if ($BuildMinioFromSource) {
+    & (Join-Path $PSScriptRoot 'build_minio.ps1')
+    if ($LASTEXITCODE -ne 0) { throw 'Pinned MinIO source build failed.' }
+    & $Python scripts/prepare_deploy.py --use-source-minio
+    if ($LASTEXITCODE -ne 0) { throw 'Pinned MinIO image configuration failed.' }
+}
 $DataRoot = (Join-Path $TaskRoot '.runtime/nexent-data').Replace('\','/')
 $DataRoot = '/' + $DataRoot.Substring(0,1).ToLower() + $DataRoot.Substring(2)
 Push-Location vendor/nexent
 try {
-    & $Bash deploy.sh --defaults docker --version v2.7.0 --components infrastructure,application,supabase --port-policy development --image-source registry --registry-profile $RegistryProfile --sandbox-mode lightweight --root-dir $DataRoot *> (Join-Path $TaskRoot '.runtime/nexent-deploy.log')
-    if ($LASTEXITCODE -ne 0) { throw 'Official Nexent deployment failed; inspect the private .runtime/nexent-deploy.log.' }
+    # Windows PowerShell treats native stderr as errors, including normal
+    # Compose progress. Capture output and use the native exit code instead.
+    $PreviousErrorActionPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        & $Bash deploy/docker/.services-only.sh --version v2.7.0 --components infrastructure,application,supabase --port-policy development --image-source $RegistryProfile --sandbox-mode lightweight --root-dir $DataRoot *> (Join-Path $TaskRoot '.runtime/nexent-deploy.log')
+        $DeployExitCode = $LASTEXITCODE
+    } finally { $ErrorActionPreference = $PreviousErrorActionPreference }
+    if ($DeployExitCode -ne 0) { throw 'Official Nexent deployment failed; inspect the private .runtime/nexent-deploy.log.' }
 } finally { Pop-Location }
 & $Docker compose -f compose.mcp.yml up -d --build
 if ($LASTEXITCODE -ne 0) { throw 'MCP container startup failed.' }
-& $Python scripts/provision_nexent.py
-if ($LASTEXITCODE -ne 0) { throw 'Native provisioning failed; no acceptance claim can be made.' }
-Write-Output 'Native Nexent is provisioned at http://127.0.0.1:3000. Run the benchmark and native UI checks.'
+& $Python scripts/check_native_ready.py --wait-seconds 120
+if ($LASTEXITCODE -ne 0) { throw 'Native service or container-to-Ollama readiness failed. No account login was attempted.' }
+if ($ProvisionAccounts) {
+    & (Join-Path $PSScriptRoot 'initialize_accounts.ps1')
+    if ($LASTEXITCODE -ne 0) { throw 'Native provisioning failed; no acceptance claim can be made.' }
+} else {
+    Write-Output 'Services are ready. Account signup/login is the next user-operated step.'
+    Write-Output 'Run powershell -ExecutionPolicy Bypass -File scripts\initialize_accounts.ps1 yourself when ready, then sign in at http://127.0.0.1:3000 for native UI checks.'
+}

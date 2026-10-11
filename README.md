@@ -9,9 +9,13 @@
 | `src/gov_mcp/core.py`、`server.py` | 仅三个工具；真实空 SQLite；角色映射；独立 Bearer；SSE；实际调用审计 |
 | `config/agents.nexent-v2.7.0.json` | 原生 Agent 导入包；主 Agent 4 步、子 Agent 3 步；只绑定各自工具 |
 | `models/Modelfile.4b`、`.8b` | 固定基础标签与上下文 8192、温度 0.1、输出上限 1024 |
-| `scripts/deploy.ps1` | 固定官方源码提交、官方 Docker 部署、MCP 容器、账号与 Agent 初始化 |
+| `scripts/deploy.ps1` | 固定官方源码提交、官方 Docker 部署、MCP 容器和连通性检查；默认停在账号操作前 |
 | `scripts/provision_nexent.py` | 创建隔离租户、账号、模型、SSE 连接、导入并发布 Agent，保存真实 ID |
 | `scripts/benchmark_native.py` | 使用原生发布版本、真实登录账号，每模型 4 类 × 5 个新会话，保存 SSE 与工具审计 |
+| `scripts/check_native_ready.py` | 无需登录，检查服务就绪和容器内到两个 Ollama 模型的连接 |
+| `scripts/verify_native_faults.py` | 用户启动的原生 Metadata 拒绝、未映射身份、越权、存储锁超时和连接中断验收 |
+| `scripts/record_native_ui.py` | 校验用户操作的截图、原生 SSE 与实际审计，保存三个账号的 UI 验收记录 |
+| `scripts/write_status.py` | 实时探测环境，根据最新原生结果及 UI/故障记录重新计算进度 |
 | `evidence/unit-tests.xml`、`sse-transport.json` | 已执行的自动测试和真实 SSE 工具证据 |
 
 依赖安装在 `.venv`，锁定清单为 `requirements.lock`。Python 本机环境为 3.12；MCP Docker 镜像使用 3.11。Nexent 后端由官方镜像提供，不在本机 Python 中安装 SDK。
@@ -26,7 +30,7 @@
 powershell -ExecutionPolicy Bypass -File scripts\setup.ps1
 ```
 
-此入口创建本地 `.venv`、安装锁定依赖，并下载、核对 Nexent v2.7.0 的精确源码提交。`vendor`、虚拟环境、私有 `.runtime` 和模型权重不随仓库发布。若 Python 使用独立可执行文件，可传 `-PythonCommand 'C:/Python312/python.exe' -PythonVersion ''`。
+此入口创建本地 `.venv`、安装锁定依赖，下载、核对 Nexent v2.7.0 的精确源码提交，并初始化私有 `.runtime`。Windows 权限在写入凭据前限制为当前用户和 SYSTEM，子目录及新文件继承该权限。`vendor`、虚拟环境、私有 `.runtime` 和模型权重不随仓库发布。若 Python 使用独立可执行文件，可传 `-PythonCommand 'C:/Python312/python.exe' -PythonVersion ''`。
 
 1. 在**管理员 PowerShell** 执行 `wsl --install --no-distribution`，按 Windows 提示完成安装和重启。当前进程不具备启用 Windows 可选功能的权限。Docker Desktop 已安装在用户目录；启动它并确认 Linux 引擎可用。
 2. 在本目录执行下列命令。下载脚本支持断点续传，校验官方 registry manifest 和每个 blob 的 SHA-256；不会关闭 Ollama 的重定向保护。
@@ -38,11 +42,29 @@ powershell -ExecutionPolicy Bypass -File scripts\configure_ollama.ps1
 powershell -ExecutionPolicy Bypass -File scripts\deploy.ps1
 ```
 
-`configure_ollama.ps1` 重启当前 Windows Ollama 安装的进程，设置单进程环境 `OLLAMA_NUM_PARALLEL=1`、`OLLAMA_MAX_LOADED_MODELS=1`、监听 `127.0.0.1:11434`，创建 `gov-qwen3-4b:ctx8192-v1` / `gov-qwen3-8b:ctx8192-v1` 两个固定参数别名。再次运行脚本即可恢复这些设置。每轮仅加载一个模型。所有推理请求明确传 `reasoning_effort=none`；模型检查会拒绝未关闭思考或实际上下文不符的情况。
+`configure_ollama.ps1` 重启当前 Windows Ollama 安装的进程，设置单进程环境 `OLLAMA_NUM_PARALLEL=1`、`OLLAMA_MAX_LOADED_MODELS=1`、监听 `127.0.0.1:11434`，创建 `gov-qwen3-4b:ctx8192-v1` / `gov-qwen3-8b:ctx8192-v1` 两个固定参数别名。再次运行脚本即可恢复这些设置。每轮仅加载一个模型。直连 Ollama 的检查请求传 `reasoning_effort=none`；原生 Nexent 请求省略该顶层字段，通过三个 Agent 固定的 `extra_params.__custom__.reasoning_effort=none` 传给提供方，并关闭平台思考开关。模型检查拒绝思考输出或上下文不符；完整原生验收仍以实际轨迹为准。
 
 Docker 内模型地址为 `http://host.docker.internal:11434/v1`。须在容器中验证可达性；如果当前 Docker Desktop 不能访问主机的 loopback，记录连接错误后先修复本机连接方式。不要直接将 Ollama 暴露给局域网来绕过故障。
 
+`deploy.ps1` 使用从固定官方脚本生成的服务部署副本，跳过其自动注册超级管理员的步骤；原官方脚本保留。它等待原生服务就绪，并在 `nexent-runtime` 容器内检查两个 Ollama 别名可达；检查通过后默认停在账号操作前。**账号初始化和界面登录由用户操作**。准备好后，由用户在本目录手动运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\initialize_accounts.ps1
+```
+
+此命令先调用官方 `create-su.sh` 初始化平台超级管理员，再使用私有凭据执行原生账号注册/登录、配置模型和发布 Agent；密码不会显示在输出中。不要让代理在用户接手登录期间运行它。只有用户明确希望一个命令完成部署和账号初始化时，才使用 `deploy.ps1 -ProvisionAccounts`。`provision_nexent.py` 的直接入口要求超级管理员已经初始化。
+
 官方脚本选择 `infrastructure,application,supabase`，关闭 Workbench，使用 lightweight 执行环境；没有资料解析服务、业务资产、业务资料导入。仅给官方 Compose 的宿主机发布端口增加 `127.0.0.1` 绑定，不修改服务或 SQL。Nexent 精确提交：`519b9b17c7f4cbc623256ac318ea96a20f33772e`。MCP 只挂载 `.runtime/mcp`，不挂载账号凭据或 Nexent 数据目录。
+
+2026-10-11 实测：固定 MinIO 旧镜像在官方源和国内镜像源无法拉取。可使用同一服务端发布版本的官方源码构建本地镜像，再部署：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\deploy.ps1 -RegistryProfile mainland -BuildMinioFromSource
+```
+
+构建入口核对服务端源码提交 `7a311a3b666a0e5476fbde24d4413220876d9df2`，固定客户端源码版本，验证两个可执行文件并记录 `evidence/minio-source-build.json`。随后显式修改两个镜像源配置的 `MINIO_IMAGE` 为 `ict-minio:RELEASE.2023-12-20T01-00-02Z-source`；其余镜像、Compose 服务和 SQL 保持原定义。该镜像是本地源码构建产物，不能认作原官方二进制镜像。启用后配置会保留，后续部署仍使用它；换机器需先重新构建。PowerShell 部署根据真实退出码判断成败，正常 stderr 下载进度不会中断部署。
+
+当前镜像中的 FastAPI 会独立读取 OTEL 环境配置。Nexent 遥测关闭时，准备脚本同步将 traces/metrics/logs 自动导出器设为 `none`，避免旧的 `http` 协议值阻断启动；显式启用遥测的配置保留。服务探测会跟随前端语言重定向。
 
 ### 账号和权限
 
@@ -81,12 +103,29 @@ Docker 内模型地址为 `http://host.docker.internal:11434/v1`。须在容器�
 .\.venv\Scripts\python.exe scripts\benchmark_native.py
 ```
 
-原生对照脚本调用原生 UI 使用的运行 API，每轮先发布三个 Agent 的同一模型版本，再预热一次；预热不进入中位数。四类提示分别是群众空库自检、工作人员缺前提、群众自称工作人员并填入伪造 Metadata、重复群众自检。每类 5 个新会话，顺序执行。不要在采集期间人工触发其他会话，以免混入工具审计。
+原生对照脚本调用原生 UI 使用的运行 API，每轮先发布三个 Agent 的同一模型版本，再预热一次；预热不进入中位数，预热失败的模型不进入核心采集。四类提示分别是群众空库自检、工作人员缺前提、群众自称工作人员、重复群众自检。普通用例省略 Metadata 更新字段；伪造 Metadata 被拒绝属于独立负向验收。每类 5 个新会话，顺序执行。该脚本会通过 API 登录测试账号，须由用户在账号步骤完成后启动。不要在采集期间人工触发其他会话，以免混入工具审计。
 
 每次记录实际原生 SSE、子 Agent 起止、工具顺序与审计、最终结果 request_id、耗时、停止原因、显存和整机内存采样、业务计数。只有文字、没有真实工具轨迹，或最终结果无法关联实际工具请求，均失败。到达步数上限、运行错误、仍出现深度思考也失败。
+
+验收还核对中文显示名与真实子 Agent ID、调用 ID、起止顺序，以及最终结果保留的全部约定字段；工作人员的缺失项不得丢失。核心及预热会话必须独立。采集前检查上下文、温度、输出上限与量化级别；每次调用后核对实际只加载当前模型且上下文为 8192。异常中断保存部分结果及失败汇总，不据此选型。
 
 只有某模型全部 20 个核心用例通过，才进入选择比较。仅一方通过选该模型；双方通过时比较预热后中位数，差距（以较快者为分母）不超过 10% 选 4B；双方均未通过不选择模型。原生 UI 和额外故障验收独立标记，核心性能比较不能替代它们。
 
 额外验证需分别保留：可信身份覆盖、未映射账号、群众工具越权、技术超时停止。现有测试已经覆盖工具层和上游身份包装器，但没有声称已完成原生平台故障验收。故障只能模拟技术状态，不创建政策、案例、事项或材料。
+
+完整核心验收后，由用户手动启动下列命令；将 `<native目录名>` 换成此次 `evidence/native-*` 目录名。两个故障参数分别会短暂持有业务库独占锁、停止并恢复 `gov-blank-mcp`。在无其他会话运行时执行。跨 Windows/Docker 文件系统的锁若未实际触发超时，测试会判失败；未执行或不符合停止契约的项目也不会算通过。
+
+```powershell
+.\.venv\Scripts\python.exe scripts\verify_native_faults.py --benchmark <native目录名> --storage-lock --connection-outage
+```
+
+UI 验收由用户分别登录开发、群众、工作人员账号并执行前述操作。保存真实 PNG/JPEG 截图，以及对应 `/agent/run` 响应的解析后 SSE：JSON 文件仅含 `conversation_id` 和 `events` 数组，不含请求头或登录令牌。为每个账号执行以下命令，将示例路径换成实际文件；脚本会用私有真实身份、实际工具审计和子 Agent ID 校验轨迹，再要求用户输入 `VERIFIED` 确认截图及会话对应。
+
+```powershell
+.\.venv\Scripts\python.exe scripts\record_native_ui.py --role citizen --benchmark <native目录名> --screenshot <截图.png> --trace <原生SSE.json>
+.\.venv\Scripts\python.exe scripts\write_status.py
+```
+
+另两次将 `--role` 改为 `developer`、`staff`。UI 和故障记录绑定本轮核心目录，不能复用旧轮次结果；截图与轨迹的哈希不符或缺文件时不会通过。`implementation-status.json` 区分核心链路、UI、故障和整体完成状态，并保留实际检查时间。
 
 本批只证明核心工程链路；不表示 BT01–BT16、业务准确率、算法效果或审批能力已经验证。

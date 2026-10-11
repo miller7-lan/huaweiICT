@@ -1,0 +1,17 @@
+$ErrorActionPreference = 'Stop'
+$TaskRoot = Split-Path -Parent $PSScriptRoot
+Set-Location -LiteralPath $TaskRoot
+$Python = Join-Path $TaskRoot '.venv/Scripts/python.exe'
+$Bash = 'C:/Program Files/Git/bin/bash.exe'
+$DockerCandidates = @("$env:LOCALAPPDATA/Programs/DockerDesktop/resources/bin/docker.exe", 'C:/Program Files/Docker/Docker/resources/bin/docker.exe')
+$Docker = $DockerCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+if (-not $Docker) { throw 'Docker executable not found.' }
+$env:PATH = "$(Split-Path -Parent $Docker);$env:PATH"
+& $Python scripts/check_native_ready.py
+if ($LASTEXITCODE -ne 0) { throw 'Native services are not ready; no account operation was attempted.' }
+Write-Output 'User-started account initialization: create the platform administrator, then register/login the isolated test accounts.'
+& $Bash scripts/initialize_super_admin.sh
+if ($LASTEXITCODE -ne 0) { throw 'Platform administrator initialization failed.' }
+& $Python scripts/provision_nexent.py
+if ($LASTEXITCODE -ne 0) { throw 'Native account and agent initialization failed.' }
+Write-Output 'Accounts and agents are ready. Sign in at http://127.0.0.1:3000; private credentials are in .runtime/accounts.json.'

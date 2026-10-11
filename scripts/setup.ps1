@@ -25,4 +25,6 @@ if (-not (Test-Path -LiteralPath $Python)) {
 if ($LASTEXITCODE -ne 0) { throw 'Locked dependency installation failed.' }
 & $Python -m pip install --no-deps -e .
 if ($LASTEXITCODE -ne 0) { throw 'Local package installation failed.' }
+& $Python scripts/private_runtime.py
+if ($LASTEXITCODE -ne 0) { throw 'Private runtime directory setup failed.' }
 Write-Output 'Pinned source and local Python environment are ready. Follow README.md for deployment.'

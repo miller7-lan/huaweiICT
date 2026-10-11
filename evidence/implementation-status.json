@@ -1,16 +1,35 @@
 {
-  "captured_at": "2026-10-10T15:22:58.169143+00:00",
-  "core_chain_accepted": false,
-  "selected_model": null,
+  "captured_at": "2026-10-11T07:42:28.236294+00:00",
   "platform": {
     "version": "v2.7.0",
     "commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
-    "docker_desktop_installed": true,
-    "docker_engine": "UNAVAILABLE_WSL_NOT_ENABLED",
-    "upstream_changes": "loopback-only port bindings; no service or SQL changes"
+    "docker_cli_installed": true,
+    "docker_engine": "AVAILABLE",
+    "docker_server_version": "29.8.2",
+    "wsl_ready": true,
+    "services": {
+      "config": true,
+      "runtime": true,
+      "mcp": true,
+      "ui": true,
+      "container_ollama": true
+    },
+    "upstream_changes": "loopback-only ports and explicitly configured pinned MinIO source image; no service or SQL changes",
+    "minio_source_build": {
+      "captured_at": "2026-10-11T07:21:34.036078+00:00",
+      "image": "ict-minio:RELEASE.2023-12-20T01-00-02Z-source",
+      "image_id": "sha256:001fa95f3971788e361e6d6d679c55dda1d607b19c752a738da253ba8a81c516",
+      "server_commit": "7a311a3b666a0e5476fbde24d4413220876d9df2",
+      "server_release": "RELEASE.2023-12-20T01-00-02Z",
+      "client_commit": "8da737f8fd63de58dc475bf88eb9e285d206e3ae",
+      "client_release": "RELEASE.2023-12-14T00-37-41Z",
+      "scope": "unmodified pinned official source; locally built image, not the original vendor image"
+    }
   },
+  "core_chain_accepted": false,
+  "selected_model": null,
   "automated_tests": {
-    "tests": 26,
+    "tests": 57,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -18,7 +37,7 @@
   "real_sse": {
     "passed": true,
     "actual_calls": 6,
-    "scope": "isolated SSE tool layer, including one injected technical storage timeout"
+    "scope": "isolated real SSE transport; not native Nexent agent acceptance"
   },
   "business_counts": {
     "evidence": 0,
@@ -225,19 +244,21 @@
   "native_accounts_created": 0,
   "native_agents_created": 0,
   "native_core_cases_executed": 0,
+  "native_evidence_reference": null,
   "native_ui_verified": false,
+  "additional_fault_acceptance": false,
+  "all_acceptance_completed": false,
   "blocked_work": [
-    "Nexent containers",
-    "real native account provisioning",
-    "native UI checks",
+    "user-operated native account provisioning",
+    "native agent provisioning",
     "40 native core runs",
-    "additional native fault tests",
-    "model selection"
+    "model selection",
+    "user-operated native UI checks",
+    "additional native fault tests"
   ],
   "blocker": {
-    "code": "ADMIN_REQUIRED_FOR_WSL2",
-    "evidence": "Windows optional features disabled; WSL installer returned 0x80073d28",
-    "next_action": "In Administrator PowerShell run wsl --install --no-distribution; follow Windows restart instructions, then rerun scripts/deploy.ps1"
+    "code": "NATIVE_ACCEPTANCE_INCOMPLETE",
+    "next_action": "user-operated native account provisioning"
   },
   "excluded": [
     "official business asset import",
