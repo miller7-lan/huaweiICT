@@ -68,6 +68,14 @@ powershell -ExecutionPolicy Bypass -File scripts\deploy.ps1 -RegistryProfile mai
 
 ### 账号和权限
 
+如果希望使用自己的邮箱在本地界面注册，可由用户在项目目录执行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\create_admin_invite.ps1
+```
+
+此入口先初始化本地超级管理员，再通过原生 API 登录、创建或复用验证租户，生成仅可注册一次的管理员邀请码并显示在终端。将它填入本地注册页面即可；个人邮箱和密码由用户在界面填写。重复运行会复用尚可用的邀请码。邀请码保存在私有 `.runtime/manual-admin-invitation.json`，不提交仓库。页面中的开源社区提示是通用文案，本地部署的邀请码由本地管理员管理。此入口不创建测试账号、配置模型或发布 Agent；完整技术验收仍需用户运行 `initialize_accounts.ps1`。
+
 凭据保存在私有 `.runtime/accounts.json`，真实平台 ID 在 `.runtime/nexent-state.json`。**凭据文件生成不代表账号已创建。** 必须以原生 API 成功返回为准。Windows `.runtime` ACL 限制为当前用户和 SYSTEM；不要复制到知识库、提示词、对照证据或提交仓库。
 
 | 账号 | 平台角色 | 工具业务角色 |
