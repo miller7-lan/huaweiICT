@@ -1,5 +1,6 @@
 """Run 40 fresh-session cases against published agents via the native runtime."""
 
+import argparse
 import ctypes
 import hashlib
 import json
@@ -129,7 +130,7 @@ def run_case(api, state, scenario, model, repeat, *, role_override=None,
             "business_counts_after": counts, "principal_sha256": principal, **assessment}
 
 
-def main():
+def main(warmup_only=False):
     state = json.loads((RUNTIME / "nexent-state.json").read_text(encoding="utf-8"))
     accounts = json.loads((RUNTIME / "accounts.json").read_text(encoding="utf-8"))
     api = NexentAPI()
@@ -171,8 +172,8 @@ def main():
                              "parameters_verified": check_loaded(loaded.json(), model)}
             if not models[model]["parameters_verified"]:
                 raise RuntimeError("Actual loaded model/context does not match the benchmark")
-            if not warmup["passed"]:
-                print(model, "warmup FAIL; core round skipped", flush=True)
+            print(model, "warmup PASS" if warmup["passed"] else "warmup FAIL", warmup["stop_reasons"], flush=True)
+            if warmup_only or not warmup["passed"]:
                 continue
             for scenario in SCENARIOS:
                 for repeat in range(1, 6):
@@ -190,7 +191,7 @@ def main():
                     print(model, scenario, repeat, "PASS" if record["passed"] else "FAIL", record["stop_reasons"], flush=True)
                     if not models[model]["parameters_verified"]:
                         raise RuntimeError("Model parameters changed during sampling")
-        report = {"captured_at": datetime.now(timezone.utc).isoformat(), "status": "COMPLETE",
+        report = {"captured_at": datetime.now(timezone.utc).isoformat(), "status": "WARMUP_ONLY" if warmup_only else "COMPLETE",
                   "platform_version": "v2.7.0", "platform_commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
                   "model_metadata": models, **select_model(all_records, models),
                   "native_core_cases_executed": len(all_records),
@@ -215,8 +216,12 @@ def main():
     finally:
         api.close()
         ollama.close()
-    return 1 if failure or not report["core_chain_accepted"] else 0
+    warmups_passed = len(models) == 2 and all(m["warmup_passed"] and m["parameters_verified"] for m in models.values())
+    succeeded = warmups_passed if warmup_only else report["core_chain_accepted"]
+    return 0 if not failure and succeeded else 1
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--warmup-only", action="store_true", help="Run both native warmups without formal sampling or model selection")
+    sys.exit(main(warmup_only=parser.parse_args().warmup_only))

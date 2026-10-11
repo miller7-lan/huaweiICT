@@ -1,3 +1,5 @@
+param([switch]$WarmupOnly)
+
 $ErrorActionPreference = 'Stop'
 $TaskRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $TaskRoot
@@ -17,7 +19,20 @@ foreach ($ModelName in @('gov-qwen3-4b:ctx8192-v1', 'gov-qwen3-8b:ctx8192-v1')) 
 }
 & $Python scripts/check_native_ready.py
 if ($LASTEXITCODE -ne 0) { throw 'Native services are not ready; no benchmark login was attempted.' }
-Write-Output 'User-started benchmark: sign in with isolated test accounts, publish model versions, and run 40 native core cases. Pause web conversations until completion.'
-& $Python scripts/benchmark_native.py
-if ($LASTEXITCODE -ne 0) { throw 'Native benchmark failed or no model passed; keep the terminal output and evidence/native-* results for investigation.' }
-Write-Output 'Core benchmark accepted. Native UI and fault acceptance are still separate required steps.'
+if ($WarmupOnly) {
+    Write-Output 'User-started native warmups: sign in with isolated test accounts, publish model versions, and run two warmups only. Pause web conversations until completion.'
+} else {
+    Write-Output 'User-started benchmark: sign in with isolated test accounts, publish model versions, and run 40 native core cases. Pause web conversations until completion.'
+}
+$BenchmarkArguments = @('scripts/benchmark_native.py')
+if ($WarmupOnly) { $BenchmarkArguments += '--warmup-only' }
+& $Python @BenchmarkArguments
+if ($LASTEXITCODE -ne 0) {
+    if ($WarmupOnly) { throw 'Native warmup checks failed; keep the terminal output and evidence/native-* results for investigation.' }
+    throw 'Native benchmark failed or no model passed; keep the terminal output and evidence/native-* results for investigation.'
+}
+if ($WarmupOnly) {
+    Write-Output 'Both warmups passed. Formal core sampling, model selection, UI and fault acceptance still require the full benchmark.'
+} else {
+    Write-Output 'Core benchmark accepted. Native UI and fault acceptance are still separate required steps.'
+}

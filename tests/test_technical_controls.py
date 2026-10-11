@@ -79,6 +79,52 @@ def test_preflight_failure_records_stage_without_exception_secrets(tmp_path, mon
     assert "private-exception-token" not in text + capsys.readouterr().out
 
 
+@pytest.mark.parametrize("passed", [True, False])
+def test_warmup_mode_never_samples_core_or_selects_model(tmp_path, monkeypatch, passed):
+    import benchmark_native
+    runtime = tmp_path / ".runtime"
+    runtime.mkdir()
+    (runtime / "nexent-state.json").write_text("{}")
+    (runtime / "accounts.json").write_text(json.dumps({r: {} for r in ("tenant_admin", "developer", "citizen", "staff")}))
+    current, calls = {}, []
+    class API:
+        def login(self, credentials):
+            return {}
+        def close(self):
+            pass
+    class Response:
+        def raise_for_status(self):
+            pass
+        def json(self):
+            return {"models": [{"name": current["model"], "context_length": 8192}] if current else [],
+                    "parameters": "num_ctx 8192\ntemperature 0.1\nnum_predict 1024",
+                    "details": {"quantization_level": "Q4_K_M"}}
+    class Ollama:
+        def __init__(self, **kwargs):
+            pass
+        def get(self, path):
+            return Response()
+        def post(self, path, **kwargs):
+            return Response()
+        def close(self):
+            pass
+    def warmup(api, state, scenario, model, repeat):
+        calls.append((scenario, model, repeat))
+        return {"passed": passed, "stop_reasons": ["technical-test"], "conversation_id": len(calls)}
+    monkeypatch.setattr(benchmark_native, "ROOT", tmp_path)
+    monkeypatch.setattr(benchmark_native, "RUNTIME", runtime)
+    monkeypatch.setattr(benchmark_native, "NexentAPI", API)
+    monkeypatch.setattr(benchmark_native.httpx, "Client", Ollama)
+    monkeypatch.setattr(benchmark_native, "disable_technical_memory", lambda api: None)
+    monkeypatch.setattr(benchmark_native, "activate_model", lambda api, state, model: current.update(model=model))
+    monkeypatch.setattr(benchmark_native, "run_case", warmup)
+    assert benchmark_native.main(warmup_only=True) == (0 if passed else 1)
+    report = json.loads(next((tmp_path / "evidence").glob("native-*/summary.json")).read_text())
+    assert len(calls) == 2 and all(scenario == "citizen" and repeat == 0 for scenario, model, repeat in calls)
+    assert report["status"] == "WARMUP_ONLY" and report["native_core_cases_executed"] == 0
+    assert report["selected_model"] is None and not report["core_chain_accepted"]
+
+
 @pytest.mark.parametrize("role,status", [("citizen", "OK"), ("staff", "OK"), ("citizen", "ERROR")])
 def test_examples_preserve_actual_results_and_route_from_environment(role, status):
     bundle = json.loads(Path("config/agents.nexent-v2.7.0.json").read_text(encoding="utf-8"))
