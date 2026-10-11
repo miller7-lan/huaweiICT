@@ -1,0 +1,26 @@
+{
+  "captured_at": "2026-10-11T08:27:52.031329+00:00",
+  "status": "FAILED",
+  "failure_type": "RuntimeError",
+  "core_chain_accepted": false,
+  "selected_model": null,
+  "native_core_cases_executed": 0,
+  "model_metadata": {},
+  "selection_reason": "CORE_CHAIN_NOT_ACCEPTED",
+  "models": {
+    "gov-qwen3-4b:ctx8192-v1": {
+      "all_passed": false,
+      "executed": 0,
+      "fresh_sessions_verified": true,
+      "model_checks_passed": false,
+      "warm_median_ms": null
+    },
+    "gov-qwen3-8b:ctx8192-v1": {
+      "all_passed": false,
+      "executed": 0,
+      "fresh_sessions_verified": true,
+      "model_checks_passed": false,
+      "warm_median_ms": null
+    }
+  }
+}

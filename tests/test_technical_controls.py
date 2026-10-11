@@ -1,5 +1,6 @@
 """Verify isolated account controls and executable Agent examples."""
 
+import ast
 import json
 import re
 from pathlib import Path
@@ -9,25 +10,73 @@ import pytest
 from technical_controls import disable_technical_memory
 
 
-@pytest.mark.parametrize("setting", [False, "false"])
-def test_memory_controls_are_verified_against_native_response(setting):
+def test_memory_controls_are_verified_against_pinned_native_service():
     calls = []
+    stored = {}
+    service = Path("vendor/nexent/backend/services/memory_config_service.py")
+    functions = {"set_memory_switch", "set_dreaming_switch", "get_user_configs", "_aggregate_records"}
+    tree = ast.parse(service.read_text(encoding="utf-8"))
+    selected = ast.Module(body=[node for node in tree.body if isinstance(node, ast.FunctionDef)
+                              and node.name in functions], type_ignores=[])
+    from typing import Dict, List, Union
+    def update(user_id, key, value):
+        assert user_id == "isolated-test-user"
+        stored[key] = value
+        return True
+    ns = {"Dict": Dict, "List": List, "Union": Union, "_MULTI_TYPE": "multi",
+          "MEMORY_SWITCH_KEY": "MEMORY_SWITCH", "DREAMING_SWITCH_KEY": "DREAMING_SWITCH",
+          "MEMORY_AGENT_SHARE_KEY": "MEMORY_AGENT_SHARE", "DEFAULT_MEMORY_SWITCH_KEY": "Y",
+          "DEFAULT_DREAMING_SWITCH_KEY": "Y", "DEFAULT_MEMORY_AGENT_SHARE_KEY": "always",
+          "_update_single_config": update,
+          "get_all_configs_by_user_id": lambda _: [
+              {"config_key": key, "config_value": value, "value_type": "single"}
+              for key, value in stored.items()]}
+    exec(compile(selected, str(service), "exec"), ns)
     class API:
         def call(self, method, path, body=None):
             calls.append((method, path, body))
-            return {"MEMORY_SWITCH": setting, "DREAMING_SWITCH": setting}
+            if method == "POST":
+                setter = "set_memory_switch" if body["key"] == "MEMORY_SWITCH" else "set_dreaming_switch"
+                return {"success": ns[setter]("isolated-test-user", body["value"])}
+            return ns["get_user_configs"]("isolated-test-user")
     disable_technical_memory(API())
     assert calls[:2] == [("POST", "/memory/config/set", {"key": key, "value": False})
                          for key in ("MEMORY_SWITCH", "DREAMING_SWITCH")]
 
 
-@pytest.mark.parametrize("config", [{}, {"MEMORY_SWITCH": False, "DREAMING_SWITCH": True}])
+@pytest.mark.parametrize("config", [{}, {"MEMORY_SWITCH": "N", "DREAMING_SWITCH": "Y"},
+                                   {"MEMORY_SWITCH": "Y", "DREAMING_SWITCH": "N"}])
 def test_unconfirmed_memory_configuration_stops_sampling(config):
     class API:
         def call(self, *args):
             return config
     with pytest.raises(RuntimeError):
         disable_technical_memory(API())
+
+
+def test_preflight_failure_records_stage_without_exception_secrets(tmp_path, monkeypatch, capsys):
+    import benchmark_native
+    runtime = tmp_path / ".runtime"
+    runtime.mkdir()
+    (runtime / "nexent-state.json").write_text("{}")
+    (runtime / "accounts.json").write_text(json.dumps({"tenant_admin": {}}))
+    class API:
+        def login(self, credentials):
+            return {}
+        def close(self):
+            pass
+    def fail(api):
+        raise RuntimeError("private-exception-token")
+    monkeypatch.setattr(benchmark_native, "ROOT", tmp_path)
+    monkeypatch.setattr(benchmark_native, "RUNTIME", runtime)
+    monkeypatch.setattr(benchmark_native, "NexentAPI", API)
+    monkeypatch.setattr(benchmark_native, "disable_technical_memory", fail)
+    assert benchmark_native.main() == 1
+    text = next((tmp_path / "evidence").glob("native-*/summary.json")).read_text()
+    report = json.loads(text)
+    assert report["failure_stage"] == "technical_memory_controls/tenant_admin"
+    assert report["native_core_cases_executed"] == 0 and report["selected_model"] is None
+    assert "private-exception-token" not in text + capsys.readouterr().out
 
 
 @pytest.mark.parametrize("role,status", [("citizen", "OK"), ("staff", "OK"), ("citizen", "ERROR")])

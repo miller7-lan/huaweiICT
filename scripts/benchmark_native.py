@@ -138,14 +138,18 @@ def main():
     dest.mkdir(parents=True)
     print("Native benchmark evidence:", dest.name, "; pause web conversations until completion.", flush=True)
     all_records, models, failure = [], {}, None
+    stage = "technical_account_controls"
     try:
         # Native memory is enabled by default; disable it for the four isolated
         # test identities before sampling. Personal administrator settings are
         # outside this loop. These logins happen only in the user-started script.
         for role in ("tenant_admin", "developer", "citizen", "staff"):
+            stage = "technical_account_signin/" + role
             api.login(accounts[role])
+            stage = "technical_memory_controls/" + role
             disable_technical_memory(api)
         for model in ("gov-qwen3-4b:ctx8192-v1", "gov-qwen3-8b:ctx8192-v1"):
+            stage = "model_preparation/" + model
             print(model, "publishing and warming up; core sampling starts only after warmup passes", flush=True)
             file_label = model.replace(":", "_")
             loaded = ollama.get("/api/ps").json()["models"]
@@ -157,6 +161,7 @@ def main():
             show.raise_for_status()
             if not check_parameters(show.json()):
                 raise RuntimeError("Model parameters do not match the pinned Modelfile")
+            stage = "warmup/" + model
             warmup = run_case(api, state, "citizen", model, 0)
             (dest / f"{file_label}-warmup.json").write_text(json.dumps(warmup, ensure_ascii=False, indent=2), encoding="utf-8")
             loaded = ollama.get("/api/ps")
@@ -171,6 +176,7 @@ def main():
                 continue
             for scenario in SCENARIOS:
                 for repeat in range(1, 6):
+                    stage = "core/" + model + "/" + scenario + "/" + str(repeat)
                     record = run_case(api, state, scenario, model, repeat)
                     loaded = ollama.get("/api/ps")
                     loaded.raise_for_status()
@@ -192,6 +198,7 @@ def main():
         report["core_chain_accepted"] = report["selected_model"] is not None
         (dest / "summary.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
         if report["selected_model"]:
+            stage = "publish_selected_model"
             api.login(accounts["developer"])
             activate_model(api, state, report["selected_model"])
         print(json.dumps({k: report[k] for k in ("selected_model", "selection_reason")}, ensure_ascii=False))
@@ -200,10 +207,11 @@ def main():
         failure = type(error).__name__
         report = {"captured_at": datetime.now(timezone.utc).isoformat(), "status": "FAILED",
                   "failure_type": failure, "core_chain_accepted": False, "selected_model": None,
+                  "failure_stage": stage,
                   "native_core_cases_executed": len(all_records), "model_metadata": models,
                   **{k: v for k, v in select_model(all_records, models).items() if k != "selected_model"}}
         (dest / "summary.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-        print("Benchmark stopped:", failure, "; partial evidence saved in", dest.name)
+        print("Benchmark stopped:", failure, "; stage:", stage, "; partial evidence saved in", dest.name)
     finally:
         api.close()
         ollama.close()
