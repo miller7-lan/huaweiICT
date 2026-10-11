@@ -143,7 +143,7 @@ def main(warmup_only=False):
     try:
         # Native memory is enabled by default; disable it for the four isolated
         # test identities before sampling. Personal administrator settings are
-        # outside this loop. These logins happen only in the user-started script.
+        # outside this loop. These isolated test logins require the user's authorization.
         for role in ("tenant_admin", "developer", "citizen", "staff"):
             stage = "technical_account_signin/" + role
             api.login(accounts[role])
@@ -194,6 +194,8 @@ def main(warmup_only=False):
         report = {"captured_at": datetime.now(timezone.utc).isoformat(), "status": "WARMUP_ONLY" if warmup_only else "COMPLETE",
                   "platform_version": "v2.7.0", "platform_commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
                   "model_metadata": models, **select_model(all_records, models),
+                  "runtime_error_overlay": json.loads((ROOT / "evidence/runtime-error-overlay.json").read_text(encoding="utf-8"))
+                      if (ROOT / "evidence/runtime-error-overlay.json").exists() else None,
                   "native_core_cases_executed": len(all_records),
                   "native_ui_verification": "PENDING_SEPARATE_UI_CHECK", "additional_fault_acceptance": "PENDING"}
         report["core_chain_accepted"] = report["selected_model"] is not None

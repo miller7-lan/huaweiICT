@@ -8,6 +8,8 @@ from pathlib import Path
 
 import yaml
 
+from runtime_error_overlay import mount_overlay, prepare_overlay
+
 
 def port_parts(value):
     # Colons inside Compose substitutions and IPv6 addresses are not separators.
@@ -62,6 +64,7 @@ def bind_compose_ports(content, legacy=False):
 
 
 def prepare_compose(vendor):
+    overlay, _ = prepare_overlay(vendor.parent.parent)
     for file in (vendor / "deploy/docker/compose").glob("*.yml"):
         content = file.read_text(encoding="utf-8")
         data = yaml.safe_load(content)
@@ -73,7 +76,7 @@ def prepare_compose(vendor):
         original = subprocess.check_output(["git", "-C", str(vendor), "show", f"HEAD:{relative}"]).decode("utf-8")
         if content == bind_compose_ports(original, legacy=True):
             content = original
-        rewritten = bind_compose_ports(content)
+        rewritten = mount_overlay(bind_compose_ports(content), overlay)
         yaml.safe_load(rewritten)
         file.write_text(rewritten, encoding="utf-8")
 

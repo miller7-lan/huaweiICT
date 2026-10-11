@@ -39,6 +39,8 @@ try {
 } finally { Pop-Location }
 & $Docker compose -f compose.mcp.yml up -d --build
 if ($LASTEXITCODE -ne 0) { throw 'MCP container startup failed.' }
+& $Python scripts/runtime_sandbox.py
+if ($LASTEXITCODE -ne 0) { throw 'Runtime sandbox recovery failed.' }
 & $Python scripts/check_native_ready.py --wait-seconds 120
 if ($LASTEXITCODE -ne 0) { throw 'Native service or container-to-Ollama readiness failed. No account login was attempted.' }
 if ($ProvisionAccounts) {

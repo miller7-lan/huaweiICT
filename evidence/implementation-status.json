@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-11T08:39:27.028520+00:00",
+  "captured_at": "2026-10-11T12:03:48.294561+00:00",
   "platform": {
     "version": "v2.7.0",
     "commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
@@ -12,9 +12,11 @@
       "runtime": true,
       "mcp": true,
       "ui": true,
-      "container_ollama": true
+      "container_ollama": true,
+      "runtime_sandbox": true,
+      "runtime_error_overlay": true
     },
-    "upstream_changes": "loopback-only ports and explicitly configured pinned MinIO source image; no service or SQL changes",
+    "upstream_changes": "loopback-only ports, pinned MinIO source image, hash-guarded SDK connection error overlay; SQL unchanged",
     "minio_source_build": {
       "captured_at": "2026-10-11T07:21:34.036078+00:00",
       "image": "ict-minio:RELEASE.2023-12-20T01-00-02Z-source",
@@ -24,12 +26,20 @@
       "client_commit": "8da737f8fd63de58dc475bf88eb9e285d206e3ae",
       "client_release": "RELEASE.2023-12-14T00-37-41Z",
       "scope": "unmodified pinned official source; locally built image, not the original vendor image"
+    },
+    "runtime_error_overlay": {
+      "base_sdk_sha256": "1a7dee94e05f7d41ffc4f53570fbeb25b402c5ef45172d049e7b4f75edfbb0b5",
+      "overlay_sha256": "f2c39c588de53193d3780c3adb7d11fcaa15bbeb9f338f77d39ca8b55d39f506",
+      "runtime_verified": true,
+      "scope": "Blank MCP connection failures only; existing routes, success path and cleanup are preserved",
+      "target": "/opt/backend/.venv/lib/python3.11/site-packages/nexent/core/agents/run_agent.py",
+      "source": "scripts/runtime_error_overlay.py"
     }
   },
-  "core_chain_accepted": false,
-  "selected_model": null,
+  "core_chain_accepted": true,
+  "selected_model": "gov-qwen3-4b:ctx8192-v1",
   "automated_tests": {
-    "tests": 74,
+    "tests": 87,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -243,20 +253,17 @@
   },
   "native_accounts_created": 4,
   "native_agents_created": 3,
-  "native_core_cases_executed": 20,
-  "native_evidence_reference": "native-20261011T083229058889Z",
+  "native_core_cases_executed": 40,
+  "native_evidence_reference": "native-20261011T115445853107Z",
   "native_ui_verified": false,
-  "additional_fault_acceptance": false,
+  "additional_fault_acceptance": true,
   "all_acceptance_completed": false,
   "blocked_work": [
-    "40 native core runs",
-    "model selection",
-    "user-operated native UI checks",
-    "additional native fault tests"
+    "user-operated native UI checks"
   ],
   "blocker": {
     "code": "NATIVE_ACCEPTANCE_INCOMPLETE",
-    "next_action": "40 native core runs"
+    "next_action": "user-operated native UI checks"
   },
   "excluded": [
     "official business asset import",

@@ -5,8 +5,11 @@ import json
 import shutil
 import subprocess
 import time
+from pathlib import Path
 
 import httpx
+
+from runtime_sandbox import sandbox_ready
 
 
 def probe_services():
@@ -22,6 +25,7 @@ def probe_services():
             except httpx.HTTPError:
                 checks[name] = False
     checks["container_ollama"] = False
+    checks["runtime_sandbox"] = sandbox_ready()
     docker = shutil.which("docker")
     if docker and checks["runtime"]:
         code = (
@@ -35,6 +39,20 @@ def probe_services():
                                     capture_output=True, timeout=8)
             checks["container_ollama"] = result.returncode == 0
         except (OSError, subprocess.TimeoutExpired):
+            pass
+    overlay_record = Path(__file__).resolve().parents[1] / "evidence/runtime-error-overlay.json"
+    if overlay_record.exists():
+        checks["runtime_error_overlay"] = False
+        try:
+            expected = json.loads(overlay_record.read_text(encoding="utf-8"))["overlay_sha256"]
+            code = ("import hashlib;from pathlib import Path;"
+                    "print(hashlib.sha256(Path('/opt/backend/.venv/lib/python3.11/site-packages/"
+                    "nexent/core/agents/run_agent.py').read_bytes()).hexdigest())")
+            if docker and checks["runtime"]:
+                result = subprocess.run([docker, "exec", "nexent-runtime", "python", "-c", code],
+                                        capture_output=True, text=True, timeout=8)
+                checks["runtime_error_overlay"] = result.returncode == 0 and result.stdout.strip() == expected
+        except (OSError, ValueError, KeyError, subprocess.SubprocessError):
             pass
     return checks
 

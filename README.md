@@ -1,32 +1,42 @@
 # 政务空白核心链路：本地实施
 
-目标是 Nexent **v2.7.0** 原生界面的三 Agent 技术链路，以及固定 Qwen3 4B / 8B 对照。当前已完成 MCP 工具、身份注入验证、部署与原生账号配置脚本、Agent 导入包、验收脚本。2026-10-11 用户已完成个人管理员注册及独立测试账号、模型与三个 Agent 的初始化。第三轮 8B 预热通过，执行 20 个正式用例、11 个通过；4B 预热失败。尚未选型，提示词修复后待用户先执行仅预热检查。实际进度见 [实施记录](evidence/implementation-status.json) 和 [修复与接手记录](evidence/fix-status-2026-10-11.md)。
+目标是 Nexent **v2.7.0** 原生界面的三 Agent 技术链路，以及固定 Qwen3 4B / 8B 对照。当前已完成 MCP 工具、身份注入验证、部署与原生账号配置脚本、Agent 导入包、验收脚本。2026-10-11 用户已完成个人管理员注册及独立测试账号、模型与三个 Agent 的初始化。完整原生对照已通过：4B 与 8B 各 20/20 个正式用例成功，共 40 个新会话；按预热后中位耗时选择 4B。五项原生故障已通过，三个账号的 UI 验收仍需完成。实际进度见 [实施记录](evidence/implementation-status.json) 和 [修复与接手记录](evidence/fix-status-2026-10-11.md)。
 
 ## 当前进度（2026-10-11 初始化及首轮验收后复核）
 
 | 项目 | 实际状态 |
 |---|---|
-| WSL、Docker 与原生服务 | 已就绪；配置、运行、MCP、前端、容器到 Ollama 的 5 项检查通过 |
-| 本地测试 | 74 项通过；3 条依赖/上游警告 |
+| WSL、Docker 与原生服务 | 已就绪；服务、Ollama、沙箱及 SDK 覆盖哈希检查通过 |
+| 本地测试 | 87 项通过；3 条依赖/上游警告 |
 | 超级管理员与个人管理员 | 已由用户初始化、注册；单次管理员邀请码已使用 |
 | 独立开发、群众、工作人员及测试管理员账号 | 已创建 4 个独立测试账号；平台角色为 DEV、USER、USER、ADMIN |
 | 原生模型配置、三个 Agent 与角色映射 | 已配置 2 个模型、3 个 Agent 及真实身份映射；界面两个模型均显示可用 |
-| 40 次核心新会话、模型选型、UI 和原生故障验收 | 第三轮 8B 正式用例 11/20 通过，4B 未进入正式采集；未选型，UI 与故障验收待执行 |
+| 40 次核心新会话与模型选型 | 已通过 40/40，选择 4B；修复后复测 4B 中位 7.38 秒，8B 中位 8.37 秒 |
+| 原生故障验收 | 5/5 通过；保留失败轮次和实际恢复证据 |
+| 三个账号的 UI 验收 | 仍需分别登录并验证，不能由 API 对照替代 |
 | 业务 evidence/cases/materials | 均为 0，保持空库 |
 
-下一步由用户先运行仅预热入口。账号注册、API 登录及界面登录继续由用户启动；代理检查代码和分析用户启动的验收结果。首轮实际轨迹见 [失败汇总](evidence/native-20261011T080830004301Z/summary.json)，初始化的只读复核见 [native-provisioning.json](evidence/native-provisioning.json)。
+当前继续修复后核心回归及三个账号 UI 验收。预热和完整核心对照已经由代理按用户授权执行；以下仅预热命令保留为恢复检查入口。账号注册及个人界面登录由用户操作。2026-10-11 用户另行授权代理在 PowerShell 执行验收脚本；代理可运行隔离测试账号的 API 登录、预热、核心与故障验收，分析结果并更新仓库。首轮实际轨迹见 [失败汇总](evidence/native-20261011T080830004301Z/summary.json)，初始化的只读复核见 [native-provisioning.json](evidence/native-provisioning.json)。
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File "C:\Users\18133\Desktop\ICT\scripts\run_benchmark.ps1" -WarmupOnly
 ```
 
-首轮 4B 的流读取等待 30 秒后超时；8B 调用了技能、文件等额外工具，未完成子 Agent 链路。本次将流的空闲读取等待改为 120 秒，明确关闭计划和自动任务入口，关闭四个独立测试账号的记忆及后台记忆功能，并添加只使用真实返回值的代码动作示例。每轮发布会同步更新提示词，群众/工作人员子 Agent 先于主 Agent 发布；验收会拒绝额外原生工具调用。原生修复效果以重跑为准，不计入已通过项目。个人管理员的记忆配置不在脚本修改范围内。
+首轮 4B 的流读取等待 30 秒后超时；8B 调用了技能、文件等额外工具，未完成子 Agent 链路。本次将流的空闲读取等待改为 120 秒，明确关闭计划和自动任务入口，关闭四个独立测试账号的记忆及后台记忆功能，并添加只使用真实返回值的代码动作示例。每轮发布会同步更新提示词，群众/工作人员子 Agent 先于主 Agent 发布；验收会拒绝额外原生工具调用。该修复已在后续 40 次原生核心对照中通过。个人管理员的记忆配置不在脚本修改范围内。
 
 第二轮 [失败汇总](evidence/native-20261011T082751728836Z/summary.json)在测试管理员设置检查处停止。固定上游接口将关闭值保存并返回为 `"N"`，原校验错误地期待 `false`；已按实际约定修复，并执行上游服务函数作为回归测试。[只读数据库复核](evidence/native-memory-contract-2026-10-11.json)确认该账号两个开关均为 `"N"`。失败日志现在保留安全的操作阶段，避免只有异常类型而无法定位。
 
 第三轮 [实际汇总](evidence/native-20261011T083229058889Z/summary.json)已结束：8B 群众 4/5、工作人员 0/5、自称工作人员 2/5、重复群众 5/5；4B 未通过预热。失败包括重复环境调用、遗漏 JSON 解析、将真实结果改写成错误字典（`null`、`"null"` 或字段丢失），不能据此选型。
 
-提示词现改为一段完整动作，在职责和示例中明确保留真实返回值，不拆分步骤、不重写结果字典。实际 MCP 返回 JSON 字符串；固定上游子 Agent 的 report 模板直接透传最终结果，已核对运行容器中的调用实现。`-WarmupOnly` 只执行两个模型各一次预热，不执行正式采集、不选择模型，也不表示核心验收完成；通过后去掉该参数运行完整对照。新提示词尚未得到实际原生预热通过的证据。
+提示词现改为一段完整动作，在职责和示例中明确保留真实返回值，不拆分步骤、不重写结果字典。实际 MCP 返回 JSON 字符串；固定上游子 Agent 的 report 模板直接透传最终结果，已核对运行容器中的调用实现。`-WarmupOnly` 只执行两个模型各一次预热，不执行正式采集、不选择模型，也不表示核心验收完成；通过后去掉该参数运行完整对照。2026-10-11 新提示词已通过 [双模型预热](evidence/native-20261011T090557817255Z/summary.json)及 [40 次原生核心对照](evidence/native-20261011T090641128306Z/summary.json)，两个模型均满足全部 20 次通过条件。4B 预热后中位耗时 7235.37 ms，8B 为 8678.82 ms；差距超过 10%，选择较快的 4B。选定模型已重新发布至三个 Agent 的版本 11。历史失败结果保留，不能复用为通过证据。
+
+修复后重新完成 [40 次核心回归](evidence/native-20261011T115445853107Z/summary.json)：两模型各 20/20，通过数合计 40/40。4B 中位 7375.39 ms，8B 为 8367.51 ms；继续选定 4B，三个 Agent 均发布为版本 14。本轮汇总包含实际 SDK 覆盖哈希，成功链路未回归。
+
+五项故障实际结果见 [native-faults.json](evidence/native-faults.json)。Docker 重启后，已有执行沙箱停止且占用名称，SDK 创建失败回退到本地解释器；恢复脚本现在核对固定镜像、所有权及 lightweight 标签，再启动原容器，将默认 `no` 重启策略设置为 `unless-stopped`，不删除或重建容器。就绪检查拒绝已存在但停止或身份不符的沙箱。首次尚未创建沙箱时，仍由原生 SDK 创建，验收入口在结束后补齐重启策略。
+
+存储故障现在由 `gov-blank-mcp` 内的独占锁实际触发：工具返回 `ERROR/TOOL_TIMEOUT`、两次尝试、主 Agent 立即结束，没有调用子 Agent；连接故障停止 MCP 容器后，平台返回 `ERROR/CONNECTION_TIMEOUT`、一次尝试、无模型或工具调用，并在 finally 中恢复服务。失败轮次见 `native-faults-20261011-first.json`、`-second.json`，首个通过轮次见 `-third.json`。
+
+固定 SDK 将嵌套连接异常输出为普通文字，不能满足本项目的机器可读停止约定。因此增加最小运行时覆盖：只在 MCP 地址全部等于 `http://gov-blank-mcp:8765/sse`、异常链/组全部属于连接失败时返回结构化空结果。混合异常、认证失败、工具读取超时及其他 MCP 地址保留上游处理；成功路径和资源清理不变。固定原模块 SHA-256 和覆盖 SHA-256 见 [runtime-error-overlay.json](evidence/runtime-error-overlay.json)，未知源码拒绝应用。`prepare_deploy.py` 生成私有 `.runtime/overlays/run_agent.py` 并配置只读挂载；现有容器首次应用使用 `runtime_error_overlay.py --apply` 校验并重启运行服务。只读挂载在下次官方 Compose 重建时生效；仓库不上传 SDK 副本或私有配置。
 
 ![原生模型连通性检测通过](evidence/native-model-connectivity-2026-10-11.jpg)
 
@@ -41,15 +51,18 @@ powershell -ExecutionPolicy Bypass -File "C:\Users\18133\Desktop\ICT\scripts\run
 | `scripts/provision_nexent.py` | 创建隔离租户、账号、模型、SSE 连接、导入并发布 Agent，保存真实 ID |
 | `scripts/run_benchmark.ps1` | 校验初始化状态、服务就绪，定位项目 Python 后启动用户授权的验收 |
 | `scripts/benchmark_native.py` | 使用原生发布版本、真实登录账号，每模型 4 类 × 5 个新会话，保存 SSE 与工具审计 |
-| `scripts/check_native_ready.py` | 无需登录，检查服务就绪和容器内到两个 Ollama 模型的连接 |
-| `scripts/verify_native_faults.py` | 用户启动的原生 Metadata 拒绝、未映射身份、越权、存储锁超时和连接中断验收 |
+| `scripts/check_native_ready.py` | 无需登录，检查服务、模型、原有沙箱及 SDK 覆盖哈希 |
+| `scripts/runtime_sandbox.py` | 校验固定镜像和所有权标签，恢复原有沙箱并保留重启策略 |
+| `scripts/runtime_error_overlay.py` | SHA-256 校验固定 SDK，生成仅适用于本项目 MCP 的连接错误映射覆盖 |
+| `scripts/container_storage_lock.py` | 在 MCP 容器内获取实际 SQLite 独占锁，结束或异常时释放 |
+| `scripts/verify_native_faults.py` | 用户授权的原生 Metadata 拒绝、未映射身份、越权、存储锁超时和连接中断验收 |
 | `scripts/record_native_ui.py` | 校验用户操作的截图、原生 SSE 与实际审计，保存三个账号的 UI 验收记录 |
 | `scripts/write_status.py` | 实时探测环境，根据最新原生结果及 UI/故障记录重新计算进度 |
 | `evidence/unit-tests.xml`、`sse-transport.json` | 已执行的自动测试和真实 SSE 工具证据 |
 
 依赖安装在 `.venv`，锁定清单为 `requirements.lock`。Python 本机环境为 3.12；MCP Docker 镜像使用 3.11。Nexent 后端由官方镜像提供，不在本机 Python 中安装 SDK。
 
-原生接口适配参考固定上游版本的 [nexent-backend 技能](https://github.com/ModelEngine-Group/nexent/blob/519b9b17c7f4cbc623256ac318ea96a20f33772e/.agents/skills/nexent-backend/SKILL.md)，核对了 HTTP 身份与响应契约、配置约定及流资源生命周期；没有修改上游后端、SDK 或 SQL。
+原生接口适配参考固定上游版本的 [nexent-backend 技能](https://github.com/ModelEngine-Group/nexent/blob/519b9b17c7f4cbc623256ac318ea96a20f33772e/.agents/skills/nexent-backend/SKILL.md)，核对了 HTTP 身份与响应契约、配置约定及流资源生命周期。上游源码和 SQL 保持固定提交；运行时对一个 SDK 模块应用连接错误映射覆盖，具体范围和哈希见下文。
 
 ## 启动与恢复
 
@@ -91,7 +104,7 @@ powershell -ExecutionPolicy Bypass -File "C:\Users\18133\Desktop\ICT\scripts\ini
 
 换机器时将项目路径替换为实际位置。初始化成功后，由用户启动 `scripts\run_benchmark.ps1` 进行 40 次原生核心对照，再完成三个账号的 UI 验收和原生故障验收；执行方式见下文“实际验收”。
 
-官方脚本选择 `infrastructure,application,supabase`，关闭 Workbench，使用 lightweight 执行环境；没有资料解析服务、业务资产、业务资料导入。仅给官方 Compose 的宿主机发布端口增加 `127.0.0.1` 绑定，不修改服务或 SQL。Nexent 精确提交：`519b9b17c7f4cbc623256ac318ea96a20f33772e`。MCP 只挂载 `.runtime/mcp`，不挂载账号凭据或 Nexent 数据目录。
+官方脚本选择 `infrastructure,application,supabase`，关闭 Workbench，使用 lightweight 执行环境；没有资料解析服务、业务资产、业务资料导入。给官方 Compose 的宿主机发布端口增加 `127.0.0.1` 绑定，并只读挂载受哈希校验的 SDK 错误映射覆盖，不修改 SQL。Nexent 精确提交：`519b9b17c7f4cbc623256ac318ea96a20f33772e`。MCP 只挂载 `.runtime/mcp`，不挂载账号凭据或 Nexent 数据目录。
 
 2026-10-11 实测：固定 MinIO 旧镜像在官方源和国内镜像源无法拉取。可使用同一服务端发布版本的官方源码构建本地镜像，再部署：
 
@@ -148,7 +161,7 @@ powershell -ExecutionPolicy Bypass -File scripts\create_admin_invite.ps1
 powershell -ExecutionPolicy Bypass -File scripts\run_benchmark.ps1
 ```
 
-原生对照脚本调用原生 UI 使用的运行 API，每轮先发布三个 Agent 的同一模型版本，再预热一次；预热不进入中位数，预热失败的模型不进入核心采集。四类提示分别是群众空库自检、工作人员缺前提、群众自称工作人员、重复群众自检。普通用例省略 Metadata 更新字段；伪造 Metadata 被拒绝属于独立负向验收。每类 5 个新会话，顺序执行。该脚本会通过 API 登录测试账号，须由用户在账号步骤完成后启动。不要在采集期间人工触发其他会话，以免混入工具审计。
+原生对照脚本调用原生 UI 使用的运行 API，每轮先发布三个 Agent 的同一模型版本，再预热一次；预热不进入中位数，预热失败的模型不进入核心采集。四类提示分别是群众空库自检、工作人员缺前提、群众自称工作人员、重复群众自检。普通用例省略 Metadata 更新字段；伪造 Metadata 被拒绝属于独立负向验收。每类 5 个新会话，顺序执行。该脚本会通过 API 登录测试账号，须在账号初始化完成且用户授权后启动。不要在采集期间人工触发其他会话，以免混入工具审计。
 
 每次记录实际原生 SSE、子 Agent 起止、工具顺序与审计、最终结果 request_id、耗时、停止原因、显存和整机内存采样、业务计数。只有文字、没有真实工具轨迹，或最终结果无法关联实际工具请求，均失败。到达步数上限、运行错误、仍出现深度思考或调用额外原生工具也失败。
 
@@ -156,9 +169,9 @@ powershell -ExecutionPolicy Bypass -File scripts\run_benchmark.ps1
 
 只有某模型全部 20 个核心用例通过，才进入选择比较。仅一方通过选该模型；双方通过时比较预热后中位数，差距（以较快者为分母）不超过 10% 选 4B；双方均未通过不选择模型。原生 UI 和额外故障验收独立标记，核心性能比较不能替代它们。
 
-额外验证需分别保留：可信身份覆盖、未映射账号、群众工具越权、技术超时停止。现有测试已经覆盖工具层和上游身份包装器，但没有声称已完成原生平台故障验收。故障只能模拟技术状态，不创建政策、案例、事项或材料。
+额外验证需分别保留：可信身份覆盖、未映射账号、群众工具越权、技术超时停止。现有测试已经覆盖工具层和上游身份包装器，且五项原生平台故障验收已经通过。故障只能模拟技术状态，不创建政策、案例、事项或材料。
 
-完整核心验收后，由用户手动启动下列命令；将 `<native目录名>` 换成此次 `evidence/native-*` 目录名。两个故障参数分别会短暂持有业务库独占锁、停止并恢复 `gov-blank-mcp`。在无其他会话运行时执行。跨 Windows/Docker 文件系统的锁若未实际触发超时，测试会判失败；未执行或不符合停止契约的项目也不会算通过。
+完整核心验收后，在用户授权下运行下列命令；将 `<native目录名>` 换成此次 `evidence/native-*` 目录名。两个故障参数分别会短暂持有业务库独占锁、停止并恢复 `gov-blank-mcp`。在无其他会话运行时执行。独占锁由 MCP 容器内的进程持有，避免 Windows 和 Docker 之间文件锁不互通；异常或结束均释放锁。不符合实际停止契约的项目不会算通过。
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\verify_native_faults.py --benchmark <native目录名> --storage-lock --connection-outage

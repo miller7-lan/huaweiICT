@@ -48,10 +48,13 @@ def probe_platform():
     changes = "loopback-only port bindings; no service or SQL changes"
     if minio:
         changes = "loopback-only ports and explicitly configured pinned MinIO source image; no service or SQL changes"
+    overlay = read_json(root / 'evidence/runtime-error-overlay.json')
+    if overlay:
+        changes = "loopback-only ports, pinned MinIO source image, hash-guarded SDK connection error overlay; SQL unchanged"
     return {"version": "v2.7.0", "commit": COMMIT, "docker_cli_installed": docker is not None,
             "docker_engine": engine, "docker_server_version": version, "wsl_ready": wsl_ready,
             "services": probe_services(),
-            "upstream_changes": changes, "minio_source_build": minio}
+            "upstream_changes": changes, "minio_source_build": minio, "runtime_error_overlay": overlay}
 
 
 def receipts_valid(report, roles, reference, root):

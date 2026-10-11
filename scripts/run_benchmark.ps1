@@ -17,17 +17,22 @@ foreach ($AgentName in @('gov_coordinator', 'citizen_assistant', 'staff_assistan
 foreach ($ModelName in @('gov-qwen3-4b:ctx8192-v1', 'gov-qwen3-8b:ctx8192-v1')) {
     if ($NativeState.models.PSObject.Properties.Name -notcontains $ModelName) { throw 'Native models are incomplete; run scripts/initialize_accounts.ps1 first.' }
 }
+& $Python scripts/runtime_sandbox.py
+if ($LASTEXITCODE -ne 0) { throw 'Runtime sandbox recovery failed; no benchmark login was attempted.' }
 & $Python scripts/check_native_ready.py
 if ($LASTEXITCODE -ne 0) { throw 'Native services are not ready; no benchmark login was attempted.' }
 if ($WarmupOnly) {
-    Write-Output 'User-started native warmups: sign in with isolated test accounts, publish model versions, and run two warmups only. Pause web conversations until completion.'
+    Write-Output 'Authorized native warmups: sign in with isolated test accounts, publish model versions, and run two warmups only. Pause web conversations until completion.'
 } else {
-    Write-Output 'User-started benchmark: sign in with isolated test accounts, publish model versions, and run 40 native core cases. Pause web conversations until completion.'
+    Write-Output 'Authorized benchmark: sign in with isolated test accounts, publish model versions, and run 40 native core cases. Pause web conversations until completion.'
 }
 $BenchmarkArguments = @('scripts/benchmark_native.py')
 if ($WarmupOnly) { $BenchmarkArguments += '--warmup-only' }
 & $Python @BenchmarkArguments
-if ($LASTEXITCODE -ne 0) {
+$BenchmarkExitCode = $LASTEXITCODE
+& $Python scripts/runtime_sandbox.py
+if ($LASTEXITCODE -ne 0) { throw 'Runtime sandbox persistence failed.' }
+if ($BenchmarkExitCode -ne 0) {
     if ($WarmupOnly) { throw 'Native warmup checks failed; keep the terminal output and evidence/native-* results for investigation.' }
     throw 'Native benchmark failed or no model passed; keep the terminal output and evidence/native-* results for investigation.'
 }

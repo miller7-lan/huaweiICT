@@ -1,9 +1,8 @@
-"""User-started native negative tests with reversible technical fault injection."""
+"""Authorized native negative tests with reversible technical fault injection."""
 
 import argparse
 import json
 import shutil
-import sqlite3
 import subprocess
 from datetime import datetime, timezone
 
@@ -11,6 +10,8 @@ import httpx
 
 from benchmark_native import read_audit, run_case, run_payload
 from check_native_ready import probe_services
+from container_storage_lock import container_storage_lock
+from runtime_sandbox import recover_sandbox
 from gov_mcp.core import BlankStore
 from nexent_api import NexentAPI, ROOT, RUNTIME
 
@@ -55,11 +56,13 @@ def terminal_assessor(tool, status, code):
 
 def connection_assessor(events, audit, role, principal):
     value = root_final(events)
-    clean = not audit and not any(e.get("type") in ("subagent_start", "subagent_end", "max_steps_reached")
+    clean = not audit and not any(e.get("type") in ("error", "subagent_start", "subagent_end", "max_steps_reached")
                                  or (e.get("type") == "model_output_deep_thinking" and e.get("content")) for e in events)
     passed = (clean and isinstance(value, dict) and value.get("status") == "ERROR"
               and value.get("message_code") == "CONNECTION_TIMEOUT" and value.get("items") == []
-              and value.get("citations") == [] and value.get("knowledge_version") is None)
+              and value.get("citations") == [] and value.get("knowledge_version") is None
+              and value.get("data", {}).get("attempts") in (1, 2)
+              and value.get("data", {}).get("phase") == "mcp_connection")
     return {"passed": passed, "stop_reasons": ["CONNECTION_TIMEOUT" if passed else "CONNECTION_STOP_CONTRACT_NOT_MET"], "result": value}
 
 
@@ -76,6 +79,7 @@ def main():
     model = summary.get("selected_model")
     if not summary.get("core_chain_accepted") or not model or state.get("active_model") != model:
         raise ValueError("Complete the benchmark and keep its selected model active before negative tests")
+    recover_sandbox()
     if not all(probe_services().values()):
         raise RuntimeError("Native services or container-to-Ollama connection are not ready")
     api, records, failure = NexentAPI(), {}, None
@@ -107,15 +111,10 @@ def main():
             assessor=terminal_assessor("check_case_prerequisites", "BLOCKED", "FORBIDDEN"))
         records["storage_timeout"] = {"passed": False, "status": "NOT_RUN"}
         if args.storage_lock:
-            lock = sqlite3.connect(RUNTIME / "mcp/business.sqlite3")
-            try:
-                lock.execute("BEGIN EXCLUSIVE")
+            with container_storage_lock():
                 records["storage_timeout"] = run_case(api, state, "storage_timeout", model, 1,
                     role_override="citizen", query_override="进行一次环境自检；技术错误时原样返回并立即结束。",
                     assessor=terminal_assessor("get_environment_status", "ERROR", "TOOL_TIMEOUT"), check_business_counts=False)
-            finally:
-                lock.rollback()
-                lock.close()
             records["storage_timeout"]["business_counts_after"] = BlankStore(RUNTIME / "mcp/business.sqlite3").counts()
         records["connection_timeout"] = {"passed": False, "status": "NOT_RUN"}
         if args.connection_outage:

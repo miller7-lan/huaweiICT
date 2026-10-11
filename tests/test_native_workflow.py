@@ -230,8 +230,12 @@ def test_native_negative_result_requires_audit_identity_and_no_child():
 
 
 def test_connection_outage_must_stop_without_tools_or_step_exhaustion():
-    value = {"status": "ERROR", "message_code": "CONNECTION_TIMEOUT", "items": [], "citations": [], "knowledge_version": None}
+    value = {"status": "ERROR", "message_code": "CONNECTION_TIMEOUT", "items": [], "citations": [], "knowledge_version": None,
+             "data": {"attempts": 1, "phase": "mcp_connection"}}
     events = [{"type": "final_answer", "content": json.dumps(value)}]
     assert connection_assessor(events, [], "citizen", "trusted")["passed"]
     assert not connection_assessor(events, [{"tool": "get_environment_status"}], "citizen", "trusted")["passed"]
     assert not connection_assessor(events + [{"type": "max_steps_reached"}], [], "citizen", "trusted")["passed"]
+    assert not connection_assessor(events + [{"type": "error"}], [], "citizen", "trusted")["passed"]
+    value["data"]["attempts"] = 3
+    assert not connection_assessor([{"type": "final_answer", "content": json.dumps(value)}], [], "citizen", "trusted")["passed"]
