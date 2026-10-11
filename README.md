@@ -1,6 +1,20 @@
 # 政务空白核心链路：本地实施
 
-目标是 Nexent **v2.7.0** 原生界面的三 Agent 技术链路，以及固定 Qwen3 4B / 8B 对照。当前已完成 MCP 工具、身份注入验证、部署与原生账号配置脚本、Agent 导入包、验收脚本。实际进度见 [实施记录](evidence/implementation-status.json)。Docker 引擎需要启用 WSL 2；原生账号、原生 UI 与 40 次链路验收须在引擎就绪后执行。
+目标是 Nexent **v2.7.0** 原生界面的三 Agent 技术链路，以及固定 Qwen3 4B / 8B 对照。当前已完成 MCP 工具、身份注入验证、部署与原生账号配置脚本、Agent 导入包、验收脚本。2026-10-11 用户已完成个人管理员注册；服务已经就绪，独立测试账号、模型与三个 Agent 的初始化仍待用户运行。实际进度见 [实施记录](evidence/implementation-status.json) 和 [修复与接手记录](evidence/fix-status-2026-10-11.md)。
+
+## 当前进度（2026-10-11 注册后复核）
+
+| 项目 | 实际状态 |
+|---|---|
+| WSL、Docker 与原生服务 | 已就绪；配置、运行、MCP、前端、容器到 Ollama 的 5 项检查通过 |
+| 本地测试 | 61 项通过；3 条依赖/上游警告 |
+| 超级管理员与个人管理员 | 已由用户初始化、注册；单次管理员邀请码已使用 |
+| 独立开发、群众、工作人员及测试管理员账号 | 尚未初始化；私有状态中的测试账号记录为空 |
+| 原生模型配置、三个 Agent 与角色映射 | 尚未初始化；模型、Agent 状态记录为空 |
+| 40 次核心新会话、模型选型、UI 和原生故障验收 | 待执行，尚未通过 |
+| 业务 evidence/cases/materials | 均为 0，保持空库 |
+
+下一步由用户运行 `scripts\initialize_accounts.ps1`。个人管理员注册成功之后仍需初始化独立测试账号，才能验证群众、工作人员与开发账号的权限和链路。账号注册、API 登录及界面登录继续由用户启动；代理可以继续检查代码和分析用户启动的验收结果。
 
 ## 已有内容
 
@@ -20,7 +34,7 @@
 
 依赖安装在 `.venv`，锁定清单为 `requirements.lock`。Python 本机环境为 3.12；MCP Docker 镜像使用 3.11。Nexent 后端由官方镜像提供，不在本机 Python 中安装 SDK。
 
-原生接口适配参考仓库的 [nexent-backend 技能](vendor/nexent/.agents/skills/nexent-backend/SKILL.md)，核对了 HTTP 身份与响应契约、配置约定及流资源生命周期；没有修改上游后端、SDK 或 SQL。
+原生接口适配参考固定上游版本的 [nexent-backend 技能](https://github.com/ModelEngine-Group/nexent/blob/519b9b17c7f4cbc623256ac318ea96a20f33772e/.agents/skills/nexent-backend/SKILL.md)，核对了 HTTP 身份与响应契约、配置约定及流资源生命周期；没有修改上游后端、SDK 或 SQL。
 
 ## 启动与恢复
 
@@ -54,6 +68,14 @@ powershell -ExecutionPolicy Bypass -File scripts\initialize_accounts.ps1
 
 此命令先调用官方 `create-su.sh` 初始化平台超级管理员，再使用私有凭据执行原生账号注册/登录、配置模型和发布 Agent；密码不会显示在输出中。不要让代理在用户接手登录期间运行它。只有用户明确希望一个命令完成部署和账号初始化时，才使用 `deploy.ps1 -ProvisionAccounts`。`provision_nexent.py` 的直接入口要求超级管理员已经初始化。
 
+若 PowerShell 当前目录是 `C:\WINDOWS\system32`，相对脚本路径会提示文件不存在。当前机器可在任意目录使用完整路径：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "C:\Users\18133\Desktop\ICT\scripts\initialize_accounts.ps1"
+```
+
+换机器时将项目路径替换为实际位置。初始化成功后，由用户启动 `scripts\benchmark_native.py` 进行 40 次原生核心对照，再完成三个账号的 UI 验收和原生故障验收；执行方式见下文“实际验收”。
+
 官方脚本选择 `infrastructure,application,supabase`，关闭 Workbench，使用 lightweight 执行环境；没有资料解析服务、业务资产、业务资料导入。仅给官方 Compose 的宿主机发布端口增加 `127.0.0.1` 绑定，不修改服务或 SQL。Nexent 精确提交：`519b9b17c7f4cbc623256ac318ea96a20f33772e`。MCP 只挂载 `.runtime/mcp`，不挂载账号凭据或 Nexent 数据目录。
 
 2026-10-11 实测：固定 MinIO 旧镜像在官方源和国内镜像源无法拉取。可使用同一服务端发布版本的官方源码构建本地镜像，再部署：
@@ -84,7 +106,7 @@ powershell -ExecutionPolicy Bypass -File scripts\create_admin_invite.ps1
 | citizen | USER | citizen |
 | staff | USER | staff |
 | tenant_admin | ADMIN | 未映射（管理及负向验证） |
-| super_admin | SUPER_ADMIN | 未映射（仅平台引导） |
+| super_admin | SU | 未映射（仅平台引导） |
 
 后两个账号是官方权限体系要求的引导管理账号，不能代替两个独立 USER 测试账号。初始角色映射为空；初始化脚本只能根据登录接口取得的真实 tenant/user ID 写入 `.runtime/mcp/role-map.json`。普通用户的 Metadata 和聊天自称身份不能更改该文件。
 

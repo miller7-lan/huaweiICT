@@ -1,6 +1,14 @@
 # 修复与接手记录（2026-10-11）
 
-代码修复、本地验证和原生服务部署已完成。WSL 与 Docker 已恢复，配置、运行、MCP、前端及容器到 Ollama 的检查全部通过。账号初始化和完整原生 Agent 验收仍待用户接手；代理未注册账号或登录平台。新增用户启动的邀请码入口，支持使用个人邮箱在本地界面注册。
+代码修复、本地验证和原生服务部署已完成。WSL 与 Docker 已恢复，配置、运行、MCP、前端及容器到 Ollama 的检查全部通过。用户已经运行邀请码入口并完成个人管理员注册；独立测试账号、模型、Agent 初始化和完整原生验收仍待执行。代理未注册账号或登录平台。
+
+## 注册后的实际进度
+
+- 用户已确认注册成功。数据库只读复核显示 1 个 `SU` 与 1 个 `ADMIN`；单次 `ADMIN_INVITE` 状态为 `RUN_OUT`。平台默认 `SPEED` 记录不计入用户创建的测试账号。
+- 私有原生状态中租户已存在，但 `accounts`、`models`、`agents` 的记录仍为空，尚未完成完整初始化。
+- 注册后 5 项服务检查全部通过；配置与运行服务的实际 OpenAPI 包含初始化和核心验收所需的路由。
+- 业务 evidence/cases/materials 计数均为 0。
+- 40 次原生核心对照、模型选型、三个账号的 UI 与原生故障验收尚未执行。个人管理员注册不能作为这些项目的通过证据。
 
 ## 已修复
 
@@ -32,20 +40,20 @@
 - 直接执行部署脚本的数据路径转换表达式，结果为正确的 Git Bash 路径。
 - 部署入口成功返回 0；全部 5 项服务检查通过。
 - 实际数据库和 MinIO 数据目录挂载至项目 `.runtime/nexent-data`。
-- Supabase 数据库只读检查确认超级管理员账号不存在，原生状态文件尚未创建。
-- 服务证据见 [deployment-runtime.json](deployment-runtime.json)，源码镜像证据见 [minio-source-build.json](minio-source-build.json)。
+- 初次部署结束时，Supabase 数据库只读检查确认超级管理员账号不存在，原生状态文件尚未创建；用户运行邀请码入口后已创建，当前状态见上方注册后记录。
+- 初次部署快照见 [deployment-runtime.json](deployment-runtime.json)，其中账号状态属于该快照采集时刻，不代表注册后的当前状态。源码镜像证据见 [minio-source-build.json](minio-source-build.json)。
 
 ## 当前需用户操作
 
-服务已经就绪。请用户在项目目录手动执行账号初始化：
-
-若希望先注册自己的邮箱，可运行 `powershell -ExecutionPolicy Bypass -File scripts\create_admin_invite.ps1`，在终端获取单次管理员邀请码，再填写本地注册表单。此入口由用户启动超级管理员初始化和 API 登录；不创建技术验证所需的其他账号或 Agent。
+个人管理员注册已完成，下一步由用户启动独立测试账号、模型与 Agent 的初始化。当前机器可从任意 PowerShell 目录执行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts\initialize_accounts.ps1
+powershell -ExecutionPolicy Bypass -File "C:\Users\18133\Desktop\ICT\scripts\initialize_accounts.ps1"
 ```
 
-此步骤先调用官方初始化入口创建超级管理员，再执行测试账号注册/登录及 Agent 发布。完成后可在 http://127.0.0.1:3000 登录；凭据保存在私有 `.runtime/accounts.json`，不会输出到证据文件。代理未运行该入口。
+此步骤调用官方初始化入口处理已有超级管理员，再执行独立测试账号注册/登录、模型配置及 Agent 发布；使用邀请码入口创建的同一验证租户。账号操作由用户启动，代理未运行该入口。测试凭据保存在私有 `.runtime/accounts.json`，不会输出到证据文件。
+
+之前从 `C:\WINDOWS\system32` 执行 `-File scripts\create_admin_invite.ps1` 报文件不存在，原因是相对路径从当前工作目录解析。使用项目完整路径可以解决；换机器时需替换路径。
 
 后续必须实际完成：原生账号和三个 Agent、40 次核心新会话与模型选型、开发/群众/工作人员 UI 证据及原生故障测试。服务就绪和本地验证不代表这些项目已经通过。
 
