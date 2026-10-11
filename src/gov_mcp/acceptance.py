@@ -32,6 +32,9 @@ def assess(events, audit, role, principal, child_id=None):
           or starts[0].get("depth") != 1 or ends[0].get("depth") != 1):
         errors.append("subagent_boundary_mismatch")
     actual_tools = [e.get("tool_name") for e in events if e.get("type") == "tool" and e.get("tool_name") in ("get_environment_status", "search_evidence", "check_case_prerequisites")]
+    if any(e.get("type") == "tool" and e.get("tool_name") not in
+           ("get_environment_status", "search_evidence", "check_case_prerequisites") for e in events):
+        errors.append("unexpected_native_tool_call")
     if actual_tools != calls:
         errors.append("native_trace_and_service_audit_disagree")
     if len(starts) == len(ends) == 1:

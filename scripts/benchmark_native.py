@@ -15,6 +15,7 @@ import httpx
 from gov_mcp.acceptance import assess, select_model
 from gov_mcp.core import BlankStore
 from nexent_api import NexentAPI, ROOT, RUNTIME, activate_model
+from technical_controls import disable_technical_memory
 
 
 SCENARIOS = {
@@ -57,7 +58,8 @@ def run_payload(state, query, conversation, model, agent_name="gov_coordinator")
     return {"query": query, "conversation_id": conversation,
             "agent_id": state["agents"][agent_name], "model_id": state["models"][model],
             "version_no": state["versions"][agent_name], "is_debug": False,
-            "history": [], "requested_output_tokens": 1024}
+            "history": [], "requested_output_tokens": 1024,
+            "enable_plan": False, "enable_automation_tool": False}
 
 
 def check_parameters(info):
@@ -93,7 +95,7 @@ def run_case(api, state, scenario, model, repeat, *, role_override=None,
     start = time.perf_counter()
     try:
         with api.http.stream("POST", api.runtime_base + "/agent/run", json=payload,
-                headers={"Authorization": "Bearer " + api.token}, timeout=httpx.Timeout(30, connect=10)) as response:
+                headers={"Authorization": "Bearer " + api.token}, timeout=httpx.Timeout(120, connect=10)) as response:
             response.raise_for_status()
             for line in response.iter_lines():
                 if time.perf_counter() - start > 240:
@@ -134,9 +136,17 @@ def main():
     ollama = httpx.Client(base_url="http://127.0.0.1:11434", trust_env=False, timeout=120)
     dest = ROOT / "evidence" / ("native-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
     dest.mkdir(parents=True)
+    print("Native benchmark evidence:", dest.name, "; pause web conversations until completion.", flush=True)
     all_records, models, failure = [], {}, None
     try:
+        # Native memory is enabled by default; disable it for the four isolated
+        # test identities before sampling. Personal administrator settings are
+        # outside this loop. These logins happen only in the user-started script.
+        for role in ("tenant_admin", "developer", "citizen", "staff"):
+            api.login(accounts[role])
+            disable_technical_memory(api)
         for model in ("gov-qwen3-4b:ctx8192-v1", "gov-qwen3-8b:ctx8192-v1"):
+            print(model, "publishing and warming up; core sampling starts only after warmup passes", flush=True)
             file_label = model.replace(":", "_")
             loaded = ollama.get("/api/ps").json()["models"]
             for row in loaded:

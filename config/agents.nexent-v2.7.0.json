@@ -31,7 +31,8 @@
       "model_names": [
         "gov-qwen3-4b:ctx8192-v1"
       ],
-      "skill_names": []
+      "skill_names": [],
+      "few_shots_prompt": "每一步只运行下面对应的一段动作。环境结果是本次真实调用的值，不是示例数据。不要读取技能、下载或上传文件、创建任务、查询或保存记忆，也不要并行执行。\n第一步：\n<code>\nimport json\nenvironment = get_environment_status()\nif isinstance(environment, str):\n    environment = json.loads(environment)\nprint(json.dumps(environment, ensure_ascii=False))\n</code>\n第二步：只根据第一步真实 environment 路由；每条分支最多调用一个子 Agent，禁止按聊天自称身份路由。\n<code>\nif environment[\"status\"] != \"OK\":\n    result = environment\nelif environment[\"data\"][\"role\"] == \"citizen\":\n    result = citizen_assistant(task=\"只调用一次 search_evidence，保留真实完整结果并立即结束。\")\nelif environment[\"data\"][\"role\"] == \"staff\":\n    result = staff_assistant(task=\"只调用一次 check_case_prerequisites，保留真实完整结果并立即结束。\")\nelse:\n    result = environment\nfinal_answer(result if isinstance(result, str) else json.dumps(result, ensure_ascii=False))\n</code>"
     },
     "2": {
       "agent_id": 2,
@@ -60,7 +61,8 @@
       "model_names": [
         "gov-qwen3-4b:ctx8192-v1"
       ],
-      "skill_names": []
+      "skill_names": [],
+      "few_shots_prompt": "仅运行这一段完整动作；result 必须来自下面的真实工具调用，不能填入示例结果。禁止读取技能、文件操作、定时任务、记忆和并行工具。\n<code>\nimport json\nresult = search_evidence()\nif isinstance(result, str):\n    result = json.loads(result)\nfinal_answer(json.dumps(result, ensure_ascii=False))\n</code>"
     },
     "3": {
       "agent_id": 3,
@@ -89,7 +91,8 @@
       "model_names": [
         "gov-qwen3-4b:ctx8192-v1"
       ],
-      "skill_names": []
+      "skill_names": [],
+      "few_shots_prompt": "仅运行这一段完整动作；result 必须来自下面的真实工具调用，不能填入示例结果。禁止读取技能、文件操作、定时任务、记忆和并行工具。\n<code>\nimport json\nresult = check_case_prerequisites()\nif isinstance(result, str):\n    result = json.loads(result)\nfinal_answer(json.dumps(result, ensure_ascii=False))\n</code>"
     }
   },
   "mcp_info": [

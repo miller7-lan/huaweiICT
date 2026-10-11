@@ -54,12 +54,15 @@ def save_state(state):
 
 def activate_model(api, state, model):
     model_id = state["models"][model]
+    bundle = json.loads((ROOT / "config/agents.nexent-v2.7.0.json").read_text(encoding="utf-8"))
+    prompts = {a["name"]: a for a in bundle["agent_info"].values()}
     versions = {}
     # Publish children first; native publishing pins their current versions.
     for name in ("citizen_assistant", "staff_assistant", "gov_coordinator"):
         agent_id = state["agents"][name]
         api.call("POST", "/agent/update", {
             "agent_id": agent_id, "model_ids": [model_id],
+            **{key: prompts[name].get(key, "") for key in ("duty_prompt", "constraint_prompt", "few_shots_prompt")},
             "model_params_override": {str(model_id): {"temperature": .1, "extra_params": nonthinking_params()}},
             "requested_output_tokens": 1024, "allow_chat_metadata": False,
             "enable_protocol_repair_retry": False,

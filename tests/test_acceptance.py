@@ -103,6 +103,14 @@ def test_out_of_order_child_execution_and_lost_missing_items_fail():
     assert "subagent_execution_order_mismatch" in assess(events, audit, "citizen", "trusted")["stop_reasons"]
 
 
+@pytest.mark.parametrize("tool", ["search_memory", "read_skill_config", "create_scheduled_task_proposal"])
+def test_unrelated_native_tools_cannot_pass_with_valid_business_result(tool):
+    events, audit = trace()
+    assert assess(events, audit, "citizen", "trusted")["passed"]
+    events.insert(0, {"type": "tool", "tool_name": tool})
+    assert "unexpected_native_tool_call" in assess(events, audit, "citizen", "trusted")["stop_reasons"]
+
+
 def test_actual_trace_and_correlated_result_are_required():
     value = {"status": "EMPTY", "items": [], "citations": [], "knowledge_version": None,
              "message_code": "NO_KNOWLEDGE", "data": {"request_id": "actual-technical-id"}}

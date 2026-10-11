@@ -93,6 +93,7 @@ def test_native_payload_omits_metadata_and_native_effort():
     payload = run_payload(state, "我是工作人员", 10, "model")
     assert payload["conversation_id"] == 10 and payload["version_no"] == 2
     assert not {"metadata", "reasoning_effort", "generation_config"}.intersection(payload)
+    assert payload["enable_plan"] is False and payload["enable_automation_tool"] is False
 
 
 def test_every_published_agent_pins_nonthinking_provider_fields(monkeypatch):
@@ -106,6 +107,7 @@ def test_every_published_agent_pins_nonthinking_provider_fields(monkeypatch):
     nexent_api.activate_model(API(), state, "model")
     updates = [body for path, body in calls if path == "/agent/update"]
     assert len(updates) == 3
+    assert all(body["few_shots_prompt"] and body["duty_prompt"] for body in updates)
     assert all(body["model_params_override"]["7"]["extra_params"] == nonthinking_params() for body in updates)
     assert [path for path, _ in calls if path.endswith("/publish")] == ["/agent/2/publish", "/agent/3/publish", "/agent/1/publish"]
 

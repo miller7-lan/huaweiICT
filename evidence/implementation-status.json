@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-11T07:56:51.645708+00:00",
+  "captured_at": "2026-10-11T08:25:43.413000+00:00",
   "platform": {
     "version": "v2.7.0",
     "commit": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
@@ -29,7 +29,7 @@
   "core_chain_accepted": false,
   "selected_model": null,
   "automated_tests": {
-    "tests": 61,
+    "tests": 71,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -241,16 +241,14 @@
       "scope": "model parameter and OpenAI endpoint check, not Agent acceptance"
     }
   },
-  "native_accounts_created": 0,
-  "native_agents_created": 0,
+  "native_accounts_created": 4,
+  "native_agents_created": 3,
   "native_core_cases_executed": 0,
-  "native_evidence_reference": null,
+  "native_evidence_reference": "native-20261011T080830004301Z",
   "native_ui_verified": false,
   "additional_fault_acceptance": false,
   "all_acceptance_completed": false,
   "blocked_work": [
-    "user-operated native account provisioning",
-    "native agent provisioning",
     "40 native core runs",
     "model selection",
     "user-operated native UI checks",
@@ -258,7 +256,7 @@
   ],
   "blocker": {
     "code": "NATIVE_ACCEPTANCE_INCOMPLETE",
-    "next_action": "user-operated native account provisioning"
+    "next_action": "40 native core runs"
   },
   "excluded": [
     "official business asset import",

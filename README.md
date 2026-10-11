@@ -1,20 +1,28 @@
 # 政务空白核心链路：本地实施
 
-目标是 Nexent **v2.7.0** 原生界面的三 Agent 技术链路，以及固定 Qwen3 4B / 8B 对照。当前已完成 MCP 工具、身份注入验证、部署与原生账号配置脚本、Agent 导入包、验收脚本。2026-10-11 用户已完成个人管理员注册；服务已经就绪，独立测试账号、模型与三个 Agent 的初始化仍待用户运行。实际进度见 [实施记录](evidence/implementation-status.json) 和 [修复与接手记录](evidence/fix-status-2026-10-11.md)。
+目标是 Nexent **v2.7.0** 原生界面的三 Agent 技术链路，以及固定 Qwen3 4B / 8B 对照。当前已完成 MCP 工具、身份注入验证、部署与原生账号配置脚本、Agent 导入包、验收脚本。2026-10-11 用户已完成个人管理员注册及独立测试账号、模型与三个 Agent 的初始化。首轮两个模型均未通过预热，正式用例执行数为 0；修复已通过本地测试，原生重跑待用户启动。实际进度见 [实施记录](evidence/implementation-status.json) 和 [修复与接手记录](evidence/fix-status-2026-10-11.md)。
 
-## 当前进度（2026-10-11 注册后复核）
+## 当前进度（2026-10-11 初始化及首轮验收后复核）
 
 | 项目 | 实际状态 |
 |---|---|
 | WSL、Docker 与原生服务 | 已就绪；配置、运行、MCP、前端、容器到 Ollama 的 5 项检查通过 |
-| 本地测试 | 61 项通过；3 条依赖/上游警告 |
+| 本地测试 | 71 项通过；3 条依赖/上游警告 |
 | 超级管理员与个人管理员 | 已由用户初始化、注册；单次管理员邀请码已使用 |
-| 独立开发、群众、工作人员及测试管理员账号 | 尚未初始化；私有状态中的测试账号记录为空 |
-| 原生模型配置、三个 Agent 与角色映射 | 尚未初始化；模型、Agent 状态记录为空 |
-| 40 次核心新会话、模型选型、UI 和原生故障验收 | 待执行，尚未通过 |
+| 独立开发、群众、工作人员及测试管理员账号 | 已创建 4 个独立测试账号；平台角色为 DEV、USER、USER、ADMIN |
+| 原生模型配置、三个 Agent 与角色映射 | 已配置 2 个模型、3 个 Agent 及真实身份映射；界面两个模型均显示可用 |
+| 40 次核心新会话、模型选型、UI 和原生故障验收 | 首轮预热失败、正式用例为 0；未选型，UI 与故障验收待执行 |
 | 业务 evidence/cases/materials | 均为 0，保持空库 |
 
-下一步由用户运行 `scripts\initialize_accounts.ps1`。个人管理员注册成功之后仍需初始化独立测试账号，才能验证群众、工作人员与开发账号的权限和链路。账号注册、API 登录及界面登录继续由用户启动；代理可以继续检查代码和分析用户启动的验收结果。
+下一步由用户运行验收入口。账号注册、API 登录及界面登录继续由用户启动；代理检查代码和分析用户启动的验收结果。首轮实际轨迹见 [失败汇总](evidence/native-20261011T080830004301Z/summary.json)，初始化的只读复核见 [native-provisioning.json](evidence/native-provisioning.json)。
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "C:\Users\18133\Desktop\ICT\scripts\run_benchmark.ps1"
+```
+
+首轮 4B 的流读取等待 30 秒后超时；8B 调用了技能、文件等额外工具，未完成子 Agent 链路。本次将流的空闲读取等待改为 120 秒，明确关闭计划和自动任务入口，关闭四个独立测试账号的记忆及后台记忆功能，并添加只使用真实返回值的代码动作示例。每轮发布会同步更新提示词，群众/工作人员子 Agent 先于主 Agent 发布；验收会拒绝额外原生工具调用。原生修复效果以重跑为准，不计入已通过项目。个人管理员的记忆配置不在脚本修改范围内。
+
+![原生模型连通性检测通过](evidence/native-model-connectivity-2026-10-11.jpg)
 
 ## 已有内容
 
@@ -25,6 +33,7 @@
 | `models/Modelfile.4b`、`.8b` | 固定基础标签与上下文 8192、温度 0.1、输出上限 1024 |
 | `scripts/deploy.ps1` | 固定官方源码提交、官方 Docker 部署、MCP 容器和连通性检查；默认停在账号操作前 |
 | `scripts/provision_nexent.py` | 创建隔离租户、账号、模型、SSE 连接、导入并发布 Agent，保存真实 ID |
+| `scripts/run_benchmark.ps1` | 校验初始化状态、服务就绪，定位项目 Python 后启动用户授权的验收 |
 | `scripts/benchmark_native.py` | 使用原生发布版本、真实登录账号，每模型 4 类 × 5 个新会话，保存 SSE 与工具审计 |
 | `scripts/check_native_ready.py` | 无需登录，检查服务就绪和容器内到两个 Ollama 模型的连接 |
 | `scripts/verify_native_faults.py` | 用户启动的原生 Metadata 拒绝、未映射身份、越权、存储锁超时和连接中断验收 |
@@ -74,7 +83,7 @@ powershell -ExecutionPolicy Bypass -File scripts\initialize_accounts.ps1
 powershell -ExecutionPolicy Bypass -File "C:\Users\18133\Desktop\ICT\scripts\initialize_accounts.ps1"
 ```
 
-换机器时将项目路径替换为实际位置。初始化成功后，由用户启动 `scripts\benchmark_native.py` 进行 40 次原生核心对照，再完成三个账号的 UI 验收和原生故障验收；执行方式见下文“实际验收”。
+换机器时将项目路径替换为实际位置。初始化成功后，由用户启动 `scripts\run_benchmark.ps1` 进行 40 次原生核心对照，再完成三个账号的 UI 验收和原生故障验收；执行方式见下文“实际验收”。
 
 官方脚本选择 `infrastructure,application,supabase`，关闭 Workbench，使用 lightweight 执行环境；没有资料解析服务、业务资产、业务资料导入。仅给官方 Compose 的宿主机发布端口增加 `127.0.0.1` 绑定，不修改服务或 SQL。Nexent 精确提交：`519b9b17c7f4cbc623256ac318ea96a20f33772e`。MCP 只挂载 `.runtime/mcp`，不挂载账号凭据或 Nexent 数据目录。
 
@@ -130,12 +139,12 @@ powershell -ExecutionPolicy Bypass -File scripts\create_admin_invite.ps1
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q --junitxml=evidence\unit-tests.xml
 .\.venv\Scripts\python.exe scripts\verify_sse.py
-.\.venv\Scripts\python.exe scripts\benchmark_native.py
+powershell -ExecutionPolicy Bypass -File scripts\run_benchmark.ps1
 ```
 
 原生对照脚本调用原生 UI 使用的运行 API，每轮先发布三个 Agent 的同一模型版本，再预热一次；预热不进入中位数，预热失败的模型不进入核心采集。四类提示分别是群众空库自检、工作人员缺前提、群众自称工作人员、重复群众自检。普通用例省略 Metadata 更新字段；伪造 Metadata 被拒绝属于独立负向验收。每类 5 个新会话，顺序执行。该脚本会通过 API 登录测试账号，须由用户在账号步骤完成后启动。不要在采集期间人工触发其他会话，以免混入工具审计。
 
-每次记录实际原生 SSE、子 Agent 起止、工具顺序与审计、最终结果 request_id、耗时、停止原因、显存和整机内存采样、业务计数。只有文字、没有真实工具轨迹，或最终结果无法关联实际工具请求，均失败。到达步数上限、运行错误、仍出现深度思考也失败。
+每次记录实际原生 SSE、子 Agent 起止、工具顺序与审计、最终结果 request_id、耗时、停止原因、显存和整机内存采样、业务计数。只有文字、没有真实工具轨迹，或最终结果无法关联实际工具请求，均失败。到达步数上限、运行错误、仍出现深度思考或调用额外原生工具也失败。
 
 验收还核对中文显示名与真实子 Agent ID、调用 ID、起止顺序，以及最终结果保留的全部约定字段；工作人员的缺失项不得丢失。核心及预热会话必须独立。采集前检查上下文、温度、输出上限与量化级别；每次调用后核对实际只加载当前模型且上下文为 8192。异常中断保存部分结果及失败汇总，不据此选型。
 

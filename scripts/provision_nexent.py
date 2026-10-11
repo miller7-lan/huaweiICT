@@ -5,6 +5,7 @@ import json
 from urllib.parse import quote
 
 from nexent_api import NexentAPI, ROOT, RUNTIME, activate_model, nonthinking_params, save_state
+from technical_controls import disable_technical_memory
 
 
 def main():
@@ -95,6 +96,10 @@ def main():
         pending = RUNTIME / "mcp/role-map.json.part"
         pending.write_text(json.dumps(roles, indent=2), encoding="utf-8")
         pending.replace(RUNTIME / "mcp/role-map.json")
+        for role in ("tenant_admin", "developer", "citizen", "staff"):
+            api.login(accounts[role])
+            disable_technical_memory(api)
+        api.login(accounts["developer"])
         activate_model(api, state, "gov-qwen3-4b:ctx8192-v1")
         print("Native provisioning completed; credentials remain in .runtime/accounts.json.")
     finally:
