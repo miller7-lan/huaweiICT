@@ -19,7 +19,9 @@ from gov_mcp.server import create_app
 
 async def verify(port, token):
     records = []
-    async with sse_client(f"http://127.0.0.1:{port}/sse", headers={"Authorization": f"Bearer {token}", "Host": "gov-blank-mcp:8765"}) as streams:
+    def local_client(**kwargs):
+        return httpx.AsyncClient(trust_env=False, **kwargs)
+    async with sse_client(f"http://127.0.0.1:{port}/sse", headers={"Authorization": f"Bearer {token}", "Host": "gov-blank-mcp:8765"}, httpx_client_factory=local_client) as streams:
         async with ClientSession(*streams) as session:
             await session.initialize()
             listed = await session.list_tools()

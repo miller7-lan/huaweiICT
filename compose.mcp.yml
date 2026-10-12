@@ -1,6 +1,9 @@
 services:
   gov-blank-mcp:
-    build: .
+    build:
+      context: .
+      args:
+        PYTHON_IMAGE: ${GOV_MCP_PYTHON_IMAGE:-python:3.11-slim}
     container_name: gov-blank-mcp
     restart: unless-stopped
     ports:

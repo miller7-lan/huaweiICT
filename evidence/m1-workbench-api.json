@@ -1,0 +1,446 @@
+{
+  "captured_at": "2026-10-12T08:39:38.398176+00:00",
+  "passed": true,
+  "scope": "Live workbench HTTP tests; screenshots and native Agent traces are assessed separately",
+  "records": [
+    {
+      "account_role": "staff",
+      "operation": "state",
+      "result": {
+        "status": "OK",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ENVIRONMENT_READY",
+        "data": {
+          "resources": {
+            "evidence": true,
+            "graph": true,
+            "updates": true
+          },
+          "counts": {
+            "evidence": 0,
+            "cases": 0,
+            "materials": 0,
+            "graph_nodes": 0,
+            "graph_edges": 0,
+            "candidates": 0,
+            "versions": 0
+          },
+          "request_id": "22beb67c984028e9",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "staff",
+      "operation": "workbench",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "MISSING_CASE_AND_MATERIALS",
+        "data": {
+          "missing": [
+            "case",
+            "materials",
+            "evidence"
+          ],
+          "pending_count": 0,
+          "request_id": "5ceb8b1b7a3adac6",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "staff",
+      "operation": "prepare_update",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "e72ba96400f15e77",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "staff",
+      "operation": "publish_update",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "7ee5e0fc52694004",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "staff",
+      "operation": "forged-prepare_update",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "staff",
+      "operation": "forged-query_knowledge_graph",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "staff",
+      "operation": "cross-origin",
+      "http_status": 403
+    },
+    {
+      "account_role": "fresh_citizen",
+      "operation": "state",
+      "result": {
+        "status": "OK",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ENVIRONMENT_READY",
+        "data": {
+          "resources": {
+            "evidence": true,
+            "graph": true,
+            "updates": true
+          },
+          "counts": {
+            "evidence": 0,
+            "cases": 0,
+            "materials": 0,
+            "graph_nodes": 0,
+            "graph_edges": 0,
+            "candidates": 0,
+            "versions": 0
+          },
+          "request_id": "070e4b1c93b51e68",
+          "role": "citizen"
+        }
+      }
+    },
+    {
+      "account_role": "fresh_citizen",
+      "operation": "workbench",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "request_id": "b62105472f8d36c2",
+          "role": "citizen"
+        }
+      }
+    },
+    {
+      "account_role": "fresh_citizen",
+      "operation": "prepare_update",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "9e0d8621e1dac96b",
+          "role": "citizen"
+        }
+      }
+    },
+    {
+      "account_role": "fresh_citizen",
+      "operation": "publish_update",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "63fe7707150d0aa6",
+          "role": "citizen"
+        }
+      }
+    },
+    {
+      "account_role": "fresh_citizen",
+      "operation": "forged-prepare_update",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "fresh_citizen",
+      "operation": "forged-query_knowledge_graph",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "fresh_citizen",
+      "operation": "cross-origin",
+      "http_status": 403
+    },
+    {
+      "account_role": "developer",
+      "operation": "state",
+      "result": {
+        "status": "OK",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ENVIRONMENT_READY",
+        "data": {
+          "resources": {
+            "evidence": true,
+            "graph": true,
+            "updates": true
+          },
+          "counts": {
+            "evidence": 0,
+            "cases": 0,
+            "materials": 0,
+            "graph_nodes": 0,
+            "graph_edges": 0,
+            "candidates": 0,
+            "versions": 0
+          },
+          "request_id": "04c4dd1ca3fa8db9",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "developer",
+      "operation": "workbench",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "MISSING_CASE_AND_MATERIALS",
+        "data": {
+          "missing": [
+            "case",
+            "materials",
+            "evidence"
+          ],
+          "pending_count": 0,
+          "request_id": "32c00fc1050ab5c1",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "developer",
+      "operation": "prepare_update",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_CHANGES",
+        "data": {
+          "input_count": 0,
+          "candidate_count": 0,
+          "scope": "No processable input in this request; external policies were not checked",
+          "request_id": "ea8c441b457d6164",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "developer",
+      "operation": "publish_update",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "PUBLISH_PREREQUISITES_MISSING",
+        "data": {
+          "missing": [
+            "candidate"
+          ],
+          "candidate_count": 0,
+          "version_count": 0,
+          "request_id": "96c8874db9576637",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "account_role": "developer",
+      "operation": "forged-prepare_update",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "developer",
+      "operation": "forged-query_knowledge_graph",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "developer",
+      "operation": "cross-origin",
+      "http_status": 403
+    },
+    {
+      "account_role": "tenant_admin",
+      "operation": "state",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "data": {
+          "request_id": "b2b4697507fe4a58",
+          "role": null
+        }
+      }
+    },
+    {
+      "account_role": "tenant_admin",
+      "operation": "workbench",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "data": {
+          "request_id": "e46cf3b632f8f088",
+          "role": null
+        }
+      }
+    },
+    {
+      "account_role": "tenant_admin",
+      "operation": "prepare_update",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "data": {
+          "request_id": "f5158fa5702cf320",
+          "role": null
+        }
+      }
+    },
+    {
+      "account_role": "tenant_admin",
+      "operation": "publish_update",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "data": {
+          "request_id": "47d2b0ce4ce6cd44",
+          "role": null
+        }
+      }
+    },
+    {
+      "account_role": "tenant_admin",
+      "operation": "forged-prepare_update",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "tenant_admin",
+      "operation": "forged-query_knowledge_graph",
+      "http_status": 400,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      }
+    },
+    {
+      "account_role": "tenant_admin",
+      "operation": "cross-origin",
+      "http_status": 403
+    }
+  ],
+  "extension_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "candidates": 0,
+    "versions": 0
+  }
+}

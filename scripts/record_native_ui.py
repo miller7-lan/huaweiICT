@@ -17,6 +17,8 @@ def main():
     parser.add_argument("--screenshot", type=Path, required=True)
     parser.add_argument("--trace", type=Path, required=True)
     parser.add_argument("--benchmark", required=True, help="The evidence/native-* directory name")
+    parser.add_argument("--operator", choices=("user", "agent"), default="user",
+                        help="Record actual UI operator; agent use requires prior user authorization")
     args = parser.parse_args()
     summary_path = ROOT / "evidence" / args.benchmark / "summary.json"
     if summary_path.parent.parent != ROOT / "evidence" or not args.benchmark.startswith("native-"):
@@ -28,9 +30,13 @@ def main():
     if not (screenshot.startswith(b'\x89PNG\r\n\x1a\n') or screenshot.startswith(b'\xff\xd8\xff')):
         raise ValueError("A real PNG or JPEG screenshot is required")
     trace = json.loads(args.trace.read_text(encoding="utf-8"))
-    if (set(trace) != {"conversation_id", "events"} or not isinstance(trace["conversation_id"], int)
-            or isinstance(trace["conversation_id"], bool) or trace["conversation_id"] <= 0):
-        raise ValueError("Trace must contain only conversation_id and the actual parsed SSE events")
+    ephemeral_debug = (args.role == "developer" and trace.get("is_debug") is True
+                       and trace.get("conversation_id") is None)
+    expected_keys = {"conversation_id", "events", "is_debug"} if ephemeral_debug else {"conversation_id", "events"}
+    if set(trace) != expected_keys or (not ephemeral_debug and (
+            not isinstance(trace["conversation_id"], int) or isinstance(trace["conversation_id"], bool)
+            or trace["conversation_id"] <= 0)):
+        raise ValueError("Trace must identify a real conversation or an explicit ephemeral developer debug run")
     state = json.loads((RUNTIME / "nexent-state.json").read_text(encoding="utf-8"))
     principal = hashlib.sha256(f"{state['tenant_id']}\0{state['accounts'][args.role]['user_id']}".encode()).hexdigest()
     role = "staff" if args.role == "staff" else "citizen"
@@ -46,7 +52,7 @@ def main():
                         child_id=state["agents"]["staff_assistant" if role == "staff" else "citizen_assistant"])
     if not assessment["passed"]:
         raise ValueError("UI trace failed: " + ", ".join(assessment["stop_reasons"]))
-    if input("确认已用该账号在原生界面完成本次操作、截图对应本会话。输入 VERIFIED：").strip() != "VERIFIED":
+    if args.operator == "user" and input("确认已用该账号在原生界面完成本次操作、截图对应本会话。输入 VERIFIED：").strip() != "VERIFIED":
         raise SystemExit("UI acceptance was not confirmed; no receipt saved.")
     dest = ROOT / "evidence/native-ui" / args.benchmark
     dest.mkdir(parents=True, exist_ok=True)
@@ -59,10 +65,12 @@ def main():
     report = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     if report.get("benchmark_reference") != args.benchmark:
         report = {"benchmark_reference": args.benchmark, "records": {}}
-    report["records"][args.role] = {"passed": True, "source": "user-operated native UI",
+    report["records"][args.role] = {"passed": True, "source": args.operator + "-operated native UI",
         "captured_at": datetime.now(timezone.utc).isoformat(), "conversation_id": trace["conversation_id"],
         "screenshot": image_file.relative_to(ROOT).as_posix(), "screenshot_sha256": hashlib.sha256(screenshot).hexdigest(),
         "trace": trace_file.relative_to(ROOT).as_posix(), "trace_sha256": hashlib.sha256(trace_file.read_bytes()).hexdigest()}
+    if ephemeral_debug:
+        report["records"][args.role].update(run_mode="debug", debug_request_id=request_id)
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(args.role, "UI evidence recorded.")
 
