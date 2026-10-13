@@ -1,0 +1,12 @@
+{
+  "manifest_version": "1",
+  "dataset_id": "ict-synthetic-preparation-v1",
+  "data_class": "synthetic",
+  "region": "synthetic-demo",
+  "matter": "可替换的政务事项演练",
+  "assets": [
+    {"source_id": "demo-policy", "path": ".runtime/preparation/demo/policy.txt", "title": "模拟政策文本", "modality": "text", "source_url": null, "review_status": "synthetic_only", "published_at": null, "effective_at": null},
+    {"source_id": "demo-materials", "path": ".runtime/preparation/demo/materials.csv", "title": "模拟材料表格", "modality": "table", "source_url": null, "review_status": "synthetic_only", "published_at": null, "effective_at": null},
+    {"source_id": "demo-notice", "path": ".runtime/preparation/demo/notice.png", "title": "模拟图文通知", "modality": "image", "source_url": null, "review_status": "synthetic_only", "published_at": null, "effective_at": null}
+  ]
+}

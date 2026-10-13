@@ -1,0 +1,10 @@
+{
+  "manifest_version": "1",
+  "dataset_id": "replace-with-reviewed-dataset-id",
+  "data_class": "public",
+  "region": null,
+  "matter": null,
+  "assets": [],
+  "asset_fields": ["source_id", "path", "title", "modality", "source_url", "review_status", "published_at", "effective_at", "usage_basis", "reviewer", "reviewed_at"],
+  "notes": "Place files inside the workspace. Supported rehearsal parsers: UTF-8 txt/md, UTF-8 CSV, PNG/JPEG OCR. Add assets using the demo format; dates and authority stay unknown until reviewed. Other formats need a dedicated parser. No auto-publication."
+}

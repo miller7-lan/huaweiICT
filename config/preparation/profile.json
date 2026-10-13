@@ -1,0 +1,17 @@
+{
+  "profile_version": "1",
+  "scope_status": "technical_rehearsal",
+  "region": "synthetic-demo",
+  "matter": "可替换的政务事项演练",
+  "data_class": "synthetic",
+  "publish_business_rules": false,
+  "embedding_model": "qwen3-embedding:0.6b",
+  "embedding_host_url": "http://127.0.0.1:11434",
+  "embedding_container_url": "http://host.docker.internal:11434/v1/embeddings",
+  "ocr_engine": "rapidocr-onnxruntime",
+  "input_manifest": "config/preparation/assets.demo.json",
+  "output_directory": ".runtime/preparation/run",
+  "query": "演练事项需要哪些材料？",
+  "query_instruction": "Instruct: Given a Chinese government service question, retrieve passages relevant to its required documents.\nQuery: ",
+  "notes": "Only synthetic engineering rehearsal. Replace the manifest and region/matter configuration for real data; obtain source review before publishing."
+}
