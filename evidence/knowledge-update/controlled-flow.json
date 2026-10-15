@@ -1,0 +1,125 @@
+{
+  "captured_at": "2026-10-15T16:35:02.291838+00:00",
+  "passed": true,
+  "checks": {
+    "collected_candidate_not_published": true,
+    "first_release_quoted_fixture_a": true,
+    "changed_content_blocks_current_answer_until_review": true,
+    "new_query_uses_new_release": true,
+    "pinned_history_keeps_first_quote_and_update_hint": true,
+    "unchanged_repeat_creates_no_revision": true,
+    "rollback_restores_pointer_without_bypassing_reviewed_newer_rules": true,
+    "backup_and_originals_restore_query": true
+  },
+  "records": [
+    {
+      "status": "OK",
+      "knowledge_version": "kb-a7971f45ffb90bd19d10e85d",
+      "citations": [
+        {
+          "revision_id": "rev-83c369706c981cd2634b2c1e",
+          "title": "模拟文件，不是真实办事依据",
+          "url": "https://fixtures.invalid/docs/guide",
+          "locator": "正文段落1",
+          "category": "procedure",
+          "quote": "测试事项需要模拟材料甲。",
+          "published_at": null,
+          "effective_from": "2026-01-01",
+          "knowledge_version": "kb-a7971f45ffb90bd19d10e85d"
+        }
+      ],
+      "update_available": false,
+      "pending_review_count": 0,
+      "awaiting_publication_count": 0,
+      "historical_snapshot": false,
+      "source_freshness": [
+        {
+          "source_id": "controlled-fixture",
+          "last_successful_check": 1792082102.069133,
+          "stale": false,
+          "enabled": true,
+          "paused": false,
+          "potential_impact_monitor": false
+        }
+      ],
+      "message_code": "EVIDENCE_FOUND"
+    },
+    {
+      "status": "OK",
+      "knowledge_version": "kb-76930dc7476c69e7b6383646",
+      "citations": [
+        {
+          "revision_id": "rev-408ebbd7a03962741f9353d9",
+          "title": "模拟文件，不是真实办事依据",
+          "url": "https://fixtures.invalid/docs/guide",
+          "locator": "正文段落1",
+          "category": "procedure",
+          "quote": "测试事项需要模拟材料乙。",
+          "published_at": null,
+          "effective_from": "2026-01-01",
+          "knowledge_version": "kb-76930dc7476c69e7b6383646"
+        }
+      ],
+      "update_available": false,
+      "pending_review_count": 0,
+      "awaiting_publication_count": 0,
+      "historical_snapshot": false,
+      "source_freshness": [
+        {
+          "source_id": "controlled-fixture",
+          "last_successful_check": 1792085802.069133,
+          "stale": false,
+          "enabled": true,
+          "paused": false,
+          "potential_impact_monitor": false
+        }
+      ],
+      "message_code": "EVIDENCE_FOUND"
+    },
+    {
+      "status": "OK",
+      "knowledge_version": "kb-a7971f45ffb90bd19d10e85d",
+      "citations": [
+        {
+          "revision_id": "rev-83c369706c981cd2634b2c1e",
+          "title": "模拟文件，不是真实办事依据",
+          "url": "https://fixtures.invalid/docs/guide",
+          "locator": "正文段落1",
+          "category": "procedure",
+          "quote": "测试事项需要模拟材料甲。",
+          "published_at": null,
+          "effective_from": "2026-01-01",
+          "knowledge_version": "kb-a7971f45ffb90bd19d10e85d"
+        }
+      ],
+      "update_available": true,
+      "pending_review_count": 0,
+      "awaiting_publication_count": 1,
+      "historical_snapshot": true,
+      "source_freshness": [
+        {
+          "source_id": "controlled-fixture",
+          "last_successful_check": 1792085802.069133,
+          "stale": false,
+          "enabled": true,
+          "paused": false,
+          "potential_impact_monitor": false
+        }
+      ],
+      "message_code": "EVIDENCE_FOUND"
+    }
+  ],
+  "counts": {
+    "sites": 1,
+    "documents": 1,
+    "revisions": 4,
+    "chunks": 4,
+    "versions": 2,
+    "heads": 1,
+    "jobs": 1,
+    "latest_chunks": 1
+  },
+  "real_network_requests": 0,
+  "official_knowledge_published": 0,
+  "scope": "Synthetic engineering acquisition/review/publication/query/rollback/restore only; no business accuracy claim"
+}

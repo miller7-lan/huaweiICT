@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-10-15T17:59:39.206903+00:00",
+  "passed": true,
+  "checks": {
+    "document_revision_chunk_counts_match": true,
+    "discovery_cycles_and_deferred_targets_match": true,
+    "all_current_candidate_metadata_match": true,
+    "restored_runtime_has_no_running_worker_claims": true,
+    "restored_runtime_has_no_mcp_token": true,
+    "services_not_started_by_restore": true
+  },
+  "backup": {
+    "directory": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update\\backups\\20261015T175936Z-d337e48e",
+    "manifest_sha256": "e68c504a0a959123bda69e519922015506c6cded2ebee0b187136314af53b87d",
+    "files": 11,
+    "referenced_originals": 5,
+    "counts": {
+      "documents": 5,
+      "revisions": 7,
+      "chunks": 74,
+      "versions": 0,
+      "heads": 0
+    },
+    "auth_credentials_included": false
+  },
+  "restore": {
+    "restored_to": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update-restores\\20261015T175936Z-d337e48e",
+    "counts": {
+      "documents": 5,
+      "revisions": 7,
+      "chunks": 74,
+      "versions": 0,
+      "heads": 0
+    },
+    "referenced_originals": 5,
+    "services_started": false,
+    "credentials_must_be_reprovisioned": true,
+    "source_manifest_sha256": "e68c504a0a959123bda69e519922015506c6cded2ebee0b187136314af53b87d"
+  },
+  "published_snapshots_available": false,
+  "scope": "Actual candidate data/original/configuration recovery; published-answer replay is separately tested using synthetic fixtures, not claimed for zero official releases"
+}

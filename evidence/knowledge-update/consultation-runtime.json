@@ -1,0 +1,68 @@
+{
+  "captured_at": "2026-10-15T18:02:03.171241+00:00",
+  "container": "nexent-knowledge-runtime",
+  "port": 5022,
+  "image_id": "sha256:255e56fd6b8c87f97ad00e226c82ea322906826898186be0a60dd69f2995a4ef",
+  "run_agent_overlay_sha256": "18db448aac2bb79cdee9fd509b7908fa21b0855c985c5e87ef10c2373960c213",
+  "sandbox_overlay_sha256": "13dac48220974b22e4ab477d3adf5b0fe91822707be5eb754d98bfee8caa2199",
+  "m2_overlay_sha256_unchanged": true,
+  "scoped_agent_names": [
+    "govkb_consultation_preview_citizen",
+    "govkb_consultation_preview_staff"
+  ],
+  "original_request_variable": "govkb_original_question",
+  "deployed": true,
+  "business_knowledge_published": 0,
+  "scope": "Prepared separate runtime, callback and workspace from the verified native image. Original/M1/M2 compose, SDK modules and agent configurations are not rewritten.",
+  "verified_at": "2026-10-15T18:05:03.617642+00:00",
+  "checks": {
+    "container_running": true,
+    "verified_pinned_image": true,
+    "own_runtime_module_loaded": true,
+    "own_sandbox_module_loaded": true,
+    "original_m1_m2_sdk_hashes_unchanged": true,
+    "separate_workspace": true,
+    "local_only_port": true,
+    "runtime_schema_ready": true,
+    "runtime_health_ready": true,
+    "docker_restart_policy_present": true
+  },
+  "baseline_runtime_modules": [
+    {
+      "container": "nexent-runtime",
+      "module": "run_agent.py",
+      "recorded_sha256": "f2c39c588de53193d3780c3adb7d11fcaa15bbeb9f338f77d39ca8b55d39f506",
+      "actual_sha256": "f2c39c588de53193d3780c3adb7d11fcaa15bbeb9f338f77d39ca8b55d39f506",
+      "unchanged": true
+    },
+    {
+      "container": "nexent-m1-runtime",
+      "module": "run_agent.py",
+      "recorded_sha256": "2e67130e248657a1f82f7a86a28f00494c920fdea02d4d22c63fbd3f25772ac6",
+      "actual_sha256": "2e67130e248657a1f82f7a86a28f00494c920fdea02d4d22c63fbd3f25772ac6",
+      "unchanged": true
+    },
+    {
+      "container": "nexent-m1-runtime",
+      "module": "sandbox.py",
+      "recorded_sha256": "15df55dc45deb803c8758460188e2a9e8c42d31175bd1ad6ec1677ea308a3060",
+      "actual_sha256": "15df55dc45deb803c8758460188e2a9e8c42d31175bd1ad6ec1677ea308a3060",
+      "unchanged": true
+    },
+    {
+      "container": "nexent-m2-runtime",
+      "module": "run_agent.py",
+      "recorded_sha256": "3b3ce1ac67c1b76484024650adf7d18a11f66fc137c955be71e5f98594639ff3",
+      "actual_sha256": "3b3ce1ac67c1b76484024650adf7d18a11f66fc137c955be71e5f98594639ff3",
+      "unchanged": true
+    },
+    {
+      "container": "nexent-m2-runtime",
+      "module": "sandbox.py",
+      "recorded_sha256": "35db87ede9a1abd1a94783799368fb562cebc3dc14841d4b03273bdafa06c775",
+      "actual_sha256": "35db87ede9a1abd1a94783799368fb562cebc3dc14841d4b03273bdafa06c775",
+      "unchanged": true
+    }
+  ],
+  "original_m1_m2_sdk_files_changed": false
+}

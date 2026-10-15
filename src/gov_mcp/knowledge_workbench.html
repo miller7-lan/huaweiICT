@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>知识库更新工作台</title><style>
+*{box-sizing:border-box}body{font-family:"Microsoft YaHei",sans-serif;margin:0;background:#f3f6fa;color:#1f2937}main{max-width:1120px;margin:auto;padding:32px 20px}h1{font-size:26px;margin-bottom:8px}h2{font-size:19px;margin-top:30px}p{line-height:1.7}.note{border-left:4px solid #bd6d15;background:#fff6e6;padding:12px 16px}.stats{display:flex;gap:12px;flex-wrap:wrap}.stat{background:white;padding:16px;border-radius:8px;min-width:130px}.stat strong{display:block;font-size:26px;margin-top:8px}table{width:100%;border-collapse:collapse;background:white}th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere}th{background:#e9eff5}.scroll{overflow:auto}button{background:#174f83;color:white;border:0;border-radius:5px;padding:11px 16px;cursor:pointer}input{padding:10px;font:inherit;border:1px solid #a7b5c6;border-radius:5px;min-width:0}.search{display:flex;gap:8px;flex-wrap:wrap}.search input{flex:1}#result{background:white;padding:16px;white-space:pre-wrap;overflow-wrap:anywhere}small{color:#526174}.empty{padding:18px;background:white}a{color:#174f83} @media(max-width:500px){main{padding:18px 12px}.stat{min-width:110px}th,td{padding:8px}}</style></head>
+<body><style>.scroll table{min-width:720px}.scroll td:first-child{min-width:260px}.scroll td:nth-child(2){min-width:140px}.scroll td:nth-child(3){min-width:150px}.scroll td:nth-child(4){min-width:160px}</style><main><h1>知识库更新工作台</h1><p>郑州市二七区 · 成年本地户籍居民身份证到期换领</p>
+<p class="note">当前处于资料候选与工程验证阶段。待复核文件不进入已发布问答，文件数量不代表已经完成业务核验。</p>
+<button id="refresh" type="button">刷新状态</button><p id="feedback" role="status" aria-live="polite"></p>
+<div id="stats" class="stats"></div>
+<h2>来源与检查状态</h2><div class="scroll"><table><thead><tr><th>来源</th><th>自动采集</th><th>最近成功检查</th><th>状态</th></tr></thead><tbody id="sources"></tbody></table></div>
+<h2>文件发现覆盖</h2><div id="discovery"></div>
+<h2>待复核资料</h2><div id="reviews"></div>
+<h2>已记录的排除决定</h2><div id="exclusions"></div>
+<h2>已发布版本</h2><div id="versions"></div>
+<h2>备份、恢复与维护提醒</h2><div id="maintenance"></div>
+<h2>当前用户自动恢复</h2><div id="startup"></div>
+<h2>采集心跳</h2><div id="workers"></div>
+<h2>检索已发布依据</h2><form id="form" class="search"><label for="question">咨询问题</label><input id="question" required maxlength="300" placeholder="例如：身份证到期换领需要什么材料"><button type="submit">查询依据</button></form>
+<p id="result" aria-live="polite">只有通过复核并发布的文件才能出现在这里。</p>
+</main><script>
+const el=id=>document.getElementById(id);
+function cell(text){const td=document.createElement('td');td.textContent=text;return td}
+function message(target,text){target.replaceChildren();const p=document.createElement('p');p.className='empty';p.textContent=text;target.append(p)}
+function renderStartup(state){const registration=state?.registration;const recovery=state?.recovery;if(registration?.status==='unreadable'||recovery?.status==='unreadable'){message(el('startup'),'自动恢复记录不可读，请核查本机配置。');return}if(!registration?.installed){message(el('startup'),'尚未登记当前用户自动恢复。');return}const labels={healthy:'正常',recovered:'恢复成功',check_failed:'检查未通过',failed:'恢复未通过',paused:'已手动暂停自动恢复'};const checked=recovery?.checked_at?new Date(recovery.checked_at*1000).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'}):'等待首次检查';const stale=recovery?.checked_at&&Date.now()/1000-recovery.checked_at>420;message(el('startup'),`已登记登录恢复及每5分钟检查。最近检查：${checked}，${stale?'检查记录已超时':labels[recovery?.action]||'等待检查'}；累计恢复 ${recovery?.recovery_count||0} 次。需要当前用户保持登录，关机或退出登录期间停止采集。`)}
+function addImpact(target,revision){
+  const details=document.createElement('details');
+  const summary=document.createElement('summary');
+  summary.textContent='查看与前一修订的差异';
+  const text=document.createElement('p');text.style.overflowWrap='anywhere';
+  details.append(summary,text);let loaded=false;
+  details.addEventListener('toggle',async()=>{
+    if(!details.open||loaded)return;
+    text.textContent='正在核对原件和修订…';
+    try{
+      const response=await fetch('/api/impact?revision='+encodeURIComponent(revision));
+      const value=await response.json();
+      if(!response.ok)throw Error('变更分析不可用');
+      const labels={initial_candidate:'首次候选',content_or_locator_change:'正文或定位变化',classification_change:'分类变化',metadata_change:'字段变化',formatting_change:'空白格式变化',raw_representation_only:'原件表示变化',no_semantic_delta_detected:'未检测到语义差异'};
+      const fields={title:'标题',region:'地区',matter:'事项',effective_from:'生效日',effective_to:'失效日',published_at:'发布日期',usage_basis:'使用依据',source_observation:'页面原始标注'};
+      const changed=value.changed_metadata_fields.map(name=>fields[name]||(name.startsWith('source_observation.')?'页面原始标注（'+name.replace('source_observation.','')+'）':name));
+      text.textContent=`${value.change_kinds.map(kind=>labels[kind]||'需核查变化').join('；')}。原文片段 ${value.chunk_counts.before} → ${value.chunk_counts.after}；新增定位 ${value.added_locators.length}，移除 ${value.removed_locators.length}，文字变化 ${value.changed_text_locators.length}，分类变化 ${value.changed_category_locators.length}。字段：${changed.join('；')||'无'}。${value.base_revision?'对照修订：'+value.base_revision:'尚无更早修订。'} 此分析描述数据库记录差异，不自动裁定政策变更或现行效力。`;
+      loaded=true;
+    }catch(error){text.textContent='变更分析暂不可用，请核对修订与原件完整性。'}
+  });
+  target.append(details);
+}
+function sourceState(source){if(source.paused_reason){const reason=source.paused_reason.toLowerCase();if(reason.includes('denied'))return '访问规则请求被拒绝，已暂停';if(reason.includes('timed out'))return '访问规则检查超时，已暂停';return '已暂停，请核对来源'}return !source.enabled?'未启用':source.stale?'检查超时':'正常'}
+function renderMaintenance(state){if(!state){message(el('maintenance'),'维护巡检尚未完成首次检查');return}const labels={source_paused:'已启用来源暂停',source_stale:'来源检查超时',failed_jobs:'采集任务失败',pending_review:'有资料需要业务复核',worker_stale:'工作进程心跳过期',backup_failed:'完整备份失败',restore_failed:'恢复检查失败',state_failed:'维护状态需要核查',discovery_limited:'文件发现达到扫描上限，需要检查延期项'};const alerts=(state.alerts||[]).map(a=>labels[a.code]||'维护异常');message(el('maintenance'),`最近备份：${state.backup_day||'未完成'}；每周恢复检查：${state.restore_week||'未完成'}。${alerts.length?alerts.join('；'):'暂无维护异常'}。只在状态变化时记录事件，备份不会自动删除。`)}
+function renderDiscovery(rows){const target=el('discovery');target.replaceChildren();if(!rows?.length){message(target,'尚无文件发现轮次记录');return}for(const row of rows){const p=document.createElement('p');p.className='empty';p.textContent=`${row.source_id}：本轮已排队索引页 ${row.index_pages_scheduled}，新文件任务 ${row.new_document_jobs}，缓存中本轮未访问目标 ${row.unvisited_cached_targets}。${row.limited||row.parser_truncated?'达到扫描上限，请核查延期项。':'本轮未达到扫描上限。'}进行中 ${row.active_jobs}，失败 ${row.failed_jobs}。`;target.append(p)}const note=document.createElement('small');note.textContent='仅覆盖已配置入口及允许范围内发现的链接；不代表网站全部文件。订阅日期和更新时间只作发现线索，效力日期仍需复核。';target.append(note)}
+async function load(){try{const response=await fetch('/api/status');if(!response.ok)throw Error('读取失败');const s=await response.json();renderMaintenance(s.maintenance);renderStartup(s.startup);renderDiscovery(s.discovery);el('stats').replaceChildren();for(const [key,label] of [['documents','文件'],['latest_chunks','当前原文片段'],['heads','已发布范围'],['jobs','采集任务']]){const d=document.createElement('div');d.className='stat';d.textContent=label;const strong=document.createElement('strong');strong.textContent=s.counts[key];d.append(strong);el('stats').append(d)}el('sources').replaceChildren();for(const source of s.sites){const tr=document.createElement('tr');[source.label,source.enabled?'已启用':'待访问与使用依据核验',source.last_success?new Date(source.last_success*1000).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'}):'尚无本轮联网检查',sourceState(source)].forEach(value=>tr.append(cell(value)));el('sources').append(tr)}el('reviews').replaceChildren();for(const r of s.pending_review){const p=document.createElement('p');p.textContent=`${r.metadata.title} · ${r.metadata.region} · ${r.id} · 待复核`;el('reviews').append(p);addImpact(el('reviews'),r.id);if(r.metadata.source_observation){const details=document.createElement('details');const summary=document.createElement('summary');summary.textContent='查看页面原始标注（尚未核定效力）';const pre=document.createElement('pre');pre.style.whiteSpace='pre-wrap';pre.style.overflowWrap='anywhere';pre.textContent=JSON.stringify(r.metadata.source_observation.fields||r.metadata.source_observation,null,2);details.append(summary,pre);el('reviews').append(details)}}if(!s.pending_review.length)message(el('reviews'),'暂无待复核资料');message(el('exclusions'),s.excluded_candidates.length?s.excluded_candidates.map(e=>`${e.id} · ${e.reviewer} · ${e.reason}`).join('；'):'暂无排除决定');message(el('versions'),s.publications.length?s.publications.map(v=>v.version_id).join('；'):'尚未发布知识版本');message(el('workers'),s.workers.length?s.workers.map(w=>`${w.id}：${w.progress==='completed'?'本次采集已完成':w.stale?'心跳已过期':'最近心跳正常（持续在线情况由后台巡检）'}`).join('；'):'采集进程尚未运行');el('feedback').textContent='状态已更新 · '+new Date().toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'})}catch(e){el('feedback').textContent='无法读取状态，请检查本机服务。'}}
+el('refresh').addEventListener('click',load);el('form').addEventListener('submit',async e=>{e.preventDefault();el('result').textContent='正在检索…';try{const r=await fetch('/api/search?q='+encodeURIComponent(el('question').value));const value=await r.json();const messages={NO_PUBLISHED_KNOWLEDGE:'尚无已发布知识。当前资料仍待复核，暂不能作为正式办事依据回答。',UPDATE_PENDING_REVIEW:'来源出现待复核变化，当前暂停提供该范围的办事依据。',UPDATE_AWAITING_PUBLICATION:'资料复核决定尚待发布，当前暂停使用旧版本回答。',SOURCE_CHECK_REQUIRED:'来源已暂停、停用或检查超时，当前停止提供现行办事依据，等待完成来源检查。'};el('result').textContent=messages[value.message_code]||JSON.stringify(value,null,2)}catch(e){el('result').textContent='检索失败，请检查服务状态。'}});load();
+</script></body></html>

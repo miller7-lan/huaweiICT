@@ -1,0 +1,29 @@
+{
+  "started_at": "2026-10-15T16:56:38.028187+00:00",
+  "run_id": "ac89c1f4c2194a96b18b23c682658ffa",
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "synthetic_only": true,
+  "real_network_source_requests": 0,
+  "business_review_completed": false,
+  "official_knowledge_published_by_this_test": 0,
+  "records": [],
+  "cleanup": {
+    "temporary_agent_removed_citizen": true,
+    "temporary_mcp_removed": true,
+    "owned_fixture_server_stopped": true
+  },
+  "passed": false,
+  "failure_class": "RuntimeError",
+  "failed_platform_operation": "Nexent POST /agent/update: HTTP 500",
+  "real_candidate_business_counts_unchanged": true,
+  "real_candidate_counts": {
+    "documents": 4,
+    "revisions": 6,
+    "chunks": 62,
+    "latest_chunks": 35,
+    "versions": 0,
+    "heads": 0
+  },
+  "finished_at": "2026-10-15T16:56:40.664384+00:00",
+  "scope": "Seven actual model/MCP runs on synthetic-only data: both roles read first/new versions, pending change stops, pinned history remains, full restore replay works. No business-policy correctness or UI acceptance claim."
+}

@@ -1,0 +1,127 @@
+{
+  "captured_at": "2026-10-15T18:07:42.484806+00:00",
+  "counts": {
+    "sites": 16,
+    "documents": 5,
+    "revisions": 7,
+    "chunks": 74,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 6,
+    "latest_chunks": 47
+  },
+  "enabled_source_ids": [
+    "BEIJING-POLICY-DISCOVERY",
+    "ID-AMENDMENT-JT-LEAD",
+    "MPS-NORM-01",
+    "MPS-USE-01",
+    "NDRC-FEE-2003",
+    "NDRC-FEE-2005"
+  ],
+  "healthy_monitored_source_ids": [
+    "BEIJING-POLICY-DISCOVERY",
+    "ID-AMENDMENT-JT-LEAD",
+    "MPS-NORM-01",
+    "MPS-USE-01"
+  ],
+  "paused_source_ids": [
+    "HN-NORM-XY-LEAD",
+    "ID-GUIDE-01",
+    "ID-LAW-01",
+    "ID-NORM-01",
+    "NDRC-FEE-2003",
+    "NDRC-FEE-2005"
+  ],
+  "test_count": 263,
+  "tests_passed": true,
+  "platform_tools": [
+    "govkb_get_environment_status",
+    "govkb_search_evidence"
+  ],
+  "public_files_scanned": 522,
+  "credential_hit_paths": [],
+  "business_review_completed": false,
+  "official_knowledge_published": 0,
+  "existing_agents_changed": false,
+  "new_qa_agents": {
+    "govkb_qa_citizen": 10,
+    "govkb_qa_staff": 11
+  },
+  "model_fixed_question_smoke_passed": true,
+  "model_smoke_cases": 3,
+  "business_answer_accuracy_tested": false,
+  "discovery": [
+    {
+      "source_id": "BEIJING-POLICY-DISCOVERY",
+      "cycle_id": 1,
+      "started_at": 1792081678.8992445,
+      "limited": false,
+      "index_pages_scheduled": 1,
+      "new_document_jobs": 0,
+      "unvisited_cached_targets": 0,
+      "parser_truncated": false,
+      "active_jobs": 0,
+      "failed_jobs": 0,
+      "coverage_note": "Bounded declared entry points and cached links; not proof of a site's complete document inventory"
+    }
+  ],
+  "ai_reference_cases": 30,
+  "ai_reference_status": "ai_source_checked_draft",
+  "human_attestations_created": 0,
+  "synthetic_native_version_test_passed": true,
+  "synthetic_native_version_cases": 7,
+  "dynamic_consultation_preview_passed": true,
+  "dynamic_consultation_preview_cases": 6,
+  "dynamic_consultation_preview_agents": {
+    "govkb_consultation_preview_citizen": 16,
+    "govkb_consultation_preview_staff": 17
+  },
+  "local_startup": {
+    "registration": {
+      "installed": true,
+      "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+      "mode": "windows_current_user_scheduled_task",
+      "checked_at": 1792084497,
+      "current_user_only": true,
+      "interactive_logon_required": true,
+      "run_level": "Limited",
+      "trigger_count": 2,
+      "recovery_interval_seconds": 300,
+      "task_state": "Ready",
+      "next_run_time": "2026-10-15T17:15:54.0000000Z",
+      "actual_logon_transition_tested": false,
+      "automatic_publication": false
+    },
+    "recovery": {
+      "checked_at": 1792087563,
+      "action": "healthy",
+      "ready": true,
+      "recovery_count": 1,
+      "last_recovered_at": 1792084570,
+      "last_recovered_supervisor_pid": 56584,
+      "supervisor_pid": 55148,
+      "error": "",
+      "no_publication_performed": true,
+      "mode": "current_user_local_service_recovery"
+    }
+  },
+  "startup_evidence": {
+    "startup-recovery-first-pass.json": {
+      "captured_at": "2026-10-15T17:19:21.9914719Z",
+      "passed": true,
+      "checks": 14
+    },
+    "startup-healthy-followup.json": {
+      "captured_at": "2026-10-15T17:25:06.3079842Z",
+      "passed": true,
+      "checks": 5
+    },
+    "startup-manual-control.json": {
+      "captured_at": "2026-10-15T17:25:33.7883055Z",
+      "passed": true,
+      "checks": 9
+    }
+  },
+  "github_final_push_completed": false,
+  "scope": "Actual candidate intake, monitoring, MCP transport/catalog and separately recorded fixed/dynamic-question model stop tests; no business-accuracy or official-policy approval claim."
+}
