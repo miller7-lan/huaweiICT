@@ -66,6 +66,19 @@ def main():
     before = store.status()["counts"]["revisions"]
     worker_once(store, fixture, now=clock+7400)
     checks["unchanged_repeat_creates_no_revision"] = store.status()["counts"]["revisions"] == before
+    class FailedFixture:
+        def fetch(self, source, url):
+            raise OSError("Controlled failure after a successful check; no network used")
+    schedule(store, now=clock+11100)
+    worker_once(store, FailedFixture(), now=clock+11100)
+    failed = query()
+    checks["new_failure_blocks_despite_recent_success"] = failed["message_code"] == "SOURCE_CHECK_REQUIRED" and not failed["citations"] and any(source["failed_check"] and not source["stale"] for source in failed["source_freshness"])
+    class UnchangedFixture:
+        def fetch(self, source, url):
+            return 304, {}, b"", url
+    worker_once(store, UnchangedFixture(), now=clock+11161)
+    recovered = query()
+    checks["successful_recheck_clears_failure_without_new_revision"] = recovered["status"] == "OK" and recovered["knowledge_version"] == second and store.status()["counts"]["revisions"] == before
     store.rollback(first, "controlled-engineering-fixture", True)
     rolled_back = query()
     checks["rollback_restores_pointer_without_bypassing_reviewed_newer_rules"] = rolled_back["knowledge_version"] == first and rolled_back["message_code"] == "UPDATE_AWAITING_PUBLICATION" and not rolled_back["citations"]

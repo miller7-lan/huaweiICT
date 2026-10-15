@@ -12,8 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 WEB_SOURCES = {
     "ERQI-GUIDE-WEB": {"url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml", "kind": "official_service_guide", "acquisition": "read_only_web_preview", "locator": "办理条件、收费、时限和材料1至4项", "unresolved": "页面未明确更新日；材料关系与省级分支有差异；采集器当前暂停"},
     "ERQI-RENHE-WEB": {"url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/6045830.jhtml", "kind": "official_local_service_guide", "acquisition": "read_only_web_preview", "locator": "人和路派出所窗口信息及收费/时限", "unresolved": "仅人和路窗口；页面未明确更新日；不能扩展成全区地点表"},
-    "HN-NORM-PDF-WEB": {"url": "https://www.xuchang.gov.cn/EpointWebBuilder/frame/ewebeditor/uploadfile/%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E5%8E%85%E5%85%B3%E4%BA%8E%E5%8D%B0%E5%8F%91%E3%80%8A%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E6%9C%BA%E5%85%B3%E6%88%B7%E5%8F%A3%E5%B1%85%E6%B0%91%E8%BA%AB%E4%BB%BD%E8%AF%81%E7%AE%A1%E7%90%86%E5%B7%A5%E4%BD%9C%E8%A7%84%E8%8C%83%EF%BC%88%E8%AF%95%E8%A1%8C%EF%BC%89%E3%80%8B%E7%9A%84%E9%80%9A%E7%9F%A5.pdf", "kind": "official_normative_pdf", "acquisition": "web_text_preview_only", "locator": "PDF第1、3、45、46、64页；第7、157、159、161、236条", "unresolved": "64页文本预览可读；截图抓取超时；未取得本地原件，不宣称完成视觉或指纹核验"},
-    "HN-UPDATE-GUSHI-WEB": {"url": "https://www.gushi.gov.cn/2025/07-10/760173.html", "kind": "official_republished_service_update", "acquisition": "read_only_web_preview", "locator": "2025-07-10、来源河南政府网、换领窗口调整说明", "unresolved": "页面转述河南省调整至6个月；尚未定位原始省厅调整文件及完整生效范围；不能把转载日期当生效日"},
+    "HN-NORM-PDF-WEB": {"url": "https://www.xuchang.gov.cn/EpointWebBuilder/frame/ewebeditor/uploadfile/%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E5%8E%85%E5%85%B3%E4%BA%8E%E5%8D%B0%E5%8F%91%E3%80%8A%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E6%9C%BA%E5%85%B3%E6%88%B7%E5%8F%A3%E5%B1%85%E6%B0%91%E8%BA%AB%E4%BB%BD%E8%AF%81%E7%AE%A1%E7%90%86%E5%B7%A5%E4%BD%9C%E8%A7%84%E8%8C%83%EF%BC%88%E8%AF%95%E8%A1%8C%EF%BC%89%E3%80%8B%E7%9A%84%E9%80%9A%E7%9F%A5.pdf", "kind": "official_normative_pdf", "acquisition": "web_text_preview_only", "locator": "PDF第1、3、45、46、64页；第7、157、159、161、236条", "unresolved": "该64页PDF仍仅有文本预览，截图超时、本地原件未取得。另已取得省厅发布HTML的14个完整条款，见归档HN-NORM-PUBLISHER；不能将HTML称作已下载的盖章PDF"},
+    "HN-UPDATE-GUSHI-WEB": {"url": "https://www.gushi.gov.cn/2025/07-10/760173.html", "kind": "official_republished_service_update", "acquisition": "normal_guarded_local_archive_now_available", "archived_source_id": "HN-UPDATE-GS-01", "locator": "正文段落3；页面2025-07-10、来源河南政府网", "unresolved": "已正常归档并监测一段期限调整事实；图片未取得。尚未定位原始省厅调整文件及完整生效范围，不能把转载日期当生效日"},
     "HN-UPDATE-ANYANG-WEB": {"url": "https://www.ayx.gov.cn/2025/07-22/3533496.html", "kind": "official_police_service_explanation", "acquisition": "read_only_web_preview", "locator": "2025-07-22、安阳县公安温馨提醒、我省便民举措", "unresolved": "同样提到我省放宽至6个月；本县自助、网办、上班时段不能套用二七区"},
     "USE-CENTRAL-WEB": {"url": "https://app.www.gov.cn/govdata/gov/201608/11/386933/article.html", "kind": "official_republication", "acquisition": "read_only_web_preview", "locator": "页面2016-08-11、正文署名2016-07-15、末尾实施句", "unresolved": "能佐证日期层次不同，尚不足裁定公告最初发布日"},
     "NPC-LAW-LEAD": {"url": "https://wb.flk.npc.gov.cn/flfg/PDF/481dce0469334593bc9050435f09d60e.pdf", "kind": "official_law_gazette", "acquisition": "search_preview_lead_robots_tls_failed", "locator": "全国人大常委会公报2011年第7号、修正决定及重新公布文本", "unresolved": "已定位2011修正原始公报线索；正常robots请求因证书过期失败，未请求PDF或关闭TLS校验；另有官方转载归档，但原始公报及完整现行沿革核验仍待完成"},
@@ -26,10 +26,10 @@ ANSWERS = [
     ("conditional_answer", "原居民身份证有换领依据；户口簿在区级指南列出，但省级第159条分支写法及第7条共享免纸质规则需一并核对。暂不能把两证都写成无条件必交，也不能承诺只带旧证一定受理。", ["ERQI-GUIDE-WEB", "HN-NORM-PDF-WEB"], ["ID-GUIDE-01", "MPS-NORM-01"], ["户口簿关系未决"]),
     ("stop", "目前不能断言户口簿一律必带或一律免带。区级列表、省级换领分支及共享免纸质条件需要核定到具体窗口。", ["ERQI-GUIDE-WEB", "HN-NORM-PDF-WEB"], ["ID-GUIDE-01", "MPS-NORM-01"], ["必交和条件免交关系未决"]),
     ("conditional_answer", "应区分申请时交验旧证与领取新证时交回旧证；后者有居民身份证法第11条的明确依据。不能将交验直接解释为申请当天一律收走。", [], ["ID-LAW-01", "MPS-NORM-01"], ["具体窗口留存环节待确认"]),
-    ("stop", "2021国家规范及2022省级规范写到期前三个月；2025河南官方服务说明出现放宽到六个月的更新信号。不能只凭旧规范回答只能提前三个月；应完成调整依据及二七区适用性核查。", ["HN-NORM-PDF-WEB", "HN-UPDATE-GUSHI-WEB", "HN-UPDATE-ANYANG-WEB"], ["MPS-NORM-01"], ["省厅调整原文件、起止日期未取得"]),
+    ("conditional_answer", "2021国家规范及2022省级规范写到期前三个月；已归档的固始政府2025-07-10转载河南政府网说明，明确记录河南省公安厅将到期换领期限从3个月放宽到6个月。可以说明这项更新及来源日期，但尚未取得调整原文件和完整起止日期，不将旧三个月写作唯一现行上限，也不作二七区当前受理保证。", ["HN-NORM-PDF-WEB", "HN-UPDATE-ANYANG-WEB"], ["MPS-NORM-01", "HN-UPDATE-GS-01"], ["省厅调整原文件、起止日期和二七区当前执行关系未核定"]),
     ("conditional_answer", "规范支持办理时采集人像。二七区是否允许自带照片、选哪些拍摄渠道，目前材料不足，不能移用其他城市规则。", [], ["MPS-NORM-01"], ["本地拍摄选项未核定"]),
     ("stop", "没有取得要求本分支提交照片回执或电子照片文件的二七区依据，不添加此项必交材料。", ["ERQI-GUIDE-WEB"], ["ID-GUIDE-01"], ["本地照片细则缺失；未列出不等于证明永远不需要"]),
-    ("conditional_answer", "2011修正法律第3条规定申请领取、换领、补领居民身份证应登记指纹信息；国家规范第78条及省级第159条涉及办理时采集。具体采集困难、复用或例外不能自行裁决。", ["HN-NORM-PDF-WEB"], ["ID-AMENDMENT-JT-LEAD", "MPS-NORM-01"], ["特殊情形未纳入试点；转载页日期冲突，不代替完整现行沿革核定"]),
+    ("conditional_answer", "2011修正法律第3条规定申请领取、换领、补领居民身份证应登记指纹信息；已归档的省厅规范第159条涉及办理时采集。具体采集困难、复用或例外不能自行裁决。", ["HN-NORM-PDF-WEB"], ["ID-AMENDMENT-JT-LEAD", "MPS-NORM-01"], ["特殊情形未纳入试点；转载页日期冲突，不代替完整现行沿革核定"]),
     ("stop", "现有证据没有给出本地各项材料的完整原件、复印件和份数表，不能统一编成复印件一份。", ["ERQI-GUIDE-WEB"], ["ID-GUIDE-01"], ["形式及份数缺失"]),
     ("stop", "不能把补领分支可交验证件之一直接当作换领时替代户口簿的规则。应核对共享调用和换领分支规定。", ["HN-NORM-PDF-WEB"], ["MPS-NORM-01"], ["换领替代关系未决"]),
     ("conditional_answer", "区级页面指向户籍窗口；人和路指南提供本街道窗口线索。具体到哪个点应按辖区和当前窗口信息核对，不能把单个街道地址当作全区唯一办理点。", ["ERQI-GUIDE-WEB", "ERQI-RENHE-WEB"], [], ["未取得全区最新窗口清单"]),
@@ -60,7 +60,7 @@ LOCATORS = {
     "KQ01": {"ID-GUIDE-01": GUIDE[:2], "MPS-NORM-01": ["第十二条", "第七十八条"]},
     "KQ02": {"ID-GUIDE-01": GUIDE[:1], "MPS-NORM-01": ["第十二条", "第七十八条"]},
     "KQ03": {"ID-LAW-01": ["第十一条"], "MPS-NORM-01": ["第七十六条"]},
-    "KQ04": {"MPS-NORM-01": ["第七十六条"]},
+    "KQ04": {"MPS-NORM-01": ["第七十六条"], "HN-UPDATE-GS-01": ["正文段落3"]},
     "KQ05": {"MPS-NORM-01": ["第七十八条"]}, "KQ06": {"ID-GUIDE-01": GUIDE},
     "KQ07": {"ID-AMENDMENT-JT-LEAD": ["第三条"], "MPS-NORM-01": ["第七十八条"]}, "KQ08": {"ID-GUIDE-01": GUIDE},
     "KQ09": {"MPS-NORM-01": ["第十二条", "第七十八条"]},
@@ -77,6 +77,20 @@ LOCATORS = {
     "KQ27": {"ID-LAW-01": ["第十一条"], "MPS-NORM-01": ["第七十六条"]},
 }
 
+# Replace indirect norm references with the newly acquired publisher clauses.
+# These choices come from the source text, not the tested model's retrieval.
+PUBLISHER_LOCATORS = {
+    "KQ01": ["第七条", "第一百五十九条"], "KQ02": ["第七条", "第一百五十九条"],
+    "KQ03": ["第一百六十一条"], "KQ04": ["第一百五十七条"], "KQ05": ["第一百五十九条"],
+    "KQ07": ["第一百五十九条"], "KQ09": ["第七条", "第一百五十九条"],
+    "KQ12": ["第二百三十四条"], "KQ13": ["第一百六十三条"], "KQ14": ["第一百六十四条"],
+    "KQ15": ["第一百五十九条"], "KQ16": ["第一百六十五条"], "KQ17": ["第一百六十一条"],
+    "KQ18": ["第一百五十九条"], "KQ19": ["第七条", "第九条", "第一百五十九条"],
+    "KQ20": ["第二百三十六条"], "KQ22": ["第一百五十九条"],
+    "KQ25": ["第一百五十九条"], "KQ26": ["第一百六十四条"], "KQ27": ["第一百五十七条"],
+}
+REPLACE_NATIONAL_LOCATORS = {"KQ01", "KQ02", "KQ03", "KQ05", "KQ07", "KQ09", "KQ15", "KQ17", "KQ18", "KQ19", "KQ27"}
+
 
 def main():
     draft = json.loads((ROOT / "evaluation/knowledge/pilot-business-questions.json").read_text(encoding="utf-8"))
@@ -88,10 +102,20 @@ def main():
     assert len(draft["cases"]) == len(ANSWERS) == 30
     cases = []
     for original, (behavior, answer, web_ids, local_ids, unresolved) in zip(draft["cases"], ANSWERS):
+        locators_by_source = dict(LOCATORS.get(original["id"], {}))
+        assert set(locators_by_source) == set(local_ids)
+        web_ids = list(web_ids)
+        if original["id"] in PUBLISHER_LOCATORS:
+            locators_by_source["HN-NORM-PUBLISHER"] = PUBLISHER_LOCATORS[original["id"]]
+            if original["id"] in REPLACE_NATIONAL_LOCATORS:
+                locators_by_source.pop("MPS-NORM-01", None)
+            if original["id"] == "KQ19":
+                locators_by_source["ID-GUIDE-01"] = GUIDE[:2]
+            web_ids = [key for key in web_ids if key != "HN-NORM-PDF-WEB"]
+        local_ids = list(locators_by_source)
         assert all(key in WEB_SOURCES for key in web_ids) and all(key in local for key in local_ids)
         references = []
-        assert set(LOCATORS.get(original["id"], {})) == set(local_ids)
-        for source_id, locators in LOCATORS.get(original["id"], {}).items():
+        for source_id, locators in locators_by_source.items():
             assert set(locators) <= set(local[source_id]["locators"])
             references.extend({"revision": local[source_id]["revision"], "locator": locator} for locator in locators)
         cases.append({"id": original["id"], "question": original["question"], "category": original["category"],
@@ -108,7 +132,9 @@ def main():
               "cases": cases}
     report["content_sha256"] = fingerprint(report)
     (ROOT / "evaluation/knowledge/pilot-ai-reference-answers.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps({"cases": len(cases), "sources": len(WEB_SOURCES)+len(local), "status": report["status"], "human_attestations_created": 0}, ensure_ascii=False))
+    print(json.dumps({"cases": len(cases), "reference_entries": len(WEB_SOURCES)+len(local),
+        "unique_source_urls": len({source["url"] for source in list(WEB_SOURCES.values())+list(local.values())}),
+        "status": report["status"], "human_attestations_created": 0}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

@@ -150,6 +150,6 @@ def verify_publication(store, db, version):
         source = db.execute("SELECT * FROM sites WHERE id=?", (source_id,)).fetchone()
         config = json.loads(source["config"])
         validate_config(config)
-        if not config["enabled"] or source["paused_reason"] or not source["last_success"] or time.time()-source["last_success"] > config["interval_seconds"]+900:
+        if not config["enabled"] or source["paused_reason"] or source["failures"] > 0 or not source["last_success"] or time.time()-source["last_success"] > config["interval_seconds"]+900:
             raise ValueError("Enabled, available and recently checked sources required for publication")
     return {"mode": "business", "evaluation": evaluated["id"], "metrics": metrics}

@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-15T16:35:02.291838+00:00",
+  "captured_at": "2026-10-15T18:19:55.351212+00:00",
   "passed": true,
   "checks": {
     "collected_candidate_not_published": true,
@@ -8,6 +8,8 @@
     "new_query_uses_new_release": true,
     "pinned_history_keeps_first_quote_and_update_hint": true,
     "unchanged_repeat_creates_no_revision": true,
+    "new_failure_blocks_despite_recent_success": true,
+    "successful_recheck_clears_failure_without_new_revision": true,
     "rollback_restores_pointer_without_bypassing_reviewed_newer_rules": true,
     "backup_and_originals_restore_query": true
   },
@@ -35,10 +37,11 @@
       "source_freshness": [
         {
           "source_id": "controlled-fixture",
-          "last_successful_check": 1792082102.069133,
+          "last_successful_check": 1792088395.1078796,
           "stale": false,
           "enabled": true,
           "paused": false,
+          "failed_check": false,
           "potential_impact_monitor": false
         }
       ],
@@ -67,10 +70,11 @@
       "source_freshness": [
         {
           "source_id": "controlled-fixture",
-          "last_successful_check": 1792085802.069133,
+          "last_successful_check": 1792092095.1078796,
           "stale": false,
           "enabled": true,
           "paused": false,
+          "failed_check": false,
           "potential_impact_monitor": false
         }
       ],
@@ -99,10 +103,11 @@
       "source_freshness": [
         {
           "source_id": "controlled-fixture",
-          "last_successful_check": 1792085802.069133,
+          "last_successful_check": 1792092095.1078796,
           "stale": false,
           "enabled": true,
           "paused": false,
+          "failed_check": false,
           "potential_impact_monitor": false
         }
       ],

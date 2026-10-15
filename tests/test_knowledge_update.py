@@ -431,6 +431,34 @@ def test_durable_queue_discovers_once_and_repeated_cycles_do_not_duplicate(store
     assert store.status()["pending_review"][0]["metadata"]["effective_from"] is None
 
 
+def test_failed_check_blocks_even_a_fresh_source_until_successful_recheck(store, config):
+    version = publish(store, ingest(store, config))
+    clock = time.time()
+    schedule(store, now=clock)
+    worker_once(store, ControlledFetcher(error=OSError("controlled transient failure")), now=clock)
+    current = search(store)
+    assert current["message_code"] == "SOURCE_CHECK_REQUIRED" and not current["citations"]
+    assert current["source_freshness"][0]["failed_check"] and not current["source_freshness"][0]["stale"]
+    worker_once(store, ControlledFetcher(status=304), now=clock+61)
+    restored = search(store)
+    assert restored["status"] == "OK" and restored["knowledge_version"] == version
+    assert not restored["source_freshness"][0]["failed_check"]
+
+
+@pytest.mark.parametrize("selection", [{"include_articles": ["第三条"]},
+                                       {"include_paragraph_keywords": ["模拟机关"]}])
+def test_html_selection_does_not_expand_into_a_pdf_page(store, config, selection):
+    config.update(selection)
+    store.register(config)
+    class UnexpectedPDF:
+        def fetch(self, config, url):
+            return 200, {"content-type": "application/pdf"}, b"%PDF-controlled-not-parsed", url
+    schedule(store)
+    worker_once(store, UnexpectedPDF())
+    assert store.status()["counts"]["documents"] == 0
+    assert "HTML selection" in store.status()["jobs"][0]["error"]
+
+
 def test_consolidated_version_preface_change_needs_review_even_when_selected_clause_is_unchanged(store, config):
     config.update(include_articles=["第三条"], article_start_title="模拟法")
     store.register(config)

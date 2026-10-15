@@ -34,7 +34,7 @@ def main():
         "captured_at": datetime.now(timezone.utc).isoformat(), "counts": store.status()["counts"], "sources": sources, "documents": documents,
         "purpose": "Share source entry points, actual archive fingerprints, pending metadata, selected-clause locators and text fingerprints for GitHub review. No original bodies, SQLite data, private filesystem paths, visitor questions, account data or tokens.",
         "reacquisition": "Use the original official URLs only after a fresh access/use check. This catalog does not enable collection, restore a database or carry business approval.",
-        "corpus_caution": "Five archive records include two selections of the same 2011 act; do not count them as five distinct policies."}
+        "corpus_caution": "Archive records include mirror selections of the same act and an official service-information update signal; the record count is not a count of distinct normative policies."}
     target = ROOT / "data/knowledge/candidate-catalog.json"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

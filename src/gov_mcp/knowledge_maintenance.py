@@ -61,6 +61,8 @@ def maintenance_tick(store, now=None, owner="maintenance-once", backup=create_bu
         for source in status["sites"]:
             if source["enabled"] and (source["paused_reason"] or source["stale"]):
                 alerts.append({"code": "source_paused" if source["paused_reason"] else "source_stale", "source": source["id"]})
+            elif source["enabled"] and source["failures"] > 0:
+                alerts.append({"code": "source_check_failed", "source": source["id"]})
         failed = [job["id"] for job in status["jobs"] if job["state"] == "failed"]
         if failed:
             alerts.append({"code": "failed_jobs", "job_ids": failed})

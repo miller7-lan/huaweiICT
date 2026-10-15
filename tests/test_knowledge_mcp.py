@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 
 from gov_mcp.knowledge import KnowledgeStore, fingerprint
-from gov_mcp.knowledge_fetch import article_section, discover_links, parse_html, select_articles
+from gov_mcp.knowledge_fetch import article_section, discover_links, parse_html, select_articles, select_paragraph_keywords
 from gov_mcp.knowledge_tools import KnowledgeTools
 
 
@@ -108,6 +108,26 @@ def test_duplicate_normalized_heading_requires_review():
               for text in ("第八十一条 模拟第一份内容。", "第八十ー条 模拟不同内容。")]
     with pytest.raises(ValueError):
         select_articles(chunks, ["第八十一条"])
+
+
+def test_minimal_fact_selection_preserves_full_paragraph_and_original_locator():
+    raw = '<div id="body"><p>模拟网页的其他叙述，不应选入。</p><p>模拟机关明确将模拟期限从3个月调整为6个月，其他条件另行核查。</p><p>其他地区另有规定，不应选入。</p></div>'.encode()
+    chunks, _ = parse_html(raw, {"id": "body"})
+    selected = select_paragraph_keywords(chunks, ["模拟机关", "模拟期限"])
+    assert selected == [chunks[1]] and selected[0]["locator"] == "正文段落2"
+    assert "其他条件另行核查" in selected[0]["text"]
+    with pytest.raises(ValueError, match="count changed"):
+        select_paragraph_keywords(chunks, ["已删除的句子"])
+    with pytest.raises(ValueError, match="count changed"):
+        select_paragraph_keywords(chunks+[dict(chunks[1], locator="正文段落4")], ["模拟机关", "模拟期限"])
+
+
+def test_nested_editor_credit_is_not_appended_to_the_last_legal_clause():
+    raw = '<div class><div id="content"><p class>第二百三十六条 模拟施行日期和解释机关。</p><span class="operator">责任编辑：<i>模拟编辑署名</i></span></div></div>'.encode()
+    unfiltered, _ = parse_html(raw, {"id": "content"}, min_text_length=1)
+    assert "模拟编辑署名" in select_articles(unfiltered, ["第二百三十六条"])[0]["text"]
+    selected, _ = parse_html(raw, {"id": "content"}, min_text_length=1, excluded_selectors=[{"class": "operator"}])
+    assert select_articles(selected, ["第二百三十六条"])[0]["text"] == "第二百三十六条 模拟施行日期和解释机关。"
 
 
 def test_amending_decision_is_not_mixed_into_selected_consolidated_articles():

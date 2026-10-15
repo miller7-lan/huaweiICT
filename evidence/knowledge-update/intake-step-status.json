@@ -1,17 +1,19 @@
 {
-  "captured_at": "2026-10-15T18:07:42.484806+00:00",
+  "captured_at": "2026-10-15T18:52:39.547030+00:00",
   "counts": {
-    "sites": 16,
-    "documents": 5,
-    "revisions": 7,
-    "chunks": 74,
+    "sites": 18,
+    "documents": 7,
+    "revisions": 9,
+    "chunks": 89,
     "versions": 0,
     "heads": 0,
-    "jobs": 6,
-    "latest_chunks": 47
+    "jobs": 8,
+    "latest_chunks": 62
   },
   "enabled_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
+    "HN-NORM-PUBLISHER",
+    "HN-UPDATE-GS-01",
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
     "MPS-USE-01",
@@ -20,6 +22,8 @@
   ],
   "healthy_monitored_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
+    "HN-NORM-PUBLISHER",
+    "HN-UPDATE-GS-01",
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
     "MPS-USE-01"
@@ -32,13 +36,13 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 263,
+  "test_count": 270,
   "tests_passed": true,
   "platform_tools": [
     "govkb_get_environment_status",
     "govkb_search_evidence"
   ],
-  "public_files_scanned": 522,
+  "public_files_scanned": 535,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -93,13 +97,13 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792087563,
+      "checked_at": 1792090357,
       "action": "healthy",
       "ready": true,
       "recovery_count": 1,
       "last_recovered_at": 1792084570,
       "last_recovered_supervisor_pid": 56584,
-      "supervisor_pid": 55148,
+      "supervisor_pid": 57860,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"

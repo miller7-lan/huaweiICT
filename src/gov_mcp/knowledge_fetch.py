@@ -50,6 +50,23 @@ def validate_config(config):
     start_title = config.get("article_start_title")
     if start_title is not None and (not isinstance(start_title, str) or not start_title.strip() or len(start_title) > 200 or not config.get("include_articles")):
         raise ValueError("Explicit bounded consolidated-text title and article selection required")
+    keywords = config.get("include_paragraph_keywords")
+    if keywords is not None or "paragraph_expected_count" in config:
+        expected = config.get("paragraph_expected_count", 1)
+        if (not isinstance(keywords, list) or not 1 <= len(keywords) <= 8
+                or any(not isinstance(word, str) or not word.strip() or len(word) > 100 for word in keywords)
+                or type(expected) is not int or not 1 <= expected <= 20 or config.get("include_articles")):
+            raise ValueError("Explicit bounded HTML paragraph selection required")
+    excluded = config.get("excluded_content_selectors", [])
+    if not isinstance(excluded, list) or len(excluded) > 8:
+        raise ValueError("Bounded content exclusions required")
+    for selector in excluded:
+        if (not isinstance(selector, dict) or len(selector) != 1
+                or next(iter(selector)) not in ("id", "class")
+                or not isinstance(next(iter(selector.values())), str)
+                or not next(iter(selector.values())).strip() or len(next(iter(selector.values()))) > 100
+                or selector == config.get("content_selector")):
+            raise ValueError("Explicit nested content id/class exclusion required")
     selectors = config.get("metadata_selectors", {})
     if not isinstance(selectors, dict) or len(selectors) > 16:
         raise ValueError("Bounded metadata selectors required")
@@ -199,18 +216,23 @@ class RetryLater(OSError):
 
 
 class ArticleParser(HTMLParser):
-    def __init__(self, selector):
+    def __init__(self, selector, excluded_selectors=None):
         super().__init__()
         self.selector, self.stack, self.parts, self.links = selector, [], [], []
+        self.excluded_selectors = excluded_selectors or []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        classes = (attrs.get("class") or "").split()
         if tag == "a" and attrs.get("href"):
             self.links.append(attrs["href"])
         active = any(v[1] for v in self.stack) or bool(self.selector and (
             attrs.get("id") == self.selector.get("id") and "id" in self.selector or
-            self.selector.get("class") in attrs.get("class", "").split()))
+            self.selector.get("class") in classes))
         hidden = tag in ("script", "style", "nav", "footer", "noscript") or any(v[2] for v in self.stack)
+        hidden = hidden or any(("id" in selector and attrs.get("id") == selector["id"])
+                               or selector.get("class") in classes
+                               for selector in self.excluded_selectors)
         if tag not in ("br", "img", "input", "meta", "link", "hr", "source", "wbr", "area", "base", "embed", "param", "col", "track"):
             self.stack.append((tag, active, hidden))
         if active and tag in ("p", "div", "li", "tr", "br", "section", "h1", "h2", "h3"):
@@ -312,8 +334,8 @@ def discover_links(raw, keywords=None, limit=25):
     return results
 
 
-def parse_html(raw, selector, min_text_length=8):
-    parser = ArticleParser(selector)
+def parse_html(raw, selector, min_text_length=8, excluded_selectors=None):
+    parser = ArticleParser(selector, excluded_selectors)
     parser.feed(raw.decode("utf-8", errors="strict"))
     lines = [re.sub(r"\s+", " ", line).strip() for line in "".join(parser.parts).splitlines()]
     chunks = []
@@ -329,6 +351,14 @@ def parse_html(raw, selector, min_text_length=8):
             raise ValueError("Oversized unstructured section")
         chunks.append({"locator": f"正文段落{len(chunks)+1}", "category": category, "text": line})
     return chunks, parser.links
+
+
+def select_paragraph_keywords(chunks, keywords, expected=1):
+    """Keep complete selected paragraphs and original locators; stop on drift."""
+    selected = [chunk for chunk in chunks if all(word in chunk["text"] for word in keywords)]
+    if len(selected) != expected:
+        raise ValueError("Selected HTML paragraph count changed; requires review")
+    return selected
 
 
 def article_section(chunks, start_title=None):
@@ -435,6 +465,8 @@ def worker_once(store, fetcher=None, owner=None, now=None):
             if content_type not in ("text/html", "application/xhtml+xml", "application/pdf"):
                 raise ValueError("Unsupported format; requires dedicated parser")
             if content_type == "application/pdf":
+                if config.get("include_articles") or config.get("include_paragraph_keywords"):
+                    raise ValueError("Configured HTML selection cannot be applied to PDF")
                 with tempfile.TemporaryDirectory(prefix="parse-", dir=store.root) as directory:
                     from pathlib import Path
                     path = Path(directory) / "input.pdf"
@@ -448,7 +480,10 @@ def worker_once(store, fetcher=None, owner=None, now=None):
                         raise ValueError("PDF parser failed; inspect isolated input")
                     chunks, links = json.loads(parsed.stdout), []
             else:
-                chunks, links = parse_html(raw, config.get("content_selector"), min_text_length=1 if config.get("include_articles") else 8)
+                chunks, links = parse_html(raw, config.get("content_selector"), min_text_length=1 if config.get("include_articles") else 8,
+                                           excluded_selectors=config.get("excluded_content_selectors"))
+                if config.get("include_paragraph_keywords"):
+                    chunks = select_paragraph_keywords(chunks, config["include_paragraph_keywords"], config.get("paragraph_expected_count", 1))
                 if config.get("include_articles"):
                     chunks, article_preface = article_section(chunks, config.get("article_start_title"))
                     chunks = select_articles(chunks, config["include_articles"], config.get("article_categories"))

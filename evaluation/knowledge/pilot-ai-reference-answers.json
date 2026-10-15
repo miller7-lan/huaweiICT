@@ -4,7 +4,7 @@
   "status": "ai_source_checked_draft",
   "author_kind": "ai",
   "reviewer": "Codex AI",
-  "captured_at": "2026-10-15T17:44:11.765794+00:00",
+  "captured_at": "2026-10-15T18:38:42.642033+00:00",
   "scope": {
     "region": "郑州市二七区",
     "matter": "demo-id-renewal",
@@ -34,14 +34,15 @@
       "kind": "official_normative_pdf",
       "acquisition": "web_text_preview_only",
       "locator": "PDF第1、3、45、46、64页；第7、157、159、161、236条",
-      "unresolved": "64页文本预览可读；截图抓取超时；未取得本地原件，不宣称完成视觉或指纹核验"
+      "unresolved": "该64页PDF仍仅有文本预览，截图超时、本地原件未取得。另已取得省厅发布HTML的14个完整条款，见归档HN-NORM-PUBLISHER；不能将HTML称作已下载的盖章PDF"
     },
     "HN-UPDATE-GUSHI-WEB": {
       "url": "https://www.gushi.gov.cn/2025/07-10/760173.html",
       "kind": "official_republished_service_update",
-      "acquisition": "read_only_web_preview",
-      "locator": "2025-07-10、来源河南政府网、换领窗口调整说明",
-      "unresolved": "页面转述河南省调整至6个月；尚未定位原始省厅调整文件及完整生效范围；不能把转载日期当生效日"
+      "acquisition": "normal_guarded_local_archive_now_available",
+      "archived_source_id": "HN-UPDATE-GS-01",
+      "locator": "正文段落3；页面2025-07-10、来源河南政府网",
+      "unresolved": "已正常归档并监测一段期限调整事实；图片未取得。尚未定位原始省厅调整文件及完整生效范围，不能把转载日期当生效日"
     },
     "HN-UPDATE-ANYANG-WEB": {
       "url": "https://www.ayx.gov.cn/2025/07-22/3533496.html",
@@ -159,6 +160,37 @@
         "第二十一条",
         "第二十三条"
       ]
+    },
+    "HN-UPDATE-GS-01": {
+      "site_id": "HN-UPDATE-GS-01",
+      "url": "https://www.gushi.gov.cn/2025/07-10/760173.html",
+      "revision": "rev-01e4a7686991d06c8135e431",
+      "sha256": "463e687bb0eaa804722b3e1bb5672e4365ea7c3dc339a9173428dd46fdccde52",
+      "locators": [
+        "正文段落3"
+      ]
+    },
+    "HN-NORM-PUBLISHER": {
+      "site_id": "HN-NORM-PUBLISHER",
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "revision": "rev-afb82e8141a1a337b3412625",
+      "sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locators": [
+        "第一条",
+        "第七条",
+        "第九条",
+        "第一百五十五条",
+        "第一百五十七条",
+        "第一百五十九条",
+        "第一百六十一条",
+        "第一百六十二条",
+        "第一百六十三条",
+        "第一百六十四条",
+        "第一百六十五条",
+        "第二百三十四条",
+        "第二百三十五条",
+        "第二百三十六条"
+      ]
     }
   },
   "cases": [
@@ -169,12 +201,11 @@
       "expected_behavior": "conditional_answer",
       "ai_reference_answer": "原居民身份证有换领依据；户口簿在区级指南列出，但省级第159条分支写法及第7条共享免纸质规则需一并核对。暂不能把两证都写成无条件必交，也不能承诺只带旧证一定受理。",
       "web_evidence_ids": [
-        "ERQI-GUIDE-WEB",
-        "HN-NORM-PDF-WEB"
+        "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
         "ID-GUIDE-01",
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -186,12 +217,12 @@
           "locator": "材料列表第2项（适用分支待复核）"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第十二条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第七条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
@@ -207,12 +238,11 @@
       "expected_behavior": "stop",
       "ai_reference_answer": "目前不能断言户口簿一律必带或一律免带。区级列表、省级换领分支及共享免纸质条件需要核定到具体窗口。",
       "web_evidence_ids": [
-        "ERQI-GUIDE-WEB",
-        "HN-NORM-PDF-WEB"
+        "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
         "ID-GUIDE-01",
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -220,12 +250,12 @@
           "locator": "材料列表第1项（适用分支待复核）"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第十二条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第七条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
@@ -243,7 +273,7 @@
       "web_evidence_ids": [],
       "archived_evidence_ids": [
         "ID-LAW-01",
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -251,8 +281,8 @@
           "locator": "第十一条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十六条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百六十一条"
         }
       ],
       "unresolved": [
@@ -265,24 +295,32 @@
       "id": "KQ04",
       "question": "身份证还有一段时间到期，现在能提前申请到期换领吗？",
       "category": "eligibility",
-      "expected_behavior": "stop",
-      "ai_reference_answer": "2021国家规范及2022省级规范写到期前三个月；2025河南官方服务说明出现放宽到六个月的更新信号。不能只凭旧规范回答只能提前三个月；应完成调整依据及二七区适用性核查。",
+      "expected_behavior": "conditional_answer",
+      "ai_reference_answer": "2021国家规范及2022省级规范写到期前三个月；已归档的固始政府2025-07-10转载河南政府网说明，明确记录河南省公安厅将到期换领期限从3个月放宽到6个月。可以说明这项更新及来源日期，但尚未取得调整原文件和完整起止日期，不将旧三个月写作唯一现行上限，也不作二七区当前受理保证。",
       "web_evidence_ids": [
-        "HN-NORM-PDF-WEB",
-        "HN-UPDATE-GUSHI-WEB",
         "HN-UPDATE-ANYANG-WEB"
       ],
       "archived_evidence_ids": [
-        "MPS-NORM-01"
+        "MPS-NORM-01",
+        "HN-UPDATE-GS-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
           "revision": "rev-cc5526f72436ae807a3f32f0",
           "locator": "第七十六条"
+        },
+        {
+          "revision": "rev-01e4a7686991d06c8135e431",
+          "locator": "正文段落3"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十七条"
         }
       ],
       "unresolved": [
-        "省厅调整原文件、起止日期未取得"
+        "省厅调整原文件、起止日期和二七区当前执行关系未核定"
       ],
       "human_review_status": "not_performed",
       "tested_agent_output_used_as_reference": false
@@ -295,12 +333,12 @@
       "ai_reference_answer": "规范支持办理时采集人像。二七区是否允许自带照片、选哪些拍摄渠道，目前材料不足，不能移用其他城市规则。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
@@ -350,13 +388,11 @@
       "question": "本人到期换领时是否要重新采集指纹？",
       "category": "capture",
       "expected_behavior": "conditional_answer",
-      "ai_reference_answer": "2011修正法律第3条规定申请领取、换领、补领居民身份证应登记指纹信息；国家规范第78条及省级第159条涉及办理时采集。具体采集困难、复用或例外不能自行裁决。",
-      "web_evidence_ids": [
-        "HN-NORM-PDF-WEB"
-      ],
+      "ai_reference_answer": "2011修正法律第3条规定申请领取、换领、补领居民身份证应登记指纹信息；已归档的省厅规范第159条涉及办理时采集。具体采集困难、复用或例外不能自行裁决。",
+      "web_evidence_ids": [],
       "archived_evidence_ids": [
         "ID-AMENDMENT-JT-LEAD",
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -364,8 +400,8 @@
           "locator": "第三条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
@@ -416,20 +452,18 @@
       "category": "materials",
       "expected_behavior": "stop",
       "ai_reference_answer": "不能把补领分支可交验证件之一直接当作换领时替代户口簿的规则。应核对共享调用和换领分支规定。",
-      "web_evidence_ids": [
-        "HN-NORM-PDF-WEB"
-      ],
+      "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第十二条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第七条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
@@ -485,12 +519,17 @@
         "ERQI-RENHE-WEB"
       ],
       "archived_evidence_ids": [
-        "ID-AMENDMENT-JT-LEAD"
+        "ID-AMENDMENT-JT-LEAD",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
           "revision": "rev-5ba23b3637717a20b90b7503",
           "locator": "第二十一条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第二百三十四条"
         }
       ],
       "unresolved": [
@@ -510,7 +549,8 @@
       ],
       "archived_evidence_ids": [
         "ID-LAW-01",
-        "MPS-NORM-01"
+        "MPS-NORM-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -520,6 +560,10 @@
         {
           "revision": "rev-cc5526f72436ae807a3f32f0",
           "locator": "第八十条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百六十三条"
         }
       ],
       "unresolved": [
@@ -536,12 +580,17 @@
       "ai_reference_answer": "国家规范规定本人领取核验及亲属代领条件，不足证明二七区当前邮寄渠道、费用和收件核验。不能套用外市快递价格。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "MPS-NORM-01"
+        "MPS-NORM-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
           "revision": "rev-cc5526f72436ae807a3f32f0",
           "locator": "第八十ー条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百六十四条"
         }
       ],
       "unresolved": [
@@ -558,12 +607,12 @@
       "ai_reference_answer": "规范支持核验签名后发领取凭证；本地进度查询入口尚未核定。问答端不代收完整身份证号码，不代查个人办理记录。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
@@ -580,12 +629,17 @@
       "ai_reference_answer": "临时居民身份证属于另一事项；可提示存在该事项，但停止在本试点拼出其完整材料和流程。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "ID-LAW-01"
+        "ID-LAW-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
           "revision": "rev-293d24840fc4e53eb17c71ed",
           "locator": "第十二条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百六十五条"
         }
       ],
       "unresolved": [],
@@ -601,7 +655,7 @@
       "web_evidence_ids": [],
       "archived_evidence_ids": [
         "ID-LAW-01",
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -609,8 +663,8 @@
           "locator": "第十一条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十六条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百六十一条"
         }
       ],
       "unresolved": [
@@ -627,14 +681,10 @@
       "ai_reference_answer": "办理规范涉及身份材料、人像和指纹核验；使用管理公告涉及必要核查与个人信息保护。咨询问题不需要发送完整身份证号码或证件照片。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "MPS-NORM-01",
-        "MPS-USE-01"
+        "MPS-USE-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
-        {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
-        },
         {
           "revision": "rev-d22b05a6d353b71c8bc504ad",
           "locator": "正文段落10"
@@ -646,6 +696,10 @@
         {
           "revision": "rev-d22b05a6d353b71c8bc504ad",
           "locator": "正文段落12"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [],
@@ -659,20 +713,32 @@
       "expected_behavior": "stop",
       "ai_reference_answer": "指出具体条款及适用分支差异，保留双方证据；未解决现行适用和材料关系前，不自动选一份拼成确定清单。",
       "web_evidence_ids": [
-        "ERQI-GUIDE-WEB",
-        "HN-NORM-PDF-WEB"
+        "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER",
+        "ID-GUIDE-01"
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第十二条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第七条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十八条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第九条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
+        },
+        {
+          "revision": "rev-ec7e7716b9519d20ee336e0b",
+          "locator": "材料列表第1项（适用分支待复核）"
+        },
+        {
+          "revision": "rev-ec7e7716b9519d20ee336e0b",
+          "locator": "材料列表第2项（适用分支待复核）"
         }
       ],
       "unresolved": [
@@ -692,7 +758,8 @@
       ],
       "archived_evidence_ids": [
         "MPS-NORM-01",
-        "MPS-USE-01"
+        "MPS-USE-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -706,6 +773,10 @@
         {
           "revision": "rev-d22b05a6d353b71c8bc504ad",
           "locator": "正文段落16"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第二百三十六条"
         }
       ],
       "unresolved": [
@@ -739,12 +810,17 @@
         "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
-        "ID-LAW-01"
+        "ID-LAW-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
           "revision": "rev-293d24840fc4e53eb17c71ed",
           "locator": "第十一条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
@@ -794,12 +870,17 @@
       "ai_reference_answer": "未到期丢失属于补领，不能套用到期换领的材料或费用。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "ID-LAW-01"
+        "ID-LAW-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
           "revision": "rev-293d24840fc4e53eb17c71ed",
           "locator": "第十一条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十九条"
         }
       ],
       "unresolved": [],
@@ -814,12 +895,17 @@
       "ai_reference_answer": "本人不能到场涉及代理或特殊服务分支，不能根据本人办理规则推断可代办；同时区分代办申请和代领新证。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
-        "MPS-NORM-01"
+        "MPS-NORM-01",
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
           "revision": "rev-cc5526f72436ae807a3f32f0",
           "locator": "第八十ー条"
+        },
+        {
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百六十四条"
         }
       ],
       "unresolved": [],
@@ -835,7 +921,7 @@
       "web_evidence_ids": [],
       "archived_evidence_ids": [
         "ID-LAW-01",
-        "MPS-NORM-01"
+        "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
@@ -843,8 +929,8 @@
           "locator": "第十一条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
-          "locator": "第七十六条"
+          "revision": "rev-afb82e8141a1a337b3412625",
+          "locator": "第一百五十七条"
         }
       ],
       "unresolved": [],
@@ -891,5 +977,5 @@
       "tested_agent_output_used_as_reference": false
     }
   ],
-  "content_sha256": "c17cc8004ee50974eacad7e3a33be5360cc50c5b8483b6ef3d8ff76f6c47c281"
+  "content_sha256": "73603ab0ada4cfc6759d5ce4f8ab9049056198cc79c250d4ca5f1ca851af7d6e"
 }

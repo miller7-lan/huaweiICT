@@ -1,0 +1,49 @@
+{
+  "captured_at": "2026-10-15T18:46:59.529797+00:00",
+  "passed": true,
+  "checks": {
+    "actual_browser_shows_seven_archives": true,
+    "actual_browser_shows_sixtytwo_clauses": true,
+    "provincial_date_is_raw_observation": true,
+    "actual_browser_query_stopped": true,
+    "current_api_counts_match": true,
+    "current_query_has_no_policy_citations": true
+  },
+  "screenshots": [
+    {
+      "file": "output/playwright/knowledge-update/regional-desktop.png",
+      "sha256": "be05cc9b7b09539bb6260046dc6dd575a2f58f804b121ff79c419eebf1cc2c04",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "visually_inspected": true
+    },
+    {
+      "file": "output/playwright/knowledge-update/regional-mobile.png",
+      "sha256": "29a8bbf19eb1d311e14ddb06cac1fecb98693f5b9a13b1ed8c8a437a51ed8ba7",
+      "viewport": [
+        390,
+        844
+      ],
+      "visually_inspected": true
+    }
+  ],
+  "actual_query_result": {
+    "status": "EMPTY",
+    "message_code": "NO_PUBLISHED_KNOWLEDGE",
+    "knowledge_version": null,
+    "citations": []
+  },
+  "counts": {
+    "sites": 18,
+    "documents": 7,
+    "revisions": 9,
+    "chunks": 89,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 8,
+    "latest_chunks": 62
+  },
+  "scope": "Actual local read-only workbench, expanded provincial date observations and unpublished stop; not Nexent default-UI or released-policy acceptance."
+}

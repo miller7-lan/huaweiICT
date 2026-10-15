@@ -518,9 +518,10 @@ class KnowledgeStore:
                 conf = json.loads(site["config"])
                 freshness.append({"source_id": site_id, "last_successful_check": site["last_success"],
                     "stale": not site["last_success"] or time.time()-site["last_success"] > conf["interval_seconds"]+900,
-                    "enabled": conf["enabled"], "paused": bool(site["paused_reason"]), "potential_impact_monitor": site_id in monitors})
+                    "enabled": conf["enabled"], "paused": bool(site["paused_reason"]),
+                    "failed_check": site["failures"] > 0, "potential_impact_monitor": site_id in monitors})
             historical = bool(head and selected != head[0])
-            freshness_failed = any(source["stale"] or source["paused"] or not source["enabled"] for source in freshness)
+            freshness_failed = any(source["stale"] or source["paused"] or source["failed_check"] or not source["enabled"] for source in freshness)
             blocked = bool((pending or awaiting_publication or freshness_failed) and not historical)
             return {"status": "BLOCKED" if blocked else "OK" if citations else "EMPTY", "knowledge_version": selected, "citations": [] if blocked else citations,
                     "update_available": bool(head and head[0] != selected), "pending_review_count": pending,

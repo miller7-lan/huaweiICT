@@ -1,6 +1,91 @@
 {
-  "captured_at": "2026-10-15T17:40:01.050919+00:00",
+  "captured_at": "2026-10-15T18:33:08.866268+00:00",
   "records": [
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-afb82e8141a1a337b3412625",
+      "base_revision": null,
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "initial_candidate"
+      ],
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "base_original_sha256": null,
+      "chunk_counts": {
+        "before": 0,
+        "after": 14
+      },
+      "added_locators": [
+        "第一条",
+        "第一百五十七条",
+        "第一百五十九条",
+        "第一百五十五条",
+        "第一百六十一条",
+        "第一百六十三条",
+        "第一百六十二条",
+        "第一百六十五条",
+        "第一百六十四条",
+        "第七条",
+        "第九条",
+        "第二百三十五条",
+        "第二百三十六条",
+        "第二百三十四条"
+      ],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [],
+      "affected_topic_codes": [
+        "capture",
+        "delivery",
+        "duration",
+        "effectivity",
+        "eligibility",
+        "fee",
+        "location",
+        "materials",
+        "privacy"
+      ],
+      "mixed_branch_mentions": true,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "8e73e26c6b98dd0aea9eb70a120b8d66ffc55fa09f452b5f17231ac02dced5f3",
+      "source_id": "HN-NORM-PUBLISHER"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-01e4a7686991d06c8135e431",
+      "base_revision": null,
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "initial_candidate"
+      ],
+      "original_sha256": "463e687bb0eaa804722b3e1bb5672e4365ea7c3dc339a9173428dd46fdccde52",
+      "base_original_sha256": null,
+      "chunk_counts": {
+        "before": 0,
+        "after": 1
+      },
+      "added_locators": [
+        "正文段落3"
+      ],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [],
+      "affected_topic_codes": [
+        "eligibility"
+      ],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "a58d665436b9ef258286c1687930497f088a5154e8a42a4d6fce5bc6332e6861",
+      "source_id": "HN-UPDATE-GS-01"
+    },
     {
       "analysis_version": "revision-impact-v1",
       "revision": "rev-5ba23b3637717a20b90b7503",
@@ -245,10 +330,10 @@
         "interpretation": "Some selected clauses match; this does not establish that whole documents or effective versions are identical"
       }
     ],
-    "current_document_records": 5,
-    "distinct_original_hashes": 5,
+    "current_document_records": 7,
+    "distinct_original_hashes": 7,
     "warning": "Records with the same reported number can be distinct versions; similarity never grants publication or merges scope",
-    "analysis_sha256": "30e84c3dd6cb2203fa2beec608079f4e41f58c48c5ff97fd6a2aab416ccd31d3"
+    "analysis_sha256": "c5f944c9bee17eae56e64725fa642c13f92378821a7615cefe6246672785fcdc"
   },
   "business_review_completed": false,
   "scope": "Actual archived candidate differences and potential mirror signals; no policy effectivity decision or automatic consolidation"

@@ -117,6 +117,16 @@ def test_paused_or_stale_source_stops_approved_publication(evaluated):
         store.publish(version, "SYNTHETIC_TEST_ONLY", True)
 
 
+def test_recent_success_does_not_allow_publication_after_a_newer_failure(evaluated):
+    store, _, version, report = evaluated
+    store.record_evaluation(version, report, "SYNTHETIC_TEST_ONLY", True)
+    with store.db() as db:
+        db.execute("UPDATE sites SET failures=1")
+    with pytest.raises(ValueError, match="recently checked"):
+        store.publish(version, "SYNTHETIC_TEST_ONLY", True)
+    assert not store.status()["publications"]
+
+
 @pytest.mark.parametrize("broken_policy", ["missing", "weakened"])
 def test_missing_or_weakened_policy_cannot_disable_quality_gate(evaluated, broken_policy):
     store, _, version, _ = evaluated

@@ -57,7 +57,8 @@ def main():
         "revision_impact_available": True, "possible_duplicate_group_count": len(packet["possible_duplicate_groups"]["groups"]),
         "source_coverage": {"national_law": "same_2011_act_two_archived_selections_new_official_mirror_monitored_dates_pending",
             "national_norms": "two_candidates_pending_date_and_applicability_review",
-            "provincial_norms": "original_not_acquired_this_run",
+            "provincial_norms": "publisher_html_fourteen_clauses_archived_scanned_notice_not_acquired_later_changes_pending",
+            "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
             "municipal_changes": "not_established",
             "district_guide": "archived_candidate_current_access_paused"}}
     (ROOT / "evidence/knowledge-update/review-readiness.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

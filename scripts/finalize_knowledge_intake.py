@@ -80,7 +80,7 @@ def main():
                                       "checks": len(record.get("checks", {}))}
     report = {"captured_at": datetime.now(timezone.utc).isoformat(), "counts": status["counts"],
               "enabled_source_ids": [s["id"] for s in status["sites"] if s["enabled"]],
-              "healthy_monitored_source_ids": [s["id"] for s in status["sites"] if s["enabled"] and not s["paused_reason"] and s["last_success"] and not s["stale"]],
+              "healthy_monitored_source_ids": [s["id"] for s in status["sites"] if s["enabled"] and not s["paused_reason"] and not s["failures"] and s["last_success"] and not s["stale"]],
               "paused_source_ids": [s["id"] for s in status["sites"] if s["paused_reason"]],
               "test_count": test_count, "tests_passed": tests_passed, "platform_tools": tool_names,
               "public_files_scanned": scanned, "credential_hit_paths": credential_hits,
