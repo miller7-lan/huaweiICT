@@ -72,6 +72,10 @@ def main():
     version_run = json.loads(version_path.read_text(encoding="utf-8")) if version_path.exists() else {}
     consultation_path = ROOT / "evidence/knowledge-update/native-consultation.json"
     consultation = json.loads(consultation_path.read_text(encoding="utf-8")) if consultation_path.exists() else {}
+    ocr_path = ROOT / "evidence/knowledge-update/henan-scan-ocr.json"
+    ocr = json.loads(ocr_path.read_text(encoding="utf-8")) if ocr_path.exists() else {}
+    background_ocr_path = ROOT / "evidence/knowledge-update/background-ocr-check.json"
+    background_ocr = json.loads(background_ocr_path.read_text(encoding="utf-8")) if background_ocr_path.exists() else {}
     startup_evidence = {}
     for filename in ("startup-recovery-first-pass.json", "startup-healthy-followup.json", "startup-manual-control.json"):
         path = ROOT / "evidence/knowledge-update" / filename
@@ -95,6 +99,8 @@ def main():
               "dynamic_consultation_preview_passed": consultation.get("passed", False),
               "dynamic_consultation_preview_cases": len(consultation.get("records", [])),
               "dynamic_consultation_preview_agents": consultation.get("preview_agents", {}),
+              "native_pdf_ocr_passed": ocr.get("passed"), "native_pdf_ocr_sources": ocr.get("normal_guarded_monitored_sources"),
+              "native_pdf_ocr_pages": ocr.get("automatic_ocr_pages"), "background_pdf_ocr_passed": background_ocr.get("passed"),
               "local_startup": status["startup"], "startup_evidence": startup_evidence,
               "github_final_push_completed": False,
               "scope": "Actual candidate intake, monitoring, MCP transport/catalog and separately recorded fixed/dynamic-question model stop tests; no business-accuracy or official-policy approval claim."}

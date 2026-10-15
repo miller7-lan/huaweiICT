@@ -47,6 +47,10 @@ def validate_config(config):
         raise ValueError("Explicit discovery opt-in required")
     from gov_mcp.knowledge_discovery import validate_discovery
     validate_discovery(config)
+    if "pdf_ocr" in config and config["pdf_ocr"] != {"engine": "windows.media.ocr", "language": "zh-Hans-CN"}:
+        raise ValueError("Explicit supported Windows OCR source configuration required")
+    if config.get("pdf_ocr") and (config.get("include_articles") or config.get("include_paragraph_keywords")):
+        raise ValueError("OCR cannot silently replace a bounded HTML selection")
     start_title = config.get("article_start_title")
     if start_title is not None and (not isinstance(start_title, str) or not start_title.strip() or len(start_title) > 200 or not config.get("include_articles")):
         raise ValueError("Explicit bounded consolidated-text title and article selection required")
@@ -454,7 +458,7 @@ def worker_once(store, fetcher=None, owner=None, now=None):
         if not config["enabled"]:
             db.execute("UPDATE jobs SET state='failed',error='SOURCE_DISABLED' WHERE id=?", (job["id"],))
             return True
-        db.execute("UPDATE jobs SET state='running',attempts=attempts+1,lease_until=?,owner=? WHERE id=?", (now+180, owner, job["id"]))
+        db.execute("UPDATE jobs SET state='running',attempts=attempts+1,lease_until=?,owner=? WHERE id=?", (now+(600 if config.get("pdf_ocr") else 180), owner, job["id"]))
     try:
         from gov_mcp.knowledge_discovery import INDEX_KINDS, XML_TYPES, record_index, target_kind
         with store.db() as db:
@@ -473,6 +477,7 @@ def worker_once(store, fetcher=None, owner=None, now=None):
             refresh_unchanged_document(store, config, job["url"])
         elif status == 200 and not is_index:
             article_preface = None
+            pdf_extraction = None
             content_type = headers.get("content-type", "").split(";")[0].strip()
             if content_type not in ("text/html", "application/xhtml+xml", "application/pdf"):
                 raise ValueError("Unsupported format; requires dedicated parser")
@@ -484,13 +489,19 @@ def worker_once(store, fetcher=None, owner=None, now=None):
                     path = Path(directory) / "input.pdf"
                     path.write_bytes(raw)
                     try:
-                        parsed = subprocess.run([sys.executable, "-m", "gov_mcp.knowledge_pdf", str(path)],
-                            capture_output=True, timeout=30, check=False)
+                        command = [sys.executable, "-m", "gov_mcp.knowledge_pdf", str(path)]
+                        if config.get("pdf_ocr"):
+                            command.append("--windows-ocr")
+                        parsed = subprocess.run(command, capture_output=True, timeout=150 if config.get("pdf_ocr") else 30,
+                            check=False, creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0)
                     except subprocess.TimeoutExpired as error:
                         raise ValueError("PDF parsing timed out") from error
                     if parsed.returncode or len(parsed.stdout) > MAX_BYTES:
                         raise ValueError("PDF parser failed; inspect isolated input")
-                    chunks, links = json.loads(parsed.stdout), []
+                    document = json.loads(parsed.stdout)
+                    if not isinstance(document, dict) or document.get("schema") != 1 or not isinstance(document.get("chunks"), list) or not isinstance(document.get("extraction"), dict):
+                        raise ValueError("Bounded PDF extraction protocol required")
+                    chunks, links, pdf_extraction = document["chunks"], [], document["extraction"]
             else:
                 chunks, links = parse_html(raw, config.get("content_selector"), min_text_length=1 if config.get("include_articles") else 8,
                                            excluded_selectors=config.get("excluded_content_selectors"))
@@ -509,6 +520,8 @@ def worker_once(store, fetcher=None, owner=None, now=None):
                     {"schema": 1, "media_type": "application/pdf", "raw_sha256": fingerprint(raw)}
                     if content_type == "application/pdf" else observe_html(raw, config.get("metadata_selectors"),
                         content_selector=config.get("content_selector"), excluded_selectors=config.get("excluded_content_selectors")))
+                if pdf_extraction:
+                    metadata["source_observation"]["pdf_extraction"] = pdf_extraction
                 if article_preface is not None:
                     metadata["source_observation"]["selected_article_preface"] = article_preface
                 from gov_mcp.knowledge_discovery import document_discovery_signal

@@ -11,6 +11,18 @@ from nexent_api import ROOT, RUNTIME
 
 
 TARGETS = {
+    "measures-2021-pdf": {"id": "HN-MEASURES-2021-PDF", "origin": "https://oss.henan.gov.cn", "path": "/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+        "label": "省厅2021便民措施栏目直接附件（文件年份待核）", "type": "official_convenience_measures_candidate", "role": "core_candidate",
+        "archive": "henan-measures-2021.pdf", "report": "henan-measures-2021-pdf-intake.json", "media_type": "application/pdf",
+        "basis": "Exact PDF attachment observed in the selected content of the provincial police normative publication https://hnga.henan.gov.cn/2021/06-01/2156062.html (parent archive SHA256 07311ee44758195fde18e8739d681ff7cbc7fdfaff18b0e1393849ff4bebd6d1). Private integrity archive and attributed administrative normative-text analysis under Copyright Law Article 5(1); this exact object only, no general object-storage permission or current applicability approval."},
+    "repeal-2020-pdf": {"id": "HN-REPEAL-2020-PDF", "origin": "https://oss.henan.gov.cn", "path": "/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf",
+        "label": "省厅2020废止通知栏目直接附件（文件年份待核）", "type": "official_normative_repeal_list", "role": "validity_candidate",
+        "archive": "henan-repeal-2020.pdf", "report": "henan-repeal-2020-pdf-intake.json", "media_type": "application/pdf",
+        "basis": "Exact PDF attachment observed in the selected content of https://hnga.henan.gov.cn/2020/12-29/2069144.html (parent archive SHA256 1031c0d6f8f3ee68a77bc3f361ac64cc9e5d092dd7d9dd15c0881dec164529ae). Private integrity archive and attributed administrative normative-text analysis under Copyright Law Article 5(1); no permission for unrelated storage objects or assertion of present effectivity."},
+    "repeal-2021-pdf": {"id": "HN-REPEAL-2021-PDF", "origin": "https://oss.henan.gov.cn", "path": "/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf",
+        "label": "省厅2021废止通知栏目直接附件（文件年份待核）", "type": "official_normative_repeal_list", "role": "validity_candidate",
+        "archive": "henan-repeal-2021.pdf", "report": "henan-repeal-2021-pdf-intake.json", "media_type": "application/pdf",
+        "basis": "Exact PDF attachment observed in the selected content of https://hnga.henan.gov.cn/2021/12-24/2371407.html (parent archive SHA256 e51b2ee99c0370d500cbeaed75a06f2826e191c7ceb0ad4dc4f46b8107d07f11). Private integrity archive and attributed administrative normative-text analysis under Copyright Law Article 5(1); this exact attachment only, present business applicability remains unapproved."},
     "validity-pdf": {"id": "HN-VALIDITY-2025-PDF", "origin": "https://xcoss.henan.gov.cn", "path": "/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf",
         "label": "2025栏目载入的省厅2019效力清理通知：扫描附件", "type": "official_normative_validity_list", "role": "validity_candidate",
         "archive": "henan-current-list-2025.pdf", "report": "henan-validity-pdf-intake.json", "media_type": "application/pdf",

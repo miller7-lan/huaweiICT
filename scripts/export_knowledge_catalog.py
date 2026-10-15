@@ -15,7 +15,7 @@ def main():
     with store.db() as db:
         for row in db.execute("SELECT * FROM sites ORDER BY id"):
             config = json.loads(row["config"])
-            fields = ("id", "label", "origin", "allowed_paths", "seeds", "interval_seconds", "delay_seconds", "page_kind", "discovery_format")
+            fields = ("id", "label", "origin", "allowed_paths", "seeds", "interval_seconds", "delay_seconds", "page_kind", "discovery_format", "pdf_ocr")
             sources.append({**{key: config[key] for key in fields if key in config}, "enabled_at_snapshot": config["enabled"],
                 "paused_reason": row["paused_reason"], "last_success": row["last_success"],
                 "access_screen_actor_kind": config.get("access_review", {}).get("actor_kind"),
@@ -29,6 +29,8 @@ def main():
             documents.append({"source_id": row["site_id"], "url": row["url"], "revision": row["id"], "state": row["state"],
                 "original_sha256": row["sha256"], "original_bytes": original.stat().st_size,
                 "metadata": {key: metadata[key] for key in metadata_fields if key in metadata},
+                "pdf_extraction": {key: value for key, value in metadata.get("source_observation", {}).get("pdf_extraction", {}).items()
+                                   if key in ("method", "algorithm", "language", "requires_visual_review", "confidence_available", "text_normalization", "rendering_scope")},
                 "selected_clauses": [{"locator": chunk["locator"], "category": chunk["category"], "characters": len(chunk["text"]),
                                       "text_sha256": fingerprint(chunk["text"].encode("utf-8"))} for chunk in selected]})
     report = {"schema_version": 1, "kind": "candidate_retrieval_catalog_not_import_or_approval",

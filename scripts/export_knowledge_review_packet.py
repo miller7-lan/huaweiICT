@@ -59,6 +59,7 @@ def main():
             "national_norms": "two_candidates_pending_date_and_applicability_review",
             "provincial_norms": "publisher_html_fourteen_clauses_archived_scanned_notice_not_acquired_later_changes_pending",
             "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
+            "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
             "municipal_changes": "not_established",
             "district_guide": "archived_candidate_current_access_paused"}}
     (ROOT / "evidence/knowledge-update/review-readiness.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

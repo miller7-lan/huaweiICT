@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-15T19:13:09.188559+00:00",
+  "captured_at": "2026-10-15T19:43:14.466838+00:00",
   "counts": {
-    "sites": 21,
-    "documents": 17,
-    "revisions": 31,
-    "chunks": 202,
+    "sites": 24,
+    "documents": 20,
+    "revisions": 39,
+    "chunks": 221,
     "versions": 0,
     "heads": 0,
-    "jobs": 18,
-    "latest_chunks": 111
+    "jobs": 21,
+    "latest_chunks": 123
   },
   "sources": [
     {
@@ -49,6 +49,29 @@
       "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-MEASURES-2021-PDF",
+      "label": "河南省公安厅关于印发2021年便民利企服务新举措的通知：扫描原件及OCR候选",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf"
+      ],
+      "seeds": [
+        "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792093046.5589323,
+      "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
     {
@@ -104,6 +127,52 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792091554.929518,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-REPEAL-2020-PDF",
+      "label": "河南省公安厅关于废止部分行政规范性文件的通知（2020）：扫描原件及OCR候选",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf"
+      ],
+      "seeds": [
+        "https://oss.henan.gov.cn/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792092725.3702474,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-REPEAL-2021-PDF",
+      "label": "河南省公安厅关于废止部分行政规范性文件的通知（2021）：扫描原件及OCR候选",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf"
+      ],
+      "seeds": [
+        "https://oss.henan.gov.cn/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792092733.2859786,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -414,6 +483,85 @@
   ],
   "documents": [
     {
+      "source_id": "HN-MEASURES-2021-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+      "revision": "rev-8b7122564ad26233a10d35f2",
+      "state": "pending_review",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "original_bytes": 1533949,
+      "metadata": {
+        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_convenience_measures_candidate",
+        "document_number": "豫公〔2021〕16号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "core_candidate"
+      },
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 357,
+          "text_sha256": "86f7f9e26457c61281618ebaef045fcd97273908e9f079883bbb44254db75faf"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 776,
+          "text_sha256": "08c9a17df9284cfd60715346606f1e618d6d775bfcd3503fa66e3c54e1443aee"
+        },
+        {
+          "locator": "PDF第3页（OCR待核对）",
+          "category": "procedure",
+          "characters": 712,
+          "text_sha256": "5958ab51bbb26e8e2a1ce474c1d58233631c079956650b206c93c2257edce3df"
+        },
+        {
+          "locator": "PDF第4页（OCR待核对）",
+          "category": "procedure",
+          "characters": 302,
+          "text_sha256": "ec6e0edb16ae35d65d4f2e891d9bde3cec1d6d4938b886729da7aaff4f2d563e"
+        },
+        {
+          "locator": "PDF第5页（OCR待核对）",
+          "category": "procedure",
+          "characters": 501,
+          "text_sha256": "03f2a4a1f3f5092d8cb4d4ab6c2b93036d9a0d9e4b7a545f0ad268700ada20a3"
+        },
+        {
+          "locator": "PDF第6页（OCR待核对）",
+          "category": "procedure",
+          "characters": 576,
+          "text_sha256": "56cfc352c7988b1a964207b63dd6f7fa143512b50457d6bc3266aad281f29bf4"
+        },
+        {
+          "locator": "PDF第7页（OCR待核对）",
+          "category": "procedure",
+          "characters": 559,
+          "text_sha256": "bf901d32f3ecb635937c06c9f81333d5561c55a57f47792032b7f7b39bb7c70b"
+        },
+        {
+          "locator": "PDF第8页（OCR待核对）",
+          "category": "procedure",
+          "characters": 308,
+          "text_sha256": "cd47520c0e701b5b4f221f3c4e8bac9f10057e965645543f500f845d59e7017d"
+        }
+      ]
+    },
+    {
       "source_id": "HN-NORM-PUBLISHER",
       "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
       "revision": "rev-3221c16ab130408cb59cd2b6",
@@ -431,6 +579,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "第一条",
@@ -520,87 +669,6 @@
     },
     {
       "source_id": "HN-POLICY-DISCOVERY",
-      "url": "https://hnga.henan.gov.cn/2021/12-24/2371407.html",
-      "revision": "rev-305dacdaba72b27582bbb87f",
-      "state": "pending_review",
-      "original_sha256": "e51b2ee99c0370d500cbeaed75a06f2826e191c7ceb0ad4dc4f46b8107d07f11",
-      "original_bytes": 6289,
-      "metadata": {
-        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
-        "region": "unknown",
-        "matter": "unclassified",
-        "document_type": "official_policy_candidate",
-        "published_at": null,
-        "effective_from": null,
-        "effective_to": null,
-        "scope_confirmed": false,
-        "collection_role": "discovery_candidate"
-      },
-      "selected_clauses": [
-        {
-          "locator": "正文段落1",
-          "category": "procedure",
-          "characters": 26,
-          "text_sha256": "ab8e46ac3982f2db3a486c00faab789bc79398298d5160a644a088cc8b12b5f7"
-        }
-      ]
-    },
-    {
-      "source_id": "HN-POLICY-DISCOVERY",
-      "url": "https://hnga.henan.gov.cn/2021/06-01/2156062.html",
-      "revision": "rev-b2028b34cb701ec765af97b5",
-      "state": "pending_review",
-      "original_sha256": "07311ee44758195fde18e8739d681ff7cbc7fdfaff18b0e1393849ff4bebd6d1",
-      "original_bytes": 6324,
-      "metadata": {
-        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知",
-        "region": "unknown",
-        "matter": "unclassified",
-        "document_type": "official_policy_candidate",
-        "published_at": null,
-        "effective_from": null,
-        "effective_to": null,
-        "scope_confirmed": false,
-        "collection_role": "discovery_candidate"
-      },
-      "selected_clauses": [
-        {
-          "locator": "正文段落1",
-          "category": "procedure",
-          "characters": 31,
-          "text_sha256": "e95587fd6dbe03a1bc94d2054a1ced1e8a0f9dc5305944c775d040470f13a1c1"
-        }
-      ]
-    },
-    {
-      "source_id": "HN-POLICY-DISCOVERY",
-      "url": "https://hnga.henan.gov.cn/2020/12-29/2069144.html",
-      "revision": "rev-1ec8d03764aba399870269c9",
-      "state": "pending_review",
-      "original_sha256": "1031c0d6f8f3ee68a77bc3f361ac64cc9e5d092dd7d9dd15c0881dec164529ae",
-      "original_bytes": 6297,
-      "metadata": {
-        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
-        "region": "unknown",
-        "matter": "unclassified",
-        "document_type": "official_policy_candidate",
-        "published_at": null,
-        "effective_from": null,
-        "effective_to": null,
-        "scope_confirmed": false,
-        "collection_role": "discovery_candidate"
-      },
-      "selected_clauses": [
-        {
-          "locator": "正文段落1",
-          "category": "procedure",
-          "characters": 27,
-          "text_sha256": "e9520d85097c8d30bd8c1b7ce8cc1ef2b2534c4350b5b57f3e028844750b53e6"
-        }
-      ]
-    },
-    {
-      "source_id": "HN-POLICY-DISCOVERY",
       "url": "https://hnga.henan.gov.cn/2022/03-18/2417195.html",
       "revision": "rev-4f4f86c3c7fb597b6f19789f",
       "state": "excluded",
@@ -617,6 +685,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "正文段落1",
@@ -758,6 +827,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "正文段落1",
@@ -827,6 +897,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "正文段落1",
@@ -932,6 +1003,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "正文段落1",
@@ -959,12 +1031,183 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "正文段落1",
           "category": "procedure",
           "characters": 26,
           "text_sha256": "ab8e46ac3982f2db3a486c00faab789bc79398298d5160a644a088cc8b12b5f7"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2021/06-01/2156062.html",
+      "revision": "rev-21178358d04ed58f2d6721cd",
+      "state": "excluded",
+      "original_sha256": "07311ee44758195fde18e8739d681ff7cbc7fdfaff18b0e1393849ff4bebd6d1",
+      "original_bytes": 6324,
+      "metadata": {
+        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 31,
+          "text_sha256": "e95587fd6dbe03a1bc94d2054a1ced1e8a0f9dc5305944c775d040470f13a1c1"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2020/12-29/2069144.html",
+      "revision": "rev-733ce95d510f7207deaeef41",
+      "state": "excluded",
+      "original_sha256": "1031c0d6f8f3ee68a77bc3f361ac64cc9e5d092dd7d9dd15c0881dec164529ae",
+      "original_bytes": 6297,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "e9520d85097c8d30bd8c1b7ce8cc1ef2b2534c4350b5b57f3e028844750b53e6"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2021/12-24/2371407.html",
+      "revision": "rev-67bbaf462202dcfb3198e58b",
+      "state": "excluded",
+      "original_sha256": "e51b2ee99c0370d500cbeaed75a06f2826e191c7ceb0ad4dc4f46b8107d07f11",
+      "original_bytes": 6289,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "ab8e46ac3982f2db3a486c00faab789bc79398298d5160a644a088cc8b12b5f7"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-REPEAL-2020-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf",
+      "revision": "rev-d244f722b925bc2daec99b9f",
+      "state": "excluded",
+      "original_sha256": "0f30596cce1fd8e22a62c315b368beddf829e462fcbc99067aaa703ea13ee0c2",
+      "original_bytes": 263407,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知（2020）",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_repeal_list",
+        "document_number": "豫公通〔2020〕122号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "validity_candidate"
+      },
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 347,
+          "text_sha256": "6cf6a0885f1b35fbdf8fb4ee15fd1604d6acd2893e071662920d52917b88e52a"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 242,
+          "text_sha256": "8f1a3c0680c5e81ed2e10310cd73694d8edc5935db7bbf821670566168ded3f9"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-REPEAL-2021-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf",
+      "revision": "rev-bff7e711bdcd08ee19c7692a",
+      "state": "excluded",
+      "original_sha256": "c5af193ea4d4cd4a1c150c9177e43d17aeba3a24b36409f5f4ada3fad702502e",
+      "original_bytes": 269670,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知（2021）",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_repeal_list",
+        "document_number": "豫公通〔2021〕108号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "validity_candidate"
+      },
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 312,
+          "text_sha256": "19bcbe313135bf2f0f7c7dc7c3d5978b6703c53e2e1726cd1892105e980c797d"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 273,
+          "text_sha256": "b98b4318983cde6c0625b986976385c93c683029554d4412246ff0e66a1fd7b9"
         }
       ]
     },
@@ -989,6 +1232,7 @@
         "scope_confirmed": false,
         "collection_role": "governance_reference"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "PDF第1至2页（AI视觉转录）",
@@ -1016,6 +1260,7 @@
         "scope_confirmed": false,
         "collection_role": "update_signal"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "正文段落3",
@@ -1046,6 +1291,7 @@
         "scope_confirmed": false,
         "collection_role": "governance_reference"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "PDF第1页（AI视觉转录）",
@@ -1074,6 +1320,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "第二条",
@@ -1167,6 +1414,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "材料列表第1项（适用分支待复核）",
@@ -1212,6 +1460,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "第十条",
@@ -1258,6 +1507,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "第一条",
@@ -1346,6 +1596,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "pdf_extraction": {},
       "selected_clauses": [
         {
           "locator": "正文段落1",

@@ -4,7 +4,7 @@
   "status": "ai_source_checked_draft",
   "author_kind": "ai",
   "reviewer": "Codex AI",
-  "captured_at": "2026-10-15T19:11:22.465427+00:00",
+  "captured_at": "2026-10-15T19:34:19.863778+00:00",
   "scope": {
     "region": "郑州市二七区",
     "matter": "demo-id-renewal",
@@ -190,6 +190,22 @@
         "第二百三十四条",
         "第二百三十五条",
         "第二百三十六条"
+      ]
+    },
+    "HN-MEASURES-2021-PDF": {
+      "site_id": "HN-MEASURES-2021-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+      "revision": "rev-8b7122564ad26233a10d35f2",
+      "sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "locators": [
+        "PDF第1页（OCR待核对）",
+        "PDF第2页（OCR待核对）",
+        "PDF第3页（OCR待核对）",
+        "PDF第4页（OCR待核对）",
+        "PDF第5页（OCR待核对）",
+        "PDF第6页（OCR待核对）",
+        "PDF第7页（OCR待核对）",
+        "PDF第8页（OCR待核对）"
       ]
     }
   },
@@ -477,15 +493,22 @@
       "question": "本地户籍居民在二七区办理身份证到期换领，应该到哪个办理点？",
       "category": "location",
       "expected_behavior": "conditional_answer",
-      "ai_reference_answer": "区级页面指向户籍窗口；人和路指南提供本街道窗口线索。具体到哪个点应按辖区和当前窗口信息核对，不能把单个街道地址当作全区唯一办理点。",
+      "ai_reference_answer": "已归档并视觉核对的2021省厅措施第二项写换领、补领居民身份证省内通办，无需到户籍地派出所；这是当时全省措施，不能只凭旧区级指南断言必须回户籍派出所。人和路指南只提供单个窗口线索；当前可办窗口、受理条件及后续调整仍须核对，不能承诺每个派出所今天均受理。",
       "web_evidence_ids": [
         "ERQI-GUIDE-WEB",
         "ERQI-RENHE-WEB"
       ],
-      "archived_evidence_ids": [],
-      "archived_evidence": [],
+      "archived_evidence_ids": [
+        "HN-MEASURES-2021-PDF"
+      ],
+      "archived_evidence": [
+        {
+          "revision": "rev-8b7122564ad26233a10d35f2",
+          "locator": "PDF第5页（OCR待核对）"
+        }
+      ],
       "unresolved": [
-        "未取得全区最新窗口清单"
+        "2021措施的后续适用关系及最新窗口清单未完整核定；PDF有OCR误字，保留原件与视觉检查记录"
       ],
       "human_review_status": "not_performed",
       "tested_agent_output_used_as_reference": false
@@ -543,13 +566,14 @@
       "question": "受理以后多久能领新身份证，工作日和自然日怎么计算？",
       "category": "duration",
       "expected_behavior": "conditional_answer",
-      "ai_reference_answer": "法律第12条的60日、国家规范第80条的45日与区级指南15个工作日属于不同依据层次。应分别标明，不能直接等同或擅自换算成同一日期；本地最新承诺时限仍需核对。",
+      "ai_reference_answer": "法律第12条的60日、国家规范第80条的45日、2021省厅措施第三项的30自然日与区级指南15个工作日属于不同依据层次。省厅原件第5至6页明确将受理之日起到领证之日的周期由40自然日压缩至30日；可以按该文件及日期说明，不能将其与区级工作日直接换算成统一承诺，也不能只挑最长或最短时限保证当前结果。",
       "web_evidence_ids": [
         "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
         "ID-LAW-01",
         "MPS-NORM-01",
+        "HN-MEASURES-2021-PDF",
         "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
@@ -562,12 +586,20 @@
           "locator": "第八十条"
         },
         {
+          "revision": "rev-8b7122564ad26233a10d35f2",
+          "locator": "PDF第5页（OCR待核对）"
+        },
+        {
+          "revision": "rev-8b7122564ad26233a10d35f2",
+          "locator": "PDF第6页（OCR待核对）"
+        },
+        {
           "revision": "rev-3221c16ab130408cb59cd2b6",
           "locator": "第一百六十三条"
         }
       ],
       "unresolved": [
-        "最新本地承诺及起算说明待核"
+        "2021措施现行适用及最新二七区承诺仍需核定；机器识别不替代原件视觉核查"
       ],
       "human_review_status": "not_performed",
       "tested_agent_output_used_as_reference": false
@@ -977,5 +1009,5 @@
       "tested_agent_output_used_as_reference": false
     }
   ],
-  "content_sha256": "8b4008b799a181e09de44cac03765f95fa73c6522d233c1813f727653ca9abba"
+  "content_sha256": "99a05e8782315cf915b3f0464657273c707ac55633e41406712b05bb11d70e5e"
 }

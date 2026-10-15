@@ -16,7 +16,7 @@ knowledge = ["pypdf==6.20.1"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-gov_mcp = ["*.html"]
+gov_mcp = ["*.html", "knowledge_ocr_windows.ps1"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

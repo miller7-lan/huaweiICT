@@ -1,19 +1,22 @@
 {
-  "captured_at": "2026-10-15T19:18:03.117011+00:00",
+  "captured_at": "2026-10-15T19:43:15.634270+00:00",
   "counts": {
-    "sites": 21,
-    "documents": 17,
-    "revisions": 31,
-    "chunks": 202,
+    "sites": 24,
+    "documents": 20,
+    "revisions": 39,
+    "chunks": 221,
     "versions": 0,
     "heads": 0,
-    "jobs": 18,
-    "latest_chunks": 111
+    "jobs": 21,
+    "latest_chunks": 123
   },
   "enabled_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
+    "HN-MEASURES-2021-PDF",
     "HN-NORM-PUBLISHER",
     "HN-POLICY-DISCOVERY",
+    "HN-REPEAL-2020-PDF",
+    "HN-REPEAL-2021-PDF",
     "HN-UPDATE-GS-01",
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
@@ -23,8 +26,11 @@
   ],
   "healthy_monitored_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
+    "HN-MEASURES-2021-PDF",
     "HN-NORM-PUBLISHER",
     "HN-POLICY-DISCOVERY",
+    "HN-REPEAL-2020-PDF",
+    "HN-REPEAL-2021-PDF",
     "HN-UPDATE-GS-01",
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
@@ -38,13 +44,13 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 275,
+  "test_count": 295,
   "tests_passed": true,
   "platform_tools": [
     "govkb_get_environment_status",
     "govkb_search_evidence"
   ],
-  "public_files_scanned": 547,
+  "public_files_scanned": 559,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -95,6 +101,10 @@
     "govkb_consultation_preview_citizen": 16,
     "govkb_consultation_preview_staff": 17
   },
+  "native_pdf_ocr_passed": true,
+  "native_pdf_ocr_sources": 3,
+  "native_pdf_ocr_pages": 12,
+  "background_pdf_ocr_passed": true,
   "local_startup": {
     "registration": {
       "installed": true,
@@ -112,13 +122,13 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792091761,
+      "checked_at": 1792093261,
       "action": "healthy",
       "ready": true,
       "recovery_count": 1,
       "last_recovered_at": 1792084570,
       "last_recovered_supervisor_pid": 56584,
-      "supervisor_pid": 51140,
+      "supervisor_pid": 62052,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"
