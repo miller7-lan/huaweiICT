@@ -96,6 +96,11 @@ class KnowledgeStore:
                     site_id TEXT NOT NULL REFERENCES sites(id), url TEXT NOT NULL,
                     parser_truncated INTEGER NOT NULL, entry_count INTEGER NOT NULL,
                     checked_at REAL NOT NULL, PRIMARY KEY(site_id,url));
+                CREATE TABLE IF NOT EXISTS attachment_edges(
+                    parent_document_id TEXT NOT NULL REFERENCES documents(id), target_url TEXT NOT NULL,
+                    parent_revision TEXT NOT NULL REFERENCES revisions(id), target_site_id TEXT REFERENCES sites(id),
+                    link_title TEXT NOT NULL, status TEXT NOT NULL, observed_at REAL NOT NULL, error TEXT,
+                    PRIMARY KEY(parent_document_id,target_url));
                 CREATE TABLE IF NOT EXISTS workers(id TEXT PRIMARY KEY, heartbeat REAL NOT NULL, progress TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS audit(
                     id INTEGER PRIMARY KEY, at REAL NOT NULL, action TEXT NOT NULL, data TEXT NOT NULL);
@@ -544,15 +549,19 @@ class KnowledgeStore:
                       for t in ("sites", "documents", "revisions", "chunks", "versions", "heads", "jobs")}
             counts["latest_chunks"] = db.execute("SELECT COUNT(*) FROM chunks WHERE revision_id IN (SELECT id FROM revisions WHERE rowid IN (SELECT MAX(rowid) FROM revisions GROUP BY document_id))").fetchone()[0]
             sites = []
+            from gov_mcp.knowledge_attachments import attachment_status, dormant_collector
             for row in db.execute("SELECT * FROM sites ORDER BY id"):
                 item = dict(row)
                 config = json.loads(item.pop("config"))
+                waiting = dormant_collector(db, config)
                 item.update(enabled=config["enabled"], label=config["label"],
-                            stale=bool(config["enabled"] and (not row["last_success"] or time.time()-row["last_success"] > config["interval_seconds"]+900)))
+                            waiting_for_attachment=waiting,
+                            stale=bool(config["enabled"] and not waiting and (not row["last_success"] or time.time()-row["last_success"] > config["interval_seconds"]+900)))
                 sites.append(item)
             return {"mode": "knowledge_update", "counts": counts, "sites": sites,
                     "startup": startup,
                     "discovery": discovery_status(db),
+                    "attachments": attachment_status(db),
                     "pending_review": [dict(r) | {"metadata": json.loads(r["metadata"])} for r in db.execute("SELECT id,metadata,state FROM revisions WHERE state='pending_review' AND rowid IN (SELECT MAX(rowid) FROM revisions GROUP BY document_id)")],
                     "excluded_candidates": [dict(r) for r in db.execute("SELECT r.id,e.reviewer,e.reason,e.reviewed_at FROM revisions r JOIN exclusions e ON e.revision_id=r.id WHERE r.state='excluded' AND r.rowid IN (SELECT MAX(rowid) FROM revisions GROUP BY document_id)")],
                     "publications": [dict(r) for r in db.execute("SELECT * FROM heads")],

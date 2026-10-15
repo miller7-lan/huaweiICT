@@ -1,10 +1,10 @@
 {
-  "captured_at": "2026-10-15T19:43:15.634270+00:00",
+  "captured_at": "2026-10-15T20:25:01.810051+00:00",
   "counts": {
-    "sites": 24,
+    "sites": 26,
     "documents": 20,
-    "revisions": 39,
-    "chunks": 221,
+    "revisions": 54,
+    "chunks": 247,
     "versions": 0,
     "heads": 0,
     "jobs": 21,
@@ -14,10 +14,12 @@
     "BEIJING-POLICY-DISCOVERY",
     "HN-MEASURES-2021-PDF",
     "HN-NORM-PUBLISHER",
+    "HN-OSS-PDF-DISCOVERY",
     "HN-POLICY-DISCOVERY",
     "HN-REPEAL-2020-PDF",
     "HN-REPEAL-2021-PDF",
     "HN-UPDATE-GS-01",
+    "HN-XCOSS-PDF-DISCOVERY",
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
     "MPS-USE-01",
@@ -44,13 +46,13 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 295,
+  "test_count": 316,
   "tests_passed": true,
   "platform_tools": [
     "govkb_get_environment_status",
     "govkb_search_evidence"
   ],
-  "public_files_scanned": 559,
+  "public_files_scanned": 569,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -78,11 +80,11 @@
     },
     {
       "source_id": "HN-POLICY-DISCOVERY",
-      "cycle_id": 2,
-      "started_at": 1792091004.3578174,
+      "cycle_id": 3,
+      "started_at": 1792094836.8297648,
       "limited": false,
       "index_pages_scheduled": 2,
-      "new_document_jobs": 8,
+      "new_document_jobs": 0,
       "unvisited_cached_targets": 0,
       "parser_truncated": false,
       "active_jobs": 0,
@@ -105,6 +107,58 @@
   "native_pdf_ocr_sources": 3,
   "native_pdf_ocr_pages": 12,
   "background_pdf_ocr_passed": true,
+  "attachment_discovery": [
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "parent_url": "https://hnga.henan.gov.cn/2020/12-29/2069144.html",
+      "statuses": {
+        "monitored_owner": 1
+      },
+      "active_jobs": 0,
+      "failed_jobs": 0
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "parent_url": "https://hnga.henan.gov.cn/2021/06-01/2156062.html",
+      "statuses": {
+        "monitored_owner": 1
+      },
+      "active_jobs": 0,
+      "failed_jobs": 0
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "parent_url": "https://hnga.henan.gov.cn/2021/12-24/2371407.html",
+      "statuses": {
+        "monitored_owner": 1
+      },
+      "active_jobs": 0,
+      "failed_jobs": 0
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "parent_url": "https://hnga.henan.gov.cn/2025/10-21/3237046.html",
+      "statuses": {
+        "excluded_history_not_monitored": 1
+      },
+      "active_jobs": 0,
+      "failed_jobs": 0
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "parent_url": "https://hnga.henan.gov.cn/2025/10-21/3237047.html",
+      "statuses": {
+        "excluded_history_not_monitored": 1
+      },
+      "active_jobs": 0,
+      "failed_jobs": 0
+    }
+  ],
+  "waiting_attachment_collectors": [
+    "HN-OSS-PDF-DISCOVERY",
+    "HN-XCOSS-PDF-DISCOVERY"
+  ],
+  "isolated_actual_attachment_flow_passed": true,
   "local_startup": {
     "registration": {
       "installed": true,
@@ -122,13 +176,13 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792093261,
+      "checked_at": 1792095662,
       "action": "healthy",
       "ready": true,
       "recovery_count": 1,
       "last_recovered_at": 1792084570,
       "last_recovered_supervisor_pid": 56584,
-      "supervisor_pid": 62052,
+      "supervisor_pid": 58900,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"

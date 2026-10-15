@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-15T19:43:14.466838+00:00",
+  "captured_at": "2026-10-15T20:14:05.947020+00:00",
   "counts": {
-    "sites": 24,
+    "sites": 26,
     "documents": 20,
-    "revisions": 39,
-    "chunks": 221,
+    "revisions": 54,
+    "chunks": 247,
     "versions": 0,
     "heads": 0,
     "jobs": 21,
@@ -70,7 +70,7 @@
       },
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792093046.5589323,
+      "last_success": 1792094942.216117,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -89,7 +89,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792091099.7095134,
+      "last_success": 1792094852.1230474,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -112,6 +112,33 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "HN-OSS-PDF-DISCOVERY",
+      "label": "省厅规范PDF附件发现：oss.henan.gov.cn",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/"
+      ],
+      "seeds": [],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "attachment_only": true,
+      "attachment_parent_sources": [
+        "HN-POLICY-DISCOVERY"
+      ],
+      "attachment_url_layout": "henan_typtfile_pdf",
+      "attachment_max_pending": 20,
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "HN-POLICY-DISCOVERY",
       "label": "河南省公安厅行政规范性文件栏目",
       "origin": "https://hnga.henan.gov.cn",
@@ -124,9 +151,40 @@
       "interval_seconds": 21600,
       "delay_seconds": 5,
       "page_kind": "index",
+      "attachment_discovery": {
+        "max_links": 5,
+        "owners": {
+          "https://oss.henan.gov.cn/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf": {
+            "policy": "monitor",
+            "source_id": "HN-REPEAL-2020-PDF"
+          },
+          "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf": {
+            "policy": "monitor",
+            "source_id": "HN-MEASURES-2021-PDF"
+          },
+          "https://oss.henan.gov.cn/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf": {
+            "policy": "monitor",
+            "source_id": "HN-REPEAL-2021-PDF"
+          },
+          "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf": {
+            "policy": "excluded_history",
+            "sha256": "f6a32e4bf55d2148b498bd00c3451912d1405bc3ca72566dc356e7fca4afbe51",
+            "source_id": "HN-VALIDITY-2025-PDF"
+          },
+          "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf": {
+            "policy": "excluded_history",
+            "sha256": "20f76fbc3bfe78bfd205e415879c15a5185ce3d07ad0e20f4114835a5f77f603",
+            "source_id": "HN-REPEAL-2025B-PDF"
+          }
+        },
+        "sources": [
+          "HN-OSS-PDF-DISCOVERY",
+          "HN-XCOSS-PDF-DISCOVERY"
+        ]
+      },
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792091554.929518,
+      "last_success": 1792094932.1594455,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -149,7 +207,7 @@
       },
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792092725.3702474,
+      "last_success": 1792094947.462473,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -172,7 +230,7 @@
       },
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792092733.2859786,
+      "last_success": 1792094957.442917,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -228,6 +286,33 @@
       "delay_seconds": 5,
       "page_kind": "document",
       "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-XCOSS-PDF-DISCOVERY",
+      "label": "省厅规范PDF附件发现：xcoss.henan.gov.cn",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/"
+      ],
+      "seeds": [],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "attachment_only": true,
+      "attachment_parent_sources": [
+        "HN-POLICY-DISCOVERY"
+      ],
+      "attachment_url_layout": "henan_typtfile_pdf",
+      "attachment_max_pending": 20,
+      "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": "machine",
@@ -485,12 +570,12 @@
     {
       "source_id": "HN-MEASURES-2021-PDF",
       "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
-      "revision": "rev-8b7122564ad26233a10d35f2",
+      "revision": "rev-b5ae6f784eae759de1b4ccd5",
       "state": "pending_review",
       "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
       "original_bytes": 1533949,
       "metadata": {
-        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知",
+        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知.pdf",
         "region": "unknown",
         "matter": "unclassified",
         "document_type": "official_convenience_measures_candidate",
@@ -988,7 +1073,7 @@
     {
       "source_id": "HN-POLICY-DISCOVERY",
       "url": "https://hnga.henan.gov.cn/2025/10-21/3237047.html",
-      "revision": "rev-9f902845de521d5bc9b14dfe",
+      "revision": "rev-610210af8967c7ff1022371a",
       "state": "excluded",
       "original_sha256": "56a9ac6c631485da5700e39f7c000e8c0680966f0203d9d72a9273a06efb0291",
       "original_bytes": 6579,
@@ -1016,7 +1101,7 @@
     {
       "source_id": "HN-POLICY-DISCOVERY",
       "url": "https://hnga.henan.gov.cn/2025/10-21/3237046.html",
-      "revision": "rev-0029a680dffeb2088f9c3260",
+      "revision": "rev-2ceb2ee5c4a192a7f4c59a55",
       "state": "excluded",
       "original_sha256": "40fb56ed8ca0d01e8af060f698ff1bda046907b6d3db5eac8707d3985558c68f",
       "original_bytes": 6369,
@@ -1044,7 +1129,7 @@
     {
       "source_id": "HN-POLICY-DISCOVERY",
       "url": "https://hnga.henan.gov.cn/2021/06-01/2156062.html",
-      "revision": "rev-21178358d04ed58f2d6721cd",
+      "revision": "rev-208b81f93ba412d99ccbb07a",
       "state": "excluded",
       "original_sha256": "07311ee44758195fde18e8739d681ff7cbc7fdfaff18b0e1393849ff4bebd6d1",
       "original_bytes": 6324,
@@ -1072,7 +1157,7 @@
     {
       "source_id": "HN-POLICY-DISCOVERY",
       "url": "https://hnga.henan.gov.cn/2020/12-29/2069144.html",
-      "revision": "rev-733ce95d510f7207deaeef41",
+      "revision": "rev-aa9a5b2f2a6298980f9bb518",
       "state": "excluded",
       "original_sha256": "1031c0d6f8f3ee68a77bc3f361ac64cc9e5d092dd7d9dd15c0881dec164529ae",
       "original_bytes": 6297,
@@ -1100,7 +1185,7 @@
     {
       "source_id": "HN-POLICY-DISCOVERY",
       "url": "https://hnga.henan.gov.cn/2021/12-24/2371407.html",
-      "revision": "rev-67bbaf462202dcfb3198e58b",
+      "revision": "rev-c887251972d6cd974e33a6da",
       "state": "excluded",
       "original_sha256": "e51b2ee99c0370d500cbeaed75a06f2826e191c7ceb0ad4dc4f46b8107d07f11",
       "original_bytes": 6289,
@@ -1128,12 +1213,12 @@
     {
       "source_id": "HN-REPEAL-2020-PDF",
       "url": "https://oss.henan.gov.cn/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf",
-      "revision": "rev-d244f722b925bc2daec99b9f",
+      "revision": "rev-181aa8d69d1c9098698d63b0",
       "state": "excluded",
       "original_sha256": "0f30596cce1fd8e22a62c315b368beddf829e462fcbc99067aaa703ea13ee0c2",
       "original_bytes": 263407,
       "metadata": {
-        "title": "河南省公安厅关于废止部分行政规范性文件的通知（2020）",
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知 .pdf",
         "region": "unknown",
         "matter": "unclassified",
         "document_type": "official_normative_repeal_list",
@@ -1171,12 +1256,12 @@
     {
       "source_id": "HN-REPEAL-2021-PDF",
       "url": "https://oss.henan.gov.cn/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf",
-      "revision": "rev-bff7e711bdcd08ee19c7692a",
+      "revision": "rev-f4a541455099644b84969485",
       "state": "excluded",
       "original_sha256": "c5af193ea4d4cd4a1c150c9177e43d17aeba3a24b36409f5f4ada3fad702502e",
       "original_bytes": 269670,
       "metadata": {
-        "title": "河南省公安厅关于废止部分行政规范性文件的通知（2021）",
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知.pdf",
         "region": "unknown",
         "matter": "unclassified",
         "document_type": "official_normative_repeal_list",

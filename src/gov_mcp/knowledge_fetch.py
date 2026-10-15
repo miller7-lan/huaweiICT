@@ -37,7 +37,9 @@ def validate_config(config):
         raise ValueError("Plain HTTP(S) origin required")
     if origin.port not in (None, 80, 443) or config["interval_seconds"] < 60 or config["delay_seconds"] < 5 or type(config["enabled"]) is not bool:
         raise ValueError("Invalid source limits")
-    if not config["seeds"] or not config["allowed_paths"] or any(not p.startswith("/") or ".." in p or "?" in p for p in config["allowed_paths"]):
+    from gov_mcp.knowledge_attachments import validate_attachments
+    validate_attachments(config)
+    if (not config["seeds"] and not config.get("attachment_only")) or not config["allowed_paths"] or any(not p.startswith("/") or ".." in p or "?" in p for p in config["allowed_paths"]):
         raise ValueError("Explicit source paths and seeds required")
     for url in config["seeds"]:
         allowed_url(config, url)
@@ -225,6 +227,7 @@ class ArticleParser(HTMLParser):
         self.selector, self.stack, self.parts, self.links = selector, [], [], []
         self.excluded_selectors = excluded_selectors or []
         self.selected_links = []
+        self.selected_link_records, self.current_link = [], None
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -240,12 +243,17 @@ class ArticleParser(HTMLParser):
                                for selector in self.excluded_selectors)
         if active and not hidden and tag == "a" and attrs.get("href"):
             self.selected_links.append(attrs["href"])
+            self.current_link = {"url": attrs["href"], "title": attrs.get("title") or "", "parts": []}
         if tag not in ("br", "img", "input", "meta", "link", "hr", "source", "wbr", "area", "base", "embed", "param", "col", "track"):
             self.stack.append((tag, active, hidden))
         if active and tag in ("p", "div", "li", "tr", "br", "section", "h1", "h2", "h3"):
             self.parts.append("\n")
 
     def handle_endtag(self, tag):
+        if tag == "a" and self.current_link:
+            link = self.current_link
+            self.selected_link_records.append({"url": link["url"], "title": re.sub(r"\s+", " ", link["title"] or "".join(link["parts"])).strip()})
+            self.current_link = None
         for index in range(len(self.stack)-1, -1, -1):
             if self.stack[index][0] == tag:
                 active = self.stack[index][1]
@@ -257,6 +265,8 @@ class ArticleParser(HTMLParser):
     def handle_data(self, text):
         if self.stack and self.stack[-1][1] and not self.stack[-1][2]:
             self.parts.append(text)
+            if self.current_link:
+                self.current_link["parts"].append(text)
 
 
 class PageSignals(HTMLParser):
@@ -304,6 +314,8 @@ def observe_html(raw, selectors=None, *, content_selector=None, excluded_selecto
             raise ValueError("Oversized body attachment metadata")
         if attachments:
             fields["body:document_links"] = attachments
+            fields["body:document_link_titles"] = sorted({encode({"url": link["url"], "title": link["title"][:300]})
+                                                          for link in body.selected_link_records if link["url"] in attachments})
     for name, selector in (selectors or {}).items():
         block = ArticleParser(selector)
         block.feed(text)
@@ -475,10 +487,20 @@ def worker_once(store, fetcher=None, owner=None, now=None):
         elif status == 304 and not is_index:
             from gov_mcp.knowledge_discovery import refresh_unchanged_document
             refresh_unchanged_document(store, config, job["url"])
+            if config.get("attachment_discovery"):
+                with store.db() as db:
+                    latest = db.execute("SELECT r.* FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=? AND d.url=? ORDER BY r.rowid DESC LIMIT 1", (config["id"], job["url"])).fetchone()
+                    store._verify(db, latest["id"], require_review=False)
+                if json.loads(latest["metadata"]).get("source_observation", {}).get("media_type") == "text/html":
+                    from gov_mcp.knowledge_attachments import discover_attachments
+                    original = store.root / "originals" / latest["sha256"][:2] / latest["sha256"]
+                    discover_attachments(store, config, latest["id"], original.read_bytes(), now)
         elif status == 200 and not is_index:
             article_preface = None
             pdf_extraction = None
             content_type = headers.get("content-type", "").split(";")[0].strip()
+            if config.get("attachment_only") and (content_type != "application/pdf" or not raw.startswith(b"%PDF-")):
+                raise ValueError("Attachment collector requires an actual PDF response, not an HTML error or landing page")
             if content_type not in ("text/html", "application/xhtml+xml", "application/pdf"):
                 raise ValueError("Unsupported format; requires dedicated parser")
             if content_type == "application/pdf":
@@ -536,6 +558,9 @@ def worker_once(store, fetcher=None, owner=None, now=None):
                         metadata["source_observation"]["discovery_signal"] = {key: observed.get(key) for key in ("title", "hints", "discovery_format")}
                 revision = store.ingest(config["id"], job["url"], raw, metadata, chunks, preserve_metadata_if_unchanged=True)
                 store.propose_classification(revision)
+                if config.get("attachment_discovery") and content_type in ("text/html", "application/xhtml+xml"):
+                    from gov_mcp.knowledge_attachments import discover_attachments
+                    discover_attachments(store, config, revision, raw, now)
         with store.db() as db:
             db.execute("INSERT INTO resources VALUES(?,?,?,?,?) ON CONFLICT(site_id,url) DO UPDATE SET etag=COALESCE(excluded.etag,resources.etag),modified=COALESCE(excluded.modified,resources.modified),checked_at=excluded.checked_at",
                        (config["id"], job["url"], headers.get("etag"), headers.get("last-modified"), now))

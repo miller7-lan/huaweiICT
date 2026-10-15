@@ -15,7 +15,8 @@ def main():
     with store.db() as db:
         for row in db.execute("SELECT * FROM sites ORDER BY id"):
             config = json.loads(row["config"])
-            fields = ("id", "label", "origin", "allowed_paths", "seeds", "interval_seconds", "delay_seconds", "page_kind", "discovery_format", "pdf_ocr")
+            fields = ("id", "label", "origin", "allowed_paths", "seeds", "interval_seconds", "delay_seconds", "page_kind", "discovery_format", "pdf_ocr",
+                      "attachment_only", "attachment_parent_sources", "attachment_url_layout", "attachment_max_pending", "attachment_discovery")
             sources.append({**{key: config[key] for key in fields if key in config}, "enabled_at_snapshot": config["enabled"],
                 "paused_reason": row["paused_reason"], "last_success": row["last_success"],
                 "access_screen_actor_kind": config.get("access_review", {}).get("actor_kind"),

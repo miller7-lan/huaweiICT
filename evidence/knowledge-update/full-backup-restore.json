@@ -1,41 +1,42 @@
 {
-  "captured_at": "2026-10-15T19:40:07.183855+00:00",
+  "captured_at": "2026-10-15T20:14:10.005692+00:00",
   "passed": true,
   "checks": {
     "document_revision_chunk_counts_match": true,
     "discovery_cycles_and_deferred_targets_match": true,
+    "attachment_provenance_graph_matches": true,
     "all_current_candidate_metadata_match": true,
     "restored_runtime_has_no_running_worker_claims": true,
     "restored_runtime_has_no_mcp_token": true,
     "services_not_started_by_restore": true
   },
   "backup": {
-    "directory": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update\\backups\\20261015T194003Z-8ec4641d",
-    "manifest_sha256": "abaeae407ba0c7e022256984d2e01fd7daf7ac8403cbe791a3da89c3e4a9dd30",
+    "directory": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update\\backups\\20261015T201406Z-70c4fe1f",
+    "manifest_sha256": "a5e004b7d5b8334db3ee9af01ec33f3859a690b70b66aca4d436fb54f764fd49",
     "files": 26,
     "referenced_originals": 20,
     "counts": {
       "documents": 20,
-      "revisions": 39,
-      "chunks": 221,
+      "revisions": 54,
+      "chunks": 247,
       "versions": 0,
       "heads": 0
     },
     "auth_credentials_included": false
   },
   "restore": {
-    "restored_to": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update-restores\\20261015T194003Z-8ec4641d",
+    "restored_to": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update-restores\\20261015T201406Z-70c4fe1f",
     "counts": {
       "documents": 20,
-      "revisions": 39,
-      "chunks": 221,
+      "revisions": 54,
+      "chunks": 247,
       "versions": 0,
       "heads": 0
     },
     "referenced_originals": 20,
     "services_started": false,
     "credentials_must_be_reprovisioned": true,
-    "source_manifest_sha256": "abaeae407ba0c7e022256984d2e01fd7daf7ac8403cbe791a3da89c3e4a9dd30"
+    "source_manifest_sha256": "a5e004b7d5b8334db3ee9af01ec33f3859a690b70b66aca4d436fb54f764fd49"
   },
   "published_snapshots_available": false,
   "scope": "Actual candidate data/original/configuration recovery; published-answer replay is separately tested using synthetic fixtures, not claimed for zero official releases"

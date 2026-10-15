@@ -1,46 +1,36 @@
 {
-  "captured_at": "2026-10-15T19:34:20.500518+00:00",
+  "captured_at": "2026-10-15T20:14:05.075860+00:00",
   "records": [
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-8b7122564ad26233a10d35f2",
-      "base_revision": null,
+      "revision": "rev-b5ae6f784eae759de1b4ccd5",
+      "base_revision": "rev-8b7122564ad26233a10d35f2",
       "status": "machine_analysis_not_review",
       "change_kinds": [
-        "initial_candidate"
+        "metadata_change"
       ],
       "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
-      "base_original_sha256": null,
+      "base_original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
       "chunk_counts": {
-        "before": 0,
+        "before": 8,
         "after": 8
       },
-      "added_locators": [
-        "PDF第1页（OCR待核对）",
-        "PDF第2页（OCR待核对）",
-        "PDF第3页（OCR待核对）",
-        "PDF第4页（OCR待核对）",
-        "PDF第5页（OCR待核对）",
-        "PDF第6页（OCR待核对）",
-        "PDF第7页（OCR待核对）",
-        "PDF第8页（OCR待核对）"
-      ],
+      "added_locators": [],
       "removed_locators": [],
       "changed_text_locators": [],
       "changed_category_locators": [],
       "formatting_only_locators": [],
-      "changed_metadata_fields": [],
-      "affected_topic_codes": [
-        "delivery",
-        "duration",
-        "eligibility",
-        "location"
+      "changed_metadata_fields": [
+        "source_observation.discovery_signal",
+        "title",
+        "title_source"
       ],
-      "mixed_branch_mentions": true,
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "b31f4a7ec30e99829c2f80a01084de78c216199d2ffc710f19dd51205c8da39b",
+      "analysis_sha256": "1d0237d4bee87a7fb8f059b633e41de0511e5f06593532ed62cd3e50d6d72036",
       "source_id": "HN-MEASURES-2021-PDF"
     },
     {
@@ -168,8 +158,8 @@
     },
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-9f902845de521d5bc9b14dfe",
-      "base_revision": "rev-c76e2e52e494dbe3ff41fea4",
+      "revision": "rev-610210af8967c7ff1022371a",
+      "base_revision": "rev-cfcbb1c5aea58e0af3fbf431",
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "metadata_change"
@@ -193,13 +183,13 @@
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "6ee99bd17e05bea916ae22a8e3f0c73bb4b9f41c95c91d85e690c66e8c86d7b9",
+      "analysis_sha256": "ad8ae8b0ebdd57b3e1eaab0bd12c6a3f7081acdc17335da39a6c56de3019a9d9",
       "source_id": "HN-POLICY-DISCOVERY"
     },
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-0029a680dffeb2088f9c3260",
-      "base_revision": "rev-ecbd39d24e05cde0d7bb7dc0",
+      "revision": "rev-2ceb2ee5c4a192a7f4c59a55",
+      "base_revision": "rev-d800e258d5e3ce3a88b8728d",
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "metadata_change"
@@ -223,13 +213,13 @@
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "189be955fe6c6b38240fcf6cef1008c82d0ce839865bd08b91161d25ddcd36ff",
+      "analysis_sha256": "1f866c00ceeff81364a8e7abd581b832e69aca2b7887c4115de82c86fb202e7f",
       "source_id": "HN-POLICY-DISCOVERY"
     },
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-21178358d04ed58f2d6721cd",
-      "base_revision": "rev-b2028b34cb701ec765af97b5",
+      "revision": "rev-208b81f93ba412d99ccbb07a",
+      "base_revision": "rev-ecdecfe6d00f2f8d8ef4e082",
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "metadata_change"
@@ -253,13 +243,13 @@
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "e61638c397c3d080141189cc1a0530a41e3a9e47cfebe60d6746256d1f37ba41",
+      "analysis_sha256": "2c3f6aab8494e672818a931c256baffde77da388cf136a21cf2f45111e981abb",
       "source_id": "HN-POLICY-DISCOVERY"
     },
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-733ce95d510f7207deaeef41",
-      "base_revision": "rev-1ec8d03764aba399870269c9",
+      "revision": "rev-aa9a5b2f2a6298980f9bb518",
+      "base_revision": "rev-6f4f9ff69ffdc648559ca9f4",
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "metadata_change"
@@ -283,13 +273,13 @@
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "85cdb463d06b8f2799d005643b93cfae079ac87259313fda7cdcf31265504a5a",
+      "analysis_sha256": "837808a4dc8965ea9d8e30f103b1c3bbd809559db42b7d5469fe49e75de6254d",
       "source_id": "HN-POLICY-DISCOVERY"
     },
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-67bbaf462202dcfb3198e58b",
-      "base_revision": "rev-305dacdaba72b27582bbb87f",
+      "revision": "rev-c887251972d6cd974e33a6da",
+      "base_revision": "rev-32f231636d63c43519f084b0",
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "metadata_change"
@@ -313,13 +303,13 @@
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "60da0616d78c0f35479ff872b77a2314d03e6bc7384486e92526f96946cdad4a",
+      "analysis_sha256": "c124ba2fe7c1583c27b6796bb3ae303237e76a208a9d21d5241db87870488d53",
       "source_id": "HN-POLICY-DISCOVERY"
     },
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-d244f722b925bc2daec99b9f",
-      "base_revision": "rev-a2f0ba0b0456db57541952ed",
+      "revision": "rev-181aa8d69d1c9098698d63b0",
+      "base_revision": "rev-e1eab98e5bbba4c05cb677e3",
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "metadata_change"
@@ -343,13 +333,13 @@
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "3d2e88c221e0f521506f83fdb98af43718a2835e727213b4ed8d5e59c9b0311b",
+      "analysis_sha256": "e26ed0b49aee43975ae63bc125d40bfd07c798f12fc79e91e8b723265aeeacd6",
       "source_id": "HN-REPEAL-2020-PDF"
     },
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-bff7e711bdcd08ee19c7692a",
-      "base_revision": "rev-84fd5bba18083fe9577f9912",
+      "revision": "rev-f4a541455099644b84969485",
+      "base_revision": "rev-b2d6b3fb179abf7f9b0ee33a",
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "metadata_change"
@@ -373,7 +363,7 @@
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "ed4dfa4600420547eb9952d989c41f2647e9df389b69928b9b476f803e0aa4bb",
+      "analysis_sha256": "163cb882e9163ec741e1a43b560a2960d967591eda2b8fab8e73f5c2255e0dd6",
       "source_id": "HN-REPEAL-2021-PDF"
     },
     {

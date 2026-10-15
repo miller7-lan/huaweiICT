@@ -76,6 +76,8 @@ def main():
     ocr = json.loads(ocr_path.read_text(encoding="utf-8")) if ocr_path.exists() else {}
     background_ocr_path = ROOT / "evidence/knowledge-update/background-ocr-check.json"
     background_ocr = json.loads(background_ocr_path.read_text(encoding="utf-8")) if background_ocr_path.exists() else {}
+    attachment_path = ROOT / "evidence/knowledge-update/official-attachment-flow.json"
+    attachment_proof = json.loads(attachment_path.read_text(encoding="utf-8")) if attachment_path.exists() else {}
     startup_evidence = {}
     for filename in ("startup-recovery-first-pass.json", "startup-healthy-followup.json", "startup-manual-control.json"):
         path = ROOT / "evidence/knowledge-update" / filename
@@ -101,6 +103,9 @@ def main():
               "dynamic_consultation_preview_agents": consultation.get("preview_agents", {}),
               "native_pdf_ocr_passed": ocr.get("passed"), "native_pdf_ocr_sources": ocr.get("normal_guarded_monitored_sources"),
               "native_pdf_ocr_pages": ocr.get("automatic_ocr_pages"), "background_pdf_ocr_passed": background_ocr.get("passed"),
+              "attachment_discovery": status["attachments"],
+              "waiting_attachment_collectors": [s["id"] for s in status["sites"] if s.get("waiting_for_attachment")],
+              "isolated_actual_attachment_flow_passed": attachment_proof.get("passed"),
               "local_startup": status["startup"], "startup_evidence": startup_evidence,
               "github_final_push_completed": False,
               "scope": "Actual candidate intake, monitoring, MCP transport/catalog and separately recorded fixed/dynamic-question model stop tests; no business-accuracy or official-policy approval claim."}

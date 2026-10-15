@@ -76,7 +76,9 @@ def watches_unclassified(config, metadata, region, matter):
 
 def watched_source_ids(db, region, matter):
     target = {"region": region, "matter": matter}
-    return {row["id"] for row in db.execute("SELECT id,config FROM sites") if target in json.loads(row["config"]).get("watch_scopes", [])}
+    from gov_mcp.knowledge_attachments import dormant_collector
+    return {row["id"] for row in db.execute("SELECT id,config FROM sites")
+            if target in (config := json.loads(row["config"])).get("watch_scopes", []) and not dormant_collector(db, config)}
 
 
 class HTMLDiscovery(HTMLParser):

@@ -26,6 +26,7 @@ def main():
     original_status, restored_status = store.status(), reader.status()
     checks = {"document_revision_chunk_counts_match": all(original_status["counts"][key] == restored_status["counts"][key] for key in ("documents", "revisions", "chunks", "latest_chunks", "versions", "heads")),
         "discovery_cycles_and_deferred_targets_match": original_status["discovery"] == restored_status["discovery"],
+        "attachment_provenance_graph_matches": original_status["attachments"] == restored_status["attachments"],
         "all_current_candidate_metadata_match": original_status["pending_review"] == restored_status["pending_review"],
         "restored_runtime_has_no_running_worker_claims": all(worker["progress"] == "completed" for worker in restored_status["workers"]),
         "restored_runtime_has_no_mcp_token": not (reader.root / "knowledge-mcp-token.txt").exists(),

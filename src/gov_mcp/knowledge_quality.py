@@ -37,6 +37,12 @@ def binding(store, db, version):
     for source_id in watched_source_ids(db, region, matter):
         config = db.execute("SELECT config FROM sites WHERE id=?", (source_id,)).fetchone()[0]
         sources[source_id] = fingerprint(json.loads(config))
+    from gov_mcp.knowledge_attachments import dependencies
+    for source_id in dependencies(db, list(sources)):
+        row = db.execute("SELECT config FROM sites WHERE id=?", (source_id,)).fetchone()
+        if not row:
+            raise ValueError("Attachment dependency source missing")
+        sources[source_id] = fingerprint(json.loads(row[0]))
     return fingerprint({"version": version, "scope": snapshot["scope"], "members": revisions,
                         "source_configs": sources, "policy": publication_policy(store)})
 
