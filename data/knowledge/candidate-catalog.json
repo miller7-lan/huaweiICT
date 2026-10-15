@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-15T18:38:44.641412+00:00",
+  "captured_at": "2026-10-15T19:13:09.188559+00:00",
   "counts": {
-    "sites": 18,
-    "documents": 7,
-    "revisions": 9,
-    "chunks": 89,
+    "sites": 21,
+    "documents": 17,
+    "revisions": 31,
+    "chunks": 202,
     "versions": 0,
     "heads": 0,
-    "jobs": 8,
-    "latest_chunks": 62
+    "jobs": 18,
+    "latest_chunks": 111
   },
   "sources": [
     {
@@ -66,7 +66,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792088993.9384906,
+      "last_success": 1792091099.7095134,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -89,6 +89,44 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "HN-POLICY-DISCOVERY",
+      "label": "河南省公安厅行政规范性文件栏目",
+      "origin": "https://hnga.henan.gov.cn",
+      "allowed_paths": [
+        "/"
+      ],
+      "seeds": [
+        "https://hnga.henan.gov.cn/zfxxgk/zc/xzgfxwj/"
+      ],
+      "interval_seconds": 21600,
+      "delay_seconds": 5,
+      "page_kind": "index",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792091554.929518,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-REPEAL-2025B-PDF",
+      "label": "2025栏目载入的省厅2022废止通知：扫描附件",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf"
+      ],
+      "seeds": [
+        "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "HN-UPDATE-GS-01",
       "label": "河南换领期限调整：固始县政府转载线索",
       "origin": "https://www.gushi.gov.cn",
@@ -104,6 +142,25 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792088211.7022917,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-VALIDITY-2025-PDF",
+      "label": "2025栏目载入的省厅2019效力清理通知：扫描附件",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf"
+      ],
+      "seeds": [
+        "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -359,18 +416,20 @@
     {
       "source_id": "HN-NORM-PUBLISHER",
       "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
-      "revision": "rev-afb82e8141a1a337b3412625",
+      "revision": "rev-3221c16ab130408cb59cd2b6",
       "state": "pending_review",
       "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
       "original_bytes": 119474,
       "metadata": {
-        "title": "河南省公安机关户口居民身份证管理工作规范（试行）（省厅HTML正文）",
+        "title": "河南省公安厅关于印发《河南省公安机关户口居民身份证管理工作规范（试行）》的通知",
         "region": "河南省",
         "matter": "demo-id-renewal",
         "document_type": "provincial_normative_document",
         "published_at": null,
         "effective_from": null,
-        "effective_to": null
+        "effective_to": null,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
       },
       "selected_clauses": [
         {
@@ -460,6 +519,486 @@
       ]
     },
     {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2021/12-24/2371407.html",
+      "revision": "rev-305dacdaba72b27582bbb87f",
+      "state": "pending_review",
+      "original_sha256": "e51b2ee99c0370d500cbeaed75a06f2826e191c7ceb0ad4dc4f46b8107d07f11",
+      "original_bytes": 6289,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "ab8e46ac3982f2db3a486c00faab789bc79398298d5160a644a088cc8b12b5f7"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2021/06-01/2156062.html",
+      "revision": "rev-b2028b34cb701ec765af97b5",
+      "state": "pending_review",
+      "original_sha256": "07311ee44758195fde18e8739d681ff7cbc7fdfaff18b0e1393849ff4bebd6d1",
+      "original_bytes": 6324,
+      "metadata": {
+        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 31,
+          "text_sha256": "e95587fd6dbe03a1bc94d2054a1ced1e8a0f9dc5305944c775d040470f13a1c1"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2020/12-29/2069144.html",
+      "revision": "rev-1ec8d03764aba399870269c9",
+      "state": "pending_review",
+      "original_sha256": "1031c0d6f8f3ee68a77bc3f361ac64cc9e5d092dd7d9dd15c0881dec164529ae",
+      "original_bytes": 6297,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "e9520d85097c8d30bd8c1b7ce8cc1ef2b2534c4350b5b57f3e028844750b53e6"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2022/03-18/2417195.html",
+      "revision": "rev-4f4f86c3c7fb597b6f19789f",
+      "state": "excluded",
+      "original_sha256": "a56c6128bafa7fb75e8486ceb6f234f58fcc222056a35d141a9e43e51c6ddfae",
+      "original_bytes": 13287,
+      "metadata": {
+        "title": "河南省公安厅关于印发2022年便民利民服务十项措施的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 23,
+          "text_sha256": "a434b3f2f0b8422d51ba60c5696e280b69950013c55f913be526029cb836f337"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 105,
+          "text_sha256": "eba143647e5e9b52282366d4aed6a6e814f3c82f9d32550378e9b6f3e005a4b2"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 188,
+          "text_sha256": "d202c0425ebd13c7e3e71535268ca16a0b44918aea9ef4a61028a3475cdc216c"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 262,
+          "text_sha256": "738b67841edbcd4c96bcf29ad7b6518342295ce9ff29f8718364b0ae928e812b"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 122,
+          "text_sha256": "c08c8f797ace1b2cb32da683b2e1e6400e776070ecbb36aab1b4b4456048d067"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 143,
+          "text_sha256": "4b78ea36fe5ea719753e4cdf17661de93611a45444d80426bece8c2c97db54bb"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 41,
+          "text_sha256": "a41de9ffb63267480f6ac1167a4d9ca9cb3417f432b7eeff0268ecdfc55f38cb"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 13,
+          "text_sha256": "7ba35c925decffb19578550be0926789210dcf0273ffd07081b5e0ed4f30f41d"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 10,
+          "text_sha256": "8a2625032f8e11153cd8a8cb9aea09efbb72036ecccc63d35bf04f298a5736aa"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 21,
+          "text_sha256": "d0d3b5475a676ae35ff6b1c83a9bfd2a5ca94b332ff0ed4f041b01d0b5899ddb"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 129,
+          "text_sha256": "805a8955965865f32323bcd69ae1ca357f3ed092405301e11188d4e97cb2599e"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 99,
+          "text_sha256": "f6eb540ba41d73b7d3b257890d5583a72a988511c71107a925ff070bea690ac3"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 108,
+          "text_sha256": "58b115b29f3ed736d0c983f742e00dfab462812018ed32075f43c960086fb27e"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "eligibility",
+          "characters": 123,
+          "text_sha256": "0615d3c520745b2f42967fdf802a10a5d76e36245b42ad8e7f2bea945796700c"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 123,
+          "text_sha256": "bfd9213849bc4cdffb3725aa3915063b4fb8bdd20067e49301e17f2bb50cb104"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 159,
+          "text_sha256": "1a7ac83daddb91c52749810c2688f19601b955b6fdc620b305ac446e734f8139"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 105,
+          "text_sha256": "2ccf1e8a64f48f13796a069e6c8ec3abf8c6ef8400ba0c34b24bd76ebbfc70d1"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 101,
+          "text_sha256": "b813e7c1a47933ef8253ea20763af3d0210e5b85f7bbe03ef40353a11a08b154"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 99,
+          "text_sha256": "b3f8f54f87d2f862fa68700bc7a47c19e4bb64c90d261ba8b9621c9cbfb8681d"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 96,
+          "text_sha256": "159b991bfaa1de02bd390d67fac6362bced96634f119129636d0d525f879fb9b"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/05-08/3155683.html",
+      "revision": "rev-bc49b122bba6b4eacb4e5315",
+      "state": "excluded",
+      "original_sha256": "45aaa93c4aaaf8cfa6bc62284a751b6a4dfcd754e21064f94a56cdd2d9981c9c",
+      "original_bytes": 16635,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 21,
+          "text_sha256": "04965ac8a9a71b9123815cc9861623c774c762fc7adfa1350a1a7b57fea07928"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 111,
+          "text_sha256": "dcaf877f56b20cef08ad8b6895b6808fc6af509e9cf5104eb72210c247e8a2bc"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 54,
+          "text_sha256": "bbeaf81966ed8040a44cea1c9fbd56e09e848ad562dc95c511412e6bec8b69d9"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 48,
+          "text_sha256": "33b800d7bfd2a328ea5d6e4f8153517a471fd366bfb9b514907ebc447901efc3"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 47,
+          "text_sha256": "899193260cec02bc14ae73f1d9382739365f24ccbc07daf5c33b1d67f9fc78ac"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 43,
+          "text_sha256": "123f557257e6e9ef0fd2e453f508fee3d0392b1bebe20890e0785483a87fb23a"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 51,
+          "text_sha256": "a7e5eb9b5f2250ef105d45cd1f2c8db955b582becf6734ded1ee7035b66591bb"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 10,
+          "text_sha256": "ab30e7a3f52f321f51db1e4bf96bd2fb33fbac2432c1196205eef5383ce1c129"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2026/01-22/3312600.html",
+      "revision": "rev-0a62b0e1c086b12f92d6b62b",
+      "state": "excluded",
+      "original_sha256": "e10b1eda14a0c3a9a105c40da88eae25a802d7bafc87cd9a948e9b4eea00677b",
+      "original_bytes": 11572,
+      "metadata": {
+        "title": "河南省公安厅关于修改和废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "1e97ed5073ded032fa2fd4e95ac3038cd2765eb0e982efd33b62fb9c3c33c0ab"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 109,
+          "text_sha256": "639a2f30190774672d6ecf33219889a5cd80cd610412b968f796329653a14cd5"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "f05d310d7a92a7ef77e174ad76454f31d48f4b19deb0f0546afac51b485e0b56"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 57,
+          "text_sha256": "4fc027b4ff6f5e788351ca82d587850847081e707a19a7ad3d8e158f26f2d7a6"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 91,
+          "text_sha256": "48be5a892e8c3e55f10830be4db39400b32b76f2c37c437c25d683ba20b88954"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "69fad7ef2b0320b246113c7d59015f9b04e399a2bab957881e10b98e40f34b0f"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 46,
+          "text_sha256": "4755268f6f5c1333d7bbf36c9c70caae9374b82622740374c3c348a33c0d6ba4"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "8f6080dc776e5b9734071380fe26907380f366fd9b4a9a26d5d22d01dde0bed8"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 45,
+          "text_sha256": "81fb1a286d1849f6e9139e82744b7de6c4c75b86e058d2fb5965bd171668eff2"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "eligibility",
+          "characters": 219,
+          "text_sha256": "4bde7b1dba9503b23a9492bd19770f89906cb712661fb7cc799bf0a731d19f5a"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "68cdaebdaf117e854dbeac2d747cbf47c595b02dde56eef9ad06c5f642d1163f"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 45,
+          "text_sha256": "835e304fdbe84c824783af6a1948879827459e982622a69070f45433c191ae4e"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "c4534faeeb037a4dd9946c8c9b7b4d9e7f4dadcdf2ae723d79abfa8d5ccac4b2"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 10,
+          "text_sha256": "577f8f78d725cb335b48f345a7d788ed6cd23039fb2eac25f3e509326b7a6f5b"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237047.html",
+      "revision": "rev-9f902845de521d5bc9b14dfe",
+      "state": "excluded",
+      "original_sha256": "56a9ac6c631485da5700e39f7c000e8c0680966f0203d9d72a9273a06efb0291",
+      "original_bytes": 6579,
+      "metadata": {
+        "title": "河南省公安厅关于公布现行有效行政规范性文件和废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 40,
+          "text_sha256": "5305513d1b71a987886f7c5c1178cb557b6d5efc5aee996a35bb1eeff983ae65"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237046.html",
+      "revision": "rev-0029a680dffeb2088f9c3260",
+      "state": "excluded",
+      "original_sha256": "40fb56ed8ca0d01e8af060f698ff1bda046907b6d3db5eac8707d3985558c68f",
+      "original_bytes": 6369,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "ab8e46ac3982f2db3a486c00faab789bc79398298d5160a644a088cc8b12b5f7"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-REPEAL-2025B-PDF",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf",
+      "revision": "rev-9abf6a37bea475cc20f9b7ad",
+      "state": "excluded",
+      "original_sha256": "20f76fbc3bfe78bfd205e415879c15a5185ce3d07ad0e20f4114835a5f77f603",
+      "original_bytes": 960269,
+      "metadata": {
+        "title": "2025栏目载入的省厅2022废止通知：扫描附件",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_repeal_list",
+        "document_number": "豫公通〔2022〕86号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2022-08-02",
+        "extraction_method": "ai_visual_transcription",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1至2页（AI视觉转录）",
+          "category": "procedure",
+          "characters": 297,
+          "text_sha256": "034e767bf04f5f035ea6e4a0d2e1d8aa000ca0039698dd144e59e67074dbb385"
+        }
+      ]
+    },
+    {
       "source_id": "HN-UPDATE-GS-01",
       "url": "https://www.gushi.gov.cn/2025/07-10/760173.html",
       "revision": "rev-01e4a7686991d06c8135e431",
@@ -473,7 +1012,9 @@
         "document_type": "official_service_information",
         "published_at": null,
         "effective_from": null,
-        "effective_to": null
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "update_signal"
       },
       "selected_clauses": [
         {
@@ -481,6 +1022,36 @@
           "category": "identity",
           "characters": 67,
           "text_sha256": "ac195ed9b2a090c6a235627f04021c9469dc7ab95261c9c6995e38bf47f9c92d"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-VALIDITY-2025-PDF",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf",
+      "revision": "rev-dceee272eaca3c7b903155d8",
+      "state": "excluded",
+      "original_sha256": "f6a32e4bf55d2148b498bd00c3451912d1405bc3ca72566dc356e7fca4afbe51",
+      "original_bytes": 4595033,
+      "metadata": {
+        "title": "2025栏目载入的省厅2019效力清理通知：扫描附件",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_validity_list",
+        "document_number": "豫公通〔2019〕141号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2019-06-16",
+        "extraction_method": "ai_visual_transcription",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（AI视觉转录）",
+          "category": "procedure",
+          "characters": 141,
+          "text_sha256": "ab079529b088f8fa5f5a6bf170c55ee3ed3ed9deffbfe80028b32949db619a89"
         }
       ]
     },
@@ -499,7 +1070,9 @@
         "published_at": null,
         "effective_from": null,
         "effective_to": null,
-        "conflict": true
+        "conflict": true,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
       },
       "selected_clauses": [
         {
@@ -590,7 +1163,9 @@
         "document_type": "service_guide",
         "published_at": null,
         "effective_from": null,
-        "effective_to": null
+        "effective_to": null,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
       },
       "selected_clauses": [
         {
@@ -633,7 +1208,9 @@
         "document_type": "statute",
         "published_at": "2011-10-29",
         "effective_from": "2012-01-01",
-        "effective_to": null
+        "effective_to": null,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
       },
       "selected_clauses": [
         {
@@ -677,7 +1254,9 @@
         "document_number": "公通字〔2021〕12号",
         "published_at": null,
         "effective_from": null,
-        "effective_to": null
+        "effective_to": null,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
       },
       "selected_clauses": [
         {
@@ -763,7 +1342,9 @@
         "document_number": null,
         "published_at": null,
         "effective_from": null,
-        "effective_to": null
+        "effective_to": null,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
       },
       "selected_clauses": [
         {

@@ -1,18 +1,19 @@
 {
-  "captured_at": "2026-10-15T18:52:39.547030+00:00",
+  "captured_at": "2026-10-15T19:18:03.117011+00:00",
   "counts": {
-    "sites": 18,
-    "documents": 7,
-    "revisions": 9,
-    "chunks": 89,
+    "sites": 21,
+    "documents": 17,
+    "revisions": 31,
+    "chunks": 202,
     "versions": 0,
     "heads": 0,
-    "jobs": 8,
-    "latest_chunks": 62
+    "jobs": 18,
+    "latest_chunks": 111
   },
   "enabled_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
     "HN-NORM-PUBLISHER",
+    "HN-POLICY-DISCOVERY",
     "HN-UPDATE-GS-01",
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
@@ -23,6 +24,7 @@
   "healthy_monitored_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
     "HN-NORM-PUBLISHER",
+    "HN-POLICY-DISCOVERY",
     "HN-UPDATE-GS-01",
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
@@ -36,13 +38,13 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 270,
+  "test_count": 275,
   "tests_passed": true,
   "platform_tools": [
     "govkb_get_environment_status",
     "govkb_search_evidence"
   ],
-  "public_files_scanned": 535,
+  "public_files_scanned": 547,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -62,6 +64,19 @@
       "limited": false,
       "index_pages_scheduled": 1,
       "new_document_jobs": 0,
+      "unvisited_cached_targets": 0,
+      "parser_truncated": false,
+      "active_jobs": 0,
+      "failed_jobs": 0,
+      "coverage_note": "Bounded declared entry points and cached links; not proof of a site's complete document inventory"
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "cycle_id": 2,
+      "started_at": 1792091004.3578174,
+      "limited": false,
+      "index_pages_scheduled": 2,
+      "new_document_jobs": 8,
       "unvisited_cached_targets": 0,
       "parser_truncated": false,
       "active_jobs": 0,
@@ -97,13 +112,13 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792090357,
+      "checked_at": 1792091761,
       "action": "healthy",
       "ready": true,
       "recovery_count": 1,
       "last_recovered_at": 1792084570,
       "last_recovered_supervisor_pid": 56584,
-      "supervisor_pid": 57860,
+      "supervisor_pid": 51140,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"

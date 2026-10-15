@@ -86,6 +86,83 @@ def test_html_pagination_remains_index_and_cycles_do_not_loop(discovery):
         assert db.execute("SELECT COUNT(*) FROM discovery_targets WHERE kind='index'").fetchone()[0] == 2
 
 
+def test_declared_numbered_pages_full_titles_and_explicit_https_upgrade(discovery):
+    store, config = discovery
+    config.update(page_kind="index", discovery_selector={"class": "policies"}, discovery_full_title=True,
+                  discovery_upgrade_same_host_https=True,
+                  discovery_numbered_pagination={"id": "pager", "total_attribute": "total", "size_attribute": "size", "url_pattern": "index_{page}.html"})
+    store.register(config)
+    raw = ('<div class><div class="policies"><a href="http://fixtures.invalid/docs/a" title="身份证完整模拟标题">省略...</a>'
+           '<a href="http://foreign.invalid/docs/b">身份证外站</a><a href="http://fixtures.invalid:8080/docs/c">身份证非标准端口</a>'
+           '</div></div><div id="pager" total="41" size="24"></div>').encode()
+    entries, truncated = parse_index(raw, "index", config["seeds"][0], config)
+    assert not truncated
+    assert entries[0]["url"] == "https://fixtures.invalid/docs/a"
+    assert entries[0]["title"] == "身份证完整模拟标题"
+    assert entries[0]["hints"]["original_link_url"] == "http://fixtures.invalid/docs/a"
+    assert entries[1]["url"] == "http://foreign.invalid/docs/b"
+    assert entries[2]["url"] == "http://fixtures.invalid:8080/docs/c"
+    assert entries[-1] == {"url": "https://fixtures.invalid/index_1.html", "title": "", "kind": "index", "hints": {}}
+    plain, _ = parse_index(raw, "index", config["seeds"][0], dict(config, discovery_upgrade_same_host_https=False))
+    assert plain[0]["url"] == "http://fixtures.invalid/docs/a"
+    with pytest.raises(ValueError, match="pagination marker"):
+        parse_index(b'<div class="policies">marker removed</div>', "index", config["seeds"][0], config)
+    with pytest.raises(ValueError, match="list selector missing"):
+        parse_index(b'<div id="pager" total="41" size="24"></div>', "index", config["seeds"][0], config)
+    with pytest.raises(ValueError, match="pagination totals"):
+        parse_index(b'<div id="pager" total="41" size="0"></div>', "index", config["seeds"][0], config)
+
+
+@pytest.mark.parametrize("body_status", [200, 304])
+def test_explicit_owner_reuses_selected_document_and_retains_changed_directory_signal(discovery, body_status):
+    store, config = discovery
+    owner = copy.deepcopy(config)
+    url = "https://fixtures.invalid/docs/owned"
+    owner.update(id="synthetic-owner", seeds=[url], page_kind="document", discover_links=False,
+                 include_paragraph_keywords=["受控身份证"], paragraph_expected_count=1,
+                 watch_scopes=[{"region": "controlled", "matter": "fixture"}])
+    store.register(owner)
+    raw = '<article id="body"><p>受控身份证归属监测正文</p><p>相邻分支不得进入归属来源选择</p></article>'.encode()
+    fetcher = FixtureFetcher({url: (200, "text/html", raw)})
+    clock = time.time()
+    # Only the owner runs first. Its one selected paragraph is the existing file.
+    with store.db() as db:
+        db.execute("UPDATE sites SET next_check=? WHERE id=?", (clock+86400, config["id"]))
+    schedule(store, now=clock)
+    drain(store, fetcher, clock)
+    config.update(page_kind="index", discovery_document_owners={url: owner["id"]}, watch_scopes=owner["watch_scopes"])
+    store.register(config)
+    index = lambda title: ('<a href="'+url+'">'+title+'</a>').encode()
+    fetcher.responses.update({config["seeds"][0]: (200, "text/html", index("身份证目录模拟原题")), url: (body_status, "text/html", raw)})
+    schedule(store, now=clock+1)
+    assert worker_once(store, fetcher, now=clock+1)
+    with store.db() as db:
+        assert db.execute("SELECT last_success FROM sites WHERE id=?", (owner["id"],)).fetchone()[0] is None
+    drain(store, fetcher, clock+1)
+    first = store.status()
+    assert first["counts"]["documents"] == first["counts"]["latest_chunks"] == 1
+    assert first["counts"]["revisions"] == 2
+    assert first["pending_review"][0]["metadata"]["title"] == "身份证目录模拟原题"
+    fetcher.responses[config["seeds"][0]] = (200, "text/html", index("身份证目录变更标题"))
+    schedule(store, now=clock+3701)
+    drain(store, fetcher, clock+3701)
+    latest = store.status()
+    assert latest["counts"]["documents"] == latest["counts"]["latest_chunks"] == 1
+    assert latest["counts"]["revisions"] == 3
+    assert latest["pending_review"][0]["metadata"]["source_observation"]["discovery_signal"]["title"] == "身份证目录变更标题"
+    with store.db() as db:
+        assert db.execute("SELECT COUNT(*) FROM jobs WHERE site_id=? AND url=?", (config["id"], url)).fetchone()[0] == 0
+        assert db.execute("SELECT COUNT(*) FROM discovery_visits WHERE cycle_id=(SELECT MAX(id) FROM discovery_cycles) AND url=?", (url,)).fetchone()[0] == 1
+    # A disabled owner is a visible failure, never a silent duplicate with a
+    # broader parser. The original already archived document remains intact.
+    store.register(dict(owner, enabled=False))
+    schedule(store, now=clock+7402)
+    drain(store, fetcher, clock+7402)
+    with store.db() as db:
+        assert db.execute("SELECT failures FROM sites WHERE id=?", (config["id"],)).fetchone()[0] > 0
+    assert store.status()["counts"]["documents"] == 1
+
+
 def test_atom_respects_xml_base_and_does_not_follow_foreign_origin(discovery):
     store, config = discovery
     config["page_kind"] = "atom"

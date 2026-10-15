@@ -220,6 +220,7 @@ class ArticleParser(HTMLParser):
         super().__init__()
         self.selector, self.stack, self.parts, self.links = selector, [], [], []
         self.excluded_selectors = excluded_selectors or []
+        self.selected_links = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -233,6 +234,8 @@ class ArticleParser(HTMLParser):
         hidden = hidden or any(("id" in selector and attrs.get("id") == selector["id"])
                                or selector.get("class") in classes
                                for selector in self.excluded_selectors)
+        if active and not hidden and tag == "a" and attrs.get("href"):
+            self.selected_links.append(attrs["href"])
         if tag not in ("br", "img", "input", "meta", "link", "hr", "source", "wbr", "area", "base", "embed", "param", "col", "track"):
             self.stack.append((tag, active, hidden))
         if active and tag in ("p", "div", "li", "tr", "br", "section", "h1", "h2", "h3"):
@@ -283,11 +286,20 @@ class PageSignals(HTMLParser):
             self.title.append(text)
 
 
-def observe_html(raw, selectors=None):
+def observe_html(raw, selectors=None, *, content_selector=None, excluded_selectors=None):
     text = raw.decode("utf-8", errors="strict")
     parser = PageSignals()
     parser.feed(text)
     fields = parser.fields
+    if content_selector:
+        body = ArticleParser(content_selector, excluded_selectors)
+        body.feed(text)
+        attachments = sorted({href for href in body.selected_links
+                              if urlsplit(href).path.lower().endswith((".pdf", ".doc", ".docx", ".xls", ".xlsx", ".txt", ".csv", ".zip", ".ofd", ".wps"))})
+        if len(attachments) > 100 or any(len(href) > 2048 for href in attachments):
+            raise ValueError("Oversized body attachment metadata")
+        if attachments:
+            fields["body:document_links"] = attachments
     for name, selector in (selectors or {}).items():
         block = ArticleParser(selector)
         block.feed(text)
@@ -495,15 +507,15 @@ def worker_once(store, fetcher=None, owner=None, now=None):
                 metadata.update(effective_from=None, effective_to=None, published_at=None)
                 metadata["source_observation"] = (
                     {"schema": 1, "media_type": "application/pdf", "raw_sha256": fingerprint(raw)}
-                    if content_type == "application/pdf" else observe_html(raw, config.get("metadata_selectors")))
+                    if content_type == "application/pdf" else observe_html(raw, config.get("metadata_selectors"),
+                        content_selector=config.get("content_selector"), excluded_selectors=config.get("excluded_content_selectors")))
                 if article_preface is not None:
                     metadata["source_observation"]["selected_article_preface"] = article_preface
-                if job["url"] not in config["seeds"]:
+                from gov_mcp.knowledge_discovery import document_discovery_signal
+                with store.db() as db:
+                    observed = document_discovery_signal(db, config, job["url"])
+                if job["url"] not in config["seeds"] or observed:
                     metadata["title"] = "待复核文件：" + final_url
-                    with store.db() as db:
-                        edge = db.execute("SELECT e.*,t.kind AS discovery_format FROM discovery_edges e LEFT JOIN discovery_targets t ON t.site_id=e.site_id AND t.url=e.parent_url WHERE e.site_id=? AND e.target_url=? ORDER BY e.observed_at DESC,e.ordinal LIMIT 1", (config["id"], job["url"])).fetchone()
-                        anchor = db.execute("SELECT data FROM audit WHERE action='document_link_discovered' AND json_extract(data,'$.site')=? AND json_extract(data,'$.url')=? ORDER BY id DESC LIMIT 1", (config["id"], job["url"])).fetchone() if not edge else None
-                    observed = ({"title": edge["title"], "discovered_from": edge["parent_url"], "discovery_format": edge["discovery_format"], "hints": json.loads(edge["hints"])} if edge else json.loads(anchor[0]) if anchor else None)
                     if observed:
                         metadata["title"] = observed["title"] or metadata["title"]
                         metadata["title_source"] = "source_"+str(observed.get("discovery_format", "index"))+"_entry_pending_document_verification"

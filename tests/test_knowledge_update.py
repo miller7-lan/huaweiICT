@@ -147,6 +147,38 @@ def test_removed_metadata_and_title_changes_are_detected_but_tag_order_is_stable
     assert first != observe_html(b'<title>A</title>')
 
 
+def test_same_label_attachment_replacement_and_removal_block_current_answers(store, config):
+    class AttachmentFetcher:
+        href, footer = "/files/original.pdf", "/files/footer.pdf"
+        def fetch(self, config, url):
+            raw = ('<article id="article"><p><a href="'+self.href+'">身份证换领模拟规范附件.pdf</a></p></article>'
+                   '<footer><a href="'+self.footer+'">旁支下载.pdf</a></footer>').encode()
+            return 200, {"content-type": "text/html"}, raw, url
+    fetcher, clock = AttachmentFetcher(), time.time()
+    schedule(store, now=clock)
+    worker_once(store, fetcher, now=clock)
+    first = store.status()["pending_review"][0]
+    reviewed = store.amend(first["id"], dict(first["metadata"], effective_from="2026-01-01"))
+    publish(store, reviewed)
+    fetcher.footer = "/files/other-footer.pdf"
+    schedule(store, now=clock+3700)
+    worker_once(store, fetcher, now=clock+3700)
+    assert search(store)["status"] == "OK" and store.status()["counts"]["revisions"] == 2
+    fetcher.href = "/files/replacement.pdf"
+    schedule(store, now=clock+7400)
+    worker_once(store, fetcher, now=clock+7400)
+    assert search(store)["message_code"] == "UPDATE_PENDING_REVIEW"
+    pending = store.status()["pending_review"][0]
+    assert pending["metadata"]["source_observation"]["fields"]["body:document_links"] == [fetcher.href]
+    with store.db() as db:
+        assert db.execute("SELECT body_sha256 FROM revisions WHERE id=?", (pending["id"],)).fetchone()[0] == db.execute("SELECT body_sha256 FROM revisions WHERE id=?", (first["id"],)).fetchone()[0]
+    fetcher.href = "#removed-download"
+    schedule(store, now=clock+11100)
+    worker_once(store, fetcher, now=clock+11100)
+    latest = store.status()["pending_review"][0]
+    assert latest["id"] != pending["id"] and "body:document_links" not in latest["metadata"]["source_observation"]["fields"]
+
+
 def test_source_metadata_selector_rejects_unbounded_or_invalid_config(config):
     for selectors in ({"all": {}}, {"all": {"tag": "body"}}, {"all": {"id": "x", "class": "y"}}, []):
         with pytest.raises(ValueError, match="selector"):

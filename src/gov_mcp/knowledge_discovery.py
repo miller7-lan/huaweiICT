@@ -5,7 +5,7 @@ import json
 import re
 from datetime import datetime, timezone
 from html.parser import HTMLParser
-from urllib.parse import urldefrag, urljoin
+from urllib.parse import urldefrag, urljoin, urlsplit, urlunsplit
 from xml.etree import ElementTree as ET
 
 from gov_mcp.knowledge import encode
@@ -30,6 +30,25 @@ def validate_discovery(config):
         raise ValueError("Bounded discovery keyword list required")
     if type(config.get("discover_untitled", False)) is not bool:
         raise ValueError("Explicit boolean untitled discovery policy required")
+    for key in ("discovery_upgrade_same_host_https", "discovery_full_title"):
+        if type(config.get(key, False)) is not bool:
+            raise ValueError("Explicit boolean discovery transport/title policy required")
+    owners = config.get("discovery_document_owners", {})
+    if (not isinstance(owners, dict) or len(owners) > 100
+            or any(not isinstance(url, str) or len(url) > 2048 or not isinstance(owner, str)
+                   or not re.fullmatch(r"[a-zA-Z0-9_-]{1,80}", owner) or owner == config["id"] for url, owner in owners.items())):
+        raise ValueError("Explicit bounded discovery document owners required")
+    from gov_mcp.knowledge_fetch import allowed_url
+    for url in owners:
+        allowed_url(config, url)
+    numbered = config.get("discovery_numbered_pagination")
+    if numbered is not None:
+        if (not isinstance(numbered, dict) or set(numbered) != {"id", "total_attribute", "size_attribute", "url_pattern"}
+                or any(not isinstance(numbered[key], str) or not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]{0,79}", numbered[key])
+                       for key in ("id", "total_attribute", "size_attribute"))
+                or not isinstance(numbered["url_pattern"], str)
+                or not re.fullmatch(r"[A-Za-z0-9_-]*\{page\}[A-Za-z0-9_.-]*", numbered["url_pattern"])):
+            raise ValueError("Reviewed relative numbered-pagination pattern required")
     watches = config.get("watch_scopes", [])
     if not isinstance(watches, list) or len(watches) > 20 or any(not isinstance(scope, dict) or set(scope) != {"region", "matter"} or any(not isinstance(value, str) or not value.strip() or len(value) > 100 for value in scope.values()) for scope in watches):
         raise ValueError("Explicit bounded potential-impact watch scopes required")
@@ -61,21 +80,30 @@ def watched_source_ids(db, region, matter):
 
 
 class HTMLDiscovery(HTMLParser):
-    def __init__(self, base, selector=None, pagination=None, keywords=None, untitled=False):
+    def __init__(self, base, selector=None, pagination=None, keywords=None, untitled=False, numbered=None, full_title=False):
         super().__init__()
         self.base, self.selector, self.pagination = base, selector, pagination
         self.stack, self.anchor, self.entries = [], None, []
         self.keywords, self.untitled, self.truncated = keywords or [], untitled, False
+        self.numbered, self.numbered_counts, self.full_title = numbered, [], full_title
+        self.selector_found = selector is None
 
     @staticmethod
     def matches(attrs, selector):
-        return bool(selector and ("id" in selector and attrs.get("id") == selector["id"] or "class" in selector and selector["class"] in attrs.get("class", "").split()))
+        return bool(selector and ("id" in selector and attrs.get("id") == selector["id"] or "class" in selector and selector["class"] in (attrs.get("class") or "").split()))
 
     def handle_starttag(self, tag, pairs):
         attrs = dict(pairs)
         active = self.selector is None or any(item[1] for item in self.stack) or self.matches(attrs, self.selector)
         pager = any(item[2] for item in self.stack) or self.matches(attrs, self.pagination)
         hidden = tag in ("script", "style", "footer", "noscript") or any(item[3] for item in self.stack)
+        if self.matches(attrs, self.selector) and not hidden:
+            self.selector_found = True
+        if self.numbered and attrs.get("id") == self.numbered["id"] and not hidden:
+            total, size = (attrs.get(self.numbered[key], "") for key in ("total_attribute", "size_attribute"))
+            if not re.fullmatch(r"[0-9]{1,7}", total or "") or not re.fullmatch(r"[0-9]{1,5}", size or "") or int(size) < 1:
+                raise ValueError("Invalid declared pagination totals")
+            self.numbered_counts.append((int(total)+int(size)-1)//int(size))
         if tag == "base" and attrs.get("href"):
             self.base = urljoin(self.base, attrs["href"])
         if tag not in VOID:
@@ -83,7 +111,7 @@ class HTMLDiscovery(HTMLParser):
             if len(self.stack) > 128:
                 raise ValueError("Discovery HTML nesting exceeds bounds")
         if tag == "a" and attrs.get("href") and not hidden:
-            self.anchor = [attrs["href"], [], attrs.get("title", ""), active, pager, "next" in attrs.get("rel", "").split()]
+            self.anchor = [attrs["href"], [], attrs.get("title", ""), active, pager, "next" in (attrs.get("rel") or "").split()]
 
     def handle_data(self, text):
         if self.anchor:
@@ -92,7 +120,7 @@ class HTMLDiscovery(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "a" and self.anchor:
             href, pieces, fallback, active, pager, rel_next = self.anchor
-            title = re.sub(r"\s+", " ", "".join(pieces) or fallback).strip()
+            title = re.sub(r"\s+", " ", (fallback if self.full_title and fallback else "".join(pieces) or fallback)).strip()
             is_next = rel_next or pager and title.lower() in ("下一页", "下页", "next", "next page", ">", "›", "»")
             matches = (title and (not self.keywords or any(word in title for word in self.keywords)) or not title and self.untitled)
             if is_next or active and not pager and matches:
@@ -141,10 +169,20 @@ def child_text(element, name):
 def parse_index(raw, kind, base, config):
     parser_truncated = False
     if kind == "index":
-        parser = HTMLDiscovery(base, config.get("discovery_selector"), config.get("pagination_selector"), config.get("discovery_keywords"), config.get("discover_untitled", False))
+        parser = HTMLDiscovery(base, config.get("discovery_selector"), config.get("pagination_selector"), config.get("discovery_keywords"), config.get("discover_untitled", False),
+                               config.get("discovery_numbered_pagination"), config.get("discovery_full_title", False))
         parser.feed(raw.decode("utf-8", errors="strict"))
+        if not parser.selector_found:
+            raise ValueError("Configured discovery list selector missing")
         entries = parser.entries
         parser_truncated = parser.truncated
+        if parser.numbered:
+            if len(parser.numbered_counts) != 1:
+                raise ValueError("Unique declared pagination marker required")
+            count = parser.numbered_counts[0]
+            entries.extend({"url": urljoin(base, parser.numbered["url_pattern"].format(page=page)), "title": "", "kind": "index", "hints": {}}
+                           for page in range(1, min(count, MAX_ENTRIES)))
+            parser_truncated |= count > MAX_ENTRIES
     else:
         root, entries = xml_root(raw), []
         local = root.tag.rsplit("}", 1)[-1]
@@ -189,6 +227,12 @@ def parse_index(raw, kind, base, config):
     selected, seen = [], set()
     for entry in entries:
         entry["url"] = urldefrag(entry["url"])[0]
+        if config.get("discovery_upgrade_same_host_https"):
+            target, origin = urlsplit(entry["url"]), urlsplit(config["origin"])
+            if (origin.scheme == "https" and target.scheme == "http" and target.hostname == origin.hostname
+                    and target.port in (None, 80) and not target.username and not target.password):
+                entry["hints"]["original_link_url"] = entry["url"]
+                entry["url"] = urlunsplit(("https", origin.netloc, target.path, target.query, ""))
         if entry["url"] in seen:
             continue
         seen.add(entry["url"])
@@ -293,7 +337,8 @@ def record_index(store, config, url, kind, raw, final_url, now):
             db.executemany("INSERT INTO discovery_edges VALUES(?,?,?,?,?,?,?,?)", [(config["id"], url, entry["url"], entry["kind"], entry["title"], encode(entry["hints"]), ordinal, now) for ordinal, entry in enumerate(entries)])
         counts = {}
         for entry in entries:
-            outcome = queue_target(db, config, cycle, entry, depth+1, now)
+            outcome = (delegate_document(store, db, config, cycle, entry, depth+1, url, kind, now)
+                       or queue_target(db, config, cycle, entry, depth+1, now))
             counts[outcome] = counts.get(outcome, 0)+1
             if outcome == "new_document":
                 store.log(db, "document_link_discovered", {"site": config["id"], "url": entry["url"], "title": entry["title"], "discovered_from": url, "discovery_format": kind, "hints": entry["hints"]})
@@ -306,16 +351,53 @@ def record_index(store, config, url, kind, raw, final_url, now):
             "dates_are_hints_not_policy_effectivity": True})
 
 
+def delegate_document(store, db, config, cycle, entry, depth, parent, kind, now):
+    """Reuse an explicitly named monitor, with the directory signal and recheck retained."""
+    owner = config.get("discovery_document_owners", {}).get(entry["url"]) if entry["kind"] == "document" else None
+    if not owner:
+        return None
+    if db.execute("SELECT 1 FROM discovery_visits WHERE cycle_id=? AND url=?", (cycle, entry["url"])).fetchone():
+        return "seen"
+    row = db.execute("SELECT config FROM sites WHERE id=?", (owner,)).fetchone()
+    owner_config = json.loads(row[0]) if row else {}
+    from gov_mcp.knowledge_fetch import allowed_url
+    if (not owner_config.get("enabled") or entry["url"] not in owner_config.get("seeds", [])
+            or not db.execute("SELECT 1 FROM documents WHERE site_id=? AND url=?", (owner, entry["url"])).fetchone()
+            or any(scope not in owner_config.get("watch_scopes", []) for scope in config.get("watch_scopes", []))):
+        raise ValueError("Declared document owner must be an enabled archived monitor of the watched scopes")
+    allowed_url(owner_config, entry["url"])
+    signal = {"site": owner, "url": entry["url"], "title": entry["title"], "discovered_from": parent,
+              "discovery_format": kind, "hints": dict(entry["hints"], delegated_from_source=config["id"])}
+    previous = db.execute("SELECT data FROM audit WHERE action='document_link_discovered' AND json_extract(data,'$.site')=? AND json_extract(data,'$.url')=? ORDER BY id DESC LIMIT 1", (owner, entry["url"])).fetchone()
+    if not previous or json.loads(previous[0]) != signal:
+        store.log(db, "document_link_discovered", signal)
+        # Do not keep serving a current answer while a changed directory signal
+        # awaits the owner's body/304 check and immutable pending revision.
+        db.execute("UPDATE sites SET last_success=NULL WHERE id=?", (owner,))
+    db.execute("INSERT OR IGNORE INTO discovery_visits VALUES(?,?,?,?,0)", (cycle, entry["url"], "document", depth))
+    db.execute("INSERT INTO jobs(site_id,url,due) VALUES(?,?,?) ON CONFLICT(site_id,url) DO UPDATE SET state='queued',attempts=0,due=excluded.due,error=NULL WHERE jobs.state IN ('done','failed')", (owner, entry["url"], now))
+    store.log(db, "discovery_document_delegated", {"site": config["id"], "url": entry["url"], "owner": owner, "cycle": cycle})
+    return "delegated_document"
+
+
+def document_discovery_signal(db, config, url):
+    edge = db.execute("SELECT e.*,t.kind AS discovery_format FROM discovery_edges e LEFT JOIN discovery_targets t ON t.site_id=e.site_id AND t.url=e.parent_url WHERE e.site_id=? AND e.target_url=? ORDER BY e.observed_at DESC,e.ordinal LIMIT 1", (config["id"], url)).fetchone()
+    if edge:
+        return {"title": edge["title"], "discovered_from": edge["parent_url"], "discovery_format": edge["discovery_format"], "hints": json.loads(edge["hints"])}
+    anchor = db.execute("SELECT data FROM audit WHERE action='document_link_discovered' AND json_extract(data,'$.site')=? AND json_extract(data,'$.url')=? ORDER BY id DESC LIMIT 1", (config["id"], url)).fetchone()
+    return json.loads(anchor[0]) if anchor else None
+
+
 def refresh_unchanged_document(store, config, url):
     """A document's HTTP 304 does not erase a changed title/date in its feed."""
     with store.db() as db:
         latest = db.execute("SELECT r.* FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=? AND d.url=? ORDER BY r.rowid DESC LIMIT 1", (config["id"], url)).fetchone()
         if not latest:
             raise ValueError("Document 304 without an archived representation")
-        edge = db.execute("SELECT e.*,t.kind AS discovery_format FROM discovery_edges e LEFT JOIN discovery_targets t ON t.site_id=e.site_id AND t.url=e.parent_url WHERE e.site_id=? AND e.target_url=? ORDER BY e.observed_at DESC,e.ordinal LIMIT 1", (config["id"], url)).fetchone()
+        edge = document_discovery_signal(db, config, url)
         if not edge:
             return
-        signal = {"title": edge["title"], "hints": json.loads(edge["hints"]), "discovery_format": edge["discovery_format"]}
+        signal = {key: edge.get(key) for key in ("title", "hints", "discovery_format")}
         previous = json.loads(latest["metadata"])
         observation = dict(previous.get("source_observation", {}))
         if observation.get("discovery_signal") == signal:
@@ -326,7 +408,7 @@ def refresh_unchanged_document(store, config, url):
     metadata = dict(config["metadata"], effective_from=None, effective_to=None, published_at=None,
                     source_observation=observation, title=edge["title"] or previous["title"],
                     title_source="source_"+str(edge["discovery_format"])+"_entry_pending_document_verification",
-                    discovered_from=edge["parent_url"])
+                    discovered_from=edge["discovered_from"])
     original = store.root / "originals" / latest["sha256"][:2] / latest["sha256"]
     revision = store.ingest(config["id"], url, original.read_bytes(), metadata, chunks, preserve_metadata_if_unchanged=True)
     store.propose_classification(revision)

@@ -39,3 +39,27 @@ def test_first_intake_is_disabled_unpublished_and_cannot_overwrite_an_existing_s
     monkeypatch.setattr(sys, "argv", ["intake", "--source", "norm-publisher", "--validate-only"])
     command.main()
     assert len(calls) == 1 and not store.status()["sites"][0]["enabled"]
+
+
+def test_pdf_intake_refuses_wrong_header_without_ingesting_or_enabling(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[1] / "scripts"))
+    import intake_henan_sources as command
+    runtime = tmp_path / "runtime"
+    store = KnowledgeStore.initialize(runtime / "knowledge-update")
+    (tmp_path / "evidence/knowledge-update").mkdir(parents=True)
+    monkeypatch.setattr(command, "ROOT", tmp_path)
+    monkeypatch.setattr(command, "RUNTIME", runtime)
+    class FakeFetcher:
+        def __init__(self, store):
+            pass
+        def fetch(self, config, url):
+            return 200, {"content-type": "application/pdf"}, b"<html>not a PDF</html>", url
+    monkeypatch.setattr(command, "Fetcher", FakeFetcher)
+    monkeypatch.setattr(sys, "argv", ["intake", "--source", "validity-pdf"])
+    with pytest.raises(SystemExit):
+        command.main()
+    status = store.status()
+    assert status["counts"]["documents"] == 0
+    assert status["sites"][0]["enabled"] is False and "header" in status["sites"][0]["paused_reason"]
+    report = json.loads((tmp_path / "evidence/knowledge-update/henan-validity-pdf-intake.json").read_text(encoding="utf-8"))
+    assert not report["body_acquired"] and not report["body_ingested"]

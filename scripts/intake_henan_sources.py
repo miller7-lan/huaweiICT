@@ -1,4 +1,4 @@
-"""First guarded intake of the two reviewed Henan entry points on a fresh runtime."""
+"""First guarded intake of reviewed Henan entry points on a fresh runtime."""
 
 import argparse
 import json
@@ -11,6 +11,18 @@ from nexent_api import ROOT, RUNTIME
 
 
 TARGETS = {
+    "validity-pdf": {"id": "HN-VALIDITY-2025-PDF", "origin": "https://xcoss.henan.gov.cn", "path": "/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf",
+        "label": "2025栏目载入的省厅2019效力清理通知：扫描附件", "type": "official_normative_validity_list", "role": "validity_candidate",
+        "archive": "henan-current-list-2025.pdf", "report": "henan-validity-pdf-intake.json", "media_type": "application/pdf",
+        "basis": "Exact PDF attachment directly linked by the provincial police normative-file publication https://hnga.henan.gov.cn/2025/10-21/3237047.html. Private integrity archive and attributed legal/administrative normative-text analysis under Copyright Law Article 5(1). This screen covers this attachment only, not other object-storage files; present applicability is pending source review."},
+    "repeal-pdf": {"id": "HN-REPEAL-2025B-PDF", "origin": "https://xcoss.henan.gov.cn", "path": "/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf",
+        "label": "2025栏目载入的省厅2022废止通知：扫描附件", "type": "official_normative_repeal_list", "role": "validity_candidate",
+        "archive": "henan-repeal-2025.pdf", "report": "henan-repeal-pdf-intake.json", "media_type": "application/pdf",
+        "basis": "Exact PDF attachment directly linked by the provincial police normative-file publication https://hnga.henan.gov.cn/2025/10-21/3237046.html. Private integrity archive and attributed legal/administrative normative-text analysis under Copyright Law Article 5(1). This screen covers this attachment only, not other object-storage files; present applicability is pending source review."},
+    "policy-index": {"id": "HN-POLICY-DISCOVERY", "origin": "https://hnga.henan.gov.cn", "path": "/zfxxgk/zc/xzgfxwj/",
+        "label": "河南省公安厅行政规范性文件栏目", "type": "official_policy_index", "role": "discovery_candidate",
+        "archive": "henan-policy-index.html", "report": "henan-policy-index-intake.json",
+        "basis": "Official provincial police administrative normative-file directory. Technical use screen limited to bounded link metadata discovery and private integrity archive of the directory, then separately guarded retrieval of official normative texts. No media/design redistribution or general permission for other website material; discovered policy scope and current applicability remain pending."},
     "service-update": {"id": "HN-UPDATE-GS-01", "origin": "https://www.gushi.gov.cn", "path": "/2025/07-10/760173.html",
         "label": "河南换领期限调整：固始县政府转载线索", "type": "official_service_information", "role": "update_signal",
         "archive": "henan-renewal-window.html", "report": "henan-update-intake.json",
@@ -60,8 +72,11 @@ def main():
         try:
             status, headers, raw, final = Fetcher(store).fetch(dict(config, enabled=True), url)
             report.update(status=status, content_type=headers.get("content-type"), final_url=final)
-            if status != 200 or headers.get("content-type", "").split(";")[0] not in ("text/html", "application/xhtml+xml"):
-                raise ValueError("Expected normal official HTML page not returned")
+            expected = ("application/pdf",) if target.get("media_type") == "application/pdf" else ("text/html", "application/xhtml+xml")
+            if status != 200 or headers.get("content-type", "").split(";")[0] not in expected:
+                raise ValueError("Expected normal official document format not returned")
+            if target.get("media_type") == "application/pdf" and not raw.startswith(b"%PDF-"):
+                raise ValueError("Expected PDF header missing")
             archive.parent.mkdir(parents=True, exist_ok=True)
             archive.write_bytes(raw)
             report.update(body_acquired=True, bytes=len(raw), raw_sha256=fingerprint(raw))

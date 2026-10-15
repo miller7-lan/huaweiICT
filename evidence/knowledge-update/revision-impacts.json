@@ -1,35 +1,55 @@
 {
-  "captured_at": "2026-10-15T18:33:08.866268+00:00",
+  "captured_at": "2026-10-15T19:14:24.901703+00:00",
   "records": [
     {
       "analysis_version": "revision-impact-v1",
-      "revision": "rev-afb82e8141a1a337b3412625",
+      "revision": "rev-3221c16ab130408cb59cd2b6",
+      "base_revision": "rev-afb82e8141a1a337b3412625",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "base_original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "chunk_counts": {
+        "before": 14,
+        "after": 14
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "discovered_from",
+        "source_observation.discovery_signal",
+        "title",
+        "title_source"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "501372cb81b9f4822c2120323efbee5cd6d109c46608cb26ad26a8993e29d35d",
+      "source_id": "HN-NORM-PUBLISHER"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-305dacdaba72b27582bbb87f",
       "base_revision": null,
       "status": "machine_analysis_not_review",
       "change_kinds": [
         "initial_candidate"
       ],
-      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "original_sha256": "e51b2ee99c0370d500cbeaed75a06f2826e191c7ceb0ad4dc4f46b8107d07f11",
       "base_original_sha256": null,
       "chunk_counts": {
         "before": 0,
-        "after": 14
+        "after": 1
       },
       "added_locators": [
-        "第一条",
-        "第一百五十七条",
-        "第一百五十九条",
-        "第一百五十五条",
-        "第一百六十一条",
-        "第一百六十三条",
-        "第一百六十二条",
-        "第一百六十五条",
-        "第一百六十四条",
-        "第七条",
-        "第九条",
-        "第二百三十五条",
-        "第二百三十六条",
-        "第二百三十四条"
+        "正文段落1"
       ],
       "removed_locators": [],
       "changed_text_locators": [],
@@ -37,22 +57,256 @@
       "formatting_only_locators": [],
       "changed_metadata_fields": [],
       "affected_topic_codes": [
-        "capture",
-        "delivery",
-        "duration",
-        "effectivity",
-        "eligibility",
-        "fee",
-        "location",
-        "materials",
-        "privacy"
+        "effectivity"
       ],
-      "mixed_branch_mentions": true,
+      "mixed_branch_mentions": false,
       "details": [],
       "details_truncated": false,
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
-      "analysis_sha256": "8e73e26c6b98dd0aea9eb70a120b8d66ffc55fa09f452b5f17231ac02dced5f3",
-      "source_id": "HN-NORM-PUBLISHER"
+      "analysis_sha256": "8bbbc31dcd917777cb366fdf639ac4a531b84ba616c243e1c01bc2de419af82f",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-b2028b34cb701ec765af97b5",
+      "base_revision": null,
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "initial_candidate"
+      ],
+      "original_sha256": "07311ee44758195fde18e8739d681ff7cbc7fdfaff18b0e1393849ff4bebd6d1",
+      "base_original_sha256": null,
+      "chunk_counts": {
+        "before": 0,
+        "after": 1
+      },
+      "added_locators": [
+        "正文段落1"
+      ],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "c90dfd7224862a99d90d908a32187867e1a7a50f23939290a6687a0519beca5e",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-1ec8d03764aba399870269c9",
+      "base_revision": null,
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "initial_candidate"
+      ],
+      "original_sha256": "1031c0d6f8f3ee68a77bc3f361ac64cc9e5d092dd7d9dd15c0881dec164529ae",
+      "base_original_sha256": null,
+      "chunk_counts": {
+        "before": 0,
+        "after": 1
+      },
+      "added_locators": [
+        "正文段落1"
+      ],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [],
+      "affected_topic_codes": [
+        "effectivity"
+      ],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "744acb1f6e11924ad76007be159046373693ce77a8421a5a871bdf4b9439edbb",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-4f4f86c3c7fb597b6f19789f",
+      "base_revision": "rev-47f5786a31b6d070eb614f6f",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "a56c6128bafa7fb75e8486ceb6f234f58fcc222056a35d141a9e43e51c6ddfae",
+      "base_original_sha256": "a56c6128bafa7fb75e8486ceb6f234f58fcc222056a35d141a9e43e51c6ddfae",
+      "chunk_counts": {
+        "before": 20,
+        "after": 20
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "_excluded_after_revision"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "4228be6a25a6cb4f7c2982364244931d25101b238d40bfd8b7bcbc1b5ae8705e",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-bc49b122bba6b4eacb4e5315",
+      "base_revision": "rev-2103780232e7211226b204e3",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "45aaa93c4aaaf8cfa6bc62284a751b6a4dfcd754e21064f94a56cdd2d9981c9c",
+      "base_original_sha256": "45aaa93c4aaaf8cfa6bc62284a751b6a4dfcd754e21064f94a56cdd2d9981c9c",
+      "chunk_counts": {
+        "before": 8,
+        "after": 8
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "_excluded_after_revision"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "7403380f34f6f44e676bfff9a7bcaae43dd0d7b93bc99396959e23a9f3fa99c2",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-0a62b0e1c086b12f92d6b62b",
+      "base_revision": "rev-46c29496b1a7a4f155918325",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "e10b1eda14a0c3a9a105c40da88eae25a802d7bafc87cd9a948e9b4eea00677b",
+      "base_original_sha256": "e10b1eda14a0c3a9a105c40da88eae25a802d7bafc87cd9a948e9b4eea00677b",
+      "chunk_counts": {
+        "before": 14,
+        "after": 14
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "_excluded_after_revision"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "c4bff1d7d9b2e238e366d0eebbd1c786a1af72d384b42621c526366e3393be0d",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-9f902845de521d5bc9b14dfe",
+      "base_revision": "rev-c76e2e52e494dbe3ff41fea4",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "56a9ac6c631485da5700e39f7c000e8c0680966f0203d9d72a9273a06efb0291",
+      "base_original_sha256": "56a9ac6c631485da5700e39f7c000e8c0680966f0203d9d72a9273a06efb0291",
+      "chunk_counts": {
+        "before": 1,
+        "after": 1
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "_excluded_after_revision"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "6ee99bd17e05bea916ae22a8e3f0c73bb4b9f41c95c91d85e690c66e8c86d7b9",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-0029a680dffeb2088f9c3260",
+      "base_revision": "rev-ecbd39d24e05cde0d7bb7dc0",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "40fb56ed8ca0d01e8af060f698ff1bda046907b6d3db5eac8707d3985558c68f",
+      "base_original_sha256": "40fb56ed8ca0d01e8af060f698ff1bda046907b6d3db5eac8707d3985558c68f",
+      "chunk_counts": {
+        "before": 1,
+        "after": 1
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "_excluded_after_revision"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "189be955fe6c6b38240fcf6cef1008c82d0ce839865bd08b91161d25ddcd36ff",
+      "source_id": "HN-POLICY-DISCOVERY"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-9abf6a37bea475cc20f9b7ad",
+      "base_revision": "rev-03372cd4d7ce15212e19409a",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "20f76fbc3bfe78bfd205e415879c15a5185ce3d07ad0e20f4114835a5f77f603",
+      "base_original_sha256": "20f76fbc3bfe78bfd205e415879c15a5185ce3d07ad0e20f4114835a5f77f603",
+      "chunk_counts": {
+        "before": 1,
+        "after": 1
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "_excluded_after_revision"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "1b558bc1f5a615febedcc69c59a66e7e665cd0cec858e5f7b5625cf1b8c32167",
+      "source_id": "HN-REPEAL-2025B-PDF"
     },
     {
       "analysis_version": "revision-impact-v1",
@@ -85,6 +339,36 @@
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
       "analysis_sha256": "a58d665436b9ef258286c1687930497f088a5154e8a42a4d6fce5bc6332e6861",
       "source_id": "HN-UPDATE-GS-01"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-dceee272eaca3c7b903155d8",
+      "base_revision": "rev-5cd782cccf83f7aa957b762b",
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "metadata_change"
+      ],
+      "original_sha256": "f6a32e4bf55d2148b498bd00c3451912d1405bc3ca72566dc356e7fca4afbe51",
+      "base_original_sha256": "f6a32e4bf55d2148b498bd00c3451912d1405bc3ca72566dc356e7fca4afbe51",
+      "chunk_counts": {
+        "before": 1,
+        "after": 1
+      },
+      "added_locators": [],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [
+        "_excluded_after_revision"
+      ],
+      "affected_topic_codes": [],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "a3edcecba826a289bebd62403c90c5142a596c44c0480496cc12c40aa66f5452",
+      "source_id": "HN-VALIDITY-2025-PDF"
     },
     {
       "analysis_version": "revision-impact-v1",
@@ -330,10 +614,10 @@
         "interpretation": "Some selected clauses match; this does not establish that whole documents or effective versions are identical"
       }
     ],
-    "current_document_records": 7,
-    "distinct_original_hashes": 7,
+    "current_document_records": 17,
+    "distinct_original_hashes": 17,
     "warning": "Records with the same reported number can be distinct versions; similarity never grants publication or merges scope",
-    "analysis_sha256": "c5f944c9bee17eae56e64725fa642c13f92378821a7615cefe6246672785fcdc"
+    "analysis_sha256": "03cfdedf5fb3623de950b870c31b9df5f6fb40bb70364d75234bc64ebb511872"
   },
   "business_review_completed": false,
   "scope": "Actual archived candidate differences and potential mirror signals; no policy effectivity decision or automatic consolidation"

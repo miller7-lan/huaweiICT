@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-15T18:38:47.562446+00:00",
+  "captured_at": "2026-10-15T19:15:54.864835+00:00",
   "passed": true,
   "checks": {
     "document_revision_chunk_counts_match": true,
@@ -10,32 +10,32 @@
     "services_not_started_by_restore": true
   },
   "backup": {
-    "directory": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update\\backups\\20261015T183845Z-724f749d",
-    "manifest_sha256": "a5d84d22fbd6a4ead2c946161321c9169d754f762854d3729f27b37cd8efb74b",
-    "files": 13,
-    "referenced_originals": 7,
+    "directory": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update\\backups\\20261015T191551Z-34c87c52",
+    "manifest_sha256": "fb6cfb20574a9fe9848fdc761ab9f53bcb8906a9f9fd5b496e870fe4cb16b409",
+    "files": 23,
+    "referenced_originals": 17,
     "counts": {
-      "documents": 7,
-      "revisions": 9,
-      "chunks": 89,
+      "documents": 17,
+      "revisions": 31,
+      "chunks": 202,
       "versions": 0,
       "heads": 0
     },
     "auth_credentials_included": false
   },
   "restore": {
-    "restored_to": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update-restores\\20261015T183845Z-724f749d",
+    "restored_to": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update-restores\\20261015T191551Z-34c87c52",
     "counts": {
-      "documents": 7,
-      "revisions": 9,
-      "chunks": 89,
+      "documents": 17,
+      "revisions": 31,
+      "chunks": 202,
       "versions": 0,
       "heads": 0
     },
-    "referenced_originals": 7,
+    "referenced_originals": 17,
     "services_started": false,
     "credentials_must_be_reprovisioned": true,
-    "source_manifest_sha256": "a5d84d22fbd6a4ead2c946161321c9169d754f762854d3729f27b37cd8efb74b"
+    "source_manifest_sha256": "fb6cfb20574a9fe9848fdc761ab9f53bcb8906a9f9fd5b496e870fe4cb16b409"
   },
   "published_snapshots_available": false,
   "scope": "Actual candidate data/original/configuration recovery; published-answer replay is separately tested using synthetic fixtures, not claimed for zero official releases"

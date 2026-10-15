@@ -95,8 +95,15 @@ REPLACE_NATIONAL_LOCATORS = {"KQ01", "KQ02", "KQ03", "KQ05", "KQ07", "KQ09", "KQ
 def main():
     draft = json.loads((ROOT / "evaluation/knowledge/pilot-business-questions.json").read_text(encoding="utf-8"))
     store = KnowledgeStore(ROOT / ".runtime/knowledge-update", read_only=True)
+    wanted_sources = {source for _, _, _, sources, _ in ANSWERS for source in sources} | {"HN-NORM-PUBLISHER"}
     with store.db() as db:
-        local = {row["site_id"]: dict(row) for row in db.execute("SELECT d.site_id,d.url,r.id AS revision,r.sha256 FROM documents d JOIN revisions r ON r.document_id=d.id WHERE r.rowid IN (SELECT MAX(rowid) FROM revisions GROUP BY document_id)")}
+        local = {}
+        for row in db.execute("SELECT d.site_id,d.url,r.id AS revision,r.sha256 FROM documents d JOIN revisions r ON r.document_id=d.id WHERE r.rowid IN (SELECT MAX(rowid) FROM revisions GROUP BY document_id)"):
+            if row["site_id"] not in wanted_sources:
+                continue
+            if row["site_id"] in local:
+                raise ValueError("Reference source has multiple documents; bind a document explicitly instead of overwriting it")
+            local[row["site_id"]] = dict(row)
         for source in local.values():
             source["locators"] = [row[0] for row in db.execute("SELECT locator FROM chunks WHERE revision_id=? ORDER BY ordinal", (source["revision"],))]
     assert len(draft["cases"]) == len(ANSWERS) == 30

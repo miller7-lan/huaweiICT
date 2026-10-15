@@ -10,7 +10,8 @@ from nexent_api import ROOT, RUNTIME
 def main():
     store = KnowledgeStore(RUNTIME / "knowledge-update", read_only=True)
     sources, documents = [], []
-    metadata_fields = ("title", "region", "matter", "document_type", "document_number", "published_at", "effective_from", "effective_to", "conflict")
+    metadata_fields = ("title", "region", "matter", "document_type", "document_number", "published_at", "effective_from", "effective_to", "conflict",
+                       "document_signed_at", "extraction_method", "scope_confirmed", "collection_role")
     with store.db() as db:
         for row in db.execute("SELECT * FROM sites ORDER BY id"):
             config = json.loads(row["config"])
