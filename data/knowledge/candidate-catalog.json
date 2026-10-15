@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-15T20:14:05.947020+00:00",
+  "captured_at": "2026-10-15T20:35:16.218690+00:00",
   "counts": {
-    "sites": 26,
-    "documents": 20,
-    "revisions": 54,
-    "chunks": 247,
+    "sites": 29,
+    "documents": 21,
+    "revisions": 55,
+    "chunks": 248,
     "versions": 0,
     "heads": 0,
-    "jobs": 21,
-    "latest_chunks": 123
+    "jobs": 24,
+    "latest_chunks": 124
   },
   "sources": [
     {
@@ -29,6 +29,25 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792081678.9028425,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ERQI-NEARBY-2026",
+      "label": "二七区警务室就近办：郑州公安2026年服务事实",
+      "origin": "https://zzga.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/jwzx/9863401.jhtml"
+      ],
+      "seeds": [
+        "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": "Access denied; source paused",
+      "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -71,6 +90,25 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792094942.216117,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-MEASURES-2024-JY",
+      "label": "河南2024便民措施：济源公安转载的25自然日条款",
+      "origin": "https://gaj.jiyuan.gov.cn",
+      "allowed_paths": [
+        "/14190/15132/15148/t961601.html"
+      ],
+      "seeds": [
+        "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792096351.0992856,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -471,6 +509,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "NDRC-EXEMPT-2004",
+      "label": "财政部国家发展改革委关于第二代居民身份证工本费减免政策的通知",
+      "origin": "https://www.ndrc.gov.cn",
+      "allowed_paths": [
+        "/xxgk/zcfb/qt/200905/t20090512_967638.html"
+      ],
+      "seeds": [
+        "https://www.ndrc.gov.cn/xxgk/zcfb/qt/200905/t20090512_967638.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": "Access denied; source paused",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "NDRC-FEE-2003",
       "label": "国家发展改革委 财政部关于居民身份证收费标准及有关问题的通知",
       "origin": "https://zfxxgk.ndrc.gov.cn",
@@ -643,6 +700,34 @@
           "category": "procedure",
           "characters": 308,
           "text_sha256": "cd47520c0e701b5b4f221f3c4e8bac9f10057e965645543f500f845d59e7017d"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-MEASURES-2024-JY",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
+      "state": "pending_review",
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "original_bytes": 36086,
+      "metadata": {
+        "title": "河南2024便民措施：济源公安转载的25自然日条款",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "later_policy_signal"
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 48,
+          "text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
         }
       ]
     },

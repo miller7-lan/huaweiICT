@@ -60,7 +60,8 @@ def main():
             "provincial_norms": "publisher_html_fourteen_clauses_archived_scanned_notice_not_acquired_later_changes_pending",
             "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
             "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
-            "municipal_changes": "not_established",
+            "later_provincial_duration_signal": "2024_25_natural_day_measure_first_clause_normally_archived_current_applicability_pending",
+            "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
             "district_guide": "archived_candidate_current_access_paused"}}
     (ROOT / "evidence/knowledge-update/review-readiness.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"private_packet": str(path), "candidate_files": len(records), "question_count": len(dataset["cases"]),

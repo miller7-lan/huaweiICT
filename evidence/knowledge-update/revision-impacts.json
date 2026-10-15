@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-15T20:14:05.075860+00:00",
+  "captured_at": "2026-10-15T20:35:53.358050+00:00",
   "records": [
     {
       "analysis_version": "revision-impact-v1",
@@ -32,6 +32,39 @@
       "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
       "analysis_sha256": "1d0237d4bee87a7fb8f059b633e41de0511e5f06593532ed62cd3e50d6d72036",
       "source_id": "HN-MEASURES-2021-PDF"
+    },
+    {
+      "analysis_version": "revision-impact-v1",
+      "revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
+      "base_revision": null,
+      "status": "machine_analysis_not_review",
+      "change_kinds": [
+        "initial_candidate"
+      ],
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "base_original_sha256": null,
+      "chunk_counts": {
+        "before": 0,
+        "after": 1
+      },
+      "added_locators": [
+        "正文段落1"
+      ],
+      "removed_locators": [],
+      "changed_text_locators": [],
+      "changed_category_locators": [],
+      "formatting_only_locators": [],
+      "changed_metadata_fields": [],
+      "affected_topic_codes": [
+        "delivery",
+        "duration"
+      ],
+      "mixed_branch_mentions": false,
+      "details": [],
+      "details_truncated": false,
+      "warning": "Detected differences require source/scope review; absence of a detected difference is not proof of current validity",
+      "analysis_sha256": "77ed2c871c295c01d59d5ead07001e4abe71ffdb27864a9ce8523cdcce2ededa",
+      "source_id": "HN-MEASURES-2024-JY"
     },
     {
       "analysis_version": "revision-impact-v1",
@@ -702,10 +735,10 @@
         "interpretation": "Some selected clauses match; this does not establish that whole documents or effective versions are identical"
       }
     ],
-    "current_document_records": 20,
-    "distinct_original_hashes": 20,
+    "current_document_records": 21,
+    "distinct_original_hashes": 21,
     "warning": "Records with the same reported number can be distinct versions; similarity never grants publication or merges scope",
-    "analysis_sha256": "c6c34ffebda64bf55966a1b59545933728092c64b68e7ab4d2303a7aa7f59396"
+    "analysis_sha256": "0f3c5752797cad7cd54707b1c5e9ebbb2146746456ab81c7f75e3946c12af97a"
   },
   "business_review_completed": false,
   "scope": "Actual archived candidate differences and potential mirror signals; no policy effectivity decision or automatic consolidation"

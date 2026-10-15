@@ -1,18 +1,20 @@
 {
-  "captured_at": "2026-10-15T20:25:01.810051+00:00",
+  "captured_at": "2026-10-15T20:39:45.428217+00:00",
   "counts": {
-    "sites": 26,
-    "documents": 20,
-    "revisions": 54,
-    "chunks": 247,
+    "sites": 29,
+    "documents": 21,
+    "revisions": 55,
+    "chunks": 248,
     "versions": 0,
     "heads": 0,
-    "jobs": 21,
-    "latest_chunks": 123
+    "jobs": 24,
+    "latest_chunks": 124
   },
   "enabled_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
+    "ERQI-NEARBY-2026",
     "HN-MEASURES-2021-PDF",
+    "HN-MEASURES-2024-JY",
     "HN-NORM-PUBLISHER",
     "HN-OSS-PDF-DISCOVERY",
     "HN-POLICY-DISCOVERY",
@@ -23,12 +25,14 @@
     "ID-AMENDMENT-JT-LEAD",
     "MPS-NORM-01",
     "MPS-USE-01",
+    "NDRC-EXEMPT-2004",
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
   "healthy_monitored_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
     "HN-MEASURES-2021-PDF",
+    "HN-MEASURES-2024-JY",
     "HN-NORM-PUBLISHER",
     "HN-POLICY-DISCOVERY",
     "HN-REPEAL-2020-PDF",
@@ -39,10 +43,12 @@
     "MPS-USE-01"
   ],
   "paused_source_ids": [
+    "ERQI-NEARBY-2026",
     "HN-NORM-XY-LEAD",
     "ID-GUIDE-01",
     "ID-LAW-01",
     "ID-NORM-01",
+    "NDRC-EXEMPT-2004",
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
@@ -52,7 +58,7 @@
     "govkb_get_environment_status",
     "govkb_search_evidence"
   ],
-  "public_files_scanned": 569,
+  "public_files_scanned": 575,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -176,7 +182,7 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792095662,
+      "checked_at": 1792096562,
       "action": "healthy",
       "ready": true,
       "recovery_count": 1,
