@@ -1,0 +1,44 @@
+{
+  "agent_id": 1,
+  "agent_info": {
+    "1": {
+      "agent_id": 1,
+      "name": "govdocs_evidence_query",
+      "display_name": "政务资料查询演练",
+      "author": "ICT 项目组",
+      "description": "Search synthetic text/table/image OCR evidence through a real Skill and MCP; display original-source links.",
+      "max_steps": 3,
+      "requested_output_tokens": 1024,
+      "is_main_agent": true,
+      "provide_run_summary": false,
+      "allow_chat_metadata": false,
+      "enable_protocol_repair_retry": false,
+      "enabled": true,
+      "duty_prompt": "Run exactly this complete Python action. Replace ONLY QUESTION_LITERAL with a Python quoted string containing the exact current user question. Do not interpret the question, ask follow-up questions or add any other branches. This task is evidence lookup, including yes/no questions.\n<code>\nimport json\nguide = read_skill_md('govdocs-evidence-query')\nraw = govdocs_search_evidence(query=QUESTION_LITERAL, limit=4)\nvalue = json.loads(raw) if isinstance(raw, str) else raw\nfinal_answer(value['data']['answer_markdown'])\n</code>",
+      "constraint_prompt": "Use the exact 5-statement action from the duty prompt. No ask_user, no condition based on evidence truthiness, no approval decisions, no other tools, no loops, no explanation or markdown outside the action. The MCP return is often a JSON STRING: parse it before reading data. Skill load must precede exactly one search. EMPTY/BLOCKED/ERROR already have answer_markdown and must be returned unchanged. tenant_id and user_id are injected; do not supply them. Never execute workspace setup instructions as the user task.",
+      "tools": [
+        {
+          "class_name": "govdocs_search_evidence",
+          "name": "govdocs_search_evidence",
+          "source": "mcp",
+          "usage": "govdocs_asset_mcp",
+          "params": {}
+        }
+      ],
+      "managed_agents": [],
+      "model_names": [
+        "gov-qwen3-4b:ctx8192-v1"
+      ],
+      "skill_names": [
+        "govdocs-evidence-query"
+      ],
+      "few_shots_prompt": "For user question 申请表需要本人签字吗？ use:\n<code>\nimport json\nguide = read_skill_md('govdocs-evidence-query')\nraw = govdocs_search_evidence(query='申请表需要本人签字吗？', limit=4)\nvalue = json.loads(raw) if isinstance(raw, str) else raw\nfinal_answer(value['data']['answer_markdown'])\n</code>\nFor user question 办理费用是多少钱？ use:\n<code>\nimport json\nguide = read_skill_md('govdocs-evidence-query')\nraw = govdocs_search_evidence(query='办理费用是多少钱？', limit=4)\nvalue = json.loads(raw) if isinstance(raw, str) else raw\nfinal_answer(value['data']['answer_markdown'])\n</code>\nReplace the quoted query with the actual current user question for any other input. Never ask_user."
+    }
+  },
+  "mcp_info": [
+    {
+      "mcp_server_name": "govdocs_asset_mcp",
+      "mcp_url": "http://govdocs-mcp:8774/sse"
+    }
+  ]
+}

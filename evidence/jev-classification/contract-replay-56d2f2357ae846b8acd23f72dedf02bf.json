@@ -1,0 +1,108 @@
+{
+  "mode": "contract_replay_not_jev",
+  "captured_at": "2026-10-15T10:01:34.107031+00:00",
+  "fixtures_are_synthetic": true,
+  "independent_business_evaluation": false,
+  "live_accuracy_measured": false,
+  "all_originals_preserved": true,
+  "source_corpus_unchanged": true,
+  "runs": [
+    {
+      "private_output": ".runtime\\preparation\\classification\\56d2f2357ae846b8acd23f72dedf02bf",
+      "status": "completed",
+      "provider": "contract_replay_not_jev",
+      "requested_model": "jev-1.13.0",
+      "actual_models": [
+        "jev-1.13.0"
+      ],
+      "source_sha256": "ba049e93b1fdf9feecd48f51dcda8358866faf0493ab37af7fc75c65d45fec67",
+      "rules_version": "gov-classification-1",
+      "rules_sha256": "03f20d142f93a255b87d9b38b9a3dacaa273f9efd27fded5e8827d8a5ee4a4dd",
+      "segment_count": 9,
+      "status_counts": {
+        "routed": 7,
+        "pending_review": 2
+      },
+      "pending_review_fraction": 0.2222222222222222,
+      "bundle_counts": {
+        "policy_clauses": 1,
+        "guide_sections": 6,
+        "form_fields": 2,
+        "notice_faq": 2,
+        "pending_review": 2
+      },
+      "call_count": 18,
+      "http_attempts": 0,
+      "error_codes": {},
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "usage_scope": "validated successful responses only; failed attempts may also be billed",
+      "duration_ms": 0.93,
+      "live_accuracy_measured": false,
+      "business_rules_published": false
+    },
+    {
+      "private_output": ".runtime\\preparation\\classification\\efb0219027a34eb1a3af81f0d44c7a85",
+      "status": "completed",
+      "provider": "contract_replay_not_jev",
+      "requested_model": "jev-1.13.0",
+      "actual_models": [
+        "jev-1.13.0"
+      ],
+      "source_sha256": "ba049e93b1fdf9feecd48f51dcda8358866faf0493ab37af7fc75c65d45fec67",
+      "rules_version": "gov-classification-1",
+      "rules_sha256": "03f20d142f93a255b87d9b38b9a3dacaa273f9efd27fded5e8827d8a5ee4a4dd",
+      "segment_count": 9,
+      "status_counts": {
+        "routed": 7,
+        "pending_review": 2
+      },
+      "pending_review_fraction": 0.2222222222222222,
+      "bundle_counts": {
+        "policy_clauses": 1,
+        "guide_sections": 6,
+        "form_fields": 2,
+        "notice_faq": 2,
+        "pending_review": 2
+      },
+      "call_count": 18,
+      "http_attempts": 0,
+      "error_codes": {},
+      "usage": {
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "usage_scope": "validated successful responses only; failed attempts may also be billed",
+      "duration_ms": 0.95,
+      "live_accuracy_measured": false,
+      "business_rules_published": false
+    }
+  ],
+  "order_comparison": {
+    "comparable_count": 9,
+    "changed_segment_ids": [],
+    "stable": true
+  },
+  "fixture_checks": [
+    {
+      "sample_count": 9,
+      "document_type_correct": 9,
+      "domains_exact": 9,
+      "purposes_exact": 9,
+      "routes_exact": 9,
+      "routing_errors": 0,
+      "routing_error_definition": "expected route set differs or classification failed; includes conservative deferrals"
+    },
+    {
+      "sample_count": 9,
+      "document_type_correct": 9,
+      "domains_exact": 9,
+      "purposes_exact": 9,
+      "routes_exact": 9,
+      "routing_errors": 0,
+      "routing_error_definition": "expected route set differs or classification failed; includes conservative deferrals"
+    }
+  ]
+}

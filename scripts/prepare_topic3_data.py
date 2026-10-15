@@ -150,13 +150,16 @@ def main():
     parser.add_argument("--manifest", default="config/preparation/assets.demo.json")
     parser.add_argument("--profile", default="config/preparation/profile.json")
     parser.add_argument("--embed", action="store_true")
+    parser.add_argument("--classify", action="store_true", help="Optional Jev candidates; failures do not block embedding")
+    parser.add_argument("--classification-config", default="config/preparation/classification.json")
     args = parser.parse_args()
     profile = json.loads(inside_workspace(args.profile).read_text(encoding="utf-8-sig"))
     manifest = json.loads(inside_workspace(args.manifest).read_text(encoding="utf-8-sig"))
     output = inside_workspace(profile["output_directory"])
     if not output.is_relative_to(ROOT / ".runtime/preparation"):
         raise ValueError("Raw outputs must stay in private preparation directory")
-    public = ROOT / "evidence/toolchain/preparation-20261014/summary.json"
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    public = ROOT / "evidence/toolchain" / ("preparation-" + stamp) / "summary.json"
     report = {"captured_at": datetime.now(timezone.utc).isoformat(), "client_timezone": "Asia/Shanghai",
               "scope": "isolated input preparation, not Nexent knowledge ingestion or business acceptance",
               "dataset_id": manifest.get("dataset_id"), "data_class": manifest.get("data_class"),
@@ -188,6 +191,19 @@ def main():
             report["assets"][-1]["segment_count"] = len(parsed["segments"])
         stage = "save_private_segments"
         write_json(output / "assets.json", {"dataset_id": manifest["dataset_id"], "data_class": manifest["data_class"], "assets": assets})
+        if args.classify:
+            stage = "classification"
+            try:
+                from classify_topic3_data import classify_prepared
+                run, path = classify_prepared(
+                    {"dataset_id": manifest["dataset_id"], "data_class": manifest["data_class"], "assets": assets},
+                    inside_workspace(args.classification_config), ROOT / ".runtime/preparation/classification")
+                report["classification"] = {"output": str(path.relative_to(ROOT)), **run["summary"]}
+            except Exception:
+                # Optional classification/config/output failure must not stop local retrieval.
+                # The saved parsed corpus remains available for a corrected rerun.
+                report["classification"] = {"status": "error", "message_code": "CLASSIFICATION_STAGE_FAILED",
+                    "all_segments_pending_review": True, "business_rules_published": False}
         if args.embed:
             stage = "embedding"
             embedding = embed(profile, [segment for asset in assets for segment in asset["segments"]])

@@ -1,4 +1,4 @@
-param([switch]$SkipModelDownload)
+param([switch]$SkipModelDownload, [switch]$Classify)
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path -Parent $PSScriptRoot
 Push-Location -LiteralPath $taskRoot
@@ -18,7 +18,9 @@ try {
         ollama pull qwen3-embedding:0.6b
         if ($LASTEXITCODE -ne 0) { throw 'Embedding model download failed.' }
     }
-    & $taskPreparationPython scripts/prepare_topic3_data.py --generate-demo --embed
+    $taskPreparationArgs = @('scripts/prepare_topic3_data.py', '--generate-demo', '--embed')
+    if ($Classify) { $taskPreparationArgs += '--classify' }
+    & $taskPreparationPython @taskPreparationArgs
     if ($LASTEXITCODE -ne 0) { throw 'Input preparation rehearsal failed; see sanitized summary.' }
     if (Test-Path -LiteralPath '.runtime/accounts.json') {
         & $taskBasePython scripts/provision_topic3_embedding.py
