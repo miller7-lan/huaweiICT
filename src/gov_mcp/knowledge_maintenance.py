@@ -12,6 +12,7 @@ from pathlib import Path
 from gov_mcp.knowledge import KnowledgeStore, fingerprint
 from gov_mcp.knowledge_backup import create_bundle, restore_bundle
 from gov_mcp.knowledge_lock import process_lock
+from gov_mcp.knowledge_startup import observe_startup_task
 
 
 def maintenance_lock(root):
@@ -31,6 +32,11 @@ def maintenance_tick(store, now=None, owner="maintenance-once", backup=create_bu
         except (OSError, ValueError) as error:
             state = {"errors": {"state": "Previous maintenance state unreadable: "+str(error)[:200]}}
         previous_signal = state.get("signal")
+        try:
+            observe_startup_task(store)
+            state.setdefault("errors", {}).pop("startup_observation", None)
+        except OSError:
+            state.setdefault("errors", {})["startup_observation"] = "Windows recovery task observation could not be saved"
         local = datetime.fromtimestamp(now, timezone(timedelta(hours=8)))
         day, week = local.strftime("%Y-%m-%d"), "{}-W{:02d}".format(*local.isocalendar()[:2])
         errors = state.setdefault("errors", {})
@@ -58,6 +64,9 @@ def maintenance_tick(store, now=None, owner="maintenance-once", backup=create_bu
                 errors[action] = str(error)[:300]
         status = store.status()
         alerts = []
+        startup = status["startup"]["health"]
+        if startup["level"] == "warning":
+            alerts.append({"code": "startup_recovery_attention", "reason": startup["code"]})
         for source in status["sites"]:
             if source["enabled"] and (source["paused_reason"] or source["stale"]):
                 alerts.append({"code": "source_paused" if source["paused_reason"] else "source_stale", "source": source["id"]})

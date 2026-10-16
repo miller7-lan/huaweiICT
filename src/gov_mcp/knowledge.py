@@ -548,12 +548,17 @@ class KnowledgeStore:
         from gov_mcp.knowledge_discovery import discovery_status
         with self.db() as db:
             startup = {}
-            for key, name in (("registration", "startup-registration.json"), ("recovery", "startup-recovery-status.json")):
+            for key, name in (("registration", "startup-registration.json"), ("recovery", "startup-recovery-status.json"), ("task", "startup-task-status.json")):
                 path = self.root / name
                 try:
                     startup[key] = json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+                    if startup[key] is not None and not isinstance(startup[key], dict):
+                        raise ValueError("Startup observation must be an object")
                 except (OSError, ValueError):
                     startup[key] = {"status": "unreadable"}
+            from gov_mcp.knowledge_startup import startup_health
+            startup["manual_pause"] = (self.root / "service-paused.json").exists()
+            startup["health"] = startup_health(startup)
             counts = {t: db.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]
                       for t in ("sites", "documents", "revisions", "chunks", "versions", "heads", "jobs")}
             counts["latest_chunks"] = db.execute("SELECT COUNT(*) FROM chunks WHERE revision_id IN (SELECT id FROM revisions WHERE rowid IN (SELECT MAX(rowid) FROM revisions GROUP BY document_id))").fetchone()[0]

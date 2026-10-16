@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T11:48:02.897074+00:00",
+  "captured_at": "2026-10-16T12:14:44.236777+00:00",
   "counts": {
     "sites": 30,
     "documents": 22,
@@ -54,7 +54,7 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 486,
+  "test_count": 492,
   "tests_passed": true,
   "platform_tools": [
     "govkb_get_environment_status",
@@ -63,7 +63,7 @@
   "platform_catalog_verified": true,
   "platform_catalog_failure_class": null,
   "platform_catalog_failure_stage": null,
-  "public_files_scanned": 704,
+  "public_files_scanned": 713,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -215,16 +215,37 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792131964,
+      "checked_at": 1792152663,
       "action": "healthy",
       "ready": true,
       "recovery_count": 3,
       "last_recovered_at": 1792131058,
       "last_recovered_supervisor_pid": 18228,
-      "supervisor_pid": 18228,
+      "supervisor_pid": 51908,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"
+    },
+    "task": {
+      "status": "observed",
+      "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+      "enabled": true,
+      "task_state": "Ready",
+      "ownership_verified": true,
+      "configuration_matches": true,
+      "last_run": "2026-10-16T12:10:55.0000000Z",
+      "next_run": "2026-10-16T12:15:54.0000000Z",
+      "last_result": 0,
+      "missed_runs": 0,
+      "schema": 1,
+      "checked_at": 1792152821.1474848,
+      "read_only_observation": true
+    },
+    "manual_pause": false,
+    "health": {
+      "code": "healthy",
+      "message": "Windows恢复任务已启用，最近恢复检查正常。",
+      "level": "info"
     }
   },
   "startup_evidence": {
