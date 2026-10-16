@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T05:48:48.119065+00:00",
+  "captured_at": "2026-10-16T11:47:59.967675+00:00",
   "counts": {
-    "sites": 29,
-    "documents": 21,
-    "revisions": 63,
-    "chunks": 293,
+    "sites": 30,
+    "documents": 22,
+    "revisions": 64,
+    "chunks": 296,
     "versions": 0,
     "heads": 0,
-    "jobs": 24,
-    "latest_chunks": 124
+    "jobs": 25,
+    "latest_chunks": 127
   },
   "sources": [
     {
@@ -28,7 +28,7 @@
       "page_kind": "index",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792116529.7932386,
+      "last_success": 1792138137.4737031,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -68,6 +68,25 @@
       "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-MATERIALS-REPLY-2023",
+      "label": "河南省公安厅公开答复：省内异地补换领材料分支",
+      "origin": "https://www.henan.gov.cn",
+      "allowed_paths": [
+        "/2023/02-04/2683999.html"
+      ],
+      "seeds": [
+        "https://www.henan.gov.cn/2023/02-04/2683999.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792151036.5097306,
+      "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
     {
@@ -127,7 +146,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792116550.7177896,
+      "last_success": 1792138158.306693,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -222,7 +241,7 @@
       },
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792116630.5401242,
+      "last_success": 1792138238.338639,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -624,6 +643,47 @@
     }
   ],
   "documents": [
+    {
+      "source_id": "HN-MATERIALS-REPLY-2023",
+      "url": "https://www.henan.gov.cn/2023/02-04/2683999.html",
+      "revision": "rev-44be95c37fe4b68b5ba6fea6",
+      "state": "pending_review",
+      "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
+      "original_bytes": 8843,
+      "metadata": {
+        "title": "河南省公安厅公开答复：省内异地补换领材料分支",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "official_consultation_reply",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "material_branch_signal"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落11",
+          "category": "identity",
+          "characters": 12,
+          "text_sha256": "357ad4ea5e1f4446eb30ac4763bba61c5767373118ca97bdd121a92f8d2c80eb"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "identity",
+          "characters": 103,
+          "text_sha256": "8595bddbfbf1e854f041002096ff2972128a5bc1ad805013eca827ee15e8022c"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "identity",
+          "characters": 90,
+          "text_sha256": "b0638df543cfcffe51f3be975b84d1019bb901259b726ab52fdea0e1eb7a5849"
+        }
+      ]
+    },
     {
       "source_id": "HN-MEASURES-2021-PDF",
       "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",

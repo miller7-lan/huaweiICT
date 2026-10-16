@@ -1,4 +1,4 @@
-"""Register three exact official business-evidence candidates through the normal worker."""
+"""Register bounded official business-evidence candidates through the normal worker."""
 
 import argparse
 import json
@@ -11,6 +11,15 @@ from nexent_api import ROOT, RUNTIME
 
 
 TARGETS = {
+    "henan-materials-reply": {
+        "id": "HN-MATERIALS-REPLY-2023", "origin": "https://www.henan.gov.cn", "path": "/2023/02-04/2683999.html",
+        "label": "河南省公安厅公开答复：省内异地补换领材料分支", "selector": {"id": "content"},
+        "keywords": ["省内", "居民身份证"], "expected": 3,
+        "region": "河南省", "type": "official_consultation_reply", "role": "material_branch_signal",
+        "page_date": "2023-02-06", "source_named": "河南省公安厅（河南省政府门户网站公开答复）",
+        "basis": "Official provincial police public consultation reply. Limited private integrity archive and attributed factual analysis of the three complete non-personal paragraphs identifying the provincial out-of-home-area branch, its context and alternative identity documents. No unrelated correspondence, images or page layout in retrieval; no present applicability approval.",
+        "limits": "Only the provincial out-of-home-area heading and two complete context/material paragraphs. The question concerns lost-document replacement and the reply covers multiple branches. Preserve the original punctuation and the parenthetical limitation on resident ID cards. Do not turn this into an unconditional expiry-renewal alternative list, a current Erqi local checklist or an amendment/repeal of the national/provincial norms. Reply/page date is not a legal commencement date.",
+    },
     "erqi-nearby": {
         "id": "ERQI-NEARBY-2026", "origin": "https://zzga.zhengzhou.gov.cn", "path": "/jwzx/9863401.jhtml",
         "label": "二七区警务室就近办：郑州公安2026年服务事实", "selector": {"class": "news_content_content"},
