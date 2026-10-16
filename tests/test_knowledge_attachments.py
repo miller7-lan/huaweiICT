@@ -264,6 +264,143 @@ def test_attachment_title_attribute_change_binds_new_parent_original(setup):
     assert store.status()["counts"]["revisions"] == before+2
 
 
+@pytest.mark.parametrize("status", [200, 304])
+def test_parent_exclusion_does_not_refetch_or_reopen_unchanged_pdf(setup, status):
+    store, parent, child, fetcher = setup
+    clock = time.time()
+    schedule(store, now=clock)
+    drain(store, fetcher, clock)
+    with store.db() as db:
+        initial = {r["site_id"]: r["id"] for r in db.execute("SELECT r.id,d.site_id FROM revisions r JOIN documents d ON d.id=r.document_id")}
+    parent_excluded = store.exclude(initial[parent["id"]], "synthetic", "Controlled parent is only a PDF link", True)
+    child_excluded = store.exclude(initial[child["id"]], "synthetic", "Controlled PDF is outside fixture scope", True)
+    before = store.status()["counts"]["revisions"]
+    fetcher.responses[ROOT] = (status, "text/html", html(pdf_url()) if status == 200 else b"")
+    with store.db() as db:
+        db.execute("UPDATE sites SET next_check=0 WHERE id=?", (parent["id"],))
+    schedule(store, now=clock+1)
+    drain(store, fetcher, clock+1)
+    assert fetcher.requests == [ROOT, pdf_url(), ROOT]
+    assert store.status()["counts"]["revisions"] == before
+    with store.db() as db:
+        latest = db.execute("SELECT r.* FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=? ORDER BY r.rowid DESC LIMIT 1", (child["id"],)).fetchone()
+        assert latest["id"] == child_excluded and latest["state"] == "excluded"
+        signal = json.loads(latest["metadata"])["source_observation"]["discovery_signal"]
+        assert signal["hints"]["parent_revision"] == initial[parent["id"]]
+        assert db.execute("SELECT parent_revision FROM attachment_edges").fetchone()[0] == parent_excluded
+
+
+@pytest.mark.parametrize("change", ["body", "date"])
+def test_real_parent_change_still_reopens_cached_pdf(setup, change):
+    store, parent, child, fetcher = setup
+    clock = time.time()
+    initial = b'<meta name="PubDate" content="2026-01-01">'+html(pdf_url())
+    fetcher.responses[ROOT] = (200, "text/html", initial)
+    schedule(store, now=clock)
+    drain(store, fetcher, clock)
+    pdf = next(r for r in store.status()["pending_review"] if r["metadata"]["document_type"] == "official_normative_attachment_candidate")
+    excluded = store.exclude(pdf["id"], "synthetic", "Controlled prior exclusion", True)
+    changed = initial.replace(b"2026-01-01", b"2026-02-01") if change == "date" else initial.replace("纯模拟".encode(), "更新模拟".encode())
+    fetcher.responses[ROOT] = (200, "text/html", changed)
+    fetcher.responses[pdf_url()] = (304, "application/pdf", b"")
+    with store.db() as db:
+        db.execute("UPDATE sites SET next_check=0 WHERE id=?", (parent["id"],))
+    schedule(store, now=clock+1)
+    drain(store, fetcher, clock+1)
+    assert fetcher.requests == [ROOT, pdf_url(), ROOT, pdf_url()]
+    current = next(r for r in store.status()["pending_review"] if r["metadata"]["document_type"] == "official_normative_attachment_candidate")
+    assert current["id"] != excluded and current["metadata"]["effective_from"] is None
+    assert current["metadata"]["source_observation"]["discovery_signal"]["hints"]["parent_original_sha256"] == hashlib.sha256(changed).hexdigest()
+
+
+def test_newly_observed_parent_field_with_same_bytes_still_reopens_pdf(setup, monkeypatch):
+    from gov_mcp.knowledge_fetch import PageSignals
+    store, parent, _, fetcher = setup
+    clock = time.time()
+    raw = b'<meta name="LastModifiedTime" content="2026-02-01">'+html(pdf_url())
+    fetcher.responses[ROOT] = (200, "text/html", raw)
+    keys = PageSignals.META_KEYS
+    monkeypatch.setattr(PageSignals, "META_KEYS", keys - {"lastmodifiedtime"})
+    schedule(store, now=clock)
+    drain(store, fetcher, clock)
+    pdf = next(r for r in store.status()["pending_review"] if r["metadata"]["document_type"] == "official_normative_attachment_candidate")
+    excluded = store.exclude(pdf["id"], "synthetic", "Controlled prior exclusion", True)
+    monkeypatch.setattr(PageSignals, "META_KEYS", keys)
+    fetcher.responses[pdf_url()] = (304, "application/pdf", b"")
+    with store.db() as db:
+        db.execute("UPDATE sites SET next_check=0 WHERE id=?", (parent["id"],))
+    schedule(store, now=clock+1)
+    drain(store, fetcher, clock+1)
+    current = next(r for r in store.status()["pending_review"] if r["metadata"]["document_type"] == "official_normative_attachment_candidate")
+    assert current["id"] != excluded and current["metadata"]["effective_from"] is None
+    assert fetcher.requests == [ROOT, pdf_url(), ROOT, pdf_url()]
+    with store.db() as db:
+        parent_hashes = {r[0] for r in db.execute("SELECT r.sha256 FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=?", (parent["id"],))}
+    assert parent_hashes == {hashlib.sha256(raw).hexdigest()}
+
+
+def test_parent_reopen_still_blocks_publication_without_refetching_pdf(setup):
+    from gov_mcp.knowledge_attachments import discover_attachments
+    store, parent, child, fetcher = setup
+    (store.root / "publication-policy.json").write_text(encode({"schema": 1, "mode": "engineering_fixture"}), encoding="utf-8")
+    clock = time.time()
+    schedule(store, now=clock)
+    drain(store, fetcher, clock)
+    with store.db() as db:
+        p = db.execute("SELECT r.id FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=? ORDER BY r.rowid DESC LIMIT 1", (parent["id"],)).fetchone()[0]
+    excluded = store.exclude(p, "synthetic", "Parent is only an attachment index", True)
+    pdf = next(r for r in store.status()["pending_review"] if r["metadata"]["document_type"] == "official_normative_attachment_candidate")
+    prepared = store.amend(pdf["id"], dict(pdf["metadata"], **SCOPE, document_type="synthetic", scope_confirmed=True, effective_from="2026-01-01"))
+    store.review(prepared, "synthetic", True)
+    store.publish(store.candidate(**SCOPE), "synthetic", True)
+    assert store.search("attachment", **SCOPE)["status"] == "OK"
+    reopened = store.reopen(excluded, "synthetic", True)
+    discover_attachments(store, parent, reopened, html(pdf_url()), clock+1)
+    assert store.search("attachment", **SCOPE)["message_code"] == "UPDATE_PENDING_REVIEW"
+    with store.db() as db:
+        assert db.execute("SELECT state FROM jobs WHERE site_id=?", (child["id"],)).fetchone()[0] == "done"
+
+
+def test_parent_reversion_does_not_reuse_signal_across_different_intervening_body(setup):
+    from gov_mcp.knowledge_fetch import observe_html, parse_html
+    store, parent, child, fetcher = setup
+    clock = time.time()
+    schedule(store, now=clock)
+    drain(store, fetcher, clock)
+    with store.db() as db:
+        first = db.execute("SELECT r.id FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=? ORDER BY r.rowid DESC LIMIT 1", (parent["id"],)).fetchone()[0]
+    # A changed parent was archived, but attachment discovery did not finish.
+    middle = html(pdf_url()).replace("纯模拟".encode(), "中间模拟".encode())
+    cs, _ = parse_html(middle, parent["content_selector"], excluded_selectors=parent["excluded_content_selectors"])
+    metadata = dict(parent["metadata"], published_at=None, source_observation=observe_html(middle, content_selector=parent["content_selector"], excluded_selectors=parent["excluded_content_selectors"]))
+    store.ingest(parent["id"], ROOT, middle, metadata, cs)
+    fetcher.responses[pdf_url()] = (304, "application/pdf", b"")
+    with store.db() as db:
+        db.execute("UPDATE sites SET next_check=0 WHERE id=?", (parent["id"],))
+    schedule(store, now=clock+1)
+    drain(store, fetcher, clock+1)
+    latest = next(r for r in store.status()["pending_review"] if r["metadata"]["document_type"] == "official_normative_attachment_candidate")
+    assert latest["metadata"]["source_observation"]["discovery_signal"]["hints"]["parent_revision"] != first
+    assert fetcher.requests == [ROOT, pdf_url(), ROOT, pdf_url()]
+
+
+def test_corrupt_historical_parent_cannot_be_reused_for_stable_attachment_signal(setup):
+    store, parent, _, fetcher = setup
+    clock = time.time()
+    schedule(store, now=clock)
+    drain(store, fetcher, clock)
+    with store.db() as db:
+        first = db.execute("SELECT r.id FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=? ORDER BY r.rowid DESC LIMIT 1", (parent["id"],)).fetchone()[0]
+    store.exclude(first, "synthetic", "Controlled parent exclusion", True)
+    with store.db() as db:
+        db.execute("UPDATE chunks SET text='corrupt historical parent' WHERE revision_id=?", (first,))
+        db.execute("UPDATE sites SET next_check=0 WHERE id=?", (parent["id"],))
+    fetcher.responses[ROOT] = (304, "text/html", b"")
+    schedule(store, now=clock+1)
+    assert worker_once(store, fetcher, now=clock+1)
+    assert next(s for s in store.status()["sites"] if s["id"] == parent["id"])["failures"] == 1
+
+
 def test_attachment_provenance_and_queue_are_restored_in_full_bundle(setup, tmp_path):
     from gov_mcp.knowledge_backup import create_bundle, restore_bundle
     store, _, _, fetcher = setup

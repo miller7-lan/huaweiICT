@@ -3,6 +3,7 @@
 import argparse
 import json
 from datetime import datetime, timezone
+from pathlib import Path
 
 import httpx
 
@@ -18,7 +19,11 @@ def read(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--before", action="store_true")
+    parser.add_argument("--output", type=Path, default=ROOT / "evidence/knowledge-update/access-stop-deployment.json")
     args = parser.parse_args()
+    output = args.output.resolve()
+    if output.parent != (ROOT / "evidence/knowledge-update").resolve() or output.suffix != ".json":
+        raise ValueError("Deployment evidence must be a JSON file in evidence/knowledge-update")
     runtime = RUNTIME / "knowledge-update"
     store = KnowledgeStore(runtime, read_only=True)
     with store.db() as db:
@@ -61,9 +66,9 @@ def main():
     report = {"captured_at": datetime.now(timezone.utc).isoformat(), "passed": all(checks.values()), "checks": checks,
               "business_binding": binding, "source_count": len(status["sites"]),
               "legacy_paused_sources_without_phase": [s["id"] for s in status["sites"] if s["paused_reason"] and s["access_stop"] is None],
-              "modules": {name: fingerprint((ROOT / "src/gov_mcp" / name).read_bytes()) for name in ("knowledge.py", "knowledge_fetch.py", "knowledge_workbench.html")},
+              "modules": {name: fingerprint((ROOT / "src/gov_mcp" / name).read_bytes()) for name in ("knowledge.py", "knowledge_fetch.py", "knowledge_workbench.html", "knowledge_attachments.py")},
               "scope": "Local deployed API/UI, supervisor replacement, fresh workers and read-only MCP. No new official source access, model test, business approval, reboot or full-week acceptance."}
-    (ROOT / "evidence/knowledge-update/access-stop-deployment.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    output.write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     print(json.dumps({"passed": report["passed"], "checks": checks, "source_count": len(status["sites"])}, ensure_ascii=False))
     if not report["passed"]:
         raise SystemExit(1)

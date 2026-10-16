@@ -110,6 +110,34 @@ def choose_source(store, db, parent_config, url):
     return candidates[0]
 
 
+def stable_parent_signal(store, db, parent, signal, previous):
+    """Keep the observed parent binding across contiguous internal dispositions.
+
+    The current edge/audit still names the actual processed revision. A previous
+    observation is reusable only through verified, source-identical history;
+    an intervening different original, body or page observation ends the run.
+    """
+    if not isinstance(previous, dict) or not isinstance(previous.get("hints"), dict):
+        return signal
+    previous_revision = previous["hints"].get("parent_revision")
+    if not isinstance(previous_revision, str) or not previous_revision or len(previous_revision) > 80:
+        return signal
+    candidate = dict(signal, hints=dict(signal["hints"], parent_revision=previous_revision))
+    if candidate != previous or candidate == signal:
+        return signal
+    observation = json.loads(parent["metadata"]).get("source_observation")
+    history = db.execute("SELECT * FROM revisions WHERE document_id=? AND rowid<=(SELECT rowid FROM revisions WHERE id=?) "
+                         "ORDER BY rowid DESC", (parent["document_id"], parent["id"]))
+    for row in history:
+        if (row["sha256"] != parent["sha256"] or row["body_sha256"] != parent["body_sha256"]
+                or json.loads(row["metadata"]).get("source_observation") != observation):
+            break
+        store._verify(db, row["id"], require_review=False)
+        if row["id"] == previous_revision:
+            return candidate
+    return signal
+
+
 def discover_attachments(store, config, revision, raw, now):
     from gov_mcp.knowledge_fetch import ArticleParser
     from gov_mcp.knowledge_discovery import document_discovery_signal
@@ -151,6 +179,8 @@ def discover_attachments(store, config, revision, raw, now):
                     # Keep the first publisher binding stable across equivalent
                     # links from multiple parents; every edge remains recorded.
                     canonical = not previous or previous.get("discovered_from") == document["url"]
+                    if canonical:
+                        signal = stable_parent_signal(store, db, parent, signal, previous)
                     changed = canonical and previous != signal
                     known = db.execute("SELECT state FROM jobs WHERE site_id=? AND url=?", (target_id, url)).fetchone()
                     pending = db.execute("SELECT COUNT(*) FROM jobs WHERE site_id=? AND state IN ('queued','running')", (target_id,)).fetchone()[0]
