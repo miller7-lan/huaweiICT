@@ -173,6 +173,10 @@ def main():
             "reviewer":r["recorded_review"]["reviewer"],"scope_summary":r["candidate_metadata"].get("source_fact_assessment", {}).get("current_applicability")}
             for r in records if r["recorded_review"] and r["candidate_metadata"].get("document_type") == "administrative_norm"
             and r["candidate_metadata"].get("collection_role") == "core_candidate"],
+        "reviewed_official_announcements": [{"source_id":r["site_id"],"revision":r["revision"],
+            "reviewer":r["recorded_review"]["reviewer"],"effective_from":r["candidate_metadata"].get("effective_from"),
+            "scope_summary":r["candidate_metadata"].get("source_fact_assessment", {}).get("current_applicability")}
+            for r in records if r["recorded_review"] and r["candidate_metadata"].get("document_type") == "official_announcement"],
         "ai_reference_question_count": len(ai["cases"]) if ai else 0,
         "holdout_design_draft": {"included": holdout is not None,
             "question_count": len(holdout["question_draft"]["cases"]) if holdout else 0,
@@ -192,7 +196,7 @@ def main():
         "business_review_completed": False,
         "revision_impact_available": True, "possible_duplicate_group_count": len(packet["possible_duplicate_groups"]["groups"]),
         "source_coverage": {"national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
-            "national_norms": "See reviewed_operational_norms for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch, so the original selected scope stays monitored. Local material procedures and the 2016 use-announcement dates remain separate pending matters.",
+            "national_norms": "See reviewed_operational_norms and reviewed_official_announcements for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch. The privacy announcement's implementation date comes from its explicit official registry field, not signature or page-publication inference; exact first publication and local material relationships remain unestablished.",
             "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
             "provincial_update_signal": "See reviewed_service_information for the actually reviewed 2025-07-10 provincial six-month renewal-window report. Its publication is not the adjustment's legal commencement; the original adjustment instrument and exact start remain unestablished.",
             "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",

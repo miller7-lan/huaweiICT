@@ -1,10 +1,10 @@
 {
-  "created_at": "2026-10-16T19:35:06.304480+00:00",
+  "created_at": "2026-10-16T19:52:28.229451+00:00",
   "candidate_files": 43,
-  "latest_chunk_count": 314,
+  "latest_chunk_count": 303,
   "question_count": 30,
   "human_reviewed_questions": 0,
-  "recorded_reviewed_source_count": 6,
+  "recorded_reviewed_source_count": 7,
   "reviewed_national_statutes": [
     {
       "source_id": "ID-AMENDMENT-JT-LEAD",
@@ -70,6 +70,15 @@
       "scope_summary": "scoped_national_operational_baseline_selected_10_clauses"
     }
   ],
+  "reviewed_official_announcements": [
+    {
+      "source_id": "MPS-USE-01",
+      "revision": "rev-f48eee88ddb882b4933b37de",
+      "reviewer": "Codex AI",
+      "effective_from": "2016-07-15",
+      "scope_summary": "selected_national_identity_privacy_baseline_with_explicit_official_implementation_field"
+    }
+  ],
   "ai_reference_question_count": 30,
   "holdout_design_draft": {
     "included": true,
@@ -79,12 +88,14 @@
       "questions": "9e6930db7d2e4d47435fdeeafe2519d29a70e40ed366bbef9dcc96f0660bb7f8"
     },
     "live_binding_checks": {
-      "sources_match_latest": true,
+      "sources_match_latest": false,
       "development_registry_matches": true,
       "publication_policy_file_matches": true,
       "attributed_review_contract": true
     },
-    "stale_source_keys": [],
+    "stale_source_keys": [
+      "USE"
+    ],
     "semantic_screening_status": "bound",
     "semantic_screening_counts": {
       "retain_for_further_source_review": 30
@@ -95,7 +106,7 @@
     "business_acceptance_executed": false
   },
   "dataset_sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
-  "review_packet_sha256": "96137267bc2c1e96844907b9560972bd7b71c8930f20e4891108b49bcb08e405",
+  "review_packet_sha256": "b98af69ec6a4c2e3d2c1cdc920bc2b2b7a83084594f7b0ab772ac30f113dc820",
   "publication_policy": {
     "minimum_cases": 30,
     "minimum_recall_at_5": 0.9,
@@ -114,7 +125,7 @@
   "possible_duplicate_group_count": 13,
   "source_coverage": {
     "national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
-    "national_norms": "See reviewed_operational_norms for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch, so the original selected scope stays monitored. Local material procedures and the 2016 use-announcement dates remain separate pending matters.",
+    "national_norms": "See reviewed_operational_norms and reviewed_official_announcements for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch. The privacy announcement's implementation date comes from its explicit official registry field, not signature or page-publication inference; exact first publication and local material relationships remain unestablished.",
     "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
     "provincial_update_signal": "See reviewed_service_information for the actually reviewed 2025-07-10 provincial six-month renewal-window report. Its publication is not the adjustment's legal commencement; the original adjustment instrument and exact start remain unestablished.",
     "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
