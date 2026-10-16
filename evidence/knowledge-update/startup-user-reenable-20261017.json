@@ -1,0 +1,117 @@
+{
+  "captured_at": "2026-10-16T19:11:08.435149+00:00",
+  "passed": true,
+  "checks": {
+    "prior_disabled_state_and_definition_backed_up": true,
+    "explicit_user_reenable_intent_saved": true,
+    "existing_task_definition_preserved_except_enablement": true,
+    "task_enabled_and_five_minute_trigger_preserved": true,
+    "immediate_requested_check_completed_successfully": true,
+    "subsequent_natural_five_minute_execution_completed": true,
+    "recovery_healthy_and_fresh_after_natural_execution": true,
+    "background_observer_matches_enabled_owned_task": true,
+    "mcp_health_and_knowledge_status_available": true,
+    "worker_and_maintenance_heartbeats_fresh": true,
+    "healthy_services_not_restarted": true,
+    "separate_manual_service_pause_preserved": true,
+    "knowledge_counts_preserved_during_checks": true,
+    "review_evaluation_and_publication_counts_preserved": true
+  },
+  "authorization": "用户明确要求：可以运行5min的那个心跳检测了。",
+  "before": {
+    "checked_at": "2026-10-16T19:07:02.3532921+00:00",
+    "state": "Disabled",
+    "enabled": false
+  },
+  "immediate_requested_check": {
+    "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+    "state": "Ready",
+    "enabled": true,
+    "last_run": "2026-10-16T19:07:04.0000000Z",
+    "last_result": 0,
+    "next_run": "2026-10-16T19:10:54.0000000Z",
+    "intervals": [
+      null,
+      "PT5M"
+    ]
+  },
+  "subsequent_natural_execution": {
+    "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+    "state": "Ready",
+    "enabled": true,
+    "last_run": "2026-10-16T19:10:55.0000000Z",
+    "last_result": 0,
+    "next_run": "2026-10-16T19:15:54.0000000Z",
+    "intervals": [
+      null,
+      "PT5M"
+    ]
+  },
+  "background_task_observation": {
+    "status": "observed",
+    "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+    "enabled": true,
+    "task_state": "Ready",
+    "ownership_verified": true,
+    "configuration_matches": true,
+    "last_run": "2026-10-16T19:10:55.0000000Z",
+    "next_run": "2026-10-16T19:15:54.0000000Z",
+    "last_result": 0,
+    "missed_runs": 0,
+    "schema": 1,
+    "checked_at": 1792177863.6817112,
+    "read_only_observation": true
+  },
+  "live_startup_health": {
+    "code": "healthy",
+    "message": "Windows恢复任务已启用，最近恢复检查正常。",
+    "level": "info"
+  },
+  "recovery": {
+    "checked_at": 1792177861,
+    "action": "healthy",
+    "ready": true,
+    "recovery_count": 3,
+    "last_recovered_at": 1792131058,
+    "last_recovered_supervisor_pid": 18228,
+    "supervisor_pid": 63320,
+    "error": "",
+    "no_publication_performed": true,
+    "mode": "current_user_local_service_recovery"
+  },
+  "workers": [
+    {
+      "id": "knowledge-worker",
+      "heartbeat": 1792177816.690401,
+      "progress": "polling",
+      "stale": false
+    },
+    {
+      "id": "knowledge-maintenance",
+      "heartbeat": 1792177863.6797314,
+      "progress": "idle",
+      "stale": false
+    }
+  ],
+  "canonical_counts": {
+    "sites": 47,
+    "documents": 43,
+    "revisions": 138,
+    "chunks": 875,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 314
+  },
+  "formal_gates": {
+    "reviews": 8,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "new_scheduled_tasks_created": 0,
+  "manual_scheduled_task_starts": 1,
+  "natural_execution_was_not_manually_triggered": true,
+  "model_requests_issued": 0,
+  "scope": "Restore the existing current-user Windows recovery task following explicit user authorization; verify one immediate check and one subsequent natural periodic run. Source schedules and publication gates are unchanged. This does not certify a full natural week, a reboot/logon transition or always-on deployment."
+}
