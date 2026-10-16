@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T15:19:09.117620+00:00",
+  "captured_at": "2026-10-16T15:29:56.958248+00:00",
   "draft_integrity_passed": true,
   "checks": {
     "draft_fingerprint_matches": true,
@@ -17,24 +17,25 @@
     "production_review_validator_rejects_draft_files": true,
     "actual_export_contains_both_drafts_and_preserves_empty_approvals": true,
     "semantic_screening_binds_all_questions_and_declares_retirements": true,
+    "retired_draft_history_and_retained_case_fingerprints_preserved": true,
+    "nine_new_ids_replace_retired_drafts_without_reusing_questions": true,
     "semantic_screening_withheld_for_changed_question": true,
     "semantic_screening_withheld_for_changed_query_date": true,
     "semantic_screening_withheld_for_changed_registry": true,
     "actual_export_includes_bound_screening_without_acceptance": true
   },
   "cases": 30,
-  "source_records": 11,
-  "background_anchors": 53,
-  "draft_sha256": "7a1e908b404d81d8d34091e718508102d3b38f3fac35ede04313ddcd99bc355c",
+  "source_records": 10,
+  "background_anchors": 51,
+  "draft_sha256": "4ef24c24cffc41c2f05f83da7d2c23d63875c02e1b04b6ae6a13fb67b0e5ce7c",
   "writer_run": "20261016T131527Z-question-writer-ce4f149e",
   "writer_unique_questions": 12,
-  "review_packet_sha256": "2388fa366b3ad0e446d232b4dab32b84ebe8aadd480a0373fdf3d0eee4af9880",
+  "review_packet_sha256": "4d495d7a3d9dc347639b2189b5f103270a1d8a4242883450ea0a2930f04d19ba",
   "independence_certified": false,
   "business_acceptance_executed": false,
   "reference_frozen": false,
   "semantic_screening_counts": {
-    "retain_for_further_source_review": 21,
-    "retire_semantic_overlap": 9
+    "retain_for_further_source_review": 30
   },
   "counts": {
     "sites": 39,

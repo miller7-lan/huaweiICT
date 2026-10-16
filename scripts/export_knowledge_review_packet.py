@@ -26,15 +26,19 @@ def semantic_screening_for_review(reference, registry):
     questions = [{"id": c["id"], "question_sha256": question_fingerprint(c["question"]), "query_date": c["query_date"]}
                  for c in reference["cases"]]
     screened = [{k: c[k] for k in ("id", "question_sha256", "query_date")} for c in review["cases"]]
-    files_match = True
-    for source in review["development_sources"]:
-        source_path = (ROOT / source["path"]).resolve()
-        if not source_path.is_relative_to(ROOT.resolve()):
-            raise ValueError("Development source must stay inside this project")
-        files_match &= source_path.is_file() and fingerprint(source_path.read_bytes()) == source["sha256"]
+    file_checks = {}
+    for name, artifacts in (("development_files_match", review["development_sources"]),
+                            ("history_artifacts_match", review.get("history_artifacts", []))):
+        match = True
+        for source in artifacts:
+            source_path = (ROOT / source["path"]).resolve()
+            if not source_path.is_relative_to(ROOT.resolve()):
+                raise ValueError("Review artifact must stay inside this project")
+            match &= source_path.is_file() and fingerprint(source_path.read_bytes()) == source["sha256"]
+        file_checks[name] = match
     checks = {"questions_match": screened == questions and fingerprint(questions) == review["question_set_sha256"],
               "development_registry_matches": fingerprint(registry) == review["development_registry_sha256"],
-              "development_files_match": files_match}
+              **file_checks}
     bound = all(checks.values())
     return {"status": "bound" if bound else "stale", "artifact_sha256": fingerprint(path.read_bytes()),
             "binding_checks": checks, "assessment": review if bound else None, "batch_ready_for_freeze": False,
@@ -147,6 +151,8 @@ def main():
             "semantic_screening_status": holdout["semantic_screening"]["status"] if holdout else "missing",
             "semantic_screening_counts": holdout["semantic_screening"]["assessment"]["counts"]
                 if holdout and holdout["semantic_screening"]["assessment"] else {},
+            "historically_retired_cases": len(holdout["semantic_screening"]["assessment"].get("historically_retired_case_ids", []))
+                if holdout and holdout["semantic_screening"]["assessment"] else None,
             "independence_certified": False, "reference_frozen": False, "business_acceptance_executed": False},
         "dataset_sha256": fingerprint(dataset_path.read_bytes()), "review_packet_sha256": fingerprint(path.read_bytes()),
         "publication_policy": publication_policy(store), "published_scopes": store.status()["counts"]["heads"],

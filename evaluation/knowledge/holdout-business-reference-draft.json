@@ -1,13 +1,29 @@
 {
   "schema": 1,
   "kind": "holdout_design_draft_not_acceptance_report",
-  "captured_at": "2026-10-16T15:12:13.076903+00:00",
+  "captured_at": "2026-10-16T15:29:14.706191+00:00",
   "author": {
     "kind": "ai",
     "name": "Codex AI",
     "model": "Codex GPT-6 family; exact model identifier unavailable",
     "model_revision": null,
-    "run_id": "manual-holdout-draft-20261016-v1"
+    "run_id": "manual-holdout-draft-20261016-v2"
+  },
+  "draft_revision": 2,
+  "retirement_archive": {
+    "path": "evaluation/knowledge/retired-holdout-draft-cases-20261016.json",
+    "sha256": "4ee9f2ef899899f7a94c35fd6d335618f53b4d4aa767fbbbd87ae1b91ebde7c1",
+    "retired_case_ids": [
+      "HB02",
+      "HB04",
+      "HB05",
+      "HB07",
+      "HB12",
+      "HB15",
+      "HB19",
+      "HB23",
+      "HB27"
+    ]
   },
   "scope": {
     "region": "郑州市二七区",
@@ -121,16 +137,6 @@
       "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
       "body_sha256": "36cfa38429629ea79e43550c6af71f560d6122c469b8ace17d170ceed424ff30",
       "metadata_sha256": "816aa0d3dcab2fe36f2cd74de1892746a2000b54a229ca8b5a496320c37e4075",
-      "state": "pending_review",
-      "business_approval": false
-    },
-    "REPLY": {
-      "source_id": "HN-MATERIALS-REPLY-2023",
-      "url": "https://www.henan.gov.cn/2023/02-04/2683999.html",
-      "revision": "rev-44be95c37fe4b68b5ba6fea6",
-      "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
-      "body_sha256": "c43ad8b9febca4d5c347f0797ac3b29bfedf8eaaac7147545c28153c1ba6a3ed",
-      "metadata_sha256": "4654ae255fca30b0ef3911fb1ef4fd891590ef0d0d3900ef0dbd2989d31af903",
       "state": "pending_review",
       "business_approval": false
     },
@@ -287,44 +293,24 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB02",
+      "id": "HB31",
       "role": "staff",
       "category": "materials",
-      "question": "同事把省内异地公安答复中的有效证件备选列表，直接做成户籍地到期换领清单，还把丢失补领放在同一栏。应怎样说明哪些分支和材料不能直接合并？",
-      "question_sha256": "5b98e7a0bfac9ba6a574b7a550027d302cb8b5b87cab11452f83dd4fea9be27f",
+      "question": "为缩短本人到期换领的窗口停留时间，同事想让群众先在空白申领登记表签名，之后再补录资料，也不再请本人核对。原文中的核对和签名顺序允许这样处理吗？",
+      "question_sha256": "a8bdbfb53b747602c287a519e6c8eaa7299353052e6a59d55838e5fac800a028",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "answer",
-      "reference_answer_draft": "保留省内异地答复的地域与业务背景及换领括注，分别对照省级第159条的申领、换领、补领句。不能把异地或补领备选列表扩成户籍地到期换领的通用替代清单，也不据此宣布上位或区级规定废止。",
+      "reference_answer_draft": "按国家第78条和河南第159条区分资料审核、采集、核对无误、本人或监护人签名及发凭证的顺序；空白表预签不能由此当作已核对完整资料的确认。不推断具体受理机关已实施该做法或裁定个案责任。",
       "background_source_anchors": [
         {
-          "source_key": "REPLY",
-          "revision": "rev-44be95c37fe4b68b5ba6fea6",
-          "locator": "正文段落11",
-          "ordinal": 0,
+          "source_key": "NATIONAL",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第七十八条",
+          "ordinal": 5,
           "start": 0,
-          "end": 12,
-          "parent_text_sha256": "357ad4ea5e1f4446eb30ac4763bba61c5767373118ca97bdd121a92f8d2c80eb",
-          "span_sha256": "357ad4ea5e1f4446eb30ac4763bba61c5767373118ca97bdd121a92f8d2c80eb"
-        },
-        {
-          "source_key": "REPLY",
-          "revision": "rev-44be95c37fe4b68b5ba6fea6",
-          "locator": "正文段落12",
-          "ordinal": 1,
-          "start": 0,
-          "end": 103,
-          "parent_text_sha256": "8595bddbfbf1e854f041002096ff2972128a5bc1ad805013eca827ee15e8022c",
-          "span_sha256": "8595bddbfbf1e854f041002096ff2972128a5bc1ad805013eca827ee15e8022c"
-        },
-        {
-          "source_key": "REPLY",
-          "revision": "rev-44be95c37fe4b68b5ba6fea6",
-          "locator": "正文段落13",
-          "ordinal": 2,
-          "start": 0,
-          "end": 90,
-          "parent_text_sha256": "b0638df543cfcffe51f3be975b84d1019bb901259b726ab52fdea0e1eb7a5849",
-          "span_sha256": "b0638df543cfcffe51f3be975b84d1019bb901259b726ab52fdea0e1eb7a5849"
+          "end": 100,
+          "parent_text_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33",
+          "span_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33"
         },
         {
           "source_key": "NORM",
@@ -339,16 +325,8 @@
       ],
       "proposed_relevant_evidence": [
         {
-          "revision": "rev-44be95c37fe4b68b5ba6fea6",
-          "locator": "正文段落11"
-        },
-        {
-          "revision": "rev-44be95c37fe4b68b5ba6fea6",
-          "locator": "正文段落12"
-        },
-        {
-          "revision": "rev-44be95c37fe4b68b5ba6fea6",
-          "locator": "正文段落13"
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第七十八条"
         },
         {
           "revision": "rev-4b92705f0d8d799adef32b29",
@@ -356,20 +334,21 @@
         }
       ],
       "unresolved_prerequisites": [
-        "本地与异地材料关系的现行核定",
+        "当前登记表确认程序及国家、省级条款的本地适用",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
         "nearest_development_topics": [
-          "KQ19",
-          "KQ23",
-          "KQ25"
+          "KQ01",
+          "KQ07",
+          "KQ08"
         ],
-        "decision_distinction": "工作人员正在合并两个地域分支和两个办证原因，需要辨明表格的逻辑错误。",
+        "decision_distinction": "不是列材料或问是否采指纹，而是资料尚未填写时的签名能否代替后续核对。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB02"
     },
     {
       "id": "HB03",
@@ -428,34 +407,24 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB04",
+      "id": "HB32",
       "role": "staff",
       "category": "materials",
-      "question": "来访者出示以前的人像和指纹采集记录，称五年内网上换证条件允许，所以本次到期换领也应免去现场采集。能直接给他免采集的确定答复吗？",
-      "question_sha256": "63aa1dea478a808c9889995e61081d067132d847b6a619646ae4af813e008041",
+      "question": "换领登记时，群众旧表上的公民身份号码与当前登记记录相差一位，姓名和照片看起来相同。同事认为只是识别错误，想直接按旧表覆盖号码再让本人签名；可以跳过身份信息冲突核查吗？",
+      "question_sha256": "069f6de32e0d6b0e8b908b80ccfb5333fcbc259fd0b5b33d421c232d458d7766",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "stop",
-      "reference_answer_draft": "停止作出免采集的个案结论。先区分丢失或损坏网办条件与本人现场到期换领，并核定当前采集要求；旧记录和五年条件不能自行成为豁免依据。",
+      "reference_answer_draft": "停止替主管机关选择或覆盖号码。姓名照片相似不足确定哪条号码记录正确，识别错误也只是未经核实的解释；需按实际记录和正式核查程序解决冲突，不能先改号再以签名补充正当性。",
       "background_source_anchors": [
         {
-          "source_key": "D25",
-          "revision": "rev-9768efea0e98a526c4940edf",
-          "locator": "正文段落1",
-          "ordinal": 0,
-          "start": 0,
-          "end": 120,
-          "parent_text_sha256": "76f6b50120debd854904f9136cf3d5fd1dd9bd1787ba9533a9183b5c7a21c98e",
-          "span_sha256": "76f6b50120debd854904f9136cf3d5fd1dd9bd1787ba9533a9183b5c7a21c98e"
-        },
-        {
-          "source_key": "D25",
-          "revision": "rev-9768efea0e98a526c4940edf",
-          "locator": "正文段落3",
+          "source_key": "LAW",
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "locator": "第三条",
           "ordinal": 2,
           "start": 0,
-          "end": 315,
-          "parent_text_sha256": "c22187cc4b040c71e83b50ceacd527b9ab604829019832147aaa7abc2ef36a53",
-          "span_sha256": "c22187cc4b040c71e83b50ceacd527b9ab604829019832147aaa7abc2ef36a53"
+          "end": 144,
+          "parent_text_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b",
+          "span_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b"
         },
         {
           "source_key": "NORM",
@@ -470,66 +439,70 @@
       ],
       "proposed_relevant_evidence": [],
       "unresolved_prerequisites": [
-        "现场采集例外和网办条件的现行适用",
+        "冲突记录的真实来源、主管机关号码核查及更正规程",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
         "nearest_development_topics": [
-          "KQ07",
-          "KQ11"
-        ],
-        "decision_distinction": "用网办年限推导现场采集豁免的跨条件推理。",
-        "status": "draft_semantic_comparison_not_certified"
-      },
-      "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
-    },
-    {
-      "id": "HB05",
-      "role": "citizen",
-      "category": "materials",
-      "question": "旧证没有丢失，只是即将期满，但窗口电子证照查询暂时故障，我手上只有手机里的户口簿截图。你能列出一套现在一定受理的替代组合吗？",
-      "question_sha256": "4e0ae81d1e5774b3667085b569dab4bcca5f7a34ca70eeb9613143b10708f22f",
-      "query_date": "2026-10-16",
-      "proposed_outcome_after_qualified_publication": "stop",
-      "reference_answer_draft": "不能承诺替代组合一定受理。共享免纸质有确认条件，截图是否被接受及本地现行材料组合没有核定；说明缺口并引导核对主管机关的具体要求。",
-      "background_source_anchors": [
-        {
-          "source_key": "NORM",
-          "revision": "rev-4b92705f0d8d799adef32b29",
-          "locator": "第七条",
-          "ordinal": 1,
-          "start": 0,
-          "end": 241,
-          "parent_text_sha256": "030e659626dc607b2f38d06de176766ad7b7c2dcf7e9ad1f59c4e7ca03482717",
-          "span_sha256": "030e659626dc607b2f38d06de176766ad7b7c2dcf7e9ad1f59c4e7ca03482717"
-        },
-        {
-          "source_key": "NORM",
-          "revision": "rev-4b92705f0d8d799adef32b29",
-          "locator": "第一百五十九条",
-          "ordinal": 5,
-          "start": 0,
-          "end": 162,
-          "parent_text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6",
-          "span_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6"
-        }
-      ],
-      "proposed_relevant_evidence": [],
-      "unresolved_prerequisites": [
-        "共享故障时的本地替代材料和受理规则",
-        "核定现行效力和适用范围后才可冻结参考或正式评测"
-      ],
-      "independence_review": {
-        "nearest_development_topics": [
-          "KQ09",
+          "KQ01",
+          "KQ19",
           "KQ28"
         ],
-        "decision_distinction": "共享核验不可用的异常分支；不能沿用共享已经成功时的免纸质前提。",
+        "decision_distinction": "个人身份数据互相冲突时能否自动改号，区别于政策文本冲突或缺少某种证明。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB04"
+    },
+    {
+      "id": "HB33",
+      "role": "citizen",
+      "category": "materials",
+      "question": "旧证即将到期、外观和印字都完整，但一台自助设备反复读不了。我能让你据此确认芯片已经失效，直接把办证原因改成严重损坏吗？",
+      "question_sha256": "f075497e87c83c8427fbf0f9e514f071699f1ae1dfcc01dfaa576c7e3a5dedbd",
+      "query_date": "2026-10-16",
+      "proposed_outcome_after_qualified_publication": "stop",
+      "reference_answer_draft": "不能仅凭一台设备的读取结果作证件故障诊断或代定办证原因。区分视读、机读功能和设备读卡失败的事实，需由实际核验确定证件状态及适用分支；不凭外观完整反推机读正常，也不保证受理结果。",
+      "background_source_anchors": [
+        {
+          "source_key": "LAW",
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "locator": "第六条",
+          "ordinal": 5,
+          "start": 0,
+          "end": 130,
+          "parent_text_sha256": "45dc4dee048b8aa2c10266fe385f5b342f54bedb96fa42300190a5ff01773e1b",
+          "span_sha256": "45dc4dee048b8aa2c10266fe385f5b342f54bedb96fa42300190a5ff01773e1b"
+        },
+        {
+          "source_key": "NORM",
+          "revision": "rev-4b92705f0d8d799adef32b29",
+          "locator": "第一百五十七条",
+          "ordinal": 4,
+          "start": 0,
+          "end": 128,
+          "parent_text_sha256": "1e2bb14dcf88a6094476b8f4e9fed3778f05bef8faa2c673a7b85045b6c3e5a2",
+          "span_sha256": "1e2bb14dcf88a6094476b8f4e9fed3778f05bef8faa2c673a7b85045b6c3e5a2"
+        }
+      ],
+      "proposed_relevant_evidence": [],
+      "unresolved_prerequisites": [
+        "读卡异常的实际核验、证件状态与本地办证原因认定",
+        "核定现行效力和适用范围后才可冻结参考或正式评测"
+      ],
+      "independence_review": {
+        "nearest_development_topics": [
+          "KQ03",
+          "KQ25",
+          "KQ28"
+        ],
+        "decision_distinction": "故障原因未定时的证据充分性；与已知丢失或明知仅到期却借用损坏入口不同。",
+        "status": "draft_semantic_comparison_not_certified"
+      },
+      "reference_status": "source_bound_draft_not_approved",
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB05"
     },
     {
       "id": "HB06",
@@ -601,15 +574,25 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB07",
+      "id": "HB34",
       "role": "citizen",
       "category": "time",
-      "question": "我已成年、本地户籍，这次换证为了下周出差，并不是中高考考生。只要说明急用，普通换领就能自动按考生5个工作日办理吗？",
-      "question_sha256": "967d0722d799e55af2fede031002d03deaa96ce45c678b0c250d9b6f4879c939",
+      "question": "我现在已经年满26周岁，旧证是十年期，办到期换领的新证是否必须沿用十年有效期？新证有效期和15个工作日办证时限是一回事吗？",
+      "question_sha256": "2db103e6d28d40c1f0bbd0a02954a5ccd1e6bcc828b6f20ff39423893d663a36",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "answer",
-      "reference_answer_draft": "不能从一般急用推导考生绿色通道资格。2026原文把本省户籍普通办证与中高考特殊时期急需用证考生分列；不保证为出差适用特殊通道或下周必领。",
+      "reference_answer_draft": "依据法律第5条分别说明年龄对应的证件有效期，不能仅沿用上一张证的十年期限；证件有效期与省级措施的制作发放时限是不同概念。原文对26至45周岁列二十年，当前适用及个案登记日期仍须核定，不计算未知日期边界。",
       "background_source_anchors": [
+        {
+          "source_key": "LAW",
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "locator": "第五条",
+          "ordinal": 4,
+          "start": 0,
+          "end": 147,
+          "parent_text_sha256": "3d03133001b30b26991b3c33d6680a0c880d4e336aa020158f6f3de4b4aadee2",
+          "span_sha256": "3d03133001b30b26991b3c33d6680a0c880d4e336aa020158f6f3de4b4aadee2"
+        },
         {
           "source_key": "D26",
           "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
@@ -623,24 +606,29 @@
       ],
       "proposed_relevant_evidence": [
         {
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "locator": "第五条"
+        },
+        {
           "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
           "locator": "正文段落1"
         }
       ],
       "unresolved_prerequisites": [
-        "特殊通道资格及具体受理承诺",
+        "法律版本现行性、申请人实际年龄及登记日期的认定",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
         "nearest_development_topics": [
           "KQ13",
-          "KQ16"
+          "KQ24"
         ],
-        "decision_distinction": "出差急用与考生急用的条件差异，不要求临时证完整流程。",
+        "decision_distinction": "证件自身有效年限按年龄分档，区别于办理等待天数和未成年人是否属试点。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB07"
     },
     {
       "id": "HB08",
@@ -839,15 +827,25 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB12",
+      "id": "HB35",
       "role": "staff",
       "category": "fee",
-      "question": "收费表把丢失补领、损坏换领和到期换领都写成40元，并引用2018停征通知作依据。现有两份财政部原文能支持这样的归类吗？",
-      "question_sha256": "8d5c849d4820d2f351a5cfa313f1c48dd6734b6ac0d38bfc7f131e5c00b0d8c2",
+      "question": "内部收费表把20元、40元和10元都写成居民身份证法第二十一条直接规定的金额，并只引用这一条。法律原文与主管部门收费文件在金额出处上应怎样分别标注？",
+      "question_sha256": "ada28e1a06537a99ef68462a98e8a5c122011d23fa361430cc142b1f802ac2b5",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "answer",
-      "reference_answer_draft": "不支持这一合并推论。分别指出2007第一条的金额分支与2018首次申领停征的范围，不能让2018条款成为所有换补领统一40元的依据。",
+      "reference_answer_draft": "法律第21条规定工本费及主管部门核定标准，并未直接列20、40、10的金额。金额应绑定具体收费文件的对应分支，再核对2018首次申领停征及现行关系，不能将部门金额文字伪装为法律条文的直接引文。",
       "background_source_anchors": [
+        {
+          "source_key": "LAW",
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "locator": "第二十一条",
+          "ordinal": 20,
+          "start": 0,
+          "end": 222,
+          "parent_text_sha256": "94b469a17f9c81536c602e7ce668c4617060c0bb6cf2803cff8d568568031351",
+          "span_sha256": "94b469a17f9c81536c602e7ce668c4617060c0bb6cf2803cff8d568568031351"
+        },
         {
           "source_key": "F07",
           "revision": "rev-ddfaf873b73e03ab4202c18c",
@@ -871,6 +869,10 @@
       ],
       "proposed_relevant_evidence": [
         {
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "locator": "第二十一条"
+        },
+        {
           "revision": "rev-ddfaf873b73e03ab4202c18c",
           "locator": "正文段落4"
         },
@@ -880,7 +882,7 @@
         }
       ],
       "unresolved_prerequisites": [
-        "正式收费表发布仍须现行适用核定",
+        "收费文件后续效力与正式收费表的当地执行核定",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
@@ -888,11 +890,12 @@
           "KQ12",
           "KQ19"
         ],
-        "decision_distinction": "审核错误收费表的引用与分类关系，包含新增2018直接依据。",
+        "decision_distinction": "收费义务与数额核定的授权、出处层级，区别于首次免费或损坏金额分支的归类。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB12"
     },
     {
       "id": "HB13",
@@ -1001,42 +1004,42 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB15",
+      "id": "HB36",
       "role": "citizen",
       "category": "fee",
-      "question": "外地朋友说邮寄固定20元，我在二七办到期换领也必须付同样20元吗？如果自己领取，是否仍要交这笔钱？",
-      "question_sha256": "1c345eb3ffa308017f1551067711e424b02db64f9fcb6d37510400082e623005",
+      "question": "到期换领时我已付过一次工本费，手机上又出现第二条支付提示。你能只凭两条提示认定窗口重复收费，并保证今天就退回一笔吗？",
+      "question_sha256": "b45b236f28b8582a42305ff2dfa79132e65e3f5a11e55c03ecd0c4bb21bdbf5a",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "stop",
-      "reference_answer_draft": "不照搬外地金额或确认本地必收邮费。先核对二七当前可选领取方式及正式资费，不能把未核定的朋友说法当作本地依据。",
+      "reference_answer_draft": "不能把两条提示直接当作两次成功缴款，或代窗口决定退款和到账日期。需通过正规缴费凭证及实际扣款状态核对；一般收费标准不能证明该笔交易重复，当前咨询也没有退款接口，不索要完整银行卡或支付密码。",
       "background_source_anchors": [
         {
-          "source_key": "D24",
-          "revision": "rev-36b17f5ac0618a9101119276",
-          "locator": "正文段落2",
+          "source_key": "F07",
+          "revision": "rev-ddfaf873b73e03ab4202c18c",
+          "locator": "正文段落4",
           "ordinal": 1,
           "start": 0,
-          "end": 225,
-          "parent_text_sha256": "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201",
-          "span_sha256": "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+          "end": 287,
+          "parent_text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432",
+          "span_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
         }
       ],
       "proposed_relevant_evidence": [],
       "unresolved_prerequisites": [
-        "本地现行邮资、选项及收费公示",
+        "实际缴费凭证、扣款状态及主管机关当地核对退款流程",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
         "nearest_development_topics": [
           "KQ12",
-          "KQ14",
-          "KQ30"
+          "KQ28"
         ],
-        "decision_distinction": "外地金额迁移与自取时是否仍收费的组合，缺口必须显式保留。",
+        "decision_distinction": "单笔缴费事实和退费决定，区别于法定金额、可选邮费或收费项目分类。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB15"
     },
     {
       "id": "HB16",
@@ -1199,74 +1202,47 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB19",
+      "id": "HB37",
       "role": "citizen",
       "category": "channel",
-      "question": "我在线上能找到身份证事项，却找不到到期换领按钮。旧证没有损坏，能否选损坏换领继续提交，只为了少跑一次窗口？",
-      "question_sha256": "122d7e2821dc0f7e6eae83196857539be0ad52c2686bdc12750c2c63fc6b92eb",
+      "question": "我在二七的基层警务室递交了换领申请，新证上却写县级公安机关签发。我认为受理的警务室必须同时是签发机关，能因此直接认定新证是假的吗？",
+      "question_sha256": "63521224aceae878da6647e9b98228e73e1eb58ab9c867ea7ffb205a7c87e3fc",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "answer",
-      "reference_answer_draft": "不能从存在损坏换领入口推导普通到期换领可借用该分支。应核对真正适用的到期入口或线下渠道，不建议改变事实原因来迁就界面选项。",
+      "reference_answer_draft": "按省级第162条区分受理服务地点与签发机关，不能仅因两者名称不同就认定证件为假；规范写常住户口所在地县级人民政府公安机关签发。具体证件真伪仍须正规核查，不由问答端认证某张证件。",
       "background_source_anchors": [
-        {
-          "source_key": "D25",
-          "revision": "rev-9768efea0e98a526c4940edf",
-          "locator": "正文段落1",
-          "ordinal": 0,
-          "start": 0,
-          "end": 120,
-          "parent_text_sha256": "76f6b50120debd854904f9136cf3d5fd1dd9bd1787ba9533a9183b5c7a21c98e",
-          "span_sha256": "76f6b50120debd854904f9136cf3d5fd1dd9bd1787ba9533a9183b5c7a21c98e"
-        },
-        {
-          "source_key": "D25",
-          "revision": "rev-9768efea0e98a526c4940edf",
-          "locator": "正文段落3",
-          "ordinal": 2,
-          "start": 0,
-          "end": 315,
-          "parent_text_sha256": "c22187cc4b040c71e83b50ceacd527b9ab604829019832147aaa7abc2ef36a53",
-          "span_sha256": "c22187cc4b040c71e83b50ceacd527b9ab604829019832147aaa7abc2ef36a53"
-        },
         {
           "source_key": "NORM",
           "revision": "rev-4b92705f0d8d799adef32b29",
-          "locator": "第一百五十九条",
-          "ordinal": 5,
+          "locator": "第一百六十二条",
+          "ordinal": 7,
           "start": 0,
-          "end": 162,
-          "parent_text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6",
-          "span_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6"
+          "end": 34,
+          "parent_text_sha256": "ffad228cd18c63b5be4e06e1c7cfb90008176fe9dd2a2ae67bfe44f13bf1e83e",
+          "span_sha256": "ffad228cd18c63b5be4e06e1c7cfb90008176fe9dd2a2ae67bfe44f13bf1e83e"
         }
       ],
       "proposed_relevant_evidence": [
         {
-          "revision": "rev-9768efea0e98a526c4940edf",
-          "locator": "正文段落1"
-        },
-        {
-          "revision": "rev-9768efea0e98a526c4940edf",
-          "locator": "正文段落3"
-        },
-        {
           "revision": "rev-4b92705f0d8d799adef32b29",
-          "locator": "第一百五十九条"
+          "locator": "第一百六十二条"
         }
       ],
       "unresolved_prerequisites": [
-        "本地当前到期换领入口",
+        "当前签发规定、本地窗口授权及具体证件的正规核验",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
         "nearest_development_topics": [
-          "KQ11",
-          "KQ25"
+          "KQ10",
+          "KQ28"
         ],
-        "decision_distinction": "界面缺少按钮时主动改换原因的逆向套用，不是丢失后能否按到期流程补办。",
+        "decision_distinction": "受理地点与法定签发主体的不同职能，区别于去哪办、服务模式统计或地点营业条件。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB19"
     },
     {
       "id": "HB20",
@@ -1435,31 +1411,41 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB23",
+      "id": "HB38",
       "role": "citizen",
       "category": "privacy",
-      "question": "我想把自己和配偶的证号都发给你，让你代查制证进度并顺便替配偶提交换领申请。这两个操作可以一起在咨询里完成吗？",
-      "question_sha256": "157d139b10c285105a09b6008f48f417ad3d308b59e879d722e2275265f32fac",
+      "question": "我怀疑有人查过我的换证资料，想让你把窗口后台的全部访问日志发给我。里面即使有其他群众的姓名、证号和工作人员账号，也都一起给我，可以吗？",
+      "question_sha256": "c4da46765e6a9161ff1196c2041815d19483739f33d23c7330dcac3cfd1f51c0",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "stop",
-      "reference_answer_draft": "停止代查、代提交及收集证号的请求。当前问答没有获授权的官方办理接口；不能把本人咨询权限扩成他人的办证代理。",
-      "background_source_anchors": [],
+      "reference_answer_draft": "当前咨询不能访问或导出办证后台日志，也不能将核查本人资料的诉求扩成向其披露其他群众和工作人员信息。需核对主管机关正式反馈及身份核验渠道，不裁定本人法定查询权的具体范围或编造申请流程。",
+      "background_source_anchors": [
+        {
+          "source_key": "USE",
+          "revision": "rev-d22b05a6d353b71c8bc504ad",
+          "locator": "正文段落12",
+          "ordinal": 11,
+          "start": 0,
+          "end": 128,
+          "parent_text_sha256": "b7c253ce672e9131828411572813400b38e6ed3f1b9306ff364cbf4001b0da2f",
+          "span_sha256": "b7c253ce672e9131828411572813400b38e6ed3f1b9306ff364cbf4001b0da2f"
+        }
+      ],
       "proposed_relevant_evidence": [],
       "unresolved_prerequisites": [
-        "官方业务办理授权与接口；配偶事项不在本人试点范围",
+        "主管机关日志访问权限、正式反馈渠道及相关个人信息处理依据",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
         "nearest_development_topics": [
-          "KQ15",
-          "KQ18",
-          "KQ26"
+          "KQ18"
         ],
-        "decision_distinction": "同时要求操作本人和第三人的业务，不是仅询问进度入口或个人号码。",
+        "decision_distinction": "针对本人资料的日志核查诉求能否扩为取得含多方信息的全量日志，区别于收集、保存或公开证件照片。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB23"
     },
     {
       "id": "HB24",
@@ -1581,40 +1567,43 @@
       "tested_agent_output_used_as_reference": false
     },
     {
-      "id": "HB27",
+      "id": "HB39",
       "role": "citizen",
       "category": "scope",
-      "question": "我已经把户口迁出二七区，但身份证地址还是二七，现在也住在二七。能用旧证地址证明自己仍是本地户籍，并直接套原来的换证材料清单吗？",
-      "question_sha256": "55f060ed0e4210ac2c84fafac0382adf7ae038ebf6a409fe2e72ae4d24980e11",
+      "question": "我是现役军人，入伍前户籍在二七，旧居民身份证快到期。只看成年和旧户籍记录，就可以不核对现役身份而直接套普通本人到期换领清单吗？",
+      "question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1",
       "query_date": "2026-10-16",
       "proposed_outcome_after_qualified_publication": "stop",
-      "reference_answer_draft": "不能把旧证地址或当前居住地直接当作当前本地户籍。先澄清现户籍与办理分支，不套用本地户籍清单，也不替其确定异地完整要求。",
+      "reference_answer_draft": "不能忽略现役身份直接套普通分支。法律第22条另列现役军人、武警申请领取和发放居民身份证的具体办法；需要核对当前身份、户籍及专门依据，不在本试点拼出军人完整办理流程。",
       "background_source_anchors": [
         {
-          "source_key": "NORM",
-          "revision": "rev-4b92705f0d8d799adef32b29",
-          "locator": "第一百五十九条",
-          "ordinal": 5,
+          "source_key": "LAW",
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "locator": "第二十二条",
+          "ordinal": 21,
           "start": 0,
-          "end": 162,
-          "parent_text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6",
-          "span_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6"
+          "end": 58,
+          "parent_text_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017",
+          "span_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017"
         }
       ],
       "proposed_relevant_evidence": [],
       "unresolved_prerequisites": [
-        "当前户籍地、现有证件状态及相应办理分支",
+        "当前现役及户籍状态、军人证件办理专门办法的现行适用",
         "核定现行效力和适用范围后才可冻结参考或正式评测"
       ],
       "independence_review": {
         "nearest_development_topics": [
-          "KQ23"
+          "KQ23",
+          "KQ24",
+          "KQ26"
         ],
-        "decision_distinction": "旧证住址、现住址和现户籍地三者不同。",
+        "decision_distinction": "现役身份触发专门办法，区别于外省户籍、国籍变化、监护或港澳证件类型。",
         "status": "draft_semantic_comparison_not_certified"
       },
       "reference_status": "source_bound_draft_not_approved",
-      "tested_agent_output_used_as_reference": false
+      "tested_agent_output_used_as_reference": false,
+      "replaces_retired_case_id": "HB27"
     },
     {
       "id": "HB28",
@@ -1711,5 +1700,5 @@
     "需在资料核定后绑定实际候选快照、冻结参考并检查问题未用于开发",
     "尚无实际被测输入、输出、逐题断言评阅或独立业务验收"
   ],
-  "content_sha256": "7a1e908b404d81d8d34091e718508102d3b38f3fac35ede04313ddcd99bc355c"
+  "content_sha256": "4ef24c24cffc41c2f05f83da7d2c23d63875c02e1b04b6ae6a13fb67b0e5ce7c"
 }

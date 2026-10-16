@@ -143,10 +143,37 @@ def main():
         semantic["status"] == "bound" and len(comparisons) == 30
         and assessment["development_questions_compared"] == 40
         and Counter(c["decision"] for c in assessment["cases"]) == assessment["counts"]
-        and len(assessment["retired_case_ids"]) == 9 and len(assessment["retained_case_ids"]) == 21
+        and not assessment["retired_case_ids"] and len(assessment["retained_case_ids"]) == 30
+        and len(assessment["historically_retired_case_ids"]) == 9
         and not assessment["batch_ready_for_freeze"] and not assessment["independence_certified"]
         and all(x["question_sha256"] in registry for c in assessment["cases"] for x in c["development_comparators"])
         and next(c for c in cases if c["id"] == "HB10")["query_date"] == "2026-10-16")
+    archive_path = ROOT / draft["retirement_archive"]["path"]
+    archive = read(archive_path)
+    previous = read(ROOT / "evaluation/knowledge/holdout-semantic-screening-v1.json")
+    retired = {c["id"]: c for c in archive["cases"]}
+    current = {c["id"]: c for c in cases}
+    old_bindings = archive["previous_question_bindings"]
+    checks["retired_draft_history_and_retained_case_fingerprints_preserved"] = (
+        archive["kind"] == "retired_unfrozen_draft_cases_not_acceptance"
+        and fingerprint({k:v for k,v in archive.items() if k != "content_sha256"}) == archive["content_sha256"]
+        and fingerprint(archive_path.read_bytes()) == draft["retirement_archive"]["sha256"]
+        and fingerprint({k:v for k,v in previous.items() if k != "content_sha256"}) == previous["content_sha256"]
+        and set(retired) == set(previous["retired_case_ids"]) == set(assessment["historically_retired_case_ids"])
+        and fingerprint(old_bindings) == previous["question_set_sha256"]
+        and len(archive["retained_case_fingerprints"]) == 21
+        and all(fingerprint(current[k]) == value for k,value in archive["retained_case_fingerprints"].items())
+        and all(next(x for x in old_bindings if x["id"] == c["id"])["question_sha256"] == question_fingerprint(c["question"]) for c in retired.values())
+        and not archive["reference_frozen"] and not archive["business_acceptance_executed"])
+    replacements = assessment["replacements"]
+    checks["nine_new_ids_replace_retired_drafts_without_reusing_questions"] = (
+        {x["retired_case_id"] for x in replacements} == set(retired)
+        and {x["current_case_id"] for x in replacements} == {f"HB{n}" for n in range(31,40)}
+        and not {c["question_sha256"] for c in retired.values()} & {c["question_sha256"] for c in cases}
+        and set(current) == set(archive["retained_case_fingerprints"]) | {x["current_case_id"] for x in replacements}
+        and all(current[x["current_case_id"]]["replaces_retired_case_id"] == x["retired_case_id"]
+                and current[x["current_case_id"]]["question_sha256"] == x["new_question_sha256"] for x in replacements)
+        and assessment["minimum_cases_met"] is True and assessment["batch_ready_for_freeze"] is False)
     for name, field in (("changed_question", "question"), ("changed_query_date", "query_date")):
         altered = deepcopy(draft)
         altered["cases"][0][field] += " changed binding fixture"
@@ -157,6 +184,7 @@ def main():
     checks["actual_export_includes_bound_screening_without_acceptance"] = (
         exported["semantic_screening"] == semantic
         and readiness["holdout_design_draft"]["semantic_screening_status"] == "bound"
+        and readiness["holdout_design_draft"]["historically_retired_cases"] == 9
         and readiness["holdout_design_draft"]["semantic_screening_counts"] == assessment["counts"])
     report = {"captured_at":datetime.now(timezone.utc).isoformat(),"draft_integrity_passed":all(checks.values()),"checks":checks,
         "cases":30,"source_records":len(draft["sources"]),"background_anchors":sum(len(c["background_source_anchors"]) for c in cases),
