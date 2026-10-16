@@ -272,7 +272,7 @@ class ArticleParser(HTMLParser):
 class PageSignals(HTMLParser):
     """Preserve reported fields as observations, never infer legal dates from them."""
 
-    META_KEYS = frozenset({"articletitle", "pubdate", "publishdate", "publisheddate", "contentsource",
+    META_KEYS = frozenset({"articletitle", "pubdate", "publishdate", "publisheddate", "lastmodifiedtime", "contentsource",
         "author", "documentnumber", "docno", "effectdate", "effectivedate", "expirydate", "validity",
         "article:published_time", "article:modified_time", "dc.title", "dc.date", "dc.creator"})
 

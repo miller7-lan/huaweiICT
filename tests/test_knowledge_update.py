@@ -147,6 +147,36 @@ def test_removed_metadata_and_title_changes_are_detected_but_tag_order_is_stable
     assert first != observe_html(b'<title>A</title>')
 
 
+@pytest.mark.parametrize("changed", ["2026-02-01 09:23", None])
+def test_changed_or_removed_lastmodifiedtime_requires_review_with_same_body(store, config, changed):
+    class ModifiedFetcher:
+        modified = "2026-01-01 09:23"
+        def fetch(self, config, url):
+            field = f'<meta name="lastmodifiedtime" content="{self.modified}">' if self.modified else ""
+            raw = ('<title>模拟身份证指南</title><meta name="PubDate" content="2026-01-01">'+field+
+                   '<article id="article"><p>身份证到期换领需要模拟材料。</p></article>').encode()
+            return 200, {"content-type": "text/html"}, raw, url
+    fetcher, clock = ModifiedFetcher(), time.time()
+    schedule(store, now=clock)
+    worker_once(store, fetcher, now=clock)
+    first = store.status()["pending_review"][0]
+    reviewed = store.amend(first["id"], dict(first["metadata"], effective_from="2026-01-01"))
+    version = publish(store, reviewed)
+    fetcher.modified = changed
+    schedule(store, now=clock+3700)
+    worker_once(store, fetcher, now=clock+3700)
+    pending = store.status()["pending_review"][0]
+    assert pending["id"] != reviewed and pending["metadata"]["effective_from"] is None
+    fields = pending["metadata"]["source_observation"]["fields"]
+    assert fields.get("meta:lastmodifiedtime") == ([changed] if changed else None)
+    with store.db() as db:
+        old, _ = store._verify(db, reviewed)
+        new, _ = store._verify(db, pending["id"], require_review=False)
+        assert old["body_sha256"] == new["body_sha256"] and old["sha256"] != new["sha256"]
+        assert json.loads(old["metadata"])["source_observation"]["fields"]["meta:lastmodifiedtime"] == ["2026-01-01 09:23"]
+    assert search(store, version=version)["message_code"] == "UPDATE_PENDING_REVIEW"
+
+
 def test_same_label_attachment_replacement_and_removal_block_current_answers(store, config):
     class AttachmentFetcher:
         href, footer = "/files/original.pdf", "/files/footer.pdf"

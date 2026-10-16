@@ -11,6 +11,16 @@ from nexent_api import ROOT, RUNTIME
 
 
 TARGETS = {
+    "henan-duration-2026": {
+        "id": "HN-MEASURES-2026", "origin": "https://hnga.henan.gov.cn", "path": "/2026/05-11/3349863.html",
+        "label": "河南公安机关2026年便民利民服务措施：身份证时限及完整解读",
+        "selector": {"id": "content"}, "keywords": ["居民身份证", "15个工作日"], "expected": 2,
+        "metadata_selectors": {"page_date": {"id": "pubDate"}, "named_source": {"id": "source"}},
+        "region": "河南省", "type": "official_policy_explanation", "role": "later_policy_signal",
+        "page_date": "2026-05-05", "source_named": "河南省公安厅（发布机关原始政策解读）",
+        "basis": "Official police policy explanation. Limited private integrity archive and attributed factual analysis of the complete first resident-ID measure and its explanatory paragraph. No unrelated household, immigration, vehicle policy, media or layout in retrieval. No office-level acceptance or delivery guarantee.",
+        "limits": "Only the complete first measure and its explanation. Preserve the provincial-household condition and acceptance-to-collection interval: ordinary 25 natural days to 15 working days, separately the urgent middle/high school entrance-exam green channel 15 natural days to 5 working days. Do not extend the green channel to every urgent adult, convert natural days arithmetically, infer an exact commencement from the page/URL dates, or declare the full older measures repealed.",
+    },
     "mof-fee-2007": {
         "id": "MOF-FEE-2007", "origin": "https://www.mof.gov.cn",
         "path": "/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",

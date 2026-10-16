@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "kind": "source_based_development_reference_supplement",
+  "captured_at": "2026-10-16T13:03:00.972869+00:00",
+  "base_reference": "evaluation/knowledge/pilot-ai-reference-answers.json",
+  "base_file_sha256": "114720c36a13938fdb942d77fdfcab846022e82245321444ffe1e133f7490cf2",
+  "source_assessment_sha256": "5b600c664046c599e23a5b5232338919ae8f9318c9ef847fd0559ad5cf716c37",
+  "author_kind": "ai",
+  "human_review_completed": false,
+  "dataset_role": "development_only_not_independent_acceptance",
+  "ready_for_business_publication": false,
+  "web_observations": [
+    {
+      "url": "https://www.erqi.gov.cn/xwfbh/9998921.jhtml",
+      "displayed_date": "2026-04-15",
+      "acquisition": "read_only_web_observation_normal_fetcher_access_denied_no_local_original",
+      "not_a_policy_commencement": true
+    }
+  ],
+  "case_updates": [
+    {
+      "id": "KQ13",
+      "question": "受理以后多久能领新身份证，工作日和自然日怎么计算？",
+      "ai_reference_answer": "应优先说明新取得的省公安厅2026政策解读：本省户籍居民办证从受理之日起到领证之日，由25个自然日缩短至15个工作日；中考、高考特殊时期急需用证考生的绿色通道另由15个自然日缩短至5个工作日，普通成年人急用不能自动套用。2024解读记录此前30日至25日的调整，法律与国家规范另有时限层次，不能把各数字直接换算或选最短数值保证领证。该2026页面显示2026-05-05，修改标记及URL目录为2026-05-11，二七政府另有2026-04-15介绍；这些不是已核定的精确施行日。具体当前受理承诺及后续变化仍须核对。",
+      "archived_evidence": [
+        {
+          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "locator": "正文段落1"
+        },
+        {
+          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "locator": "正文段落2"
+        },
+        {
+          "revision": "rev-36b17f5ac0618a9101119276",
+          "locator": "正文段落1"
+        },
+        {
+          "revision": "rev-36b17f5ac0618a9101119276",
+          "locator": "正文段落2"
+        }
+      ],
+      "unresolved": [
+        "精确施行日及后续变更仍须区分；不把显示日、URL日或lastmodifiedtime当法律施行日",
+        "本地材料及六个月调整的原始依据仍未解决"
+      ],
+      "tested_agent_output_used_as_reference": false
+    }
+  ],
+  "usage": "Apply this source-based update when preparing the next complete reviewed reference; do not silently rerun the old 30-question development model trial or overwrite any frozen baseline/result.",
+  "content_sha256": "b6f67e7152f1806d9fabb93efe1dae0e4b9ad5882b78954e987f3445a1eca78a"
+}
