@@ -59,13 +59,21 @@ def validate_config(config):
     validate_discovery(config)
     if "pdf_ocr" in config and config["pdf_ocr"] != {"engine": "windows.media.ocr", "language": "zh-Hans-CN"}:
         raise ValueError("Explicit supported Windows OCR source configuration required")
-    if config.get("pdf_ocr") and (config.get("include_articles") or config.get("include_paragraph_keywords")):
+    if config.get("pdf_ocr") and (config.get("include_articles") or config.get("include_paragraph_keywords") or config.get("include_paragraph_keyword_groups")):
         raise ValueError("OCR cannot silently replace a bounded HTML selection")
     start_title = config.get("article_start_title")
     if start_title is not None and (not isinstance(start_title, str) or not start_title.strip() or len(start_title) > 200 or not config.get("include_articles")):
         raise ValueError("Explicit bounded consolidated-text title and article selection required")
     keywords = config.get("include_paragraph_keywords")
-    if keywords is not None or "paragraph_expected_count" in config:
+    groups = config.get("include_paragraph_keyword_groups")
+    if groups is not None:
+        if (keywords is not None or config.get("include_articles") or not isinstance(groups, list)
+                or not 1 <= len(groups) <= 8 or any(not isinstance(group, list) or not 1 <= len(group) <= 8
+                    or any(not isinstance(word, str) or not word.strip() or len(word) > 100 for word in group) for group in groups)
+                or type(config.get("paragraph_expected_count", len(groups))) is not int
+                or config.get("paragraph_expected_count", len(groups)) != len(groups)):
+            raise ValueError("Bounded paragraph groups require one unique paragraph per group; selection modes cannot be mixed")
+    elif keywords is not None or "paragraph_expected_count" in config:
         expected = config.get("paragraph_expected_count", 1)
         if (not isinstance(keywords, list) or not 1 <= len(keywords) <= 8
                 or any(not isinstance(word, str) or not word.strip() or len(word) > 100 for word in keywords)
@@ -413,6 +421,17 @@ def select_paragraph_keywords(chunks, keywords, expected=1):
     return selected
 
 
+def select_paragraph_groups(chunks, groups):
+    """Select one complete paragraph per AND group, retaining source order/locators."""
+    selected = set()
+    for group in groups:
+        matches = [i for i, chunk in enumerate(chunks) if all(word in chunk["text"] for word in group)]
+        if len(matches) != 1 or matches[0] in selected:
+            raise ValueError("Selected HTML paragraph group is missing, ambiguous or overlapping; requires review")
+        selected.add(matches[0])
+    return [chunk for i, chunk in enumerate(chunks) if i in selected]
+
+
 def article_section(chunks, start_title=None):
     """Separate a consolidated act from a preceding amending decision by an exact title."""
     if start_title is None:
@@ -528,7 +547,7 @@ def worker_once(store, fetcher=None, owner=None, now=None):
             if content_type not in ("text/html", "application/xhtml+xml", "application/pdf"):
                 raise ValueError("Unsupported format; requires dedicated parser")
             if content_type == "application/pdf":
-                if config.get("include_articles") or config.get("include_paragraph_keywords"):
+                if config.get("include_articles") or config.get("include_paragraph_keywords") or config.get("include_paragraph_keyword_groups"):
                     raise ValueError("Configured HTML selection cannot be applied to PDF")
                 with tempfile.TemporaryDirectory(prefix="parse-", dir=store.root) as directory:
                     from pathlib import Path
@@ -553,6 +572,8 @@ def worker_once(store, fetcher=None, owner=None, now=None):
                                            excluded_selectors=config.get("excluded_content_selectors"))
                 if config.get("include_paragraph_keywords"):
                     chunks = select_paragraph_keywords(chunks, config["include_paragraph_keywords"], config.get("paragraph_expected_count", 1))
+                if config.get("include_paragraph_keyword_groups"):
+                    chunks = select_paragraph_groups(chunks, config["include_paragraph_keyword_groups"])
                 if config.get("include_articles"):
                     chunks, article_preface = article_section(chunks, config.get("article_start_title"))
                     chunks = select_articles(chunks, config["include_articles"], config.get("article_categories"))

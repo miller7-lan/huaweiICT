@@ -508,7 +508,8 @@ def test_failed_check_blocks_even_a_fresh_source_until_successful_recheck(store,
 
 
 @pytest.mark.parametrize("selection", [{"include_articles": ["第三条"]},
-                                       {"include_paragraph_keywords": ["模拟机关"]}])
+                                       {"include_paragraph_keywords": ["模拟机关"]},
+                                       {"include_paragraph_keyword_groups": [["模拟机关"]]}])
 def test_html_selection_does_not_expand_into_a_pdf_page(store, config, selection):
     config.update(selection)
     store.register(config)

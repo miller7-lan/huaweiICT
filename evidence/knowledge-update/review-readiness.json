@@ -1,10 +1,10 @@
 {
-  "created_at": "2026-10-16T18:30:36.062407+00:00",
-  "candidate_files": 40,
-  "latest_chunk_count": 307,
+  "created_at": "2026-10-16T18:51:29.181284+00:00",
+  "candidate_files": 43,
+  "latest_chunk_count": 314,
   "question_count": 30,
   "human_reviewed_questions": 0,
-  "recorded_reviewed_source_count": 5,
+  "recorded_reviewed_source_count": 6,
   "reviewed_national_statutes": [
     {
       "source_id": "ID-AMENDMENT-JT-LEAD",
@@ -53,6 +53,13 @@
       "reviewer": "Codex AI",
       "effective_from": "2018-04-01",
       "scope_summary": "national_first_issue_fee_suspension_only_not_renewal_waiver"
+    },
+    {
+      "source_id": "NATIONAL-FEE-2003-QG",
+      "revision": "rev-d6555f7e0e5033abc7281be4",
+      "reviewer": "Codex AI",
+      "effective_from": "2004-01-01",
+      "scope_summary": "selected_national_expiry_renewal_fee_baseline_with_2018_first_issue_override"
     }
   ],
   "reviewed_operational_norms": [
@@ -92,7 +99,7 @@
     "business_acceptance_executed": false
   },
   "dataset_sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
-  "review_packet_sha256": "1c071c79afc4c2e4fee839214776706b5bc44bdf89af945a0a7e8dc7c5fc4e9c",
+  "review_packet_sha256": "b0b769806ceb59b023b29c06caa28c2d9f10c578a00544ca78c609dd747d94a8",
   "publication_policy": {
     "minimum_cases": 30,
     "minimum_recall_at_5": 0.9,
@@ -108,7 +115,7 @@
   "development_registry_sha256": "eae7b4bc11456bdafef0bcd39878e55f37b46554d291dcf8ad2a67c1503245cd",
   "business_review_completed": false,
   "revision_impact_available": true,
-  "possible_duplicate_group_count": 12,
+  "possible_duplicate_group_count": 13,
   "source_coverage": {
     "national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
     "national_norms": "See reviewed_operational_norms for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch, so the original selected scope stays monitored. Local material procedures and the 2016 use-announcement dates remain separate pending matters.",

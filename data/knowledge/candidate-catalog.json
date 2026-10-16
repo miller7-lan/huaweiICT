@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T18:30:35.398125+00:00",
+  "captured_at": "2026-10-16T18:51:28.519527+00:00",
   "counts": {
-    "sites": 44,
-    "documents": 40,
-    "revisions": 131,
-    "chunks": 860,
+    "sites": 47,
+    "documents": 43,
+    "revisions": 138,
+    "chunks": 875,
     "versions": 0,
     "heads": 0,
-    "jobs": 37,
-    "latest_chunks": 307
+    "jobs": 38,
+    "latest_chunks": 314
   },
   "sources": [
     {
@@ -716,6 +716,44 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "NATIONAL-FEE-2003-QG",
+      "label": "居民身份证收费2003原始通知独立政府副本",
+      "origin": "https://www.qg.gov.cn",
+      "allowed_paths": [
+        "/zwgk/jgsf/202512/t20251224_3245346.htm"
+      ],
+      "seeds": [
+        "https://www.qg.gov.cn/zwgk/jgsf/202512/t20251224_3245346.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792176595.606605,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NATIONAL-FEE-2003-SC-COPY",
+      "label": "居民身份证收费2003原始通知独立政府副本",
+      "origin": "https://gat.sc.gov.cn",
+      "allowed_paths": [
+        "/scgat/c111595/2023/2/17/1b1f0e0b55fd43a08a488468f21afe25/files/a0ca9c2a5809468e9854045ec606a6ab.pdf"
+      ],
+      "seeds": [
+        "https://gat.sc.gov.cn/scgat/c111595/2023/2/17/1b1f0e0b55fd43a08a488468f21afe25/files/a0ca9c2a5809468e9854045ec606a6ab.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "NATIONAL-LAW-DIRECTORY-2026",
       "label": "市场监管总局转载：截至2026-08-28现行法律目录的身份证法条目",
       "origin": "https://www.samr.gov.cn",
@@ -870,6 +908,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "TY-FEE-CATALOG-2026-REFERENCE",
+      "label": "汤阴2026收费目录线索",
+      "origin": "https://www.tangyin.gov.cn",
+      "allowed_paths": [
+        "/2026/09-04/3658654.html"
+      ],
+      "seeds": [
+        "https://www.tangyin.gov.cn/2026/09-04/3658654.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "UPDATE-LEAD-01",
       "label": "郑州二七警方延伸就近办服务的新闻",
       "origin": "https://zzga.zhengzhou.gov.cn",
@@ -911,7 +968,7 @@
     {
       "source_id": "FEE-WAIVER-2004-ZJ-LEAD",
       "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf",
-      "revision": "rev-c2f18391171fad5835a6eafe",
+      "revision": "rev-318878017022327bb0eecc8d",
       "state": "pending_review",
       "original_sha256": "1b1cc0eb3bb70b45b7369f6444d18585548682b48797569e851b53a4f846da40",
       "original_bytes": 101174,
@@ -927,7 +984,24 @@
         "document_signed_at": "2004-02-06",
         "extraction_method": "native_pdf_first_page_with_all_pages_ai_visual_check",
         "scope_confirmed": false,
-        "collection_role": "manual_native_pdf_pending"
+        "collection_role": "manual_native_pdf_pending",
+        "extraction_quality_notes": [
+          {
+            "base_revision": "rev-c2f18391171fad5835a6eafe",
+            "changes_fee_conditions": false,
+            "end": 166,
+            "human_review_completed": false,
+            "id": "waiver-preface-native-visual-difference-20261017",
+            "native_literal": "观",
+            "page_png_sha256": "4d80a72cbae75520e8365f3c07d492c3fb607ad76c95d40084d0d195aa8e6017",
+            "parent_native_text_sha256": "74770b08c189ce4374b52c8b2f462e3295e3c17df3c285a45e0334e5db83192a",
+            "pdf_page": 1,
+            "reviewer_kind": "ai",
+            "start": 165,
+            "status": "unresolved_native_visual_difference_no_body_correction",
+            "visual_reading": "现"
+          }
+        ]
       },
       "source_fact_assessment_summary": {
         "id": "national-hardship-waiver-original-pending-20261017",
@@ -3644,6 +3718,109 @@
       ]
     },
     {
+      "source_id": "NATIONAL-FEE-2003-QG",
+      "url": "https://www.qg.gov.cn/zwgk/jgsf/202512/t20251224_3245346.htm",
+      "revision": "rev-d6555f7e0e5033abc7281be4",
+      "state": "reviewed",
+      "original_sha256": "e266c4dd47359fa311f5c060f30d66977c41c69327d9fddcb1908a73dc7880a7",
+      "original_bytes": 38658,
+      "metadata": {
+        "title": "国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "发改价格〔2003〕2322号",
+        "published_at": null,
+        "effective_from": "2004-01-01",
+        "effective_to": null,
+        "conflict": false,
+        "document_signed_at": "2003-12-30",
+        "scope_confirmed": true,
+        "collection_role": "fee_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-fee-selected-renewal-baseline-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:49:44.702942+00:00",
+        "current_applicability": "selected_national_expiry_renewal_fee_baseline_with_2018_first_issue_override",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 135,
+          "text_sha256": "ea85f058bcd395b9e4309a73b8e6bfc23229f5738e32e915dfe23ab8ffa92a41"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 30,
+          "text_sha256": "7440c609816cc4235db8c815b0d5d7462050c6c4e761dbb9099ebfce7c349019"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 70,
+          "text_sha256": "71a45b53aadec06b73eebdffde18858e5754e4d07331e47bd9aac961c1edc83e"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "9536d911baab2d44b29c65c6721de3c7fa7fc3872840639596f0f565abb94fd6"
+        }
+      ]
+    },
+    {
+      "source_id": "NATIONAL-FEE-2003-SC-COPY",
+      "url": "https://gat.sc.gov.cn/scgat/c111595/2023/2/17/1b1f0e0b55fd43a08a488468f21afe25/files/a0ca9c2a5809468e9854045ec606a6ab.pdf",
+      "revision": "rev-b08bfe6fc0a3c73f3c81a81f",
+      "state": "excluded",
+      "original_sha256": "e61e7edc4b1ab86a936fb6788097230baae17cf9db44ce99c9f9e43b10f18d75",
+      "original_bytes": 101606,
+      "metadata": {
+        "title": "国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "发改价格〔2003〕2322号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "fee_duplicate_reference"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-fee-same-instrument-copy-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:49:44.702942+00:00",
+        "current_applicability": "same_instrument_reference_copy_not_another_business_rule",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {
+        "method": "pdf_text_layer",
+        "requires_visual_review": false
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页",
+          "category": "procedure",
+          "characters": 526,
+          "text_sha256": "30e3636ae157db4170af755650dcfd73400255960a7c142c0ff240837113bad5"
+        },
+        {
+          "locator": "PDF第2页",
+          "category": "procedure",
+          "characters": 207,
+          "text_sha256": "4aefcf552fca9e7fd4f321eac27ff9982e89431480e0c4aa43536bab48548785"
+        }
+      ]
+    },
+    {
       "source_id": "NATIONAL-LAW-DIRECTORY-2026",
       "url": "https://www.samr.gov.cn/fgs/sjdt/art/2026/art_93a4fbac2ce14ab6baab60b0cd452ef4.html",
       "revision": "rev-67c936e015b1b70255dcbf6a",
@@ -3771,6 +3948,42 @@
           "category": "identity",
           "characters": 117,
           "text_sha256": "d4b8d684a54fb785c1119048dd2698f676224552571d43d15bf2eab654c6f768"
+        }
+      ]
+    },
+    {
+      "source_id": "TY-FEE-CATALOG-2026-REFERENCE",
+      "url": "https://www.tangyin.gov.cn/2026/09-04/3658654.html",
+      "revision": "rev-caaee68493d18fcd3d19bacf",
+      "state": "excluded",
+      "original_sha256": "0acb14b83876dfa54dbd1aae95dd68a3e2fc354d23d850b4fdbe8f453da5978a",
+      "original_bytes": 245856,
+      "metadata": {
+        "title": "汤阴县执行的全国性及中央部门和单位行政事业性收费目录清单",
+        "region": "汤阴县",
+        "matter": "demo-id-renewal",
+        "document_type": "official_fee_directory_lead",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "other_county_fee_reference"
+      },
+      "source_fact_assessment_summary": {
+        "id": "other-county-fee-directory-citation-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:49:44.702942+00:00",
+        "current_applicability": "other_county_directory_citation_background_not_pilot_fee_approval",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落40",
+          "category": "identity",
+          "characters": 143,
+          "text_sha256": "6a42dd96466ce893ed759148b6545d961d27dcfc32781fcd5b167a0b9326707e"
         }
       ]
     },
