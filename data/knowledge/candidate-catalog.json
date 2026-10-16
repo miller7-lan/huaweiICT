@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T14:50:22.679385+00:00",
+  "captured_at": "2026-10-16T15:44:43.535666+00:00",
   "counts": {
-    "sites": 39,
-    "documents": 35,
-    "revisions": 111,
-    "chunks": 676,
+    "sites": 40,
+    "documents": 36,
+    "revisions": 113,
+    "chunks": 684,
     "versions": 0,
     "heads": 0,
     "jobs": 36,
-    "latest_chunks": 285
+    "latest_chunks": 289
   },
   "sources": [
     {
@@ -106,6 +106,24 @@
       "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-GOVERNANCE-2024",
+      "label": "2024省行政规范性文件管理办法治理对照",
+      "origin": "https://cgj.pds.gov.cn",
+      "allowed_paths": [
+        "/contents/16261/410761.html"
+      ],
+      "seeds": [
+        "https://cgj.pds.gov.cn/contents/16261/410761.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
     {
@@ -637,7 +655,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792076833.5472233,
+      "last_success": 1792163251.7472632,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -656,7 +674,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792076838.83328,
+      "last_success": 1792163257.023665,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -923,6 +941,55 @@
           "category": "fee",
           "characters": 23,
           "text_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-GOVERNANCE-2024",
+      "url": "https://cgj.pds.gov.cn/contents/16261/410761.html",
+      "revision": "rev-2a3287697e1e638806bd4c91",
+      "state": "excluded",
+      "original_sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+      "original_bytes": 101378,
+      "metadata": {
+        "title": "河南省行政规范性文件管理办法（2024修订）治理核查节选",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "governance_regulation_reference",
+        "document_number": "河南省人民政府令第226号",
+        "published_at": "2024-08-01",
+        "effective_from": "2024-08-01",
+        "effective_to": null,
+        "document_signed_at": "2024-06-03",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第二条",
+          "category": "procedure",
+          "characters": 179,
+          "text_sha256": "ee86908f6d19337dcd2d5c8805c660f4db5de9fd5488f7886d19f6beb90ae01a"
+        },
+        {
+          "locator": "第二十五条",
+          "category": "procedure",
+          "characters": 69,
+          "text_sha256": "b5668b35589d05b30faad0d00d66bf4d85b951bd90e2a5fbec65212b3cc4abd9"
+        },
+        {
+          "locator": "第三十五条",
+          "category": "procedure",
+          "characters": 114,
+          "text_sha256": "ff3bc35073ca3113c77887981503662b8ff906800478a4e3cf18919b639c3345"
+        },
+        {
+          "locator": "第四十条",
+          "category": "procedure",
+          "characters": 157,
+          "text_sha256": "fb9c020606fe03eb7e5ab1dea6572a079660de9224e3e308463b5f87cd16ac9d"
         }
       ]
     },
