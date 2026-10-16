@@ -152,6 +152,10 @@ def main():
         "reviewed_national_statutes": [{"source_id":r["site_id"],"revision":r["revision"],"reviewer":r["recorded_review"]["reviewer"]}
             for r in records if r["recorded_review"] and r["candidate_metadata"].get("document_type") == "statute"
             and r["candidate_metadata"].get("region") == "national"],
+        "reviewed_service_information": [{"source_id":r["site_id"],"revision":r["revision"],
+            "reviewer":r["recorded_review"]["reviewer"],"date_basis":r["candidate_metadata"]["date_basis"]}
+            for r in records if r["recorded_review"]
+            and r["candidate_metadata"].get("date_basis", {}).get("kind") == "reported_service_information"],
         "ai_reference_question_count": len(ai["cases"]) if ai else 0,
         "holdout_design_draft": {"included": holdout is not None,
             "question_count": len(holdout["question_draft"]["cases"]) if holdout else 0,
@@ -175,7 +179,7 @@ def main():
             "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
             "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
             "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
-            "later_provincial_duration_signal": "2026_two_duration_branches_and_2024_2025_context_archived_current_applicability_and_commencement_pending",
+            "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
             "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
             "fees": "2007_fee_and_2018_first_issue_waiver_originals_and_2025_catalog_chain_archived_local_exemption_and_postage_relations_pending",
             "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",

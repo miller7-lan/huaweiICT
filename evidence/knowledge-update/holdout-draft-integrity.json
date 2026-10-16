@@ -1,6 +1,6 @@
 {
-  "captured_at": "2026-10-16T16:26:45.806447+00:00",
-  "draft_integrity_passed": true,
+  "captured_at": "2026-10-16T17:06:51.099941+00:00",
+  "draft_integrity_passed": false,
   "checks": {
     "draft_fingerprint_matches": true,
     "one_completed_writer_request_bound_to_raw_output": true,
@@ -9,13 +9,13 @@
     "thirty_distinct_draft_scenarios_and_balanced_design": true,
     "question_file_has_no_oracles_or_expected_evidence": true,
     "all_forty_development_questions_located_and_disjoint": true,
-    "latest_originals_and_literal_anchor_spans_match": true,
+    "latest_originals_and_literal_anchor_spans_match": false,
     "answer_background_and_stop_evidence_are_separate": true,
     "semantic_independence_and_reference_freeze_remain_open": true,
     "old_development_references_and_results_preserved": true,
     "policy_registry_draft_approval_and_publication_state_preserved": true,
     "production_review_validator_rejects_draft_files": true,
-    "actual_export_contains_both_drafts_and_preserves_empty_approvals": true,
+    "actual_export_contains_both_drafts_and_preserves_empty_approvals": false,
     "semantic_screening_binds_all_questions_and_declares_retirements": true,
     "retired_draft_history_and_retained_case_fingerprints_preserved": true,
     "nine_new_ids_replace_retired_drafts_without_reusing_questions": true,
@@ -30,7 +30,7 @@
   "draft_sha256": "4ef24c24cffc41c2f05f83da7d2c23d63875c02e1b04b6ae6a13fb67b0e5ce7c",
   "writer_run": "20261016T131527Z-question-writer-ce4f149e",
   "writer_unique_questions": 12,
-  "review_packet_sha256": "6bd6ea5a6d7de36ab404e48e616090685a1df0116181af302ad7d8e39a70e4e1",
+  "review_packet_sha256": "ae1e28f4410d0380324f83641d1e07b06880492e5892de36fadf3043c9a57a8f",
   "independence_certified": false,
   "business_acceptance_executed": false,
   "reference_frozen": false,
@@ -40,12 +40,12 @@
   "counts": {
     "sites": 41,
     "documents": 37,
-    "revisions": 120,
-    "chunks": 807,
+    "revisions": 122,
+    "chunks": 809,
     "versions": 0,
     "heads": 0,
     "jobs": 36,
-    "latest_chunks": 304
+    "latest_chunks": 303
   },
   "scope": "Draft/source/input integrity and binding of separately authored AI semantic screening, including stale-decision withholding. Technical checks do not prove the screening judgments, semantic independence, policy correctness or business accuracy."
 }

@@ -1,15 +1,33 @@
 {
-  "created_at": "2026-10-16T16:24:58.455029+00:00",
+  "created_at": "2026-10-16T17:06:37.429134+00:00",
   "candidate_files": 37,
-  "latest_chunk_count": 304,
+  "latest_chunk_count": 303,
   "question_count": 30,
   "human_reviewed_questions": 0,
-  "recorded_reviewed_source_count": 1,
+  "recorded_reviewed_source_count": 2,
   "reviewed_national_statutes": [
     {
       "source_id": "ID-AMENDMENT-JT-LEAD",
       "revision": "rev-bd98fcbde0cda7f52078b310",
       "reviewer": "Codex AI"
+    }
+  ],
+  "reviewed_service_information": [
+    {
+      "source_id": "HN-MEASURES-2026",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "reviewer": "Codex AI",
+      "date_basis": {
+        "base_revision": "rev-61474e03ba08d8007310057b",
+        "body_sha256": "51ad6cc402200019300b76f3aae8be36ef6fb93d9da5ba3a204dc56650e8990e",
+        "information_as_of": "2026-05-05",
+        "kind": "reported_service_information",
+        "legal_commencement_established": false,
+        "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+        "source_date_field": "meta:pubdate",
+        "source_date_value": "2026-05-05 09:18:04.0",
+        "source_observation_sha256": "c0d4266f45c862eb42fb1283b5f1a205115a77fdd91eea6e9a932a19bacf0231"
+      }
     }
   ],
   "ai_reference_question_count": 30,
@@ -21,12 +39,14 @@
       "questions": "00080e7db0b63343cc9bb766ff9ea5c43a475d3829cc9240e2062ac09fa99d50"
     },
     "live_binding_checks": {
-      "sources_match_latest": true,
+      "sources_match_latest": false,
       "development_registry_matches": true,
       "publication_policy_file_matches": true,
       "attributed_review_contract": true
     },
-    "stale_source_keys": [],
+    "stale_source_keys": [
+      "D26"
+    ],
     "semantic_screening_status": "bound",
     "semantic_screening_counts": {
       "retain_for_further_source_review": 30
@@ -37,7 +57,7 @@
     "business_acceptance_executed": false
   },
   "dataset_sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
-  "review_packet_sha256": "6bd6ea5a6d7de36ab404e48e616090685a1df0116181af302ad7d8e39a70e4e1",
+  "review_packet_sha256": "ae1e28f4410d0380324f83641d1e07b06880492e5892de36fadf3043c9a57a8f",
   "publication_policy": {
     "minimum_cases": 30,
     "minimum_recall_at_5": 0.9,
@@ -60,7 +80,7 @@
     "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
     "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
     "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
-    "later_provincial_duration_signal": "2026_two_duration_branches_and_2024_2025_context_archived_current_applicability_and_commencement_pending",
+    "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
     "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
     "fees": "2007_fee_and_2018_first_issue_waiver_originals_and_2025_catalog_chain_archived_local_exemption_and_postage_relations_pending",
     "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",

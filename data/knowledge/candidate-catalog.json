@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T16:24:57.907314+00:00",
+  "captured_at": "2026-10-16T17:06:36.907836+00:00",
   "counts": {
     "sites": 41,
     "documents": 37,
-    "revisions": 120,
-    "chunks": 807,
+    "revisions": 122,
+    "chunks": 809,
     "versions": 0,
     "heads": 0,
     "jobs": 36,
-    "latest_chunks": 304
+    "latest_chunks": 303
   },
   "sources": [
     {
@@ -208,7 +208,7 @@
     },
     {
       "id": "HN-MEASURES-2026",
-      "label": "河南公安机关2026年便民利民服务措施：身份证时限及完整解读",
+      "label": "河南公安机关2026年便民利民服务措施：身份证办理时限",
       "origin": "https://hnga.henan.gov.cn",
       "allowed_paths": [
         "/2026/05-11/3349863.html"
@@ -221,7 +221,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792155412.0208974,
+      "last_success": 1792170300.7230349,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -1956,8 +1956,8 @@
     {
       "source_id": "HN-MEASURES-2026",
       "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
-      "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
-      "state": "pending_review",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "state": "reviewed",
       "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
       "original_bytes": 17887,
       "metadata": {
@@ -1965,13 +1965,32 @@
         "region": "河南省",
         "matter": "demo-id-renewal",
         "document_type": "official_policy_explanation",
-        "published_at": null,
+        "published_at": "2026-05-05",
         "effective_from": null,
         "effective_to": null,
-        "scope_confirmed": false,
-        "collection_role": "later_policy_signal"
+        "conflict": false,
+        "scope_confirmed": true,
+        "collection_role": "later_policy_signal",
+        "date_basis": {
+          "base_revision": "rev-61474e03ba08d8007310057b",
+          "body_sha256": "51ad6cc402200019300b76f3aae8be36ef6fb93d9da5ba3a204dc56650e8990e",
+          "information_as_of": "2026-05-05",
+          "kind": "reported_service_information",
+          "legal_commencement_established": false,
+          "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+          "source_date_field": "meta:pubdate",
+          "source_date_value": "2026-05-05 09:18:04.0",
+          "source_observation_sha256": "c0d4266f45c862eb42fb1283b5f1a205115a77fdd91eea6e9a932a19bacf0231"
+        }
       },
-      "source_fact_assessment_summary": null,
+      "source_fact_assessment_summary": {
+        "id": "henan-service-information-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T17:06:10.125898+00:00",
+        "current_applicability": "attributed_provincial_service_information_as_of_2026-05-05",
+        "business_approval": true,
+        "human_review_completed": false
+      },
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1979,12 +1998,6 @@
           "category": "identity",
           "characters": 108,
           "text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
-        },
-        {
-          "locator": "正文段落2",
-          "category": "identity",
-          "characters": 254,
-          "text_sha256": "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
         }
       ]
     },
