@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T05:49:12.387764+00:00",
+  "captured_at": "2026-10-16T10:21:36.979059+00:00",
   "counts": {
     "sites": 29,
     "documents": 21,
@@ -52,13 +52,13 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 461,
+  "test_count": 479,
   "tests_passed": true,
-  "platform_tools": [
-    "govkb_get_environment_status",
-    "govkb_search_evidence"
-  ],
-  "public_files_scanned": 658,
+  "platform_tools": [],
+  "platform_catalog_verified": false,
+  "platform_catalog_failure_class": "ConnectError",
+  "platform_catalog_failure_stage": "login",
+  "public_files_scanned": 679,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -84,8 +84,8 @@
   "discovery": [
     {
       "source_id": "BEIJING-POLICY-DISCOVERY",
-      "cycle_id": 4,
-      "started_at": 1792116529.7588868,
+      "cycle_id": 6,
+      "started_at": 1792138137.148377,
       "limited": false,
       "index_pages_scheduled": 1,
       "new_document_jobs": 0,
@@ -97,8 +97,8 @@
     },
     {
       "source_id": "HN-POLICY-DISCOVERY",
-      "cycle_id": 5,
-      "started_at": 1792116529.7588868,
+      "cycle_id": 7,
+      "started_at": 1792138137.148377,
       "limited": false,
       "index_pages_scheduled": 2,
       "new_document_jobs": 0,
@@ -192,6 +192,13 @@
     "independent_human_acceptance": false,
     "retrieval_recall_measured": false
   },
+  "pending_model_prevalidation_plan": {
+    "run_id": "20261016T100533Z-3b77f854",
+    "kind": "retrieved_source_unit_model_prevalidation",
+    "case_count": 30,
+    "retrieval_run_id": "20261016T095459Z-0aaf29dd",
+    "model_server_checked_at_preparation": false
+  },
   "local_startup": {
     "registration": {
       "installed": true,
@@ -209,13 +216,13 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792129565,
+      "checked_at": 1792131964,
       "action": "healthy",
       "ready": true,
-      "recovery_count": 1,
-      "last_recovered_at": 1792084570,
-      "last_recovered_supervisor_pid": 56584,
-      "supervisor_pid": 76312,
+      "recovery_count": 3,
+      "last_recovered_at": 1792131058,
+      "last_recovered_supervisor_pid": 18228,
+      "supervisor_pid": 18228,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"

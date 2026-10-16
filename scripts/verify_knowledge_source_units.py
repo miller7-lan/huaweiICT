@@ -13,6 +13,8 @@ from gov_mcp.knowledge_classify import TOPICS
 from gov_mcp.knowledge_retrieval import VERSION as RANKER_VERSION, query_grams, score_literal
 from gov_mcp.knowledge_structure import VERSION as STRUCTURE_VERSION, structure
 from gov_mcp.knowledge_units import VERSION, materialize, propose
+from gov_mcp.knowledge_query import (VERSION as SIGNAL_VERSION, V2_VERSION as SIGNAL_V2_VERSION, V3_VERSION as SIGNAL_V3_VERSION,
+    question_signals, source_topics, signal_text, question_demands, intent_source_key, intent_source_key_v3)
 from private_runtime import ensure_private_directory
 from verify_knowledge_shadow_retrieval import validate_reference
 
@@ -24,7 +26,7 @@ def parent_keys(unit):
     return {(unit["revision_id"], span["locator"]) for span in unit["spans"]}
 
 
-PROFILES = ("literal", "topic_priority_v1", "specific_topic_phase_v1")
+PROFILES = ("literal", "topic_priority_v1", "specific_topic_phase_v1", "intent_normalized_v1", "intent_normalized_v2", "intent_normalized_v3")
 
 
 def topic_codes(text):
@@ -36,19 +38,28 @@ def rank_units(question, corpus, profile="literal"):
         raise ValueError("问题须为1至300字")
     if profile not in PROFILES:
         raise ValueError("未知检索开发配置")
+    if profile in ("intent_normalized_v2", "intent_normalized_v3"):
+        return rank_intent_units(question, corpus, profile)
     grams = query_grams(question)
+    intent = question_signals(question) if profile == "intent_normalized_v1" else None
     topics = topic_codes(question) if profile != "literal" else set()
     topics = topics-{"eligibility"} if profile == "specific_topic_phase_v1" else topics-{"eligibility"} or topics
     collection_intent = profile == "specific_topic_phase_v1" and (
         any(term in question for term in ("代领", "邮寄", "送达", "领证", "领取新证"))
         or ("领取" in question and any(term in question for term in ("新证", "窗口")) and "申请领取" not in question))
+    if intent:
+        collection_intent = intent["collection"]
+        topics = intent["topics"]
     ranked = []
     for unit in corpus:
-        priority = len(topics & topic_codes(unit["text_for_ranking"])) if topics else 0
+        unit_topics = source_topics(unit["text_for_ranking"]) if intent else topic_codes(unit["text_for_ranking"])
+        priority = len(topics & unit_topics) if topics else 0
+        if intent and intent["primary"] in unit_topics:
+            priority += len(topics)+1
         score = score_literal(grams, unit["text_for_ranking"])
         phase_priority = 0
         if collection_intent:
-            hints = structure(unit["text_for_ranking"])
+            hints = structure(signal_text(unit["text_for_ranking"]) if intent else unit["text_for_ranking"])
             kinds = {m["kind"] for m in hints["markers"]}
             if not hints["truncated"] and "phase:collection" in kinds:
                 phase_priority = 1 if "phase:application" in kinds else 2
@@ -63,6 +74,40 @@ def rank_units(question, corpus, profile="literal"):
             continue  # Never drop half a cross-page unit to fit the parent-citation budget.
         selected.append(unit)
         bindings.update(parents)
+        if len(selected) == 5:
+            break
+    return selected
+
+
+def rank_intent_units(question, corpus, profile="intent_normalized_v2"):
+    identity = "身份证" in signal_text(question)
+    scorer = intent_source_key_v3 if profile == "intent_normalized_v3" else intent_source_key
+    def ordered(text):
+        scored = [(scorer(text, unit, identity), unit) for unit in corpus]
+        scored = [(key, unit) for key, unit in scored if key[0] or key[1] or key[-1]]
+        scored.sort(key=lambda pair: (tuple(-part for part in pair[0]), pair[1]["revision_id"],
+            pair[1]["spans"][0]["locator"], pair[1]["spans"][0]["range"][0], pair[1]["id"]))
+        return [unit for _, unit in scored]
+    selected, bindings, identifiers = [], set(), set()
+    def add(unit):
+        identifier = (unit["revision_id"], unit["id"])
+        parents = parent_keys(unit)
+        if identifier in identifiers:
+            return True
+        if not parents or len(bindings | parents) > 5 or len(selected) == 5:
+            return False
+        selected.append(unit)
+        bindings.update(parents)
+        identifiers.add(identifier)
+        return True
+    demands = question_demands(question)
+    if len(demands) > 1:
+        for clause in demands:
+            for unit in ordered(clause):
+                if add(unit):
+                    break
+    for unit in ordered(question):
+        add(unit)
         if len(selected) == 5:
             break
     return selected
@@ -83,7 +128,8 @@ def build_units(corpus, bindings):
             raise ValueError("单元提案不完整，不能静默缩小对照语料")
         proposals.append({"revision_id": binding["revision_id"], "source_id": binding["source_id"], "proposal": proposal})
         for unit in materialize(proposal, chunks):
-            units.append({**unit, "revision_id": binding["revision_id"], "source_id": binding["source_id"]})
+            units.append({**unit, "revision_id": binding["revision_id"], "source_id": binding["source_id"],
+                          "source_title": items[0].get("title")})
     return units, proposals
 
 
@@ -157,6 +203,8 @@ def main():
         "kind": "literal_source_unit_development", "unit_algorithm_version": VERSION, "ranker_version": RANKER_VERSION,
         "development_rank_profile": args.profile, "topic_dictionary_sha256": fingerprint(TOPICS),
         "literal_structure_algorithm_version": STRUCTURE_VERSION,
+        "query_signal_version": {"intent_normalized_v1": SIGNAL_VERSION, "intent_normalized_v2": SIGNAL_V2_VERSION, "intent_normalized_v3": SIGNAL_V3_VERSION}.get(args.profile),
+        "query_signal_source_sha256": fingerprint((ROOT / "src/gov_mcp/knowledge_query.py").read_bytes()) if args.profile.startswith("intent_") else None,
         "topic_dictionary_modified_for_this_experiment": False,
         "corpus_sha256": baseline["corpus_sha256"], "reference_sha256": baseline["reference_sha256"],
         "private_unit_snapshot_sha256": fingerprint(private_value), "source_documents": len(proposals),

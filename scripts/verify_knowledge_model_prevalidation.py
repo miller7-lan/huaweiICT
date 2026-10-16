@@ -225,6 +225,10 @@ def run(run_id):
             installed = client.get(MODEL_ORIGIN+"/api/tags").raise_for_status().json()["models"]
             if not any(v["name"] == manifest["model"] and v["digest"] == manifest["model_digest"] for v in installed):
                 raise ValueError("已安装模型与冻结模型不一致；不会下载或切换模型")
+            if manifest.get("model_server_checked_at_preparation") is False:
+                definition = client.post(MODEL_ORIGIN+"/api/show", json={"model": manifest["model"]}).raise_for_status().json()
+                if fingerprint(definition) != manifest["model_definition_sha256"]:
+                    raise ValueError("当前模型定义与离线冻结描述不匹配；未发送生成请求")
             for case in manifest["cases"]:
                 path = directory / (case["id"]+".json")
                 if path.exists():
@@ -284,6 +288,10 @@ def summarize(run_id):
         "citation_policy": manifest.get("citation_policy", "unique_anchor_v1"),
         "source_structure_version": manifest.get("source_structure_version"),
         "dataset_role": manifest.get("dataset_role", "development_prevalidation_not_independent_acceptance"),
+        "context_selection": manifest.get("context_selection"), "retrieval_run_id": manifest.get("retrieval_run_id"),
+        "retrieval_rank_profile": manifest.get("retrieval_rank_profile"),
+        "model_descriptor_source_kind": manifest.get("model_descriptor_source_kind", "live_local_api"),
+        "model_server_checked_at_preparation": manifest.get("model_server_checked_at_preparation", True),
         "reference_sha256": manifest["reference_sha256"], "rubric_sha256": manifest["rubric_sha256"],
         "case_count": 30, "completed_cases": len(records),
         "technical_pass_count": sum(all(record["technical_checks"].values()) for record in records),

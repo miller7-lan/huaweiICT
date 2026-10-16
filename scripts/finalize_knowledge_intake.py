@@ -6,6 +6,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from xml.etree import ElementTree
 
+import httpx
+
 from gov_mcp.knowledge import KnowledgeStore
 from gov_mcp.knowledge_quality import publication_policy
 from gov_mcp.knowledge_review import development_registry
@@ -47,24 +49,37 @@ def main():
             incomplete = db.execute("SELECT 1 FROM jobs WHERE site_id IN ("+",".join("?" for _ in sources)+") AND state!='done' LIMIT 1", sources).fetchone()
             if not incomplete:
                 db.execute("UPDATE workers SET progress='completed' WHERE id=?", (owner,))
-    api = NexentAPI()
+    api = None
+    tool_names = []
+    platform_failure = None
+    platform_stage = "client_initialization"
     try:
+        api = NexentAPI()
+        platform_stage = "account_loading"
         accounts = json.loads((ROOT / ".runtime/m2/accounts.json").read_text(encoding="utf-8"))
+        platform_stage = "login"
         api.login(accounts["developer"])
+        platform_stage = "service_catalog"
         service = next(s for s in api.call("GET", "/mcp/list")["remote_mcp_server_list"]
                        if s.get("remote_mcp_server_name", s.get("mcp_name")) == NAME)
         service_id = next((service[key] for key in ("mcp_id", "remote_mcp_server_id", "id") if key in service), None)
         if service_id is None:
             raise RuntimeError("MCP identifier not present; available field names: "+", ".join(service))
+        platform_stage = "tool_catalog"
         tools = api.call("GET", "/mcp/tools?mcp_id="+str(service_id))["tools"]
         tool_names = sorted(tool.get("name", tool.get("tool_name")) for tool in tools)
         assert tool_names == ["govkb_get_environment_status", "govkb_search_evidence"]
+    except (httpx.HTTPError, OSError, ValueError, KeyError, StopIteration, AssertionError, RuntimeError) as error:
+        # Persist a current failed check without leaking response bodies or credentials.
+        platform_failure = type(error).__name__
     finally:
-        api.close()
-    mcp_path = ROOT / "evidence/knowledge-update/mcp-connection-2026-10-15.json"
-    mcp = json.loads(mcp_path.read_text(encoding="utf-8"))
-    mcp.update(platform_catalog_verified=True, platform_tool_names=tool_names)
-    mcp_path.write_text(json.dumps(mcp, ensure_ascii=False, indent=2), encoding="utf-8")
+        if api is not None:
+            api.close()
+    if platform_failure is None:
+        mcp_path = ROOT / "evidence/knowledge-update/mcp-connection-2026-10-15.json"
+        mcp = json.loads(mcp_path.read_text(encoding="utf-8"))
+        mcp.update(platform_catalog_verified=True, platform_tool_names=tool_names)
+        mcp_path.write_text(json.dumps(mcp, ensure_ascii=False, indent=2), encoding="utf-8")
     status = store.status()
     policy = publication_policy(store)
     with store.db() as db:
@@ -109,6 +124,8 @@ def main():
     attachment_proof = json.loads(attachment_path.read_text(encoding="utf-8")) if attachment_path.exists() else {}
     model_path = ROOT / "evidence/knowledge-update/model-prevalidation.json"
     model_trial = json.loads(model_path.read_text(encoding="utf-8")) if model_path.exists() else {}
+    model_plan_path = ROOT / "evidence/knowledge-update/model-prevalidation-plan.json"
+    model_plan = json.loads(model_plan_path.read_text(encoding="utf-8")) if model_plan_path.exists() else {}
     ai_review_path = ROOT / "evidence/knowledge-update/model-prevalidation-ai-review.json"
     model_review = json.loads(ai_review_path.read_text(encoding="utf-8")) if ai_review_path.exists() else {}
     startup_evidence = {}
@@ -122,6 +139,9 @@ def main():
               "healthy_monitored_source_ids": [s["id"] for s in status["sites"] if s["enabled"] and not s["paused_reason"] and not s["failures"] and s["last_success"] and not s["stale"]],
               "paused_source_ids": [s["id"] for s in status["sites"] if s["paused_reason"]],
               "test_count": test_count, "tests_passed": tests_passed, "platform_tools": tool_names,
+              "platform_catalog_verified": platform_failure is None,
+              "platform_catalog_failure_class": platform_failure,
+              "platform_catalog_failure_stage": platform_stage if platform_failure else None,
               "public_files_scanned": scanned, "credential_hit_paths": credential_hits,
               "business_review_completed": False, "official_knowledge_published": status["counts"]["heads"],
               "publication_policy": policy,
@@ -143,12 +163,15 @@ def main():
               "waiting_attachment_collectors": [s["id"] for s in status["sites"] if s.get("waiting_for_attachment")],
               "isolated_actual_attachment_flow_passed": attachment_proof.get("passed"),
               "given_evidence_model_prevalidation": model_trial_summary(model_trial, model_review),
+              "pending_model_prevalidation_plan": {key: model_plan.get(key) for key in (
+                  "run_id", "kind", "case_count", "retrieval_run_id", "model_server_checked_at_preparation")}
+                  if model_plan.get("run_id") != model_trial.get("run_id") else None,
               "local_startup": status["startup"], "startup_evidence": startup_evidence,
               "github_final_push_completed": False,
               "scope": "Actual candidate intake, monitoring, MCP transport/catalog and separately recorded fixed/dynamic-question model stop tests; no business-accuracy or official-policy approval claim."}
     (ROOT / "evidence/knowledge-update/intake-step-status.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    assert tests_passed
+    assert tests_passed and platform_failure is None, "Current regression and platform catalog checks must both pass"
 
 
 if __name__ == "__main__":
