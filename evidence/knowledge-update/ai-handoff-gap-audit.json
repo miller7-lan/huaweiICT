@@ -1,0 +1,240 @@
+{
+  "schema": 1,
+  "kind": "read_only_ai_handoff_gap_audit",
+  "captured_at": "2026-10-16T05:08:03.300249+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_attestations_created": 0,
+  "authorization_basis": "User explicitly reassigned Cheng Qiancheng source verification, materials analysis and reference answers to Codex; no teammate response is awaited.",
+  "checks": {
+    "ai_reference_hash_valid": true,
+    "truthful_ai_reference_identity": true,
+    "thirty_ai_reference_cases_present": true,
+    "archived_source_bytes_and_locators_bound": true,
+    "all_reference_revisions_current": true,
+    "ai_model_review_bound_to_completed_trial": true
+  },
+  "audit_integrity_passed": true,
+  "ai_reference_sha256": "00433eb6ee3dcbd400c986761f0ca44f0679b04bea9f5a85d51bcf532b67a53b",
+  "reference_case_count": 30,
+  "archived_reference_bindings": [
+    {
+      "site_id": "ID-LAW-01",
+      "reference_revision": "rev-293d24840fc4e53eb17c71ed",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "ID-GUIDE-01",
+      "reference_revision": "rev-ec7e7716b9519d20ee336e0b",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "MPS-NORM-01",
+      "reference_revision": "rev-cc5526f72436ae807a3f32f0",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "MPS-USE-01",
+      "reference_revision": "rev-d22b05a6d353b71c8bc504ad",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "ID-AMENDMENT-JT-LEAD",
+      "reference_revision": "rev-5ba23b3637717a20b90b7503",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "HN-UPDATE-GS-01",
+      "reference_revision": "rev-01e4a7686991d06c8135e431",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "HN-NORM-PUBLISHER",
+      "reference_revision": "rev-3221c16ab130408cb59cd2b6",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "HN-MEASURES-2024-JY",
+      "reference_revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    },
+    {
+      "site_id": "HN-MEASURES-2021-PDF",
+      "reference_revision": "rev-5d056364588a5d9d7966ce17",
+      "raw_sha256_matches": true,
+      "reference_is_latest_revision": true,
+      "all_reference_locators_present": true
+    }
+  ],
+  "latest_nonexcluded_candidates": [
+    {
+      "site_id": "HN-MEASURES-2021-PDF",
+      "revision": "rev-5d056364588a5d9d7966ce17",
+      "state": "pending_review",
+      "metadata_sha256": "d228fd39412dcc0b460b44c9614d21e90f6fa27a98c23d79f720aac268ede669",
+      "region": "unknown",
+      "matter": "unclassified",
+      "scope_confirmed": false,
+      "usage_basis_present": true,
+      "effective_from": null,
+      "conflict": false,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "HN-MEASURES-2024-JY",
+      "revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
+      "state": "pending_review",
+      "metadata_sha256": "a2c3f0ce27a3b66b23070a22c5d3287ba138b579e8542779b0210a41a96b5718",
+      "region": "河南省",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": false,
+      "usage_basis_present": true,
+      "effective_from": null,
+      "conflict": false,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "HN-NORM-PUBLISHER",
+      "revision": "rev-3221c16ab130408cb59cd2b6",
+      "state": "pending_review",
+      "metadata_sha256": "d715dfe7dc689cc4a30c0e38d0574411c5980b6f9f099d68c6db84d47fb5f0cd",
+      "region": "河南省",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": true,
+      "usage_basis_present": true,
+      "effective_from": null,
+      "conflict": false,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "HN-UPDATE-GS-01",
+      "revision": "rev-01e4a7686991d06c8135e431",
+      "state": "pending_review",
+      "metadata_sha256": "e59023895b0af3b2a3a68ac7e57f9324015674d1307c8deb53460b4590a94458",
+      "region": "河南省",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": false,
+      "usage_basis_present": true,
+      "effective_from": null,
+      "conflict": false,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "ID-AMENDMENT-JT-LEAD",
+      "revision": "rev-5ba23b3637717a20b90b7503",
+      "state": "pending_review",
+      "metadata_sha256": "c451127bebd2b11bff36988848d784d3426409f61376a7b84fdfcd61e69cebeb",
+      "region": "national",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": true,
+      "usage_basis_present": true,
+      "effective_from": null,
+      "conflict": true,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "ID-GUIDE-01",
+      "revision": "rev-ec7e7716b9519d20ee336e0b",
+      "state": "pending_review",
+      "metadata_sha256": "492cbdc74921690e385ec88112a16d15cbfc3c9e3eebd364ac5a7b4b3c82587f",
+      "region": "郑州市二七区",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": true,
+      "usage_basis_present": false,
+      "effective_from": null,
+      "conflict": false,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "ID-LAW-01",
+      "revision": "rev-293d24840fc4e53eb17c71ed",
+      "state": "pending_review",
+      "metadata_sha256": "9892e1ae133d217d72bd71ca42808b1c1b6e6b474f4de220328ec856f99f7a38",
+      "region": "national",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": true,
+      "usage_basis_present": false,
+      "effective_from": "2012-01-01",
+      "conflict": false,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "MPS-NORM-01",
+      "revision": "rev-cc5526f72436ae807a3f32f0",
+      "state": "pending_review",
+      "metadata_sha256": "c508501f385f90ae4036d5e823c9f32b97be88cb47c296a79caa663f93934d01",
+      "region": "national",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": true,
+      "usage_basis_present": true,
+      "effective_from": null,
+      "conflict": false,
+      "business_review": "pending"
+    },
+    {
+      "site_id": "MPS-USE-01",
+      "revision": "rev-d22b05a6d353b71c8bc504ad",
+      "state": "pending_review",
+      "metadata_sha256": "d72f1e397534431e8677b89d7e03edaf5ea062c76bab26162ec6d9a77245c708",
+      "region": "national",
+      "matter": "demo-id-renewal",
+      "scope_confirmed": true,
+      "usage_basis_present": true,
+      "effective_from": null,
+      "conflict": false,
+      "business_review": "pending"
+    }
+  ],
+  "publication_policy": {
+    "minimum_cases": 30,
+    "minimum_recall_at_5": 0.9,
+    "mode": "business",
+    "require_sources_fresh": true,
+    "required_claim_support": 1.0,
+    "schema": 1
+  },
+  "publication_policy_sha256": "99466fa91dd44b1c08b3626f72c3ea27f7dff490d38e6dcdc96ab88b937c3d85",
+  "implementation_contract_observed": {
+    "source": "src/gov_mcp/knowledge_quality.py:58",
+    "source_sha256": "931422dd49a3d3df9c2808105689807bf383aa7c1acbe2f80f5c41b47aac70fe",
+    "required_status": "human_reviewed",
+    "required_reference_author_kind": "human",
+    "required_dataset_role": "independent_business_acceptance",
+    "case_judgment_field": "human_judgment",
+    "origin": "existing repository implementation; not a finding of a legal requirement",
+    "ai_report_can_satisfy_current_identity_contract": false
+  },
+  "latest_model_development_result": {
+    "run_id": "20261016T024521Z-29459439",
+    "assessed": 30,
+    "ai_assessed_pass": 13,
+    "ai_assessed_fail": 17,
+    "dataset_role": "development_prevalidation_not_independent_acceptance",
+    "independent_acceptance": false
+  },
+  "next_work": [
+    "Align the review contract with truthful AI actor provenance and the explicit handoff authorization, retaining exact source/snapshot binding, uncertainty and quality requirements.",
+    "Resolve source applicability, document dates and material relationships before any candidate review or publication.",
+    "Improve retrieval and answer support, then run genuinely held-out acceptance cases; do not reuse development results as acceptance."
+  ],
+  "no_mutations_performed": true,
+  "business_release_ready": false,
+  "formal_publication_performed": false,
+  "scope": "Audits the existing AI handoff artifacts, exact archived source bindings and current implementation contract. Passing audit integrity does not approve source applicability, model answers or publication."
+}
