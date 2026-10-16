@@ -11,7 +11,8 @@ PATTERNS = (
     ("branch:renewal", r"申请换领的|申请换领|到期换领|有效期满"),
     ("branch:replacement", r"申请补领的|申请补领|丢失补领|损坏换领"),
     ("branch:minor", r"未满十六周岁|未满16周岁|未成年人|监护人"),
-    ("phase:application", r"申请换领|申请补领|申请领取|申领登记表"),
+    ("phase:application", r"申请换领|申请补领|申请领取"),
+    ("artifact:registration_form", r"申领登记表"),
     ("phase:collection", r"公民领取新证|领取新证时|领取新证|本人领取居民身份证|代为领取"),
     ("phase:inspection", r"交验"),
     ("phase:return", r"交回(?:原证|旧证)"),
@@ -23,7 +24,7 @@ PATTERNS = (
     ("duration", r"(?<![\d年月])"+NUMBER+r"(?:个)?(?:自然日|工作日|日内?|个月)"),
 )
 LIMITS = {"characters": 16000, "markers": 64, "brief_markers": 8}
-VERSION = "literal-structure-v1-"+fingerprint([PATTERNS, LIMITS])[:12]
+VERSION = "literal-structure-v2-"+fingerprint([PATTERNS, LIMITS])[:12]
 
 
 def structure(text):

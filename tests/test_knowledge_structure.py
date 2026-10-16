@@ -28,6 +28,15 @@ def test_collection_and_application_markers_do_not_become_same_stage():
     assert "collection_is_not_application" in value["cautions"]
 
 
+def test_registration_form_name_does_not_prove_application_stage():
+    value = structure("本人领取居民身份证，并在《居民身份证申领登记表》上签字。")
+    kinds = {m["kind"] for m in value["markers"]}
+    assert "artifact:registration_form" in kinds and "phase:collection" in kinds
+    assert "phase:application" not in kinds
+    applied = structure("申请领取的，应填写居民身份证申领登记表。")
+    assert "phase:application" in {m["kind"] for m in applied["markers"]}
+
+
 def test_fee_exceptions_are_not_flattened_to_universal_payment():
     value = structure("一般收工本费。对甲免收工本费，对乙可以减收工本费。")
     assert "do_not_make_universal_fee_claim" in value["cautions"]

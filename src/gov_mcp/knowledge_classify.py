@@ -2,6 +2,7 @@
 
 from gov_mcp.knowledge import fingerprint
 from gov_mcp.knowledge_structure import VERSION as STRUCTURE_VERSION, structure
+from gov_mcp.knowledge_units import VERSION as UNITS_VERSION, propose as propose_units
 
 
 TOPICS = (
@@ -25,7 +26,7 @@ BRANCHES = (
     ("temporary_id", "临时身份证", ("临时居民身份证", "临时身份证")),
     ("changed_identity", "登记项目变更", ("姓名变更", "变更姓名", "登记项目变更")),
 )
-VERSION = "condition-proposals-v2-" + fingerprint([TOPICS, BRANCHES, STRUCTURE_VERSION])[:12]
+VERSION = "source-unit-proposals-v3-" + fingerprint([TOPICS, BRANCHES, STRUCTURE_VERSION, UNITS_VERSION])[:12]
 
 
 def suggest(chunks, metadata):
@@ -46,4 +47,5 @@ def suggest(chunks, metadata):
         "topic_codes": sorted({topic["code"] for section in sections for topic in section["topics"]}),
         "mixed_branch_mentions": len({branch["code"] for section in sections for branch in section["mentioned_branches"]}) > 1,
         "sections": sections,
+        "retrieval_units": propose_units(chunks),
         "warning": "Mentions and keyword matches do not establish applicability, required materials, current effectivity or a review decision"}

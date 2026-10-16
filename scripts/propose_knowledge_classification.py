@@ -20,7 +20,12 @@ def main():
             "sections": len(proposal["sections"]), "status": proposal["status"],
             "literal_structure_markers": sum(len(s["source_structure"]["markers"]) for s in proposal["sections"]),
             "structure_limit_sections": sum(s["source_structure"]["truncated"] for s in proposal["sections"]),
-            "structure_cautions": sorted({code for s in proposal["sections"] for code in s["source_structure"]["cautions"]})})
+            "structure_cautions": sorted({code for s in proposal["sections"] for code in s["source_structure"]["cautions"]}),
+            "source_unit_algorithm": proposal["retrieval_units"]["algorithm_version"],
+            "source_unit_proposal_status": proposal["retrieval_units"]["status"],
+            "source_unit_count": len(proposal["retrieval_units"]["units"]),
+            "source_unit_coverage_complete": proposal["retrieval_units"]["coverage_complete"],
+            "cross_page_unit_count": sum(len({s["parent_ordinal"] for s in u["spans"]}) > 1 for u in proposal["retrieval_units"]["units"])})
     after = store.status()["counts"]
     report = {"captured_at": datetime.now(timezone.utc).isoformat(), "records": records,
         "before_counts": before, "after_counts": after, "business_review_completed": False,
