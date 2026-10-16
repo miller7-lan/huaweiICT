@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T18:51:28.519527+00:00",
+  "captured_at": "2026-10-16T19:21:36.432477+00:00",
   "counts": {
     "sites": 47,
     "documents": 43,
-    "revisions": 138,
-    "chunks": 875,
+    "revisions": 144,
+    "chunks": 925,
     "versions": 0,
     "heads": 0,
     "jobs": 38,
@@ -159,7 +159,7 @@
       "page_kind": "index",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792155471.2775304,
+      "last_success": 1792177086.6282856,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -220,7 +220,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792096351.0992856,
+      "last_success": 1792178236.745555,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -239,7 +239,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792170300.7230349,
+      "last_success": 1792177036.5783079,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -1463,155 +1463,6 @@
     },
     {
       "source_id": "HN-INTERPRETATION-DISCOVERY",
-      "url": "https://hnga.henan.gov.cn/2023/11-09/2844617.html",
-      "revision": "rev-5018594a23160bda8d698b31",
-      "state": "pending_review",
-      "original_sha256": "6525c101840488adbb6388c26ecbfd6a90d4c710547276ffb45f2394b4d24de1",
-      "original_bytes": 9457,
-      "metadata": {
-        "title": "河南公安机关2023年便民利民服务十项措施",
-        "region": "unknown",
-        "matter": "unclassified",
-        "document_type": "official_policy_explanation",
-        "published_at": null,
-        "effective_from": null,
-        "effective_to": null,
-        "scope_confirmed": false,
-        "collection_role": "discovery_candidate"
-      },
-      "source_fact_assessment_summary": null,
-      "pdf_extraction": {},
-      "selected_clauses": [
-        {
-          "locator": "正文段落1",
-          "category": "identity",
-          "characters": 17,
-          "text_sha256": "4b1f435f02204e875a7eaef7773a5436308e9d745b829f7e48ae4145cf261c4a"
-        },
-        {
-          "locator": "正文段落2",
-          "category": "identity",
-          "characters": 96,
-          "text_sha256": "8de5c0d4e5e1f65fc22a9b60152c660dbf2a0a96f01fed743168367aad23061e"
-        },
-        {
-          "locator": "正文段落3",
-          "category": "identity",
-          "characters": 15,
-          "text_sha256": "66d1cef9d94600dfec311c5159075c60a8d409a059480a13d65d667d9e008815"
-        },
-        {
-          "locator": "正文段落4",
-          "category": "identity",
-          "characters": 76,
-          "text_sha256": "4c6c3cbe0446b81e47cabde02b0b26844927939d5b00fe22b55e8bbc6193b566"
-        },
-        {
-          "locator": "正文段落5",
-          "category": "procedure",
-          "characters": 15,
-          "text_sha256": "589186a20d0a04b1be74ab9d0cb5fd14a8094653c4668f221721d5f5362ac4da"
-        },
-        {
-          "locator": "正文段落6",
-          "category": "procedure",
-          "characters": 26,
-          "text_sha256": "a8b0acb79b67c9d8dc8f152dd19bedc9605f8023df9abb44ec80fe0cdf1a974b"
-        },
-        {
-          "locator": "正文段落7",
-          "category": "procedure",
-          "characters": 16,
-          "text_sha256": "c86d9a1a1c8789783fc861d75b4f1f62412d047ae5083d15383a1cf8ef27a4f7"
-        },
-        {
-          "locator": "正文段落8",
-          "category": "procedure",
-          "characters": 26,
-          "text_sha256": "eb610ac0b98bc60552c3e3dee595ef0e188afd25dc85f7e8eeff14a5f7ba1ac8"
-        },
-        {
-          "locator": "正文段落9",
-          "category": "procedure",
-          "characters": 19,
-          "text_sha256": "3d4ebbb701c8e75153456b3bf1e598d82bb9ef90c343e0b42097c52158fc187f"
-        },
-        {
-          "locator": "正文段落10",
-          "category": "procedure",
-          "characters": 31,
-          "text_sha256": "07b1381e5735941c074616fcc199937914000730b9d76fcd9a72d2af886320ed"
-        },
-        {
-          "locator": "正文段落11",
-          "category": "procedure",
-          "characters": 27,
-          "text_sha256": "91fa76b29f437a300f8a0511b7b3c604e61fb9c6f675af1b2c9d8bf0a85fe20d"
-        },
-        {
-          "locator": "正文段落12",
-          "category": "procedure",
-          "characters": 42,
-          "text_sha256": "a993fa30da3e6a359ffb282610b7accd0a764b660c9e9772a86e4bca068637c8"
-        },
-        {
-          "locator": "正文段落13",
-          "category": "procedure",
-          "characters": 29,
-          "text_sha256": "8bb2cea56fe617cf150f1dfbc4b113f98ffd3c493692fc4f9226a0b6bd55a1fd"
-        },
-        {
-          "locator": "正文段落14",
-          "category": "eligibility",
-          "characters": 56,
-          "text_sha256": "cc0ed6c8b86914dffdf7c63184caa6b9e366d823e1dd8454069499ecc8277573"
-        },
-        {
-          "locator": "正文段落15",
-          "category": "procedure",
-          "characters": 17,
-          "text_sha256": "f93b650ba2063cfbabf574d91b6177fb703ee52019053e0026301a443c7c9855"
-        },
-        {
-          "locator": "正文段落16",
-          "category": "procedure",
-          "characters": 66,
-          "text_sha256": "dcadc6fe9a09af1d17dcc43c6f027257e75e3bc53255212d9d104716a4d8b6fa"
-        },
-        {
-          "locator": "正文段落17",
-          "category": "procedure",
-          "characters": 18,
-          "text_sha256": "d3f50aea74576e33c2e696ebcf12405e14fa07a04dd675fd26cad871dddef7ee"
-        },
-        {
-          "locator": "正文段落18",
-          "category": "procedure",
-          "characters": 60,
-          "text_sha256": "fcf31684ac06eeee94f469ef9260a1fd7c6bdf2d548a09b4bcda50588a192f63"
-        },
-        {
-          "locator": "正文段落19",
-          "category": "procedure",
-          "characters": 26,
-          "text_sha256": "0dd076fe78ecaa854551e74adc9ddea7002a84b7510ef61beb2a4d9e8f190198"
-        },
-        {
-          "locator": "正文段落20",
-          "category": "procedure",
-          "characters": 65,
-          "text_sha256": "fc002dc9412b7baa275a19ef32af697cbdba52ef228bb3f12bb443ba366b2a24"
-        },
-        {
-          "locator": "正文段落21",
-          "category": "procedure",
-          "characters": 8,
-          "text_sha256": "d538ca87a70c30f9a5f84df1d5e61630e1ab579bd3f665d0adfc0b9d78f7f707"
-        }
-      ]
-    },
-    {
-      "source_id": "HN-INTERPRETATION-DISCOVERY",
       "url": "https://hnga.henan.gov.cn/2022/03-25/2420595.html",
       "revision": "rev-ad732fcbd28e97be3ed83617",
       "state": "excluded",
@@ -1975,9 +1826,165 @@
       ]
     },
     {
+      "source_id": "HN-INTERPRETATION-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2023/11-09/2844617.html",
+      "revision": "rev-1289f62acaef793662260a21",
+      "state": "excluded",
+      "original_sha256": "6525c101840488adbb6388c26ecbfd6a90d4c710547276ffb45f2394b4d24de1",
+      "original_bytes": 9457,
+      "metadata": {
+        "title": "河南公安机关2023年便民利民服务十项措施",
+        "region": "河南省",
+        "matter": "outside-pilot-police-services",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "dated-scope-2023_measures-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T19:16:42.471862+00:00",
+        "current_applicability": "outside_pilot_direct_business_scope",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 17,
+          "text_sha256": "4b1f435f02204e875a7eaef7773a5436308e9d745b829f7e48ae4145cf261c4a"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 96,
+          "text_sha256": "8de5c0d4e5e1f65fc22a9b60152c660dbf2a0a96f01fed743168367aad23061e"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 15,
+          "text_sha256": "66d1cef9d94600dfec311c5159075c60a8d409a059480a13d65d667d9e008815"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 76,
+          "text_sha256": "4c6c3cbe0446b81e47cabde02b0b26844927939d5b00fe22b55e8bbc6193b566"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "589186a20d0a04b1be74ab9d0cb5fd14a8094653c4668f221721d5f5362ac4da"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "a8b0acb79b67c9d8dc8f152dd19bedc9605f8023df9abb44ec80fe0cdf1a974b"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c86d9a1a1c8789783fc861d75b4f1f62412d047ae5083d15383a1cf8ef27a4f7"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "eb610ac0b98bc60552c3e3dee595ef0e188afd25dc85f7e8eeff14a5f7ba1ac8"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "3d4ebbb701c8e75153456b3bf1e598d82bb9ef90c343e0b42097c52158fc187f"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 31,
+          "text_sha256": "07b1381e5735941c074616fcc199937914000730b9d76fcd9a72d2af886320ed"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "91fa76b29f437a300f8a0511b7b3c604e61fb9c6f675af1b2c9d8bf0a85fe20d"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 42,
+          "text_sha256": "a993fa30da3e6a359ffb282610b7accd0a764b660c9e9772a86e4bca068637c8"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 29,
+          "text_sha256": "8bb2cea56fe617cf150f1dfbc4b113f98ffd3c493692fc4f9226a0b6bd55a1fd"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "eligibility",
+          "characters": 56,
+          "text_sha256": "cc0ed6c8b86914dffdf7c63184caa6b9e366d823e1dd8454069499ecc8277573"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "f93b650ba2063cfbabf574d91b6177fb703ee52019053e0026301a443c7c9855"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 66,
+          "text_sha256": "dcadc6fe9a09af1d17dcc43c6f027257e75e3bc53255212d9d104716a4d8b6fa"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 18,
+          "text_sha256": "d3f50aea74576e33c2e696ebcf12405e14fa07a04dd675fd26cad871dddef7ee"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 60,
+          "text_sha256": "fcf31684ac06eeee94f469ef9260a1fd7c6bdf2d548a09b4bcda50588a192f63"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "0dd076fe78ecaa854551e74adc9ddea7002a84b7510ef61beb2a4d9e8f190198"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 65,
+          "text_sha256": "fc002dc9412b7baa275a19ef32af697cbdba52ef228bb3f12bb443ba366b2a24"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "d538ca87a70c30f9a5f84df1d5e61630e1ab579bd3f665d0adfc0b9d78f7f707"
+        }
+      ]
+    },
+    {
       "source_id": "HN-MATERIALS-REPLY-2023",
       "url": "https://www.henan.gov.cn/2023/02-04/2683999.html",
-      "revision": "rev-44be95c37fe4b68b5ba6fea6",
+      "revision": "rev-e3dcf767e54f7332ddc478ad",
       "state": "pending_review",
       "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
       "original_bytes": 8843,
@@ -1986,13 +1993,20 @@
         "region": "河南省",
         "matter": "demo-id-renewal",
         "document_type": "official_consultation_reply",
-        "published_at": null,
+        "published_at": "2023-02-06",
         "effective_from": null,
         "effective_to": null,
         "scope_confirmed": false,
         "collection_role": "material_branch_signal"
       },
-      "source_fact_assessment_summary": null,
+      "source_fact_assessment_summary": {
+        "id": "provincial-away-reply-scope-pending-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T19:16:42.471862+00:00",
+        "current_applicability": "dated_provincial_away_reply_with_unresolved_material_relationship",
+        "business_approval": false,
+        "human_review_completed": false
+      },
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -2098,8 +2112,8 @@
     {
       "source_id": "HN-MEASURES-2024-JY",
       "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
-      "revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
-      "state": "pending_review",
+      "revision": "rev-71014e82351747c52e933f86",
+      "state": "excluded",
       "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
       "original_bytes": 36086,
       "metadata": {
@@ -2113,7 +2127,14 @@
         "scope_confirmed": false,
         "collection_role": "later_policy_signal"
       },
-      "source_fact_assessment_summary": null,
+      "source_fact_assessment_summary": {
+        "id": "dated-scope-2024_duration-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T19:16:42.471862+00:00",
+        "current_applicability": "historical_duration_context",
+        "business_approval": false,
+        "human_review_completed": false
+      },
       "pdf_extraction": {},
       "selected_clauses": [
         {

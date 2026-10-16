@@ -1,14 +1,14 @@
 {
-  "captured_at": "2026-10-16T13:03:26.699597+00:00",
+  "captured_at": "2026-10-16T19:21:37.706826+00:00",
   "counts": {
-    "sites": 37,
-    "documents": 33,
-    "revisions": 83,
-    "chunks": 505,
+    "sites": 47,
+    "documents": 43,
+    "revisions": 144,
+    "chunks": 925,
     "versions": 0,
     "heads": 0,
-    "jobs": 35,
-    "latest_chunks": 261
+    "jobs": 38,
+    "latest_chunks": 314
   },
   "enabled_source_ids": [
     "BEIJING-POLICY-DISCOVERY",
@@ -29,7 +29,10 @@
     "MOF-FEE-2007",
     "MOF-FIRST-ISSUE-2018",
     "MPS-NORM-01",
+    "MPS-NORM-WINDOW-WATCH",
     "MPS-USE-01",
+    "NATIONAL-FEE-2003-QG",
+    "NATIONAL-LAW-DIRECTORY-2026",
     "NDRC-EXEMPT-2004",
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
@@ -50,7 +53,10 @@
     "MOF-FEE-2007",
     "MOF-FIRST-ISSUE-2018",
     "MPS-NORM-01",
-    "MPS-USE-01"
+    "MPS-NORM-WINDOW-WATCH",
+    "MPS-USE-01",
+    "NATIONAL-FEE-2003-QG",
+    "NATIONAL-LAW-DIRECTORY-2026"
   ],
   "paused_source_ids": [
     "ERQI-NEARBY-2026",
@@ -62,7 +68,7 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 494,
+  "test_count": 568,
   "tests_passed": true,
   "platform_tools": [
     "govkb_get_environment_status",
@@ -71,7 +77,7 @@
   "platform_catalog_verified": true,
   "platform_catalog_failure_class": null,
   "platform_catalog_failure_stage": null,
-  "public_files_scanned": 729,
+  "public_files_scanned": 824,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -97,8 +103,8 @@
   "discovery": [
     {
       "source_id": "BEIJING-POLICY-DISCOVERY",
-      "cycle_id": 6,
-      "started_at": 1792138137.148377,
+      "cycle_id": 9,
+      "started_at": 1792159794.8248336,
       "limited": false,
       "index_pages_scheduled": 1,
       "new_document_jobs": 0,
@@ -110,11 +116,11 @@
     },
     {
       "source_id": "HN-INTERPRETATION-DISCOVERY",
-      "cycle_id": 8,
-      "started_at": 1792155405.8386393,
+      "cycle_id": 11,
+      "started_at": 1792177021.3043594,
       "limited": false,
       "index_pages_scheduled": 2,
-      "new_document_jobs": 5,
+      "new_document_jobs": 0,
       "unvisited_cached_targets": 0,
       "parser_truncated": false,
       "active_jobs": 0,
@@ -123,8 +129,8 @@
     },
     {
       "source_id": "HN-POLICY-DISCOVERY",
-      "cycle_id": 7,
-      "started_at": 1792138137.148377,
+      "cycle_id": 10,
+      "started_at": 1792159794.8248336,
       "limited": false,
       "index_pages_scheduled": 2,
       "new_document_jobs": 0,
@@ -236,13 +242,13 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792155660,
+      "checked_at": 1792178461,
       "action": "healthy",
       "ready": true,
       "recovery_count": 3,
       "last_recovered_at": 1792131058,
       "last_recovered_supervisor_pid": 18228,
-      "supervisor_pid": 49860,
+      "supervisor_pid": 63320,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"
@@ -254,12 +260,12 @@
       "task_state": "Ready",
       "ownership_verified": true,
       "configuration_matches": true,
-      "last_run": "2026-10-16T13:00:55.0000000Z",
-      "next_run": "2026-10-16T13:05:54.0000000Z",
+      "last_run": "2026-10-16T19:15:55.0000000Z",
+      "next_run": "2026-10-16T19:20:54.0000000Z",
       "last_result": 0,
       "missed_runs": 0,
       "schema": 1,
-      "checked_at": 1792155791.880785,
+      "checked_at": 1792178431.9926357,
       "read_only_observation": true
     },
     "manual_pause": false,
