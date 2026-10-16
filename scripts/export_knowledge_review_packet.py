@@ -120,7 +120,7 @@ def main():
         "registered_development_questions": len(registry), "development_registry_sha256": fingerprint(registry),
         "business_review_completed": False,
         "revision_impact_available": True, "possible_duplicate_group_count": len(packet["possible_duplicate_groups"]["groups"]),
-        "source_coverage": {"national_law": "same_2011_act_two_archived_selections_new_official_mirror_monitored_dates_pending",
+        "source_coverage": {"national_law": "existing_2011_original_all23_articles_reextracted_2003_historical_text_and_dated_2026_08_28_directory_archived_current_after_cutoff_pending",
             "national_norms": "two_candidates_pending_date_and_applicability_review",
             "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
             "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",

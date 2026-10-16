@@ -121,7 +121,8 @@ def main():
         exported["reference_draft"] == draft and exported["question_draft"] == questions
         and packet["business_questions"] == read(ROOT/"evaluation/knowledge/pilot-business-questions.json")
         and packet["ai_reference_answers"] == read(ROOT/"evaluation/knowledge/pilot-ai-reference-answers.json")
-        and len(packet["records"]) == 33 and sum(len(r["chunks"]) for r in packet["records"]) == 261
+        and len(packet["records"]) == store.status()["counts"]["documents"]
+        and sum(len(r["chunks"]) for r in packet["records"]) == store.status()["counts"]["latest_chunks"]
         and all(value is None for record in packet["records"] for kind in ("human_review","attributed_review") for value in record[kind].values())
         and all(live.values()) and not exported["stale_source_keys"] and exported["automatic_approval"] is False
         and packet["evaluation_contract"]["automatic_approval"] is False
