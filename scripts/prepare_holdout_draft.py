@@ -131,6 +131,9 @@ def collect_questions(value, result):
 
 
 def main():
+    active = ROOT / "evaluation/knowledge/holdout-business-reference-draft.json"
+    if active.exists() and json.loads(active.read_text(encoding="utf-8")).get("draft_revision", 2) >= 3:
+        raise ValueError("The original v2 builder cannot overwrite a migrated draft; use an explicit reviewed provenance migration")
     store = KnowledgeStore(RUNTIME/"knowledge-update",read_only=True)
     writer_dir = store.root/"holdout-drafts/20261016-independent-writer"
     writer = json.loads((writer_dir/"question-writer-report.json").read_text(encoding="utf-8"))

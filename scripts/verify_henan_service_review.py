@@ -21,6 +21,8 @@ def main():
     parser = argparse.ArgumentParser(description="核对省厅服务信息复核及隔离重放，不执行模型或发布")
     parser.add_argument("--review-packet", required=True, type=Path)
     args = parser.parse_args()
+    if read(ROOT / "evaluation/knowledge/holdout-business-reference-draft.json").get("draft_revision", 2) >= 3:
+        parser.error("该脚本核对D26迁移前的历史状态；请使用verify_holdout_draft.py，不覆盖原阶段回执")
     store = KnowledgeStore(RUNTIME / "knowledge-update", read_only=True)
     assessment = read(ROOT / "evaluation/knowledge/henan-service-review-20261017.json")
     before = read(store.root / "source-research/henan-service-review-20261017/before.json")

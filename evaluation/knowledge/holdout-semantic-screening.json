@@ -1,19 +1,19 @@
 {
   "schema": 1,
   "kind": "ai_semantic_screening_not_acceptance",
-  "screening_revision": 2,
-  "assessed_at": "2026-10-16T15:28:30.800777+00:00",
+  "screening_revision": 3,
+  "assessed_at": "2026-10-16T17:20:33.866007+00:00",
   "actor": {
     "kind": "ai",
     "name": "Codex AI",
     "model": "Codex GPT-6 family; exact identifier unavailable",
     "model_revision": null,
-    "run_id": "manual-semantic-screen-20261016-v2"
+    "run_id": "manual-provenance-semantic-rebind-20261017-v3"
   },
   "author_and_reviewer_same_ai": true,
   "reviewer_has_seen_development_history": true,
   "human_review_completed": false,
-  "inputs": "All 30 v2 questions, 40 located development questions, 30 previous drafts including 9 retired questions, and within-batch decision comparisons; source clauses support draft design. No new tested-agent output, embeddings, generation run or implementation tuning.",
+  "inputs": "All 30 v2 questions, 40 located development questions, 30 previous drafts including 9 retired questions, and within-batch decision comparisons; source clauses support draft design. No new tested-agent output, embeddings, generation run or implementation tuning. v3 rebind: reviewed all 11 affected case references against the migrated clauses; questions, dates, oracles, semantic distinctions and all per-case screening judgments are unchanged. HB06 removes only unapproved explanatory background; the complete first service measure retains both branches.",
   "rubric": [
     "角色、措辞和故事包装不构成独立判断；单纯合并旧判断仍退出。",
     "同主题可以有不同判断，但需新增影响结论的事实前提或环节，不能只凭哈希不重合。",
@@ -62,6 +62,22 @@
     {
       "path": "evaluation/knowledge/retired-holdout-draft-cases-20261016.json",
       "sha256": "4ee9f2ef899899f7a94c35fd6d335618f53b4d4aa767fbbbd87ae1b91ebde7c1"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-business-reference-draft.json",
+      "sha256": "a4efa2b9cc0959e9036d5b889b72ad4c37ea6fa3386d6bed654dffd9878dda14"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-business-questions-draft.json",
+      "sha256": "0c31c4237a70f31bdc8cf44a44af4d1f55f52a9a3ddff052f519bbe6804ddc27"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-semantic-screening.json",
+      "sha256": "fec57195066c633f5c31fe5be17ea4d45f1f50b30bf63afe6a6d7764f6e2c21e"
+    },
+    {
+      "path": "evaluation/knowledge/holdout-provenance-migration-v3.json",
+      "sha256": "9ea8fb24583f5f9dfc43a0884ba7fde205353d9df9ba782976ff32c6131a8315"
     }
   ],
   "cases": [
@@ -1078,5 +1094,27 @@
   "business_acceptance_executed": false,
   "next_action": "Resolve source/currentness/material prerequisites and verify reference truth before an acceptance snapshot, reference freeze or actual run. Same-author review is disclosed and is not a blind independence certificate.",
   "limits": "Same-author conservative AI design screening. Different decision points and hash disjointness do not establish policy truth or certified acceptance independence; no question was used to tune the tested agent.",
-  "content_sha256": "0bb943b52985e7c97c9f01031ca7c294d295b072a1a5c135b3f1663e54b43272"
+  "content_sha256": "c30ce416a9c93dffe3b17acb6fcd1a3333a9ec640d6bc5a1f84d110615d3abef",
+  "reference_contents_sha256": "5cf599951df3e6291c9b1e5c39b9a558ab54587d38c4cd423c12475912305885",
+  "reference_semantics_sha256": "bb4243b10e148c6c96099781ea499718e3603ef643f56e5adfa2462bd73a4743",
+  "provenance_migration_sha256": "1cf5083b61bb1ec90a6a101b4f932254df345e3602c6d3f6e8d97383711adcb3",
+  "provenance_review": {
+    "reviewer": "Codex AI",
+    "affected_case_ids": [
+      "HB32",
+      "HB33",
+      "HB06",
+      "HB34",
+      "HB09",
+      "HB10",
+      "HB35",
+      "HB20",
+      "HB24",
+      "HB26",
+      "HB39"
+    ],
+    "case_semantics_unchanged": true,
+    "per_case_screening_judgments_unchanged": true,
+    "source_truth_or_batch_independence_approved_by_this_rebind": false
+  }
 }

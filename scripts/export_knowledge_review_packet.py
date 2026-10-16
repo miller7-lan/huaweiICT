@@ -39,6 +39,12 @@ def semantic_screening_for_review(reference, registry):
     checks = {"questions_match": screened == questions and fingerprint(questions) == review["question_set_sha256"],
               "development_registry_matches": fingerprint(registry) == review["development_registry_sha256"],
               **file_checks}
+    if reference.get("draft_revision", 2) >= 3:
+        from holdout_provenance import MIGRATION, semantic_projection, sealed
+        migration = json.loads((ROOT / MIGRATION).read_text(encoding="utf-8"))
+        checks.update(reference_contents_match=fingerprint({k:v for k,v in reference.items() if k != "content_sha256"}) == review.get("reference_contents_sha256"),
+                      reference_semantics_match=fingerprint(semantic_projection(reference)) == review.get("reference_semantics_sha256"),
+                      provenance_migration_matches=sealed(migration) and migration["content_sha256"] == review.get("provenance_migration_sha256"))
     bound = all(checks.values())
     return {"status": "bound" if bound else "stale", "artifact_sha256": fingerprint(path.read_bytes()),
             "binding_checks": checks, "assessment": review if bound else None, "batch_ready_for_freeze": False,
@@ -66,6 +72,8 @@ def holdout_draft_for_review(store, db, policy, registry):
                           for case in reference["cases"]]
     if questions.get("cases") != expected_questions:
         raise ValueError("Holdout questions differ from their reference draft")
+    from holdout_provenance import validate_migration
+    validate_migration(ROOT,store,db,reference)
     stale = []
     for key, binding in reference["sources"].items():
         row, _ = store._verify(db, binding["revision"], require_review=False)

@@ -11,6 +11,7 @@ from gov_mcp.knowledge import KnowledgeStore, fingerprint
 from gov_mcp.knowledge_review import development_registry, question_fingerprint, validate_attributed_review
 from nexent_api import ROOT, RUNTIME
 from export_knowledge_review_packet import semantic_screening_for_review
+from holdout_provenance import source_binding, validate_migration
 
 
 def read(path):
@@ -85,7 +86,10 @@ def main():
             row,_ = store._verify(db,binding["revision"],require_review=False)
             latest = db.execute("SELECT r.id FROM revisions r JOIN documents d ON d.id=r.document_id WHERE d.site_id=? AND d.url=? ORDER BY r.rowid DESC LIMIT 1",(binding["source_id"],binding["url"])).fetchone()[0]
             checks["latest_originals_and_literal_anchor_spans_match"] &= (latest == row["id"] and row["sha256"] == binding["original_sha256"]
-                and row["body_sha256"] == binding["body_sha256"] and fingerprint(row["metadata"].encode()) == binding["metadata_sha256"] and binding["business_approval"] is False)
+                and row["body_sha256"] == binding["body_sha256"] and fingerprint(row["metadata"].encode()) == binding["metadata_sha256"]
+                and source_binding(store,db,binding["source_id"],binding["url"],binding["revision"]) == binding)
+        baseline = validate_migration(ROOT,store,db,draft)
+        checks["provenance_migration_preserves_semantics_and_history"] = True
         for source,binding in zip(user_data["source_excerpts"],writer["source_bindings"],strict=True):
             store._verify(db,binding["revision"],require_review=False)
             text = db.execute("SELECT text FROM chunks WHERE revision_id=? AND locator=?",(binding["revision"],binding["locator"])).fetchone()[0]
@@ -106,9 +110,7 @@ def main():
         checks["policy_registry_draft_approval_and_publication_state_preserved"] = (
             fingerprint((store.root/"publication-policy.json").read_bytes()) == draft["policy_file_sha256"]
             and fingerprint(registry) == writer["development_registry_sha256"]
-            and all(db.execute("SELECT state FROM revisions WHERE id=?", (b["revision"],)).fetchone()[0] == "pending_review"
-                and db.execute("SELECT 1 FROM reviews WHERE revision_id=?", (b["revision"],)).fetchone() is None
-                for b in draft["sources"].values())
+            and all(source_binding(store,db,b["source_id"],b["url"],b["revision"]) == b for b in draft["sources"].values())
             and all(db.execute("SELECT COUNT(*) FROM "+t).fetchone()[0] == 0 for t in ("snapshot_evaluations","versions","heads")))
     checks["semantic_independence_and_reference_freeze_remain_open"] &= (draft["reference_frozen_at"] is None and draft["snapshot_binding"] is None and draft["observed_run"] is None
         and not any(draft[k] for k in ("independent_acceptance_ready","independence_certified","human_review_completed","ready_for_business_publication")) and len(draft["freeze_blockers"]) == 4)
@@ -167,7 +169,7 @@ def main():
         and set(retired) == set(previous["retired_case_ids"]) == set(assessment["historically_retired_case_ids"])
         and fingerprint(old_bindings) == previous["question_set_sha256"]
         and len(archive["retained_case_fingerprints"]) == 21
-        and all(fingerprint(current[k]) == value for k,value in archive["retained_case_fingerprints"].items())
+        and all(fingerprint(next(c for c in baseline["cases"] if c["id"] == k)) == value for k,value in archive["retained_case_fingerprints"].items())
         and all(next(x for x in old_bindings if x["id"] == c["id"])["question_sha256"] == question_fingerprint(c["question"]) for c in retired.values())
         and not archive["reference_frozen"] and not archive["business_acceptance_executed"])
     replacements = assessment["replacements"]
@@ -179,11 +181,18 @@ def main():
         and all(current[x["current_case_id"]]["replaces_retired_case_id"] == x["retired_case_id"]
                 and current[x["current_case_id"]]["question_sha256"] == x["new_question_sha256"] for x in replacements)
         and assessment["minimum_cases_met"] is True and assessment["batch_ready_for_freeze"] is False)
-    for name, field in (("changed_question", "question"), ("changed_query_date", "query_date")):
+    for name, field in (("changed_question", "question"), ("changed_query_date", "query_date"),
+                        ("changed_oracle", "reference_answer_draft"), ("changed_outcome", "proposed_outcome_after_qualified_publication")):
         altered = deepcopy(draft)
         altered["cases"][0][field] += " changed binding fixture"
+        altered["content_sha256"] = fingerprint({k:v for k,v in altered.items() if k != "content_sha256"})
         stale = semantic_screening_for_review(altered, registry)
         checks["semantic_screening_withheld_for_"+name] = stale["status"] == "stale" and stale["assessment"] is None and not stale["batch_ready_for_freeze"]
+    altered = deepcopy(draft)
+    altered["sources"]["D26"]["business_approval"] = False
+    altered["content_sha256"] = fingerprint({k:v for k,v in altered.items() if k != "content_sha256"})
+    stale = semantic_screening_for_review(altered,registry)
+    checks["semantic_screening_withheld_for_changed_source_binding"] = stale["status"] == "stale" and stale["assessment"] is None
     stale = semantic_screening_for_review(draft, registry[:-1])
     checks["semantic_screening_withheld_for_changed_registry"] = stale["status"] == "stale" and stale["assessment"] is None and not stale["batch_ready_for_freeze"]
     checks["actual_export_includes_bound_screening_without_acceptance"] = (

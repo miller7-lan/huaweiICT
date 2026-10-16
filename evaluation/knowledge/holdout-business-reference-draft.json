@@ -9,7 +9,7 @@
     "model_revision": null,
     "run_id": "manual-holdout-draft-20261016-v2"
   },
-  "draft_revision": 2,
+  "draft_revision": 3,
   "retirement_archive": {
     "path": "evaluation/knowledge/retired-holdout-draft-cases-20261016.json",
     "sha256": "4ee9f2ef899899f7a94c35fd6d335618f53b4d4aa767fbbbd87ae1b91ebde7c1",
@@ -143,12 +143,17 @@
     "D26": {
       "source_id": "HN-MEASURES-2026",
       "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
-      "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+      "revision": "rev-04f1121aa899004c29e55761",
       "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
-      "body_sha256": "ffb83cfa01bd61d09eddc6ef0e4a3d51db8aaa4b5995371884b2d3151e0cac10",
-      "metadata_sha256": "f94cd3ad564a878e2f42f035a3cb5c888c36d1c8a16e2791aaee3371066499b5",
-      "state": "pending_review",
-      "business_approval": false
+      "body_sha256": "51ad6cc402200019300b76f3aae8be36ef6fb93d9da5ba3a204dc56650e8990e",
+      "metadata_sha256": "d53b4a077d38169d648380ce0c4a06b8cf7687431b05a10274898cba661bad5b",
+      "state": "reviewed",
+      "business_approval": true,
+      "recorded_review": {
+        "reviewer": "Codex AI",
+        "digest": "09e6438536940dd8511d48b5f2a75132c5f88b52de3a22daf91923f28b3e0e80",
+        "reviewed_at": 1792170370.1377447
+      }
     },
     "D25": {
       "source_id": "HN-INTERPRETATION-DISCOVERY",
@@ -201,14 +206,19 @@
       "business_approval": false
     },
     "LAW": {
-      "source_id": "ID-LAW-01",
-      "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
-      "revision": "rev-4fe28019d6712c3174914d62",
-      "original_sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
-      "body_sha256": "ac8e112304d371e2bf8e78b38c5c4f8df71942702c4d3cea2a81074fb35bf751",
-      "metadata_sha256": "528da9d19dedbc5f91485c6f5806413b4f18149e72d0c9daf95680470ca5cb56",
-      "state": "pending_review",
-      "business_approval": false
+      "source_id": "ID-AMENDMENT-JT-LEAD",
+      "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+      "revision": "rev-bd98fcbde0cda7f52078b310",
+      "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+      "body_sha256": "f504fd546176484eccd9121407db0f96ebf183e3f50b1d75ecc530e5ff5fd754",
+      "metadata_sha256": "b94ad4434c128a01545d797107e617b4bae42c21fbb0d3124d549eab5c4dc4fe",
+      "state": "reviewed",
+      "business_approval": true,
+      "recorded_review": {
+        "reviewer": "Codex AI",
+        "digest": "5b00ab693e3d32c818f1aafbdc4a3957f19daabe454eeeda52c62bbcbd8a87e4",
+        "reviewed_at": 1792167866.039685
+      }
     },
     "WINDOW": {
       "source_id": "HN-UPDATE-GS-01",
@@ -418,13 +428,13 @@
       "background_source_anchors": [
         {
           "source_key": "LAW",
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第三条",
           "ordinal": 2,
           "start": 0,
           "end": 144,
-          "parent_text_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b",
-          "span_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b"
+          "parent_text_sha256": "504440d1359a64c75566ab06d0fae8c12eb2aaee9d589a8d96a597d61e61266d",
+          "span_sha256": "504440d1359a64c75566ab06d0fae8c12eb2aaee9d589a8d96a597d61e61266d"
         },
         {
           "source_key": "NORM",
@@ -467,7 +477,7 @@
       "background_source_anchors": [
         {
           "source_key": "LAW",
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第六条",
           "ordinal": 5,
           "start": 0,
@@ -526,23 +536,13 @@
         },
         {
           "source_key": "D26",
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1",
           "ordinal": 0,
           "start": 0,
           "end": 108,
           "parent_text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e",
           "span_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
-        },
-        {
-          "source_key": "D26",
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
-          "locator": "正文段落2",
-          "ordinal": 1,
-          "start": 0,
-          "end": 254,
-          "parent_text_sha256": "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa",
-          "span_sha256": "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
         }
       ],
       "proposed_relevant_evidence": [
@@ -551,12 +551,8 @@
           "locator": "正文段落1"
         },
         {
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1"
-        },
-        {
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
-          "locator": "正文段落2"
         }
       ],
       "unresolved_prerequisites": [
@@ -585,7 +581,7 @@
       "background_source_anchors": [
         {
           "source_key": "LAW",
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第五条",
           "ordinal": 4,
           "start": 0,
@@ -595,7 +591,7 @@
         },
         {
           "source_key": "D26",
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1",
           "ordinal": 0,
           "start": 0,
@@ -606,11 +602,11 @@
       ],
       "proposed_relevant_evidence": [
         {
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第五条"
         },
         {
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1"
         }
       ],
@@ -689,7 +685,7 @@
       "background_source_anchors": [
         {
           "source_key": "D26",
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1",
           "ordinal": 0,
           "start": 0,
@@ -736,7 +732,7 @@
       "background_source_anchors": [
         {
           "source_key": "D26",
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1",
           "ordinal": 0,
           "start": 0,
@@ -838,7 +834,7 @@
       "background_source_anchors": [
         {
           "source_key": "LAW",
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第二十一条",
           "ordinal": 20,
           "start": 0,
@@ -869,7 +865,7 @@
       ],
       "proposed_relevant_evidence": [
         {
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第二十一条"
         },
         {
@@ -1256,7 +1252,7 @@
       "background_source_anchors": [
         {
           "source_key": "D26",
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1",
           "ordinal": 0,
           "start": 0,
@@ -1277,7 +1273,7 @@
       ],
       "proposed_relevant_evidence": [
         {
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1"
         },
         {
@@ -1469,7 +1465,7 @@
         },
         {
           "source_key": "D26",
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1",
           "ordinal": 0,
           "start": 0,
@@ -1484,7 +1480,7 @@
           "locator": "正文段落12"
         },
         {
-          "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+          "revision": "rev-04f1121aa899004c29e55761",
           "locator": "正文段落1"
         }
       ],
@@ -1542,7 +1538,7 @@
       "background_source_anchors": [
         {
           "source_key": "LAW",
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第二条",
           "ordinal": 1,
           "start": 0,
@@ -1578,7 +1574,7 @@
       "background_source_anchors": [
         {
           "source_key": "LAW",
-          "revision": "rev-4fe28019d6712c3174914d62",
+          "revision": "rev-bd98fcbde0cda7f52078b310",
           "locator": "第二十二条",
           "ordinal": 21,
           "start": 0,
@@ -1695,10 +1691,14 @@
     }
   ],
   "freeze_blockers": [
-    "所有引用资料仍须当前效力、分支及地方执行核定；本库无已核定业务快照",
+    "仍须完成全部引用来源、材料关系及业务标准核定；本库无已发布业务快照",
     "语义独立性尚未获单独核定，不能只凭哈希不重合准入",
     "需在资料核定后绑定实际候选快照、冻结参考并检查问题未用于开发",
     "尚无实际被测输入、输出、逐题断言评阅或独立业务验收"
   ],
-  "content_sha256": "4ef24c24cffc41c2f05f83da7d2c23d63875c02e1b04b6ae6a13fb67b0e5ce7c"
+  "content_sha256": "5cf599951df3e6291c9b1e5c39b9a558ab54587d38c4cd423c12475912305885",
+  "provenance_migrated_at": "2026-10-16T17:20:33.866007+00:00",
+  "provenance_migration": {
+    "path": "evaluation/knowledge/holdout-provenance-migration-v3.json"
+  }
 }
