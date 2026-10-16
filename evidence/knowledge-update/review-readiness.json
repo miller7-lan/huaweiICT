@@ -1,12 +1,30 @@
 {
-  "created_at": "2026-10-16T05:39:17.995102+00:00",
-  "candidate_files": 21,
-  "latest_chunk_count": 124,
+  "created_at": "2026-10-16T13:39:14.568598+00:00",
+  "candidate_files": 33,
+  "latest_chunk_count": 261,
   "question_count": 30,
   "human_reviewed_questions": 0,
   "ai_reference_question_count": 30,
+  "holdout_design_draft": {
+    "included": true,
+    "question_count": 30,
+    "file_sha256": {
+      "reference": "dd8a287640508a956fd28fce373b351401b5acc56dc7ffa8cf6d8866d9efe911",
+      "questions": "44afc8b5461b9ed6799b9e98150d34537ddcc6ca63256d0ed071f1481e6723fb"
+    },
+    "live_binding_checks": {
+      "sources_match_latest": true,
+      "development_registry_matches": true,
+      "publication_policy_file_matches": true,
+      "attributed_review_contract": true
+    },
+    "stale_source_keys": [],
+    "independence_certified": false,
+    "reference_frozen": false,
+    "business_acceptance_executed": false
+  },
   "dataset_sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
-  "review_packet_sha256": "12fa6e3ede3815e11653284f4cf1b286401dae175edc9899414f2f4ff941e810",
+  "review_packet_sha256": "f7067ee7b6750613618642f4bf402ba967043390a9dfb7f426cf0b5bd8c083b8",
   "publication_policy": {
     "minimum_cases": 30,
     "minimum_recall_at_5": 0.9,
@@ -26,10 +44,12 @@
   "source_coverage": {
     "national_law": "same_2011_act_two_archived_selections_new_official_mirror_monitored_dates_pending",
     "national_norms": "two_candidates_pending_date_and_applicability_review",
-    "provincial_norms": "publisher_html_fourteen_clauses_archived_scanned_notice_not_acquired_later_changes_pending",
+    "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
     "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
     "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
-    "later_provincial_duration_signal": "2024_25_natural_day_measure_first_clause_normally_archived_current_applicability_pending",
+    "later_provincial_duration_signal": "2026_two_duration_branches_and_2024_2025_context_archived_current_applicability_and_commencement_pending",
+    "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
+    "fees": "2007_fee_and_2018_first_issue_waiver_originals_and_2025_catalog_chain_archived_local_exemption_and_postage_relations_pending",
     "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
     "district_guide": "archived_candidate_current_access_paused"
   }
