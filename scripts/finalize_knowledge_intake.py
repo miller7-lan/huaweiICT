@@ -78,6 +78,10 @@ def main():
     background_ocr = json.loads(background_ocr_path.read_text(encoding="utf-8")) if background_ocr_path.exists() else {}
     attachment_path = ROOT / "evidence/knowledge-update/official-attachment-flow.json"
     attachment_proof = json.loads(attachment_path.read_text(encoding="utf-8")) if attachment_path.exists() else {}
+    model_path = ROOT / "evidence/knowledge-update/model-prevalidation.json"
+    model_trial = json.loads(model_path.read_text(encoding="utf-8")) if model_path.exists() else {}
+    ai_review_path = ROOT / "evidence/knowledge-update/model-prevalidation-ai-review.json"
+    model_review = json.loads(ai_review_path.read_text(encoding="utf-8")) if ai_review_path.exists() else {}
     startup_evidence = {}
     for filename in ("startup-recovery-first-pass.json", "startup-healthy-followup.json", "startup-manual-control.json"):
         path = ROOT / "evidence/knowledge-update" / filename
@@ -106,6 +110,15 @@ def main():
               "attachment_discovery": status["attachments"],
               "waiting_attachment_collectors": [s["id"] for s in status["sites"] if s.get("waiting_for_attachment")],
               "isolated_actual_attachment_flow_passed": attachment_proof.get("passed"),
+              "given_evidence_model_prevalidation": {
+                  "run_id": model_trial.get("run_id"), "completed_cases": model_trial.get("completed_cases", 0),
+                  "technical_pass_count": model_trial.get("technical_pass_count", 0),
+                  "ai_semantic_pass_count": model_review.get("ai_semantic_pass_count", 0),
+                  "ai_semantic_fail_count": model_review.get("ai_semantic_fail_count", 0),
+                  "not_assessable_count": model_review.get("not_assessable_count", 0),
+                  "both_program_and_ai_review_pass_count": model_review.get("both_program_and_ai_review_pass_count", 0),
+                  "business_release_ready": model_review.get("business_release_ready", False),
+                  "independent_human_acceptance": False, "retrieval_recall_measured": False},
               "local_startup": status["startup"], "startup_evidence": startup_evidence,
               "github_final_push_completed": False,
               "scope": "Actual candidate intake, monitoring, MCP transport/catalog and separately recorded fixed/dynamic-question model stop tests; no business-accuracy or official-policy approval claim."}

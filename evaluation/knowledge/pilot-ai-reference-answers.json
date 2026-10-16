@@ -4,7 +4,7 @@
   "status": "ai_source_checked_draft",
   "author_kind": "ai",
   "reviewer": "Codex AI",
-  "captured_at": "2026-10-15T20:35:14.574756+00:00",
+  "captured_at": "2026-10-16T02:20:13.680226+00:00",
   "scope": {
     "region": "郑州市二七区",
     "matter": "demo-id-renewal",
@@ -221,10 +221,19 @@
         "第二百三十六条"
       ]
     },
+    "HN-MEASURES-2024-JY": {
+      "site_id": "HN-MEASURES-2024-JY",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
+      "sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "locators": [
+        "正文段落1"
+      ]
+    },
     "HN-MEASURES-2021-PDF": {
       "site_id": "HN-MEASURES-2021-PDF",
       "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
-      "revision": "rev-b5ae6f784eae759de1b4ccd5",
+      "revision": "rev-5d056364588a5d9d7966ce17",
       "sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
       "locators": [
         "PDF第1页（OCR待核对）",
@@ -235,15 +244,6 @@
         "PDF第6页（OCR待核对）",
         "PDF第7页（OCR待核对）",
         "PDF第8页（OCR待核对）"
-      ]
-    },
-    "HN-MEASURES-2024-JY": {
-      "site_id": "HN-MEASURES-2024-JY",
-      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
-      "revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
-      "sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
-      "locators": [
-        "正文段落1"
       ]
     }
   },
@@ -542,7 +542,7 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-b5ae6f784eae759de1b4ccd5",
+          "revision": "rev-5d056364588a5d9d7966ce17",
           "locator": "PDF第5页（OCR待核对）"
         }
       ],
@@ -631,11 +631,11 @@
           "locator": "第八十条"
         },
         {
-          "revision": "rev-b5ae6f784eae759de1b4ccd5",
+          "revision": "rev-5d056364588a5d9d7966ce17",
           "locator": "PDF第5页（OCR待核对）"
         },
         {
-          "revision": "rev-b5ae6f784eae759de1b4ccd5",
+          "revision": "rev-5d056364588a5d9d7966ce17",
           "locator": "PDF第6页（OCR待核对）"
         },
         {
@@ -658,7 +658,7 @@
       "question": "新证可以邮寄吗，还是必须本人到窗口领取？",
       "category": "delivery",
       "expected_behavior": "conditional_answer",
-      "ai_reference_answer": "国家和省级规范包含本人领取核验及亲属代领条件；2024省级措施的官方转载解读还说明群众可自选自费邮寄。因此不能笼统说只能本人到窗口领，但这份说明尚未核定二七区当前邮寄入口、具体费用和收件核验，不能给出未经核验的本地办理保证或套用外市快递价格。",
+      "ai_reference_answer": "国家规范第八十ー条写委托亲属代领，省级第164条写委托他人代领，两份原文的范围措辞应分别保留，当前适用关系待核定；不能将两者概括成同一亲属限制，也不能保证任何他人一定可代领。本人领取的核验/指纹/签名与代领环节分别记录，代领不等于代理申请。2024官方转载解读另有自选自费邮寄说明，但尚未核定二七区当前入口、费用及收件核验，不作办理保证或套用外市快递价格。",
       "web_evidence_ids": [
         "HN-MEASURES-2024-JY-WEB"
       ],
@@ -677,7 +677,7 @@
         }
       ],
       "unresolved": [
-        "本地邮寄入口、费用及核验条件未定；邮寄说明为网页核查，未选入本地25日归档片段"
+        "国家亲属/省级他人代领措辞的当前适用关系未核定；本地邮寄入口、费用及核验条件未定；邮寄说明为网页核查，未选入本地25日归档片段"
       ],
       "human_review_status": "not_performed",
       "tested_agent_output_used_as_reference": false
@@ -1060,5 +1060,5 @@
       "tested_agent_output_used_as_reference": false
     }
   ],
-  "content_sha256": "4cf1e7d2f31f3a1c792e91c7a15562947cc30f7652621d368b3471fd9b7d4838"
+  "content_sha256": "00433eb6ee3dcbd400c986761f0ca44f0679b04bea9f5a85d51bcf532b67a53b"
 }

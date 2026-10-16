@@ -1,10 +1,10 @@
 {
-  "captured_at": "2026-10-15T20:39:45.428217+00:00",
+  "captured_at": "2026-10-16T02:25:25.686909+00:00",
   "counts": {
     "sites": 29,
     "documents": 21,
-    "revisions": 55,
-    "chunks": 248,
+    "revisions": 60,
+    "chunks": 264,
     "versions": 0,
     "heads": 0,
     "jobs": 24,
@@ -58,7 +58,7 @@
     "govkb_get_environment_status",
     "govkb_search_evidence"
   ],
-  "public_files_scanned": 575,
+  "public_files_scanned": 593,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -73,8 +73,8 @@
   "discovery": [
     {
       "source_id": "BEIJING-POLICY-DISCOVERY",
-      "cycle_id": 1,
-      "started_at": 1792081678.8992445,
+      "cycle_id": 4,
+      "started_at": 1792116529.7588868,
       "limited": false,
       "index_pages_scheduled": 1,
       "new_document_jobs": 0,
@@ -86,8 +86,8 @@
     },
     {
       "source_id": "HN-POLICY-DISCOVERY",
-      "cycle_id": 3,
-      "started_at": 1792094836.8297648,
+      "cycle_id": 5,
+      "started_at": 1792116529.7588868,
       "limited": false,
       "index_pages_scheduled": 2,
       "new_document_jobs": 0,
@@ -165,6 +165,18 @@
     "HN-XCOSS-PDF-DISCOVERY"
   ],
   "isolated_actual_attachment_flow_passed": true,
+  "given_evidence_model_prevalidation": {
+    "run_id": "20261015T205246Z-69f8439f",
+    "completed_cases": 30,
+    "technical_pass_count": 23,
+    "ai_semantic_pass_count": 8,
+    "ai_semantic_fail_count": 21,
+    "not_assessable_count": 1,
+    "both_program_and_ai_review_pass_count": 7,
+    "business_release_ready": false,
+    "independent_human_acceptance": false,
+    "retrieval_recall_measured": false
+  },
   "local_startup": {
     "registration": {
       "installed": true,
@@ -182,7 +194,7 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792096562,
+      "checked_at": 1792117261,
       "action": "healthy",
       "ready": true,
       "recovery_count": 1,
