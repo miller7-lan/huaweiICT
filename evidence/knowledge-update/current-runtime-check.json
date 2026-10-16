@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T10:52:26.108245+00:00",
+  "captured_at": "2026-10-16T11:12:57.023726+00:00",
   "counts": {
     "sites": 29,
     "documents": 21,
@@ -14,39 +14,46 @@
     "knowledge_web": {
       "reachable": true,
       "http_status": 200,
-      "service_health_verified": true
+      "service_health_verified": true,
+      "checked_at": "2026-10-16T11:16:07.462400+00:00"
     },
     "ollama": {
       "reachable": true,
       "http_status": 200,
-      "service_health_verified": true
+      "service_health_verified": true,
+      "checked_at": "2026-10-16T11:16:07.462400+00:00"
     },
     "nexent_backend": {
       "reachable": true,
       "http_status": 200,
-      "service_health_verified": true
+      "service_health_verified": true,
+      "checked_at": "2026-10-16T11:16:07.462400+00:00"
     },
     "nexent_m2_runtime": {
       "reachable": true,
       "http_status": 200,
-      "service_health_verified": true
+      "service_health_verified": true,
+      "checked_at": "2026-10-16T11:16:07.462400+00:00"
     },
     "nexent_knowledge_runtime": {
       "reachable": true,
       "http_status": 200,
-      "service_health_verified": true
+      "service_health_verified": true,
+      "checked_at": "2026-10-16T11:16:07.462400+00:00"
     },
     "knowledge_mcp_transport": {
       "reachable": true,
       "service_health_verified": true,
       "authenticated_read_only_checks": 5,
-      "unauthenticated_status": 401
+      "unauthenticated_status": 401,
+      "unauthenticated_rechecked_at": "2026-10-16T11:16:07.462400+00:00",
+      "authenticated_checks_at": "2026-10-16T10:52:26.108245+00:00"
     }
   },
   "workers": [
     {
       "id": "knowledge-worker",
-      "heartbeat": 1792147910.3921685,
+      "heartbeat": 1792149170.6668918,
       "progress": "polling",
       "stale": false
     },
@@ -64,7 +71,7 @@
     },
     {
       "id": "knowledge-maintenance",
-      "heartbeat": 1792147929.2449105,
+      "heartbeat": 1792149130.1473653,
       "progress": "idle",
       "stale": false
     },
@@ -158,8 +165,9 @@
       "mode": "current_user_local_service_recovery"
     }
   },
-  "pending_model_run_id": "20261016T102656Z-708c0b41",
-  "model_trial_in_progress": true,
+  "model_trial_in_progress": false,
   "official_release_ready": false,
-  "scope": "Fresh local API/health and six authenticated/unauthenticated MCP checks after actual service recovery. Knowledge preview is 5022; M2 is 5018. Model generation is separately recorded by its live trial and is not a business release. Historical startup registration is not a fresh OS task or reboot test."
+  "scope": "Local service recovery/readiness and knowledge status snapshot with separately verified 30-case trial completion. No fresh native two-role model acceptance, reboot, full natural week, current legal applicability or business release is claimed.",
+  "completed_model_run_id": "20261016T102656Z-708c0b41",
+  "model_trial_completed_cases": 30
 }
