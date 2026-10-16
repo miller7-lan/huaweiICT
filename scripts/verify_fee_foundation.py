@@ -24,6 +24,8 @@ def main():
     store=KnowledgeStore(RUNTIME/"knowledge-update",read_only=True)
     private=store.root/"source-research/fee-currentness-20261017"
     before=read(private/"before-main.json")
+    if any(fingerprint((ROOT/path).read_bytes())!=digest for path,digest in before["untouched_files"].items()):
+        parser.error("评测草案已有后续迁移，不覆盖收费原件阶段历史回执")
     readiness=read(ROOT/"evidence/knowledge-update/review-readiness.json")
     assert fingerprint(args.review_packet.read_bytes())==readiness["review_packet_sha256"]
     with store.db() as db:

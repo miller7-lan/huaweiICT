@@ -143,6 +143,9 @@ def migration_evidence(store, db, before, after):
 
 
 def validate_migration(root,store,db,reference):
+    if reference.get("draft_revision") == 4:
+        from holdout_provenance_v4 import validate_v4_migration
+        return validate_v4_migration(root,store,db,reference)
     if reference.get("draft_revision") == 2:
         return reference
     if reference.get("provenance_migration") != {"path":MIGRATION.as_posix()} or not sealed(reference):
@@ -161,3 +164,17 @@ def validate_migration(root,store,db,reference):
             or ledger.get("evidence") != migration_evidence(store,db,before,reference)):
         raise ValueError("Migration ledger differs from actual source or unchanged case semantics")
     return before
+
+
+def migration_path(reference):
+    """Resolve only a known, explicitly bound migration, never an arbitrary path."""
+    if reference.get("draft_revision") == 3:
+        expected = MIGRATION
+    elif reference.get("draft_revision") == 4:
+        from holdout_provenance_v4 import MIGRATION_V4
+        expected = MIGRATION_V4
+    else:
+        raise ValueError("Unsupported provenance migration version")
+    if reference.get("provenance_migration") != {"path":expected.as_posix()}:
+        raise ValueError("Unexpected provenance migration path")
+    return expected

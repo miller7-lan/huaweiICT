@@ -7,7 +7,7 @@ import pytest
 
 from gov_mcp.knowledge import fingerprint
 from gov_mcp.knowledge_review import question_fingerprint
-from holdout_provenance import MIGRATION, semantic_projection, validate_semantics
+from holdout_provenance import MIGRATION, migration_path, semantic_projection, validate_semantics
 
 
 def drafts():
@@ -48,14 +48,17 @@ def test_migration_cannot_change_authorship_or_acceptance(field,value):
         validate_semantics(before,after)
 
 
-@pytest.fixture
-def screened(tmp_path,monkeypatch):
+@pytest.fixture(params=[3, 4])
+def screened(tmp_path,monkeypatch,request):
     import export_knowledge_review_packet as exporter
     _,after = drafts()
+    if request.param == 4:
+        from holdout_provenance_v4 import MIGRATION_V4
+        after.update(draft_revision=4,provenance_migration={"path":MIGRATION_V4.as_posix()})
     after["content_sha256"] = fingerprint(after)
     directory = tmp_path / "evaluation/knowledge";directory.mkdir(parents=True)
     migration = {"kind":"synthetic migration"};migration["content_sha256"] = fingerprint(migration)
-    (tmp_path/MIGRATION).write_text(json.dumps(migration),encoding="utf-8")
+    (tmp_path/migration_path(after)).write_text(json.dumps(migration),encoding="utf-8")
     questions = [{"id":c["id"],"query_date":c["query_date"],"question_sha256":question_fingerprint(c["question"])} for c in after["cases"]]
     screen = {"kind":"ai_semantic_screening_not_acceptance","batch_ready_for_freeze":False,
         "independence_certified":False,"business_acceptance_executed":False,"cases":questions,
@@ -77,7 +80,7 @@ def test_rehashing_modified_content_does_not_reuse_screening(screened,change):
     elif change == "outcome":after["cases"][0]["proposed_outcome_after_qualified_publication"] = "answer"
     else:
         changed = {"kind":"different synthetic migration"};changed["content_sha256"] = fingerprint(changed)
-        (root/MIGRATION).write_text(json.dumps(changed),encoding="utf-8")
+        (root/migration_path(after)).write_text(json.dumps(changed),encoding="utf-8")
     after["content_sha256"] = fingerprint({k:v for k,v in after.items() if k != "content_sha256"})
     result = exporter.semantic_screening_for_review(after,[])
     assert result["status"] == "stale" and result["assessment"] is None and not result["batch_ready_for_freeze"]

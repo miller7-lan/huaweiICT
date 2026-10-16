@@ -9,7 +9,7 @@
     "model_revision": null,
     "run_id": "manual-holdout-draft-20261016-v2"
   },
-  "draft_revision": 3,
+  "draft_revision": 4,
   "retirement_archive": {
     "path": "evaluation/knowledge/retired-holdout-draft-cases-20261016.json",
     "sha256": "4ee9f2ef899899f7a94c35fd6d335618f53b4d4aa767fbbbd87ae1b91ebde7c1",
@@ -133,12 +133,17 @@
     "NATIONAL": {
       "source_id": "MPS-NORM-01",
       "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
-      "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "revision": "rev-54a85427f0fe78c051faa026",
       "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
-      "body_sha256": "36cfa38429629ea79e43550c6af71f560d6122c469b8ace17d170ceed424ff30",
-      "metadata_sha256": "816aa0d3dcab2fe36f2cd74de1892746a2000b54a229ca8b5a496320c37e4075",
-      "state": "pending_review",
-      "business_approval": false
+      "body_sha256": "cf253b1d7cd099c1dd8addfca5d1cb0174906900dc724aaac98fcb0f0b762946",
+      "metadata_sha256": "ed16c28a733136bca163325e453ea26d155bab6858d8427c6d6d4e4703393db4",
+      "state": "reviewed",
+      "business_approval": true,
+      "recorded_review": {
+        "reviewer": "Codex AI",
+        "digest": "22d8df5c5401a4bd17acbc9de08024551f31a89503975d69436a94e00e9763e4",
+        "reviewed_at": 1792173747.9017134
+      }
     },
     "D26": {
       "source_id": "HN-MEASURES-2026",
@@ -188,12 +193,17 @@
     "F18": {
       "source_id": "MOF-FIRST-ISSUE-2018",
       "url": "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm",
-      "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+      "revision": "rev-e41c61067fe70ce4ce221dbf",
       "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
       "body_sha256": "32221406b808123f2c72c2d6dfffec0f669aecd0c7df392a968ce41b20c878db",
-      "metadata_sha256": "3d2017a66d147c5cc2ffd631db05eea9e2399559cfea8fecb31e5659884fb653",
-      "state": "pending_review",
-      "business_approval": false
+      "metadata_sha256": "12ea60dacc86ff2f73373103ba71d4154392b27a5a3ca0eb282a185cfbf8fd8c",
+      "state": "reviewed",
+      "business_approval": true,
+      "recorded_review": {
+        "reviewer": "Codex AI",
+        "digest": "d12ccc8c099af9bfe14fcfbad9d236f2d6ba26f1897e9a71faa8e518a0ccb187",
+        "reviewed_at": 1792172265.9764504
+      }
     },
     "USE": {
       "source_id": "MPS-USE-01",
@@ -223,12 +233,17 @@
     "WINDOW": {
       "source_id": "HN-UPDATE-GS-01",
       "url": "https://www.gushi.gov.cn/2025/07-10/760173.html",
-      "revision": "rev-01e4a7686991d06c8135e431",
+      "revision": "rev-49ae68807f33bf53dbbec739",
       "original_sha256": "463e687bb0eaa804722b3e1bb5672e4365ea7c3dc339a9173428dd46fdccde52",
       "body_sha256": "3be789a6b01a2619712b1dd682bce6c3f7a5fba3bd5f3f25b353144a300eca64",
-      "metadata_sha256": "e59023895b0af3b2a3a68ac7e57f9324015674d1307c8deb53460b4590a94458",
-      "state": "pending_review",
-      "business_approval": false
+      "metadata_sha256": "aeeb096cfae56a297a31e75765e8db330c78343923f1b991d1632347355a3176",
+      "state": "reviewed",
+      "business_approval": true,
+      "recorded_review": {
+        "reviewer": "Codex AI",
+        "digest": "57b297494780a5e47091c6c988f40c65bec62362de281248349ce3f6fb9c980f",
+        "reviewed_at": 1792175354.634538
+      }
     }
   },
   "cases": [
@@ -264,9 +279,9 @@
         },
         {
           "source_key": "NATIONAL",
-          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "revision": "rev-54a85427f0fe78c051faa026",
           "locator": "第七十八条",
-          "ordinal": 5,
+          "ordinal": 4,
           "start": 0,
           "end": 100,
           "parent_text_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33",
@@ -283,7 +298,7 @@
           "locator": "第一百五十九条"
         },
         {
-          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "revision": "rev-54a85427f0fe78c051faa026",
           "locator": "第七十八条"
         }
       ],
@@ -314,9 +329,9 @@
       "background_source_anchors": [
         {
           "source_key": "NATIONAL",
-          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "revision": "rev-54a85427f0fe78c051faa026",
           "locator": "第七十八条",
-          "ordinal": 5,
+          "ordinal": 4,
           "start": 0,
           "end": 100,
           "parent_text_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33",
@@ -335,7 +350,7 @@
       ],
       "proposed_relevant_evidence": [
         {
-          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "revision": "rev-54a85427f0fe78c051faa026",
           "locator": "第七十八条"
         },
         {
@@ -648,7 +663,7 @@
         },
         {
           "source_key": "WINDOW",
-          "revision": "rev-01e4a7686991d06c8135e431",
+          "revision": "rev-49ae68807f33bf53dbbec739",
           "locator": "正文段落3",
           "ordinal": 0,
           "start": 0,
@@ -789,7 +804,7 @@
         },
         {
           "source_key": "F18",
-          "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+          "revision": "rev-e41c61067fe70ce4ce221dbf",
           "locator": "正文段落4",
           "ordinal": 0,
           "start": 0,
@@ -804,7 +819,7 @@
           "locator": "正文段落4"
         },
         {
-          "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+          "revision": "rev-e41c61067fe70ce4ce221dbf",
           "locator": "正文段落4"
         }
       ],
@@ -854,7 +869,7 @@
         },
         {
           "source_key": "F18",
-          "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+          "revision": "rev-e41c61067fe70ce4ce221dbf",
           "locator": "正文段落4",
           "ordinal": 0,
           "start": 0,
@@ -873,7 +888,7 @@
           "locator": "正文段落4"
         },
         {
-          "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+          "revision": "rev-e41c61067fe70ce4ce221dbf",
           "locator": "正文段落4"
         }
       ],
@@ -1696,9 +1711,9 @@
     "需在资料核定后绑定实际候选快照、冻结参考并检查问题未用于开发",
     "尚无实际被测输入、输出、逐题断言评阅或独立业务验收"
   ],
-  "content_sha256": "5cf599951df3e6291c9b1e5c39b9a558ab54587d38c4cd423c12475912305885",
-  "provenance_migrated_at": "2026-10-16T17:20:33.866007+00:00",
+  "content_sha256": "677bb44280c6fdc28f9d48ede8ecafc7f38c0bd0731f1e76eaf28ff2958bb69f",
+  "provenance_migrated_at": "2026-10-16T19:34:29.361301+00:00",
   "provenance_migration": {
-    "path": "evaluation/knowledge/holdout-provenance-migration-v3.json"
+    "path": "evaluation/knowledge/holdout-provenance-migration-v4.json"
   }
 }

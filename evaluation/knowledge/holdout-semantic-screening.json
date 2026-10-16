@@ -1,19 +1,19 @@
 {
   "schema": 1,
   "kind": "ai_semantic_screening_not_acceptance",
-  "screening_revision": 3,
-  "assessed_at": "2026-10-16T17:20:33.866007+00:00",
+  "screening_revision": 4,
+  "assessed_at": "2026-10-16T19:34:29.361301+00:00",
   "actor": {
     "kind": "ai",
     "name": "Codex AI",
     "model": "Codex GPT-6 family; exact identifier unavailable",
     "model_revision": null,
-    "run_id": "manual-provenance-semantic-rebind-20261017-v3"
+    "run_id": "manual-provenance-semantic-rebind-20261017-v4"
   },
   "author_and_reviewer_same_ai": true,
   "reviewer_has_seen_development_history": true,
   "human_review_completed": false,
-  "inputs": "All 30 v2 questions, 40 located development questions, 30 previous drafts including 9 retired questions, and within-batch decision comparisons; source clauses support draft design. No new tested-agent output, embeddings, generation run or implementation tuning. v3 rebind: reviewed all 11 affected case references against the migrated clauses; questions, dates, oracles, semantic distinctions and all per-case screening judgments are unchanged. HB06 removes only unapproved explanatory background; the complete first service measure retains both branches.",
+  "inputs": "All 30 v2 questions, 40 located development questions, 30 previous drafts including 9 retired questions, and within-batch decision comparisons; source clauses support draft design. No new tested-agent output, embeddings, generation run or implementation tuning. v3 rebind: reviewed all 11 affected case references against the migrated clauses; questions, dates, oracles, semantic distinctions and all per-case screening judgments are unchanged. HB06 removes only unapproved explanatory background; the complete first service measure retains both branches. v4 rebind: verified the five affected case anchors against three actual scoped source reviews; all parent text, character spans, questions, dates, oracles, prerequisites and per-case screening judgments remain identical. The unreferenced national clause 76 retains its own pending watch.",
   "rubric": [
     "角色、措辞和故事包装不构成独立判断；单纯合并旧判断仍退出。",
     "同主题可以有不同判断，但需新增影响结论的事实前提或环节，不能只凭哈希不重合。",
@@ -78,6 +78,30 @@
     {
       "path": "evaluation/knowledge/holdout-provenance-migration-v3.json",
       "sha256": "9ea8fb24583f5f9dfc43a0884ba7fde205353d9df9ba782976ff32c6131a8315"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-business-questions-draft.json",
+      "sha256": "6bf9f6155ef0bc566f3f3b7b90377966b12d9b4826cd51906318b7ba705fe1dc"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-business-reference-draft.json",
+      "sha256": "ccdd59d91025801fcaf3c1302b4f552542524509aac45da86d531eaf462e376a"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-draft-integrity.json",
+      "sha256": "d6f69a7c59cdc05f8c20c7fbaf46951f17e0a12e944d695b13fb2f401dc40266"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-semantic-screening.json",
+      "sha256": "a4575486c0d36bef6f171027530144226767a86915def64f134fd5926840ab48"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/manifest.json",
+      "sha256": "46391a413294d8be3ef4a8393b2c7c927e9e837cbd525f0a1944d69aef0b12f7"
+    },
+    {
+      "path": "evaluation/knowledge/holdout-provenance-migration-v4.json",
+      "sha256": "a9885a04cfbe150fe573a48f4daceca7b49516bb9e72237797a0ffde0c373b30"
     }
   ],
   "cases": [
@@ -1094,27 +1118,22 @@
   "business_acceptance_executed": false,
   "next_action": "Resolve source/currentness/material prerequisites and verify reference truth before an acceptance snapshot, reference freeze or actual run. Same-author review is disclosed and is not a blind independence certificate.",
   "limits": "Same-author conservative AI design screening. Different decision points and hash disjointness do not establish policy truth or certified acceptance independence; no question was used to tune the tested agent.",
-  "content_sha256": "c30ce416a9c93dffe3b17acb6fcd1a3333a9ec640d6bc5a1f84d110615d3abef",
-  "reference_contents_sha256": "5cf599951df3e6291c9b1e5c39b9a558ab54587d38c4cd423c12475912305885",
+  "content_sha256": "a7ed07dca7ef65b56458e39178b89edd424b9a10a1bf629139f7e079c1a53190",
+  "reference_contents_sha256": "677bb44280c6fdc28f9d48ede8ecafc7f38c0bd0731f1e76eaf28ff2958bb69f",
   "reference_semantics_sha256": "bb4243b10e148c6c96099781ea499718e3603ef643f56e5adfa2462bd73a4743",
-  "provenance_migration_sha256": "1cf5083b61bb1ec90a6a101b4f932254df345e3602c6d3f6e8d97383711adcb3",
+  "provenance_migration_sha256": "63cefa1961cd3cbb472351f061b4f63f70d5a17830eb2279da7ab831e33afff7",
   "provenance_review": {
     "reviewer": "Codex AI",
     "affected_case_ids": [
-      "HB32",
-      "HB33",
-      "HB06",
-      "HB34",
-      "HB09",
-      "HB10",
-      "HB35",
-      "HB20",
-      "HB24",
-      "HB26",
-      "HB39"
+      "HB01",
+      "HB31",
+      "HB08",
+      "HB11",
+      "HB35"
     ],
     "case_semantics_unchanged": true,
     "per_case_screening_judgments_unchanged": true,
+    "literal_span_changes": 0,
     "source_truth_or_batch_independence_approved_by_this_rebind": false
   }
 }

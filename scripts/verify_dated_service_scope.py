@@ -23,6 +23,8 @@ def main():
     store = KnowledgeStore(RUNTIME/"knowledge-update", read_only=True)
     source = read(ROOT/"evaluation/knowledge/dated-service-scope-decisions-20261017.json")
     before = read(store.root/"source-research/branch-scope-20261017/before.json")
+    if any(fingerprint((ROOT/path).read_bytes()) != digest for path, digest in before["protected_files"].items()):
+        parser.error("评测草案已有后续迁移，不覆盖本阶段历史回执")
     readiness = read(ROOT/"evidence/knowledge-update/review-readiness.json")
     assert fingerprint(args.review_packet.read_bytes()) == readiness["review_packet_sha256"]
     body = {k: v for k, v in source.items() if k != "content_sha256"}

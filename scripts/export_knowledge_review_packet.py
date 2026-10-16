@@ -40,8 +40,8 @@ def semantic_screening_for_review(reference, registry):
               "development_registry_matches": fingerprint(registry) == review["development_registry_sha256"],
               **file_checks}
     if reference.get("draft_revision", 2) >= 3:
-        from holdout_provenance import MIGRATION, semantic_projection, sealed
-        migration = json.loads((ROOT / MIGRATION).read_text(encoding="utf-8"))
+        from holdout_provenance import migration_path, semantic_projection, sealed
+        migration = json.loads((ROOT / migration_path(reference)).read_text(encoding="utf-8"))
         checks.update(reference_contents_match=fingerprint({k:v for k,v in reference.items() if k != "content_sha256"}) == review.get("reference_contents_sha256"),
                       reference_semantics_match=fingerprint(semantic_projection(reference)) == review.get("reference_semantics_sha256"),
                       provenance_migration_matches=sealed(migration) and migration["content_sha256"] == review.get("provenance_migration_sha256"))
