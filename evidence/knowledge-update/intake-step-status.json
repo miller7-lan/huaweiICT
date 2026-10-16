@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T05:08:58.908090+00:00",
+  "captured_at": "2026-10-16T05:27:22.091386+00:00",
   "counts": {
     "sites": 29,
     "documents": 21,
@@ -52,16 +52,27 @@
     "NDRC-FEE-2003",
     "NDRC-FEE-2005"
   ],
-  "test_count": 418,
+  "test_count": 461,
   "tests_passed": true,
   "platform_tools": [
     "govkb_get_environment_status",
     "govkb_search_evidence"
   ],
-  "public_files_scanned": 644,
+  "public_files_scanned": 649,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
+  "publication_policy": {
+    "minimum_cases": 30,
+    "minimum_recall_at_5": 0.9,
+    "mode": "business",
+    "require_sources_fresh": true,
+    "required_claim_support": 1.0,
+    "review_contract": "attributed_v2",
+    "schema": 2
+  },
+  "evaluation_review_contract": "attributed_v2",
+  "registered_development_questions": 40,
   "existing_agents_changed": false,
   "new_qa_agents": {
     "govkb_qa_citizen": 10,
@@ -198,13 +209,13 @@
       "automatic_publication": false
     },
     "recovery": {
-      "checked_at": 1792127164,
+      "checked_at": 1792128364,
       "action": "healthy",
       "ready": true,
       "recovery_count": 1,
       "last_recovered_at": 1792084570,
       "last_recovered_supervisor_pid": 56584,
-      "supervisor_pid": 78736,
+      "supervisor_pid": 79608,
       "error": "",
       "no_publication_performed": true,
       "mode": "current_user_local_service_recovery"

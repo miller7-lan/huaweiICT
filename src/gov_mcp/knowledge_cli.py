@@ -15,6 +15,14 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("init")
     sub.add_parser("status")
+    development = sub.add_parser("register-development-questions")
+    development.add_argument("dataset", type=Path)
+    development.add_argument("--source", required=True)
+    contract = sub.add_parser("upgrade-review-contract")
+    contract.add_argument("--expected-policy-sha256", required=True)
+    contract.add_argument("--expected-registry-sha256", required=True)
+    contract.add_argument("--maintainer", required=True)
+    contract.add_argument("--confirmed", action="store_true")
     impact = sub.add_parser("impact")
     impact.add_argument("revision")
     impact.add_argument("--base")
@@ -80,6 +88,15 @@ def main():
         value = None
         if args.command in ("init", "status"):
             value = store.status()
+        elif args.command == "register-development-questions":
+            from gov_mcp.knowledge_review import register_development_questions
+            dataset = json.loads(args.dataset.read_text(encoding="utf-8"))
+            if not isinstance(dataset, dict) or not isinstance(dataset.get("cases"), list) or any(not isinstance(case, dict) or "question" not in case for case in dataset["cases"]):
+                raise ValueError("Question dataset with cases required")
+            value = register_development_questions(store, [case["question"] for case in dataset["cases"]], args.source)
+        elif args.command == "upgrade-review-contract":
+            from gov_mcp.knowledge_review import upgrade_review_contract
+            value = upgrade_review_contract(store, args.expected_policy_sha256, args.expected_registry_sha256, args.maintainer, args.confirmed)
         elif args.command == "impact":
             from gov_mcp.knowledge_impact import revision_impact
             value = revision_impact(store, args.revision, args.base, args.include_excerpts)

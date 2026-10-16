@@ -161,6 +161,9 @@ def prepare(profile="raw_v1"):
             entry["payload_sha256"] = fingerprint(model_payload(model, entry, profile))
             cases.append(entry)
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")+"-"+uuid.uuid4().hex[:8]
+    from gov_mcp.knowledge_review import register_development_questions
+    register_development_questions(KnowledgeStore(store.root), [case["question"] for case in cases],
+        "given-evidence-development:"+run_id)
     directory = run_directory(run_id)
     ensure_private_directory(directory)
     reference_copy = directory / "reference-frozen.json"

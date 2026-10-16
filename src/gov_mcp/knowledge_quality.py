@@ -1,4 +1,4 @@
-"""Snapshot-bound human evaluation records; judgments are attestations, not inferred facts."""
+"""Snapshot-bound evaluation records with explicit review contracts and fixed thresholds."""
 
 import json
 import math
@@ -10,13 +10,14 @@ from gov_mcp.knowledge import encode, fingerprint
 
 BUSINESS_POLICY = {"schema": 1, "mode": "business", "minimum_cases": 30, "minimum_recall_at_5": 0.9,
                    "required_claim_support": 1.0, "require_sources_fresh": True}
+ATTRIBUTED_BUSINESS_POLICY = dict(BUSINESS_POLICY, schema=2, review_contract="attributed_v2")
 
 
 def publication_policy(store):
     policy = json.loads((store.root / "publication-policy.json").read_text(encoding="utf-8"))
     if policy == {"schema": 1, "mode": "engineering_fixture"}:
         return policy
-    if policy != BUSINESS_POLICY:
+    if policy not in (BUSINESS_POLICY, ATTRIBUTED_BUSINESS_POLICY):
         raise ValueError("Recognized publication policy required; business quality thresholds cannot be weakened")
     return policy
 
@@ -43,8 +44,13 @@ def binding(store, db, version):
         if not row:
             raise ValueError("Attachment dependency source missing")
         sources[source_id] = fingerprint(json.loads(row[0]))
-    return fingerprint({"version": version, "scope": snapshot["scope"], "members": revisions,
-                        "source_configs": sources, "policy": publication_policy(store)})
+    policy = publication_policy(store)
+    bound = {"version": version, "scope": snapshot["scope"], "members": revisions,
+             "source_configs": sources, "policy": policy}
+    if policy.get("review_contract") == "attributed_v2":
+        from gov_mcp.knowledge_review import development_registry
+        bound["development_questions"] = development_registry(db)
+    return fingerprint(bound)
 
 
 def validate_report(store, db, version, report):
@@ -55,10 +61,20 @@ def validate_report(store, db, version, report):
         raise ValueError("Business evaluation recording requires business mode")
     if report.get("snapshot_binding") != binding(store, db, version) or report.get("version") != version:
         raise ValueError("Evaluation does not bind this exact snapshot, sources and policy")
-    if (report.get("status") != "human_reviewed" or report.get("reference_author_kind") != "human"
-            or report.get("dataset_role") != "independent_business_acceptance"
-            or not isinstance(report.get("reference_reviewer"), str) or not report["reference_reviewer"].strip()):
-        raise ValueError("Independent human reference answers and explicit review required")
+    if policy.get("review_contract") == "attributed_v2":
+        from gov_mcp.knowledge_review import validate_attributed_review, development_registry
+        provenance = validate_attributed_review(report)
+        if report["holdout"]["development_question_sha256"] != development_registry(db):
+            raise ValueError("Holdout registry must match all registered development questions")
+        judgment_key = "review_judgment"
+    else:
+        if (report.get("status") != "human_reviewed" or report.get("reference_author_kind") != "human"
+                or report.get("dataset_role") != "independent_business_acceptance"
+                or not isinstance(report.get("reference_reviewer"), str) or not report["reference_reviewer"].strip()):
+            raise ValueError("Independent human reference answers and explicit review required")
+        provenance = {"reference_author_kind": "human", "reviewer_kind": "human", "human_review_completed": True,
+            "review_contract": "legacy_human_v1", "basis": "Human-attested references and judgments; this validator does not establish policy truth by itself"}
+        judgment_key = "human_judgment"
     reviewed = datetime.fromisoformat(report.get("reference_reviewed_at", ""))
     age = (datetime.now(timezone.utc) - reviewed.astimezone(timezone.utc)).total_seconds()
     if reviewed.tzinfo is None or age < 0 or age > 30*86400:
@@ -78,9 +94,9 @@ def validate_report(store, db, version, report):
             raise ValueError("Unique case ids and independent questions required")
         ids.add(identifier)
         questions.add(question.strip())
-        if (case.get("human_judgment") != "pass" or not isinstance(case.get("reference_answer"), str) or not case["reference_answer"].strip()
+        if (case.get(judgment_key) != "pass" or not isinstance(case.get("reference_answer"), str) or not case["reference_answer"].strip()
                 or not isinstance(case.get("observed_answer"), str) or not case["observed_answer"].strip()):
-            raise ValueError("Every case needs a human-checked reference and passing judgment")
+            raise ValueError("Every case needs a reviewed reference and passing judgment")
         expected, observed = case.get("expected_outcome"), case.get("observed_outcome")
         if expected not in ("answer", "stop") or observed != expected:
             raise ValueError("Unexpected answer/stop behavior")
@@ -125,7 +141,7 @@ def validate_report(store, db, version, report):
             "mean_recall_at_5": recall, "recall_denominator": len(recalls),
             "supported_claim_count": supported, "claim_count": claims,
             "claim_support_rate": supported/claims if claims else None,
-            "basis": "Human-attested references and judgments; this validator does not establish policy truth by itself"}
+            **provenance}
 
 
 def verify_publication(store, db, version):
@@ -142,7 +158,7 @@ def verify_publication(store, db, version):
         return {"mode": "engineering_fixture", "business_approval": False}
     evaluated = db.execute("SELECT * FROM snapshot_evaluations WHERE version_id=? ORDER BY rowid DESC LIMIT 1", (version,)).fetchone()
     if not evaluated:
-        raise ValueError("Independent human business evaluation required before publication")
+        raise ValueError("Independent business evaluation required before publication")
     report = json.loads(evaluated["report"])
     if fingerprint(report) != evaluated["report_sha256"]:
         raise ValueError("Evaluation report fingerprint mismatch")

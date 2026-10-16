@@ -64,6 +64,8 @@ class KnowledgeStore:
                     id TEXT PRIMARY KEY, version_id TEXT NOT NULL REFERENCES versions(id),
                     report TEXT NOT NULL, report_sha256 TEXT NOT NULL, reviewer TEXT NOT NULL,
                     recorded_at REAL NOT NULL);
+                CREATE TABLE IF NOT EXISTS evaluation_development_questions(
+                    question_sha256 TEXT PRIMARY KEY, source TEXT NOT NULL, registered_at REAL NOT NULL);
                 CREATE TABLE IF NOT EXISTS classification_proposals(
                     revision_id TEXT NOT NULL REFERENCES revisions(id), taxonomy_version TEXT NOT NULL,
                     suggestions TEXT NOT NULL, sha256 TEXT NOT NULL, created_at REAL NOT NULL,
@@ -426,6 +428,8 @@ class KnowledgeStore:
         with self.db() as db:
             db.execute("BEGIN IMMEDIATE")
             metrics = validate_report(self, db, version, report)
+            if metrics.get("review_contract") == "attributed_v2" and reviewer.strip() != report["reviewer"]["name"].strip():
+                raise ValueError("Recorded evaluator must match the attributed reviewer")
             sha = fingerprint(report)
             identifier = "eval-" + fingerprint([version, sha, reviewer.strip()])[:24]
             db.execute("INSERT OR IGNORE INTO snapshot_evaluations VALUES(?,?,?,?,?,?)", (identifier, version, encode(report), sha, reviewer.strip(), time.time()))

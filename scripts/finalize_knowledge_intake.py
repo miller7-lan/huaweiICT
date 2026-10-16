@@ -7,6 +7,8 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 from gov_mcp.knowledge import KnowledgeStore
+from gov_mcp.knowledge_quality import publication_policy
+from gov_mcp.knowledge_review import development_registry
 from nexent_api import NexentAPI
 
 
@@ -64,6 +66,9 @@ def main():
     mcp.update(platform_catalog_verified=True, platform_tool_names=tool_names)
     mcp_path.write_text(json.dumps(mcp, ensure_ascii=False, indent=2), encoding="utf-8")
     status = store.status()
+    policy = publication_policy(store)
+    with store.db() as db:
+        development_questions = development_registry(db)
     credentials = []
     for path in (ROOT / ".runtime/accounts.json", ROOT / ".runtime/m1/accounts.json", ROOT / ".runtime/m2/accounts.json"):
         if path.exists():
@@ -119,6 +124,9 @@ def main():
               "test_count": test_count, "tests_passed": tests_passed, "platform_tools": tool_names,
               "public_files_scanned": scanned, "credential_hit_paths": credential_hits,
               "business_review_completed": False, "official_knowledge_published": status["counts"]["heads"],
+              "publication_policy": policy,
+              "evaluation_review_contract": policy.get("review_contract", "legacy_human_v1"),
+              "registered_development_questions": len(development_questions),
               "existing_agents_changed": False,
               "new_qa_agents": qa.get("qa_agents", {}), "model_fixed_question_smoke_passed": qa.get("passed", False),
               "model_smoke_cases": len(qa.get("records", [])), "business_answer_accuracy_tested": False,

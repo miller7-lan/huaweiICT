@@ -24,7 +24,7 @@ def main():
         "scope_and_obligations_not_approved": True,
         "restored_proposals_match_live": True, "prior_ai_visual_observation_bound_to_source": True,
         "cached_images_match_the_observed_bytes": True, "two_selected_unit_boundaries_match_observation": True,
-        "ocr_missing_numbers_not_corrected": True, "publication_policy_unchanged": True}
+        "ocr_missing_numbers_not_corrected": True, "publication_policy_lineage_matches": True}
     parents = units = spans = cross = markers = 0
     selected_source = None
     with store.db() as db:
@@ -75,13 +75,21 @@ def main():
         and all(word in chosen[1]["text_for_ranking"] for word in ("40 日", "30 日")))
     checks["ocr_missing_numbers_not_corrected"] = all(u["heading_surface"].startswith("、") and "ocr_heading_number_missing_not_corrected" in u["flags"] for u in chosen)
     plan = json.loads((ROOT / "evidence/knowledge-update/model-prevalidation-plan.json").read_text(encoding="utf-8"))
-    checks["publication_policy_unchanged"] = fingerprint(publication_policy(store)) == plan["publication_policy_sha256"]
+    policy_sha = fingerprint(publication_policy(store))
+    policy_unchanged = policy_sha == plan["publication_policy_sha256"]
+    transition = ROOT / "evidence/knowledge-update/review-contract-upgrade.json"
+    change = json.loads(transition.read_text(encoding="utf-8")) if transition.exists() else {}
+    checks["publication_policy_lineage_matches"] = policy_unchanged or (
+        change.get("passed") is True and change.get("previous_policy_sha256") == plan["publication_policy_sha256"]
+        and change.get("policy_sha256") == policy_sha and change.get("quality_thresholds_unchanged") is True)
     report = {"captured_at": datetime.now(timezone.utc).isoformat(), "taxonomy_version": VERSION,
         "documents": len(rows), "canonical_parent_chunks": parents, "derived_units": units, "source_spans": spans,
         "literal_structure_version": STRUCTURE_VERSION, "literal_markers": markers,
         "classification_history_records_compared": len(live_history),
         "cross_page_proposals": cross, "counts": store.status()["counts"], "checks": checks, "passed": all(checks.values()),
         "visual_observation_sha256": fingerprint(observation), "human_review_completed": False,
+        "publication_policy_sha256": policy_sha, "policy_unchanged_since_model_plan": policy_unchanged,
+        "policy_transition_audit_sha256": fingerprint(transition.read_bytes()) if not policy_unchanged and transition.exists() else None,
         "scope": "Source/proposal/backup integrity across latest archives and binding to the separately recorded AI observation of two scanned units only. No other visual boundary, current policy, material relationship or business acceptance is approved."}
     (ROOT / "evidence/knowledge-update/source-unit-integrity.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"passed": report["passed"], "documents": len(rows), "units": units, "checks": checks}, ensure_ascii=False))

@@ -21,6 +21,12 @@ def main():
     ai = json.loads(ai_path.read_text(encoding="utf-8")) if ai_path.exists() else None
     records = []
     with store.db() as db:
+        policy = publication_policy(store)
+        if policy.get("review_contract") == "attributed_v2":
+            from gov_mcp.knowledge_review import development_registry
+            registry = development_registry(db)
+        else:
+            registry = []
         for row in db.execute("SELECT r.*,d.site_id,d.url FROM revisions r JOIN documents d ON d.id=r.document_id WHERE r.rowid IN (SELECT MAX(rowid) FROM revisions GROUP BY document_id) ORDER BY d.site_id"):
             original = store.root / "originals" / row["sha256"][:2] / row["sha256"]
             if fingerprint(original.read_bytes()) != row["sha256"]:
@@ -37,10 +43,17 @@ def main():
                                   "last_success": source["last_success"], "access_review": config.get("access_review")},
                 "human_review": {"reviewer": None, "reviewed_at": None, "current_applicability": None,
                     "region_and_branch_confirmed": None, "material_relationships": None,
-                    "dates_resolved": None, "use_basis_confirmed": None, "decision": None, "notes": None}})
+                    "dates_resolved": None, "use_basis_confirmed": None, "decision": None, "notes": None},
+                "attributed_review": {"actor": None, "reviewed_at": None, "current_applicability": None,
+                    "region_and_branch_confirmed": None, "material_relationships": None,
+                    "date_types_and_unknowns": None, "use_basis": None, "decision": None, "notes": None}})
     packet = {"created_at": datetime.now(timezone.utc).isoformat(), "kind": "candidate_review_packet_not_approval",
         "scope": dataset["scope"], "records": records, "business_questions": dataset,
         "ai_reference_answers": ai,
+        "evaluation_contract": {"publication_policy": policy,
+            "allowed_reference_actor_kinds": ["human", "ai"] if policy.get("review_contract") == "attributed_v2" else ["human"],
+            "registered_development_question_sha256": registry, "development_registry_sha256": fingerprint(registry),
+            "automatic_approval": False},
         "possible_duplicate_groups": duplicate_candidates(store),
         "warning": "Do not derive gold answers from tested retrieval output. Source annotations and category suggestions are unapproved."}
     target = store.root / "review-packets" / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
@@ -53,6 +66,8 @@ def main():
         "ai_reference_question_count": len(ai["cases"]) if ai else 0,
         "dataset_sha256": fingerprint(dataset_path.read_bytes()), "review_packet_sha256": fingerprint(path.read_bytes()),
         "publication_policy": publication_policy(store), "published_scopes": store.status()["counts"]["heads"],
+        "evaluation_review_contract": policy.get("review_contract", "legacy_human_v1"),
+        "registered_development_questions": len(registry), "development_registry_sha256": fingerprint(registry),
         "business_review_completed": False,
         "revision_impact_available": True, "possible_duplicate_group_count": len(packet["possible_duplicate_groups"]["groups"]),
         "source_coverage": {"national_law": "same_2011_act_two_archived_selections_new_official_mirror_monitored_dates_pending",
