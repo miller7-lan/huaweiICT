@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T11:47:59.967675+00:00",
+  "captured_at": "2026-10-16T12:42:37.352142+00:00",
   "counts": {
-    "sites": 30,
-    "documents": 22,
-    "revisions": 64,
-    "chunks": 296,
+    "sites": 35,
+    "documents": 27,
+    "revisions": 74,
+    "chunks": 336,
     "versions": 0,
     "heads": 0,
-    "jobs": 25,
-    "latest_chunks": 127
+    "jobs": 27,
+    "latest_chunks": 147
   },
   "sources": [
     {
@@ -60,6 +60,44 @@
       ],
       "seeds": [
         "https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-FEE-CATALOG-PAGE-2025",
+      "label": "河南财政厅行政事业性收费目录附件入口",
+      "origin": "https://czt.henan.gov.cn",
+      "allowed_paths": [
+        "/2025/12-30/3280093.html"
+      ],
+      "seeds": [
+        "https://czt.henan.gov.cn/2025/12-30/3280093.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-FEE-CATALOG-XLSX-2025",
+      "label": "河南财政厅目录附件：居民身份证收费行及表头",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx"
+      ],
+      "seeds": [
+        "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx"
       ],
       "interval_seconds": 86400,
       "delay_seconds": 5,
@@ -147,6 +185,25 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792138158.306693,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-NORM-XICHUAN-PDF",
+      "label": "河南户口居民身份证规范2022通知原件：淅川政府公开副本",
+      "origin": "https://www.xichuan.gov.cn",
+      "allowed_paths": [
+        "/ifile/20251229/1766973939411PxhOsju6.pdf"
+      ],
+      "seeds": [
+        "https://www.xichuan.gov.cn/ifile/20251229/1766973939411PxhOsju6.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -490,6 +547,44 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "MOF-FEE-2007",
+      "label": "财政部国家发展改革委关于进一步规范居民身份证收费等有关问题的通知",
+      "origin": "https://www.mof.gov.cn",
+      "allowed_paths": [
+        "/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm"
+      ],
+      "seeds": [
+        "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792154495.5582767,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "MOF-FIRST-ISSUE-2018",
+      "label": "财政部国家发展改革委关于停征免征和调整部分行政事业性收费有关政策的通知：首次申领条款",
+      "origin": "https://www.mof.gov.cn",
+      "allowed_paths": [
+        "/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm"
+      ],
+      "seeds": [
+        "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792154500.8369973,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "MPS-NORM-01",
       "label": "公安部关于印发《户口居民身份证管理工作规范（试行）》的通知",
       "origin": "https://www.beijing.gov.cn",
@@ -643,6 +738,120 @@
     }
   ],
   "documents": [
+    {
+      "source_id": "HN-FEE-CATALOG-PAGE-2025",
+      "url": "https://czt.henan.gov.cn/2025/12-30/3280093.html",
+      "revision": "rev-6ccbf33056313b8fd8361ced",
+      "state": "excluded",
+      "original_sha256": "a74116dd13b8a1f88fc51c6bc59563eb1790f0d2e47d5cd350845a08024b5ab5",
+      "original_bytes": 9032,
+      "metadata": {
+        "title": "河南财政厅行政事业性收费目录附件入口",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_corroborating_reference",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "extraction_method": "exact_official_attachment_link_title",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "目录正文附件链接标题",
+          "category": "fee",
+          "characters": 32,
+          "text_sha256": "e2329be8a8574bc180bd08d6ad16cb837ea98198ae325c8f2cefc0a132cea5d1"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-FEE-CATALOG-XLSX-2025",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+      "revision": "rev-d806c2a1656f08b00fb5a180",
+      "state": "excluded",
+      "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+      "original_bytes": 33251,
+      "metadata": {
+        "title": "河南财政厅目录附件：居民身份证收费行及表头",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_corroborating_reference",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "extraction_method": "exact_selected_literal_xlsx_cells_no_formula_evaluation",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "Excel工作表行政事业性收费!A1",
+          "category": "fee",
+          "characters": 22,
+          "text_sha256": "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D4",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "867698fb7b0c730c9c692a01b65a74500b5f44f3589e31703e2957f9ba5ce976"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E4",
+          "category": "fee",
+          "characters": 6,
+          "text_sha256": "aa3a4744db978914e3d78ff0d44f3e163ddd65c8eaa6795327a16fcb9d816047"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F4",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "16615568b15068c3dfbe9accb7ff41137b3e68fd6eb544ec50a4ca15dca0d660"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G4",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "05a643ca852e19da3509e7c6e90813b44970b7afe0f079e823b4975c3940b659"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!B17",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "984f2209c71bdebc41a23c318e3b52986a4eb41cc53fbda08c5f0f2f00352031"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D36",
+          "category": "fee",
+          "characters": 11,
+          "text_sha256": "87632ef1001bce8e0fd07786845ea07be4f2a17ea0f2a94d8deb62f24793e029"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E36",
+          "category": "fee",
+          "characters": 6,
+          "text_sha256": "be899e2513ff0fa57789b1d2f167f47f380bcbd3a86a71d76fc1f54098c10b45"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F36",
+          "category": "fee",
+          "characters": 80,
+          "text_sha256": "c706c34a9c25517fe10d8be4b57ade84371005db336079f5097bf3097350c505"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G36",
+          "category": "fee",
+          "characters": 23,
+          "text_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c"
+        }
+      ]
+    },
     {
       "source_id": "HN-MATERIALS-REPLY-2023",
       "url": "https://www.henan.gov.cn/2023/02-04/2683999.html",
@@ -904,6 +1113,50 @@
           "category": "procedure",
           "characters": 107,
           "text_sha256": "610ea80302fec85817b8934c221f809aa2e68855912472cded1ed5bf2e785f5f"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-NORM-XICHUAN-PDF",
+      "url": "https://www.xichuan.gov.cn/ifile/20251229/1766973939411PxhOsju6.pdf",
+      "revision": "rev-cb7478c231c1541d9c8b566a",
+      "state": "excluded",
+      "original_sha256": "fbb7d6383dc63131fa70cbacac85b6585cb9827a15c806533abf22176d1f5b9c",
+      "original_bytes": 3966172,
+      "metadata": {
+        "title": "河南户口居民身份证规范2022通知原件：淅川政府公开副本",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_corroborating_reference",
+        "document_number": "豫公通〔2022〕77号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2022-07-27",
+        "extraction_method": "pdf_text_layer_selected_complete_pages_1_45_64",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页",
+          "category": "procedure",
+          "characters": 211,
+          "text_sha256": "3837b3481dd165f5ad5c3769fd22bdbcfaa13bbbda30fb7c24e32331d5632b25"
+        },
+        {
+          "locator": "PDF第45页",
+          "category": "procedure",
+          "characters": 619,
+          "text_sha256": "f14d3699cc86a4d0348824a2990c89e5ed8a56865b21e55c585b107ee8e649ee"
+        },
+        {
+          "locator": "PDF第64页",
+          "category": "procedure",
+          "characters": 534,
+          "text_sha256": "82401d3e7974e710ce89dbc2e776b63e0c6138c20a7eaf89e1c0f440a4835e51"
         }
       ]
     },
@@ -1748,6 +2001,92 @@
           "category": "eligibility",
           "characters": 79,
           "text_sha256": "05651c985a3e1aa62a3201332d6c9851b51f183653f9e51a17ad34473215d4d5"
+        }
+      ]
+    },
+    {
+      "source_id": "MOF-FEE-2007",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+      "revision": "rev-ddfaf873b73e03ab4202c18c",
+      "state": "pending_review",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "original_bytes": 20865,
+      "metadata": {
+        "title": "财政部国家发展改革委关于进一步规范居民身份证收费等有关问题的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "财综〔2007〕34号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2007-02-14",
+        "scope_confirmed": false,
+        "collection_role": "fee_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 86,
+          "text_sha256": "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 287,
+          "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "identity",
+          "characters": 96,
+          "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 131,
+          "text_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "identity",
+          "characters": 169,
+          "text_sha256": "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+        }
+      ]
+    },
+    {
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm",
+      "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+      "state": "pending_review",
+      "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+      "original_bytes": 21072,
+      "metadata": {
+        "title": "财政部国家发展改革委关于停征免征和调整部分行政事业性收费有关政策的通知：首次申领条款",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "财税〔2018〕37号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2018-04-12",
+        "scope_confirmed": false,
+        "collection_role": "fee_first_issue_boundary"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 29,
+          "text_sha256": "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
         }
       ]
     },

@@ -11,6 +11,30 @@ from nexent_api import ROOT, RUNTIME
 
 
 TARGETS = {
+    "mof-fee-2007": {
+        "id": "MOF-FEE-2007", "origin": "https://www.mof.gov.cn",
+        "path": "/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+        "label": "财政部国家发展改革委关于进一步规范居民身份证收费等有关问题的通知",
+        "selector": {"class": "my_doccontent"}, "keywords": ["居民身份证"], "expected": 5,
+        "metadata_selectors": {"displayed_publication": {"class": "laiyuan"}},
+        "region": "national", "type": "administrative_norm", "role": "fee_candidate",
+        "page_date": "2008-05-19", "signed_at": "2007-02-14", "document_number": "财综〔2007〕34号",
+        "source_named": "财政部（财政文告2007年第八期）",
+        "basis": "Official administrative normative text on the publishing ministry's public site. Limited private integrity archive and attributed normative-text analysis under Copyright Law Article 5(1), https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html . No media or design reuse. Present local applicability remains unapproved.",
+        "limits": "Only the complete purpose paragraph and clauses one to four. Preserve renewal, lost replacement, damaged renewal and temporary-ID branches and the limits on extra charges. The first-issue charge in this historical text must be read with the later 2018 first-issue suspension; neither first-issue suspension nor document age proves ordinary expiry renewal is free. Page date differs from the signed date and is not legal commencement.",
+    },
+    "mof-first-issue-2018": {
+        "id": "MOF-FIRST-ISSUE-2018", "origin": "https://www.mof.gov.cn",
+        "path": "/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm",
+        "label": "财政部国家发展改革委关于停征免征和调整部分行政事业性收费有关政策的通知：首次申领条款",
+        "selector": {"class": "my_doccontent"}, "keywords": ["首次申领居民身份证工本费"], "expected": 1,
+        "metadata_selectors": {"displayed_publication": {"class": "laiyuan"}},
+        "region": "national", "type": "administrative_norm", "role": "fee_first_issue_boundary",
+        "page_date": "2018-08-20", "signed_at": "2018-04-12", "document_number": "财税〔2018〕37号",
+        "source_named": "财政部（财政文告2018年第五期）",
+        "basis": "Official administrative normative text on the publishing ministry's public site. Limited private integrity archive and attributed analysis of the first clause under Copyright Law Article 5(1), https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html . No unrelated securities/patent policy, media or layout in retrieval. No blanket local fee approval.",
+        "limits": "Only the complete first clause: first-issue ID-card fee suspension from 2018-04-01. This date belongs to that clause, not every other measure in the same notice. Do not extend first issue to ordinary expiry renewal or loss/damage replacement. Retain separately the signed date, gazette page date and clause-stated start date.",
+    },
     "henan-materials-reply": {
         "id": "HN-MATERIALS-REPLY-2023", "origin": "https://www.henan.gov.cn", "path": "/2023/02-04/2683999.html",
         "label": "河南省公安厅公开答复：省内异地补换领材料分支", "selector": {"id": "content"},
@@ -92,6 +116,10 @@ def main():
             }
             if target.get("document_number"):
                 config["metadata"]["document_number"] = target["document_number"]
+            if target.get("signed_at"):
+                config["metadata"]["document_signed_at"] = target["signed_at"]
+            if target.get("metadata_selectors"):
+                config["metadata_selectors"] = target["metadata_selectors"]
             if target.get("keywords"):
                 config.update(include_paragraph_keywords=target["keywords"], paragraph_expected_count=target["expected"])
             store.register(config)
