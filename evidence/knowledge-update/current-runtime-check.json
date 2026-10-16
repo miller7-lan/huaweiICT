@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T10:22:05.534374+00:00",
+  "captured_at": "2026-10-16T10:52:26.108245+00:00",
   "counts": {
     "sites": 29,
     "documents": 21,
@@ -16,34 +16,37 @@
       "http_status": 200,
       "service_health_verified": true
     },
+    "ollama": {
+      "reachable": true,
+      "http_status": 200,
+      "service_health_verified": true
+    },
+    "nexent_backend": {
+      "reachable": true,
+      "http_status": 200,
+      "service_health_verified": true
+    },
+    "nexent_m2_runtime": {
+      "reachable": true,
+      "http_status": 200,
+      "service_health_verified": true
+    },
+    "nexent_knowledge_runtime": {
+      "reachable": true,
+      "http_status": 200,
+      "service_health_verified": true
+    },
     "knowledge_mcp_transport": {
       "reachable": true,
-      "http_status": 401,
       "service_health_verified": true,
       "authenticated_read_only_checks": 5,
       "unauthenticated_status": 401
-    },
-    "ollama": {
-      "reachable": false,
-      "failure_class": "ConnectError",
-      "service_health_verified": false
-    },
-    "nexent_backend": {
-      "reachable": false,
-      "failure_class": "ConnectError",
-      "service_health_verified": false
-    },
-    "nexent_preview_runtime": {
-      "reachable": false,
-      "failure_class": "ConnectError",
-      "service_health_verified": false,
-      "port": 5018
     }
   },
   "workers": [
     {
       "id": "knowledge-worker",
-      "heartbeat": 1792146049.9657433,
+      "heartbeat": 1792147910.3921685,
       "progress": "polling",
       "stale": false
     },
@@ -61,7 +64,7 @@
     },
     {
       "id": "knowledge-maintenance",
-      "heartbeat": 1792146006.7286327,
+      "heartbeat": 1792147929.2449105,
       "progress": "idle",
       "stale": false
     },
@@ -155,8 +158,8 @@
       "mode": "current_user_local_service_recovery"
     }
   },
-  "pending_model_run_id": "20261016T100533Z-3b77f854",
-  "generated_cases": 0,
+  "pending_model_run_id": "20261016T102656Z-708c0b41",
+  "model_trial_in_progress": true,
   "official_release_ready": false,
-  "scope": "Read-only local reachability and knowledge status snapshot. Six authenticated/unauthenticated MCP transport/scope checks completed; platform backend 5010 and preview runtime 5018 unavailable. No model generation or service startup attempted. Historical startup registration is not a fresh OS task or reboot test."
+  "scope": "Fresh local API/health and six authenticated/unauthenticated MCP checks after actual service recovery. Knowledge preview is 5022; M2 is 5018. Model generation is separately recorded by its live trial and is not a business release. Historical startup registration is not a fresh OS task or reboot test."
 }

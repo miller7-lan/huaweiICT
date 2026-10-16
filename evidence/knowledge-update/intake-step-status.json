@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T10:21:36.979059+00:00",
+  "captured_at": "2026-10-16T10:51:44.241910+00:00",
   "counts": {
     "sites": 29,
     "documents": 21,
@@ -54,11 +54,14 @@
   ],
   "test_count": 479,
   "tests_passed": true,
-  "platform_tools": [],
-  "platform_catalog_verified": false,
-  "platform_catalog_failure_class": "ConnectError",
-  "platform_catalog_failure_stage": "login",
-  "public_files_scanned": 679,
+  "platform_tools": [
+    "govkb_get_environment_status",
+    "govkb_search_evidence"
+  ],
+  "platform_catalog_verified": true,
+  "platform_catalog_failure_class": null,
+  "platform_catalog_failure_stage": null,
+  "public_files_scanned": 688,
   "credential_hit_paths": [],
   "business_review_completed": false,
   "official_knowledge_published": 0,
@@ -193,11 +196,11 @@
     "retrieval_recall_measured": false
   },
   "pending_model_prevalidation_plan": {
-    "run_id": "20261016T100533Z-3b77f854",
+    "run_id": "20261016T102656Z-708c0b41",
     "kind": "retrieved_source_unit_model_prevalidation",
     "case_count": 30,
     "retrieval_run_id": "20261016T095459Z-0aaf29dd",
-    "model_server_checked_at_preparation": false
+    "model_server_checked_at_preparation": true
   },
   "local_startup": {
     "registration": {
