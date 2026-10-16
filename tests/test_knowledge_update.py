@@ -572,6 +572,75 @@ def test_access_denial_pauses_source_without_infinite_retry(store):
     assert not worker_once(store, ControlledFetcher())
 
 
+@pytest.mark.parametrize("scenario,phase,status,request_paths", [
+    ("robots_denied", "robots", 403, ["/robots.txt"]),
+    ("document_denied", "document", 401, ["/robots.txt", "/docs/guide"]),
+    ("robots_html", "robots", 200, ["/robots.txt"]),
+    ("robots_disallow", "robots", 200, ["/robots.txt"]),
+    ("redirect_disallow", "document", None, ["/robots.txt", "/docs/guide"]),
+])
+def test_access_stop_retains_actual_stage_without_guessing_or_body_retry(store, config, monkeypatch, scenario, phase, status, request_paths):
+    from urllib.parse import urlsplit
+    requested = []
+    fetcher = Fetcher(store)
+    def controlled(url, headers):
+        requested.append(urlsplit(url).path)
+        if url.endswith("robots.txt"):
+            if scenario == "robots_denied": return 403, {}, b"denied"
+            if scenario == "robots_html": return 200, {}, b"<html>error</html>"
+            if scenario == "robots_disallow": return 200, {}, b"User-agent: *\nDisallow: /docs/\n"
+            if scenario == "redirect_disallow": return 200, {}, b"User-agent: *\nDisallow: /docs/secret\n"
+            return 404, {}, b""
+        if scenario == "redirect_disallow": return 302, {"location": "/docs/secret?token=never-log-this"}, b""
+        return 401, {}, b"denied"
+    monkeypatch.setattr(fetcher, "_request", controlled)
+    monkeypatch.setattr("gov_mcp.knowledge_fetch.time.sleep", lambda _: None)
+    schedule(store)
+    assert worker_once(store, fetcher)
+    with store.db() as db:
+        failure = json.loads(db.execute("SELECT data FROM audit WHERE action='check_failed' ORDER BY id DESC LIMIT 1").fetchone()[0])
+    assert failure["access_stop"] == {"phase": phase, "http_status": status}
+    assert requested == request_paths
+    assert "token=" not in json.dumps(failure)
+    assert not worker_once(store, fetcher)
+    assert requested == request_paths
+    response = TestClient(create_app(store.root)).get("/api/status")
+    source = response.json()["sites"][0]
+    assert source["access_stop"]["phase"] == phase and source["access_stop"]["http_status"] == status
+    assert source["access_stop"]["recorded_at"] > 0
+    assert response.json()["counts"]["documents"] == 0 and source["failures"] == 1
+
+
+def test_legacy_access_stop_does_not_invent_phase_or_http_status(store):
+    schedule(store)
+    worker_once(store, ControlledFetcher(error=AccessStopped("403")))
+    with store.db() as db:
+        failure = json.loads(db.execute("SELECT data FROM audit WHERE action='check_failed' ORDER BY id DESC LIMIT 1").fetchone()[0])
+    assert failure["access_stop"] == {"phase": "unknown", "http_status": None}
+    assert store.status()["sites"][0]["access_stop"]["phase"] == "unknown"
+
+
+def test_historical_failure_without_detail_is_readable_without_guessing_or_migration(store):
+    with store.db() as db:
+        db.execute("DROP INDEX source_check_failures")
+        db.execute("UPDATE sites SET paused_reason='robots request denied'")
+        store.log(db, "check_failed", {"site": "controlled", "reason": "robots request denied"})
+    assert KnowledgeStore(store.root, read_only=True).status()["sites"][0]["access_stop"] is None
+    with store.db() as db:
+        assert db.execute("SELECT 1 FROM sqlite_master WHERE name='source_check_failures'").fetchone() is None
+
+
+def test_invalid_seed_records_preflight_before_any_request(store, config, monkeypatch):
+    config["seeds"] = ["https://other.invalid/docs/guide"]
+    requested = []
+    fetcher = Fetcher(store)
+    monkeypatch.setattr(fetcher, "_request", lambda *args: requested.append(args))
+    with pytest.raises(AccessStopped) as caught:
+        fetcher.fetch(config, config["seeds"][0])
+    assert caught.value.detail() == {"phase": "preflight", "http_status": None}
+    assert requested == []
+
+
 def test_transient_failures_backoff_and_stop_after_three_attempts(store):
     clock = time.time()
     schedule(store, now=clock)

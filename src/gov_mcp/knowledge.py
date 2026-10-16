@@ -107,6 +107,8 @@ class KnowledgeStore:
                 CREATE TABLE IF NOT EXISTS audit(
                     id INTEGER PRIMARY KEY, at REAL NOT NULL, action TEXT NOT NULL, data TEXT NOT NULL);
                 CREATE INDEX IF NOT EXISTS due_jobs ON jobs(state,due,lease_until);
+                CREATE INDEX IF NOT EXISTS source_check_failures ON audit(json_extract(data,'$.site'),id DESC)
+                    WHERE action='check_failed';
             """)
 
     @classmethod
@@ -571,6 +573,15 @@ class KnowledgeStore:
                 item.update(enabled=config["enabled"], label=config["label"],
                             waiting_for_attachment=waiting,
                             stale=bool(config["enabled"] and not waiting and (not row["last_success"] or time.time()-row["last_success"] > config["interval_seconds"]+900)))
+                item["access_stop"] = None
+                if row["paused_reason"]:
+                    failure = db.execute("SELECT at,data FROM audit WHERE action='check_failed' "
+                                         "AND json_extract(data,'$.site')=? ORDER BY id DESC LIMIT 1", (row["id"],)).fetchone()
+                    detail = json.loads(failure["data"]).get("access_stop") if failure else None
+                    if isinstance(detail, dict):
+                        from gov_mcp.knowledge_fetch import AccessStopped
+                        item["access_stop"] = AccessStopped("", phase=detail.get("phase"), http_status=detail.get("http_status")).detail()
+                        item["access_stop"]["recorded_at"] = failure["at"]
                 sites.append(item)
             return {"mode": "knowledge_update", "counts": counts, "sites": sites,
                     "startup": startup,

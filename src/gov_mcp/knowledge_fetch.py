@@ -25,7 +25,15 @@ MAX_BYTES = 5 * 1024 * 1024
 
 
 class AccessStopped(ValueError):
-    pass
+    def __init__(self, message, *, phase="unknown", http_status=None):
+        super().__init__(message)
+        self.phase = phase
+        self.http_status = http_status
+
+    def detail(self):
+        # Structured diagnostics never copy request URLs, headers or response bodies.
+        return {"phase": self.phase if self.phase in ("preflight", "robots", "document") else "unknown",
+                "http_status": self.http_status if type(self.http_status) is int and 100 <= self.http_status <= 599 else None}
 
 
 def validate_config(config):
@@ -143,6 +151,14 @@ class Fetcher:
             connection.close()
 
     def _get(self, config, url, headers=None, robots=False):
+        try:
+            return self._get_checked(config, url, headers, robots)
+        except AccessStopped as error:
+            if error.phase == "unknown":
+                error.phase = "robots" if robots else "document"
+            raise
+
+    def _get_checked(self, config, url, headers=None, robots=False):
         for _ in range(4):
             url = allowed_url(config, url, robots=robots)
             # Per-origin reservation is persisted across worker restarts and sources on that origin.
@@ -161,7 +177,7 @@ class Fetcher:
                 url = urljoin(url, response_headers.get("location", ""))
                 continue
             if status in (401, 403):
-                raise AccessStopped("Access denied; source paused")
+                raise AccessStopped("Access denied; source paused", http_status=status)
             if status == 429:
                 raise RetryLater(response_headers.get("retry-after", "60"))
             if status >= 500:
@@ -170,21 +186,29 @@ class Fetcher:
         raise AccessStopped("Redirect limit exceeded")
 
     def fetch(self, config, url):
-        validate_config(config)
+        try:
+            validate_config(config)
+        except AccessStopped as error:
+            error.phase = "preflight"
+            raise
         if not config["enabled"]:
-            raise AccessStopped("Source disabled")
+            raise AccessStopped("Source disabled", phase="preflight")
         status, _, robots, _ = self._get(config, config["origin"].rstrip("/") + "/robots.txt", robots=True)
         if status not in (200, 404, 410) or status == 200 and re.search(br"<!doctype\s+html|<html\b", robots, re.I):
-            raise AccessStopped("Robots policy could not be checked")
+            raise AccessStopped("Robots policy could not be checked", phase="robots", http_status=status)
         policy = RobotFileParser()
         policy.parse(robots.decode("utf-8", errors="strict").splitlines() if status == 200 else [])
         delay = policy.crawl_delay(BOT) if status == 200 else None
         rate = policy.request_rate(BOT) if status == 200 else None
         config = dict(config)
         config["delay_seconds"] = max(config["delay_seconds"], delay or 0, rate.seconds/rate.requests if rate else 0)
-        url = allowed_url(config, url)
+        try:
+            url = allowed_url(config, url)
+        except AccessStopped as error:
+            error.phase = "preflight"
+            raise
         if status == 200 and not policy.can_fetch(BOT, url):
-            raise AccessStopped("Disallowed by robots policy")
+            raise AccessStopped("Disallowed by robots policy", phase="robots", http_status=status)
         with self.store.db() as db:
             cache = db.execute("SELECT * FROM resources WHERE site_id=? AND url=?", (config["id"], url)).fetchone()
         headers = {}
@@ -576,7 +600,10 @@ def worker_once(store, fetcher=None, owner=None, now=None):
             delay = error.delay if isinstance(error, RetryLater) else (60, 300, 1800)[job["attempts"]]
             db.execute("UPDATE jobs SET state=?,due=?,lease_until=NULL,error=? WHERE id=? AND owner=?", (state, now+delay, str(error)[:300], job["id"], owner))
             db.execute("UPDATE sites SET failures=failures+1,paused_reason=CASE WHEN ? THEN ? ELSE paused_reason END WHERE id=?", (stopped, str(error)[:300], config["id"]))
-            store.log(db, "check_failed", {"site": config["id"], "reason": str(error)[:300]})
+            failure = {"site": config["id"], "reason": str(error)[:300]}
+            if stopped:
+                failure["access_stop"] = error.detail()
+            store.log(db, "check_failed", failure)
     with store.db() as db:
         db.execute("UPDATE workers SET heartbeat=?,progress='idle' WHERE id=?", (time.time(), owner))
     return True

@@ -44,7 +44,17 @@ function addImpact(target,revision){
   });
   target.append(details);
 }
-function sourceState(source){if(source.paused_reason){const reason=source.paused_reason.toLowerCase();if(reason.includes('denied'))return '访问规则请求被拒绝，已暂停';if(reason.includes('timed out'))return '访问规则检查超时，已暂停';return '已暂停，请核对来源'}return !source.enabled?'未启用':source.waiting_for_attachment?'等待合法附件链接':source.failures>0?'最近检查失败，等待成功复查':source.stale?'检查超时':'正常'}
+function sourceState(source){
+  if(source.paused_reason){
+    const detail=source.access_stop;
+    const status=Number.isInteger(detail?.http_status)?`（HTTP ${detail.http_status}）`:'';
+    if(detail?.phase==='robots')return `robots访问检查未通过${status}，本轮未请求正文；已暂停`;
+    if(detail?.phase==='document')return `文件访问检查未通过${status}，已暂停`;
+    if(detail?.phase==='preflight')return '来源或路径准入检查未通过，已暂停';
+    return '采集已暂停，具体检查阶段未记录；请核对来源';
+  }
+  return !source.enabled?'未启用':source.waiting_for_attachment?'等待合法附件链接':source.failures>0?'最近检查失败，等待成功复查':source.stale?'检查超时':'正常';
+}
 function renderMaintenance(state){if(!state){message(el('maintenance'),'维护巡检尚未完成首次检查');return}const labels={source_paused:'已启用来源暂停',source_stale:'来源检查超时',source_check_failed:'最近来源检查失败',failed_jobs:'采集任务失败',pending_review:'有资料需要业务复核',worker_stale:'工作进程心跳过期',backup_failed:'完整备份失败',restore_failed:'恢复检查失败',state_failed:'维护状态需要核查',startup_recovery_attention:'Windows自动恢复任务需要核查',startup_observation_failed:'Windows任务巡检记录保存失败',discovery_limited:'文件发现达到扫描上限，需要检查延期项'};const alerts=(state.alerts||[]).map(a=>labels[a.code]||'维护异常');message(el('maintenance'),`最近备份：${state.backup_day||'未完成'}；每周恢复检查：${state.restore_week||'未完成'}。${alerts.length?alerts.join('；'):'暂无维护异常'}。只在状态变化时记录事件，备份不会自动删除。`)}
 function renderDiscovery(rows){const target=el('discovery');target.replaceChildren();if(!rows?.length){message(target,'尚无文件发现轮次记录');return}for(const row of rows){const p=document.createElement('p');p.className='empty';p.textContent=`${row.source_id}：本轮已排队索引页 ${row.index_pages_scheduled}，新文件任务 ${row.new_document_jobs}，缓存中本轮未访问目标 ${row.unvisited_cached_targets}。${row.limited||row.parser_truncated?'达到扫描上限，请核查延期项。':'本轮未达到扫描上限。'}进行中 ${row.active_jobs}，失败 ${row.failed_jobs}。`;target.append(p)}const note=document.createElement('small');note.textContent='仅覆盖已配置入口及允许范围内发现的链接；不代表网站全部文件。订阅日期和更新时间只作发现线索，效力日期仍需复核。';target.append(note)}
 function renderAttachments(rows){const target=el('attachments');target.replaceChildren();if(!rows?.length){message(target,'尚无已检查的PDF附件链接');return}const labels={new_pdf_queued:'新PDF已登记',collector:'集合持续监测',monitored_owner:'复用原监测',excluded_history_not_monitored:'历史排除（未重抓）',not_listed:'本页已移除链接（不自动废止）',needs_source_review:'来源或限额待处理'};for(const row of rows){const p=document.createElement('p');p.className='empty';p.style.overflowWrap='anywhere';p.textContent=row.parent_url+'：'+Object.entries(row.statuses).map(([key,n])=>(labels[key]||'待核查')+' '+n).join('；')+'。进行中 '+row.active_jobs+'，失败 '+row.failed_jobs+'。';target.append(p)}const note=document.createElement('small');note.textContent='仅跟随已批准发布者正文内、属于另行核查来源的PDF链接；排队或OCR完成不代表政策已核定。历史排除项不表示本轮重抓了附件。';target.append(note)}
