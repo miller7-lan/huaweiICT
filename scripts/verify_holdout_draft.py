@@ -48,7 +48,7 @@ def main():
         "answer_background_and_stop_evidence_are_separate": True,
         "semantic_independence_and_reference_freeze_remain_open": True,
         "old_development_references_and_results_preserved": True,
-        "policy_registry_and_formal_approval_state_preserved": True,
+        "policy_registry_draft_approval_and_publication_state_preserved": True,
         "production_review_validator_rejects_draft_files": True,
         "actual_export_contains_both_drafts_and_preserves_empty_approvals": True}
     user_data = json.loads(request["messages"][1]["content"])
@@ -103,8 +103,13 @@ def main():
             review = case["independence_review"]
             checks["semantic_independence_and_reference_freeze_remain_open"] &= (review["status"] == "draft_semantic_comparison_not_certified" and bool(review["nearest_development_topics"])
                 and bool(review["decision_distinction"]) and bool(case["unresolved_prerequisites"]) and case["reference_status"] == "source_bound_draft_not_approved" and not case["tested_agent_output_used_as_reference"])
-        checks["policy_registry_and_formal_approval_state_preserved"] = (fingerprint((store.root/"publication-policy.json").read_bytes()) == draft["policy_file_sha256"]
-            and fingerprint(registry) == writer["development_registry_sha256"] and all(db.execute("SELECT COUNT(*) FROM "+t).fetchone()[0] == 0 for t in ("reviews","snapshot_evaluations","versions","heads")))
+        checks["policy_registry_draft_approval_and_publication_state_preserved"] = (
+            fingerprint((store.root/"publication-policy.json").read_bytes()) == draft["policy_file_sha256"]
+            and fingerprint(registry) == writer["development_registry_sha256"]
+            and all(db.execute("SELECT state FROM revisions WHERE id=?", (b["revision"],)).fetchone()[0] == "pending_review"
+                and db.execute("SELECT 1 FROM reviews WHERE revision_id=?", (b["revision"],)).fetchone() is None
+                for b in draft["sources"].values())
+            and all(db.execute("SELECT COUNT(*) FROM "+t).fetchone()[0] == 0 for t in ("snapshot_evaluations","versions","heads")))
     checks["semantic_independence_and_reference_freeze_remain_open"] &= (draft["reference_frozen_at"] is None and draft["snapshot_binding"] is None and draft["observed_run"] is None
         and not any(draft[k] for k in ("independent_acceptance_ready","independence_certified","human_review_completed","ready_for_business_publication")) and len(draft["freeze_blockers"]) == 4)
     previous = read(ROOT/"evaluation/knowledge/material-branch-assessments.json")

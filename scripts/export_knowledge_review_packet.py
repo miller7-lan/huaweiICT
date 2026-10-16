@@ -112,7 +112,13 @@ def main():
             source = db.execute("SELECT * FROM sites WHERE id=?", (row["site_id"],)).fetchone()
             config = json.loads(source["config"])
             chunks = [dict(c) for c in db.execute("SELECT ordinal,locator,category,text FROM chunks WHERE revision_id=? ORDER BY ordinal", (row["id"],))]
+            recorded_review = None
+            if row["state"] == "reviewed":
+                store._verify(db, row["id"])
+                review = db.execute("SELECT reviewer,digest,reviewed_at FROM reviews WHERE revision_id=?", (row["id"],)).fetchone()
+                recorded_review = dict(review)
             records.append({"revision": row["id"], "state": row["state"], "site_id": row["site_id"], "url": row["url"],
+                "recorded_review": recorded_review,
                 "original_sha256": row["sha256"], "original_path": str(original.resolve()),
                 "candidate_metadata": json.loads(row["metadata"]), "chunks": chunks,
                 "classification_proposals": suggest(chunks, json.loads(row["metadata"])),
@@ -134,7 +140,7 @@ def main():
             "registered_development_question_sha256": registry, "development_registry_sha256": fingerprint(registry),
             "automatic_approval": False},
         "possible_duplicate_groups": duplicate_candidates(store),
-        "warning": "Do not derive gold answers from tested retrieval output. Source annotations and category suggestions are unapproved."}
+        "warning": "Do not derive gold answers from tested retrieval output. Recorded source reviews are separate from blank review forms and unapproved classification suggestions; this packet is not a publication approval."}
     target = store.root / "review-packets" / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     target.mkdir(parents=True, exist_ok=False)
     path = target / "candidate-review.json"
@@ -142,6 +148,10 @@ def main():
     report = {"created_at": packet["created_at"], "candidate_files": len(records),
         "latest_chunk_count": sum(len(record["chunks"]) for record in records),
         "question_count": len(dataset["cases"]), "human_reviewed_questions": 0,
+        "recorded_reviewed_source_count": sum(r["recorded_review"] is not None for r in records),
+        "reviewed_national_statutes": [{"source_id":r["site_id"],"revision":r["revision"],"reviewer":r["recorded_review"]["reviewer"]}
+            for r in records if r["recorded_review"] and r["candidate_metadata"].get("document_type") == "statute"
+            and r["candidate_metadata"].get("region") == "national"],
         "ai_reference_question_count": len(ai["cases"]) if ai else 0,
         "holdout_design_draft": {"included": holdout is not None,
             "question_count": len(holdout["question_draft"]["cases"]) if holdout else 0,
@@ -160,7 +170,7 @@ def main():
         "registered_development_questions": len(registry), "development_registry_sha256": fingerprint(registry),
         "business_review_completed": False,
         "revision_impact_available": True, "possible_duplicate_group_count": len(packet["possible_duplicate_groups"]["groups"]),
-        "source_coverage": {"national_law": "existing_2011_original_all23_articles_reextracted_2003_historical_text_and_dated_2026_08_28_directory_archived_current_after_cutoff_pending",
+        "source_coverage": {"national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
             "national_norms": "two_candidates_pending_date_and_applicability_review",
             "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
             "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",

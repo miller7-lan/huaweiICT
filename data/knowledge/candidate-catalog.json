@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T15:44:43.535666+00:00",
+  "captured_at": "2026-10-16T16:24:57.907314+00:00",
   "counts": {
-    "sites": 40,
-    "documents": 36,
-    "revisions": 113,
-    "chunks": 684,
+    "sites": 41,
+    "documents": 37,
+    "revisions": 120,
+    "chunks": 807,
     "versions": 0,
     "heads": 0,
     "jobs": 36,
-    "latest_chunks": 289
+    "latest_chunks": 304
   },
   "sources": [
     {
@@ -503,7 +503,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792085953.032043,
+      "last_success": 1792167587.5888689,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -693,6 +693,29 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792160052.4552054,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NATIONAL-LAW-GAZETTE-2011-EXCERPT",
+      "label": "全国人大常委会公报2011年第7期选页651—654：居民身份证法及修改决定施行条款",
+      "origin": "https://www.pdsxcq.gov.cn",
+      "allowed_paths": [
+        "/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf"
+      ],
+      "seeds": [
+        "https://www.pdsxcq.gov.cn/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -2773,8 +2796,8 @@
     {
       "source_id": "ID-AMENDMENT-JT-LEAD",
       "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
-      "revision": "rev-5ba23b3637717a20b90b7503",
-      "state": "pending_review",
+      "revision": "rev-bd98fcbde0cda7f52078b310",
+      "state": "reviewed",
       "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
       "original_bytes": 54492,
       "metadata": {
@@ -2783,15 +2806,28 @@
         "matter": "demo-id-renewal",
         "document_type": "statute",
         "published_at": null,
-        "effective_from": null,
+        "effective_from": "2012-01-01",
         "effective_to": null,
-        "conflict": true,
+        "conflict": false,
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
-      "source_fact_assessment_summary": null,
+      "source_fact_assessment_summary": {
+        "id": "national-statute-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T16:24:26.026138+00:00",
+        "current_applicability": "reviewed_as_national_statutory_baseline_with_documented_limits",
+        "business_approval": true,
+        "human_review_completed": false
+      },
       "pdf_extraction": {},
       "selected_clauses": [
+        {
+          "locator": "第一条",
+          "category": "procedure",
+          "characters": 60,
+          "text_sha256": "41fa752f6744117c7b6e3e0c4f6645e98f7e69026de42a84f214f8ea3811748b"
+        },
         {
           "locator": "第二条",
           "category": "eligibility",
@@ -2803,6 +2839,12 @@
           "category": "identity",
           "characters": 144,
           "text_sha256": "504440d1359a64c75566ab06d0fae8c12eb2aaee9d589a8d96a597d61e61266d"
+        },
+        {
+          "locator": "第四条",
+          "category": "identity",
+          "characters": 102,
+          "text_sha256": "18e8f57b4b3849d16c855ceb4c0693da6a7946fbb7fa628f61b28823754d3f26"
         },
         {
           "locator": "第五条",
@@ -2821,6 +2863,18 @@
           "category": "procedure",
           "characters": 73,
           "text_sha256": "8bd8d528bbe08c256b61dc677125f1a4d13bf5adbdfc5891fc661b7cd3649788"
+        },
+        {
+          "locator": "第八条",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "bf78bd01d1bdddaee65a61ed3bda9d1676f65c9be1f22a1e46b5e835f1794422"
+        },
+        {
+          "locator": "第九条",
+          "category": "identity",
+          "characters": 106,
+          "text_sha256": "99eb06565fe25f53cda80616e30f44180e09de1c81bc8e16467c957f87815527"
         },
         {
           "locator": "第十条",
@@ -2847,16 +2901,58 @@
           "text_sha256": "f392cb531c963f388cd459f9b836a058601135379195a58254b356fbdac0623c"
         },
         {
+          "locator": "第十四条",
+          "category": "identity",
+          "characters": 165,
+          "text_sha256": "fd2493d69e65957781275b6815a42326260613e54f7aa03801a41289533fc293"
+        },
+        {
           "locator": "第十五条",
           "category": "identity",
           "characters": 316,
           "text_sha256": "5bea1519a1cd2211a29d3805e3b64f1785500dc76c708cf0962ce3df15969a93"
         },
         {
+          "locator": "第十六条",
+          "category": "procedure",
+          "characters": 105,
+          "text_sha256": "166a2f07867b8d83e89a3844bfd9095a7688189821aa49c99c889a5d61d37d38"
+        },
+        {
+          "locator": "第十七条",
+          "category": "procedure",
+          "characters": 141,
+          "text_sha256": "e3bd6d6a0477e982d269ba6e36554c47dbef3abf8097d21b1ff180321c6a62cd"
+        },
+        {
+          "locator": "第十八条",
+          "category": "identity",
+          "characters": 63,
+          "text_sha256": "0515ad170d1ed14590483514331725406ce2d5c522877f5be8076fd42c3bfae0"
+        },
+        {
+          "locator": "第十九条",
+          "category": "identity",
+          "characters": 257,
+          "text_sha256": "e9431b681956298c40085014237ace75465f9c3028071a2ad8908ddf0fa14db0"
+        },
+        {
+          "locator": "第二十条",
+          "category": "procedure",
+          "characters": 241,
+          "text_sha256": "bf8d0274abef7a21633f3346d149b5af19c4d6cd18d75ab07607a58ea574cf12"
+        },
+        {
           "locator": "第二十一条",
           "category": "procedure",
           "characters": 222,
           "text_sha256": "94b469a17f9c81536c602e7ce668c4617060c0bb6cf2803cff8d568568031351"
+        },
+        {
+          "locator": "第二十二条",
+          "category": "identity",
+          "characters": 58,
+          "text_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017"
         },
         {
           "locator": "第二十三条",
@@ -3410,6 +3506,61 @@
           "category": "identity",
           "characters": 33,
           "text_sha256": "e289927574317bea8b073806cdcffd9083639f10ecc2006350a59f05c94ca081"
+        }
+      ]
+    },
+    {
+      "source_id": "NATIONAL-LAW-GAZETTE-2011-EXCERPT",
+      "url": "https://www.pdsxcq.gov.cn/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf",
+      "revision": "rev-478b82168817e73fde9e5268",
+      "state": "excluded",
+      "original_sha256": "95e8decc4bb5aecb5324b7cea311659d26245998b0c6d24049577c8e267220bd",
+      "original_bytes": 2453929,
+      "metadata": {
+        "title": "全国人大常委会公报2011年第7期选页651—654：居民身份证法及修改决定施行条款",
+        "region": "national",
+        "matter": "unclassified",
+        "document_type": "legislative_gazette_excerpt",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "legal_version_evidence"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1185,
+          "text_sha256": "4b07b2147eca2a823fcae6f59fed382c2a0cecaf1e54f1518a24b4ac4eeee536"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1408,
+          "text_sha256": "ead70dd7e3a1fe1a747748bf51d7146419cc385f7a23606061f1a2790a514b71"
+        },
+        {
+          "locator": "PDF第3页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1434,
+          "text_sha256": "10d9e7c9738349b2e1bc90f32c25778c5c22eeb105bc49d92145e46d0ab76fde"
+        },
+        {
+          "locator": "PDF第4页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1207,
+          "text_sha256": "074e8d9cea6bac02aa9b17f3a6439fb379eaa1cddba4924b28e5ebc0b80bb600"
         }
       ]
     },
