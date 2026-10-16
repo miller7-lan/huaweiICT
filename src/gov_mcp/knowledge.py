@@ -464,7 +464,10 @@ class KnowledgeStore:
     def search(self, query, region, matter, version=None, as_of=None, category=None):
         if not isinstance(query, str) or not query.strip() or len(query) > 300:
             raise ValueError("Question must contain 1-300 characters")
-        today = date.fromisoformat(as_of) if as_of else date.today()
+        current_date = date.today()
+        today = date.fromisoformat(as_of) if as_of else current_date
+        date_view = {"query_date": today.isoformat(),
+                     "query_view": "past" if today < current_date else "future" if today > current_date else "current"}
         scope = encode([region, matter])
         with self.db() as db:
             db.execute("BEGIN")
@@ -472,8 +475,9 @@ class KnowledgeStore:
             selected = version or (head[0] if head else None)
             snapshot = db.execute("SELECT * FROM versions WHERE id=? AND scope=? AND state='published'", (selected, scope)).fetchone()
             if not snapshot:
-                return {"status": "EMPTY", "message_code": "NO_PUBLISHED_KNOWLEDGE", "knowledge_version": None, "citations": []}
+                return {"status": "EMPTY", "message_code": "NO_PUBLISHED_KNOWLEDGE", "knowledge_version": None, "citations": [], **date_view}
             from gov_mcp.knowledge_retrieval import query_grams, score_literal, top_five
+            from gov_mcp.knowledge_answers import bind_citation
             grams = query_grams(query)
             ranked = []
             applicable = {}
@@ -494,10 +498,11 @@ class KnowledgeStore:
                 for chunk in db.execute("SELECT * FROM chunks WHERE revision_id=?", (revision,)):
                     score = score_literal(grams, chunk["text"])
                     if score and (not category or chunk["category"] == category):
-                        ranked.append((score, {"revision_id": revision, "title": meta["title"], "url": doc["url"],
+                        ranked.append((score, bind_citation({"revision_id": revision, "title": meta["title"], "url": doc["url"],
                             "locator": chunk["locator"], "category": chunk["category"], "quote": chunk["text"],
                             "published_at": meta.get("published_at"), "effective_from": meta["effective_from"],
-                            "knowledge_version": selected}))
+                            "effective_to": meta["effective_to"], "original_sha256": row["sha256"], "chunk_ordinal": chunk["ordinal"],
+                            "knowledge_version": selected})))
             members = set(json.loads(snapshot["members"]))
             documents = {r[0] for r in db.execute("SELECT document_id FROM revisions WHERE id IN (" + ",".join("?" for _ in members) + ")", tuple(members))}
             pending, awaiting_publication = 0, 0
@@ -535,7 +540,7 @@ class KnowledgeStore:
             return {"status": "BLOCKED" if blocked else "OK" if citations else "EMPTY", "knowledge_version": selected, "citations": [] if blocked else citations,
                     "update_available": bool(head and head[0] != selected), "pending_review_count": pending,
                     "awaiting_publication_count": awaiting_publication,
-                    "historical_snapshot": historical,
+                    "historical_snapshot": historical, **date_view,
                     "source_freshness": freshness,
                     "message_code": ("UPDATE_PENDING_REVIEW" if pending else "UPDATE_AWAITING_PUBLICATION" if awaiting_publication else "SOURCE_CHECK_REQUIRED") if blocked else "EVIDENCE_FOUND" if citations else "NO_SUPPORTING_EVIDENCE"}
 

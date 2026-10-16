@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 import httpx
 
 from gov_mcp.knowledge import KnowledgeStore, fingerprint
+from gov_mcp.knowledge_answers import STOP_MESSAGES
 from nexent_api import NexentAPI, ROOT, RUNTIME
 from private_runtime import ensure_private_directory
 
@@ -78,6 +79,7 @@ def main(cases=None, evidence_prefix="native-consultation", scope_description=No
                 "trusted_identity_and_role": bool(audit) and all(row["principal_sha256"] == principal for row in audit) and audit[0]["result"].get("data", {}).get("role") == role,
                 "final_matches_actual_tool_result": bool(audit) and answer == audit[-1]["result"],
                 "correct_stop_without_candidate_leak": answer.get("message_code") == expected and answer.get("status") in ("EMPTY", "BLOCKED") and not answer.get("citations") and not answer.get("items") and answer.get("knowledge_version") is None,
+                "literal_stop_answer_visible": answer.get("data", {}).get("answer") == STOP_MESSAGES[expected],
                 "no_error_or_step_limit": not any(event.get("type") in ("error", "max_steps_reached") for event in events),
             }
         except (httpx.HTTPError, TimeoutError, ValueError, OSError, KeyError, TypeError, RuntimeError) as error:

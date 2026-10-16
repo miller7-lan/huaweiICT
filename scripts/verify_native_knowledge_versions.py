@@ -4,6 +4,7 @@ Creates temporary agents and a temporary MCP registration, then removes only the
 IDs created by this run. It never publishes the real knowledge candidate store.
 """
 
+import argparse
 import copy
 import json
 import os
@@ -18,6 +19,7 @@ from datetime import datetime, timezone
 import httpx
 
 from gov_mcp.knowledge import KnowledgeStore, encode, fingerprint
+from gov_mcp.knowledge_answers import select_citations
 from gov_mcp.knowledge_backup import create_bundle, restore_bundle
 from gov_mcp.knowledge_fetch import schedule, worker_once
 from nexent_api import NexentAPI, ROOT, RUNTIME, nonthinking_params
@@ -30,7 +32,7 @@ REGION, MATTER = "controlled-fixture", "version-transition-only"
 OUTPUT_TOKENS = 1024
 
 
-def main():
+def main(presentation_only=False):
     run_id = uuid.uuid4().hex
     service_name = "govkb_version_fixture_"+run_id[:8]
     parent = RUNTIME / "knowledge-version-fixtures" / run_id
@@ -68,6 +70,7 @@ def main():
     report = {"started_at": datetime.now(timezone.utc).isoformat(), "run_id": run_id,
               "model": model_state["active_model"], "synthetic_only": True, "real_network_source_requests": 0,
               "business_review_completed": False, "official_knowledge_published_by_this_test": 0,
+              "presentation_only": presentation_only,
               "records": records, "cleanup": {}, "passed": False}
 
     def checkpoint():
@@ -182,6 +185,14 @@ def main():
                 "historical_flag_correct": value.get("data", {}).get("historical_snapshot") is historical,
                 "citations_and_dates_correct": (bool(value.get("citations")) and all(marker in citation["quote"] and citation["effective_from"] == "2020-01-01" and citation["knowledge_version"] == version for citation in value["citations"])) if marker else not value.get("citations"),
                 "no_error_or_step_limit": not any(event.get("type") in ("error", "max_steps_reached") for event in events)}
+            if marker:
+                bound = select_citations(value["citations"], version)
+                presented = value.get("data", {}).get("answer", "")
+                checks["complete_originals_and_ids_in_presentation"] = bool(bound) and all(
+                    citation["quote"] in presented and citation["citation_id"] in presented
+                    and citation["citation_id"] == item["citation_id"] and citation["quote"] == item["text"]
+                    for citation, item in zip(bound, value["items"], strict=True))
+                checks["date_types_and_nonapproval_visible"] = "发布日期：" in presented and "生效日期：2020-01-01" in presented and "不构成审批决定" in presented
         except (httpx.HTTPError, TimeoutError, ValueError, OSError, KeyError, TypeError) as error:
             failed = type(error).__name__
             checks = {"completed_without_technical_error": False}
@@ -231,24 +242,25 @@ def main():
         report["fixture_first_version"] = first
         for role in ("citizen", "staff"):
             run_case(role, "first-version", "EVIDENCE_FOUND", first, "模拟材料甲")
-        fixture.content = "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。"
-        collect()
-        run_case("citizen", "change-pending", "UPDATE_PENDING_REVIEW", first)
-        second = publish_fixture()
-        report["fixture_second_version"] = second
-        for role in ("citizen", "staff"):
-            run_case(role, "new-version", "EVIDENCE_FOUND", second, "模拟材料乙")
-        configure_agent("staff", first)
-        run_case("staff", "pinned-history", "EVIDENCE_FOUND", first, "模拟材料甲", historical=True)
-        configure_agent("staff")
-        backup = create_bundle(fixture_store, parent / "full-backup")
-        restored = restore_bundle(backup["directory"], parent / "restored")
-        stop_server()
-        fixture_store = KnowledgeStore(restored["restored_to"], read_only=True)
-        start_server(fixture_store.root)
-        run_case("staff", "after-full-restore", "EVIDENCE_FOUND", second, "模拟材料乙")
-        report["full_restore_verified_by_actual_model"] = True
-        report["passed"] = len(records) == 7 and all(record["passed"] for record in records)
+        if not presentation_only:
+            fixture.content = "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。"
+            collect()
+            run_case("citizen", "change-pending", "UPDATE_PENDING_REVIEW", first)
+            second = publish_fixture()
+            report["fixture_second_version"] = second
+            for role in ("citizen", "staff"):
+                run_case(role, "new-version", "EVIDENCE_FOUND", second, "模拟材料乙")
+            configure_agent("staff", first)
+            run_case("staff", "pinned-history", "EVIDENCE_FOUND", first, "模拟材料甲", historical=True)
+            configure_agent("staff")
+            backup = create_bundle(fixture_store, parent / "full-backup")
+            restored = restore_bundle(backup["directory"], parent / "restored")
+            stop_server()
+            fixture_store = KnowledgeStore(restored["restored_to"], read_only=True)
+            start_server(fixture_store.root)
+            run_case("staff", "after-full-restore", "EVIDENCE_FOUND", second, "模拟材料乙")
+            report["full_restore_verified_by_actual_model"] = True
+        report["passed"] = len(records) == (2 if presentation_only else 7) and all(record["passed"] for record in records)
     except Exception as error:
         report["failure_class"] = type(error).__name__
         (parent / "failure-detail.txt").write_text(str(error), encoding="utf-8")
@@ -291,12 +303,14 @@ def main():
         report["real_candidate_business_counts_unchanged"] = real_before == real_after
         report["real_candidate_counts"] = real_after
         report["finished_at"] = datetime.now(timezone.utc).isoformat()
-        report["scope"] = "Intended coverage: seven model/MCP cases on synthetic data for first/new versions, pending stop, pinned history and restore. Only completed records establish actual coverage. No business-policy correctness or UI acceptance claim."
+        report["scope"] = ("Two fixed-question native model/MCP calls on a synthetic published fixture, one per authenticated role; full original citations, stable IDs, date labels and exact last-tool copying. No dynamic visitor-question, business accuracy or UI acceptance claim." if presentation_only else
+            "Intended coverage: seven model/MCP cases on synthetic data for first/new versions, pending stop, pinned history and restore. Only completed records establish actual coverage. No business-policy correctness or UI acceptance claim.")
         report["passed"] = report["passed"] and all(report["cleanup"].values()) and report["real_candidate_business_counts_unchanged"]
         checkpoint()
         output = ROOT / "evidence/knowledge-update"
-        (output / ("native-version-fixture-"+run_id[:8]+".json")).write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-        (output / "native-version-fixture.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        prefix = "native-answer-fixture" if presentation_only else "native-version-fixture"
+        (output / (prefix+"-"+run_id[:8]+".json")).write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        (output / (prefix+".json")).write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"passed": report["passed"], "cases": len(records), "cleanup": report["cleanup"],
                       "real_candidate_business_counts_unchanged": report["real_candidate_business_counts_unchanged"]}, ensure_ascii=False), flush=True)
     if not report["passed"]:
@@ -304,4 +318,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--presentation-only", action="store_true", help="Run two bounded native citation-presentation cases; retain earlier version-transition evidence")
+    main(presentation_only=parser.parse_args().presentation_only)

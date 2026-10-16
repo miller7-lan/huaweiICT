@@ -9,6 +9,7 @@ from pathlib import Path
 from gov_mcp.core import result
 from gov_mcp.knowledge import KnowledgeStore, encode, fingerprint
 from gov_mcp.knowledge_scope import scope_decision
+from gov_mcp.knowledge_answers import render_answer, STOP_MESSAGES
 
 
 class KnowledgeTools:
@@ -48,14 +49,17 @@ class KnowledgeTools:
                     value = result(found["status"], found["message_code"], role=role,
                         region=self.scope["region"], matter_id=self.scope["matter"], formal_approval=False,
                         historical_snapshot=found.get("historical_snapshot", False),
+                        query_date=found["query_date"], query_view=found["query_view"],
                         source_freshness=found.get("source_freshness", []), update_available=found.get("update_available", False))
                     value["knowledge_version"] = found["knowledge_version"]
                     value["citations"] = found["citations"]
-                    value["items"] = [{"text": c["quote"], "locator": c["locator"], "revision_id": c["revision_id"]} for c in found["citations"]]
+                    value["items"] = [{"text": c["quote"], "locator": c["locator"], "revision_id": c["revision_id"],
+                                       "citation_id": c["citation_id"]} for c in found["citations"]]
+                value["data"]["answer"] = render_answer(value)
             else:
                 value = result("BLOCKED", "READ_ONLY_TOOL_REQUIRED")
         except (ValueError, OSError, TypeError, AttributeError, sqlite3.Error):
-            value = result("ERROR", "KNOWLEDGE_READER_UNAVAILABLE")
+            value = result("ERROR", "KNOWLEDGE_READER_UNAVAILABLE", answer=STOP_MESSAGES["KNOWLEDGE_READER_UNAVAILABLE"])
         # Prove which question reached the server without persisting visitor text
         # or rejected personal data in the audit trail.
         audit = {"tool": name, "principal_sha256": fingerprint([tenant_id, user_id]),
