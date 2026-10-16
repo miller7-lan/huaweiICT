@@ -45,6 +45,8 @@ def main():
         config = json.loads(db.execute("SELECT config FROM sites WHERE id=?",(national["source_id"],)).fetchone()[0])
         local_config = json.loads(db.execute("SELECT config FROM sites WHERE id=?",(local["source_id"],)).fetchone()[0])
         gates = {t:db.execute("SELECT count(*) FROM "+t).fetchone()[0] for t in before["gates"]}
+        if gates != dict(before["gates"],reviews=before["gates"]["reviews"]+1):
+            parser.error("原阶段之后已有其他复核或发布变化；保留历史回执，不用当前库覆盖")
         latest_states = dict(db.execute("SELECT state,count(*) FROM revisions WHERE rowid IN (SELECT max(rowid) FROM revisions GROUP BY document_id) GROUP BY state").fetchall())
         pending = [json.loads(r[0]) for r in db.execute("SELECT metadata FROM revisions WHERE state='pending_review' AND rowid IN (SELECT max(rowid) FROM revisions GROUP BY document_id)")]
         watch_binding = national["unresolved_window_watch"]

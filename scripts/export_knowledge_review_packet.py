@@ -194,7 +194,7 @@ def main():
         "source_coverage": {"national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
             "national_norms": "See reviewed_operational_norms for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch, so the original selected scope stays monitored. Local material procedures and the 2016 use-announcement dates remain separate pending matters.",
             "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
-            "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
+            "provincial_update_signal": "See reviewed_service_information for the actually reviewed 2025-07-10 provincial six-month renewal-window report. Its publication is not the adjustment's legal commencement; the original adjustment instrument and exact start remain unestablished.",
             "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
             "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
             "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
