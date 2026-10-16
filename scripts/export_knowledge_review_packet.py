@@ -164,6 +164,11 @@ def main():
             "reviewer":r["recorded_review"]["reviewer"],"date_basis":r["candidate_metadata"]["date_basis"]}
             for r in records if r["recorded_review"]
             and r["candidate_metadata"].get("date_basis", {}).get("kind") == "reported_service_information"],
+        "reviewed_fee_clauses": [{"source_id":r["site_id"],"revision":r["revision"],
+            "reviewer":r["recorded_review"]["reviewer"],"effective_from":r["candidate_metadata"].get("effective_from"),
+            "scope_summary":r["candidate_metadata"].get("source_fact_assessment", {}).get("current_applicability")}
+            for r in records if r["recorded_review"] and r["candidate_metadata"].get("collection_role")
+            in ("fee_candidate", "fee_first_issue_boundary", "fee_waiver_candidate")],
         "ai_reference_question_count": len(ai["cases"]) if ai else 0,
         "holdout_design_draft": {"included": holdout is not None,
             "question_count": len(holdout["question_draft"]["cases"]) if holdout else 0,
@@ -189,7 +194,7 @@ def main():
             "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
             "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
             "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
-            "fees": "2007_fee_and_2018_first_issue_waiver_originals_and_2025_catalog_chain_archived_local_exemption_and_postage_relations_pending",
+            "fees": "See reviewed_fee_clauses for actual scoped approvals. First issue, expiry renewal, hardship exemption/reduction and extra charges remain separate; a normally acquired 2004 hardship original is pending local-currentness/proof review. Do not infer local eligibility or extra fees from the directory citations.",
             "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
             "district_guide": "archived_candidate_current_access_paused"}}
     (ROOT / "evidence/knowledge-update/review-readiness.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T17:22:35.070968+00:00",
+  "captured_at": "2026-10-16T17:38:29.114482+00:00",
   "counts": {
-    "sites": 41,
-    "documents": 37,
-    "revisions": 123,
-    "chunks": 832,
+    "sites": 42,
+    "documents": 38,
+    "revisions": 125,
+    "chunks": 834,
     "versions": 0,
     "heads": 0,
     "jobs": 36,
-    "latest_chunks": 303
+    "latest_chunks": 304
   },
   "sources": [
     {
@@ -47,6 +47,24 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": "Access denied; source paused",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FEE-WAIVER-2004-ZJ-LEAD",
+      "label": "国家身份证工本费困难减免原始通知：人工归档待核",
+      "origin": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn",
+      "allowed_paths": [
+        "/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf"
+      ],
+      "seeds": [
+        "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
@@ -853,6 +871,48 @@
     }
   ],
   "documents": [
+    {
+      "source_id": "FEE-WAIVER-2004-ZJ-LEAD",
+      "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf",
+      "revision": "rev-c2f18391171fad5835a6eafe",
+      "state": "pending_review",
+      "original_sha256": "1b1cc0eb3bb70b45b7369f6444d18585548682b48797569e851b53a4f846da40",
+      "original_bytes": 101174,
+      "metadata": {
+        "title": "财政部国家发展改革委关于第二代居民身份证工本费减免政策的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "财综〔2004〕8号",
+        "published_at": null,
+        "effective_from": "2004-01-01",
+        "effective_to": null,
+        "document_signed_at": "2004-02-06",
+        "extraction_method": "native_pdf_first_page_with_all_pages_ai_visual_check",
+        "scope_confirmed": false,
+        "collection_role": "manual_native_pdf_pending"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-hardship-waiver-original-pending-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T17:37:45.961494+00:00",
+        "current_applicability": "national_original_exemption_branches_local_current_qualification_and_proof_pending",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {
+        "method": "native_page_1_manual_selection",
+        "requires_visual_review": true
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（原生文本；第2页空白已核对）",
+          "category": "fees",
+          "characters": 682,
+          "text_sha256": "cd06764b3d9283888069506cad95641898e3fef2a9f5936eb7d965998cfa6cbd"
+        }
+      ]
+    },
     {
       "source_id": "HN-FEE-CATALOG-PAGE-2025",
       "url": "https://czt.henan.gov.cn/2025/12-30/3280093.html",
@@ -3248,8 +3308,8 @@
     {
       "source_id": "MOF-FIRST-ISSUE-2018",
       "url": "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm",
-      "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
-      "state": "pending_review",
+      "revision": "rev-e41c61067fe70ce4ce221dbf",
+      "state": "reviewed",
       "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
       "original_bytes": 21072,
       "metadata": {
@@ -3259,13 +3319,21 @@
         "document_type": "administrative_norm",
         "document_number": "财税〔2018〕37号",
         "published_at": null,
-        "effective_from": null,
+        "effective_from": "2018-04-01",
         "effective_to": null,
+        "conflict": false,
         "document_signed_at": "2018-04-12",
-        "scope_confirmed": false,
+        "scope_confirmed": true,
         "collection_role": "fee_first_issue_boundary"
       },
-      "source_fact_assessment_summary": null,
+      "source_fact_assessment_summary": {
+        "id": "national-first-issue-fee-boundary-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T17:37:45.961494+00:00",
+        "current_applicability": "national_first_issue_fee_suspension_only_not_renewal_waiver",
+        "business_approval": true,
+        "human_review_completed": false
+      },
       "pdf_extraction": {},
       "selected_clauses": [
         {

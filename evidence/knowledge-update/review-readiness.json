@@ -1,10 +1,10 @@
 {
-  "created_at": "2026-10-16T17:22:35.696134+00:00",
-  "candidate_files": 37,
-  "latest_chunk_count": 303,
+  "created_at": "2026-10-16T17:38:29.617258+00:00",
+  "candidate_files": 38,
+  "latest_chunk_count": 304,
   "question_count": 30,
   "human_reviewed_questions": 0,
-  "recorded_reviewed_source_count": 2,
+  "recorded_reviewed_source_count": 3,
   "reviewed_national_statutes": [
     {
       "source_id": "ID-AMENDMENT-JT-LEAD",
@@ -30,6 +30,15 @@
       }
     }
   ],
+  "reviewed_fee_clauses": [
+    {
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "revision": "rev-e41c61067fe70ce4ce221dbf",
+      "reviewer": "Codex AI",
+      "effective_from": "2018-04-01",
+      "scope_summary": "national_first_issue_fee_suspension_only_not_renewal_waiver"
+    }
+  ],
   "ai_reference_question_count": 30,
   "holdout_design_draft": {
     "included": true,
@@ -39,12 +48,14 @@
       "questions": "6bf9f6155ef0bc566f3f3b7b90377966b12d9b4826cd51906318b7ba705fe1dc"
     },
     "live_binding_checks": {
-      "sources_match_latest": true,
+      "sources_match_latest": false,
       "development_registry_matches": true,
       "publication_policy_file_matches": true,
       "attributed_review_contract": true
     },
-    "stale_source_keys": [],
+    "stale_source_keys": [
+      "F18"
+    ],
     "semantic_screening_status": "bound",
     "semantic_screening_counts": {
       "retain_for_further_source_review": 30
@@ -55,7 +66,7 @@
     "business_acceptance_executed": false
   },
   "dataset_sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
-  "review_packet_sha256": "d0c1edccba2180f72e9a49fb77de37ca7d1ae9bce6c586e59b7dc8de05d13e00",
+  "review_packet_sha256": "8f89f36b4187c74b2c43b72a01d983b70cc450f6d19f548af28daa589ea48b63",
   "publication_policy": {
     "minimum_cases": 30,
     "minimum_recall_at_5": 0.9,
@@ -80,7 +91,7 @@
     "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
     "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
     "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
-    "fees": "2007_fee_and_2018_first_issue_waiver_originals_and_2025_catalog_chain_archived_local_exemption_and_postage_relations_pending",
+    "fees": "See reviewed_fee_clauses for actual scoped approvals. First issue, expiry renewal, hardship exemption/reduction and extra charges remain separate; a normally acquired 2004 hardship original is pending local-currentness/proof review. Do not infer local eligibility or extra fees from the directory citations.",
     "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
     "district_guide": "archived_candidate_current_access_paused"
   }
