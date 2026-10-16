@@ -8,6 +8,7 @@ digests before binding; these hashes are integrity identifiers, not signatures.
 import hashlib
 import json
 import re
+from datetime import date
 
 
 FIELDS = ("revision_id", "title", "url", "locator", "category", "quote",
@@ -19,6 +20,14 @@ def bind_citation(source):
     if not isinstance(source, dict) or any(key not in source for key in FIELDS):
         raise ValueError("Incomplete citation")
     value = {key: source[key] for key in FIELDS}
+    service_fields = ("date_basis", "information_as_of")
+    if any(key in source for key in service_fields):
+        if (not all(key in source for key in service_fields) or source["date_basis"] != "reported_service_information"
+                or source["effective_from"] is not None or source["effective_to"] is not None
+                or source["published_at"] != source["information_as_of"]
+                or date.fromisoformat(source["information_as_of"]).isoformat() != source["information_as_of"]):
+            raise ValueError("Distinct, complete service-information date fields required")
+        value.update({key: source[key] for key in service_fields})
     if any(not isinstance(value[key], str) or not value[key] for key in
            ("revision_id", "title", "url", "locator", "category", "quote", "knowledge_version")):
         raise ValueError("Incomplete citation")
@@ -82,15 +91,17 @@ def render_answer(value):
     if data["historical_snapshot"]:
         lines.append("历史知识库快照：不代表当前发布版本。")
     if data["query_view"] == "past":
-        lines.append("历史日期筛选：依据所选快照中记录的生效区间，不重建当时的网站状态。")
+        lines.append("历史日期筛选：按已核定的施行日期或服务信息截至日期筛选，不重建当时的网站状态。")
     elif data["query_view"] == "future":
-        lines.append("未来日期筛选：仅依据所选快照已知的生效区间，不保证未来仍然有效。")
+        lines.append("未来日期筛选：仅按所选快照已知日期筛选，不保证未来仍然有效或服务不变。")
     for citation in citations:
         lines.extend(["", "引用：" + citation["citation_id"], "文件：" + citation["title"],
             "来源：" + citation["url"], "定位：" + citation["locator"],
             "发布日期：" + (citation["published_at"] or "未确认"),
             "生效日期：" + (citation["effective_from"] or "未确认"),
             "失效日期：" + (citation["effective_to"] or "未记录"),
+            *(["服务信息截至日期：" + citation["information_as_of"], "该日期表示原文所载服务信息，不能据此推定施行日。"]
+              if citation.get("date_basis") == "reported_service_information" else []),
             "原文：", citation["quote"]])
     lines.extend(["", "以上为依据检索结果，不构成审批决定。"])
     return "\n".join(lines)

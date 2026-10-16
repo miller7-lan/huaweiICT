@@ -262,8 +262,10 @@ class KnowledgeStore:
             meta = json.loads(row["metadata"])
             if meta["region"] in ("", "unknown", "unclassified") or meta["matter"] in ("", "unknown", "unclassified") or meta.get("scope_confirmed") is False:
                 raise ValueError("Known region/matter and confirmed branch scope required before review")
-            if not meta["usage_basis"] or not meta["effective_from"] or meta.get("conflict", False):
+            if not meta["usage_basis"] or meta.get("conflict", False):
                 raise ValueError("Usage basis, effective date and resolved conflicts required before review")
+            from gov_mcp.knowledge_dates import reviewed_start
+            reviewed_start(self, db, row, meta)
             db.execute("INSERT INTO reviews VALUES(?,?,?,?) ON CONFLICT(revision_id) DO UPDATE SET reviewer=excluded.reviewer,digest=excluded.digest,reviewed_at=excluded.reviewed_at",
                        (revision_id, reviewer.strip(), digest, time.time()))
             db.execute("UPDATE revisions SET state='reviewed' WHERE id=?", (revision_id,))
@@ -480,17 +482,19 @@ class KnowledgeStore:
                 return {"status": "EMPTY", "message_code": "NO_PUBLISHED_KNOWLEDGE", "knowledge_version": None, "citations": [], **date_view}
             from gov_mcp.knowledge_retrieval import query_grams, score_literal, top_five
             from gov_mcp.knowledge_answers import bind_citation
+            from gov_mcp.knowledge_dates import reviewed_start, citation_date_fields
             grams = query_grams(query)
             ranked = []
             applicable = {}
             for revision in json.loads(snapshot["members"]):
                 row, _ = self._verify(db, revision)
                 meta = json.loads(row["metadata"])
-                if not meta["effective_from"] or date.fromisoformat(meta["effective_from"]) > today:
+                start = reviewed_start(self, db, row, meta)
+                if date.fromisoformat(start) > today:
                     continue
-                # Among revisions that are effective, prefer the latest effective date then insertion.
+                # Prefer the latest established temporal bound, then revision insertion.
                 ordinal = db.execute("SELECT rowid FROM revisions WHERE id=?", (revision,)).fetchone()[0]
-                order = (meta["effective_from"], ordinal)
+                order = (start, ordinal)
                 if row["document_id"] not in applicable or order > applicable[row["document_id"]][0]:
                     applicable[row["document_id"]] = (order, revision, row, meta)
             for _, revision, row, meta in applicable.values():
@@ -504,7 +508,7 @@ class KnowledgeStore:
                             "locator": chunk["locator"], "category": chunk["category"], "quote": chunk["text"],
                             "published_at": meta.get("published_at"), "effective_from": meta["effective_from"],
                             "effective_to": meta["effective_to"], "original_sha256": row["sha256"], "chunk_ordinal": chunk["ordinal"],
-                            "knowledge_version": selected})))
+                            "knowledge_version": selected, **citation_date_fields(meta)})))
             members = set(json.loads(snapshot["members"]))
             documents = {r[0] for r in db.execute("SELECT document_id FROM revisions WHERE id IN (" + ",".join("?" for _ in members) + ")", tuple(members))}
             pending, awaiting_publication = 0, 0
