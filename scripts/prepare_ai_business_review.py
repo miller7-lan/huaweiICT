@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from gov_mcp.knowledge import KnowledgeStore, fingerprint
+from gov_mcp.knowledge_quality import publication_policy
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,8 +28,8 @@ WEB_SOURCES = {
 # References below are authored from source texts and local runtime controls,
 # never from the tested agent's generated answers. They remain AI drafts.
 ANSWERS = [
-    ("conditional_answer", "原居民身份证有换领依据；户口簿在区级指南列出，但省级第159条分支写法及第7条共享免纸质规则需一并核对。暂不能把两证都写成无条件必交，也不能承诺只带旧证一定受理。", ["ERQI-GUIDE-WEB", "HN-NORM-PDF-WEB"], ["ID-GUIDE-01", "MPS-NORM-01"], ["户口簿关系未决"]),
-    ("stop", "目前不能断言户口簿一律必带或一律免带。区级列表、省级换领分支及共享免纸质条件需要核定到具体窗口。", ["ERQI-GUIDE-WEB", "HN-NORM-PDF-WEB"], ["ID-GUIDE-01", "MPS-NORM-01"], ["必交和条件免交关系未决"]),
+    ("conditional_answer", "省级第159条的换领分支写交验居民身份证；国家第78条将申领、换领、补领并列后写交验户口簿，区级指南也列户口簿。需保留这些表述及共享确认条件，继续核定当前本地关系；不把两证合成无条件必交，也不保证只带旧证受理。", ["ERQI-GUIDE-WEB", "HN-NORM-PDF-WEB"], ["ID-GUIDE-01", "MPS-NORM-01"], ["国家、省级及区级材料关系未决"]),
+    ("stop", "不能断言户口簿一律必带或免带。国家第78条、河南第159条和区级列表应分别核对，且共享确认免纸质存在前提；当前二七区执行关系尚未解决。", ["ERQI-GUIDE-WEB", "HN-NORM-PDF-WEB"], ["ID-GUIDE-01", "MPS-NORM-01"], ["必交和条件免交关系未决"]),
     ("conditional_answer", "应区分申请时交验旧证与领取新证时交回旧证；后者有居民身份证法第11条的明确依据。不能将交验直接解释为申请当天一律收走。", [], ["ID-LAW-01", "MPS-NORM-01"], ["具体窗口留存环节待确认"]),
     ("conditional_answer", "2021国家规范及2022省级规范写到期前三个月；已归档的固始政府2025-07-10转载河南政府网说明，明确记录河南省公安厅将到期换领期限从3个月放宽到6个月。可以说明这项更新及来源日期，但尚未取得调整原文件和完整起止日期，不将旧三个月写作唯一现行上限，也不作二七区当前受理保证。", ["HN-NORM-PDF-WEB", "HN-UPDATE-ANYANG-WEB"], ["MPS-NORM-01", "HN-UPDATE-GS-01"], ["省厅调整原文件、起止日期和二七区当前执行关系未核定"]),
     ("conditional_answer", "规范支持办理时采集人像。二七区是否允许自带照片、选哪些拍摄渠道，目前材料不足，不能移用其他城市规则。", [], ["MPS-NORM-01"], ["本地拍摄选项未核定"]),
@@ -94,7 +95,7 @@ PUBLISHER_LOCATORS = {
     "KQ20": ["第二百三十六条"], "KQ22": ["第一百五十九条"],
     "KQ25": ["第一百五十九条"], "KQ26": ["第一百六十四条"], "KQ27": ["第一百五十七条"],
 }
-REPLACE_NATIONAL_LOCATORS = {"KQ01", "KQ02", "KQ03", "KQ05", "KQ07", "KQ09", "KQ15", "KQ17", "KQ18", "KQ19", "KQ27"}
+REPLACE_NATIONAL_LOCATORS = {"KQ03", "KQ05", "KQ07", "KQ15", "KQ17", "KQ18", "KQ27"}
 
 
 def main():
@@ -140,7 +141,10 @@ def main():
               "captured_at": datetime.now(timezone.utc).isoformat(), "scope": draft["scope"],
               "purpose": "User-authorized takeover of source analysis, materials analysis and reference-answer drafting; not an independent human acceptance report",
               "human_review_completed": False, "ready_for_business_publication": False,
-              "publication_policy_changed": False, "web_sources": WEB_SOURCES, "archived_sources": local,
+              "publication_policy_changed_by_this_preparation": False,
+              "publication_policy_sha256": fingerprint(publication_policy(store)),
+              "source_fact_assessment_sha256": fingerprint((ROOT / "evaluation/knowledge/source-fact-assessments.json").read_bytes()) if (ROOT / "evaluation/knowledge/source-fact-assessments.json").exists() else None,
+              "web_sources": WEB_SOURCES, "archived_sources": local,
               "cases": cases}
     report["content_sha256"] = fingerprint(report)
     (ROOT / "evaluation/knowledge/pilot-ai-reference-answers.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

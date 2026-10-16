@@ -30,6 +30,9 @@ def main():
             documents.append({"source_id": row["site_id"], "url": row["url"], "revision": row["id"], "state": row["state"],
                 "original_sha256": row["sha256"], "original_bytes": original.stat().st_size,
                 "metadata": {key: metadata[key] for key in metadata_fields if key in metadata},
+                "source_fact_assessment_summary": {key: metadata["source_fact_assessment"][key] for key in (
+                    "id", "reviewer_kind", "assessed_at", "current_applicability", "business_approval", "human_review_completed")}
+                    if metadata.get("source_fact_assessment") else None,
                 "pdf_extraction": {key: value for key, value in metadata.get("source_observation", {}).get("pdf_extraction", {}).items()
                                    if key in ("method", "algorithm", "language", "requires_visual_review", "confidence_available", "text_normalization", "rendering_scope")},
                 "selected_clauses": [{"locator": chunk["locator"], "category": chunk["category"], "characters": len(chunk["text"]),
@@ -38,7 +41,8 @@ def main():
         "captured_at": datetime.now(timezone.utc).isoformat(), "counts": store.status()["counts"], "sources": sources, "documents": documents,
         "purpose": "Share source entry points, actual archive fingerprints, pending metadata, selected-clause locators and text fingerprints for GitHub review. No original bodies, SQLite data, private filesystem paths, visitor questions, account data or tokens.",
         "reacquisition": "Use the original official URLs only after a fresh access/use check. This catalog does not enable collection, restore a database or carry business approval.",
-        "corpus_caution": "Archive records include mirror selections of the same act and an official service-information update signal; the record count is not a count of distinct normative policies."}
+        "corpus_caution": "Archive records include mirror selections of the same act and an official service-information update signal; the record count is not a count of distinct normative policies.",
+        "date_caution": "Dates may describe document-stated commencement or page publication. Source-fact summaries marked unknown/not approved do not certify current applicability; see evaluation/knowledge/source-fact-assessments.json for the bounded assessment."}
     target = ROOT / "data/knowledge/candidate-catalog.json"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

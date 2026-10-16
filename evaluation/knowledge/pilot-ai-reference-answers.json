@@ -4,7 +4,7 @@
   "status": "ai_source_checked_draft",
   "author_kind": "ai",
   "reviewer": "Codex AI",
-  "captured_at": "2026-10-16T02:20:13.680226+00:00",
+  "captured_at": "2026-10-16T05:39:15.787745+00:00",
   "scope": {
     "region": "郑州市二七区",
     "matter": "demo-id-renewal",
@@ -13,7 +13,9 @@
   "purpose": "User-authorized takeover of source analysis, materials analysis and reference-answer drafting; not an independent human acceptance report",
   "human_review_completed": false,
   "ready_for_business_publication": false,
-  "publication_policy_changed": false,
+  "publication_policy_changed_by_this_preparation": false,
+  "publication_policy_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d",
+  "source_fact_assessment_sha256": "ef57c57f46d785c63fa55986f9f2d4d537c9294d36f0de923d7babd30c2a01d9",
   "web_sources": {
     "ERQI-NEARBY-2026-WEB": {
       "url": "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml",
@@ -103,18 +105,6 @@
     }
   },
   "archived_sources": {
-    "ID-LAW-01": {
-      "site_id": "ID-LAW-01",
-      "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
-      "revision": "rev-293d24840fc4e53eb17c71ed",
-      "sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
-      "locators": [
-        "第十条",
-        "第十一条",
-        "第十二条",
-        "第二条"
-      ]
-    },
     "ID-GUIDE-01": {
       "site_id": "ID-GUIDE-01",
       "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
@@ -125,25 +115,6 @@
         "材料列表第2项（适用分支待复核）",
         "材料列表第3项（适用分支待复核）",
         "材料列表第4项（适用分支待复核）"
-      ]
-    },
-    "MPS-NORM-01": {
-      "site_id": "MPS-NORM-01",
-      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
-      "revision": "rev-cc5526f72436ae807a3f32f0",
-      "sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
-      "locators": [
-        "第一条",
-        "第二条",
-        "第十条",
-        "第十二条",
-        "第七十六条",
-        "第七十八条",
-        "第七十九条",
-        "第八十条",
-        "第八十ー条",
-        "第九十六条",
-        "第九十七条"
       ]
     },
     "MPS-USE-01": {
@@ -199,28 +170,6 @@
         "正文段落3"
       ]
     },
-    "HN-NORM-PUBLISHER": {
-      "site_id": "HN-NORM-PUBLISHER",
-      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
-      "revision": "rev-3221c16ab130408cb59cd2b6",
-      "sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
-      "locators": [
-        "第一条",
-        "第七条",
-        "第九条",
-        "第一百五十五条",
-        "第一百五十七条",
-        "第一百五十九条",
-        "第一百六十一条",
-        "第一百六十二条",
-        "第一百六十三条",
-        "第一百六十四条",
-        "第一百六十五条",
-        "第二百三十四条",
-        "第二百三十五条",
-        "第二百三十六条"
-      ]
-    },
     "HN-MEASURES-2024-JY": {
       "site_id": "HN-MEASURES-2024-JY",
       "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
@@ -245,6 +194,59 @@
         "PDF第7页（OCR待核对）",
         "PDF第8页（OCR待核对）"
       ]
+    },
+    "MPS-NORM-01": {
+      "site_id": "MPS-NORM-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "locators": [
+        "第一条",
+        "第二条",
+        "第十条",
+        "第十二条",
+        "第七十六条",
+        "第七十八条",
+        "第七十九条",
+        "第八十条",
+        "第八十ー条",
+        "第九十六条",
+        "第九十七条"
+      ]
+    },
+    "HN-NORM-PUBLISHER": {
+      "site_id": "HN-NORM-PUBLISHER",
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
+      "sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locators": [
+        "第一条",
+        "第七条",
+        "第九条",
+        "第一百五十五条",
+        "第一百五十七条",
+        "第一百五十九条",
+        "第一百六十一条",
+        "第一百六十二条",
+        "第一百六十三条",
+        "第一百六十四条",
+        "第一百六十五条",
+        "第二百三十四条",
+        "第二百三十五条",
+        "第二百三十六条"
+      ]
+    },
+    "ID-LAW-01": {
+      "site_id": "ID-LAW-01",
+      "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+      "revision": "rev-d66f8c0116dc5bea8410ab62",
+      "sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
+      "locators": [
+        "第十条",
+        "第十一条",
+        "第十二条",
+        "第二条"
+      ]
     }
   },
   "cases": [
@@ -253,12 +255,13 @@
       "question": "我是二七区成年本地户籍居民，本人办理身份证到期换领，要带哪些材料？",
       "category": "materials",
       "expected_behavior": "conditional_answer",
-      "ai_reference_answer": "原居民身份证有换领依据；户口簿在区级指南列出，但省级第159条分支写法及第7条共享免纸质规则需一并核对。暂不能把两证都写成无条件必交，也不能承诺只带旧证一定受理。",
+      "ai_reference_answer": "省级第159条的换领分支写交验居民身份证；国家第78条将申领、换领、补领并列后写交验户口簿，区级指南也列户口簿。需保留这些表述及共享确认条件，继续核定当前本地关系；不把两证合成无条件必交，也不保证只带旧证受理。",
       "web_evidence_ids": [
         "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
         "ID-GUIDE-01",
+        "MPS-NORM-01",
         "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
@@ -271,16 +274,24 @@
           "locator": "材料列表第2项（适用分支待复核）"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第十二条"
+        },
+        {
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第七十八条"
+        },
+        {
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第七条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
       "unresolved": [
-        "户口簿关系未决"
+        "国家、省级及区级材料关系未决"
       ],
       "human_review_status": "not_performed",
       "tested_agent_output_used_as_reference": false
@@ -290,12 +301,13 @@
       "question": "本人身份证到期换领，居民户口簿是不是必须带？",
       "category": "materials",
       "expected_behavior": "stop",
-      "ai_reference_answer": "目前不能断言户口簿一律必带或一律免带。区级列表、省级换领分支及共享免纸质条件需要核定到具体窗口。",
+      "ai_reference_answer": "不能断言户口簿一律必带或免带。国家第78条、河南第159条和区级列表应分别核对，且共享确认免纸质存在前提；当前二七区执行关系尚未解决。",
       "web_evidence_ids": [
         "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
         "ID-GUIDE-01",
+        "MPS-NORM-01",
         "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
@@ -304,11 +316,19 @@
           "locator": "材料列表第1项（适用分支待复核）"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第十二条"
+        },
+        {
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第七十八条"
+        },
+        {
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第七条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -331,11 +351,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-293d24840fc4e53eb17c71ed",
+          "revision": "rev-d66f8c0116dc5bea8410ab62",
           "locator": "第十一条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百六十一条"
         }
       ],
@@ -361,7 +381,7 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
           "locator": "第七十六条"
         },
         {
@@ -369,7 +389,7 @@
           "locator": "正文段落3"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十七条"
         }
       ],
@@ -391,7 +411,7 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -454,7 +474,7 @@
           "locator": "第三条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -508,15 +528,24 @@
       "ai_reference_answer": "不能把补领分支可交验证件之一直接当作换领时替代户口簿的规则。应核对共享调用和换领分支规定。",
       "web_evidence_ids": [],
       "archived_evidence_ids": [
+        "MPS-NORM-01",
         "HN-NORM-PUBLISHER"
       ],
       "archived_evidence": [
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第十二条"
+        },
+        {
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第七十八条"
+        },
+        {
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第七条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -594,7 +623,7 @@
           "locator": "第二十一条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第二百三十四条"
         }
       ],
@@ -623,11 +652,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-293d24840fc4e53eb17c71ed",
+          "revision": "rev-d66f8c0116dc5bea8410ab62",
           "locator": "第十二条"
         },
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
           "locator": "第八十条"
         },
         {
@@ -643,7 +672,7 @@
           "locator": "正文段落1"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百六十三条"
         }
       ],
@@ -668,11 +697,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
           "locator": "第八十ー条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百六十四条"
         }
       ],
@@ -694,7 +723,7 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -717,11 +746,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-293d24840fc4e53eb17c71ed",
+          "revision": "rev-d66f8c0116dc5bea8410ab62",
           "locator": "第十二条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百六十五条"
         }
       ],
@@ -742,11 +771,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-293d24840fc4e53eb17c71ed",
+          "revision": "rev-d66f8c0116dc5bea8410ab62",
           "locator": "第十一条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百六十一条"
         }
       ],
@@ -781,7 +810,7 @@
           "locator": "正文段落12"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -799,20 +828,29 @@
         "ERQI-GUIDE-WEB"
       ],
       "archived_evidence_ids": [
+        "MPS-NORM-01",
         "HN-NORM-PUBLISHER",
         "ID-GUIDE-01"
       ],
       "archived_evidence": [
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第十二条"
+        },
+        {
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "locator": "第七十八条"
+        },
+        {
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第七条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第九条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         },
         {
@@ -846,7 +884,7 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
           "locator": "第九十七条"
         },
         {
@@ -858,7 +896,7 @@
           "locator": "正文段落16"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第二百三十六条"
         }
       ],
@@ -898,11 +936,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-293d24840fc4e53eb17c71ed",
+          "revision": "rev-d66f8c0116dc5bea8410ab62",
           "locator": "第十一条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -958,11 +996,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-293d24840fc4e53eb17c71ed",
+          "revision": "rev-d66f8c0116dc5bea8410ab62",
           "locator": "第十一条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十九条"
         }
       ],
@@ -983,11 +1021,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-cc5526f72436ae807a3f32f0",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
           "locator": "第八十ー条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百六十四条"
         }
       ],
@@ -1008,11 +1046,11 @@
       ],
       "archived_evidence": [
         {
-          "revision": "rev-293d24840fc4e53eb17c71ed",
+          "revision": "rev-d66f8c0116dc5bea8410ab62",
           "locator": "第十一条"
         },
         {
-          "revision": "rev-3221c16ab130408cb59cd2b6",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
           "locator": "第一百五十七条"
         }
       ],
@@ -1060,5 +1098,5 @@
       "tested_agent_output_used_as_reference": false
     }
   ],
-  "content_sha256": "00433eb6ee3dcbd400c986761f0ca44f0679b04bea9f5a85d51bcf532b67a53b"
+  "content_sha256": "db33ae1487fdfe0367a4876b5093d83a0fd8d8fd36de19a2ef8789263c90e662"
 }

@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T02:20:14.547796+00:00",
+  "captured_at": "2026-10-16T05:48:48.119065+00:00",
   "counts": {
     "sites": 29,
     "documents": 21,
-    "revisions": 60,
-    "chunks": 264,
+    "revisions": 63,
+    "chunks": 293,
     "versions": 0,
     "heads": 0,
     "jobs": 24,
@@ -643,6 +643,7 @@
         "scope_confirmed": false,
         "collection_role": "core_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {
         "algorithm": "winrt-pdf-ocr-v1",
         "confidence_available": false,
@@ -721,6 +722,7 @@
         "scope_confirmed": false,
         "collection_role": "later_policy_signal"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -734,7 +736,7 @@
     {
       "source_id": "HN-NORM-PUBLISHER",
       "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
-      "revision": "rev-3221c16ab130408cb59cd2b6",
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
       "state": "pending_review",
       "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
       "original_bytes": 119474,
@@ -743,11 +745,19 @@
         "region": "河南省",
         "matter": "demo-id-renewal",
         "document_type": "provincial_normative_document",
-        "published_at": null,
-        "effective_from": null,
+        "published_at": "2022-08-16",
+        "effective_from": "2022-09-01",
         "effective_to": null,
         "scope_confirmed": true,
         "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "source-facts-20261016-v1",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T05:35:30.721510+00:00",
+        "current_applicability": "unknown",
+        "business_approval": false,
+        "human_review_completed": false
       },
       "pdf_extraction": {},
       "selected_clauses": [
@@ -855,6 +865,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -997,6 +1008,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1067,6 +1079,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1173,6 +1186,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1201,6 +1215,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1229,6 +1244,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1257,6 +1273,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1285,6 +1302,7 @@
         "scope_confirmed": false,
         "collection_role": "discovery_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1314,6 +1332,7 @@
         "scope_confirmed": false,
         "collection_role": "validity_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {
         "algorithm": "winrt-pdf-ocr-v1",
         "confidence_available": false,
@@ -1357,6 +1376,7 @@
         "scope_confirmed": false,
         "collection_role": "validity_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {
         "algorithm": "winrt-pdf-ocr-v1",
         "confidence_available": false,
@@ -1402,6 +1422,7 @@
         "scope_confirmed": false,
         "collection_role": "governance_reference"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1430,6 +1451,7 @@
         "scope_confirmed": false,
         "collection_role": "update_signal"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1461,6 +1483,7 @@
         "scope_confirmed": false,
         "collection_role": "governance_reference"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1490,6 +1513,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1584,6 +1608,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1615,7 +1640,7 @@
     {
       "source_id": "ID-LAW-01",
       "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
-      "revision": "rev-293d24840fc4e53eb17c71ed",
+      "revision": "rev-d66f8c0116dc5bea8410ab62",
       "state": "pending_review",
       "original_sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
       "original_bytes": 26709,
@@ -1629,6 +1654,14 @@
         "effective_to": null,
         "scope_confirmed": true,
         "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "source-facts-20261016-v1",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T05:35:30.721510+00:00",
+        "current_applicability": "unknown",
+        "business_approval": false,
+        "human_review_completed": false
       },
       "pdf_extraction": {},
       "selected_clauses": [
@@ -1661,7 +1694,7 @@
     {
       "source_id": "MPS-NORM-01",
       "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
-      "revision": "rev-cc5526f72436ae807a3f32f0",
+      "revision": "rev-38a4d28d3a5c34083c3a6aa4",
       "state": "pending_review",
       "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
       "original_bytes": 59481,
@@ -1671,11 +1704,19 @@
         "matter": "demo-id-renewal",
         "document_type": "administrative_norm",
         "document_number": "公通字〔2021〕12号",
-        "published_at": null,
-        "effective_from": null,
+        "published_at": "2021-07-30",
+        "effective_from": "2021-10-01",
         "effective_to": null,
         "scope_confirmed": true,
         "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "source-facts-20261016-v1",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T05:35:30.721510+00:00",
+        "current_applicability": "unknown",
+        "business_approval": false,
+        "human_review_completed": false
       },
       "pdf_extraction": {},
       "selected_clauses": [
@@ -1766,6 +1807,7 @@
         "scope_confirmed": true,
         "collection_role": "core_candidate"
       },
+      "source_fact_assessment_summary": null,
       "pdf_extraction": {},
       "selected_clauses": [
         {
@@ -1869,5 +1911,6 @@
   ],
   "purpose": "Share source entry points, actual archive fingerprints, pending metadata, selected-clause locators and text fingerprints for GitHub review. No original bodies, SQLite data, private filesystem paths, visitor questions, account data or tokens.",
   "reacquisition": "Use the original official URLs only after a fresh access/use check. This catalog does not enable collection, restore a database or carry business approval.",
-  "corpus_caution": "Archive records include mirror selections of the same act and an official service-information update signal; the record count is not a count of distinct normative policies."
+  "corpus_caution": "Archive records include mirror selections of the same act and an official service-information update signal; the record count is not a count of distinct normative policies.",
+  "date_caution": "Dates may describe document-stated commencement or page publication. Source-fact summaries marked unknown/not approved do not certify current applicability; see evaluation/knowledge/source-fact-assessments.json for the bounded assessment."
 }
