@@ -8,7 +8,7 @@ from pathlib import Path
 
 from gov_mcp.core import result
 from gov_mcp.knowledge import KnowledgeStore, encode, fingerprint
-from gov_mcp.knowledge_scope import excluded_branch
+from gov_mcp.knowledge_scope import scope_decision
 
 
 class KnowledgeTools:
@@ -37,8 +37,11 @@ class KnowledgeTools:
                     value = result("BLOCKED", "INVALID_QUESTION")
                 elif re.search(r"\d{17}[\dXx]|[\w.+-]+@[\w.-]+\.[a-zA-Z]{2,}|(?<!\d)1[3-9]\d{9}(?!\d)", question):
                     value = result("BLOCKED", "PERSONAL_DATA_NOT_ALLOWED")
-                elif excluded_branch(question):
+                elif (scope := scope_decision(question))["excluded_branch"]:
                     value = result("BLOCKED", "OUT_OF_CONFIRMED_SCOPE", included_branch=self.scope["included_branch"])
+                elif scope["proxy_stage_clarification_required"]:
+                    value = result("BLOCKED", "SCOPE_CLARIFICATION_REQUIRED", included_branch=self.scope["included_branch"],
+                        clarification="请说明他人参与的是申请办理、材料协助，还是本人办理申请后的新证领取环节；无需提供身份证号码。")
                 else:
                     found = self.store.search(question, self.scope["region"], self.scope["matter"],
                                               version=arguments.get("knowledge_version"), as_of=arguments.get("as_of"))

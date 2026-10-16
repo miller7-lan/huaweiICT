@@ -1,6 +1,7 @@
 """Actual dynamic-question preview runs; no official policy accuracy claim."""
 
 import json
+import re
 import time
 import uuid
 from datetime import datetime, timezone
@@ -22,7 +23,10 @@ CASES = [
 ]
 
 
-def main():
+def main(cases=None, evidence_prefix="native-consultation", scope_description=None):
+    cases = CASES if cases is None else cases
+    if not cases or not re.fullmatch(r"[a-z][a-z0-9-]{0,63}", evidence_prefix):
+        raise ValueError("Bounded verification suite and evidence prefix required")
     store = KnowledgeStore(RUNTIME / "knowledge-update", read_only=True)
     keys = ("documents", "revisions", "chunks", "latest_chunks", "versions", "heads")
     before = {key: store.status()["counts"][key] for key in keys}
@@ -34,7 +38,7 @@ def main():
     private = store.root / "consultation-traces" / run_id
     ensure_private_directory(private)
     records = []
-    for role, scenario, question, expected in CASES:
+    for role, scenario, question, expected in cases:
         start, conversation, events, audit, answer, failed = time.monotonic(), None, [], [], None, None
         if state.get("runtime_base") != "http://127.0.0.1:5022":
             raise RuntimeError("Verified separate original-question runtime required")
@@ -98,18 +102,20 @@ def main():
             break
     after = {key: store.status()["counts"][key] for key in keys}
     report = {"run_id": run_id, "captured_at": datetime.now(timezone.utc).isoformat(), "records": records,
-        "passed": len(records) == len(CASES) and all(record["passed"] for record in records) and before == after,
+        "passed": len(records) == len(cases) and all(record["passed"] for record in records) and before == after,
+        "verification_suite": evidence_prefix, "expected_case_count": len(cases),
         "candidate_and_publication_counts_unchanged": before == after, "counts": after,
         "preview_agents": state["agents"], "existing_agents_changed": False, "model": state["active_model"],
         "runtime_base": state["runtime_base"], "question_binding": state["original_question_binding"],
         "business_answer_accuracy_tested": False, "business_review_completed": False,
-        "scope": "Six distinct visitor messages through two dynamic-question preview agents. Actual server argument fingerprints, authenticated roles and unpublished/out-of-scope stops checked; no released-policy answers or 30-case business accuracy claim."}
+        "scope": scope_description or "Six distinct visitor messages through two dynamic-question preview agents. Actual server argument fingerprints, authenticated roles and unpublished/out-of-scope stops checked; no released-policy answers or 30-case business accuracy claim."}
     output = ROOT / "evidence/knowledge-update"
     encoded = json.dumps(report, ensure_ascii=False, indent=2)
-    (output / ("native-consultation-"+run_id+".json")).write_text(encoded, encoding="utf-8")
-    (output / "native-consultation.json").write_text(encoded, encoding="utf-8")
+    (output / (evidence_prefix+"-"+run_id+".json")).write_text(encoded, encoding="utf-8")
+    (output / (evidence_prefix+".json")).write_text(encoded, encoding="utf-8")
     if not report["passed"]:
         raise SystemExit(1)
+    return report
 
 
 if __name__ == "__main__":
