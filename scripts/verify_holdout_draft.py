@@ -3,12 +3,14 @@
 import argparse
 import json
 from collections import Counter
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 
 from gov_mcp.knowledge import KnowledgeStore, fingerprint
 from gov_mcp.knowledge_review import development_registry, question_fingerprint, validate_attributed_review
 from nexent_api import ROOT, RUNTIME
+from export_knowledge_review_packet import semantic_screening_for_review
 
 
 def read(path):
@@ -132,12 +134,37 @@ def main():
         and readiness["holdout_design_draft"]["question_count"] == 30
         and not any(readiness["holdout_design_draft"][k] for k in ("independence_certified","reference_frozen","business_acceptance_executed"))
         and readiness["business_review_completed"] is False and readiness["published_scopes"] == 0)
+    semantic = semantic_screening_for_review(draft, registry)
+    if semantic["status"] != "bound":
+        raise ValueError("Current semantic screening must be present and match this draft and development registry")
+    assessment = semantic["assessment"]
+    comparisons = {c["id"]: c for c in assessment["cases"]}
+    checks["semantic_screening_binds_all_questions_and_declares_retirements"] = (
+        semantic["status"] == "bound" and len(comparisons) == 30
+        and assessment["development_questions_compared"] == 40
+        and Counter(c["decision"] for c in assessment["cases"]) == assessment["counts"]
+        and len(assessment["retired_case_ids"]) == 9 and len(assessment["retained_case_ids"]) == 21
+        and not assessment["batch_ready_for_freeze"] and not assessment["independence_certified"]
+        and all(x["question_sha256"] in registry for c in assessment["cases"] for x in c["development_comparators"])
+        and next(c for c in cases if c["id"] == "HB10")["query_date"] == "2026-10-16")
+    for name, field in (("changed_question", "question"), ("changed_query_date", "query_date")):
+        altered = deepcopy(draft)
+        altered["cases"][0][field] += " changed binding fixture"
+        stale = semantic_screening_for_review(altered, registry)
+        checks["semantic_screening_withheld_for_"+name] = stale["status"] == "stale" and stale["assessment"] is None and not stale["batch_ready_for_freeze"]
+    stale = semantic_screening_for_review(draft, registry[:-1])
+    checks["semantic_screening_withheld_for_changed_registry"] = stale["status"] == "stale" and stale["assessment"] is None and not stale["batch_ready_for_freeze"]
+    checks["actual_export_includes_bound_screening_without_acceptance"] = (
+        exported["semantic_screening"] == semantic
+        and readiness["holdout_design_draft"]["semantic_screening_status"] == "bound"
+        and readiness["holdout_design_draft"]["semantic_screening_counts"] == assessment["counts"])
     report = {"captured_at":datetime.now(timezone.utc).isoformat(),"draft_integrity_passed":all(checks.values()),"checks":checks,
         "cases":30,"source_records":len(draft["sources"]),"background_anchors":sum(len(c["background_source_anchors"]) for c in cases),
         "draft_sha256":draft["content_sha256"],"writer_run":writer["run_id"],"writer_unique_questions":len(set(normalized)),
         "review_packet_sha256":fingerprint(args.review_packet.read_bytes()),
         "independence_certified":False,"business_acceptance_executed":False,"reference_frozen":False,
-        "counts":store.status()["counts"],"scope":"Draft structure, exact source bindings, input separation and truthful rejection/provenance only. No semantic independence, current policy correctness or business accuracy measured."}
+        "semantic_screening_counts":assessment["counts"],
+        "counts":store.status()["counts"],"scope":"Draft/source/input integrity and binding of separately authored AI semantic screening, including stale-decision withholding. Technical checks do not prove the screening judgments, semantic independence, policy correctness or business accuracy."}
     (ROOT/"evidence/knowledge-update/holdout-draft-integrity.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"draft_integrity_passed":report["draft_integrity_passed"],"checks":checks,"cases":30,"writer_unique_questions":len(set(normalized)),"independence_certified":False},ensure_ascii=False))
     if not report["draft_integrity_passed"]:raise SystemExit(1)

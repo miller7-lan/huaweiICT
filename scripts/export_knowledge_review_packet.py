@@ -12,6 +12,35 @@ from gov_mcp.knowledge_classify import suggest
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def semantic_screening_for_review(reference, registry):
+    path = ROOT / "evaluation/knowledge/holdout-semantic-screening.json"
+    if not path.exists():
+        return {"status": "missing", "assessment": None, "batch_ready_for_freeze": False}
+    review = json.loads(path.read_text(encoding="utf-8"))
+    if (review.get("kind") != "ai_semantic_screening_not_acceptance"
+            or fingerprint({k: v for k, v in review.items() if k != "content_sha256"}) != review.get("content_sha256")
+            or any(review.get(k) is not False for k in ("batch_ready_for_freeze", "independence_certified",
+                                                        "business_acceptance_executed"))):
+        raise ValueError("Semantic screening is damaged or claims acceptance")
+    from gov_mcp.knowledge_review import question_fingerprint
+    questions = [{"id": c["id"], "question_sha256": question_fingerprint(c["question"]), "query_date": c["query_date"]}
+                 for c in reference["cases"]]
+    screened = [{k: c[k] for k in ("id", "question_sha256", "query_date")} for c in review["cases"]]
+    files_match = True
+    for source in review["development_sources"]:
+        source_path = (ROOT / source["path"]).resolve()
+        if not source_path.is_relative_to(ROOT.resolve()):
+            raise ValueError("Development source must stay inside this project")
+        files_match &= source_path.is_file() and fingerprint(source_path.read_bytes()) == source["sha256"]
+    checks = {"questions_match": screened == questions and fingerprint(questions) == review["question_set_sha256"],
+              "development_registry_matches": fingerprint(registry) == review["development_registry_sha256"],
+              "development_files_match": files_match}
+    bound = all(checks.values())
+    return {"status": "bound" if bound else "stale", "artifact_sha256": fingerprint(path.read_bytes()),
+            "binding_checks": checks, "assessment": review if bound else None, "batch_ready_for_freeze": False,
+            "warning": "Retired questions cannot count toward acceptance. Retained questions only continue source review. Stale judgments are withheld; no automatic freeze or acceptance."}
+
+
 def holdout_draft_for_review(store, db, policy, registry):
     paths = {name: ROOT / f"evaluation/knowledge/holdout-business-{name}-draft.json"
              for name in ("reference", "questions")}
@@ -43,8 +72,10 @@ def holdout_draft_for_review(store, db, policy, registry):
                 or row["body_sha256"] != binding["body_sha256"]
                 or fingerprint(row["metadata"].encode()) != binding["metadata_sha256"]):
             stale.append(key)
+    screening = semantic_screening_for_review(reference, registry)
     return {"kind": "unapproved_holdout_design_for_review", "reference_draft": reference,
             "question_draft": questions,
+            "semantic_screening": screening,
             "file_sha256": {name: fingerprint(path.read_bytes()) for name, path in paths.items()},
             "live_binding_checks": {"sources_match_latest": not stale,
                 "development_registry_matches": fingerprint(registry) == reference["development_registry_sha256"],
@@ -113,6 +144,9 @@ def main():
             "file_sha256": holdout["file_sha256"] if holdout else {},
             "live_binding_checks": holdout["live_binding_checks"] if holdout else {},
             "stale_source_keys": holdout["stale_source_keys"] if holdout else [],
+            "semantic_screening_status": holdout["semantic_screening"]["status"] if holdout else "missing",
+            "semantic_screening_counts": holdout["semantic_screening"]["assessment"]["counts"]
+                if holdout and holdout["semantic_screening"]["assessment"] else {},
             "independence_certified": False, "reference_frozen": False, "business_acceptance_executed": False},
         "dataset_sha256": fingerprint(dataset_path.read_bytes()), "review_packet_sha256": fingerprint(path.read_bytes()),
         "publication_policy": publication_policy(store), "published_scopes": store.status()["counts"]["heads"],

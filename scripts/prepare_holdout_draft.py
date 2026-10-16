@@ -175,7 +175,7 @@ def main():
                 anchors.append({"source_key":key,"revision":binding["revision"],"locator":locator,"ordinal":row["ordinal"],
                     "start":0,"end":len(row["text"]),"parent_text_sha256":fingerprint(row["text"].encode()),"span_sha256":fingerprint(row["text"].encode())})
             cases.append({"id":f"HB{number:02d}","role":"citizen" if number%2 else "staff","category":CATEGORIES[(number-1)//5],
-                "question":question,"question_sha256":question_fingerprint(question),"query_date":"2025-10-16" if number == 10 else "2026-10-16",
+                "question":question,"question_sha256":question_fingerprint(question),"query_date":"2026-10-16",
                 "proposed_outcome_after_qualified_publication":outcome,"reference_answer_draft":answer,
                 "background_source_anchors":anchors,"proposed_relevant_evidence":[] if outcome == "stop" else [{"revision":a["revision"],"locator":a["locator"]} for a in anchors],
                 "unresolved_prerequisites":[gap,"核定现行效力和适用范围后才可冻结参考或正式评测"],
@@ -203,6 +203,7 @@ def main():
     (ROOT/"evaluation/knowledge/holdout-business-questions-draft.json").write_text(json.dumps(questions,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     lines = ["# 新30题业务情境与参考草案","",f"整理时间：{stamp}。作者Codex AI。本文由JSON草案生成，不是正式业务标准或独立验收结果。", "",
         "[问题文件](../evaluation/knowledge/holdout-business-questions-draft.json)与[参考及原文定位](../evaluation/knowledge/holdout-business-reference-draft.json)分开保存。", "",
+        "后续逐题审查见[语义筛查与退出记录](知识库新评测语义筛查.md)。退出题仍在本文留档，不计入可用验收名额；复核包会核对该审查与当前问题及开发题登记的绑定。", "",
         "30题按材料、时限、费用、渠道、隐私和范围各5题分组，群众/工作人员各15题。规划15题有条件回答、15题停止；实际库无正式版本，不能把当前全部停止视为通过这套规划。", "",
         "独立出题模型的一次请求虽然完整返回30条，但全为材料类且重复，整批拒绝，未重试。下列题目和参考由Codex手工整理，如实保留作者见过开发历史这一限制。40个已登记开发问题已定位，逐题有最近开发主题和不同判断点；哈希不重合不等于语义独立。", "",
         "资料现行效力、地方执行和语义独立性尚未核定，参考未冻结、未绑定正式候选快照、没有实际问答运行或通过率。若以后用某题调试提示、排序或代码，应登记为开发题并退出留出集。", "",

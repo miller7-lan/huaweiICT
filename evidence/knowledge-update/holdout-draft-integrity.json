@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-16T14:48:34.983456+00:00",
+  "captured_at": "2026-10-16T15:19:09.117620+00:00",
   "draft_integrity_passed": true,
   "checks": {
     "draft_fingerprint_matches": true,
@@ -15,18 +15,27 @@
     "old_development_references_and_results_preserved": true,
     "policy_registry_and_formal_approval_state_preserved": true,
     "production_review_validator_rejects_draft_files": true,
-    "actual_export_contains_both_drafts_and_preserves_empty_approvals": true
+    "actual_export_contains_both_drafts_and_preserves_empty_approvals": true,
+    "semantic_screening_binds_all_questions_and_declares_retirements": true,
+    "semantic_screening_withheld_for_changed_question": true,
+    "semantic_screening_withheld_for_changed_query_date": true,
+    "semantic_screening_withheld_for_changed_registry": true,
+    "actual_export_includes_bound_screening_without_acceptance": true
   },
   "cases": 30,
   "source_records": 11,
   "background_anchors": 53,
-  "draft_sha256": "53697ad8b2daab50c40744fa524c5f98dd3a1ca954aef8f4fa537c1a650581dc",
+  "draft_sha256": "7a1e908b404d81d8d34091e718508102d3b38f3fac35ede04313ddcd99bc355c",
   "writer_run": "20261016T131527Z-question-writer-ce4f149e",
   "writer_unique_questions": 12,
-  "review_packet_sha256": "472131c8c643dd48f8dadbce54241a0405f1657606c198586ff6ff5848609713",
+  "review_packet_sha256": "2388fa366b3ad0e446d232b4dab32b84ebe8aadd480a0373fdf3d0eee4af9880",
   "independence_certified": false,
   "business_acceptance_executed": false,
   "reference_frozen": false,
+  "semantic_screening_counts": {
+    "retain_for_further_source_review": 21,
+    "retire_semantic_overlap": 9
+  },
   "counts": {
     "sites": 39,
     "documents": 35,
@@ -37,5 +46,5 @@
     "jobs": 36,
     "latest_chunks": 285
   },
-  "scope": "Draft structure, exact source bindings, input separation and truthful rejection/provenance only. No semantic independence, current policy correctness or business accuracy measured."
+  "scope": "Draft/source/input integrity and binding of separately authored AI semantic screening, including stale-decision withholding. Technical checks do not prove the screening judgments, semantic independence, policy correctness or business accuracy."
 }
