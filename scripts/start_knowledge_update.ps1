@@ -18,6 +18,27 @@ if (-not $FromRecovery -and (Test-Path -LiteralPath $pausePath)) { Remove-Item -
 $argumentList = @('-m', 'gov_mcp.knowledge_service', '--runtime', ('"' + $runtimePath + '"'))
 $process = Start-Process -FilePath $pythonPath -ArgumentList $argumentList -WorkingDirectory $projectPath -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $runtimePath 'supervisor.stdout.log') -RedirectStandardError (Join-Path $runtimePath 'supervisor.stderr.log')
 @{ supervisor_pid = $process.Id; started_at = (Get-Date).ToUniversalTime().ToString('o') } | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runtimePath 'launcher.json') -Encoding utf8
-Start-Sleep -Seconds 2
-$response = Invoke-RestMethod -Uri 'http://127.0.0.1:8772/api/status' -TimeoutSec 10
-[pscustomobject]@{ SupervisorPid=$process.Id; Url='http://127.0.0.1:8772'; Mode=$response.mode; PublishedScopes=$response.counts.heads }
+$deadline = [DateTime]::UtcNow.AddSeconds(45)
+$ready = $false
+$lastReadinessError = 'Services have not responded yet.'
+$mcpRequired = Test-Path -LiteralPath (Join-Path $runtimePath 'knowledge-mcp-token.txt')
+do {
+    try {
+        $response = Invoke-RestMethod -Uri 'http://127.0.0.1:8772/api/status' -TimeoutSec 2
+        if ($response.mode -ne 'knowledge_update') { throw 'Unexpected web service mode.' }
+        foreach ($identity in @('knowledge-worker', 'knowledge-maintenance')) {
+            $worker = @($response.workers | Where-Object id -EQ $identity)
+            if (-not $worker.Count -or $worker[0].stale) { throw ('Waiting for heartbeat: ' + $identity) }
+        }
+        if ($mcpRequired) {
+            $mcpHealth = Invoke-RestMethod -Uri 'http://127.0.0.1:8773/health' -TimeoutSec 2
+            if ($mcpHealth.status -ne 'UP' -or -not $mcpHealth.read_only) { throw 'Waiting for read-only MCP.' }
+        }
+        $ready = $true
+    } catch { $lastReadinessError = $_.Exception.Message }
+    if (-not $ready -and [DateTime]::UtcNow -lt $deadline) { Start-Sleep -Seconds 1 }
+} while (-not $ready -and [DateTime]::UtcNow -lt $deadline)
+if (-not $ready) {
+    throw ('Readiness was not confirmed within 45 seconds. The launched process may still be running; inspect it and supervisor logs before starting another. Launcher PID: ' + $process.Id + '. Last check: ' + $lastReadinessError)
+}
+[pscustomobject]@{ LauncherPid=$process.Id; Url='http://127.0.0.1:8772'; Mode=$response.mode; PublishedScopes=$response.counts.heads; ReadinessConfirmed=$true }

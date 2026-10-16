@@ -1,0 +1,32 @@
+{
+  "captured_at": "2026-10-16T03:33:07.423488+00:00",
+  "passed": true,
+  "checks": {
+    "bounded_start_script_returned_readiness_confirmed": true,
+    "web_knowledge_mode": true,
+    "mcp_read_only_up": true,
+    "worker_maintenance_heartbeats_current": true,
+    "formal_query_still_empty": true,
+    "no_official_versions_or_heads": true
+  },
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "actual_formal_query": {
+    "status": "EMPTY",
+    "message_code": "NO_PUBLISHED_KNOWLEDGE",
+    "knowledge_version": null,
+    "citations": []
+  },
+  "first_fixed_wait_probe_failed_then_same_process_became_ready": true,
+  "new_start_readiness_deadline_seconds": 45,
+  "automatic_restart_on_probe_failure_added": false,
+  "scope": "Actual owned stop/start and current readiness after patch; prior fixed-two-second probe failure was transient. No reboot/logoff, full-week or business acceptance claim."
+}

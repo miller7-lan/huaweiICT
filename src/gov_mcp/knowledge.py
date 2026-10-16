@@ -469,8 +469,8 @@ class KnowledgeStore:
             snapshot = db.execute("SELECT * FROM versions WHERE id=? AND scope=? AND state='published'", (selected, scope)).fetchone()
             if not snapshot:
                 return {"status": "EMPTY", "message_code": "NO_PUBLISHED_KNOWLEDGE", "knowledge_version": None, "citations": []}
-            normalized = re.sub(r"\s+", "", query.lower())
-            grams = {normalized[i:i+2] for i in range(max(1, len(normalized)-1))}
+            from gov_mcp.knowledge_retrieval import query_grams, score_literal, top_five
+            grams = query_grams(query)
             ranked = []
             applicable = {}
             for revision in json.loads(snapshot["members"]):
@@ -488,7 +488,7 @@ class KnowledgeStore:
                     continue
                 doc = db.execute("SELECT url,site_id FROM documents WHERE id=?", (row["document_id"],)).fetchone()
                 for chunk in db.execute("SELECT * FROM chunks WHERE revision_id=?", (revision,)):
-                    score = sum(g in chunk["text"].lower() for g in grams)
+                    score = score_literal(grams, chunk["text"])
                     if score and (not category or chunk["category"] == category):
                         ranked.append((score, {"revision_id": revision, "title": meta["title"], "url": doc["url"],
                             "locator": chunk["locator"], "category": chunk["category"], "quote": chunk["text"],
@@ -512,7 +512,7 @@ class KnowledgeStore:
                     awaiting_publication += int(included)
                 else:
                     awaiting_publication += int(matches and latest["id"] not in members or not matches and included)
-            citations = [c for _, c in sorted(ranked, key=lambda item: (-item[0], item[1]["revision_id"], item[1]["locator"]))[:5]]
+            citations = top_five(ranked)
             site_ids = {r[0] for r in db.execute("SELECT DISTINCT d.site_id FROM documents d JOIN revisions r ON r.document_id=d.id WHERE r.id IN (" + ",".join("?" for _ in json.loads(snapshot["members"])) + ")", json.loads(snapshot["members"]))}
             from gov_mcp.knowledge_discovery import watched_source_ids
             monitors = watched_source_ids(db, region, matter)
