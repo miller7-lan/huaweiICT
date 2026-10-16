@@ -121,3 +121,29 @@ def test_later_runtime_summary_preserves_first_trial_observation(tmp_path):
     assert json.loads((tmp_path / "model-prevalidation.json").read_text(encoding="utf-8"))["counts"]["revisions"] == 60
     snapshots = list(tmp_path.glob("model-prevalidation-summary-*.json"))
     assert len(snapshots) == 1 and json.loads(snapshots[0].read_text(encoding="utf-8"))["counts"]["revisions"] == 60
+
+
+def test_conditions_profile_keeps_source_hints_but_not_reference_answers():
+    case = {"question": "自拟问题", "evidence": EVIDENCE,
+            "source_structure_notes": [{"evidence_id": "E-real", "literal_markers": []}],
+            "ai_reference_answer": "GOLD_SECRET", "expected_behavior": "GOLD_BEHAVIOR"}
+    payload = preview.model_payload("local", case, "conditions_v2")
+    assert "GOLD_" not in json.dumps(payload, ensure_ascii=False)
+    assert json.loads(payload["messages"][1]["content"])["source_structure_notes"] == case["source_structure_notes"]
+    assert preview.model_payload("local", case)["messages"][0]["content"].startswith(preview.SYSTEM)
+
+
+def test_distinct_quote_policy_accepts_two_quotes_of_one_source_but_not_same_pair():
+    value = answer()
+    value["citations"].append({"evidence_id": "E-real", "quote": "20巧年"})
+    assert "duplicate_citation" in preview.validate_answer(value, EVIDENCE)
+    assert preview.validate_answer(value, EVIDENCE, "distinct_quotes_v2") == []
+    value["citations"].append(dict(value["citations"][0]))
+    assert "duplicate_citation" in preview.validate_answer(value, EVIDENCE, "distinct_quotes_v2")
+
+
+def test_unknown_prompt_and_citation_profiles_are_rejected():
+    with pytest.raises(ValueError):
+        preview.model_payload("local", {"question": "问题", "evidence": []}, "silent-new-version")
+    with pytest.raises(ValueError):
+        preview.validate_answer(answer(), EVIDENCE, "silently-weakened")

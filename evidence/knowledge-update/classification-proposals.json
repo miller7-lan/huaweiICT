@@ -1,10 +1,10 @@
 {
-  "captured_at": "2026-10-16T02:20:15.680932+00:00",
+  "captured_at": "2026-10-16T02:50:06.724179+00:00",
   "records": [
     {
       "revision": "rev-293d24840fc4e53eb17c71ed",
       "source_id": "ID-LAW-01",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "delivery",
         "duration",
@@ -13,24 +13,35 @@
       ],
       "mixed_branch_mentions": true,
       "sections": 4,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 22,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "collection_is_not_application",
+        "do_not_merge_application_branches",
+        "keep_time_expressions_bound_to_their_source_and_conditions",
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-ec7e7716b9519d20ee336e0b",
       "source_id": "ID-GUIDE-01",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "eligibility",
         "materials"
       ],
       "mixed_branch_mentions": true,
       "sections": 4,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 4,
+      "structure_limit_sections": 0,
+      "structure_cautions": []
     },
     {
       "revision": "rev-cc5526f72436ae807a3f32f0",
       "source_id": "MPS-NORM-01",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "capture",
         "delivery",
@@ -43,12 +54,20 @@
       ],
       "mixed_branch_mentions": true,
       "sections": 11,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 22,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "collection_is_not_application",
+        "keep_time_expressions_bound_to_their_source_and_conditions",
+        "paper_waiver_requires_source_conditions",
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-d22b05a6d353b71c8bc504ad",
       "source_id": "MPS-USE-01",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "capture",
         "delivery",
@@ -57,12 +76,17 @@
       ],
       "mixed_branch_mentions": false,
       "sections": 16,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 7,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-5ba23b3637717a20b90b7503",
       "source_id": "ID-AMENDMENT-JT-LEAD",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "capture",
         "delivery",
@@ -75,23 +99,37 @@
       ],
       "mixed_branch_mentions": true,
       "sections": 12,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 40,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "collection_is_not_application",
+        "do_not_make_universal_fee_claim",
+        "do_not_merge_application_branches",
+        "keep_time_expressions_bound_to_their_source_and_conditions",
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-01e4a7686991d06c8135e431",
       "source_id": "HN-UPDATE-GS-01",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "eligibility"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 3,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "keep_time_expressions_bound_to_their_source_and_conditions"
+      ]
     },
     {
       "revision": "rev-3221c16ab130408cb59cd2b6",
       "source_id": "HN-NORM-PUBLISHER",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "capture",
         "delivery",
@@ -105,134 +143,187 @@
       ],
       "mixed_branch_mentions": true,
       "sections": 14,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 40,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "collection_is_not_application",
+        "do_not_merge_application_branches",
+        "household_relationship_proof_is_not_identity_material_substitution",
+        "keep_time_expressions_bound_to_their_source_and_conditions",
+        "paper_waiver_requires_source_conditions",
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-dceee272eaca3c7b903155d8",
       "source_id": "HN-VALIDITY-2025-PDF",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 0,
+      "structure_limit_sections": 0,
+      "structure_cautions": []
     },
     {
       "revision": "rev-9abf6a37bea475cc20f9b7ad",
       "source_id": "HN-REPEAL-2025B-PDF",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 1,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-4f4f86c3c7fb597b6f19789f",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "duration",
         "eligibility"
       ],
       "mixed_branch_mentions": true,
       "sections": 20,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 2,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "keep_time_expressions_bound_to_their_source_and_conditions"
+      ]
     },
     {
       "revision": "rev-bc49b122bba6b4eacb4e5315",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 8,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 1,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-0a62b0e1c086b12f92d6b62b",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "duration",
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 14,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 1,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-610210af8967c7ff1022371a",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 0,
+      "structure_limit_sections": 0,
+      "structure_cautions": []
     },
     {
       "revision": "rev-2ceb2ee5c4a192a7f4c59a55",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 0,
+      "structure_limit_sections": 0,
+      "structure_cautions": []
     },
     {
       "revision": "rev-208b81f93ba412d99ccbb07a",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 0,
+      "structure_limit_sections": 0,
+      "structure_cautions": []
     },
     {
       "revision": "rev-aa9a5b2f2a6298980f9bb518",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 0,
+      "structure_limit_sections": 0,
+      "structure_cautions": []
     },
     {
       "revision": "rev-c887251972d6cd974e33a6da",
       "source_id": "HN-POLICY-DISCOVERY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 0,
+      "structure_limit_sections": 0,
+      "structure_cautions": []
     },
     {
       "revision": "rev-e6c9bbc9e0f0815a9ac0d96e",
       "source_id": "HN-MEASURES-2024-JY",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "delivery",
         "duration"
       ],
       "mixed_branch_mentions": false,
       "sections": 1,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 1,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "keep_time_expressions_bound_to_their_source_and_conditions"
+      ]
     },
     {
       "revision": "rev-5d056364588a5d9d7966ce17",
       "source_id": "HN-MEASURES-2021-PDF",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "delivery",
         "duration",
@@ -241,29 +332,44 @@
       ],
       "mixed_branch_mentions": true,
       "sections": 8,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 3,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-a02362fd84e07fe80d92ba91",
       "source_id": "HN-REPEAL-2020-PDF",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 2,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 1,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "preserve_negation_and_prohibition_context"
+      ]
     },
     {
       "revision": "rev-70c989e3818d7d8dbdbe3e23",
       "source_id": "HN-REPEAL-2021-PDF",
-      "taxonomy_version": "keyword-proposals-v1-d8fe739f1f67",
+      "taxonomy_version": "condition-proposals-v2-dd49d3f4fba4",
       "topic_codes": [
         "effectivity"
       ],
       "mixed_branch_mentions": false,
       "sections": 2,
-      "status": "machine_proposal_not_approved"
+      "status": "machine_proposal_not_approved",
+      "literal_structure_markers": 1,
+      "structure_limit_sections": 0,
+      "structure_cautions": [
+        "preserve_negation_and_prohibition_context"
+      ]
     }
   ],
   "before_counts": {
@@ -288,5 +394,5 @@
   },
   "business_review_completed": false,
   "unchanged_revision_and_publication_counts": true,
-  "note": "Nine keyword topic facets and mentioned branches are review proposals; required/conditional/alternative material relationships remain unknown"
+  "note": "Topic/branch labels and literal condition/stage/purpose/time markers are unapproved review proposals; required/conditional/alternative material relationships and current effectivity remain unknown. No source bodies are exported in this summary."
 }

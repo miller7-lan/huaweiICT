@@ -17,12 +17,15 @@ def main():
         proposal = store.propose_classification(row["id"])
         records.append({"revision": row["id"], "source_id": row["site_id"], "taxonomy_version": proposal["taxonomy_version"],
             "topic_codes": proposal["topic_codes"], "mixed_branch_mentions": proposal["mixed_branch_mentions"],
-            "sections": len(proposal["sections"]), "status": proposal["status"]})
+            "sections": len(proposal["sections"]), "status": proposal["status"],
+            "literal_structure_markers": sum(len(s["source_structure"]["markers"]) for s in proposal["sections"]),
+            "structure_limit_sections": sum(s["source_structure"]["truncated"] for s in proposal["sections"]),
+            "structure_cautions": sorted({code for s in proposal["sections"] for code in s["source_structure"]["cautions"]})})
     after = store.status()["counts"]
     report = {"captured_at": datetime.now(timezone.utc).isoformat(), "records": records,
         "before_counts": before, "after_counts": after, "business_review_completed": False,
         "unchanged_revision_and_publication_counts": before == after,
-        "note": "Nine keyword topic facets and mentioned branches are review proposals; required/conditional/alternative material relationships remain unknown"}
+        "note": "Topic/branch labels and literal condition/stage/purpose/time markers are unapproved review proposals; required/conditional/alternative material relationships and current effectivity remain unknown. No source bodies are exported in this summary."}
     (ROOT / "evidence/knowledge-update/classification-proposals.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"proposed_documents": len(records), "revisions_unchanged": before["revisions"] == after["revisions"], "official_publications": after["heads"]}, ensure_ascii=False))
 

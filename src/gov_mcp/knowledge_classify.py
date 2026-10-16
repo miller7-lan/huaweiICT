@@ -1,6 +1,7 @@
 """Auditable candidate labels and mentioned branches; no inference of mandatory requirements."""
 
 from gov_mcp.knowledge import fingerprint
+from gov_mcp.knowledge_structure import VERSION as STRUCTURE_VERSION, structure
 
 
 TOPICS = (
@@ -24,7 +25,7 @@ BRANCHES = (
     ("temporary_id", "临时身份证", ("临时居民身份证", "临时身份证")),
     ("changed_identity", "登记项目变更", ("姓名变更", "变更姓名", "登记项目变更")),
 )
-VERSION = "keyword-proposals-v1-" + fingerprint([TOPICS, BRANCHES])[:12]
+VERSION = "condition-proposals-v2-" + fingerprint([TOPICS, BRANCHES, STRUCTURE_VERSION])[:12]
 
 
 def suggest(chunks, metadata):
@@ -38,6 +39,7 @@ def suggest(chunks, metadata):
         instruction_flag = any(term in text for term in ("忽略系统规则", "忽略之前的指令", "自动发布所有", "ignore previous instructions"))
         sections.append({"locator": chunk["locator"], "topics": topics, "mentioned_branches": branches,
                          "instruction_like_text_requires_review": instruction_flag,
+                         "source_structure": structure(text),
                          "material_requirement_relationship": "unknown_pending_human_review"})
     return {"taxonomy_version": VERSION, "status": "machine_proposal_not_approved",
         "scope_from_source_config_not_inferred_from_host": {"region": metadata["region"], "matter": metadata["matter"]},

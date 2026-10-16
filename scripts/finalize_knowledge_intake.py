@@ -14,6 +14,30 @@ ROOT = Path(__file__).resolve().parents[1]
 NAME = "govkb_public_evidence_mcp"
 
 
+def model_trial_summary(trial, review):
+    """Use semantic results only when they belong to this complete frozen run."""
+    matched = bool(trial.get("run_id")) and (
+        review.get("run_id") == trial["run_id"]
+        and bool(trial.get("reference_sha256"))
+        and review.get("frozen_reference_sha256") == trial["reference_sha256"]
+        and bool(trial.get("rubric_sha256"))
+        and review.get("frozen_rubric_sha256") == trial["rubric_sha256"]
+        and trial.get("case_count", 0) == trial.get("completed_cases") == review.get("reviewed_cases") == 30
+    )
+    return {
+        "run_id": trial.get("run_id"), "prompt_profile": trial.get("prompt_profile", "raw_v1"),
+        "completed_cases": trial.get("completed_cases", 0),
+        "technical_pass_count": trial.get("technical_pass_count", 0),
+        "review_run_id_observed": review.get("run_id"), "review_matches_complete_frozen_run": matched,
+        "semantic_review_status": "ai_review_complete" if matched else "pending_matching_complete_review",
+        **{key: review.get(key) if matched else None for key in (
+            "ai_semantic_pass_count", "ai_semantic_fail_count", "not_assessable_count",
+            "both_program_and_ai_review_pass_count")},
+        "business_release_ready": False, "independent_human_acceptance": False,
+        "retrieval_recall_measured": False,
+    }
+
+
 def main():
     store = KnowledgeStore(ROOT / ".runtime/knowledge-update")
     with store.db() as db:
@@ -110,15 +134,7 @@ def main():
               "attachment_discovery": status["attachments"],
               "waiting_attachment_collectors": [s["id"] for s in status["sites"] if s.get("waiting_for_attachment")],
               "isolated_actual_attachment_flow_passed": attachment_proof.get("passed"),
-              "given_evidence_model_prevalidation": {
-                  "run_id": model_trial.get("run_id"), "completed_cases": model_trial.get("completed_cases", 0),
-                  "technical_pass_count": model_trial.get("technical_pass_count", 0),
-                  "ai_semantic_pass_count": model_review.get("ai_semantic_pass_count", 0),
-                  "ai_semantic_fail_count": model_review.get("ai_semantic_fail_count", 0),
-                  "not_assessable_count": model_review.get("not_assessable_count", 0),
-                  "both_program_and_ai_review_pass_count": model_review.get("both_program_and_ai_review_pass_count", 0),
-                  "business_release_ready": model_review.get("business_release_ready", False),
-                  "independent_human_acceptance": False, "retrieval_recall_measured": False},
+              "given_evidence_model_prevalidation": model_trial_summary(model_trial, model_review),
               "local_startup": status["startup"], "startup_evidence": startup_evidence,
               "github_final_push_completed": False,
               "scope": "Actual candidate intake, monitoring, MCP transport/catalog and separately recorded fixed/dynamic-question model stop tests; no business-accuracy or official-policy approval claim."}
