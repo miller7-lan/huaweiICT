@@ -1,10 +1,10 @@
 {
-  "created_at": "2026-10-16T17:38:29.617258+00:00",
-  "candidate_files": 38,
-  "latest_chunk_count": 304,
+  "created_at": "2026-10-16T18:21:40.690631+00:00",
+  "candidate_files": 40,
+  "latest_chunk_count": 307,
   "question_count": 30,
   "human_reviewed_questions": 0,
-  "recorded_reviewed_source_count": 3,
+  "recorded_reviewed_source_count": 4,
   "reviewed_national_statutes": [
     {
       "source_id": "ID-AMENDMENT-JT-LEAD",
@@ -39,6 +39,14 @@
       "scope_summary": "national_first_issue_fee_suspension_only_not_renewal_waiver"
     }
   ],
+  "reviewed_operational_norms": [
+    {
+      "source_id": "MPS-NORM-01",
+      "revision": "rev-54a85427f0fe78c051faa026",
+      "reviewer": "Codex AI",
+      "scope_summary": "scoped_national_operational_baseline_selected_10_clauses"
+    }
+  ],
   "ai_reference_question_count": 30,
   "holdout_design_draft": {
     "included": true,
@@ -54,7 +62,9 @@
       "attributed_review_contract": true
     },
     "stale_source_keys": [
-      "F18"
+      "NATIONAL",
+      "F18",
+      "WINDOW"
     ],
     "semantic_screening_status": "bound",
     "semantic_screening_counts": {
@@ -66,7 +76,7 @@
     "business_acceptance_executed": false
   },
   "dataset_sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
-  "review_packet_sha256": "8f89f36b4187c74b2c43b72a01d983b70cc450f6d19f548af28daa589ea48b63",
+  "review_packet_sha256": "15b767acd36d6be7d86e992cfafb5cd259c5e10ec501a83e9664a8071d797443",
   "publication_policy": {
     "minimum_cases": 30,
     "minimum_recall_at_5": 0.9,
@@ -82,15 +92,16 @@
   "development_registry_sha256": "eae7b4bc11456bdafef0bcd39878e55f37b46554d291dcf8ad2a67c1503245cd",
   "business_review_completed": false,
   "revision_impact_available": true,
-  "possible_duplicate_group_count": 10,
+  "possible_duplicate_group_count": 12,
   "source_coverage": {
     "national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
-    "national_norms": "two_candidates_pending_date_and_applicability_review",
+    "national_norms": "See reviewed_operational_norms for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch, so the original selected scope stays monitored. Local material procedures and the 2016 use-announcement dates remain separate pending matters.",
     "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
     "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
     "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
     "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
     "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
+    "municipal_household_undertaking": "The exact 2021 municipal row for renewal/replacement household-register undertaking and on-site verification is normally archived from an independently published copy, with native spans and selected-page visual check. Current Erqi procedure/currentness remains unapproved; do not transfer the adjacent away-proof no-verification field to this row.",
     "fees": "See reviewed_fee_clauses for actual scoped approvals. First issue, expiry renewal, hardship exemption/reduction and extra charges remain separate; a normally acquired 2004 hardship original is pending local-currentness/proof review. Do not infer local eligibility or extra fees from the directory citations.",
     "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
     "district_guide": "archived_candidate_current_access_paused"

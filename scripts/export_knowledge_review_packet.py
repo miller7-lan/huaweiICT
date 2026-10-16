@@ -169,6 +169,10 @@ def main():
             "scope_summary":r["candidate_metadata"].get("source_fact_assessment", {}).get("current_applicability")}
             for r in records if r["recorded_review"] and r["candidate_metadata"].get("collection_role")
             in ("fee_candidate", "fee_first_issue_boundary", "fee_waiver_candidate")],
+        "reviewed_operational_norms": [{"source_id":r["site_id"],"revision":r["revision"],
+            "reviewer":r["recorded_review"]["reviewer"],"scope_summary":r["candidate_metadata"].get("source_fact_assessment", {}).get("current_applicability")}
+            for r in records if r["recorded_review"] and r["candidate_metadata"].get("document_type") == "administrative_norm"
+            and r["candidate_metadata"].get("collection_role") == "core_candidate"],
         "ai_reference_question_count": len(ai["cases"]) if ai else 0,
         "holdout_design_draft": {"included": holdout is not None,
             "question_count": len(holdout["question_draft"]["cases"]) if holdout else 0,
@@ -188,12 +192,13 @@ def main():
         "business_review_completed": False,
         "revision_impact_available": True, "possible_duplicate_group_count": len(packet["possible_duplicate_groups"]["groups"]),
         "source_coverage": {"national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
-            "national_norms": "two_candidates_pending_date_and_applicability_review",
+            "national_norms": "See reviewed_operational_norms for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch, so the original selected scope stays monitored. Local material procedures and the 2016 use-announcement dates remain separate pending matters.",
             "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
             "provincial_update_signal": "one_archived_official_service_fact_adjustment_instrument_and_current_scope_pending",
             "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
             "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
             "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
+            "municipal_household_undertaking": "The exact 2021 municipal row for renewal/replacement household-register undertaking and on-site verification is normally archived from an independently published copy, with native spans and selected-page visual check. Current Erqi procedure/currentness remains unapproved; do not transfer the adjacent away-proof no-verification field to this row.",
             "fees": "See reviewed_fee_clauses for actual scoped approvals. First issue, expiry renewal, hardship exemption/reduction and extra charges remain separate; a normally acquired 2004 hardship original is pending local-currentness/proof review. Do not infer local eligibility or extra fees from the directory citations.",
             "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
             "district_guide": "archived_candidate_current_access_paused"}}
