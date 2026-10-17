@@ -22,7 +22,7 @@ def tool(name):
 
 def agent(number, name, title, duty, tool_name, children=()):
     return {
-        "agent_id": number, "name": name, "display_name": title,
+        "agent_id": number, "name": name, "display_name": title, "author": "ICT 项目组",
         "description": duty, "max_steps": 4 if children else 3,
         "requested_output_tokens": 1024, "is_main_agent": bool(children),
         "provide_run_summary": False, "allow_chat_metadata": False,

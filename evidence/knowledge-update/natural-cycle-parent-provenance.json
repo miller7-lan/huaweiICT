@@ -1,0 +1,106 @@
+{
+  "captured_at": "2026-10-16T02:20:12.929677+00:00",
+  "cycles": [
+    {
+      "id": 5,
+      "site_id": "HN-POLICY-DISCOVERY",
+      "started_at": 1792116529.7588868,
+      "limited": 0
+    },
+    {
+      "id": 4,
+      "site_id": "BEIJING-POLICY-DISCOVERY",
+      "started_at": 1792116529.7588868,
+      "limited": 0
+    },
+    {
+      "id": 3,
+      "site_id": "HN-POLICY-DISCOVERY",
+      "started_at": 1792094836.8297648,
+      "limited": 0
+    }
+  ],
+  "items": [
+    {
+      "source_id": "HN-MEASURES-2021-PDF",
+      "previous_revision": "rev-b5ae6f784eae759de1b4ccd5",
+      "observed_revision": "rev-5d056364588a5d9d7966ce17",
+      "created_at": 1792116645.7369397,
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "original_and_body_unchanged": true,
+      "previous_parent_revision": "rev-ecdecfe6d00f2f8d8ef4e082",
+      "current_parent_revision": "rev-208b81f93ba412d99ccbb07a",
+      "parent_change_only_ai_exclusion_marker": true,
+      "job": {
+        "id": 19,
+        "state": "done",
+        "owner": "knowledge-worker",
+        "error": null
+      },
+      "previous_ai_scope_exclusion": null,
+      "still_pending_review": true
+    },
+    {
+      "source_id": "HN-REPEAL-2020-PDF",
+      "previous_revision": "rev-181aa8d69d1c9098698d63b0",
+      "observed_revision": "rev-818ff33ba8d0408fce735ea8",
+      "created_at": 1792116655.7444959,
+      "original_sha256": "0f30596cce1fd8e22a62c315b368beddf829e462fcbc99067aaa703ea13ee0c2",
+      "original_and_body_unchanged": true,
+      "previous_parent_revision": "rev-6f4f9ff69ffdc648559ca9f4",
+      "current_parent_revision": "rev-aa9a5b2f2a6298980f9bb518",
+      "parent_change_only_ai_exclusion_marker": true,
+      "job": {
+        "id": 20,
+        "state": "done",
+        "owner": "knowledge-worker",
+        "error": null
+      },
+      "previous_ai_scope_exclusion": {
+        "reviewer": "Codex AI attachment migration source-scope check",
+        "reason": "新增附件来源/定位元数据；已校验原件字节和选入正文均与前次AI范围核查一致，继续保留原排除理由：AI检查2页：废止行政听证、特种行业、气枪、高速交警执法、车辆及驾驶人管理5件文件，未涉及试点身份证换领规范。OCR把2015识别为20巧，盖章日期亦不完整；不将机器日期直接作为效力字段。"
+      },
+      "new_ai_scope_exclusion": "rev-a02362fd84e07fe80d92ba91"
+    },
+    {
+      "source_id": "HN-REPEAL-2021-PDF",
+      "previous_revision": "rev-f4a541455099644b84969485",
+      "observed_revision": "rev-85f212fb8e52f8d651857dda",
+      "created_at": 1792116665.7006783,
+      "original_sha256": "c5af193ea4d4cd4a1c150c9177e43d17aeba3a24b36409f5f4ada3fad702502e",
+      "original_and_body_unchanged": true,
+      "previous_parent_revision": "rev-32f231636d63c43519f084b0",
+      "current_parent_revision": "rev-c887251972d6cd974e33a6da",
+      "parent_change_only_ai_exclusion_marker": true,
+      "job": {
+        "id": 21,
+        "state": "done",
+        "owner": "knowledge-worker",
+        "error": null
+      },
+      "previous_ai_scope_exclusion": {
+        "reviewer": "Codex AI attachment migration source-scope check",
+        "reason": "新增附件来源/定位元数据；已校验原件字节和选入正文均与前次AI范围核查一致，继续保留原排除理由：AI检查2页：废止印章刻字业及安全管理3件、机动车驾驶人考场1件、交通财损事故协商1件，未列试点规范；盖章/印发2021-12-14，页面2021-12-24，不互换日期。OCR有2015和盖章日期识别错误。"
+      },
+      "new_ai_scope_exclusion": "rev-70c989e3818d7d8dbdbe3e23"
+    }
+  ],
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "latest_scope_exclusions": 12,
+  "latest_pending": 9,
+  "network_requests_by_this_reconciliation": 0,
+  "source_configs_changed": false,
+  "human_attestations_created": 0,
+  "business_approval_created": false,
+  "publication_performed": false,
+  "scope": "Actual natural background publisher cycle and PDF jobs. New revision metadata records parent-review lineage only; immutable bytes and selected body are equal. AI source-scope exclusions are explicitly re-recorded after comparison, not inherited policy approval or evidence of a new official policy."
+}

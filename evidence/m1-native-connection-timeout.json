@@ -1,0 +1,50 @@
+{
+  "captured_at": "2026-10-12T08:30:02.830186+00:00",
+  "conversation_id": 63,
+  "account_role": "fresh_citizen",
+  "runtime_url": "http://127.0.0.1:5016",
+  "events": [
+    {
+      "type": "other",
+      "content": "{\"code\": \"uncertainty_reserve_active\", \"message\": \"W2 applied the unified 10% uncertainty reserve because selected model capability behavior is not fully verified.\", \"budget_fingerprint\": \"9b1523063f24c94fbd240ed6da92e035\", \"w1_fingerprint\": \"1e8b1d2f3d1e7a7b5f59db5140e595d1\", \"uncertainty_reserve_tokens\": 820, \"effective_input_limit_tokens\": 7168}",
+      "unit_index": 0
+    },
+    {
+      "type": "agent_new_run",
+      "content": "<MCP_START>",
+      "unit_index": 1
+    },
+    {
+      "type": "final_answer",
+      "content": "{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"CONNECTION_TIMEOUT\", \"data\": {\"attempts\": 1, \"phase\": \"mcp_connection\"}}",
+      "unit_index": 2
+    }
+  ],
+  "audit": [],
+  "principal_sha256": "0846e13e46d019f3bf1b629854aa13d6ea36ef0183cde4ea635f5343168a507a",
+  "duration_ms": 4319.23,
+  "extension_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "candidates": 0,
+    "versions": 0
+  },
+  "passed": true,
+  "result": {
+    "status": "ERROR",
+    "items": [],
+    "citations": [],
+    "knowledge_version": null,
+    "message_code": "CONNECTION_TIMEOUT",
+    "data": {
+      "attempts": 1,
+      "phase": "mcp_connection"
+    }
+  },
+  "stop_reasons": [
+    "CONNECTION_TIMEOUT"
+  ]
+}

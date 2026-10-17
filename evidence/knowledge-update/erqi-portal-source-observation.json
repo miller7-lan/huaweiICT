@@ -1,0 +1,44 @@
+{
+  "captured_at": "2026-10-16T12:11:15.774765+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "portal_observation": {
+    "url": "https://www.hnzwfw.gov.cn/portal/personal/index?region=410103000000&theme=02",
+    "started_at": "2026-10-16T11:54:51.871255+00:00",
+    "canonical_source_registered": false,
+    "access_method": "normal_Fetcher",
+    "business_approval": false,
+    "http_status": 200,
+    "content_type": "text/html",
+    "bytes": 12209,
+    "raw_sha256": "6da53882860f1e469292f932ec3f4ddbeeba2c4df964581411c527d628192eb1",
+    "final_url": "https://www.hnzwfw.gov.cn/portal/personal/index?region=410103000000&theme=02",
+    "contains_pilot_name": false,
+    "contains_card_renewal": false
+  },
+  "public_list_probe": {
+    "url": "https://www.hnzwfw.gov.cn/hnzwfw/matter/personal?areaCode=410103000000&pageNum=1&pageSize=20",
+    "access_method": "normal_Fetcher",
+    "canonical_source_registered": false,
+    "authentication_or_signing_added": false,
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 48,
+    "sha256": "dc66ba771fc02cd8913972b530c4a404af515555f5abf9ff533d93c01b3a25bf",
+    "json_type": "dict",
+    "top_level_keys": [
+      "code",
+      "msg",
+      "result"
+    ],
+    "status_fields": {
+      "code": 9999,
+      "msg": "系统异常"
+    }
+  },
+  "canonical_sources_added": 0,
+  "canonical_documents_added": 0,
+  "policy_guide_verified": false,
+  "conclusion": "HTTP 200 returned a client-rendered shell without the pilot name or ID-card guide. One bounded unsigned unauthenticated public-client GET returned application code 9999. These observations do not establish absence of a guide, access permission for other interfaces, or any local material requirement.",
+  "next_action": "Use a rendered public local guide or a directly verifiable official local document; do not substitute other regions or turn a transport success into policy evidence."
+}

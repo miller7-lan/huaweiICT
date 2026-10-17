@@ -1,0 +1,139 @@
+{
+  "created_at": "2026-10-16T19:52:28.229451+00:00",
+  "candidate_files": 43,
+  "latest_chunk_count": 303,
+  "question_count": 30,
+  "human_reviewed_questions": 0,
+  "recorded_reviewed_source_count": 7,
+  "reviewed_national_statutes": [
+    {
+      "source_id": "ID-AMENDMENT-JT-LEAD",
+      "revision": "rev-bd98fcbde0cda7f52078b310",
+      "reviewer": "Codex AI"
+    }
+  ],
+  "reviewed_service_information": [
+    {
+      "source_id": "HN-MEASURES-2026",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "reviewer": "Codex AI",
+      "date_basis": {
+        "base_revision": "rev-61474e03ba08d8007310057b",
+        "body_sha256": "51ad6cc402200019300b76f3aae8be36ef6fb93d9da5ba3a204dc56650e8990e",
+        "information_as_of": "2026-05-05",
+        "kind": "reported_service_information",
+        "legal_commencement_established": false,
+        "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+        "source_date_field": "meta:pubdate",
+        "source_date_value": "2026-05-05 09:18:04.0",
+        "source_observation_sha256": "c0d4266f45c862eb42fb1283b5f1a205115a77fdd91eea6e9a932a19bacf0231"
+      }
+    },
+    {
+      "source_id": "HN-UPDATE-GS-01",
+      "revision": "rev-49ae68807f33bf53dbbec739",
+      "reviewer": "Codex AI",
+      "date_basis": {
+        "base_revision": "rev-3980dccce8ba2c0e265120cc",
+        "body_sha256": "3be789a6b01a2619712b1dd682bce6c3f7a5fba3bd5f3f25b353144a300eca64",
+        "information_as_of": "2025-07-10",
+        "kind": "reported_service_information",
+        "legal_commencement_established": false,
+        "original_sha256": "463e687bb0eaa804722b3e1bb5672e4365ea7c3dc339a9173428dd46fdccde52",
+        "source_date_field": "meta:pubdate",
+        "source_date_value": "2025-07-10 09:44:32.0",
+        "source_observation_sha256": "9e4c3f376fd6f408a72925427644840d558f674821f4c25e64f65adf6f41ecc3"
+      }
+    }
+  ],
+  "reviewed_fee_clauses": [
+    {
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "revision": "rev-e41c61067fe70ce4ce221dbf",
+      "reviewer": "Codex AI",
+      "effective_from": "2018-04-01",
+      "scope_summary": "national_first_issue_fee_suspension_only_not_renewal_waiver"
+    },
+    {
+      "source_id": "NATIONAL-FEE-2003-QG",
+      "revision": "rev-d6555f7e0e5033abc7281be4",
+      "reviewer": "Codex AI",
+      "effective_from": "2004-01-01",
+      "scope_summary": "selected_national_expiry_renewal_fee_baseline_with_2018_first_issue_override"
+    }
+  ],
+  "reviewed_operational_norms": [
+    {
+      "source_id": "MPS-NORM-01",
+      "revision": "rev-54a85427f0fe78c051faa026",
+      "reviewer": "Codex AI",
+      "scope_summary": "scoped_national_operational_baseline_selected_10_clauses"
+    }
+  ],
+  "reviewed_official_announcements": [
+    {
+      "source_id": "MPS-USE-01",
+      "revision": "rev-f48eee88ddb882b4933b37de",
+      "reviewer": "Codex AI",
+      "effective_from": "2016-07-15",
+      "scope_summary": "selected_national_identity_privacy_baseline_with_explicit_official_implementation_field"
+    }
+  ],
+  "ai_reference_question_count": 30,
+  "holdout_design_draft": {
+    "included": true,
+    "question_count": 30,
+    "file_sha256": {
+      "reference": "bc05757f42c75f6be884326f7f52b2fcbaa0b72fb430303e260bff513c7be831",
+      "questions": "9e6930db7d2e4d47435fdeeafe2519d29a70e40ed366bbef9dcc96f0660bb7f8"
+    },
+    "live_binding_checks": {
+      "sources_match_latest": false,
+      "development_registry_matches": true,
+      "publication_policy_file_matches": true,
+      "attributed_review_contract": true
+    },
+    "stale_source_keys": [
+      "USE"
+    ],
+    "semantic_screening_status": "bound",
+    "semantic_screening_counts": {
+      "retain_for_further_source_review": 30
+    },
+    "historically_retired_cases": 9,
+    "independence_certified": false,
+    "reference_frozen": false,
+    "business_acceptance_executed": false
+  },
+  "dataset_sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
+  "review_packet_sha256": "b98af69ec6a4c2e3d2c1cdc920bc2b2b7a83084594f7b0ab772ac30f113dc820",
+  "publication_policy": {
+    "minimum_cases": 30,
+    "minimum_recall_at_5": 0.9,
+    "mode": "business",
+    "require_sources_fresh": true,
+    "required_claim_support": 1.0,
+    "review_contract": "attributed_v2",
+    "schema": 2
+  },
+  "published_scopes": 0,
+  "evaluation_review_contract": "attributed_v2",
+  "registered_development_questions": 40,
+  "development_registry_sha256": "eae7b4bc11456bdafef0bcd39878e55f37b46554d291dcf8ad2a67c1503245cd",
+  "business_review_completed": false,
+  "revision_impact_available": true,
+  "possible_duplicate_group_count": 13,
+  "source_coverage": {
+    "national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
+    "national_norms": "See reviewed_operational_norms and reviewed_official_announcements for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch. The privacy announcement's implementation date comes from its explicit official registry field, not signature or page-publication inference; exact first publication and local material relationships remain unestablished.",
+    "provincial_norms": "publisher_html_and_64_page_scanned_notice_archived_identity_and_article159_checked_current_applicability_pending",
+    "provincial_update_signal": "See reviewed_service_information for the actually reviewed 2025-07-10 provincial six-month renewal-window report. Its publication is not the adjustment's legal commencement; the original adjustment instrument and exact start remain unestablished.",
+    "provincial_scan_measures": "2021_eight_page_scan_normally_archived_native_ocr_and_ai_visual_check_current_applicability_pending",
+    "later_provincial_duration_signal": "See reviewed_service_information for actually reviewed date-bound service paragraphs. The explanatory background and 2024/2025 context are separate; exact commencement and individual delivery/calendar calculations remain unestablished.",
+    "materials_relationships": "2023_provincial_away_reply_and_local_norm_relations_annotated_not_approved",
+    "municipal_household_undertaking": "The exact 2021 municipal row for renewal/replacement household-register undertaking and on-site verification is normally archived from an independently published copy, with native spans and selected-page visual check. Current Erqi procedure/currentness remains unapproved; do not transfer the adjacent away-proof no-verification field to this row.",
+    "fees": "See reviewed_fee_clauses for actual scoped approvals. First issue, expiry renewal, hardship exemption/reduction and extra charges remain separate; a normally acquired 2004 hardship original is pending local-currentness/proof review. Do not infer local eligibility or extra fees from the directory citations.",
+    "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
+    "district_guide": "archived_candidate_current_access_paused"
+  }
+}

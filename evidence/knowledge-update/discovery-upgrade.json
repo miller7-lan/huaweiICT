@@ -1,0 +1,66 @@
+{
+  "captured_at": "2026-10-15T16:28:04.267501+00:00",
+  "source_id": "BEIJING-POLICY-DISCOVERY",
+  "archived_selector_check": {
+    "raw_sha256": "3dd1679ec7207422df48778411ba4aa54c9dbbe45df2a263aaad94f7b2532355",
+    "all_policy_links": 999,
+    "matching_links": 0,
+    "truncated": false,
+    "current_network_evidence": false,
+    "pagination": "Archived site JS slices the returned list client-side; parser scans the returned list, without invented page URLs"
+  },
+  "access_review_preserved": true,
+  "other_source_configs_preserved": true,
+  "preexisting_pause_states_preserved_during_migration": true,
+  "jobs": [
+    {
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/",
+      "state": "done",
+      "attempts": 1,
+      "error": null
+    }
+  ],
+  "discovery": [
+    {
+      "source_id": "BEIJING-POLICY-DISCOVERY",
+      "cycle_id": 1,
+      "started_at": 1792081678.8992445,
+      "limited": false,
+      "index_pages_scheduled": 1,
+      "new_document_jobs": 0,
+      "unvisited_cached_targets": 0,
+      "parser_truncated": false,
+      "active_jobs": 0,
+      "failed_jobs": 0,
+      "coverage_note": "Bounded declared entry points and cached links; not proof of a site's complete document inventory"
+    }
+  ],
+  "index_checks": [
+    {
+      "cached_edges_replayed": false,
+      "cycle": 1,
+      "dates_are_hints_not_policy_effectivity": true,
+      "format": "index",
+      "matching_entries": 0,
+      "outcomes": {},
+      "parser_truncated": false,
+      "policy_rejected_entries": 0,
+      "site": "BEIJING-POLICY-DISCOVERY",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/"
+    }
+  ],
+  "counts": {
+    "sites": 15,
+    "documents": 4,
+    "revisions": 6,
+    "chunks": 62,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 5,
+    "latest_chunks": 35
+  },
+  "business_review_completed": false,
+  "rss_atom_sitemap_real_sources_enabled": false,
+  "scope": "Actual existing HTML source migration/check; RSS/Atom/sitemap behavior is covered separately by controlled fixtures",
+  "source_check_passed": true
+}

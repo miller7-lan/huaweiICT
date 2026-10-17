@@ -2,7 +2,9 @@ $ErrorActionPreference = 'Stop'
 $TaskRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $TaskRoot
 $Python = Join-Path $TaskRoot '.venv/Scripts/python.exe'
-$Bash = 'C:/Program Files/Git/bin/bash.exe'
+$Git = (Get-Command git -ErrorAction Stop).Source
+$Bash = Join-Path (Split-Path (Split-Path $Git -Parent) -Parent) 'bin/bash.exe'
+if (-not (Test-Path -LiteralPath $Bash)) { throw 'Git for Windows Bash was not found beside git.exe.' }
 $DockerCandidates = @("$env:LOCALAPPDATA/Programs/DockerDesktop/resources/bin/docker.exe", 'C:/Program Files/Docker/Docker/resources/bin/docker.exe')
 $Docker = $DockerCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 if (-not $Docker) { throw 'Docker executable not found.' }

@@ -1,0 +1,178 @@
+{
+  "captured_at": "2026-10-15T20:06:51.406895+00:00",
+  "passed": true,
+  "checks": {
+    "two_actual_html_parents": true,
+    "two_pdfs_automatically_discovered_and_acquired": true,
+    "eighteen_actual_ocr_pages": true,
+    "all_normal_jobs_finished": true,
+    "all_candidates_stay_unclassified_pending": true,
+    "no_formal_publication_or_services": true,
+    "main_runtime_counts_unchanged": true,
+    "attachment_graph_and_candidates_restore": true
+  },
+  "records": [
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237046.html",
+      "revision": "rev-5708963999ac91bfccd246bb",
+      "raw_sha256": "40fb56ed8ca0d01e8af060f698ff1bda046907b6d3db5eac8707d3985558c68f",
+      "state": "pending_review",
+      "region": "unknown",
+      "matter": "unclassified",
+      "effective_from": null,
+      "extraction_method": null,
+      "ocr_pages": 0,
+      "parent_signal": null
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237047.html",
+      "revision": "rev-9a7c5f3719e2996a550ecb88",
+      "raw_sha256": "56a9ac6c631485da5700e39f7c000e8c0680966f0203d9d72a9273a06efb0291",
+      "state": "pending_review",
+      "region": "unknown",
+      "matter": "unclassified",
+      "effective_from": null,
+      "extraction_method": null,
+      "ocr_pages": 0,
+      "parent_signal": null
+    },
+    {
+      "source_id": "HN-XCOSS-PDF-DISCOVERY",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf",
+      "revision": "rev-6ba466df0364cdb91f61a3d1",
+      "raw_sha256": "20f76fbc3bfe78bfd205e415879c15a5185ce3d07ad0e20f4114835a5f77f603",
+      "state": "pending_review",
+      "region": "unknown",
+      "matter": "unclassified",
+      "effective_from": null,
+      "extraction_method": "windows_media_ocr",
+      "ocr_pages": 2,
+      "parent_signal": {
+        "discovery_format": "attachment",
+        "hints": {
+          "attachment_parent_source": "HN-POLICY-DISCOVERY",
+          "parent_date_observations": {
+            "block:page_date": [
+              "2025-10-21"
+            ],
+            "meta:pubdate": [
+              "2025-10-21 16:59:28.0"
+            ]
+          },
+          "parent_original_sha256": "40fb56ed8ca0d01e8af060f698ff1bda046907b6d3db5eac8707d3985558c68f",
+          "parent_revision": "rev-5708963999ac91bfccd246bb"
+        },
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知.pdf"
+      }
+    },
+    {
+      "source_id": "HN-XCOSS-PDF-DISCOVERY",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf",
+      "revision": "rev-a1fd247ce2b4a2a004a8fc03",
+      "raw_sha256": "f6a32e4bf55d2148b498bd00c3451912d1405bc3ca72566dc356e7fca4afbe51",
+      "state": "pending_review",
+      "region": "unknown",
+      "matter": "unclassified",
+      "effective_from": null,
+      "extraction_method": "windows_media_ocr",
+      "ocr_pages": 16,
+      "parent_signal": {
+        "discovery_format": "attachment",
+        "hints": {
+          "attachment_parent_source": "HN-POLICY-DISCOVERY",
+          "parent_date_observations": {
+            "block:page_date": [
+              "2025-10-21"
+            ],
+            "meta:pubdate": [
+              "2025-10-21 17:02:56.0"
+            ]
+          },
+          "parent_original_sha256": "56a9ac6c631485da5700e39f7c000e8c0680966f0203d9d72a9273a06efb0291",
+          "parent_revision": "rev-9a7c5f3719e2996a550ecb88"
+        },
+        "title": "河南省公安厅关于公布现行有效行政规范性文件和废止部分行政规范性文件的通知.pdf"
+      }
+    }
+  ],
+  "counts": {
+    "sites": 3,
+    "documents": 4,
+    "revisions": 4,
+    "chunks": 20,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 4,
+    "latest_chunks": 20
+  },
+  "attachments": [
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "parent_url": "https://hnga.henan.gov.cn/2025/10-21/3237046.html",
+      "statuses": {
+        "new_pdf_queued": 1
+      },
+      "active_jobs": 0,
+      "failed_jobs": 0
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "parent_url": "https://hnga.henan.gov.cn/2025/10-21/3237047.html",
+      "statuses": {
+        "new_pdf_queued": 1
+      },
+      "active_jobs": 0,
+      "failed_jobs": 0
+    }
+  ],
+  "jobs": [
+    {
+      "id": 4,
+      "site_id": "HN-XCOSS-PDF-DISCOVERY",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf",
+      "state": "done",
+      "attempts": 1,
+      "error": null
+    },
+    {
+      "id": 3,
+      "site_id": "HN-XCOSS-PDF-DISCOVERY",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf",
+      "state": "done",
+      "attempts": 1,
+      "error": null
+    },
+    {
+      "id": 2,
+      "site_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237047.html",
+      "state": "done",
+      "attempts": 1,
+      "error": null
+    },
+    {
+      "id": 1,
+      "site_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237046.html",
+      "state": "done",
+      "attempts": 1,
+      "error": null
+    }
+  ],
+  "main_runtime_counts": {
+    "sites": 24,
+    "documents": 20,
+    "revisions": 39,
+    "chunks": 221,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 21,
+    "latest_chunks": 123
+  },
+  "human_attestations_created": 0,
+  "services_started": false,
+  "resumed_completed_store_without_network": true,
+  "scope": "Actual official HTML-to-PDF discovery, normal guarded acquisition, native OCR and complete graph restore in a new isolated database. These historic documents are newly discovered by that database, not newly issued policies or approved business answers."
+}

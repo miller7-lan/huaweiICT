@@ -1,0 +1,4012 @@
+{
+  "schema_version": 1,
+  "kind": "candidate_retrieval_catalog_not_import_or_approval",
+  "captured_at": "2026-10-16T19:51:46.802832+00:00",
+  "counts": {
+    "sites": 47,
+    "documents": 43,
+    "revisions": 146,
+    "chunks": 935,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 303
+  },
+  "sources": [
+    {
+      "id": "BEIJING-POLICY-DISCOVERY",
+      "label": "政策栏目：居民身份证相关文件发现",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/zhengce/zhengcefagui/"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/zhengce/zhengcefagui/"
+      ],
+      "interval_seconds": 21600,
+      "delay_seconds": 5,
+      "page_kind": "index",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792159794.8523903,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ERQI-NEARBY-2026",
+      "label": "二七区警务室就近办：郑州公安2026年服务事实",
+      "origin": "https://zzga.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/jwzx/9863401.jhtml"
+      ],
+      "seeds": [
+        "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": "Access denied; source paused",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FEE-WAIVER-2004-ZJ-LEAD",
+      "label": "国家身份证工本费困难减免原始通知：人工归档待核",
+      "origin": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn",
+      "allowed_paths": [
+        "/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf"
+      ],
+      "seeds": [
+        "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "GOV-COPYRIGHT-01",
+      "label": "中华人民共和国著作权法（2020修正）",
+      "origin": "https://www.ncac.gov.cn",
+      "allowed_paths": [
+        "/xxfb/flfg/flfg_532/202103/t20210309_50530.html"
+      ],
+      "seeds": [
+        "https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-FEE-CATALOG-PAGE-2025",
+      "label": "河南财政厅行政事业性收费目录附件入口",
+      "origin": "https://czt.henan.gov.cn",
+      "allowed_paths": [
+        "/2025/12-30/3280093.html"
+      ],
+      "seeds": [
+        "https://czt.henan.gov.cn/2025/12-30/3280093.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-FEE-CATALOG-XLSX-2025",
+      "label": "河南财政厅目录附件：居民身份证收费行及表头",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx"
+      ],
+      "seeds": [
+        "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-GOVERNANCE-2024",
+      "label": "2024省行政规范性文件管理办法治理对照",
+      "origin": "https://cgj.pds.gov.cn",
+      "allowed_paths": [
+        "/contents/16261/410761.html"
+      ],
+      "seeds": [
+        "https://cgj.pds.gov.cn/contents/16261/410761.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-INTERPRETATION-DISCOVERY",
+      "label": "河南省公安厅政策解读目录：身份证及便民利民更新发现",
+      "origin": "https://hnga.henan.gov.cn",
+      "allowed_paths": [
+        "/"
+      ],
+      "seeds": [
+        "https://hnga.henan.gov.cn/zfxxgk/zfxxgkml/zcjd/"
+      ],
+      "interval_seconds": 21600,
+      "delay_seconds": 5,
+      "page_kind": "index",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792177086.6282856,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-MATERIALS-REPLY-2023",
+      "label": "河南省公安厅公开答复：省内异地补换领材料分支",
+      "origin": "https://www.henan.gov.cn",
+      "allowed_paths": [
+        "/2023/02-04/2683999.html"
+      ],
+      "seeds": [
+        "https://www.henan.gov.cn/2023/02-04/2683999.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792151036.5097306,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-MEASURES-2021-PDF",
+      "label": "河南省公安厅关于印发2021年便民利企服务新举措的通知：扫描原件及OCR候选",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf"
+      ],
+      "seeds": [
+        "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792179142.023337,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-MEASURES-2024-JY",
+      "label": "河南2024便民措施：济源公安转载的25自然日条款",
+      "origin": "https://gaj.jiyuan.gov.cn",
+      "allowed_paths": [
+        "/14190/15132/15148/t961601.html"
+      ],
+      "seeds": [
+        "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792178236.745555,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-MEASURES-2026",
+      "label": "河南公安机关2026年便民利民服务措施：身份证办理时限",
+      "origin": "https://hnga.henan.gov.cn",
+      "allowed_paths": [
+        "/2026/05-11/3349863.html"
+      ],
+      "seeds": [
+        "https://hnga.henan.gov.cn/2026/05-11/3349863.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792177036.5783079,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-NORM-PUBLISHER",
+      "label": "河南省户口居民身份证管理规范：省公安厅发布HTML正文",
+      "origin": "https://hnga.henan.gov.cn",
+      "allowed_paths": [
+        "/2022/08-16/2561597.html"
+      ],
+      "seeds": [
+        "https://hnga.henan.gov.cn/2022/08-16/2561597.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792175422.783272,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-NORM-XICHUAN-PDF",
+      "label": "河南户口居民身份证规范2022通知原件：淅川政府公开副本",
+      "origin": "https://www.xichuan.gov.cn",
+      "allowed_paths": [
+        "/ifile/20251229/1766973939411PxhOsju6.pdf"
+      ],
+      "seeds": [
+        "https://www.xichuan.gov.cn/ifile/20251229/1766973939411PxhOsju6.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-NORM-XY-LEAD",
+      "label": "河南省公安机关户口居民身份证管理工作规范（试行）官方转载线索",
+      "origin": "https://gaj.xinyang.gov.cn",
+      "allowed_paths": [
+        "/2025/04-25/600324.html"
+      ],
+      "seeds": [
+        "https://gaj.xinyang.gov.cn/2025/04-25/600324.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": false,
+      "paused_reason": "Official page returned HTTP 403 during read-only discovery; disabled",
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-OSS-PDF-DISCOVERY",
+      "label": "省厅规范PDF附件发现：oss.henan.gov.cn",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/"
+      ],
+      "seeds": [],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "attachment_only": true,
+      "attachment_parent_sources": [
+        "HN-POLICY-DISCOVERY"
+      ],
+      "attachment_url_layout": "henan_typtfile_pdf",
+      "attachment_max_pending": 20,
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-POLICY-DISCOVERY",
+      "label": "河南省公安厅行政规范性文件栏目",
+      "origin": "https://hnga.henan.gov.cn",
+      "allowed_paths": [
+        "/"
+      ],
+      "seeds": [
+        "https://hnga.henan.gov.cn/zfxxgk/zc/xzgfxwj/"
+      ],
+      "interval_seconds": 21600,
+      "delay_seconds": 5,
+      "page_kind": "index",
+      "attachment_discovery": {
+        "max_links": 5,
+        "owners": {
+          "https://oss.henan.gov.cn/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf": {
+            "policy": "monitor",
+            "source_id": "HN-REPEAL-2020-PDF"
+          },
+          "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf": {
+            "policy": "monitor",
+            "source_id": "HN-MEASURES-2021-PDF"
+          },
+          "https://oss.henan.gov.cn/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf": {
+            "policy": "monitor",
+            "source_id": "HN-REPEAL-2021-PDF"
+          },
+          "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf": {
+            "policy": "excluded_history",
+            "sha256": "f6a32e4bf55d2148b498bd00c3451912d1405bc3ca72566dc356e7fca4afbe51",
+            "source_id": "HN-VALIDITY-2025-PDF"
+          },
+          "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf": {
+            "policy": "excluded_history",
+            "sha256": "20f76fbc3bfe78bfd205e415879c15a5185ce3d07ad0e20f4114835a5f77f603",
+            "source_id": "HN-REPEAL-2025B-PDF"
+          }
+        },
+        "sources": [
+          "HN-OSS-PDF-DISCOVERY",
+          "HN-XCOSS-PDF-DISCOVERY"
+        ]
+      },
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792162106.356184,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-REPEAL-2020-PDF",
+      "label": "河南省公安厅关于废止部分行政规范性文件的通知（2020）：扫描原件及OCR候选",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf"
+      ],
+      "seeds": [
+        "https://oss.henan.gov.cn/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792179147.191193,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-REPEAL-2021-PDF",
+      "label": "河南省公安厅关于废止部分行政规范性文件的通知（2021）：扫描原件及OCR候选",
+      "origin": "https://oss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf"
+      ],
+      "seeds": [
+        "https://oss.henan.gov.cn/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792179157.3323114,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-REPEAL-2025B-PDF",
+      "label": "2025栏目载入的省厅2022废止通知：扫描附件",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf"
+      ],
+      "seeds": [
+        "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-UPDATE-GS-01",
+      "label": "河南换领期限调整：固始县政府转载线索",
+      "origin": "https://www.gushi.gov.cn",
+      "allowed_paths": [
+        "/2025/07-10/760173.html"
+      ],
+      "seeds": [
+        "https://www.gushi.gov.cn/2025/07-10/760173.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792174637.3099883,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-VALIDITY-2025-PDF",
+      "label": "2025栏目载入的省厅2019效力清理通知：扫描附件",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf"
+      ],
+      "seeds": [
+        "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-XCOSS-PDF-DISCOVERY",
+      "label": "省厅规范PDF附件发现：xcoss.henan.gov.cn",
+      "origin": "https://xcoss.henan.gov.cn",
+      "allowed_paths": [
+        "/typtfile/"
+      ],
+      "seeds": [],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "attachment_only": true,
+      "attachment_parent_sources": [
+        "HN-POLICY-DISCOVERY"
+      ],
+      "attachment_url_layout": "henan_typtfile_pdf",
+      "attachment_max_pending": 20,
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ID-AMENDMENT-JT-LEAD",
+      "label": "居民身份证法（2011修正，附修改决定）：北京交管官方转载",
+      "origin": "https://jtgl.beijing.gov.cn",
+      "allowed_paths": [
+        "/jgj/jgxx/flfg/fl/203777/index.html"
+      ],
+      "seeds": [
+        "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792167587.5888689,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ID-BOUNDARY-01",
+      "label": "临时居民身份证申领（二七区）",
+      "origin": "https://eq.jiceng.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/004008003/3394708.jhtml"
+      ],
+      "seeds": [
+        "https://eq.jiceng.zhengzhou.gov.cn/004008003/3394708.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ID-GUIDE-01",
+      "label": "居民身份证到期换领、其他原因换领（二七区）",
+      "origin": "https://eq.jiceng.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/004008002/3394639.jhtml"
+      ],
+      "seeds": [
+        "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "robots request denied (AccessStopped); no body requested in this run",
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ID-GUIDE-02",
+      "label": "居民身份证到期换领、其他原因换领（铭功路）",
+      "origin": "https://eq.jiceng.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/004008002/3404478.jhtml"
+      ],
+      "seeds": [
+        "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ID-LAW-01",
+      "label": "中华人民共和国居民身份证法",
+      "origin": "https://public.xinmi.gov.cn",
+      "allowed_paths": [
+        "/D0107Y/2107317.jhtml"
+      ],
+      "seeds": [
+        "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "robots request denied (AccessStopped); no body requested in this run",
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ID-NORM-01",
+      "label": "河南省公安机关户口居民身份证管理工作规范（试行）",
+      "origin": "https://www.xuchang.gov.cn",
+      "allowed_paths": [
+        "/EpointWebBuilder/frame/ewebeditor/uploadfile/%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E5%8E%85%E5%85%B3%E4%BA%8E%E5%8D%B0%E5%8F%91%E3%80%8A%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E6%9C%BA%E5%85%B3%E6%88%B7%E5%8F%A3%E5%B1%85%E6%B0%91%E8%BA%AB%E4%BB%BD%E8%AF%81%E7%AE%A1%E7%90%86%E5%B7%A5%E4%BD%9C%E8%A7%84%E8%8C%83%EF%BC%88%E8%AF%95%E8%A1%8C%EF%BC%89%E3%80%8B%E7%9A%84%E9%80%9A%E7%9F%A5.pdf"
+      ],
+      "seeds": [
+        "https://www.xuchang.gov.cn/EpointWebBuilder/frame/ewebeditor/uploadfile/%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E5%8E%85%E5%85%B3%E4%BA%8E%E5%8D%B0%E5%8F%91%E3%80%8A%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E6%9C%BA%E5%85%B3%E6%88%B7%E5%8F%A3%E5%B1%85%E6%B0%91%E8%BA%AB%E4%BB%BD%E8%AF%81%E7%AE%A1%E7%90%86%E5%B7%A5%E4%BD%9C%E8%A7%84%E8%8C%83%EF%BC%88%E8%AF%95%E8%A1%8C%EF%BC%89%E3%80%8B%E7%9A%84%E9%80%9A%E7%9F%A5.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "robots request timed out; no PDF requested in this run",
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "MOF-FEE-2007",
+      "label": "财政部国家发展改革委关于进一步规范居民身份证收费等有关问题的通知",
+      "origin": "https://www.mof.gov.cn",
+      "allowed_paths": [
+        "/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm"
+      ],
+      "seeds": [
+        "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792154495.5582767,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "MOF-FIRST-ISSUE-2018",
+      "label": "财政部国家发展改革委关于停征免征和调整部分行政事业性收费有关政策的通知：首次申领条款",
+      "origin": "https://www.mof.gov.cn",
+      "allowed_paths": [
+        "/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm"
+      ],
+      "seeds": [
+        "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792154500.8369973,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "MPS-NORM-01",
+      "label": "公安部关于印发《户口居民身份证管理工作规范（试行）》的通知",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/zhengce/zhengcefagui/202211/t20221116_2860246.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792173666.522372,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "MPS-NORM-WINDOW-WATCH",
+      "label": "国家办理规范第76条提前换领窗口待核监测",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/zhengce/zhengcefagui/202211/t20221116_2860246.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792174511.9021454,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "MPS-USE-01",
+      "label": "关于规范居民身份证使用管理的公告",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/zhengce/zhengcefagui/201905/t20190522_59419.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/zhengce/zhengcefagui/201905/t20190522_59419.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792180247.4746945,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NATIONAL-FEE-2003-QG",
+      "label": "居民身份证收费2003原始通知独立政府副本",
+      "origin": "https://www.qg.gov.cn",
+      "allowed_paths": [
+        "/zwgk/jgsf/202512/t20251224_3245346.htm"
+      ],
+      "seeds": [
+        "https://www.qg.gov.cn/zwgk/jgsf/202512/t20251224_3245346.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792176595.606605,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NATIONAL-FEE-2003-SC-COPY",
+      "label": "居民身份证收费2003原始通知独立政府副本",
+      "origin": "https://gat.sc.gov.cn",
+      "allowed_paths": [
+        "/scgat/c111595/2023/2/17/1b1f0e0b55fd43a08a488468f21afe25/files/a0ca9c2a5809468e9854045ec606a6ab.pdf"
+      ],
+      "seeds": [
+        "https://gat.sc.gov.cn/scgat/c111595/2023/2/17/1b1f0e0b55fd43a08a488468f21afe25/files/a0ca9c2a5809468e9854045ec606a6ab.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NATIONAL-LAW-DIRECTORY-2026",
+      "label": "市场监管总局转载：截至2026-08-28现行法律目录的身份证法条目",
+      "origin": "https://www.samr.gov.cn",
+      "allowed_paths": [
+        "/fgs/sjdt/art/2026/art_93a4fbac2ce14ab6baab60b0cd452ef4.html"
+      ],
+      "seeds": [
+        "https://www.samr.gov.cn/fgs/sjdt/art/2026/art_93a4fbac2ce14ab6baab60b0cd452ef4.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": true,
+      "paused_reason": null,
+      "last_success": 1792160052.4552054,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NATIONAL-LAW-GAZETTE-2011-EXCERPT",
+      "label": "全国人大常委会公报2011年第7期选页651—654：居民身份证法及修改决定施行条款",
+      "origin": "https://www.pdsxcq.gov.cn",
+      "allowed_paths": [
+        "/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf"
+      ],
+      "seeds": [
+        "https://www.pdsxcq.gov.cn/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "pdf_ocr": {
+        "engine": "windows.media.ocr",
+        "language": "zh-Hans-CN"
+      },
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NATIONAL-LAW-HISTORICAL-2003",
+      "label": "北京政府历史对照：2003身份证法第三、十一、十九、二十二条",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/zhengce/zhengcefagui/qtwj/200401/t20040101_781229.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/200401/t20040101_781229.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NDRC-EXEMPT-2004",
+      "label": "财政部国家发展改革委关于第二代居民身份证工本费减免政策的通知",
+      "origin": "https://www.ndrc.gov.cn",
+      "allowed_paths": [
+        "/xxgk/zcfb/qt/200905/t20090512_967638.html"
+      ],
+      "seeds": [
+        "https://www.ndrc.gov.cn/xxgk/zcfb/qt/200905/t20090512_967638.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": "Access denied; source paused",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NDRC-FEE-2003",
+      "label": "国家发展改革委 财政部关于居民身份证收费标准及有关问题的通知",
+      "origin": "https://zfxxgk.ndrc.gov.cn",
+      "allowed_paths": [
+        "/upload/images/202210/2022101017594886.pdf"
+      ],
+      "seeds": [
+        "https://zfxxgk.ndrc.gov.cn/upload/images/202210/2022101017594886.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": "Access denied; source paused",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NDRC-FEE-2005",
+      "label": "国家发展改革委 财政部 公安部关于规范居民身份证工本费标准等有关问题的通知",
+      "origin": "https://zfxxgk.ndrc.gov.cn",
+      "allowed_paths": [
+        "/upload/images/202210/2022101016343695.pdf"
+      ],
+      "seeds": [
+        "https://zfxxgk.ndrc.gov.cn/upload/images/202210/2022101016343695.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": true,
+      "paused_reason": "Access denied; source paused",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "RES-GUIDE-01",
+      "label": "居住证首次申领（二七区）",
+      "origin": "https://eq.jiceng.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/004006002/3389298.jhtml"
+      ],
+      "seeds": [
+        "https://eq.jiceng.zhengzhou.gov.cn/004006002/3389298.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "RES-NOTICE-01",
+      "label": "关于进一步明确我市居住证办理有关事项的通知",
+      "origin": "https://public.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/D0107Y/10036572.jhtml"
+      ],
+      "seeds": [
+        "https://public.zhengzhou.gov.cn/D0107Y/10036572.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "TY-FEE-CATALOG-2026-REFERENCE",
+      "label": "汤阴2026收费目录线索",
+      "origin": "https://www.tangyin.gov.cn",
+      "allowed_paths": [
+        "/2026/09-04/3658654.html"
+      ],
+      "seeds": [
+        "https://www.tangyin.gov.cn/2026/09-04/3658654.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "UPDATE-LEAD-01",
+      "label": "郑州二七警方延伸就近办服务的新闻",
+      "origin": "https://zzga.zhengzhou.gov.cn",
+      "allowed_paths": [
+        "/jwzx/9863401.jhtml"
+      ],
+      "seeds": [
+        "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "ZZ-CONSENT-2021-LIST-LEAD",
+      "label": "郑州市证明事项告知承诺清单：户口簿第10项待核",
+      "origin": "https://www.zzsgsl.org",
+      "allowed_paths": [
+        "/uploads/allimg/20211115/27-211115101102308.pdf"
+      ],
+      "seeds": [
+        "https://www.zzsgsl.org/uploads/allimg/20211115/27-211115101102308.pdf"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    }
+  ],
+  "documents": [
+    {
+      "source_id": "FEE-WAIVER-2004-ZJ-LEAD",
+      "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf",
+      "revision": "rev-318878017022327bb0eecc8d",
+      "state": "pending_review",
+      "original_sha256": "1b1cc0eb3bb70b45b7369f6444d18585548682b48797569e851b53a4f846da40",
+      "original_bytes": 101174,
+      "metadata": {
+        "title": "财政部国家发展改革委关于第二代居民身份证工本费减免政策的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "财综〔2004〕8号",
+        "published_at": null,
+        "effective_from": "2004-01-01",
+        "effective_to": null,
+        "document_signed_at": "2004-02-06",
+        "extraction_method": "native_pdf_first_page_with_all_pages_ai_visual_check",
+        "scope_confirmed": false,
+        "collection_role": "manual_native_pdf_pending",
+        "extraction_quality_notes": [
+          {
+            "base_revision": "rev-c2f18391171fad5835a6eafe",
+            "changes_fee_conditions": false,
+            "end": 166,
+            "human_review_completed": false,
+            "id": "waiver-preface-native-visual-difference-20261017",
+            "native_literal": "观",
+            "page_png_sha256": "4d80a72cbae75520e8365f3c07d492c3fb607ad76c95d40084d0d195aa8e6017",
+            "parent_native_text_sha256": "74770b08c189ce4374b52c8b2f462e3295e3c17df3c285a45e0334e5db83192a",
+            "pdf_page": 1,
+            "reviewer_kind": "ai",
+            "start": 165,
+            "status": "unresolved_native_visual_difference_no_body_correction",
+            "visual_reading": "现"
+          }
+        ]
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-hardship-waiver-original-pending-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T17:37:45.961494+00:00",
+        "current_applicability": "national_original_exemption_branches_local_current_qualification_and_proof_pending",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {
+        "method": "native_page_1_manual_selection",
+        "requires_visual_review": true
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（原生文本；第2页空白已核对）",
+          "category": "fees",
+          "characters": 682,
+          "text_sha256": "cd06764b3d9283888069506cad95641898e3fef2a9f5936eb7d965998cfa6cbd"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-FEE-CATALOG-PAGE-2025",
+      "url": "https://czt.henan.gov.cn/2025/12-30/3280093.html",
+      "revision": "rev-6ccbf33056313b8fd8361ced",
+      "state": "excluded",
+      "original_sha256": "a74116dd13b8a1f88fc51c6bc59563eb1790f0d2e47d5cd350845a08024b5ab5",
+      "original_bytes": 9032,
+      "metadata": {
+        "title": "河南财政厅行政事业性收费目录附件入口",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_corroborating_reference",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "extraction_method": "exact_official_attachment_link_title",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "目录正文附件链接标题",
+          "category": "fee",
+          "characters": 32,
+          "text_sha256": "e2329be8a8574bc180bd08d6ad16cb837ea98198ae325c8f2cefc0a132cea5d1"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-FEE-CATALOG-XLSX-2025",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+      "revision": "rev-d806c2a1656f08b00fb5a180",
+      "state": "excluded",
+      "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+      "original_bytes": 33251,
+      "metadata": {
+        "title": "河南财政厅目录附件：居民身份证收费行及表头",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_corroborating_reference",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "extraction_method": "exact_selected_literal_xlsx_cells_no_formula_evaluation",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "Excel工作表行政事业性收费!A1",
+          "category": "fee",
+          "characters": 22,
+          "text_sha256": "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D4",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "867698fb7b0c730c9c692a01b65a74500b5f44f3589e31703e2957f9ba5ce976"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E4",
+          "category": "fee",
+          "characters": 6,
+          "text_sha256": "aa3a4744db978914e3d78ff0d44f3e163ddd65c8eaa6795327a16fcb9d816047"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F4",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "16615568b15068c3dfbe9accb7ff41137b3e68fd6eb544ec50a4ca15dca0d660"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G4",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "05a643ca852e19da3509e7c6e90813b44970b7afe0f079e823b4975c3940b659"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!B17",
+          "category": "fee",
+          "characters": 4,
+          "text_sha256": "984f2209c71bdebc41a23c318e3b52986a4eb41cc53fbda08c5f0f2f00352031"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D36",
+          "category": "fee",
+          "characters": 11,
+          "text_sha256": "87632ef1001bce8e0fd07786845ea07be4f2a17ea0f2a94d8deb62f24793e029"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E36",
+          "category": "fee",
+          "characters": 6,
+          "text_sha256": "be899e2513ff0fa57789b1d2f167f47f380bcbd3a86a71d76fc1f54098c10b45"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F36",
+          "category": "fee",
+          "characters": 80,
+          "text_sha256": "c706c34a9c25517fe10d8be4b57ade84371005db336079f5097bf3097350c505"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G36",
+          "category": "fee",
+          "characters": 23,
+          "text_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-GOVERNANCE-2024",
+      "url": "https://cgj.pds.gov.cn/contents/16261/410761.html",
+      "revision": "rev-2a3287697e1e638806bd4c91",
+      "state": "excluded",
+      "original_sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+      "original_bytes": 101378,
+      "metadata": {
+        "title": "河南省行政规范性文件管理办法（2024修订）治理核查节选",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "governance_regulation_reference",
+        "document_number": "河南省人民政府令第226号",
+        "published_at": "2024-08-01",
+        "effective_from": "2024-08-01",
+        "effective_to": null,
+        "document_signed_at": "2024-06-03",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第二条",
+          "category": "procedure",
+          "characters": 179,
+          "text_sha256": "ee86908f6d19337dcd2d5c8805c660f4db5de9fd5488f7886d19f6beb90ae01a"
+        },
+        {
+          "locator": "第二十五条",
+          "category": "procedure",
+          "characters": 69,
+          "text_sha256": "b5668b35589d05b30faad0d00d66bf4d85b951bd90e2a5fbec65212b3cc4abd9"
+        },
+        {
+          "locator": "第三十五条",
+          "category": "procedure",
+          "characters": 114,
+          "text_sha256": "ff3bc35073ca3113c77887981503662b8ff906800478a4e3cf18919b639c3345"
+        },
+        {
+          "locator": "第四十条",
+          "category": "procedure",
+          "characters": 157,
+          "text_sha256": "fb9c020606fe03eb7e5ab1dea6572a079660de9224e3e308463b5f87cd16ac9d"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-INTERPRETATION-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2026/01-05/3282174.html",
+      "revision": "rev-9768efea0e98a526c4940edf",
+      "state": "pending_review",
+      "original_sha256": "5bacf37892612e26e177899b622a7620a8aaebf22be1bd4e344f8d879cebee52",
+      "original_bytes": 21059,
+      "metadata": {
+        "title": "河南公安机关2025年便民利民服务措施政策解读",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 120,
+          "text_sha256": "76f6b50120debd854904f9136cf3d5fd1dd9bd1787ba9533a9183b5c7a21c98e"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 211,
+          "text_sha256": "2b221ba88346146eb70f5fc1a8c85598900fb5fad9737b7c5b3b0b14804f99a2"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 315,
+          "text_sha256": "c22187cc4b040c71e83b50ceacd527b9ab604829019832147aaa7abc2ef36a53"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "household",
+          "characters": 102,
+          "text_sha256": "b984da4f714c6deb39765b493d0e2f3cf2690bf46293206460b407a6a4181f18"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "household",
+          "characters": 410,
+          "text_sha256": "88ecf71c64756c9f483eb2c23031911e40115ae06f81b725b733e9073a8238a2"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 170,
+          "text_sha256": "0721c7def866a6ca81cba734a539af94b702adebc9bc9961c4e6fe6f4719a88d"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "identity",
+          "characters": 418,
+          "text_sha256": "12cfc59c208df9a84b95b8abfb3a28ab4da8e0e53f72525ce6389a39cfb7c225"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 133,
+          "text_sha256": "d016175e52913b361a50b055338a6eb8616b897b7649b62e05638092bb02af83"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 54,
+          "text_sha256": "24c5b85cba5abe2efaa29846f2302e48e1a308af8c86169b87d9d029658df4a0"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 159,
+          "text_sha256": "d97d6ea030f586a5ff9bacdd81a7aee9f0262eac5bcfdc6689a96439bac4c22c"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 117,
+          "text_sha256": "bd74a85f9482ed2295ee500d3c3d9199971e3bd5d75aff3a19bb16fee4e1fe3a"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 185,
+          "text_sha256": "d7f621922eba69a61a5fe4972736d5eb170ef259921ec7f6efae5a6109ec9bf8"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "eligibility",
+          "characters": 67,
+          "text_sha256": "df0b7ad6164631c7728a5ffb7ed84725b3c5ce306ac54c75d1c8f553d54d26e1"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "eligibility",
+          "characters": 112,
+          "text_sha256": "7f179cb1edf92374766ddfe89b17e654bdd2ebebbb608a70a73c7beb325b6789"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 129,
+          "text_sha256": "d331cf52feebeee1d04e3cb6fd2a2f3d08d2770f6affa407da12a22787c13fb9"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 249,
+          "text_sha256": "7cc8de96983955b156b975ac8ca2ab74e35749f5ef01fefc45cbe269c69e5139"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-INTERPRETATION-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2024/05-27/2998889.html",
+      "revision": "rev-36b17f5ac0618a9101119276",
+      "state": "pending_review",
+      "original_sha256": "540f5581284d939b4a29afcf23d2121fbf2ed82efa88220313dac1e313542a21",
+      "original_bytes": 29730,
+      "metadata": {
+        "title": "河南公安机关2024年便民利民十项措施政策解读",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 48,
+          "text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 225,
+          "text_sha256": "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 87,
+          "text_sha256": "2e3ba78bbc38432c3fd32d612fa22a9b8a55c1d4116b69a0324ae64152039d26"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 92,
+          "text_sha256": "49c3fa211f1e0ae66de671a422996cf409a5872442876d48d38979f7c6b2e784"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "identity",
+          "characters": 130,
+          "text_sha256": "9d1d8ded78bbb1db6db1e0c50759dcc20040960c24affea409afa66dc128d1bf"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 98,
+          "text_sha256": "85103c435d556979db92ce2015bf68b6280258198e986e0e14cb127c4147df29"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "identity",
+          "characters": 79,
+          "text_sha256": "1b829e5955e8cb587ecaee5f2006ded288b4c43883308fcb61ec6bfb75d28891"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "identity",
+          "characters": 20,
+          "text_sha256": "3e0418a232be282cb741411fb0e87c3ce84b8d4adeae7f9d6e379e89fca9695e"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 61,
+          "text_sha256": "39ffa87f9daf0618625afd4dbaf14351914c17d3df6349108aec6ea8e591a796"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 127,
+          "text_sha256": "11346f30a79dc1df3f1df7faf7fcfb0803907fd06449574a7dc49445b3c4f346"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 79,
+          "text_sha256": "ab7ec5210d9819eec3c85d6f6243842f73f7164c8139ba63024cda3594fe79c7"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 201,
+          "text_sha256": "fe54d5ed0d52c654b68d04f82cd99fd9ee5b7b2d809c8c2ff89b842a48a49634"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "eligibility",
+          "characters": 82,
+          "text_sha256": "9096ab2051403467458ac73935724b76de96afaa902227f1d5c5f233b86def64"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "eligibility",
+          "characters": 283,
+          "text_sha256": "95f844186a2b1e080fb85b4c4be83b08a85d708f65e185b91b68a672b3027b28"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 113,
+          "text_sha256": "2853c7866fbfd71bdce8004e85670a3781f3ff840b923738a515e989b74b68fb"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 138,
+          "text_sha256": "c6802f8920d862822d18681d2720139bfe1907570f07c809eaa0fc1675c092f2"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "eligibility",
+          "characters": 100,
+          "text_sha256": "6370c678b63439daba0be70dcd5f9b98af8fa13c7de25357f87405f80e56cb69"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "eligibility",
+          "characters": 135,
+          "text_sha256": "d62389f3d76f7642dfe71ae8ac5076abd2b66399465093e969acc4b784a00f5f"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "identity",
+          "characters": 65,
+          "text_sha256": "858f51fb0ec22fc154edef959a4a84a6e0dc5528ea9c4c9418355d3c6db44cb6"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "identity",
+          "characters": 83,
+          "text_sha256": "70740c065af6580d5520be5280e7e0bbc97a20ee32f0bc15c067a2464e814c42"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "identity",
+          "characters": 83,
+          "text_sha256": "ac76bd88b8840b9bf47be40b94177481551e5ef32441cdfd8ef34647cf38b353"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "identity",
+          "characters": 80,
+          "text_sha256": "cc6f97123408f295879135cb9301a83983f2861f258fac503267a365780075a8"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-INTERPRETATION-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2022/03-25/2420595.html",
+      "revision": "rev-ad732fcbd28e97be3ed83617",
+      "state": "excluded",
+      "original_sha256": "cab90def919e65b4c926e749d17ebc606244c4f3837b3290c6b4ebb65a7df710",
+      "original_bytes": 18518,
+      "metadata": {
+        "title": "河南公安机关2022年便民利民服务十项措施 政策解读",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 118,
+          "text_sha256": "f3c0c00bd2750779e7d53e78fe3a67c5b31f12a2ec4f62ac207346bb7aa98305"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "eligibility",
+          "characters": 40,
+          "text_sha256": "67e0b9fc8580e9211713dd34823a33b2f4642f35faaa2a08449a14fc33b1d879"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "e322b1c193adf517ff83e65fe218e7b30299a1c24785eee544896a3d130a23c9"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 11,
+          "text_sha256": "3e29c956cf1f2f78a06ca3b0f812cd7864a813eac7b2fab8158a21d24ffa7833"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "e061f7ba439f2d77354eb725d7840997333f93b8637b8a0ebac993a8aff9f3d3"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 21,
+          "text_sha256": "35f63f86b4c0cf3470d2c397798488ec02c0bd2e32259dacfbb37ef0a9adb3fa"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 13,
+          "text_sha256": "3c8111d58054ba52fd41b462a7b77904d560ceef5cb31c40b13336cc16650257"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "6ea647bcdd1144498f02f88174beefab4a005e5e3ae53bc649565cfc1a6e99c5"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 29,
+          "text_sha256": "aca7d00e9b8972603db233a6aecfcf6baa437b321462f17580ef2ccffb21b8b4"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 9,
+          "text_sha256": "f73491eb1e944e3323fdd86ae4021adcb205dd00d367d152cdf4173ccee4652f"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "205aedb5250973cafaefcf2eed96e953fcf010caf21d7bc83b91a536c0257754"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "identity",
+          "characters": 16,
+          "text_sha256": "6dbcbcad5044733b87d5aa647dec5f12a41f9fc1ce01dc84367d7f4d3df58831"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "d291530fb6fb62e8d48a754674b567591e464b7ae9546a497fa477bff32d8db2"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 88,
+          "text_sha256": "9d348695556e44121ee9728b0ceb4bc9053f0c84b419d07b2011f83bb88fb74a"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 54,
+          "text_sha256": "3ee2395c4095c6dfc13e1b794bad65f8b7d830c3022f5d53590ef5dde8ab4034"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 168,
+          "text_sha256": "cbab01c4040ab6e2b02085d2740b114f91807c860c2b7561ead9a5ae11b23f95"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 97,
+          "text_sha256": "73eac5728fc64ef941668573e951a90a9fcebd94ea0aaaedb155a458ff2f6cd6"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 83,
+          "text_sha256": "5f070f8f4e34c839837fc0ac2fe1a85f915d3dcb02f4c279012e721a0943371e"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 131,
+          "text_sha256": "b6682f87481d73ed3bfe03e9721abec37ea3b23a237e993a9c5e9ea2ec372f18"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "eligibility",
+          "characters": 112,
+          "text_sha256": "4412e1079ca638276050aef748dfd7c912020621b75d59aa92b2fc4c449e1cf3"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "eligibility",
+          "characters": 115,
+          "text_sha256": "76bdba4124423944b4cbc697ff0474e629a8890e58ff6ceb52c9d75c5c0c0660"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "procedure",
+          "characters": 106,
+          "text_sha256": "34b1ec077301dc99abfd36851f727c9cebced5bb1b70e79c8661fee4181fbacb"
+        },
+        {
+          "locator": "正文段落23",
+          "category": "procedure",
+          "characters": 110,
+          "text_sha256": "8c71b345d9951f152e4d268bf194b7b26f53ad28f8c8d857fc30ccb6fd468f63"
+        },
+        {
+          "locator": "正文段落24",
+          "category": "procedure",
+          "characters": 208,
+          "text_sha256": "4732a3c9c2ae26556e2c0853a48e311af5c0e6559000eb599ee654ca73847597"
+        },
+        {
+          "locator": "正文段落25",
+          "category": "procedure",
+          "characters": 148,
+          "text_sha256": "8f9f40f2459c2f3f5b8166c13162b5bcb2fdc270af731c5ec63e23117c2548ea"
+        },
+        {
+          "locator": "正文段落26",
+          "category": "procedure",
+          "characters": 150,
+          "text_sha256": "9208beb13b57d3ae792a54f827990e71ade93d57af7df93bb139441ee9d22104"
+        },
+        {
+          "locator": "正文段落27",
+          "category": "identity",
+          "characters": 369,
+          "text_sha256": "156e81004bd048064543040a57bc4e51f6983e3dd3536118521e8d1ea7778316"
+        },
+        {
+          "locator": "正文段落28",
+          "category": "procedure",
+          "characters": 94,
+          "text_sha256": "59455a4970242f2456f2250636dd050449c75c008d1c7e06d2132da11da39660"
+        },
+        {
+          "locator": "正文段落29",
+          "category": "procedure",
+          "characters": 78,
+          "text_sha256": "085a2411d28020c2d389fc2cf522f841bba681da256c14a3563d4a0dccba6b98"
+        },
+        {
+          "locator": "正文段落30",
+          "category": "procedure",
+          "characters": 90,
+          "text_sha256": "d4f3d08b326419caaf69887dedf1e3550eec2c34c09a2c25fb27995a9843b005"
+        },
+        {
+          "locator": "正文段落31",
+          "category": "procedure",
+          "characters": 115,
+          "text_sha256": "aad7fb48d73bb1cb64dd5385ab231ece10f94a3efd9907483a619ee49ff1fbbf"
+        },
+        {
+          "locator": "正文段落32",
+          "category": "procedure",
+          "characters": 147,
+          "text_sha256": "9423e1cc1a6441cdd67a45c439d961db357d134ba279bae7c3b8f17bb45a8856"
+        },
+        {
+          "locator": "正文段落33",
+          "category": "procedure",
+          "characters": 88,
+          "text_sha256": "1721909a64b0e8019c30f61b371a44ee15882441cdd022666487a351766cf214"
+        },
+        {
+          "locator": "正文段落34",
+          "category": "identity",
+          "characters": 79,
+          "text_sha256": "fb6b09977c14d413f69d93ab8f9f20ed5e921eeae94dea8ab2aea070e022fc3c"
+        },
+        {
+          "locator": "正文段落35",
+          "category": "procedure",
+          "characters": 121,
+          "text_sha256": "783268da061420613a472dbe177ae8dcf1b3a6e880c55629b2e993a632ad3e92"
+        },
+        {
+          "locator": "正文段落36",
+          "category": "procedure",
+          "characters": 86,
+          "text_sha256": "a7f951718da8a5d3a47d5eaea9d219d02894d2130960ef661d6709d1af32078d"
+        },
+        {
+          "locator": "正文段落37",
+          "category": "procedure",
+          "characters": 315,
+          "text_sha256": "a4c76b66ca88f5d42f4e6cfc0a1fb1d2f616a427a72ee57b570502808eea7ce2"
+        },
+        {
+          "locator": "正文段落38",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "d538ca87a70c30f9a5f84df1d5e61630e1ab579bd3f665d0adfc0b9d78f7f707"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-INTERPRETATION-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2020/12-17/2002984.html",
+      "revision": "rev-fe2a23437a73f09ab3479d1c",
+      "state": "excluded",
+      "original_sha256": "67a87ee12c3c5b2338a55205134e37026301ae73df690cf162e83ec1087d4883",
+      "original_bytes": 14440,
+      "metadata": {
+        "title": "河南省公安厅公开发布2020年便民利民10项措施",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 134,
+          "text_sha256": "39e0fd54bc06b7f6da7ef1ba0b35e431bdbf18271965aa3a6c326fa4d992b4bc"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 9,
+          "text_sha256": "e48020886e684bfc8cd1827bc71f80cd827f3c16548eaafea78ad538a40f4bdd"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "household",
+          "characters": 71,
+          "text_sha256": "59e73c373452525f1d7f268921b6c463b2dbf0f5a6770ffe2809c64f04940b00"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 73,
+          "text_sha256": "7dbb9e7d28533eb3ec04b23dee61fcdba7c963cfbf7a794c824fda65a17eb3d8"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 156,
+          "text_sha256": "e4ab6d0e22b74256ad11326970a378a024bbf2edbc60278208fe9ef176cf2b45"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 73,
+          "text_sha256": "a478f0a1ed7e1e17d743ad438cc945844e5aef6706ca68e8311f605f9e0f76a8"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 80,
+          "text_sha256": "afed7b697719899d3131532ff3e6ad37c1be4462d9c8de90d30b762bc6599fea"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 22,
+          "text_sha256": "4f207492136c60d06fdb987f5928881f23f3f9018887a7528d985aaaad286904"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 28,
+          "text_sha256": "6896cd304cd6431636a97447403828d726fee6dd5470bf9b8696a10e55ebf500"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 65,
+          "text_sha256": "0f8ee0f14d5356a6563386e61ec50af426e4e7d2ea6c04b3332d7a809281e76d"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 123,
+          "text_sha256": "d91efaab6fc5ebabe2640192b839653c99d744be237be3a97289e985caf31084"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 86,
+          "text_sha256": "b64d8866f6ca69c0e786484dff6854aec791bac9b98b2bfe1d94c5d26004e531"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 246,
+          "text_sha256": "b4c7e340ffbec3c97965357532fb0dddb60d1f2427defcdfb4d2c3599c1be0be"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 106,
+          "text_sha256": "1210271b67535fd10bef963cc82516a2c900ab19f82d04a40351ec70c2069a6b"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "d538ca87a70c30f9a5f84df1d5e61630e1ab579bd3f665d0adfc0b9d78f7f707"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-INTERPRETATION-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2023/11-09/2844617.html",
+      "revision": "rev-1289f62acaef793662260a21",
+      "state": "excluded",
+      "original_sha256": "6525c101840488adbb6388c26ecbfd6a90d4c710547276ffb45f2394b4d24de1",
+      "original_bytes": 9457,
+      "metadata": {
+        "title": "河南公安机关2023年便民利民服务十项措施",
+        "region": "河南省",
+        "matter": "outside-pilot-police-services",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "dated-scope-2023_measures-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T19:16:42.471862+00:00",
+        "current_applicability": "outside_pilot_direct_business_scope",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 17,
+          "text_sha256": "4b1f435f02204e875a7eaef7773a5436308e9d745b829f7e48ae4145cf261c4a"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 96,
+          "text_sha256": "8de5c0d4e5e1f65fc22a9b60152c660dbf2a0a96f01fed743168367aad23061e"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 15,
+          "text_sha256": "66d1cef9d94600dfec311c5159075c60a8d409a059480a13d65d667d9e008815"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 76,
+          "text_sha256": "4c6c3cbe0446b81e47cabde02b0b26844927939d5b00fe22b55e8bbc6193b566"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "589186a20d0a04b1be74ab9d0cb5fd14a8094653c4668f221721d5f5362ac4da"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "a8b0acb79b67c9d8dc8f152dd19bedc9605f8023df9abb44ec80fe0cdf1a974b"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c86d9a1a1c8789783fc861d75b4f1f62412d047ae5083d15383a1cf8ef27a4f7"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "eb610ac0b98bc60552c3e3dee595ef0e188afd25dc85f7e8eeff14a5f7ba1ac8"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "3d4ebbb701c8e75153456b3bf1e598d82bb9ef90c343e0b42097c52158fc187f"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 31,
+          "text_sha256": "07b1381e5735941c074616fcc199937914000730b9d76fcd9a72d2af886320ed"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "91fa76b29f437a300f8a0511b7b3c604e61fb9c6f675af1b2c9d8bf0a85fe20d"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 42,
+          "text_sha256": "a993fa30da3e6a359ffb282610b7accd0a764b660c9e9772a86e4bca068637c8"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 29,
+          "text_sha256": "8bb2cea56fe617cf150f1dfbc4b113f98ffd3c493692fc4f9226a0b6bd55a1fd"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "eligibility",
+          "characters": 56,
+          "text_sha256": "cc0ed6c8b86914dffdf7c63184caa6b9e366d823e1dd8454069499ecc8277573"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "f93b650ba2063cfbabf574d91b6177fb703ee52019053e0026301a443c7c9855"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 66,
+          "text_sha256": "dcadc6fe9a09af1d17dcc43c6f027257e75e3bc53255212d9d104716a4d8b6fa"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 18,
+          "text_sha256": "d3f50aea74576e33c2e696ebcf12405e14fa07a04dd675fd26cad871dddef7ee"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 60,
+          "text_sha256": "fcf31684ac06eeee94f469ef9260a1fd7c6bdf2d548a09b4bcda50588a192f63"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "0dd076fe78ecaa854551e74adc9ddea7002a84b7510ef61beb2a4d9e8f190198"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 65,
+          "text_sha256": "fc002dc9412b7baa275a19ef32af697cbdba52ef228bb3f12bb443ba366b2a24"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "d538ca87a70c30f9a5f84df1d5e61630e1ab579bd3f665d0adfc0b9d78f7f707"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-MATERIALS-REPLY-2023",
+      "url": "https://www.henan.gov.cn/2023/02-04/2683999.html",
+      "revision": "rev-e3dcf767e54f7332ddc478ad",
+      "state": "pending_review",
+      "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
+      "original_bytes": 8843,
+      "metadata": {
+        "title": "河南省公安厅公开答复：省内异地补换领材料分支",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "official_consultation_reply",
+        "published_at": "2023-02-06",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "material_branch_signal"
+      },
+      "source_fact_assessment_summary": {
+        "id": "provincial-away-reply-scope-pending-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T19:16:42.471862+00:00",
+        "current_applicability": "dated_provincial_away_reply_with_unresolved_material_relationship",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落11",
+          "category": "identity",
+          "characters": 12,
+          "text_sha256": "357ad4ea5e1f4446eb30ac4763bba61c5767373118ca97bdd121a92f8d2c80eb"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "identity",
+          "characters": 103,
+          "text_sha256": "8595bddbfbf1e854f041002096ff2972128a5bc1ad805013eca827ee15e8022c"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "identity",
+          "characters": 90,
+          "text_sha256": "b0638df543cfcffe51f3be975b84d1019bb901259b726ab52fdea0e1eb7a5849"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-MEASURES-2021-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+      "revision": "rev-3e0ef686ca50ff8c594937f5",
+      "state": "pending_review",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "original_bytes": 1533949,
+      "metadata": {
+        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知.pdf",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_convenience_measures_candidate",
+        "document_number": "豫公〔2021〕16号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 357,
+          "text_sha256": "86f7f9e26457c61281618ebaef045fcd97273908e9f079883bbb44254db75faf"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 776,
+          "text_sha256": "08c9a17df9284cfd60715346606f1e618d6d775bfcd3503fa66e3c54e1443aee"
+        },
+        {
+          "locator": "PDF第3页（OCR待核对）",
+          "category": "procedure",
+          "characters": 712,
+          "text_sha256": "5958ab51bbb26e8e2a1ce474c1d58233631c079956650b206c93c2257edce3df"
+        },
+        {
+          "locator": "PDF第4页（OCR待核对）",
+          "category": "procedure",
+          "characters": 302,
+          "text_sha256": "ec6e0edb16ae35d65d4f2e891d9bde3cec1d6d4938b886729da7aaff4f2d563e"
+        },
+        {
+          "locator": "PDF第5页（OCR待核对）",
+          "category": "procedure",
+          "characters": 501,
+          "text_sha256": "03f2a4a1f3f5092d8cb4d4ab6c2b93036d9a0d9e4b7a545f0ad268700ada20a3"
+        },
+        {
+          "locator": "PDF第6页（OCR待核对）",
+          "category": "procedure",
+          "characters": 576,
+          "text_sha256": "56cfc352c7988b1a964207b63dd6f7fa143512b50457d6bc3266aad281f29bf4"
+        },
+        {
+          "locator": "PDF第7页（OCR待核对）",
+          "category": "procedure",
+          "characters": 559,
+          "text_sha256": "bf901d32f3ecb635937c06c9f81333d5561c55a57f47792032b7f7b39bb7c70b"
+        },
+        {
+          "locator": "PDF第8页（OCR待核对）",
+          "category": "procedure",
+          "characters": 308,
+          "text_sha256": "cd47520c0e701b5b4f221f3c4e8bac9f10057e965645543f500f845d59e7017d"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-MEASURES-2024-JY",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-71014e82351747c52e933f86",
+      "state": "excluded",
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "original_bytes": 36086,
+      "metadata": {
+        "title": "河南2024便民措施：济源公安转载的25自然日条款",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "official_policy_explanation",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "later_policy_signal"
+      },
+      "source_fact_assessment_summary": {
+        "id": "dated-scope-2024_duration-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T19:16:42.471862+00:00",
+        "current_applicability": "historical_duration_context",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 48,
+          "text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-MEASURES-2026",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "state": "reviewed",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "original_bytes": 17887,
+      "metadata": {
+        "title": "河南公安机关2026年便民利民服务措施政策解读",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "official_policy_explanation",
+        "published_at": "2026-05-05",
+        "effective_from": null,
+        "effective_to": null,
+        "conflict": false,
+        "scope_confirmed": true,
+        "collection_role": "later_policy_signal",
+        "date_basis": {
+          "base_revision": "rev-61474e03ba08d8007310057b",
+          "body_sha256": "51ad6cc402200019300b76f3aae8be36ef6fb93d9da5ba3a204dc56650e8990e",
+          "information_as_of": "2026-05-05",
+          "kind": "reported_service_information",
+          "legal_commencement_established": false,
+          "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+          "source_date_field": "meta:pubdate",
+          "source_date_value": "2026-05-05 09:18:04.0",
+          "source_observation_sha256": "c0d4266f45c862eb42fb1283b5f1a205115a77fdd91eea6e9a932a19bacf0231"
+        }
+      },
+      "source_fact_assessment_summary": {
+        "id": "henan-service-information-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T17:06:10.125898+00:00",
+        "current_applicability": "attributed_provincial_service_information_as_of_2026-05-05",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 108,
+          "text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-NORM-PUBLISHER",
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "revision": "rev-4b92705f0d8d799adef32b29",
+      "state": "pending_review",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "original_bytes": 119474,
+      "metadata": {
+        "title": "河南省公安厅关于印发《河南省公安机关户口居民身份证管理工作规范（试行）》的通知",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "provincial_normative_document",
+        "published_at": "2022-08-16",
+        "effective_from": "2022-09-01",
+        "effective_to": null,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "source-facts-observation-refresh-20261016-v2",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T14:43:32.044952+00:00",
+        "current_applicability": "unknown",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第一条",
+          "category": "procedure",
+          "characters": 150,
+          "text_sha256": "efadc1537deb3f46e4e162dd8ce476183f30c654a1d263bd0c98e386050abe79"
+        },
+        {
+          "locator": "第七条",
+          "category": "household",
+          "characters": 241,
+          "text_sha256": "030e659626dc607b2f38d06de176766ad7b7c2dcf7e9ad1f59c4e7ca03482717"
+        },
+        {
+          "locator": "第九条",
+          "category": "procedure",
+          "characters": 61,
+          "text_sha256": "59fa165cce0ac7d57ad076c6ac5d70823d25144437ae8d280f2257d173e707da"
+        },
+        {
+          "locator": "第一百五十五条",
+          "category": "eligibility",
+          "characters": 83,
+          "text_sha256": "9e5bcdac50cfdf0ce99eb5b5c8d076204c04e1534a4cf90801c96a8926c17fd6"
+        },
+        {
+          "locator": "第一百五十七条",
+          "category": "eligibility",
+          "characters": 128,
+          "text_sha256": "1e2bb14dcf88a6094476b8f4e9fed3778f05bef8faa2c673a7b85045b6c3e5a2"
+        },
+        {
+          "locator": "第一百五十九条",
+          "category": "identity",
+          "characters": 162,
+          "text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6"
+        },
+        {
+          "locator": "第一百六十一条",
+          "category": "identity",
+          "characters": 126,
+          "text_sha256": "994d90b554217cd3a8ef6c1fa39104f5b459460b7c8e571c2756d09fac572dbf"
+        },
+        {
+          "locator": "第一百六十二条",
+          "category": "procedure",
+          "characters": 34,
+          "text_sha256": "ffad228cd18c63b5be4e06e1c7cfb90008176fe9dd2a2ae67bfe44f13bf1e83e"
+        },
+        {
+          "locator": "第一百六十三条",
+          "category": "procedure",
+          "characters": 57,
+          "text_sha256": "929bc79de001643a6efd7dc0d5665373e40e15c378b03f6f86fa401a8ab152bc"
+        },
+        {
+          "locator": "第一百六十四条",
+          "category": "identity",
+          "characters": 115,
+          "text_sha256": "ee059f01921575a460b52e29a7f39cca98a76610516b97c392f32d10d080fb2b"
+        },
+        {
+          "locator": "第一百六十五条",
+          "category": "identity",
+          "characters": 133,
+          "text_sha256": "de371f67f9bb30392282433c37fda3de8da2b8e6ca3c56202ab0be24d8c3aede"
+        },
+        {
+          "locator": "第二百三十四条",
+          "category": "procedure",
+          "characters": 85,
+          "text_sha256": "a942f04eff1b2a31e2c351c5a56abfa03130a3969544699735fe789457c62c9d"
+        },
+        {
+          "locator": "第二百三十五条",
+          "category": "procedure",
+          "characters": 34,
+          "text_sha256": "040a9a5be3ea449b882297f898e9195872ace64fd634cae117420e188d11aed1"
+        },
+        {
+          "locator": "第二百三十六条",
+          "category": "procedure",
+          "characters": 107,
+          "text_sha256": "610ea80302fec85817b8934c221f809aa2e68855912472cded1ed5bf2e785f5f"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-NORM-XICHUAN-PDF",
+      "url": "https://www.xichuan.gov.cn/ifile/20251229/1766973939411PxhOsju6.pdf",
+      "revision": "rev-cb7478c231c1541d9c8b566a",
+      "state": "excluded",
+      "original_sha256": "fbb7d6383dc63131fa70cbacac85b6585cb9827a15c806533abf22176d1f5b9c",
+      "original_bytes": 3966172,
+      "metadata": {
+        "title": "河南户口居民身份证规范2022通知原件：淅川政府公开副本",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_corroborating_reference",
+        "document_number": "豫公通〔2022〕77号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2022-07-27",
+        "extraction_method": "pdf_text_layer_selected_complete_pages_1_45_64",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页",
+          "category": "procedure",
+          "characters": 211,
+          "text_sha256": "3837b3481dd165f5ad5c3769fd22bdbcfaa13bbbda30fb7c24e32331d5632b25"
+        },
+        {
+          "locator": "PDF第45页",
+          "category": "procedure",
+          "characters": 619,
+          "text_sha256": "f14d3699cc86a4d0348824a2990c89e5ed8a56865b21e55c585b107ee8e649ee"
+        },
+        {
+          "locator": "PDF第64页",
+          "category": "procedure",
+          "characters": 534,
+          "text_sha256": "82401d3e7974e710ce89dbc2e776b63e0c6138c20a7eaf89e1c0f440a4835e51"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2026/01-22/3312600.html",
+      "revision": "rev-295d24186ffab16bade52ace",
+      "state": "excluded",
+      "original_sha256": "e10b1eda14a0c3a9a105c40da88eae25a802d7bafc87cd9a948e9b4eea00677b",
+      "original_bytes": 11572,
+      "metadata": {
+        "title": "河南省公安厅关于修改和废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "1e97ed5073ded032fa2fd4e95ac3038cd2765eb0e982efd33b62fb9c3c33c0ab"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 109,
+          "text_sha256": "639a2f30190774672d6ecf33219889a5cd80cd610412b968f796329653a14cd5"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "f05d310d7a92a7ef77e174ad76454f31d48f4b19deb0f0546afac51b485e0b56"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 57,
+          "text_sha256": "4fc027b4ff6f5e788351ca82d587850847081e707a19a7ad3d8e158f26f2d7a6"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 91,
+          "text_sha256": "48be5a892e8c3e55f10830be4db39400b32b76f2c37c437c25d683ba20b88954"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "69fad7ef2b0320b246113c7d59015f9b04e399a2bab957881e10b98e40f34b0f"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 46,
+          "text_sha256": "4755268f6f5c1333d7bbf36c9c70caae9374b82622740374c3c348a33c0d6ba4"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "8f6080dc776e5b9734071380fe26907380f366fd9b4a9a26d5d22d01dde0bed8"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 45,
+          "text_sha256": "81fb1a286d1849f6e9139e82744b7de6c4c75b86e058d2fb5965bd171668eff2"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "eligibility",
+          "characters": 219,
+          "text_sha256": "4bde7b1dba9503b23a9492bd19770f89906cb712661fb7cc799bf0a731d19f5a"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "68cdaebdaf117e854dbeac2d747cbf47c595b02dde56eef9ad06c5f642d1163f"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 45,
+          "text_sha256": "835e304fdbe84c824783af6a1948879827459e982622a69070f45433c191ae4e"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "c4534faeeb037a4dd9946c8c9b7b4d9e7f4dadcdf2ae723d79abfa8d5ccac4b2"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 10,
+          "text_sha256": "577f8f78d725cb335b48f345a7d788ed6cd23039fb2eac25f3e509326b7a6f5b"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237047.html",
+      "revision": "rev-09b1fde3068965d543ef0e43",
+      "state": "excluded",
+      "original_sha256": "56a9ac6c631485da5700e39f7c000e8c0680966f0203d9d72a9273a06efb0291",
+      "original_bytes": 6579,
+      "metadata": {
+        "title": "河南省公安厅关于公布现行有效行政规范性文件和废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 40,
+          "text_sha256": "5305513d1b71a987886f7c5c1178cb557b6d5efc5aee996a35bb1eeff983ae65"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/10-21/3237046.html",
+      "revision": "rev-8f22e46cb49d3224d2e0e3ef",
+      "state": "excluded",
+      "original_sha256": "40fb56ed8ca0d01e8af060f698ff1bda046907b6d3db5eac8707d3985558c68f",
+      "original_bytes": 6369,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "ab8e46ac3982f2db3a486c00faab789bc79398298d5160a644a088cc8b12b5f7"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2025/05-08/3155683.html",
+      "revision": "rev-696aeaf711147d15d3de2a01",
+      "state": "excluded",
+      "original_sha256": "45aaa93c4aaaf8cfa6bc62284a751b6a4dfcd754e21064f94a56cdd2d9981c9c",
+      "original_bytes": 16635,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 21,
+          "text_sha256": "04965ac8a9a71b9123815cc9861623c774c762fc7adfa1350a1a7b57fea07928"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 111,
+          "text_sha256": "dcaf877f56b20cef08ad8b6895b6808fc6af509e9cf5104eb72210c247e8a2bc"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 54,
+          "text_sha256": "bbeaf81966ed8040a44cea1c9fbd56e09e848ad562dc95c511412e6bec8b69d9"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 48,
+          "text_sha256": "33b800d7bfd2a328ea5d6e4f8153517a471fd366bfb9b514907ebc447901efc3"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 47,
+          "text_sha256": "899193260cec02bc14ae73f1d9382739365f24ccbc07daf5c33b1d67f9fc78ac"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 43,
+          "text_sha256": "123f557257e6e9ef0fd2e453f508fee3d0392b1bebe20890e0785483a87fb23a"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 51,
+          "text_sha256": "a7e5eb9b5f2250ef105d45cd1f2c8db955b582becf6734ded1ee7035b66591bb"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 10,
+          "text_sha256": "ab30e7a3f52f321f51db1e4bf96bd2fb33fbac2432c1196205eef5383ce1c129"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2022/03-18/2417195.html",
+      "revision": "rev-391a135f8dd23f936642d1d9",
+      "state": "excluded",
+      "original_sha256": "a56c6128bafa7fb75e8486ceb6f234f58fcc222056a35d141a9e43e51c6ddfae",
+      "original_bytes": 13287,
+      "metadata": {
+        "title": "河南省公安厅关于印发2022年便民利民服务十项措施的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 23,
+          "text_sha256": "a434b3f2f0b8422d51ba60c5696e280b69950013c55f913be526029cb836f337"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 105,
+          "text_sha256": "eba143647e5e9b52282366d4aed6a6e814f3c82f9d32550378e9b6f3e005a4b2"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 188,
+          "text_sha256": "d202c0425ebd13c7e3e71535268ca16a0b44918aea9ef4a61028a3475cdc216c"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 262,
+          "text_sha256": "738b67841edbcd4c96bcf29ad7b6518342295ce9ff29f8718364b0ae928e812b"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 122,
+          "text_sha256": "c08c8f797ace1b2cb32da683b2e1e6400e776070ecbb36aab1b4b4456048d067"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 143,
+          "text_sha256": "4b78ea36fe5ea719753e4cdf17661de93611a45444d80426bece8c2c97db54bb"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 41,
+          "text_sha256": "a41de9ffb63267480f6ac1167a4d9ca9cb3417f432b7eeff0268ecdfc55f38cb"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 13,
+          "text_sha256": "7ba35c925decffb19578550be0926789210dcf0273ffd07081b5e0ed4f30f41d"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 10,
+          "text_sha256": "8a2625032f8e11153cd8a8cb9aea09efbb72036ecccc63d35bf04f298a5736aa"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 21,
+          "text_sha256": "d0d3b5475a676ae35ff6b1c83a9bfd2a5ca94b332ff0ed4f041b01d0b5899ddb"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 129,
+          "text_sha256": "805a8955965865f32323bcd69ae1ca357f3ed092405301e11188d4e97cb2599e"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 99,
+          "text_sha256": "f6eb540ba41d73b7d3b257890d5583a72a988511c71107a925ff070bea690ac3"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 108,
+          "text_sha256": "58b115b29f3ed736d0c983f742e00dfab462812018ed32075f43c960086fb27e"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "eligibility",
+          "characters": 123,
+          "text_sha256": "0615d3c520745b2f42967fdf802a10a5d76e36245b42ad8e7f2bea945796700c"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 123,
+          "text_sha256": "bfd9213849bc4cdffb3725aa3915063b4fb8bdd20067e49301e17f2bb50cb104"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 159,
+          "text_sha256": "1a7ac83daddb91c52749810c2688f19601b955b6fdc620b305ac446e734f8139"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 105,
+          "text_sha256": "2ccf1e8a64f48f13796a069e6c8ec3abf8c6ef8400ba0c34b24bd76ebbfc70d1"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 101,
+          "text_sha256": "b813e7c1a47933ef8253ea20763af3d0210e5b85f7bbe03ef40353a11a08b154"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 99,
+          "text_sha256": "b3f8f54f87d2f862fa68700bc7a47c19e4bb64c90d261ba8b9621c9cbfb8681d"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 96,
+          "text_sha256": "159b991bfaa1de02bd390d67fac6362bced96634f119129636d0d525f879fb9b"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2021/12-24/2371407.html",
+      "revision": "rev-0910ba3f91d1a9397f09febc",
+      "state": "excluded",
+      "original_sha256": "e51b2ee99c0370d500cbeaed75a06f2826e191c7ceb0ad4dc4f46b8107d07f11",
+      "original_bytes": 6289,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "ab8e46ac3982f2db3a486c00faab789bc79398298d5160a644a088cc8b12b5f7"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2021/06-01/2156062.html",
+      "revision": "rev-c2616eadf981f9c8f1e7dba5",
+      "state": "excluded",
+      "original_sha256": "07311ee44758195fde18e8739d681ff7cbc7fdfaff18b0e1393849ff4bebd6d1",
+      "original_bytes": 6324,
+      "metadata": {
+        "title": "河南省公安厅关于印发2021年便民利企服务新举措的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 31,
+          "text_sha256": "e95587fd6dbe03a1bc94d2054a1ced1e8a0f9dc5305944c775d040470f13a1c1"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-POLICY-DISCOVERY",
+      "url": "https://hnga.henan.gov.cn/2020/12-29/2069144.html",
+      "revision": "rev-efd6f33f1a057deb871992c6",
+      "state": "excluded",
+      "original_sha256": "1031c0d6f8f3ee68a77bc3f361ac64cc9e5d092dd7d9dd15c0881dec164529ae",
+      "original_bytes": 6297,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_policy_candidate",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "discovery_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 27,
+          "text_sha256": "e9520d85097c8d30bd8c1b7ce8cc1ef2b2534c4350b5b57f3e028844750b53e6"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-REPEAL-2020-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20201229/470d2ac4fa2746d5946a793cb2fcb3ee.pdf",
+      "revision": "rev-3c056a95c490999e9a8812b8",
+      "state": "excluded",
+      "original_sha256": "0f30596cce1fd8e22a62c315b368beddf829e462fcbc99067aaa703ea13ee0c2",
+      "original_bytes": 263407,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知 .pdf",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_repeal_list",
+        "document_number": "豫公通〔2020〕122号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "validity_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 347,
+          "text_sha256": "6cf6a0885f1b35fbdf8fb4ee15fd1604d6acd2893e071662920d52917b88e52a"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 242,
+          "text_sha256": "8f1a3c0680c5e81ed2e10310cd73694d8edc5935db7bbf821670566168ded3f9"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-REPEAL-2021-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20211224/4552fd26620642daaf6f1c64491ae92d.pdf",
+      "revision": "rev-a54d6091b570f181a9b02a46",
+      "state": "excluded",
+      "original_sha256": "c5af193ea4d4cd4a1c150c9177e43d17aeba3a24b36409f5f4ada3fad702502e",
+      "original_bytes": 269670,
+      "metadata": {
+        "title": "河南省公安厅关于废止部分行政规范性文件的通知.pdf",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_repeal_list",
+        "document_number": "豫公通〔2021〕108号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "validity_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 312,
+          "text_sha256": "19bcbe313135bf2f0f7c7dc7c3d5978b6703c53e2e1726cd1892105e980c797d"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 273,
+          "text_sha256": "b98b4318983cde6c0625b986976385c93c683029554d4412246ff0e66a1fd7b9"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-REPEAL-2025B-PDF",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/ca68ab971dee440089901776f99dbdcf.pdf",
+      "revision": "rev-9abf6a37bea475cc20f9b7ad",
+      "state": "excluded",
+      "original_sha256": "20f76fbc3bfe78bfd205e415879c15a5185ce3d07ad0e20f4114835a5f77f603",
+      "original_bytes": 960269,
+      "metadata": {
+        "title": "2025栏目载入的省厅2022废止通知：扫描附件",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_repeal_list",
+        "document_number": "豫公通〔2022〕86号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2022-08-02",
+        "extraction_method": "ai_visual_transcription",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "PDF第1至2页（AI视觉转录）",
+          "category": "procedure",
+          "characters": 297,
+          "text_sha256": "034e767bf04f5f035ea6e4a0d2e1d8aa000ca0039698dd144e59e67074dbb385"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-UPDATE-GS-01",
+      "url": "https://www.gushi.gov.cn/2025/07-10/760173.html",
+      "revision": "rev-49ae68807f33bf53dbbec739",
+      "state": "reviewed",
+      "original_sha256": "463e687bb0eaa804722b3e1bb5672e4365ea7c3dc339a9173428dd46fdccde52",
+      "original_bytes": 14372,
+      "metadata": {
+        "title": "事关身份证换证，办理指南请查收（河南换领期限更新线索）",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "official_service_information",
+        "published_at": "2025-07-10",
+        "effective_from": null,
+        "effective_to": null,
+        "conflict": false,
+        "scope_confirmed": true,
+        "collection_role": "update_signal",
+        "date_basis": {
+          "base_revision": "rev-3980dccce8ba2c0e265120cc",
+          "body_sha256": "3be789a6b01a2619712b1dd682bce6c3f7a5fba3bd5f3f25b353144a300eca64",
+          "information_as_of": "2025-07-10",
+          "kind": "reported_service_information",
+          "legal_commencement_established": false,
+          "original_sha256": "463e687bb0eaa804722b3e1bb5672e4365ea7c3dc339a9173428dd46fdccde52",
+          "source_date_field": "meta:pubdate",
+          "source_date_value": "2025-07-10 09:44:32.0",
+          "source_observation_sha256": "9e4c3f376fd6f408a72925427644840d558f674821f4c25e64f65adf6f41ecc3"
+        }
+      },
+      "source_fact_assessment_summary": {
+        "id": "henan-renewal-window-service-information-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:29:14.614924+00:00",
+        "current_applicability": "attributed_provincial_service_information_as_of_2025-07-10",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 67,
+          "text_sha256": "ac195ed9b2a090c6a235627f04021c9469dc7ab95261c9c6995e38bf47f9c92d"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-VALIDITY-2025-PDF",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20251021/417a0dee18aa447c9caf64d5f36473eb.pdf",
+      "revision": "rev-dceee272eaca3c7b903155d8",
+      "state": "excluded",
+      "original_sha256": "f6a32e4bf55d2148b498bd00c3451912d1405bc3ca72566dc356e7fca4afbe51",
+      "original_bytes": 4595033,
+      "metadata": {
+        "title": "2025栏目载入的省厅2019效力清理通知：扫描附件",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "official_normative_validity_list",
+        "document_number": "豫公通〔2019〕141号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2019-06-16",
+        "extraction_method": "ai_visual_transcription",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（AI视觉转录）",
+          "category": "procedure",
+          "characters": 141,
+          "text_sha256": "ab079529b088f8fa5f5a6bf170c55ee3ed3ed9deffbfe80028b32949db619a89"
+        }
+      ]
+    },
+    {
+      "source_id": "ID-AMENDMENT-JT-LEAD",
+      "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+      "revision": "rev-bd98fcbde0cda7f52078b310",
+      "state": "reviewed",
+      "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+      "original_bytes": 54492,
+      "metadata": {
+        "title": "中华人民共和国居民身份证法（2011年修正，官方转载候选）",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "statute",
+        "published_at": null,
+        "effective_from": "2012-01-01",
+        "effective_to": null,
+        "conflict": false,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-statute-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T16:24:26.026138+00:00",
+        "current_applicability": "reviewed_as_national_statutory_baseline_with_documented_limits",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第一条",
+          "category": "procedure",
+          "characters": 60,
+          "text_sha256": "41fa752f6744117c7b6e3e0c4f6645e98f7e69026de42a84f214f8ea3811748b"
+        },
+        {
+          "locator": "第二条",
+          "category": "eligibility",
+          "characters": 79,
+          "text_sha256": "05651c985a3e1aa62a3201332d6c9851b51f183653f9e51a17ad34473215d4d5"
+        },
+        {
+          "locator": "第三条",
+          "category": "identity",
+          "characters": 144,
+          "text_sha256": "504440d1359a64c75566ab06d0fae8c12eb2aaee9d589a8d96a597d61e61266d"
+        },
+        {
+          "locator": "第四条",
+          "category": "identity",
+          "characters": 102,
+          "text_sha256": "18e8f57b4b3849d16c855ceb4c0693da6a7946fbb7fa628f61b28823754d3f26"
+        },
+        {
+          "locator": "第五条",
+          "category": "eligibility",
+          "characters": 147,
+          "text_sha256": "3d03133001b30b26991b3c33d6680a0c880d4e336aa020158f6f3de4b4aadee2"
+        },
+        {
+          "locator": "第六条",
+          "category": "identity",
+          "characters": 130,
+          "text_sha256": "45dc4dee048b8aa2c10266fe385f5b342f54bedb96fa42300190a5ff01773e1b"
+        },
+        {
+          "locator": "第七条",
+          "category": "procedure",
+          "characters": 73,
+          "text_sha256": "8bd8d528bbe08c256b61dc677125f1a4d13bf5adbdfc5891fc661b7cd3649788"
+        },
+        {
+          "locator": "第八条",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "bf78bd01d1bdddaee65a61ed3bda9d1676f65c9be1f22a1e46b5e835f1794422"
+        },
+        {
+          "locator": "第九条",
+          "category": "identity",
+          "characters": 106,
+          "text_sha256": "99eb06565fe25f53cda80616e30f44180e09de1c81bc8e16467c957f87815527"
+        },
+        {
+          "locator": "第十条",
+          "category": "household",
+          "characters": 39,
+          "text_sha256": "a5fb1720986315c453106f8453861640677649bac49d8bb78f418432073c0627"
+        },
+        {
+          "locator": "第十一条",
+          "category": "identity",
+          "characters": 215,
+          "text_sha256": "1cf76af59af12e90fd7990b1ab4904307ef7fe81444044a0c0576ae7aa8c9016"
+        },
+        {
+          "locator": "第十二条",
+          "category": "procedure",
+          "characters": 190,
+          "text_sha256": "530eae3b47c0f5ae31c958b3b56cad742ba5654e6071062669d73c08e888188a"
+        },
+        {
+          "locator": "第十三条",
+          "category": "identity",
+          "characters": 101,
+          "text_sha256": "f392cb531c963f388cd459f9b836a058601135379195a58254b356fbdac0623c"
+        },
+        {
+          "locator": "第十四条",
+          "category": "identity",
+          "characters": 165,
+          "text_sha256": "fd2493d69e65957781275b6815a42326260613e54f7aa03801a41289533fc293"
+        },
+        {
+          "locator": "第十五条",
+          "category": "identity",
+          "characters": 316,
+          "text_sha256": "5bea1519a1cd2211a29d3805e3b64f1785500dc76c708cf0962ce3df15969a93"
+        },
+        {
+          "locator": "第十六条",
+          "category": "procedure",
+          "characters": 105,
+          "text_sha256": "166a2f07867b8d83e89a3844bfd9095a7688189821aa49c99c889a5d61d37d38"
+        },
+        {
+          "locator": "第十七条",
+          "category": "procedure",
+          "characters": 141,
+          "text_sha256": "e3bd6d6a0477e982d269ba6e36554c47dbef3abf8097d21b1ff180321c6a62cd"
+        },
+        {
+          "locator": "第十八条",
+          "category": "identity",
+          "characters": 63,
+          "text_sha256": "0515ad170d1ed14590483514331725406ce2d5c522877f5be8076fd42c3bfae0"
+        },
+        {
+          "locator": "第十九条",
+          "category": "identity",
+          "characters": 257,
+          "text_sha256": "e9431b681956298c40085014237ace75465f9c3028071a2ad8908ddf0fa14db0"
+        },
+        {
+          "locator": "第二十条",
+          "category": "procedure",
+          "characters": 241,
+          "text_sha256": "bf8d0274abef7a21633f3346d149b5af19c4d6cd18d75ab07607a58ea574cf12"
+        },
+        {
+          "locator": "第二十一条",
+          "category": "procedure",
+          "characters": 222,
+          "text_sha256": "94b469a17f9c81536c602e7ce668c4617060c0bb6cf2803cff8d568568031351"
+        },
+        {
+          "locator": "第二十二条",
+          "category": "identity",
+          "characters": 58,
+          "text_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017"
+        },
+        {
+          "locator": "第二十三条",
+          "category": "procedure",
+          "characters": 161,
+          "text_sha256": "7f5f5dde363b300522863ffdcdc0a41c0795646a462cf6562a72b1e0f17e7333"
+        }
+      ]
+    },
+    {
+      "source_id": "ID-GUIDE-01",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "revision": "rev-ec7e7716b9519d20ee336e0b",
+      "state": "pending_review",
+      "original_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+      "original_bytes": 12836,
+      "metadata": {
+        "title": "居民身份证到期换领、其他原因换领（二七区）",
+        "region": "郑州市二七区",
+        "matter": "demo-id-renewal",
+        "document_type": "service_guide",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "材料列表第1项（适用分支待复核）",
+          "category": "household",
+          "characters": 8,
+          "text_sha256": "4388a257edcee2f536736ab26fac9e30b43051afe7f8cb9325abecbc628aa59c"
+        },
+        {
+          "locator": "材料列表第2项（适用分支待复核）",
+          "category": "identity",
+          "characters": 9,
+          "text_sha256": "63c896e954b596d9cbb5b1da41590490243af478efe1bf8fe264874f3177bcb9"
+        },
+        {
+          "locator": "材料列表第3项（适用分支待复核）",
+          "category": "eligibility",
+          "characters": 33,
+          "text_sha256": "f8509a0a57183b57b4f678149497a78061585f48e1857721937d6c42af29cd35"
+        },
+        {
+          "locator": "材料列表第4项（适用分支待复核）",
+          "category": "procedure",
+          "characters": 60,
+          "text_sha256": "180bbd9c59fdf8d4c151b1aec6cdd43c1a6f8de6d65b1460af80fe1890a4d2eb"
+        }
+      ]
+    },
+    {
+      "source_id": "ID-LAW-01",
+      "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+      "revision": "rev-3d247c2bc7c851c0812032ab",
+      "state": "excluded",
+      "original_sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
+      "original_bytes": 26709,
+      "metadata": {
+        "title": "中华人民共和国居民身份证法",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "statute",
+        "published_at": "2011-10-29",
+        "effective_from": "2012-01-01",
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "source-facts-20261016-v1",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T05:35:30.721510+00:00",
+        "current_applicability": "unknown",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第一条",
+          "category": "procedure",
+          "characters": 60,
+          "text_sha256": "41fa752f6744117c7b6e3e0c4f6645e98f7e69026de42a84f214f8ea3811748b"
+        },
+        {
+          "locator": "第二条",
+          "category": "identity",
+          "characters": 79,
+          "text_sha256": "05651c985a3e1aa62a3201332d6c9851b51f183653f9e51a17ad34473215d4d5"
+        },
+        {
+          "locator": "第三条",
+          "category": "identity",
+          "characters": 144,
+          "text_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b"
+        },
+        {
+          "locator": "第四条",
+          "category": "identity",
+          "characters": 102,
+          "text_sha256": "18e8f57b4b3849d16c855ceb4c0693da6a7946fbb7fa628f61b28823754d3f26"
+        },
+        {
+          "locator": "第五条",
+          "category": "identity",
+          "characters": 147,
+          "text_sha256": "3d03133001b30b26991b3c33d6680a0c880d4e336aa020158f6f3de4b4aadee2"
+        },
+        {
+          "locator": "第六条",
+          "category": "identity",
+          "characters": 130,
+          "text_sha256": "45dc4dee048b8aa2c10266fe385f5b342f54bedb96fa42300190a5ff01773e1b"
+        },
+        {
+          "locator": "第七条",
+          "category": "identity",
+          "characters": 73,
+          "text_sha256": "8bd8d528bbe08c256b61dc677125f1a4d13bf5adbdfc5891fc661b7cd3649788"
+        },
+        {
+          "locator": "第八条",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "bf78bd01d1bdddaee65a61ed3bda9d1676f65c9be1f22a1e46b5e835f1794422"
+        },
+        {
+          "locator": "第九条",
+          "category": "identity",
+          "characters": 106,
+          "text_sha256": "99eb06565fe25f53cda80616e30f44180e09de1c81bc8e16467c957f87815527"
+        },
+        {
+          "locator": "第十条",
+          "category": "identity",
+          "characters": 39,
+          "text_sha256": "a5fb1720986315c453106f8453861640677649bac49d8bb78f418432073c0627"
+        },
+        {
+          "locator": "第十一条",
+          "category": "identity",
+          "characters": 215,
+          "text_sha256": "1cf76af59af12e90fd7990b1ab4904307ef7fe81444044a0c0576ae7aa8c9016"
+        },
+        {
+          "locator": "第十二条",
+          "category": "identity",
+          "characters": 190,
+          "text_sha256": "530eae3b47c0f5ae31c958b3b56cad742ba5654e6071062669d73c08e888188a"
+        },
+        {
+          "locator": "第十三条",
+          "category": "identity",
+          "characters": 101,
+          "text_sha256": "f392cb531c963f388cd459f9b836a058601135379195a58254b356fbdac0623c"
+        },
+        {
+          "locator": "第十四条",
+          "category": "identity",
+          "characters": 165,
+          "text_sha256": "a21811e416a1898ad27a0f9983ef97a1da395202b18d6875fb5ec49c54f96f87"
+        },
+        {
+          "locator": "第十五条",
+          "category": "identity",
+          "characters": 316,
+          "text_sha256": "fbffc27fc4b0a61a600be715b4983c0726e62e5ac86ecc0f5807a298efbee6d1"
+        },
+        {
+          "locator": "第十六条",
+          "category": "procedure",
+          "characters": 105,
+          "text_sha256": "fc265742a3543a9ce1714530ab861ba24167a36760750f9226d25d3acfca01c3"
+        },
+        {
+          "locator": "第十七条",
+          "category": "procedure",
+          "characters": 141,
+          "text_sha256": "b1a2f44eed670cfbc5fc67a1f7d08ad1dc235bee654a5945c463c35d26b08e56"
+        },
+        {
+          "locator": "第十八条",
+          "category": "identity",
+          "characters": 63,
+          "text_sha256": "0515ad170d1ed14590483514331725406ce2d5c522877f5be8076fd42c3bfae0"
+        },
+        {
+          "locator": "第十九条",
+          "category": "identity",
+          "characters": 257,
+          "text_sha256": "e9431b681956298c40085014237ace75465f9c3028071a2ad8908ddf0fa14db0"
+        },
+        {
+          "locator": "第二十条",
+          "category": "procedure",
+          "characters": 241,
+          "text_sha256": "d9b5e5e03b1a663df300c74eeea113426bcf22b46081e8fc26ad03670f41e073"
+        },
+        {
+          "locator": "第二十一条",
+          "category": "identity",
+          "characters": 222,
+          "text_sha256": "94b469a17f9c81536c602e7ce668c4617060c0bb6cf2803cff8d568568031351"
+        },
+        {
+          "locator": "第二十二条",
+          "category": "identity",
+          "characters": 58,
+          "text_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017"
+        },
+        {
+          "locator": "第二十三条",
+          "category": "identity",
+          "characters": 160,
+          "text_sha256": "0382b2f064658c5b67d2e8942d925effffa9bfc1f06c20a1f6002996688e0ba5"
+        }
+      ]
+    },
+    {
+      "source_id": "MOF-FEE-2007",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+      "revision": "rev-ddfaf873b73e03ab4202c18c",
+      "state": "pending_review",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "original_bytes": 20865,
+      "metadata": {
+        "title": "财政部国家发展改革委关于进一步规范居民身份证收费等有关问题的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "财综〔2007〕34号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2007-02-14",
+        "scope_confirmed": false,
+        "collection_role": "fee_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 86,
+          "text_sha256": "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 287,
+          "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "identity",
+          "characters": 96,
+          "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 131,
+          "text_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "identity",
+          "characters": 169,
+          "text_sha256": "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+        }
+      ]
+    },
+    {
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm",
+      "revision": "rev-e41c61067fe70ce4ce221dbf",
+      "state": "reviewed",
+      "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+      "original_bytes": 21072,
+      "metadata": {
+        "title": "财政部国家发展改革委关于停征免征和调整部分行政事业性收费有关政策的通知：首次申领条款",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "财税〔2018〕37号",
+        "published_at": null,
+        "effective_from": "2018-04-01",
+        "effective_to": null,
+        "conflict": false,
+        "document_signed_at": "2018-04-12",
+        "scope_confirmed": true,
+        "collection_role": "fee_first_issue_boundary"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-first-issue-fee-boundary-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T17:37:45.961494+00:00",
+        "current_applicability": "national_first_issue_fee_suspension_only_not_renewal_waiver",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 29,
+          "text_sha256": "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+        }
+      ]
+    },
+    {
+      "source_id": "MPS-NORM-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "revision": "rev-54a85427f0fe78c051faa026",
+      "state": "reviewed",
+      "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "original_bytes": 59481,
+      "metadata": {
+        "title": "公安部关于印发《户口居民身份证管理工作规范（试行）》的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "公通字〔2021〕12号",
+        "published_at": "2021-07-30",
+        "effective_from": "2021-10-01",
+        "effective_to": null,
+        "conflict": false,
+        "document_signed_at": "2021-07-24",
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-operational-selected-baseline-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:02:27.888351+00:00",
+        "current_applicability": "scoped_national_operational_baseline_selected_10_clauses",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第一条",
+          "category": "identity",
+          "characters": 203,
+          "text_sha256": "3974889526a4c91be8c02634416f4d646113f81ce13ede55303ca823eaac16b4"
+        },
+        {
+          "locator": "第二条",
+          "category": "identity",
+          "characters": 56,
+          "text_sha256": "569864ad24c8874298989086ce1b6890a85d059e018d1787b354022aeb9b0340"
+        },
+        {
+          "locator": "第十条",
+          "category": "identity",
+          "characters": 59,
+          "text_sha256": "7c4f226cada195c3fbacac121a663a2dfce11018f1a1c0626951173065243c4e"
+        },
+        {
+          "locator": "第十二条",
+          "category": "procedure",
+          "characters": 202,
+          "text_sha256": "dc51fdabc34bd92ea3831a2b331405e7e860e9aaddca4036bf4980eb748ff841"
+        },
+        {
+          "locator": "第七十八条",
+          "category": "identity",
+          "characters": 100,
+          "text_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33"
+        },
+        {
+          "locator": "第七十九条",
+          "category": "identity",
+          "characters": 32,
+          "text_sha256": "6a5dfb0171b30d0e857109a142b27f9e1d4d2740ec895cf6af76a23829d94e35"
+        },
+        {
+          "locator": "第八十条",
+          "category": "identity",
+          "characters": 100,
+          "text_sha256": "2f2fc4887c7b37d4af592bd2a7d5b09f324e071bc0dc5e1c5ec962848695c833"
+        },
+        {
+          "locator": "第八十ー条",
+          "category": "identity",
+          "characters": 115,
+          "text_sha256": "1bf76578f4a59b57824b95ac60312e6460448e2382d795ebbde367876010f116"
+        },
+        {
+          "locator": "第九十六条",
+          "category": "identity",
+          "characters": 53,
+          "text_sha256": "60b1734b4c57107f2452b18f56f140b41a95e6baef2736e250f30c7084c0f7f0"
+        },
+        {
+          "locator": "第九十七条",
+          "category": "procedure",
+          "characters": 46,
+          "text_sha256": "225042b4dc9e203fe7685091e878388d960789a129f1ae236542e9ca9e7c865b"
+        }
+      ]
+    },
+    {
+      "source_id": "MPS-NORM-WINDOW-WATCH",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "revision": "rev-84412d6b0b512caf0cbe1a01",
+      "state": "pending_review",
+      "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "original_bytes": 59481,
+      "metadata": {
+        "title": "国家办理规范第76条：提前换领窗口与事由待核监测",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "公通字〔2021〕12号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "unresolved_window_watch"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第七十六条",
+          "category": "eligibility",
+          "characters": 138,
+          "text_sha256": "95bcc0b73220cc0d0a34ea61984990b2359daf8603a58832dea0c4d378185dc5"
+        }
+      ]
+    },
+    {
+      "source_id": "MPS-USE-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/201905/t20190522_59419.html",
+      "revision": "rev-f48eee88ddb882b4933b37de",
+      "state": "reviewed",
+      "original_sha256": "1f8a44173a95c974b31e2aab436245e7d7c8ff99b7591ae13928ff3c95633e3a",
+      "original_bytes": 27657,
+      "metadata": {
+        "title": "关于规范居民身份证使用管理的公告",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "official_announcement",
+        "document_number": null,
+        "published_at": null,
+        "effective_from": "2016-07-15",
+        "effective_to": null,
+        "document_signed_at": "2016-07-15",
+        "scope_confirmed": true,
+        "collection_role": "core_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "selected-identity-privacy-official-registry-review-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T19:50:31.499440+00:00",
+        "current_applicability": "selected_national_identity_privacy_baseline_with_explicit_official_implementation_field",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落9",
+          "category": "identity",
+          "characters": 115,
+          "text_sha256": "09204b381ec3bad76e39c6e35ccd381c8b069e69b8fc1442efcd4a934c17d95b"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "identity",
+          "characters": 72,
+          "text_sha256": "bd418042fada2026adc9c9e54fddea4ea4376d39ac006385bf1b340811d23a36"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "identity",
+          "characters": 83,
+          "text_sha256": "e522ec4c4cc28683db9707ff3776510f35e003d0d2d015fca3b770238c26f688"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "identity",
+          "characters": 128,
+          "text_sha256": "b7c253ce672e9131828411572813400b38e6ed3f1b9306ff364cbf4001b0da2f"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 12,
+          "text_sha256": "a7032958aeee10b3965087d14cdb529f7db03713479b00e27f6e1ab63f242eae"
+        }
+      ]
+    },
+    {
+      "source_id": "NATIONAL-FEE-2003-QG",
+      "url": "https://www.qg.gov.cn/zwgk/jgsf/202512/t20251224_3245346.htm",
+      "revision": "rev-d6555f7e0e5033abc7281be4",
+      "state": "reviewed",
+      "original_sha256": "e266c4dd47359fa311f5c060f30d66977c41c69327d9fddcb1908a73dc7880a7",
+      "original_bytes": 38658,
+      "metadata": {
+        "title": "国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "发改价格〔2003〕2322号",
+        "published_at": null,
+        "effective_from": "2004-01-01",
+        "effective_to": null,
+        "conflict": false,
+        "document_signed_at": "2003-12-30",
+        "scope_confirmed": true,
+        "collection_role": "fee_candidate"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-fee-selected-renewal-baseline-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:49:44.702942+00:00",
+        "current_applicability": "selected_national_expiry_renewal_fee_baseline_with_2018_first_issue_override",
+        "business_approval": true,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 135,
+          "text_sha256": "ea85f058bcd395b9e4309a73b8e6bfc23229f5738e32e915dfe23ab8ffa92a41"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 30,
+          "text_sha256": "7440c609816cc4235db8c815b0d5d7462050c6c4e761dbb9099ebfce7c349019"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 70,
+          "text_sha256": "71a45b53aadec06b73eebdffde18858e5754e4d07331e47bd9aac961c1edc83e"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "9536d911baab2d44b29c65c6721de3c7fa7fc3872840639596f0f565abb94fd6"
+        }
+      ]
+    },
+    {
+      "source_id": "NATIONAL-FEE-2003-SC-COPY",
+      "url": "https://gat.sc.gov.cn/scgat/c111595/2023/2/17/1b1f0e0b55fd43a08a488468f21afe25/files/a0ca9c2a5809468e9854045ec606a6ab.pdf",
+      "revision": "rev-b08bfe6fc0a3c73f3c81a81f",
+      "state": "excluded",
+      "original_sha256": "e61e7edc4b1ab86a936fb6788097230baae17cf9db44ce99c9f9e43b10f18d75",
+      "original_bytes": 101606,
+      "metadata": {
+        "title": "国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知",
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_norm",
+        "document_number": "发改价格〔2003〕2322号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "fee_duplicate_reference"
+      },
+      "source_fact_assessment_summary": {
+        "id": "national-fee-same-instrument-copy-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:49:44.702942+00:00",
+        "current_applicability": "same_instrument_reference_copy_not_another_business_rule",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {
+        "method": "pdf_text_layer",
+        "requires_visual_review": false
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页",
+          "category": "procedure",
+          "characters": 526,
+          "text_sha256": "30e3636ae157db4170af755650dcfd73400255960a7c142c0ff240837113bad5"
+        },
+        {
+          "locator": "PDF第2页",
+          "category": "procedure",
+          "characters": 207,
+          "text_sha256": "4aefcf552fca9e7fd4f321eac27ff9982e89431480e0c4aa43536bab48548785"
+        }
+      ]
+    },
+    {
+      "source_id": "NATIONAL-LAW-DIRECTORY-2026",
+      "url": "https://www.samr.gov.cn/fgs/sjdt/art/2026/art_93a4fbac2ce14ab6baab60b0cd452ef4.html",
+      "revision": "rev-67c936e015b1b70255dcbf6a",
+      "state": "excluded",
+      "original_sha256": "ad8056246fd1a2641b73c21e611ae7f222b0d0788bb2ef2201ae3905e2f37caa",
+      "original_bytes": 200008,
+      "metadata": {
+        "title": "市场监管总局转载：截至2026-08-28现行法律目录的身份证法条目",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "dated_legal_status_directory",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "legal_status_signal"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落141",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "e289927574317bea8b073806cdcffd9083639f10ecc2006350a59f05c94ca081"
+        }
+      ]
+    },
+    {
+      "source_id": "NATIONAL-LAW-GAZETTE-2011-EXCERPT",
+      "url": "https://www.pdsxcq.gov.cn/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf",
+      "revision": "rev-478b82168817e73fde9e5268",
+      "state": "excluded",
+      "original_sha256": "95e8decc4bb5aecb5324b7cea311659d26245998b0c6d24049577c8e267220bd",
+      "original_bytes": 2453929,
+      "metadata": {
+        "title": "全国人大常委会公报2011年第7期选页651—654：居民身份证法及修改决定施行条款",
+        "region": "national",
+        "matter": "unclassified",
+        "document_type": "legislative_gazette_excerpt",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "legal_version_evidence"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {
+        "algorithm": "winrt-pdf-ocr-v1",
+        "confidence_available": false,
+        "language": "zh-Hans-CN",
+        "method": "windows_media_ocr",
+        "rendering_scope": "Source page order and visible PDF CropBox; full MediaBox booklet spreads are not combined",
+        "requires_visual_review": true,
+        "text_normalization": "cjk_intercharacter_space_fold_v1"
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1185,
+          "text_sha256": "4b07b2147eca2a823fcae6f59fed382c2a0cecaf1e54f1518a24b4ac4eeee536"
+        },
+        {
+          "locator": "PDF第2页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1408,
+          "text_sha256": "ead70dd7e3a1fe1a747748bf51d7146419cc385f7a23606061f1a2790a514b71"
+        },
+        {
+          "locator": "PDF第3页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1434,
+          "text_sha256": "10d9e7c9738349b2e1bc90f32c25778c5c22eeb105bc49d92145e46d0ab76fde"
+        },
+        {
+          "locator": "PDF第4页（OCR待核对）",
+          "category": "procedure",
+          "characters": 1207,
+          "text_sha256": "074e8d9cea6bac02aa9b17f3a6439fb379eaa1cddba4924b28e5ebc0b80bb600"
+        }
+      ]
+    },
+    {
+      "source_id": "NATIONAL-LAW-HISTORICAL-2003",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/200401/t20040101_781229.html",
+      "revision": "rev-d4ff2d4f9bb7f22c0f830139",
+      "state": "excluded",
+      "original_sha256": "d3a7c952b80f3251df8744a63152985823342bc0428a2beb9b084f1864c683d8",
+      "original_bytes": 31597,
+      "metadata": {
+        "title": "北京政府历史对照：2003身份证法第三、十一、十九、二十二条",
+        "region": "unknown",
+        "matter": "unclassified",
+        "document_type": "historical_law_text",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "governance_reference"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "第三条",
+          "category": "identity",
+          "characters": 111,
+          "text_sha256": "6595eab86b4047403912135a11009498c16399dac19b098d67990c8a79b4c410"
+        },
+        {
+          "locator": "第十一条",
+          "category": "identity",
+          "characters": 200,
+          "text_sha256": "c9cbac674c8c682a1f5c8f4ef29ce13a00d5feb650e9b4155c35e9b9a3b79b01"
+        },
+        {
+          "locator": "第十九条",
+          "category": "procedure",
+          "characters": 241,
+          "text_sha256": "5b63536e8f8621707cbafeec58fa1c0eca8493ee929f582802243904cf4633a4"
+        },
+        {
+          "locator": "第二十二条",
+          "category": "identity",
+          "characters": 117,
+          "text_sha256": "d4b8d684a54fb785c1119048dd2698f676224552571d43d15bf2eab654c6f768"
+        }
+      ]
+    },
+    {
+      "source_id": "TY-FEE-CATALOG-2026-REFERENCE",
+      "url": "https://www.tangyin.gov.cn/2026/09-04/3658654.html",
+      "revision": "rev-caaee68493d18fcd3d19bacf",
+      "state": "excluded",
+      "original_sha256": "0acb14b83876dfa54dbd1aae95dd68a3e2fc354d23d850b4fdbe8f453da5978a",
+      "original_bytes": 245856,
+      "metadata": {
+        "title": "汤阴县执行的全国性及中央部门和单位行政事业性收费目录清单",
+        "region": "汤阴县",
+        "matter": "demo-id-renewal",
+        "document_type": "official_fee_directory_lead",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "other_county_fee_reference"
+      },
+      "source_fact_assessment_summary": {
+        "id": "other-county-fee-directory-citation-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T18:49:44.702942+00:00",
+        "current_applicability": "other_county_directory_citation_background_not_pilot_fee_approval",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落40",
+          "category": "identity",
+          "characters": 143,
+          "text_sha256": "6a42dd96466ce893ed759148b6545d961d27dcfc32781fcd5b167a0b9326707e"
+        }
+      ]
+    },
+    {
+      "source_id": "ZZ-CONSENT-2021-LIST-LEAD",
+      "url": "https://www.zzsgsl.org/uploads/allimg/20211115/27-211115101102308.pdf",
+      "revision": "rev-07ed2a518a11319079f32894",
+      "state": "pending_review",
+      "original_sha256": "8d5b49ab0a2ebe42bd9cc66e29c999beeed684d3cec15a65ba4b73e524590d6e",
+      "original_bytes": 376114,
+      "metadata": {
+        "title": "郑州市人民政府办公厅关于印发郑州市证明事项告知承诺制清单的通知",
+        "region": "郑州市",
+        "matter": "demo-id-renewal",
+        "document_type": "municipal_normative_document",
+        "document_number": "郑政办〔2021〕53号",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2021-09-29",
+        "extraction_method": "native_pdf_literal_spans_selected_after_ai_visual_table_review",
+        "scope_confirmed": false,
+        "collection_role": "manual_native_pdf_pending"
+      },
+      "source_fact_assessment_summary": {
+        "id": "zhengzhou-household-undertaking-facts-20261017",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T17:57:48.416309+00:00",
+        "current_applicability": "exact_municipal_undertaking_row_located_current_Erqi_operation_pending",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {
+        "method": "native_pdf_literal_span_manual_selection",
+        "requires_visual_review": true
+      },
+      "selected_clauses": [
+        {
+          "locator": "PDF第1页：文件身份与送达范围",
+          "category": "materials",
+          "characters": 163,
+          "text_sha256": "b3dbce2933ea2d0ee893b01726ea66d7c6b966d1c62999e232dd299d82759acf"
+        },
+        {
+          "locator": "PDF第2页：清单表头",
+          "category": "materials",
+          "characters": 51,
+          "text_sha256": "bf0c3ca07f96d072a60237fac14cd0a324686ab540d8db5899e2051e5c1b452a"
+        },
+        {
+          "locator": "PDF第2页：第10项户口簿告知承诺",
+          "category": "materials",
+          "characters": 37,
+          "text_sha256": "e4442387f4ae900d28d2f19e516d0f4ea2e85b32abd9034852031c89a377fea1"
+        }
+      ]
+    }
+  ],
+  "purpose": "Share source entry points, actual archive fingerprints, pending metadata, selected-clause locators and text fingerprints for GitHub review. No original bodies, SQLite data, private filesystem paths, visitor questions, account data or tokens.",
+  "reacquisition": "Use the original official URLs only after a fresh access/use check. This catalog does not enable collection, restore a database or carry business approval.",
+  "corpus_caution": "Archive records include mirror selections of the same act and an official service-information update signal; the record count is not a count of distinct normative policies.",
+  "date_caution": "Dates may describe document-stated commencement or page publication. Source-fact summaries marked unknown/not approved do not certify current applicability; see evaluation/knowledge/source-fact-assessments.json for the bounded assessment."
+}

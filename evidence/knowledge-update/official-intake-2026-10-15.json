@@ -1,0 +1,63 @@
+{
+  "captured_at": "2026-10-15T14:28:24.365713+00:00",
+  "before_counts": {
+    "sites": 11,
+    "documents": 3,
+    "revisions": 3,
+    "chunks": 24,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 2
+  },
+  "after_counts": {
+    "sites": 11,
+    "documents": 4,
+    "revisions": 4,
+    "chunks": 35,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 2
+  },
+  "jobs": [
+    {
+      "site_id": "MPS-NORM-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "state": "done",
+      "attempts": 2,
+      "error": null
+    },
+    {
+      "site_id": "MPS-USE-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/201905/t20190522_59419.html",
+      "state": "done",
+      "attempts": 1,
+      "error": null
+    }
+  ],
+  "revisions": [
+    {
+      "revision_id": "rev-eb31d2b7377f02e40841a57b",
+      "source_id": "MPS-NORM-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "state": "pending_review",
+      "chunks": 11
+    },
+    {
+      "revision_id": "rev-aacc7d33aee593f484c53895",
+      "source_id": "MPS-USE-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/201905/t20190522_59419.html",
+      "sha256": "1f8a44173a95c974b31e2aab436245e7d7c8ff99b7591ae13928ff3c95633e3a",
+      "state": "pending_review",
+      "chunks": 16
+    }
+  ],
+  "other_source_probes": {
+    "ID-LAW-01": "robots request denied (AccessStopped); no body requested in this run",
+    "ID-GUIDE-01": "robots request denied (AccessStopped); no body requested in this run",
+    "ID-NORM-01": "robots request timed out; no PDF requested in this run"
+  },
+  "business_review_completed": false,
+  "official_knowledge_published": 0,
+  "scope": "Actual direct official HTML acquisition into pending candidates. No bypass, no business approval, no assertion of current legal applicability."
+}

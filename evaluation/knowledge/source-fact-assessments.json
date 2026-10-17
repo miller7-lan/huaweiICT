@@ -1,0 +1,398 @@
+{
+  "schema": 1,
+  "kind": "bounded_ai_source_fact_assessment",
+  "captured_at": "2026-10-16T05:36:55.839271+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "business_release_ready": false,
+  "records": [
+    {
+      "site_id": "MPS-NORM-01",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "base_revision": "rev-cc5526f72436ae807a3f32f0",
+      "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "body_sha256": "36cfa38429629ea79e43550c6af71f560d6122c469b8ace17d170ceed424ff30",
+      "before_metadata_sha256": "c508501f385f90ae4036d5e823c9f32b97be88cb47c296a79caa663f93934d01",
+      "field_changes": {
+        "effective_from": {
+          "before": null,
+          "after": "2021-10-01"
+        },
+        "published_at": {
+          "before": null,
+          "after": "2021-07-30"
+        }
+      },
+      "assessment": {
+        "schema": 1,
+        "id": "source-facts-20261016-v1",
+        "reviewer": "Codex AI",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T05:35:30.721510+00:00",
+        "base_revision": "rev-cc5526f72436ae807a3f32f0",
+        "base_body_sha256": "36cfa38429629ea79e43550c6af71f560d6122c469b8ace17d170ceed424ff30",
+        "facts": [
+          {
+            "id": "NAT-COMMENCEMENT",
+            "summary": "该文件正文第97条明示的施行日",
+            "evidence": {
+              "revision": "rev-cc5526f72436ae807a3f32f0",
+              "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+              "locator": "第九十七条",
+              "quote": "本规范自2021年10月1日起施行",
+              "start": 6,
+              "end": 23,
+              "quote_sha256": "f3cca6af3ea7fce1082e82efd86b8045a8d8df05f27991ad33978893f79ee635"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "date_kind": "document_stated_commencement",
+            "value": "2021-10-01"
+          },
+          {
+            "id": "NAT-ID-MATERIALS",
+            "summary": "本条将申领、换领、补领并列后规定交验户口簿；不简化成只针对首次申领。",
+            "evidence": {
+              "revision": "rev-cc5526f72436ae807a3f32f0",
+              "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+              "locator": "第七十八条",
+              "quote": "公民申领、换领、补领居民身份证的，应当填写《居民身份证申领登记表》，交验居民户口簿",
+              "start": 6,
+              "end": 47,
+              "quote_sha256": "6c5d196fdc0e0189c7e4a6c540e49df03608830854496c68f3dfb2731983b79c"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "source_branches": [
+              "申领",
+              "换领",
+              "补领"
+            ],
+            "material": "居民户口簿"
+          },
+          {
+            "id": "NAT-SHARED-PAPER",
+            "summary": "具备材料共享确认条件时，原文规定逐步取消纸质材料；不是无条件免交全部材料。",
+            "evidence": {
+              "revision": "rev-cc5526f72436ae807a3f32f0",
+              "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+              "locator": "第十二条",
+              "quote": "在办理户口、居民身份证业务过程中，能够通过数据共享、电子证照调用等方式实现对政府部门核发的材料予以确认的，应逐步取消纸质材料",
+              "start": 128,
+              "end": 190,
+              "quote_sha256": "c26fa1f58f987afa286be3d6ad5f337c88df14ef4d8f1d21fba345280e09ed65"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown"
+          },
+          {
+            "id": "NAT-PAGE-PUBLICATION",
+            "scope": "archived_page_annotation_only",
+            "current_applicability": "unknown",
+            "date_kind": "page_declared_publication",
+            "value": "2021-07-30",
+            "evidence": {
+              "revision": "rev-cc5526f72436ae807a3f32f0",
+              "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+              "observation_field": "fields.block:document_fields[0]",
+              "quote": "[发布日期] 2021-07-30",
+              "observation_sha256": "285937339b22c552242009690315b900556782e08a5fbe5256cda23125877033"
+            }
+          }
+        ],
+        "current_applicability": "unknown",
+        "human_review_completed": false,
+        "business_approval": false,
+        "limits": [
+          "文件明示施行日不证明所有条款目前仍适用。",
+          "网页发布日期与签署日、转载路径日期分别记录。",
+          "原件、源观察、材料分支和当前采集限制均不改写。"
+        ],
+        "unresolved_relationships": [
+          "国家第78条与河南第159条的材料表述、共享确认条件及二七区当前执行关系。",
+          "旧文三个月窗口与后续六个月服务更新信号的适用关系。"
+        ]
+      },
+      "new_revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "new_metadata_sha256": "816aa0d3dcab2fe36f2cd74de1892746a2000b54a229ca8b5a496320c37e4075",
+      "state": "pending_review"
+    },
+    {
+      "site_id": "HN-NORM-PUBLISHER",
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "base_revision": "rev-3221c16ab130408cb59cd2b6",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "body_sha256": "f94cfd69dc1fd8479ecd72a5a9e9a316c82fd624e921d51afc9ec48c72675367",
+      "before_metadata_sha256": "d715dfe7dc689cc4a30c0e38d0574411c5980b6f9f099d68c6db84d47fb5f0cd",
+      "field_changes": {
+        "effective_from": {
+          "before": null,
+          "after": "2022-09-01"
+        },
+        "published_at": {
+          "before": null,
+          "after": "2022-08-16"
+        }
+      },
+      "assessment": {
+        "schema": 1,
+        "id": "source-facts-20261016-v1",
+        "reviewer": "Codex AI",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T05:35:30.721510+00:00",
+        "base_revision": "rev-3221c16ab130408cb59cd2b6",
+        "base_body_sha256": "f94cfd69dc1fd8479ecd72a5a9e9a316c82fd624e921d51afc9ec48c72675367",
+        "facts": [
+          {
+            "id": "HN-COMMENCEMENT",
+            "summary": "该文件正文第236条明示的施行日",
+            "evidence": {
+              "revision": "rev-3221c16ab130408cb59cd2b6",
+              "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+              "locator": "第二百三十六条",
+              "quote": "本实施规定自2022年9月1日起施行",
+              "start": 7,
+              "end": 25,
+              "quote_sha256": "cbdcbfa7a8ae992375f448bad5a8565d9dbacc6c3070ffe344f53596fffea9b7"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "date_kind": "document_stated_commencement",
+            "value": "2022-09-01"
+          },
+          {
+            "id": "HN-INITIAL-MATERIAL",
+            "summary": "本条申请领取分支交验户口簿。",
+            "evidence": {
+              "revision": "rev-3221c16ab130408cb59cd2b6",
+              "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+              "locator": "第一百五十九条",
+              "quote": "申请领取的，交验居民户口簿",
+              "start": 42,
+              "end": 55,
+              "quote_sha256": "090cd0241adfb9b737f19567cab4cbe580f58b4b05000c0734ae064402645c24"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "source_branch": "申请领取",
+            "material": "居民户口簿"
+          },
+          {
+            "id": "HN-RENEWAL-MATERIAL",
+            "summary": "本条申请换领分支交验居民身份证。",
+            "evidence": {
+              "revision": "rev-3221c16ab130408cb59cd2b6",
+              "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+              "locator": "第一百五十九条",
+              "quote": "申请换领的，交验居民身份证",
+              "start": 56,
+              "end": 69,
+              "quote_sha256": "3a20b3ed08f78667c3e29d968b1e0bf8bdc3b3d484690d2738e156b83b275a59"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "source_branch": "申请换领",
+            "material": "居民身份证"
+          },
+          {
+            "id": "HN-REPLACEMENT-ALTERNATIVES",
+            "summary": "本条申请补领分支为所列公安机关有效证件之一，不能移为到期换领替代清单。",
+            "evidence": {
+              "revision": "rev-3221c16ab130408cb59cd2b6",
+              "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+              "locator": "第一百五十九条",
+              "quote": "申请补领的，交验居民户口簿、居住证、护照、机动车驾驶证等公安机关颁发的有效身份证件之一",
+              "start": 70,
+              "end": 113,
+              "quote_sha256": "2b96e6e400937da43fd50a98e941f2daf315418fce23941aeaeee3c0d7146475"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "source_branch": "申请补领",
+            "relationship": "one_of_listed_valid_identity_documents"
+          },
+          {
+            "id": "HN-SHARED-PAPER",
+            "summary": "在办理户口、居民身份证业务中，材料能够共享确认时，不再要求纸质材料。",
+            "evidence": {
+              "revision": "rev-3221c16ab130408cb59cd2b6",
+              "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+              "locator": "第七条",
+              "quote": "在办理户口、居民身份证业务过程中，能够通过数据共享、电子证照调用等方式实现对政府部门核发的材料予以确认的，不再要求群众提交纸质材料",
+              "start": 59,
+              "end": 124,
+              "quote_sha256": "53a1abd98071c47064d74fa7e932e528dac56c52b512a64533c946f764efae3b"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown"
+          },
+          {
+            "id": "HN-RELATION-PROOF",
+            "summary": "第二款另限定为办理户口业务的双方关系证明；不改写为所有身份证明的通用替代规则。",
+            "evidence": {
+              "revision": "rev-3221c16ab130408cb59cd2b6",
+              "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+              "locator": "第七条",
+              "quote": "办理户口业务过程中，涉及需要出具关系证明的",
+              "start": 126,
+              "end": 147,
+              "quote_sha256": "8d1ca436afb1b320d9f23946e50c3fb4de126052192a7a9d2673901d6cda2fd8"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "proof_purpose": "双方关系证明",
+            "source_business": "户口业务"
+          },
+          {
+            "id": "HN-PAGE-PUBLICATION",
+            "scope": "archived_page_annotation_only",
+            "current_applicability": "unknown",
+            "date_kind": "page_declared_publication",
+            "value": "2022-08-16",
+            "evidence": {
+              "revision": "rev-3221c16ab130408cb59cd2b6",
+              "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+              "observation_field": "fields.block:page_date[0]",
+              "quote": "2022-08-16",
+              "observation_sha256": "f42b191b92b3691f49c4fed213b68a19966be48e432d71713c6b0eaa045025cd"
+            }
+          }
+        ],
+        "current_applicability": "unknown",
+        "human_review_completed": false,
+        "business_approval": false,
+        "limits": [
+          "文件明示施行日不证明所有条款目前仍适用。",
+          "网页发布日期与签署日、转载路径日期分别记录。",
+          "原件、源观察、材料分支和当前采集限制均不改写。"
+        ],
+        "unresolved_relationships": [
+          "国家第78条与河南第159条的材料表述、共享确认条件及二七区当前执行关系。",
+          "旧文三个月窗口与后续六个月服务更新信号的适用关系。"
+        ]
+      },
+      "new_revision": "rev-30d1bf98f40e9acb897b37c1",
+      "new_metadata_sha256": "6993b66698d2ecd1df439548e01a6d3582db64923a5a66edc36095ef4894922c",
+      "state": "pending_review"
+    },
+    {
+      "site_id": "ID-LAW-01",
+      "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+      "base_revision": "rev-293d24840fc4e53eb17c71ed",
+      "original_sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
+      "body_sha256": "301bfeb1c5961dc2de1816029a6b2442d842c4ffc56f94cf0875ad63c518891a",
+      "before_metadata_sha256": "9892e1ae133d217d72bd71ca42808b1c1b6e6b474f4de220328ec856f99f7a38",
+      "field_changes": {
+        "usage_basis": {
+          "before": null,
+          "after": "AI内容用途核查：仅针对归档中《中华人民共和国居民身份证法》的法律文本，依据《著作权法》第五条第一项记录法律文本分析用途；限私有完整性原件及带出处条款分析，不涵盖网站图片、版式或其他作品，也不表示该来源当前允许自动访问。依据：https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html"
+        }
+      },
+      "assessment": {
+        "schema": 1,
+        "id": "source-facts-20261016-v1",
+        "reviewer": "Codex AI",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-16T05:35:30.721510+00:00",
+        "base_revision": "rev-293d24840fc4e53eb17c71ed",
+        "base_body_sha256": "301bfeb1c5961dc2de1816029a6b2442d842c4ffc56f94cf0875ad63c518891a",
+        "facts": [
+          {
+            "id": "LAW-TEXT-NATURE",
+            "summary": "本条是归档法律文本选段；内容用途与该站当前访问授权分别核对。",
+            "evidence": {
+              "revision": "rev-293d24840fc4e53eb17c71ed",
+              "original_sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
+              "locator": "第十条",
+              "quote": "申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿",
+              "start": 4,
+              "end": 38,
+              "quote_sha256": "445dbdc46c47ceba36856c6cefb8539ad0212fd035c68fe320d9d96c08d2c82d"
+            },
+            "scope": "within_archived_source_text_only",
+            "current_applicability": "unknown",
+            "usage_review_basis": "中华人民共和国著作权法第五条第一项",
+            "basis_url": "https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html"
+          }
+        ],
+        "current_applicability": "unknown",
+        "human_review_completed": false,
+        "business_approval": false,
+        "limits": [
+          "文件明示施行日不证明所有条款目前仍适用。",
+          "网页发布日期与签署日、转载路径日期分别记录。",
+          "原件、源观察、材料分支和当前采集限制均不改写。"
+        ]
+      },
+      "new_revision": "rev-d66f8c0116dc5bea8410ab62",
+      "new_metadata_sha256": "29d0405530fe3c02a89b50bb8fc175856ecbf2393fc1fc4efe6dd6c69dd37255",
+      "state": "pending_review"
+    }
+  ],
+  "fact_count": 12,
+  "unresolved_cross_source_relationships": [
+    {
+      "id": "HUKOU-MATERIAL-RELATION",
+      "sources": [
+        "MPS-NORM-01:第七十八条",
+        "HN-NORM-PUBLISHER:第一百五十九条",
+        "ID-GUIDE-01:材料列表"
+      ],
+      "status": "current_local_application_unresolved",
+      "description": "国家规范将申领换领补领并列后写交验户口簿；省规范按申请分支区分；区级列表并列户口簿与旧证。保留各自措辞和共享确认条件，未据此给出无条件本地清单。"
+    }
+  ],
+  "counts_before": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "counts_after": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 63,
+    "chunks": 293,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "approval_record_counts_before": {
+    "reviews": 0,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "approval_record_counts_after": {
+    "reviews": 0,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "source_access_limitations_unchanged": true,
+  "web_observations": [
+    {
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "result": "readable_via_web_tool",
+      "not_a_new_collector_archive": true
+    },
+    {
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "result": "web_tool_403",
+      "not_recorded_as_collector_failure_or_success": true
+    },
+    {
+      "url": "https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html",
+      "result": "article_5_read_via_web_tool",
+      "not_a_general_website_access_permission": true
+    }
+  ],
+  "scope": "Three append-only pending metadata amendments and twelve source-text/page-annotation/content-use observations. Originals, clause text and immutable source observations unchanged; no current applicability, formal review, evaluation or publication approval.",
+  "content_sha256": "d74d0915a911296cf237c07bf225039122e23d3b06d3bf72e0976c7474e5a72d"
+}

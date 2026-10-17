@@ -1,0 +1,28 @@
+{
+  "captured_at": "2026-10-16T03:15:29.503703+00:00",
+  "checks": {
+    "web_running": true,
+    "read_only_mcp_running": true,
+    "no_official_versions_or_heads": true,
+    "formal_query_stops_without_pending_material": true,
+    "worker_and_maintenance_heartbeats_current": true
+  },
+  "passed": true,
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "actual_formal_query": {
+    "status": "EMPTY",
+    "message_code": "NO_PUBLISHED_KNOWLEDGE",
+    "knowledge_version": null,
+    "citations": []
+  },
+  "scope": "Current local service and one actual published-only query after conditions-stage deployment. Not business accuracy, reboot/logoff or whole-week acceptance."
+}

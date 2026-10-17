@@ -1,0 +1,98 @@
+{
+  "run_id": "20261016T131527Z-question-writer-ce4f149e",
+  "purpose": "question_candidate_generation_only",
+  "status": "candidate_generation_completed",
+  "max_requests": 1,
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "deadline_seconds": 180,
+  "request_sha256": "f51787de9b7b46daef57861a9468b82615805325e5a706ec40ba9415daab56b1",
+  "source_bindings": [
+    {
+      "source_id": "HN-MEASURES-2026",
+      "revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "locator": "正文段落1",
+      "text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+    },
+    {
+      "source_id": "MOF-FEE-2007",
+      "revision": "rev-ddfaf873b73e03ab4202c18c",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "locator": "正文段落4",
+      "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+    },
+    {
+      "source_id": "MOF-FEE-2007",
+      "revision": "rev-ddfaf873b73e03ab4202c18c",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "locator": "正文段落5",
+      "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+    },
+    {
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+      "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+      "locator": "正文段落4",
+      "text_sha256": "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+    },
+    {
+      "source_id": "HN-NORM-PUBLISHER",
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locator": "第七条",
+      "text_sha256": "030e659626dc607b2f38d06de176766ad7b7c2dcf7e9ad1f59c4e7ca03482717"
+    },
+    {
+      "source_id": "HN-NORM-PUBLISHER",
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locator": "第一百五十九条",
+      "text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6"
+    },
+    {
+      "source_id": "HN-NORM-PUBLISHER",
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locator": "第一百六十一条",
+      "text_sha256": "994d90b554217cd3a8ef6c1fa39104f5b459460b7c8e571c2756d09fac572dbf"
+    },
+    {
+      "source_id": "HN-NORM-PUBLISHER",
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locator": "第一百六十四条",
+      "text_sha256": "ee059f01921575a460b52e29a7f39cca98a76610516b97c392f32d10d080fb2b"
+    },
+    {
+      "source_id": "MPS-NORM-01",
+      "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "locator": "第七十八条",
+      "text_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33"
+    },
+    {
+      "source_id": "MPS-NORM-01",
+      "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "locator": "第七十九条",
+      "text_sha256": "6a5dfb0171b30d0e857109a142b27f9e1d4d2740ec895cf6af76a23829d94e35"
+    }
+  ],
+  "development_registry_sha256": "eae7b4bc11456bdafef0bcd39878e55f37b46554d291dcf8ad2a67c1503245cd",
+  "development_questions_in_input": false,
+  "reference_answers_in_input": false,
+  "tested_agent_outputs_in_input": false,
+  "implementation_in_input": false,
+  "independence_certified": false,
+  "business_acceptance_executed": false,
+  "human_review_completed": false,
+  "model_digest": "fa7cabcd2217a202174f26a3415927c418c8b5f844ccc016f24c94b4a4b81192",
+  "started_at": "2026-10-16T13:15:27.892751+00:00",
+  "response_sha256": "2edc99ea3726dccb9fd26928983699c86ac3489699c4af61a8f9dad7d23eca22",
+  "candidates": 30,
+  "candidate_sha256": "05d9d1f9b77aa417fa8afc5b9bc45a836221f5b088d1b5c6f1171dd16db277f4",
+  "prompt_eval_count": 1510,
+  "eval_count": 1893,
+  "completed_at": "2026-10-16T13:18:25.066740+00:00",
+  "elapsed_seconds": 177.559
+}

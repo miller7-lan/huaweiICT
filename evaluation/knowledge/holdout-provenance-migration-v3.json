@@ -1,0 +1,413 @@
+{
+  "schema": 1,
+  "kind": "holdout_provenance_migration_not_acceptance",
+  "created_at": "2026-10-16T17:20:33.866007+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "acceptance_authorized": false,
+  "base_archive_manifest_sha256": "d12ea80a5a34dd0e302bd23b46347a9bb7a8804102f47cb3a2c2063ba72947da",
+  "evidence": {
+    "before_reference_sha256": "4ef24c24cffc41c2f05f83da7d2c23d63875c02e1b04b6ae6a13fb67b0e5ce7c",
+    "after_reference_sha256": "5cf599951df3e6291c9b1e5c39b9a558ab54587d38c4cd423c12475912305885",
+    "case_semantics_sha256": "bb4243b10e148c6c96099781ea499718e3603ef643f56e5adfa2462bd73a4743",
+    "sources": {
+      "D26": {
+        "kind": "same_original_complete_first_measure",
+        "retained_locator": "正文段落1",
+        "removed_background_locator": "正文段落2",
+        "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a"
+      },
+      "LAW": {
+        "kind": "same_23_clauses_other_official_original",
+        "normalization": "NFKC_then_remove_whitespace",
+        "clauses": [
+          {
+            "locator": "第一条",
+            "before_text_sha256": "41fa752f6744117c7b6e3e0c4f6645e98f7e69026de42a84f214f8ea3811748b",
+            "after_text_sha256": "41fa752f6744117c7b6e3e0c4f6645e98f7e69026de42a84f214f8ea3811748b",
+            "normalized_sha256": "c46d5a8c42f46a35eeaccbc93c6eb1a6d96ebb982be20d681077470913252030",
+            "literal_equal": true
+          },
+          {
+            "locator": "第二条",
+            "before_text_sha256": "05651c985a3e1aa62a3201332d6c9851b51f183653f9e51a17ad34473215d4d5",
+            "after_text_sha256": "05651c985a3e1aa62a3201332d6c9851b51f183653f9e51a17ad34473215d4d5",
+            "normalized_sha256": "f1a03c8fb85b22c9c37f1392bd100dbe05ba122a550ad847497baae04c298438",
+            "literal_equal": true
+          },
+          {
+            "locator": "第三条",
+            "before_text_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b",
+            "after_text_sha256": "504440d1359a64c75566ab06d0fae8c12eb2aaee9d589a8d96a597d61e61266d",
+            "normalized_sha256": "76cf6e8e5cd830a9877708f76ff71e25082a645df211e82c7eb2d0b849747047",
+            "literal_equal": false
+          },
+          {
+            "locator": "第四条",
+            "before_text_sha256": "18e8f57b4b3849d16c855ceb4c0693da6a7946fbb7fa628f61b28823754d3f26",
+            "after_text_sha256": "18e8f57b4b3849d16c855ceb4c0693da6a7946fbb7fa628f61b28823754d3f26",
+            "normalized_sha256": "0d0d744220c77a13501d7d20f77c25ae0165b35284b70019f0392251a649e1da",
+            "literal_equal": true
+          },
+          {
+            "locator": "第五条",
+            "before_text_sha256": "3d03133001b30b26991b3c33d6680a0c880d4e336aa020158f6f3de4b4aadee2",
+            "after_text_sha256": "3d03133001b30b26991b3c33d6680a0c880d4e336aa020158f6f3de4b4aadee2",
+            "normalized_sha256": "b89c1d3fab07f76a900d5039e2f9503d5d2ca123469ce2d5bbecbcddcb8c973e",
+            "literal_equal": true
+          },
+          {
+            "locator": "第六条",
+            "before_text_sha256": "45dc4dee048b8aa2c10266fe385f5b342f54bedb96fa42300190a5ff01773e1b",
+            "after_text_sha256": "45dc4dee048b8aa2c10266fe385f5b342f54bedb96fa42300190a5ff01773e1b",
+            "normalized_sha256": "ef7cbb9245bbb2437852b6dbc9ad4b406f89b91e949dc177d61f5889fbcf66b9",
+            "literal_equal": true
+          },
+          {
+            "locator": "第七条",
+            "before_text_sha256": "8bd8d528bbe08c256b61dc677125f1a4d13bf5adbdfc5891fc661b7cd3649788",
+            "after_text_sha256": "8bd8d528bbe08c256b61dc677125f1a4d13bf5adbdfc5891fc661b7cd3649788",
+            "normalized_sha256": "f05e0bc7939616bbb0c28602c47059b9dcd708c2d1a5f3f9bfdd2ddd6875c498",
+            "literal_equal": true
+          },
+          {
+            "locator": "第八条",
+            "before_text_sha256": "bf78bd01d1bdddaee65a61ed3bda9d1676f65c9be1f22a1e46b5e835f1794422",
+            "after_text_sha256": "bf78bd01d1bdddaee65a61ed3bda9d1676f65c9be1f22a1e46b5e835f1794422",
+            "normalized_sha256": "c41e4c1956851b2d5a8a430c07864c30ba3e94277000ed044d402c5ef36b6312",
+            "literal_equal": true
+          },
+          {
+            "locator": "第九条",
+            "before_text_sha256": "99eb06565fe25f53cda80616e30f44180e09de1c81bc8e16467c957f87815527",
+            "after_text_sha256": "99eb06565fe25f53cda80616e30f44180e09de1c81bc8e16467c957f87815527",
+            "normalized_sha256": "f2212ad966410701fe4c97bdcaebe93e29070dadb32e7ff3d7ca17ce740a7c38",
+            "literal_equal": true
+          },
+          {
+            "locator": "第十条",
+            "before_text_sha256": "a5fb1720986315c453106f8453861640677649bac49d8bb78f418432073c0627",
+            "after_text_sha256": "a5fb1720986315c453106f8453861640677649bac49d8bb78f418432073c0627",
+            "normalized_sha256": "aa1519d9722386ff6e081a6cf00816d2a21ccfb23711c6bc8b65cbd8f60e9625",
+            "literal_equal": true
+          },
+          {
+            "locator": "第十一条",
+            "before_text_sha256": "1cf76af59af12e90fd7990b1ab4904307ef7fe81444044a0c0576ae7aa8c9016",
+            "after_text_sha256": "1cf76af59af12e90fd7990b1ab4904307ef7fe81444044a0c0576ae7aa8c9016",
+            "normalized_sha256": "90bc47067e6cd75e18800e9dfd8384d1b50daf3e02de15bf690f3700e1068fbe",
+            "literal_equal": true
+          },
+          {
+            "locator": "第十二条",
+            "before_text_sha256": "530eae3b47c0f5ae31c958b3b56cad742ba5654e6071062669d73c08e888188a",
+            "after_text_sha256": "530eae3b47c0f5ae31c958b3b56cad742ba5654e6071062669d73c08e888188a",
+            "normalized_sha256": "efe59cbc160f7eac05239357316ef53e900ddc4c3ca500ddd6d1e4fb29bd56e5",
+            "literal_equal": true
+          },
+          {
+            "locator": "第十三条",
+            "before_text_sha256": "f392cb531c963f388cd459f9b836a058601135379195a58254b356fbdac0623c",
+            "after_text_sha256": "f392cb531c963f388cd459f9b836a058601135379195a58254b356fbdac0623c",
+            "normalized_sha256": "10aabc49bc02e5ffa65d3f8b48db741d15745b5d3e6fa378bdab9f1b254d370e",
+            "literal_equal": true
+          },
+          {
+            "locator": "第十四条",
+            "before_text_sha256": "a21811e416a1898ad27a0f9983ef97a1da395202b18d6875fb5ec49c54f96f87",
+            "after_text_sha256": "fd2493d69e65957781275b6815a42326260613e54f7aa03801a41289533fc293",
+            "normalized_sha256": "7397cb6c30eeb898ddb47d6889334cda5103409c303b6cbc7337e87b87b1323f",
+            "literal_equal": false
+          },
+          {
+            "locator": "第十五条",
+            "before_text_sha256": "fbffc27fc4b0a61a600be715b4983c0726e62e5ac86ecc0f5807a298efbee6d1",
+            "after_text_sha256": "5bea1519a1cd2211a29d3805e3b64f1785500dc76c708cf0962ce3df15969a93",
+            "normalized_sha256": "2b5724ed0101355030072165a524c39a2173370eb88921d5d8c75ebdec56a4c7",
+            "literal_equal": false
+          },
+          {
+            "locator": "第十六条",
+            "before_text_sha256": "fc265742a3543a9ce1714530ab861ba24167a36760750f9226d25d3acfca01c3",
+            "after_text_sha256": "166a2f07867b8d83e89a3844bfd9095a7688189821aa49c99c889a5d61d37d38",
+            "normalized_sha256": "908ef4fd7eebd79edf7ba8e2003ebbcfa4cbd1e97da084b845a5eb1db53ef406",
+            "literal_equal": false
+          },
+          {
+            "locator": "第十七条",
+            "before_text_sha256": "b1a2f44eed670cfbc5fc67a1f7d08ad1dc235bee654a5945c463c35d26b08e56",
+            "after_text_sha256": "e3bd6d6a0477e982d269ba6e36554c47dbef3abf8097d21b1ff180321c6a62cd",
+            "normalized_sha256": "c9694e807a77b22966fb263f1e670384f6524dbefe924fe695e06c0a5d0a8767",
+            "literal_equal": false
+          },
+          {
+            "locator": "第十八条",
+            "before_text_sha256": "0515ad170d1ed14590483514331725406ce2d5c522877f5be8076fd42c3bfae0",
+            "after_text_sha256": "0515ad170d1ed14590483514331725406ce2d5c522877f5be8076fd42c3bfae0",
+            "normalized_sha256": "91fe4f74fe9fe8df6d00f81a96865d92a7641cb3e8a21e5896c827aa285f51f3",
+            "literal_equal": true
+          },
+          {
+            "locator": "第十九条",
+            "before_text_sha256": "e9431b681956298c40085014237ace75465f9c3028071a2ad8908ddf0fa14db0",
+            "after_text_sha256": "e9431b681956298c40085014237ace75465f9c3028071a2ad8908ddf0fa14db0",
+            "normalized_sha256": "167e537025c5ca32f271b6e1923b4fa52c3de8d758f9b809bcb8bd303d933fbe",
+            "literal_equal": true
+          },
+          {
+            "locator": "第二十条",
+            "before_text_sha256": "d9b5e5e03b1a663df300c74eeea113426bcf22b46081e8fc26ad03670f41e073",
+            "after_text_sha256": "bf8d0274abef7a21633f3346d149b5af19c4d6cd18d75ab07607a58ea574cf12",
+            "normalized_sha256": "e5400af895a11a0855974dddf0a041c069126b021b52ffb33f7d03db62570fbd",
+            "literal_equal": false
+          },
+          {
+            "locator": "第二十一条",
+            "before_text_sha256": "94b469a17f9c81536c602e7ce668c4617060c0bb6cf2803cff8d568568031351",
+            "after_text_sha256": "94b469a17f9c81536c602e7ce668c4617060c0bb6cf2803cff8d568568031351",
+            "normalized_sha256": "6ebbe0c40a5bd16bd6f65824d44a0f5b7848491dd7f28dc1ba8aa70598551e38",
+            "literal_equal": true
+          },
+          {
+            "locator": "第二十二条",
+            "before_text_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017",
+            "after_text_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017",
+            "normalized_sha256": "f21034a6f7544cba8c2d4d16809e4605f98d847bc2efccbe70a004ef1ff9833a",
+            "literal_equal": true
+          },
+          {
+            "locator": "第二十三条",
+            "before_text_sha256": "0382b2f064658c5b67d2e8942d925effffa9bfc1f06c20a1f6002996688e0ba5",
+            "after_text_sha256": "7f5f5dde363b300522863ffdcdc0a41c0795646a462cf6562a72b1e0f17e7333",
+            "normalized_sha256": "5a877ac7ad55b5aace4b120a415f902d33cf88de6475918346156cb0583604f6",
+            "literal_equal": false
+          }
+        ]
+      }
+    },
+    "cases": [
+      {
+        "id": "HB01",
+        "before_sha256": "1102272d40a7f21c1f955c1f4cbc3d5f7f586424ef838d86b8b416cbd2400ea8",
+        "after_sha256": "1102272d40a7f21c1f955c1f4cbc3d5f7f586424ef838d86b8b416cbd2400ea8",
+        "changed_fields": []
+      },
+      {
+        "id": "HB31",
+        "before_sha256": "a38a8206b5a4d5ed6436c82158607f18488a73a185628114883ab274d31c68a0",
+        "after_sha256": "a38a8206b5a4d5ed6436c82158607f18488a73a185628114883ab274d31c68a0",
+        "changed_fields": []
+      },
+      {
+        "id": "HB03",
+        "before_sha256": "f2fa17825ed202c141702fa206d372b314777ef067cc56d1cfe7d57b03afb09d",
+        "after_sha256": "f2fa17825ed202c141702fa206d372b314777ef067cc56d1cfe7d57b03afb09d",
+        "changed_fields": []
+      },
+      {
+        "id": "HB32",
+        "before_sha256": "8341cdfc679b0cdf924d9b8849b9bfe6a3fd3d458a4eceec21dfb62ed77ff657",
+        "after_sha256": "2fa602550b556e32db31f35584418b44173cc4b7f2e096e88cd3fc04dac23dfe",
+        "changed_fields": [
+          "background_source_anchors"
+        ]
+      },
+      {
+        "id": "HB33",
+        "before_sha256": "ebf1ea4d869c33cf1dce6487cc2c35784b6b814333244a1e84fdcd58bbd87014",
+        "after_sha256": "44b4eba20fe5201de77a9bb0a4a60eb951d0f069ed275c302e09a94b58f2cae0",
+        "changed_fields": [
+          "background_source_anchors"
+        ]
+      },
+      {
+        "id": "HB06",
+        "before_sha256": "2e6da35ca170e8208ffb21d0e19b8605bfda939b4ca6427205d0020ae79ccec4",
+        "after_sha256": "097797776d0a28b04cb4cabbee2fc59b52595e382602583645f7161c871a70f8",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB34",
+        "before_sha256": "71c1cbb5c1f76f083d9aa02eb893f6a5129ccf1fddb505a7aa8be1c62369b6d5",
+        "after_sha256": "f8fae18c11d38a12512176ed1a10a51a39db3b2857747ea2a3c66c4f6b2228ff",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB08",
+        "before_sha256": "e31d594c46355e8eba586119ab1bcb5cd7662bdac5059a6f9e6636687f64b179",
+        "after_sha256": "e31d594c46355e8eba586119ab1bcb5cd7662bdac5059a6f9e6636687f64b179",
+        "changed_fields": []
+      },
+      {
+        "id": "HB09",
+        "before_sha256": "ada20a3b0ff19ea339deb26ce48ac454138ac785350cf0edf71c3311b9929e65",
+        "after_sha256": "0b1e6e9cebb6933f65593cda6cc52eef630cb36a7823ab5af8a39d70e2d83274",
+        "changed_fields": [
+          "background_source_anchors"
+        ]
+      },
+      {
+        "id": "HB10",
+        "before_sha256": "cd062782c42aac7aba2484e7e80d07219aafc7c6a50d243b5e6a422befd18ba5",
+        "after_sha256": "0e9f411246a8aaa67fef6a14fbee84ae90990971ec770ad6d8b6d1b091a80d8e",
+        "changed_fields": [
+          "background_source_anchors"
+        ]
+      },
+      {
+        "id": "HB11",
+        "before_sha256": "dd9298e055bea1f2250d8b69fd126d2fd9b8c6ea931164e576e93a2e81d21d2f",
+        "after_sha256": "dd9298e055bea1f2250d8b69fd126d2fd9b8c6ea931164e576e93a2e81d21d2f",
+        "changed_fields": []
+      },
+      {
+        "id": "HB35",
+        "before_sha256": "d1af4a63bf12e86aef3c634af1d49d5ad183612558dea8a8266139f791ffa38d",
+        "after_sha256": "eaa1beb0359659818835cacbabdf196d89bd9853baf67576a8d133ad34955de3",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB13",
+        "before_sha256": "f4cee190fab1c227d457b8c32d383344ce070987c4a607493f0f0c0f25683a86",
+        "after_sha256": "f4cee190fab1c227d457b8c32d383344ce070987c4a607493f0f0c0f25683a86",
+        "changed_fields": []
+      },
+      {
+        "id": "HB14",
+        "before_sha256": "b5b5de3259c8243dd99c106c6f1a4a21f58d5c417b4b6c6f7a58612dc939a047",
+        "after_sha256": "b5b5de3259c8243dd99c106c6f1a4a21f58d5c417b4b6c6f7a58612dc939a047",
+        "changed_fields": []
+      },
+      {
+        "id": "HB36",
+        "before_sha256": "f64e88f27f4f85a5798cf729455962ef2153858786e5432a8826714c2f3907db",
+        "after_sha256": "f64e88f27f4f85a5798cf729455962ef2153858786e5432a8826714c2f3907db",
+        "changed_fields": []
+      },
+      {
+        "id": "HB16",
+        "before_sha256": "8c2fb687a77e47ae56cf201370ea8a14a0d5b8e5269ba9088deb61af78e99454",
+        "after_sha256": "8c2fb687a77e47ae56cf201370ea8a14a0d5b8e5269ba9088deb61af78e99454",
+        "changed_fields": []
+      },
+      {
+        "id": "HB17",
+        "before_sha256": "9ae8abb98a15a582b1a285a1c0934ffda7489b16ac61b8290baab53162412d9e",
+        "after_sha256": "9ae8abb98a15a582b1a285a1c0934ffda7489b16ac61b8290baab53162412d9e",
+        "changed_fields": []
+      },
+      {
+        "id": "HB18",
+        "before_sha256": "536b8b82e5729002a77d4fa51e1600067276a714eb58cd291b29a7042f202ce4",
+        "after_sha256": "536b8b82e5729002a77d4fa51e1600067276a714eb58cd291b29a7042f202ce4",
+        "changed_fields": []
+      },
+      {
+        "id": "HB37",
+        "before_sha256": "88e27efa716ee0930e0fc9f3493bfa5d4b7075c9ede4dafd0d2198bcc063d19a",
+        "after_sha256": "88e27efa716ee0930e0fc9f3493bfa5d4b7075c9ede4dafd0d2198bcc063d19a",
+        "changed_fields": []
+      },
+      {
+        "id": "HB20",
+        "before_sha256": "1f60f8299d7f54abfa4d38e1c2a77c0590944f46fbcdf731fc5b6d05d54100f5",
+        "after_sha256": "61053330c93af1f6f81b021ccddbbadaece1c1db65f5d6509d8aa8c9dd30113d",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB21",
+        "before_sha256": "e13b5103012d0ec3b1c2ea276cc6ab7493fd9a24e950dc2df1dfd75bd502a8ce",
+        "after_sha256": "e13b5103012d0ec3b1c2ea276cc6ab7493fd9a24e950dc2df1dfd75bd502a8ce",
+        "changed_fields": []
+      },
+      {
+        "id": "HB22",
+        "before_sha256": "77478e3912fd8ab76e2179288c9f6f0e4fa1ba2d690afbf461975559fd2ca2a4",
+        "after_sha256": "77478e3912fd8ab76e2179288c9f6f0e4fa1ba2d690afbf461975559fd2ca2a4",
+        "changed_fields": []
+      },
+      {
+        "id": "HB38",
+        "before_sha256": "97994374cbd1705d57810602bc4f4036fedec5e2e169ac3dc74023eee8e2fdbc",
+        "after_sha256": "97994374cbd1705d57810602bc4f4036fedec5e2e169ac3dc74023eee8e2fdbc",
+        "changed_fields": []
+      },
+      {
+        "id": "HB24",
+        "before_sha256": "1d44b0f5d787fc09655f2919d8d09ca4e848be5279c7f169c9f97d46140c0fae",
+        "after_sha256": "d12d96d5b805e3e16d06b1128178df7767a6c78b6db641e009a0fa92485754be",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB25",
+        "before_sha256": "a3f4f1cabc5abbf1766fe9213a0b0394247a5d7412e5e4dffc8cc9157d709efe",
+        "after_sha256": "a3f4f1cabc5abbf1766fe9213a0b0394247a5d7412e5e4dffc8cc9157d709efe",
+        "changed_fields": []
+      },
+      {
+        "id": "HB26",
+        "before_sha256": "eecb6a92ecba0355fb2883c018123fdb337f1a6acc5e7fa68d8907aee43fe37d",
+        "after_sha256": "059e57a65375470f22433b3eeac8523e8ad0a2925617dfede5ed8e65244241ee",
+        "changed_fields": [
+          "background_source_anchors"
+        ]
+      },
+      {
+        "id": "HB39",
+        "before_sha256": "b401c92c64db639fab7c45a0b42a746c445af6da8896b65f7ab09623aa506b35",
+        "after_sha256": "4cfc5ca824f13d849486c50cde16926fadafcf0cffa8f6d0f04a5500ce8460c4",
+        "changed_fields": [
+          "background_source_anchors"
+        ]
+      },
+      {
+        "id": "HB28",
+        "before_sha256": "946b7fcb7416839367bda5faabf78d0ccf224b11ecfb937336dbd04f801b064e",
+        "after_sha256": "946b7fcb7416839367bda5faabf78d0ccf224b11ecfb937336dbd04f801b064e",
+        "changed_fields": []
+      },
+      {
+        "id": "HB29",
+        "before_sha256": "7011f82c1f5fcbdfafa18fc4799b907b0d49c65bf9cdebb4005f711a8ca5341d",
+        "after_sha256": "7011f82c1f5fcbdfafa18fc4799b907b0d49c65bf9cdebb4005f711a8ca5341d",
+        "changed_fields": []
+      },
+      {
+        "id": "HB30",
+        "before_sha256": "42fa5d13578d08c720fb79a44cca606174327dd9d6009a36649d49ac8410c32c",
+        "after_sha256": "42fa5d13578d08c720fb79a44cca606174327dd9d6009a36649d49ac8410c32c",
+        "changed_fields": []
+      }
+    ],
+    "explicit_evidence_removals": [
+      {
+        "case_id": "HB06",
+        "source_key": "D26",
+        "locator": "正文段落2",
+        "reason": "Explanatory background is outside the approved service selection. The complete first measure already states both duration branches; the unchanged reference does not assert a statutory natural-day calculation."
+      }
+    ]
+  },
+  "previous_integrity_report": {
+    "path": "evidence/knowledge-update/archive/holdout-v2-stale-integrity-20261017.json",
+    "sha256": "d7a360c5493e208d4472e2dad96ef9c20deb6985229decec5060124e4156b73d"
+  },
+  "limits": "Only source provenance changes. Same author has seen development history; source approval does not approve the reference, certify independence, freeze a snapshot or authorize acceptance execution.",
+  "content_sha256": "1cf5083b61bb1ec90a6a101b4f932254df345e3602c6d3f6e8d97383711adcb3"
+}
