@@ -70,6 +70,7 @@ def test_demo_browser_keeps_warning_and_read_only_boundary(tmp_path):
     initialize(runtime)
     with TestClient(create_app(runtime)) as client:
         assert "全部材料与费用均为虚构" in client.get("/").text
+        assert client.get("/favicon.ico").status_code == 204
         assert client.get("/health").json()["mode"] == "synthetic_team_demo_v1"
         for role in ("citizen", "staff"):
             response = client.get("/api/query", params={"role": role})

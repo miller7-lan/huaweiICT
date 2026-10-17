@@ -178,7 +178,7 @@ def create_app(runtime):
     from starlette.applications import Starlette
     from starlette.middleware import Middleware
     from starlette.middleware.trustedhost import TrustedHostMiddleware
-    from starlette.responses import HTMLResponse, JSONResponse
+    from starlette.responses import HTMLResponse, JSONResponse, Response
     from starlette.routing import Route
 
     store, marker = demo_store(runtime)
@@ -189,6 +189,9 @@ def create_app(runtime):
 
     async def health(request):
         return JSONResponse({"mode": MODE, "warning": WARNING, "status": "UP"})
+
+    async def favicon(request):
+        return Response(status_code=204)
 
     async def search(request):
         try:
@@ -201,7 +204,7 @@ def create_app(runtime):
         _, current = demo_store(store.root)
         return JSONResponse({"demo": True, "warning": WARNING, "counts": store.status()["counts"], "versions": current["versions"]})
 
-    return Starlette(routes=[Route("/", home), Route("/health", health), Route("/api/query", search), Route("/api/status", status)],
+    return Starlette(routes=[Route("/", home), Route("/favicon.ico", favicon), Route("/health", health), Route("/api/query", search), Route("/api/status", status)],
         middleware=[Middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "testserver"])])
 
 
