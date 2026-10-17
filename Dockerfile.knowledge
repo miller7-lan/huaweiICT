@@ -1,0 +1,6 @@
+FROM ict-gov-blank-mcp
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir rapidocr-onnxruntime==1.4.4 Pillow==11.3.0 onnxruntime==1.31.0 numpy==2.4.6 opencv-python==5.0.0.93
+ENV PYTHONPATH=/app/src
+CMD ["python", "-m", "gov_mcp.knowledge.server", "--runtime", "/runtime", "--port", "8775"]

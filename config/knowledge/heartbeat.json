@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "heartbeat_seconds": 30,
+  "check_interval_seconds": 3600,
+  "demo_interval_seconds": 60,
+  "demo_mode": false,
+  "lease_seconds": 120,
+  "run_budget_seconds": 600,
+  "max_documents": 3,
+  "max_segments": 20,
+  "max_download_bytes": 20971520,
+  "prompt_version": "govkb-1",
+  "ontology_version": "draft-0.1",
+  "local_model_url": "http://host.docker.internal:11434",
+  "models": {
+    "controller": {"provider": "nexent", "model": "gov-qwen3-8b:ctx8192-v1"},
+    "extractor": {"provider": "nexent", "model": "gov-qwen3-4b:ctx8192-v1"},
+    "reviewer": {"provider": "nexent", "model": "gov-qwen3-4b:ctx8192-v1"},
+    "embedding": {"provider": "ollama", "model": "qwen3-embedding:0.6b", "url": "http://host.docker.internal:11434"}
+  },
+  "sources": []
+}

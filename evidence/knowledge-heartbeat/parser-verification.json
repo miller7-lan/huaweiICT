@@ -1,0 +1,24 @@
+{
+  "scope": "actual Linux text, CSV and RapidOCR parser checks on synthetic originals",
+  "formats": {
+    "txt": {
+      "segments": 1,
+      "contains_expected_text": true,
+      "raw_sha256": "3a7529633e6dd4430838fdcff134cbe0b520b7aa055f16ee4d7b6f59b449eba3",
+      "all_locators_preserved": true
+    },
+    "csv": {
+      "segments": 1,
+      "contains_expected_text": true,
+      "raw_sha256": "f745e71e4975ee26d8f4e3f52f53d87b980ba496d80b5ce41be67e2629c5a9c6",
+      "all_locators_preserved": true
+    },
+    "png": {
+      "segments": 4,
+      "contains_expected_text": true,
+      "raw_sha256": "84900b56a2f39c75077e0ef03f8d79b809102a1a455094746238cbe2e8e9511e",
+      "all_locators_preserved": true
+    }
+  },
+  "passed": true
+}

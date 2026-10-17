@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "gov-blank-mcp"
 version = "0.1.0"
 requires-python = ">=3.11"
-dependencies = ["mcp==1.26.0", "httpx==0.28.1", "PyYAML==6.0.3"]
+dependencies = ["mcp==1.26.0", "httpx==0.28.1", "PyYAML==6.0.3", "pydantic>=2.12,<3", "starlette==1.7.0", "uvicorn==0.54.0"]
 
 [project.optional-dependencies]
 test = ["pytest==8.4.2"]
@@ -15,7 +15,7 @@ test = ["pytest==8.4.2"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-gov_mcp = ["*.html"]
+gov_mcp = ["*.html", "knowledge/*.html", "decision/*.html"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

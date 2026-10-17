@@ -190,7 +190,7 @@ def document_windows(asset, bound):
     return windows
 
 
-def classify_corpus(corpus, config, provider: DecisionProvider | None = None, reverse_choices=False):
+def classify_corpus(corpus, config, provider: DecisionProvider | None = None, reverse_choices=False, *, allow_public=False):
     """Return a sidecar; never mutate corpus, source IDs, raw content or vectors."""
     validate_config(config)
     if provider is None:
@@ -225,8 +225,9 @@ def classify_corpus(corpus, config, provider: DecisionProvider | None = None, re
                 "question_ids": list(questions),
                 "segment_ids": [s["segment_id"] for s in state["segments"]] if "segments" in state else [state["target"]["segment_id"]]}
         try:
-            if corpus.get("data_class") != "synthetic" or any(
-                a.get("data_class", "synthetic") != "synthetic" for a in corpus["assets"]
+            allowed_classes = {"synthetic", "public"} if allow_public else {"synthetic"}
+            if corpus.get("data_class") not in allowed_classes or any(
+                a.get("data_class", corpus.get("data_class")) not in allowed_classes for a in corpus["assets"]
             ):
                 raise ClassificationError("DATA_CLASS_BLOCKED")
             value = validate_response(provider.evaluate(state, questions, config["model"]), questions, config["model"])

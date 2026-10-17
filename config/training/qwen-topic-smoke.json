@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "experiment": "qwen-government-question-topic-smoke",
+  "model_id": "Qwen/Qwen3-4B",
+  "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "source_ref": "origin/feat/m2-minimal-flow",
+  "source_path": "evaluation/knowledge/pilot-business-questions.json",
+  "max_length": 384,
+  "max_steps": 8,
+  "gradient_accumulation_steps": 2,
+  "learning_rate": 0.0001,
+  "lora_rank": 8,
+  "seed": 42,
+  "topics": {
+    "materials_identity": ["materials", "eligibility", "capture"],
+    "process_channels": ["location", "procedure", "delivery"],
+    "fees_time": ["fee", "duration"],
+    "boundaries_evidence": ["boundary", "validity", "privacy", "conflict", "date_ambiguity", "temporal", "out_of_scope", "authority", "document_injection", "insufficient_evidence"]
+  },
+  "diagnostic_families": ["photo", "progress", "duration", "effective_date", "proxy"],
+  "families": {
+    "KQ01": "material_list", "KQ02": "material_list", "KQ03": "old_card_application", "KQ04": "early_application",
+    "KQ05": "photo", "KQ06": "photo", "KQ07": "fingerprint", "KQ08": "material_list", "KQ09": "material_list",
+    "KQ10": "location", "KQ11": "appointment", "KQ12": "fee", "KQ13": "duration", "KQ14": "delivery",
+    "KQ15": "progress", "KQ16": "temporary_card", "KQ17": "old_card_validity", "KQ18": "privacy",
+    "KQ19": "source_conflict", "KQ20": "effective_date", "KQ21": "effective_date", "KQ22": "expiry",
+    "KQ23": "outside_region", "KQ24": "minor", "KQ25": "lost", "KQ26": "proxy", "KQ27": "name_change",
+    "KQ28": "authority", "KQ29": "injection", "KQ30": "missing_evidence"
+  },
+  "scope": "AI-draft question topic labels only. No policy answers, original documents, publication approval, or independent business accuracy."
+}

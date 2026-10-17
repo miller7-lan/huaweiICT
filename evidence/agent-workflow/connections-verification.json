@@ -1,0 +1,285 @@
+{
+  "verified_at": "2026-10-17T07:45:03.560739+00:00",
+  "passed": 16,
+  "total": 16,
+  "scope": "actual_local_platform_and_program_MCP_tools_only",
+  "checks": [
+    {
+      "name": "本机 Qwen 与 Nexent 两个服务端实际就绪",
+      "passed": true
+    },
+    {
+      "name": "8B 与 4B 目录存在但未调用推理",
+      "passed": true
+    },
+    {
+      "name": "总推理开关关闭，全部凭据绑定为空",
+      "passed": true
+    },
+    {
+      "name": "新服务的工具实际登记且不包含正式发布工具",
+      "passed": true
+    },
+    {
+      "name": "retriever：原生草稿禁用、无模型、无发布版本、工具正确",
+      "passed": true
+    },
+    {
+      "name": "query_verifier：原生草稿禁用、无模型、无发布版本、工具正确",
+      "passed": true
+    },
+    {
+      "name": "query_controller：原生草稿禁用、无模型、无发布版本、工具正确",
+      "passed": true
+    },
+    {
+      "name": "query_controller：实际子 Agent 与 Skill 绑定",
+      "passed": true
+    },
+    {
+      "name": "extractor：原生草稿禁用、无模型、无发布版本、工具正确",
+      "passed": true
+    },
+    {
+      "name": "update_verifier：原生草稿禁用、无模型、无发布版本、工具正确",
+      "passed": true
+    },
+    {
+      "name": "update_controller：原生草稿禁用、无模型、无发布版本、工具正确",
+      "passed": true
+    },
+    {
+      "name": "update_controller：实际子 Agent 与 Skill 绑定",
+      "passed": true
+    },
+    {
+      "name": "真实 MCP 协议列工具与原生登记一致",
+      "passed": true
+    },
+    {
+      "name": "Nexent 容器通过实际 Docker 主机地址读取工作台工具",
+      "passed": true
+    },
+    {
+      "name": "真实分阶段工具完成检索、程序核验和带出处答案",
+      "passed": true
+    },
+    {
+      "name": "接线不解除已有冲突暂停",
+      "passed": true
+    }
+  ],
+  "native_agents": [
+    {
+      "role": "retriever",
+      "agent_id": 14,
+      "model_ids": [],
+      "enabled": false,
+      "published_versions": 0,
+      "tools": [
+        "govkb_retrieve_query"
+      ],
+      "child_ids": []
+    },
+    {
+      "role": "query_verifier",
+      "agent_id": 15,
+      "model_ids": [],
+      "enabled": false,
+      "published_versions": 0,
+      "tools": [
+        "govkb_verify_query"
+      ],
+      "child_ids": []
+    },
+    {
+      "role": "query_controller",
+      "agent_id": 16,
+      "model_ids": [],
+      "enabled": false,
+      "published_versions": 0,
+      "tools": [
+        "govkb_finalize_query",
+        "govkb_open_query",
+        "govkb_query_state"
+      ],
+      "child_ids": [
+        14,
+        15
+      ]
+    },
+    {
+      "role": "extractor",
+      "agent_id": 17,
+      "model_ids": [],
+      "enabled": false,
+      "published_versions": 0,
+      "tools": [
+        "govkb_get_change_batch",
+        "govkb_submit_candidates"
+      ],
+      "child_ids": []
+    },
+    {
+      "role": "update_verifier",
+      "agent_id": 18,
+      "model_ids": [],
+      "enabled": false,
+      "published_versions": 0,
+      "tools": [
+        "govkb_validate_candidates"
+      ],
+      "child_ids": []
+    },
+    {
+      "role": "update_controller",
+      "agent_id": 19,
+      "model_ids": [],
+      "enabled": false,
+      "published_versions": 0,
+      "tools": [
+        "govkb_check_registered_sources",
+        "govkb_classify_changes",
+        "govkb_finish_run",
+        "govkb_get_change_batch"
+      ],
+      "child_ids": [
+        17,
+        18
+      ]
+    }
+  ],
+  "probe": {
+    "inference_enabled": false,
+    "provider_calls": 0,
+    "roles": [
+      {
+        "role": "query_controller",
+        "transport": "ollama",
+        "model": "gov-qwen3-8b:ctx8192-v1",
+        "credential_ref": null,
+        "status": "wired_waiting_activation",
+        "model_available": true,
+        "credential_bound": false
+      },
+      {
+        "role": "retriever",
+        "transport": "ollama",
+        "model": "gov-qwen3-4b:ctx8192-v1",
+        "credential_ref": null,
+        "status": "wired_waiting_activation",
+        "model_available": true,
+        "credential_bound": false
+      },
+      {
+        "role": "query_verifier",
+        "transport": "ollama",
+        "model": "gov-qwen3-4b:ctx8192-v1",
+        "credential_ref": null,
+        "status": "wired_waiting_activation",
+        "model_available": true,
+        "credential_bound": false
+      },
+      {
+        "role": "update_controller",
+        "transport": "ollama",
+        "model": "gov-qwen3-8b:ctx8192-v1",
+        "credential_ref": null,
+        "status": "wired_waiting_activation",
+        "model_available": true,
+        "credential_bound": false
+      },
+      {
+        "role": "extractor",
+        "transport": "ollama",
+        "model": "gov-qwen3-4b:ctx8192-v1",
+        "credential_ref": null,
+        "status": "wired_waiting_activation",
+        "model_available": true,
+        "credential_bound": false
+      },
+      {
+        "role": "update_verifier",
+        "transport": "ollama",
+        "model": "gov-qwen3-4b:ctx8192-v1",
+        "credential_ref": null,
+        "status": "wired_waiting_activation",
+        "model_available": true,
+        "credential_bound": false
+      },
+      {
+        "role": "jev",
+        "transport": "jev",
+        "model": "jev-1.13.0",
+        "credential_ref": null,
+        "status": "wired_waiting_activation",
+        "model_available": null,
+        "credential_bound": false
+      }
+    ],
+    "services": {
+      "ollama": {
+        "connected": true,
+        "models": [
+          "qwen3-embedding:0.6b",
+          "gov-qwen3-8b:ctx8192-v1",
+          "gov-qwen3-4b:ctx8192-v1",
+          "qwen3:8b-q4_K_M",
+          "qwen3:4b-q4_K_M"
+        ]
+      },
+      "nexent_config": {
+        "connected": true
+      },
+      "nexent_runtime": {
+        "connected": true
+      }
+    },
+    "probe_only": true,
+    "inference_calls": 0,
+    "jev_network_request_sent": false
+  },
+  "mcp_tools": [
+    "govkb_check_registered_sources",
+    "govkb_classify_changes",
+    "govkb_finalize_query",
+    "govkb_finish_run",
+    "govkb_get_change_batch",
+    "govkb_open_query",
+    "govkb_query",
+    "govkb_query_state",
+    "govkb_retrieve_query",
+    "govkb_submit_candidates",
+    "govkb_validate_candidates",
+    "govkb_verify_query"
+  ],
+  "actual_mcp_sequence": [
+    "govkb_open_query",
+    "govkb_retrieve_query",
+    "govkb_verify_query",
+    "govkb_query_state",
+    "govkb_retrieve_query",
+    "govkb_verify_query",
+    "govkb_query_state",
+    "govkb_finalize_query"
+  ],
+  "query_task_id": "bcbec4a50e0c497da1e4085062459574",
+  "docker_route_verified": true,
+  "actual_model_inference_requests": 0,
+  "jev_network_requests": 0,
+  "native_agent_run_requests": 0,
+  "source_sha256": {
+    "src/gov_mcp/decision/__init__.py": "ba3088be2648931059ab618aa11a53b9c38d01026898418bb3d5a3c3535431e9",
+    "src/gov_mcp/decision/adapters.py": "08dbf7d19bb4b5aadac6a29f8018a140382ad7f33ad93ff5b1cd7d206cc704fc",
+    "src/gov_mcp/decision/connections.py": "8e0c023be08a012bb921ffce656b083a9ba2125568fffb4f2aec6c5ad67087ad",
+    "src/gov_mcp/decision/logic.py": "36f17d740c1e4b658927830c42a023a43424affbb60a50ffe3d967c14ced57ab",
+    "src/gov_mcp/decision/models.py": "39a6f1b7b2d4b3b32f2bd9db610bfaaeee68832fbed5a081d49cd961b9096024",
+    "src/gov_mcp/decision/server.py": "2da4714ca1f1cedcee17bc12890ee200f7976902d13fd42bd8fb75437ee10de6",
+    "src/gov_mcp/decision/service.py": "fcb8dd78314bfddf60dd1528b3891ee8048e3c4ea921753c375403238f258cf4",
+    "src/gov_mcp/decision/workflow.py": "0410474b9b18478f0e6f77136df2a047bcf50b81d056f218c6d4e0ef69e9bf40",
+    "src/gov_mcp/decision/workbench.html": "1029b4d2b6d0f2bc7b7850f483c27773dea7af5d09ac1cca82992b150dc04b96",
+    "config/decision/connections.json": "788fb14c48fdf8fcbcdf7734b8369c98115fdbde90ca4f74e9f6562f7ee0104f",
+    "scripts/provision_agent_workflow.py": "de8c0b2b5180db677df7210fb98362c78d20b60d40cb0803dc4e000f6b6dc14e",
+    "scripts/verify_workflow_connections.py": "db2902ba1085cbe2762970ef9a8714675aaf5c50ea608805c6f5c7158f8601f0"
+  }
+}

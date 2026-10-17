@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "inference_enabled": false,
+  "data_class": "synthetic",
+  "ollama_url": "http://127.0.0.1:11434",
+  "nexent_config_url": "http://127.0.0.1:5010",
+  "nexent_runtime_url": "http://127.0.0.1:5014",
+  "mcp_url": "http://host.docker.internal:8780/mcp/",
+  "roles": {
+    "query_controller": {"transport": "ollama", "model": "gov-qwen3-8b:ctx8192-v1", "credential_ref": null},
+    "retriever": {"transport": "ollama", "model": "gov-qwen3-4b:ctx8192-v1", "credential_ref": null},
+    "query_verifier": {"transport": "ollama", "model": "gov-qwen3-4b:ctx8192-v1", "credential_ref": null},
+    "update_controller": {"transport": "ollama", "model": "gov-qwen3-8b:ctx8192-v1", "credential_ref": null},
+    "extractor": {"transport": "ollama", "model": "gov-qwen3-4b:ctx8192-v1", "credential_ref": null},
+    "update_verifier": {"transport": "ollama", "model": "gov-qwen3-4b:ctx8192-v1", "credential_ref": null},
+    "jev": {"transport": "jev", "model": "jev-1.13.0", "credential_ref": null}
+  },
+  "note": "Routes are wired; inference remains disabled. No provider secret is stored here. Bind credentials and enable inference only at the final API activation step."
+}
