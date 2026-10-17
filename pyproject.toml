@@ -15,7 +15,7 @@ test = ["pytest==8.4.2"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-gov_mcp = ["*.html", "knowledge/*.html", "decision/*.html"]
+gov_mcp = ["*.html", "knowledge/*.html", "decision/*.html", "decision/*.js", "decision/*.css"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

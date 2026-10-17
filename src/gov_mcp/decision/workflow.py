@@ -157,10 +157,12 @@ class Workflow:
         with self.store.db() as db:
             return self._service(self.version(db=db), db).branch_options(facts, parent)
 
-    def query(self, facts, branch_id, *, parent_task=None, version_id=None, as_of=None, retriever=None, question=""):
+    def query(self, facts, branch_id, *, parent_task=None, version_id=None, as_of=None, retriever=None, question="", expected_head=None):
         if not isinstance(question, str) or len(question) > 2000: raise WorkflowError("INVALID_QUESTION")
         # Snapshot and user facts are pinned once. The external question is data, not a tool plan.
         with self.store.db(True) as db:
+            if expected_head is not None and self.store.get("state", "wf_head", db) != expected_head:
+                raise WorkflowError("FORM_VERSION_CHANGED")
             version = self.version(version_id, db)
             service = self._service(version, db)
             if parent_task and not self.get("query", parent_task, db): raise WorkflowError("PARENT_TASK_NOT_FOUND")
@@ -173,7 +175,7 @@ class Workflow:
             self._event("query_controller", "plan_query", {"branch_id": branch_id, "question": question},
                 {"allowed_tools": ["retrieve_registered_evidence", "verify_conditions"], "max_rounds": 3}, task=task_id, db=db)
         try:
-            return self._execute_query(task, version, draft, retriever)
+            return self._execute_query(task, version, draft, retriever, expected_head=expected_head)
         except Exception as error:
             with self.store.db(True) as db:
                 task.update(status="failed", error_code=type(error).__name__, finished_at=self.clock())
@@ -200,7 +202,7 @@ class Workflow:
                 "condition_results": [{"requirement_id": row["requirement_id"], "result": row["result"], "conditions": row["conditions"]}
                     for row in draft["rows"]]}
 
-    def _execute_query(self, task, version, draft, retriever):
+    def _execute_query(self, task, version, draft, retriever, *, expected_head=None):
         task_id, branch_id = task["id"], task["branch_id"]
         found = set()
         evidence = {e["id"]: e for e in version["snapshot"]["evidence"]}
@@ -226,6 +228,8 @@ class Workflow:
         task["draft"] = draft
         # The gate and durable answer are read/written in ONE serialized transaction.
         with self.store.db(True) as db:
+            if expected_head is not None and self.store.get("state", "wf_head", db) != expected_head:
+                raise WorkflowError("FORM_VERSION_CHANGED")
             service = self._service(version, db)
             service._tasks[task_id] = draft
             answer = self.roles.invoke("query_controller", "compose_answer", lambda: service.finalize(task_id))

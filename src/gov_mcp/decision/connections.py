@@ -35,6 +35,8 @@ class Connections:
         config = self.config
         if config.get("schema_version") != 1 or type(config.get("inference_enabled")) is not bool or config.get("data_class") != "synthetic":
             raise ConnectionError("INVALID_CONNECTION_CONFIG")
+        if type(config.get("form_verifier_enabled", False)) is not bool:
+            raise ConnectionError("INVALID_CONNECTION_CONFIG")
         if set(config.get("roles", {})) != set(CAPABILITIES): raise ConnectionError("INVALID_ROLE_ROUTES")
         for key in ("nexent_config_url", "nexent_runtime_url", *(["ollama_url"] if any(r["transport"] == "ollama" for r in config["roles"].values()) else [])):
             parsed = urlparse(config[key])

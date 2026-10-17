@@ -22,11 +22,14 @@ import uvicorn
 from .workflow import Workflow, WorkflowError, ROOT
 from .service import DecisionError
 from .models import canonical_hash
+from .intake import GuidedForm, DeepSeekFormVerifier, FormError
 from gov_mcp.knowledge.store import KBError
 
 
-def create_app(workflow, professional_token, mcp_token, *, start_worker=True):
+def create_app(workflow, professional_token, mcp_token, *, start_worker=True, form_verifier=None):
     sessions = {}
+    verifier = form_verifier if form_verifier is not None else DeepSeekFormVerifier(workflow.connections)
+    form_slots, form_calls = asyncio.Semaphore(2), 0
     mcp = FastMCP("gov_decision_engineering", stateless_http=True, json_response=True, streamable_http_path="/",
         transport_security=TransportSecuritySettings(allowed_hosts=["localhost:*", "127.0.0.1:*", "host.docker.internal:*"],
             allowed_origins=["http://localhost:*", "http://127.0.0.1:*", "http://host.docker.internal:*"]))
@@ -133,6 +136,78 @@ def create_app(workflow, professional_token, mcp_token, *, start_worker=True):
         return HTMLResponse((Path(__file__).with_name("workbench.html")).read_text("utf-8"), headers={
             "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"})
 
+    async def form_home(request):
+        return HTMLResponse(Path(__file__).with_name("intake.html").read_text("utf-8"), headers={
+            "Content-Security-Policy": "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"})
+
+    async def form_asset(request):
+        from starlette.responses import Response
+        name = request.path_params["name"]
+        if name not in {"intake.js", "intake.css"}: return Response(status_code=404)
+        return Response(Path(__file__).with_name(name).read_text("utf-8"), media_type="text/javascript" if name.endswith(".js") else "text/css")
+
+    async def form_api(request):
+        nonlocal form_calls
+        user = session(request)
+        action = request.path_params["action"]
+        try:
+            allowed = {"start": set(), "answer": {"form_id", "revision", "field_id", "answer"},
+                       "review": {"form_id", "revision", "consent"},
+                       "submit": {"form_id", "revision", "review_id", "branch_id", "acknowledge"},
+                       "delete": {"form_id", "revision"}}
+            if request.query_params: raise FormError("FORM_INVALID_ARGUMENTS")
+            if action == "state":
+                if request.method != "GET": raise FormError("FORM_POST_REQUIRED")
+                value = {}
+            else:
+                if request.method != "POST": raise FormError("FORM_POST_REQUIRED")
+                value = await request.json()
+                if action not in allowed or not isinstance(value, dict) or set(value) != allowed[action]:
+                    raise FormError("FORM_INVALID_ARGUMENTS")
+            async with user["query_lock"]:
+                if action == "start":
+                    user["guided_form"] = GuidedForm(workflow)
+                form = user.get("guided_form")
+                if not form: raise FormError("FORM_NOT_STARTED")
+                if action not in {"start", "state"}:
+                    if value["form_id"] != form.id: raise FormError("FORM_NOT_OWNED")
+                    form.expected(value["revision"])
+                if action == "answer":
+                    form.answer(value["field_id"], value["answer"], value["revision"])
+                elif action == "review":
+                    if value["consent"] is not True: raise FormError("FORM_EGRESS_CONSENT_REQUIRED")
+                    if form.receipt: raise FormError("FORM_ALREADY_SUBMITTED")
+                    if len(form.answers) != len(form.template["fields"]): raise FormError("FORM_INCOMPLETE")
+                    if not verifier.enabled(): raise FormError("FORM_AI_NOT_ACTIVATED")
+                    if not form.reviewed or form.version_id != workflow.version()["id"]:
+                        if form_calls >= 20 or user.get("form_calls", 0) >= 3: raise FormError("FORM_AI_BUDGET_EXHAUSTED")
+                        try: await asyncio.wait_for(form_slots.acquire(), timeout=.1)
+                        except TimeoutError: raise FormError("FORM_AI_BUSY") from None
+                        try:
+                            form_calls += 1
+                            user["form_calls"] = user.get("form_calls", 0)+1
+                            await asyncio.to_thread(form.review, workflow, verifier, value["revision"])
+                        finally: form_slots.release()
+                elif action == "submit":
+                    if not form.receipt and len(user["queries"]) >= 200: raise FormError("FORM_QUERY_LIMIT")
+                    receipt = await asyncio.to_thread(form.submit, workflow, revision=value["revision"], review_id=value["review_id"],
+                                                     branch_id=value["branch_id"], acknowledge=value["acknowledge"])
+                    user["queries"].add(receipt["task_id"])
+                    history = await asyncio.to_thread(workflow.history, receipt["task_id"])
+                    return JSONResponse({"form": form.state(verifier), "receipt": receipt,
+                                         "answer": {**history["original_answer"], **history["current_availability"]}})
+                elif action == "delete":
+                    user.pop("guided_form", None)
+                    return JSONResponse({"deleted": True})
+                return JSONResponse(form.state(verifier))
+        except FormError as error:
+            code = str(error)
+            return JSONResponse({"error": code}, status_code=403 if code == "FORM_NOT_OWNED" else 409)
+        except WorkflowError as error:
+            return JSONResponse({"error": "FORM_VERSION_CHANGED" if str(error) == "FORM_VERSION_CHANGED" else "FORM_OPERATION_BLOCKED"}, status_code=409)
+        except (DecisionError, KBError, ValueError, KeyError, TypeError):
+            return JSONResponse({"error": "FORM_OPERATION_BLOCKED"}, status_code=409)
+
     async def login(request):
         value = await request.json()
         if not isinstance(value, dict): raise WorkflowError("OBJECT_BODY_REQUIRED")
@@ -219,6 +294,8 @@ def create_app(workflow, professional_token, mcp_token, *, start_worker=True):
         if action == "status": return JSONResponse(workflow.status(int(request.query_params.get("page", "0"))))
         def connection_state():
             value = workflow.connections.describe()
+            value["form_assistant"] = {"role": "form_format_verifier", "transport": "deepseek", "inference_enabled": verifier.enabled(),
+                "tools": [], "can_submit": False, "data_policy": "synthetic_choice_codes_only"}
             path = workflow.store.root / "native-drafts.json"
             native = json.loads(path.read_text("utf-8")) if path.exists() else {}
             value["nexent_drafts"] = {key: native.get(key) for key in ("agents", "skill_id", "published", "model_bindings", "mcp_service")}
@@ -305,7 +382,9 @@ def create_app(workflow, professional_token, mcp_token, *, start_worker=True):
                 # No raw provider exception bodies, paths or credentials reach the UI.
                 await JSONResponse({"error": "操作未通过校验；请检查选择、权限和当前版本。"}, status_code=409)(scope, receive, guarded_send)
 
-    app = Starlette(routes=[Route("/", home), Route("/login", login, methods=["POST"]), Route("/logout", logout, methods=["POST"]),
+    app = Starlette(routes=[Route("/", home), Route("/guided-form", form_home), Route("/form-assets/{name}", form_asset),
+        Route("/api/forms/{action}", form_api, methods=["GET", "POST"]),
+        Route("/login", login, methods=["POST"]), Route("/logout", logout, methods=["POST"]),
         Route("/api/{action}", api, methods=["GET", "POST"]), Mount("/mcp", app=mcp.streamable_http_app())], lifespan=lifespan)
     app.add_middleware(Gate)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1", "host.docker.internal"])

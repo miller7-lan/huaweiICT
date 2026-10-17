@@ -6,6 +6,7 @@
 </style></head><body>
 <header><div><div class="eyebrow">GOVERNMENT ASSET INTELLIGENCE</div><h1>政务认知 Agent · 全流程工作台</h1><div class="pill">问答与证据 / 心跳与更新 / 复核与版本</div></div><div id="identity" class="pill">本机工程演练</div></header>
 <main><div class="warning">工程模拟环境：所有资料均为虚构。主控与全部子 Agent 已配置云端 DeepSeek；当前工作台仍使用确定性离线适配器，真实调度待验收。Jev 为独立分类接口；接线状态可在连接页检查。不提供真实办事建议。</div>
+<div class="actions"><a href="/guided-form">新入口：一问一答填表 → DeepSeek 核查 → 人工确认</a></div>
 <div id="notice" role="status"></div>
 <section id="login" class="card login"><h2>选择演练入口</h2><p class="muted">群众入口体验逐层选择和带出处的清单；专业人员入口处理更新与发布。</p><div class="actions"><button id="citizenLogin" class="primary">进入模拟群众咨询</button></div><hr style="border:0;border-top:1px solid var(--line);margin:24px 0"><label>本机专业人员访问口令<input id="token" type="password" autocomplete="off" placeholder="本机 access.json 中的 professional_token"></label><div class="actions"><button id="professionalLogin">进入模拟专业人员工作台</button></div><p class="muted">口令保存在项目私有目录 <code>.runtime/agent-workflow/access.json</code>，不是模型 API 密钥。不要提交到仓库。</p></section>
 <div id="app" class="hidden"><nav id="nav"><button data-page="consult" class="active">群众咨询</button><button data-page="updates" class="pro">知识更新</button><button data-page="connections" class="pro">连接与接口</button><button data-page="versions" class="pro">版本与记录</button><button data-page="traces" class="pro">执行链路</button><button id="logout">退出</button></nav>
