@@ -1,0 +1,52 @@
+{
+  "captured_at": "2026-10-13T10:50:18.685852+00:00",
+  "passed": true,
+  "checks": {
+    "sixteen_actual_pass_records": true,
+    "all_indexed_evidence_hashes_match": true,
+    "original_code_config_database_fingerprints_preserved": true,
+    "both_business_stores_and_candidate_versions_empty": true,
+    "original_and_extension_regression_tests_pass": true,
+    "original_native_agent_regression_pass": true,
+    "evidence/m1-native-ui-citizen.json": true,
+    "evidence/m1-native-staff.json": true,
+    "evidence/m1-native-sidecar-success.json": true,
+    "first_citizen_entry_no_history": true,
+    "empty_input_no_dispatch_or_tool_calls": true,
+    "same_empty_update_repeated_without_mutation": true,
+    "same_empty_update_ui_repetition_without_mutation": true,
+    "citizen_ui_maintenance_denial_correlated": true,
+    "unconfigured_resources_are_error_not_empty_or_success": true,
+    "new_address_actual_faults_and_recovery": true,
+    "native_storage_lock_two_attempts_then_terminal_error": true,
+    "native_connection_outage_no_model_or_tool_call_and_recovered": true,
+    "storage_timeout_ui_matches_frontend_role_stop_and_log": true,
+    "connection_timeout_ui_matches_frontend_role_stop_and_log": true,
+    "actual_native_ui_uses_sidecar_fault_handling": true,
+    "actual_native_ui_recovers_after_fault": true,
+    "nexent-runtime/run_agent.py_fingerprint": true,
+    "nexent-m1-runtime/run_agent.py_fingerprint": true,
+    "nexent-m1-runtime/sandbox.py_fingerprint": true,
+    "services_ready_after_recovery": true,
+    "known_account_service_and_infrastructure_secrets_absent_from_public_candidates": true,
+    "credentials_and_runtime_not_git_tracked": true
+  },
+  "tests": 116,
+  "original_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  },
+  "extension_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "candidates": 0,
+    "versions": 0
+  },
+  "public_files_scanned": 343,
+  "credential_hit_paths": [],
+  "scope": "Current completion gate; images require separate actual visual review; no policy/business accuracy claims"
+}

@@ -1,0 +1,42 @@
+{
+  "agent_id": 1,
+  "agent_info": {
+    "1": {
+      "agent_id": 1,
+      "name": "govkb_knowledge_query",
+      "display_name": "维护知识资料查询",
+      "author": "ICT 项目组",
+      "description": "Source-bound knowledge maintenance, no automatic business-rule publishing",
+      "max_steps": 3,
+      "requested_output_tokens": 1024,
+      "is_main_agent": true,
+      "provide_run_summary": false,
+      "allow_chat_metadata": false,
+      "enable_protocol_repair_retry": false,
+      "enabled": true,
+      "duty_prompt": "Copy the exact action below. Replace QUESTION_LITERAL with the exact quoted current user question. KIND_LITERAL is 'rules' only when the user explicitly requests 已确认知识 or 正式知识, otherwise 'documents'. Return the tool-generated answer unchanged.\n<code>\nimport json\nraw = govkb_search_evidence(query=QUESTION_LITERAL, kind=KIND_LITERAL)\nvalue = json.loads(raw) if isinstance(raw, str) else raw\nfinal_answer(value['data'].get('answer_markdown', value['message_code']))\n</code>",
+      "constraint_prompt": "Only one search and final_answer. Do not interpret policy or omit candidate notices. No setup, ask_user, other tools or publication.",
+      "tools": [
+        {
+          "class_name": "govkb_search_evidence",
+          "name": "govkb_search_evidence",
+          "source": "mcp",
+          "usage": "govkb_maintenance",
+          "params": {}
+        }
+      ],
+      "managed_agents": [],
+      "model_names": [
+        "deepseek-flash"
+      ],
+      "skill_names": [],
+      "few_shots_prompt": "<code>\nimport json\nraw = govkb_search_evidence(query=QUESTION_LITERAL, kind=KIND_LITERAL)\nvalue = json.loads(raw) if isinstance(raw, str) else raw\nfinal_answer(value['data'].get('answer_markdown', value['message_code']))\n</code>"
+    }
+  },
+  "mcp_info": [
+    {
+      "mcp_server_name": "govkb_maintenance",
+      "mcp_url": "http://govkb-maintenance:8775/sse"
+    }
+  ]
+}

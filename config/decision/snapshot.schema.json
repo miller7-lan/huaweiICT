@@ -1,0 +1,883 @@
+{
+  "$defs": {
+    "Alias": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "review_status": {
+          "enum": [
+            "candidate",
+            "confirmed"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "review_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Id"
+        },
+        "material_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Material Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence_ids",
+        "review_status",
+        "material_id",
+        "label"
+      ],
+      "title": "Alias",
+      "type": "object"
+    },
+    "Applicability": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "review_status": {
+          "enum": [
+            "candidate",
+            "confirmed"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "review_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Id"
+        },
+        "region_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Region Id",
+          "type": "string"
+        },
+        "clause_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Clause Ids",
+          "type": "array"
+        },
+        "window": {
+          "$ref": "#/$defs/Window"
+        }
+      },
+      "required": [
+        "id",
+        "evidence_ids",
+        "review_status",
+        "region_id",
+        "clause_ids",
+        "window"
+      ],
+      "title": "Applicability",
+      "type": "object"
+    },
+    "Asset": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "source_url": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "revision": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Revision",
+          "type": "string"
+        },
+        "data_class": {
+          "const": "synthetic",
+          "title": "Data Class",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 100000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_url",
+        "title",
+        "revision",
+        "data_class",
+        "text",
+        "sha256"
+      ],
+      "title": "Asset",
+      "type": "object"
+    },
+    "Branch": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "review_status": {
+          "enum": [
+            "candidate",
+            "confirmed"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "review_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Id"
+        },
+        "label": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Id"
+        },
+        "condition_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "evidence_ids",
+        "review_status",
+        "label",
+        "parent_id",
+        "condition_id",
+        "order"
+      ],
+      "title": "Branch",
+      "type": "object"
+    },
+    "Clause": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "evidence_ids"
+      ],
+      "title": "Clause",
+      "type": "object"
+    },
+    "Condition": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "review_status": {
+          "enum": [
+            "candidate",
+            "confirmed"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "review_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Id"
+        },
+        "expression": {
+          "additionalProperties": true,
+          "title": "Expression",
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "evidence_ids",
+        "review_status",
+        "expression"
+      ],
+      "title": "Condition",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "asset_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "exclusiveMinimum": 0,
+          "title": "End",
+          "type": "integer"
+        },
+        "quote": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "locator": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "asset_id",
+        "start",
+        "end",
+        "quote",
+        "locator"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FactField": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "boolean",
+            "number",
+            "date",
+            "string",
+            "enum"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 32,
+          "title": "Options",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "kind"
+      ],
+      "title": "FactField",
+      "type": "object"
+    },
+    "Material": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "title": "Material",
+      "type": "object"
+    },
+    "Matter": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "region_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Region Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "region_id"
+      ],
+      "title": "Matter",
+      "type": "object"
+    },
+    "Requirement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "review_status": {
+          "enum": [
+            "candidate",
+            "confirmed"
+          ],
+          "title": "Review Status",
+          "type": "string"
+        },
+        "review_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Review Id"
+        },
+        "branch_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "stage_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Stage Id",
+          "type": "string"
+        },
+        "material_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Material Id",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "提交",
+            "交验",
+            "交回",
+            "出示"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "condition_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "applicability_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Applicability Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence_ids",
+        "review_status",
+        "branch_id",
+        "stage_id",
+        "material_id",
+        "action",
+        "condition_id",
+        "applicability_id"
+      ],
+      "title": "Requirement",
+      "type": "object"
+    },
+    "Review": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "object_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Object Id",
+          "type": "string"
+        },
+        "object_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Object Sha256",
+          "type": "string"
+        },
+        "actor_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Actor Id",
+          "type": "string"
+        },
+        "actor_kind": {
+          "const": "simulated_professional",
+          "title": "Actor Kind",
+          "type": "string"
+        },
+        "decision": {
+          "const": "accepted",
+          "title": "Decision",
+          "type": "string"
+        },
+        "note": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "object_id",
+        "object_sha256",
+        "actor_id",
+        "actor_kind",
+        "decision",
+        "note"
+      ],
+      "title": "Review",
+      "type": "object"
+    },
+    "Stage": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "order"
+      ],
+      "title": "Stage",
+      "type": "object"
+    },
+    "Versions": {
+      "additionalProperties": false,
+      "properties": {
+        "documents": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Documents",
+          "type": "string"
+        },
+        "knowledge": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Knowledge",
+          "type": "string"
+        },
+        "ontology": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+          "title": "Ontology",
+          "type": "string"
+        }
+      },
+      "required": [
+        "documents",
+        "knowledge",
+        "ontology"
+      ],
+      "title": "Versions",
+      "type": "object"
+    },
+    "Window": {
+      "additionalProperties": false,
+      "properties": {
+        "confirmed": {
+          "title": "Confirmed",
+          "type": "boolean"
+        },
+        "start_inclusive": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Start Inclusive"
+        },
+        "end_exclusive": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "End Exclusive"
+        }
+      },
+      "required": [
+        "confirmed",
+        "start_inclusive",
+        "end_exclusive"
+      ],
+      "title": "Window",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "mode": {
+      "const": "synthetic_engineering_only",
+      "title": "Mode",
+      "type": "string"
+    },
+    "demo_date": {
+      "format": "date",
+      "title": "Demo Date",
+      "type": "string"
+    },
+    "versions": {
+      "$ref": "#/$defs/Versions"
+    },
+    "matter": {
+      "$ref": "#/$defs/Matter"
+    },
+    "fields": {
+      "items": {
+        "$ref": "#/$defs/FactField"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "title": "Fields",
+      "type": "array"
+    },
+    "stages": {
+      "items": {
+        "$ref": "#/$defs/Stage"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "title": "Stages",
+      "type": "array"
+    },
+    "materials": {
+      "items": {
+        "$ref": "#/$defs/Material"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "title": "Materials",
+      "type": "array"
+    },
+    "assets": {
+      "items": {
+        "$ref": "#/$defs/Asset"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "title": "Assets",
+      "type": "array"
+    },
+    "evidence": {
+      "items": {
+        "$ref": "#/$defs/Evidence"
+      },
+      "maxItems": 512,
+      "minItems": 1,
+      "title": "Evidence",
+      "type": "array"
+    },
+    "clauses": {
+      "items": {
+        "$ref": "#/$defs/Clause"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "title": "Clauses",
+      "type": "array"
+    },
+    "conditions": {
+      "items": {
+        "$ref": "#/$defs/Condition"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "title": "Conditions",
+      "type": "array"
+    },
+    "branches": {
+      "items": {
+        "$ref": "#/$defs/Branch"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "title": "Branches",
+      "type": "array"
+    },
+    "applicability": {
+      "items": {
+        "$ref": "#/$defs/Applicability"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "title": "Applicability",
+      "type": "array"
+    },
+    "requirements": {
+      "items": {
+        "$ref": "#/$defs/Requirement"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "title": "Requirements",
+      "type": "array"
+    },
+    "aliases": {
+      "items": {
+        "$ref": "#/$defs/Alias"
+      },
+      "maxItems": 128,
+      "title": "Aliases",
+      "type": "array"
+    },
+    "reviews": {
+      "items": {
+        "$ref": "#/$defs/Review"
+      },
+      "maxItems": 1024,
+      "minItems": 1,
+      "title": "Reviews",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "demo_date",
+    "versions",
+    "matter",
+    "fields",
+    "stages",
+    "materials",
+    "assets",
+    "evidence",
+    "clauses",
+    "conditions",
+    "branches",
+    "applicability",
+    "requirements",
+    "reviews"
+  ],
+  "title": "KnowledgeSnapshot",
+  "type": "object"
+}

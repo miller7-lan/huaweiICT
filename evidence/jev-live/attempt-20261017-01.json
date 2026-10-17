@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-10-17T09:50:04.932953+00:00",
+  "status": "blocked",
+  "scope": "nine human-written engineering examples, not independent business accuracy",
+  "data_class": "synthetic",
+  "provider": "vercel_jev_live",
+  "model": "jev-1.13.0",
+  "transport_model": "typesafe-ai/jev-1.13.0",
+  "max_http_calls": 32,
+  "max_request_bytes": 16000,
+  "other_model_calls": 0,
+  "business_rules_published": false,
+  "workflow_heartbeat_auto_enabled": false,
+  "error_code": "ACCESS_DENIED",
+  "http_attempts": 1,
+  "receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "typesafe-ai/jev-1.13.0",
+      "input_bytes": 531,
+      "status": "error",
+      "cost_usd": null,
+      "http_status": 403,
+      "error_code": "ACCESS_DENIED",
+      "duration_ms": 2273.31
+    }
+  ],
+  "known_success_cost_usd": "0",
+  "cost_complete": false,
+  "cost_scope": "reported successful-response cost only; failed attempts may also be billed",
+  "source_sha256": {
+    "src/gov_mcp/jev_gateway.py": "0d68de33d3468bbc05ea9a59f97d033e195d727022acec814f2272607ee9f57c",
+    "src/gov_mcp/classification.py": "68a3f9606d0ad7ece6a0e8593be52ed311d989afcf8ae01c63f057a63b1eeaff",
+    "scripts/test_jev_live.py": "259aca7b7553ac84dfbb6e8a84a93b7f323929ed90fe931410f937479141adc1",
+    "config/preparation/classification.json": "1a07261dd71a04d16b7dd57e34ed8e4d797a5a4fbcd83a6153e88c7a4334d8d6",
+    "config/preparation/classification.examples.json": "fb8fc75f0496c44721e0286e91a4ff8356890eef5e19c830a834d707a153feec"
+  }
+}

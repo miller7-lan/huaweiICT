@@ -1,0 +1,60 @@
+{
+  "verified_at": "2026-10-17T07:47:52.766674+00:00",
+  "scope": "synthetic engineering workflow, local HTTP/MCP and existing Nexent draft wiring; no real policy or model inference acceptance",
+  "regression": {
+    "tests": 352,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "new_regression_tests": 17,
+  "simulation_checks": {
+    "passed": 21,
+    "total": 21
+  },
+  "platform_checks": {
+    "passed": 16,
+    "total": 16,
+    "docker_route_verified": true
+  },
+  "inference_enabled": false,
+  "credential_refs_empty": true,
+  "actual_model_inference_requests": 0,
+  "jev_network_requests": 0,
+  "benchmark_median_reduction_percent": {
+    "query": 29.0,
+    "branches": 83.23,
+    "search": 14.49
+  },
+  "security_baseline_scan_id": "49126d8f-5fb8-479e-95d2-96868a548069",
+  "security_baseline_findings": {
+    "low": 2,
+    "fixed_by_this_patch": [
+      "unbounded-request-buffer",
+      "anonymous-session-exhaustion"
+    ],
+    "verification": "bounded receive and 1030-anonymous-session regression tests; not a new full scan"
+  },
+  "source_and_evidence_sha256": {
+    "src/gov_mcp/decision/__init__.py": "ba3088be2648931059ab618aa11a53b9c38d01026898418bb3d5a3c3535431e9",
+    "src/gov_mcp/decision/adapters.py": "08dbf7d19bb4b5aadac6a29f8018a140382ad7f33ad93ff5b1cd7d206cc704fc",
+    "src/gov_mcp/decision/connections.py": "8e0c023be08a012bb921ffce656b083a9ba2125568fffb4f2aec6c5ad67087ad",
+    "src/gov_mcp/decision/logic.py": "36f17d740c1e4b658927830c42a023a43424affbb60a50ffe3d967c14ced57ab",
+    "src/gov_mcp/decision/models.py": "39a6f1b7b2d4b3b32f2bd9db610bfaaeee68832fbed5a081d49cd961b9096024",
+    "src/gov_mcp/decision/server.py": "2da4714ca1f1cedcee17bc12890ee200f7976902d13fd42bd8fb75437ee10de6",
+    "src/gov_mcp/decision/service.py": "fcb8dd78314bfddf60dd1528b3891ee8048e3c4ea921753c375403238f258cf4",
+    "src/gov_mcp/decision/workflow.py": "0410474b9b18478f0e6f77136df2a047bcf50b81d056f218c6d4e0ef69e9bf40",
+    "src/gov_mcp/decision/workbench.html": "1029b4d2b6d0f2bc7b7850f483c27773dea7af5d09ac1cca82992b150dc04b96",
+    "tests/test_workflow_optimization.py": "c206beceb100490a372fce2a7cc113311c4e0e7d21639d9995feaca3e3420452",
+    "scripts/benchmark_agent_workflow.py": "69ba4a58966a42cb82132a0bd9e957c3bfe2e67f3a27fa73d3358bf6c21cd358",
+    "scripts/verify_workflow_connections.py": "db2902ba1085cbe2762970ef9a8714675aaf5c50ea608805c6f5c7158f8601f0",
+    "docs/赛题3资料/Agent流程核查与优化-2026-10-17.md": "f9405a9c7c06e854b7990750e7bfcd8c7dcf071d40ceea6efc1f3797daf66a3f",
+    "evidence/agent-workflow/optimization-regression.xml": "4f18d67828982175f7c1ce03cf71c88e7652f99f6e25873b366c05efe59260e0",
+    "evidence/agent-workflow/optimization-before.json": "1347e180c502e1158c5394f05447ffcfa8a59ced9d6e8475b72a9da30ffa5a50",
+    "evidence/agent-workflow/optimization-after.json": "50308abd635e90c9e2b97ac0223840b9e838ccb2e06b0d02207e50a094293da1",
+    "evidence/agent-workflow/verification.json": "18c91c92ffa22cb807c7f7cfd2609fb27360399a3fa385ceeeea5ba0b288feb1",
+    "evidence/agent-workflow/connections-verification.json": "cd64f99ee6f3543d3ea9b86200f8763d4d0d1d03bfad04bb9574000f5dca257b",
+    "evidence/agent-workflow/optimization-connections.png": "ea412eead43e488e863c9c6282287d5b82066cf7480e4b6d671a7048e726f570",
+    "evidence/agent-workflow/optimization-overview.png": "ff8d918ed855ff5fe1d33c6d7eaf5c91f1b75a44fe3a146ec36ea6c0f14e85c1"
+  }
+}

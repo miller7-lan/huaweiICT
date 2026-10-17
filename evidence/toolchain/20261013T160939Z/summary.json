@@ -1,0 +1,223 @@
+{
+  "captured_at": "2026-10-13T16:09:39.397158+00:00",
+  "client_timezone": "Asia/Shanghai",
+  "scope": "Current local technical smoke; not multimodal, ontology, Skills execution, or business acceptance",
+  "services": {
+    "config": true,
+    "runtime": true,
+    "mcp": true,
+    "ui": true,
+    "container_ollama": true,
+    "runtime_sandbox": true,
+    "runtime_error_overlay": true
+  },
+  "native_cases": [],
+  "inventory": {
+    "visible_skills": {
+      "api_success": true,
+      "count": 1,
+      "items": [
+        {
+          "name": "ict-toolchain-probe",
+          "skill_id": 1
+        }
+      ]
+    },
+    "official_skills": {
+      "api_success": true,
+      "count": 28,
+      "items": [
+        {
+          "name": "analyze-image",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "analyze-text-file",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "canvas-design",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "create-docx",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "create-excel",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "create-file-directory",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "delete-file-directory",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "docx",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "email-utils",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "frontend-design",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "list-directory",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "mcp-builder",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "move-file-directory",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "pdf",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "pptx",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "read-file",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "run-shell-ssh",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "search-datamate",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "search-dify",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "search-idata",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "search-knowledge-base",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "search-web-exa",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "search-web-linkup",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "search-web-tavily",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "skill-creator",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "slack-gif-creator",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "web-artifacts-builder",
+          "status": "installable",
+          "skill_id": 0
+        },
+        {
+          "name": "xlsx",
+          "status": "installable",
+          "skill_id": 0
+        }
+      ]
+    },
+    "models": {
+      "api_success": true,
+      "count": 3,
+      "items": [
+        {
+          "model_name": "qwen3-embedding:0.6b",
+          "model_type": "embedding"
+        },
+        {
+          "model_name": "gov-qwen3-8b:ctx8192-v1",
+          "model_type": "llm"
+        },
+        {
+          "model_name": "gov-qwen3-4b:ctx8192-v1",
+          "model_type": "llm"
+        }
+      ]
+    },
+    "project_agent_skills": {
+      "gov_coordinator": [],
+      "citizen_assistant": [],
+      "staff_assistant": []
+    },
+    "running_containers": [
+      "nexent-runtime-sandbox",
+      "nexent-config",
+      "nexent-runtime",
+      "nexent-northbound",
+      "nexent-mcp",
+      "nexent-web",
+      "supabase-auth-mini",
+      "supabase-kong-mini",
+      "supabase-db-mini",
+      "nexent-postgresql",
+      "nexent-redis",
+      "nexent-elasticsearch",
+      "gov-blank-mcp",
+      "nexent-minio"
+    ],
+    "m1_runtime_directory_exists": false
+  },
+  "errors": [],
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "published_versions": {
+    "citizen_assistant": 14,
+    "staff_assistant": 14,
+    "gov_coordinator": 14
+  },
+  "readiness_passed": true,
+  "native_smoke_passed": false,
+  "native_requested": false
+}

@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-17T10:04:22.640460+00:00",
+  "profile": {
+    "provider": "official",
+    "base_url": "https://api.deepseek.com/v1",
+    "model": "deepseek-flash",
+    "credential_ref": "env:DEEPSEEK_API_KEY"
+  },
+  "roles": [
+    "query_controller",
+    "retriever",
+    "query_verifier",
+    "update_controller",
+    "extractor",
+    "update_verifier"
+  ],
+  "status": "configured",
+  "http_inference_attempts": 0,
+  "native_drafts_bound": false,
+  "published": false,
+  "credential_configured": true
+}
