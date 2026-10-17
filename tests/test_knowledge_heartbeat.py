@@ -121,6 +121,186 @@ def test_withdrawn_source_approval_prevents_recovery_publication(setup):
     engine.store.finish(run,"completed")
 
 
+def withdraw_source(engine, change):
+    if change == "remove": engine.config["sources"] = []
+    elif change == "config": engine.config["sources"][0]["body_selector"]["id"] = "changed"
+    else: engine.config["sources"][0][change] = False
+
+
+@pytest.mark.parametrize("change", ["approved", "enabled", "remove", "config"])
+def test_source_revocation_blocks_pending_rule_acceptance_but_not_rejection(setup, change):
+    engine, _, driver = setup
+    round_now(engine, driver)
+    candidate = engine.store.rows("candidates")[0]
+    withdraw_source(engine, change)
+    with pytest.raises(KBError, match="^SOURCE_NOT_CURRENT$"):
+        engine.review_candidate(candidate["id"], None, "human", acknowledge=True)
+    assert engine.store.get("state", "active_rules") is None
+    assert engine.store.get("candidates", candidate["id"])["status"] == "pending_review"
+    engine.review_candidate(candidate["id"], None, "human", accept=False)
+    assert engine.store.get("candidates", candidate["id"])["status"] == "rejected"
+
+
+@pytest.mark.parametrize("change", ["approved", "enabled", "remove", "config"])
+def test_source_revocation_withholds_current_evidence_but_keeps_explicit_history(setup, change):
+    engine, _, driver = setup
+    round_now(engine, driver)
+    candidate = engine.store.rows("candidates")[0]
+    rules = engine.review_candidate(candidate["id"], None, "human", acknowledge=True)
+    documents = engine.store.get("state", "active_documents")
+    withdraw_source(engine, change)
+    engine.embedder = lambda texts: pytest.fail("Embedding revoked current documents")
+    for kind in ("documents", "rules"):
+        result = engine.search("申请表", kind)
+        assert not result["items"] and not result["historical"] and "授权撤销" in result["notice"]
+    engine.embedder = lambda texts: [[1., 0.] for _ in texts]
+    for kind, version in (("documents", documents), ("rules", rules)):
+        result = engine.search("申请表", kind, version)
+        assert result["items"] and result["historical"] and "历史快照" in result["notice"]
+
+
+@pytest.mark.parametrize("change", ["approved", "enabled", "remove", "config"])
+def test_in_flight_source_revocation_blocks_model_and_evidence_stages(setup, change):
+    engine, _, driver = setup
+    run = engine.store.claim("owner", 120, 600)
+    engine.poll(run, True)
+    key = engine.select_jobs(run)[0]
+    driver.run(engine, run)
+    candidate = engine.store.rows("candidates")[0]
+    withdraw_source(engine, change)
+    class Forbidden:
+        name = "forbidden"
+        def evaluate(self, *args): pytest.fail("Revoked source reached model")
+    engine.provider = Forbidden()
+    for action in (lambda: engine.context(run["id"], key), lambda: engine.classify(run["id"], key),
+                   lambda: engine.validate(run["id"], candidate["id"], {"omissions": [], "conflicts": [], "notes": []})):
+        with pytest.raises(KBError, match="^SOURCE_CHANGED_DURING_RUN$"): action()
+
+
+def test_failed_reconfigured_fetch_cannot_reauthorize_stale_pending_group(setup):
+    engine, web, driver = setup
+    round_now(engine, driver)
+    candidate = engine.store.rows("candidates")[0]
+    engine.config["sources"][0]["url"] = "http://fixture.test/replacement"
+    web["status"] = 503
+    round_now(engine, driver)
+    assert not engine.source_can_publish(engine.store.rows("sources")[0])
+    with pytest.raises(KBError, match="^SOURCE_NOT_CURRENT$"):
+        engine.review_candidate(candidate["id"], None, "human", acknowledge=True)
+    assert not engine.search("申请表")["items"]
+
+
+def test_successful_reconfiguration_does_not_reauthorize_older_same_body_rules(setup):
+    engine, _, driver = setup
+    round_now(engine, driver)
+    candidate = engine.store.rows("candidates")[0]
+    rules = engine.review_candidate(candidate["id"], None, "human", acknowledge=True)
+    engine.config["sources"][0]["title"] = "新授权范围"
+    round_now(engine, driver)
+    assert engine.search("申请表")["items"]
+    assert not engine.search("申请表", "rules")["items"]
+    assert engine.search("申请表", "rules", rules)["items"]
+
+
+def test_transient_fetch_failure_preserves_approved_last_known_good(setup):
+    engine, web, driver = setup
+    round_now(engine, driver)
+    candidate = engine.store.rows("candidates")[0]
+    engine.review_candidate(candidate["id"], None, "human", acknowledge=True)
+    web["status"] = 503
+    round_now(engine, driver)
+    assert engine.search("申请表")["items"] and engine.search("申请表", "rules")["items"]
+
+
+def test_legacy_document_version_authority_can_be_proven_without_new_snapshot_map(setup):
+    engine, _, driver = setup
+    round_now(engine, driver)
+    current = engine.store.get("state", "active_documents")
+    data = deepcopy(engine.store.version(current)["data"])
+    data.pop("source_configs")
+    run = engine.store.claim("legacy-fixture", 120, 600)
+    engine.store.publish("documents", data, current, "legacy-fixture", run)
+    engine.store.finish(run, "completed")
+    assert engine.search("申请表")["items"]
+    engine.config["sources"][0]["body_selector"]["id"] = "changed"
+    assert not engine.search("申请表")["items"]
+
+
+def test_accepted_ontology_change_keeps_current_claims_and_documents_searchable(setup):
+    engine, _, driver = setup
+    run = engine.store.claim("owner", 120, 600)
+    engine.poll(run, True)
+    key = engine.select_jobs(run)[0]
+    engine.classify(run["id"], key)
+    _, job = engine.context(run["id"], key)
+    segment = job["assets"][0]["segments"][0]
+    candidate = engine.submit(run["id"], key,
+        [{"kind": "Material", "name": "申请表", "quote": segment["content"], "source_segment_ids": [segment["segment_id"]]}],
+        [{"type": "entity_type", "name": "ServiceChannel", "description": "人工确认的服务渠道类型"}])
+    engine.validate(run["id"], candidate["id"], {"omissions": [], "conflicts": [], "notes": []})
+    engine.finish_job(run["id"], key, "等待人工确认。")
+    engine.publish_documents(run)
+    engine.store.finish(run, "completed")
+    before = engine.processing_hash
+    engine.review_candidate(candidate["id"], None, "human", acknowledge=True)
+    assert engine.processing_hash != before
+    assert engine.search("申请表", "rules")["items"] and engine.search("申请表")["items"]
+    round_now(engine, driver)
+    assert engine.search("申请表", "rules")["items"]
+
+
+@pytest.mark.parametrize("withdrawn", [True, False])
+def test_embedding_migration_excludes_revoked_cached_sources_and_retains_authorized_sources(setup, withdrawn):
+    engine, web, driver = setup
+    web["body"] = '<article id="policy">来源甲申请表。</article>'
+    round_now(engine, driver)
+    previous = engine.store.get("state", "active_documents")
+    second = deepcopy(engine.config["sources"][0])
+    second.update(id="source-b", url="http://fixture.test/b")
+    engine.config["sources"] = [second] if withdrawn else engine.config["sources"]+[second]
+    engine.config["models"]["embedding"]["model"] = "new-fixture-model"
+    def handle(request):
+        if request.url.path == "/policy": return httpx.Response(503)
+        return httpx.Response(200, text='<article id="policy">来源乙申请表。</article>', headers={"content-type": "text/html"})
+    engine.fetcher.client = httpx.Client(transport=httpx.MockTransport(handle))
+    calls = []
+    def embed(texts):
+        calls.append(texts)
+        return [[1., 0., 0.] for _ in texts]
+    engine.embedder = embed
+    round_now(engine, driver)
+    assert any("来源乙" in text for texts in calls for text in texts)
+    assert any("来源甲" in text for texts in calls for text in texts) is not withdrawn
+    current = engine.store.version(engine.store.get("state", "active_documents"))["data"]
+    assert ("test-source" in current["source_configs"]) is not withdrawn
+    assert all(len(vector) == 3 for vector in current["vectors"].values())
+    assert engine.store.version(previous)["data"]["assets"][0]["segments"][0]["content"] == "来源甲申请表。"
+
+
+def test_legacy_unchanged_source_keeps_authority_when_unrelated_source_changes_processing(setup):
+    engine, _, driver = setup
+    round_now(engine, driver)
+    previous = engine.store.get("state", "active_documents")
+    legacy = deepcopy(engine.store.version(previous)["data"])
+    legacy.pop("source_configs")
+    run = engine.store.claim("legacy-fixture", 120, 600)
+    engine.store.publish("documents", legacy, previous, "legacy-fixture", run)
+    engine.store.finish(run, "completed")
+    second = deepcopy(engine.config["sources"][0])
+    second.update(id="source-b", url="http://fixture.test/b")
+    engine.config["sources"].append(second)
+    engine.config["models"]["embedding"]["model"] = "new-fixture-model"
+    def handle(request):
+        if request.url.path == "/policy": return httpx.Response(503)
+        return httpx.Response(200, text='<article id="policy">模拟乙申请表。</article>', headers={"content-type": "text/html"})
+    engine.fetcher.client = httpx.Client(transport=httpx.MockTransport(handle))
+    round_now(engine, driver)
+    current = engine.store.version(engine.store.get("state", "active_documents"))["data"]
+    assert current["processing_hash"] != legacy["processing_hash"]
+    assert "test-source" in current["source_configs"]
+    assert any(item["source_id"] == "test-source" for item in engine.search("申请表")["items"])
+
+
 def test_expired_source_fetch_cannot_enqueue(setup):
     engine, web, driver = setup
     now = [1000.0]
@@ -295,6 +475,32 @@ def test_workbench_requires_maintainer_and_same_origin(setup):
         assert client.post('/api/actions/review',headers=headers,json={"candidate_id":"unknown","accept":True,"acknowledge":False}).status_code==409
         assert client.post('/api/logout',headers=headers,json={}).status_code==200
         assert client.get('/api/state').status_code==401
+
+
+def test_synthetic_fixture_is_inert_but_raw_html_and_parser_flow_remain(setup):
+    engine, _, driver = setup
+    roles = {"tenant": {"human": "maintainer"}}
+    def auth(body): return {"tenant_id": "tenant", "user_id": "human"}
+    app = create_app(engine, driver, "test-token", roles, authenticator=auth, start_worker=False)
+    html = '<article id="policy">模拟申请表。<script>window.fixtureExecuted=true</script></article><form action="/api/login"></form>'
+    with TestClient(app, base_url="http://127.0.0.1:8775") as client:
+        headers = {"Origin": "http://127.0.0.1:8775"}
+        assert client.post("/api/actions/fixture", headers=headers, json={"html": html}).status_code == 401
+        assert client.post("/api/login", headers=headers, json={"email": "human", "password": "fixture"}).status_code == 200
+        assert client.post("/api/actions/fixture", headers=headers, json={"html": html}).status_code == 200
+        client.cookies.clear()
+        response = client.get("/fixture/policy")
+        assert response.status_code == 200 and response.text == html
+        policy = {part.strip() for part in response.headers["content-security-policy"].split(";")}
+        assert policy == {"sandbox", "default-src 'none'", "base-uri 'none'", "form-action 'none'", "frame-ancestors 'none'"}
+        assert response.headers["x-content-type-options"] == "nosniff"
+        assert response.headers["cache-control"] == "no-store"
+        assert response.headers["referrer-policy"] == "no-referrer"
+        parser = BodyParser({"tag": "article", "id": "policy"})
+        parser.feed(response.text)
+        assert parser.text() == "模拟申请表。"
+        engine.synthetic = False
+        assert client.get("/fixture/policy").status_code == 404
 
 
 def test_empty_source_registry_is_idle_and_never_calls_model(setup):

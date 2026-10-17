@@ -1,6 +1,7 @@
 """Provider-independent candidate classification and lossless, source-bound routing.
 
-Only synthetic corpora may leave this process. Labels never become business rules.
+Only synthetic or explicitly opted-in public corpora may leave this process.
+Labels never become business rules.
 The optional Jev transport deliberately uses stdlib: OCR runs in its own venv.
 """
 
@@ -18,6 +19,8 @@ from typing import Protocol
 import urllib.error
 import urllib.request
 import uuid
+
+from gov_mcp.privacy import data_classes_allowed
 
 
 ENDPOINT = "https://api.typesafe.ai/v1/systemone"
@@ -51,10 +54,16 @@ class JevProvider:
         self.open = opener or urllib.request.build_opener(NoRedirect()).open
         self.sleep = sleep
         self.attempts = 0
+        self.blocked_error = None
 
-    def evaluate(self, state, questions, model):
+    def check_ready(self, model):
         if not self.api_key.strip():
             raise ClassificationError("MISSING_API_KEY")
+        if self.blocked_error:
+            raise ClassificationError(self.blocked_error)
+
+    def evaluate(self, state, questions, model):
+        self.check_ready(model)
         body = json.dumps({"model": model, "state": state, "questions": questions},
                           ensure_ascii=False, allow_nan=False).encode("utf-8")
         for attempt in range(2):
@@ -84,8 +93,11 @@ class JevProvider:
                         raise ClassificationError("RATE_LIMITED" if code == 429 else "UPSTREAM_UNAVAILABLE") from None
                     self.sleep(max(0, delay))
                     continue
-                raise ClassificationError({401: "AUTHENTICATION_FAILED", 403: "ACCESS_DENIED",
-                    429: "RATE_LIMITED"}.get(code, "UPSTREAM_HTTP_ERROR")) from None
+                message_code = {401: "AUTHENTICATION_FAILED", 402: "PAYMENT_REQUIRED", 403: "ACCESS_DENIED",
+                    429: "RATE_LIMITED"}.get(code, "UPSTREAM_HTTP_ERROR")
+                if code in {401, 402, 403}:
+                    self.blocked_error = message_code
+                raise ClassificationError(message_code) from None
             except (TimeoutError, urllib.error.URLError):
                 raise ClassificationError("TRANSPORT_UNAVAILABLE") from None
             except (ValueError, UnicodeError):
@@ -122,6 +134,40 @@ def validate_config(config):
     for key, labels in (("document_routes", config["document_types"]), ("purpose_routes", config["purposes"])):
         if not set(routes[key]) <= labels.keys() or not set(routes[key].values()) <= allowed:
             raise ValueError("Invalid routing table")
+    if type(config.get("batch_segment_questions", False)) is not bool:
+        raise ValueError("Invalid batching switch")
+    question_limit = config.get("max_questions_per_request", 32)
+    byte_limit = config.get("max_request_bytes", 14000)
+    if type(question_limit) is not int or not 1 <= question_limit <= 32:
+        raise ValueError("Invalid question budget")
+    if type(byte_limit) is not int or not 1024 <= byte_limit <= 15000:
+        raise ValueError("Invalid request byte budget")
+    if config.get("batch_segment_questions") and 1 + len(config["domains"]) + len(config["purposes"]) > question_limit:
+        raise ValueError("Question budget cannot hold one segment")
+    probability(config.get("choice_margin_threshold", 0))
+    translation = config.get("translation", {"enabled": False})
+    if not isinstance(translation, dict) or type(translation.get("enabled")) is not bool:
+        raise ValueError("Invalid translation policy")
+    if translation["enabled"] and (translation.get("provider") != "deepseek_official" or translation.get("target_language") != "en"):
+        raise ValueError("Unsupported translation provider or language")
+
+
+def configured_provider(config):
+    if config["provider"] == "vercel_jev_live":
+        from .jev_gateway import VercelJevProvider
+        provider = VercelJevProvider()
+    elif config["provider"] == "jev":
+        provider = JevProvider()
+    else:
+        raise ValueError("Configure a DecisionProvider adapter for this provider")
+    return with_english_input(provider, config)
+
+
+def with_english_input(provider, config, *, translator=None):
+    if config.get("translation", {}).get("enabled", False):
+        from .jev_translation import EnglishJevProvider
+        return EnglishJevProvider(provider, translator, max_request_bytes=config.get("max_request_bytes", 14000))
+    return provider
 
 
 def questions_for(config, scope, reverse=False):
@@ -139,6 +185,41 @@ def questions_for(config, scope, reverse=False):
             (" 判断文档窗口是否属于该业务领域：" if scope == "document" else " 只判断 target 片段是否具有该用途：") + definition,
             "criteria": {"true": "原文有明确支持。", "false": "原文不支持或信息不足。"}}
     return questions
+
+
+def batch_questions(config, segments, reverse=False):
+    questions = questions_for(config, "document", reverse)
+    for index in range(len(segments)):
+        for key, definition in config["purposes"].items():
+            question_id = "purposes:" + key if len(segments) == 1 else f"segment:{index}:purposes:{key}"
+            questions[question_id] = {"type": "noul", "instructions": GUARD +
+                f" 只判断 state.segments[{index}].content 是否具有该用途，其他片段不能作为本片段的支持证据：" + definition,
+                "criteria": {"true": "该片段原文有明确支持。", "false": "该片段原文不支持或信息不足。"}}
+    return questions
+
+
+def request_bytes(state, questions, model):
+    return len(json.dumps({"model": model, "state": state, "questions": questions},
+                          ensure_ascii=False, allow_nan=False).encode("utf-8"))
+
+
+def classification_windows(asset, config, reverse=False):
+    for window in document_windows(asset, config["window_chars"]):
+        if not config.get("batch_segment_questions"):
+            yield window
+            continue
+        current = []
+        for segment in window:
+            proposed = current + [segment]
+            questions = batch_questions(config, proposed, reverse)
+            state = {"title": asset["title"], "segments": proposed}
+            if current and (len(questions) > config.get("max_questions_per_request", 32) or
+                    request_bytes(state, questions, config["model"]) > config.get("max_request_bytes", 14000)):
+                yield current
+                current = []
+            current.append(segment)
+        if current:
+            yield current
 
 
 def validate_response(value, questions, model):
@@ -193,10 +274,10 @@ def document_windows(asset, bound):
 def classify_corpus(corpus, config, provider: DecisionProvider | None = None, reverse_choices=False, *, allow_public=False):
     """Return a sidecar; never mutate corpus, source IDs, raw content or vectors."""
     validate_config(config)
+    allowed_classes = {"synthetic", "public"} if allow_public else {"synthetic"}
+    input_allowed = data_classes_allowed(corpus, allowed_classes)
     if provider is None:
-        if config["provider"] != "jev":
-            raise ValueError("Configure a DecisionProvider adapter for this provider")
-        provider = JevProvider()
+        provider = configured_provider(config)
     start = time.perf_counter()
     run = {"schema_version": 1, "run_id": uuid.uuid4().hex,
            "captured_at": datetime.now(timezone.utc).isoformat(),
@@ -206,7 +287,9 @@ def classify_corpus(corpus, config, provider: DecisionProvider | None = None, re
            "data_class": corpus.get("data_class"), "review_status": "machine_candidate",
            "business_rules_published": False, "records": [], "documents": [],
            "bundles": {key: [] for key in ("policy_clauses", "guide_sections", "form_fields", "notice_faq", "pending_review")},
-           "calls": [], "usage": {"input_tokens": 0, "output_tokens": 0}}
+           "calls": [], "usage": {"input_tokens": 0, "output_tokens": 0},
+           "request_strategy": "shared_state_batch" if config.get("batch_segment_questions") else "separate",
+           "unbatched_request_count": 0}
     seen_assets, seen_segments = set(), set()
     for asset in corpus["assets"]:
         if asset["asset_id"] in seen_assets or not asset["segments"]:
@@ -216,35 +299,46 @@ def classify_corpus(corpus, config, provider: DecisionProvider | None = None, re
             if segment["asset_id"] != asset["asset_id"] or segment["segment_id"] in seen_segments or not segment["content"].strip():
                 raise ValueError("Invalid segment identity")
             seen_segments.add(segment["segment_id"])
+        run["unbatched_request_count"] += len(document_windows(asset, config["window_chars"])) + len(asset["segments"])
 
     def evaluate(state, questions):
         called = time.perf_counter()
         before = getattr(provider, "attempts", 0)
+        translation_before = len(getattr(provider, "translation_receipts", []))
         call = {"status": "error", "message_code": None, "model": None,
                 "state_sha256": fingerprint(state), "questions_sha256": fingerprint(questions),
-                "question_ids": list(questions),
+                "question_ids": list(questions), "question_count": len(questions),
+                "input_bytes": request_bytes(state, questions, config["model"]),
                 "segment_ids": [s["segment_id"] for s in state["segments"]] if "segments" in state else [state["target"]["segment_id"]]}
         try:
-            allowed_classes = {"synthetic", "public"} if allow_public else {"synthetic"}
-            if corpus.get("data_class") not in allowed_classes or any(
-                a.get("data_class", corpus.get("data_class")) not in allowed_classes for a in corpus["assets"]
-            ):
+            if not input_allowed:
                 raise ClassificationError("DATA_CLASS_BLOCKED")
+            if not 1 <= len(questions) <= config.get("max_questions_per_request", 32):
+                raise ClassificationError("INVALID_REQUEST")
+            if call["input_bytes"] > config.get("max_request_bytes", 14000):
+                raise ClassificationError("MODEL_INPUT_TOO_LARGE")
             value = validate_response(provider.evaluate(state, questions, config["model"]), questions, config["model"])
             call.update(status="ok", model=value["model"], usage=value["usage"])
+            if "english_input" in value:
+                call["english_input"] = deepcopy(value["english_input"])
             for key in run["usage"]:
                 run["usage"][key] += value["usage"][key]
             return value
         except ClassificationError as error:
             # Codes are fixed; injected providers cannot leak exception bodies.
             allowed = {"MISSING_API_KEY", "DATA_CLASS_BLOCKED", "AUTHENTICATION_FAILED", "ACCESS_DENIED", "RATE_LIMITED",
-                       "UPSTREAM_UNAVAILABLE", "UPSTREAM_HTTP_ERROR", "TRANSPORT_UNAVAILABLE", "INVALID_RESPONSE"}
+                       "UPSTREAM_UNAVAILABLE", "UPSTREAM_HTTP_ERROR", "TRANSPORT_UNAVAILABLE", "INVALID_RESPONSE",
+                       "PAYMENT_REQUIRED", "MODEL_NOT_PINNED", "UNEXPECTED_SERVED_MODEL", "TEST_BUDGET_EXHAUSTED",
+                       "MODEL_INPUT_TOO_LARGE", "INVALID_REQUEST", "TRANSLATION_INFERENCE_DISABLED",
+                       "TRANSLATION_UNAVAILABLE", "TRANSLATION_INVALID_RESPONSE", "TRANSLATION_NUMBERS_CHANGED",
+                       "TRANSLATED_INPUT_TOO_LARGE"}
             call["message_code"] = str(error) if str(error) in allowed else "PROVIDER_ERROR"
             return None
         except Exception:
             call["message_code"] = "PROVIDER_ERROR"
             return None
         finally:
+            call["input_translation"] = deepcopy(getattr(provider, "translation_receipts", [])[translation_before:])
             call["duration_ms"] = round((time.perf_counter() - called) * 1000, 2)
             call["http_attempts"] = getattr(provider, "attempts", 0) - before
             run["calls"].append(call)
@@ -252,14 +346,27 @@ def classify_corpus(corpus, config, provider: DecisionProvider | None = None, re
     for asset in corpus["assets"]:
         document = {"asset_id": asset["asset_id"], "sha256": asset["sha256"], "windows": []}
         window_by_segment = {}
-        for window in document_windows(asset, config["window_chars"]):
-            value = evaluate({"title": asset["title"], "segments": window}, questions_for(config, "document", reverse_choices))
+        purposes_by_segment = {}
+        batched = config.get("batch_segment_questions", False)
+        for window in classification_windows(asset, config, reverse_choices):
+            questions = batch_questions(config, window, reverse_choices) if batched else questions_for(config, "document", reverse_choices)
+            state = {"title": asset["title"], "segments": window}
+            window_batched = batched and request_bytes(state, questions, config["model"]) <= config.get("max_request_bytes", 14000)
+            if batched and not window_batched:
+                questions = questions_for(config, "document", reverse_choices)
+            value = evaluate(state, questions)
             item = {"segment_ids": [s["segment_id"] for s in window], "status": "ok" if value else "error",
+                    "purposes_batched": window_batched,
                     "call_index": len(run["calls"]) - 1,
                     "message_code": None if value else run["calls"][-1]["message_code"],
                     "model": value["model"] if value else None}
             if value:
                 item.update(document_type=value["answers"]["document_type"], domains=multilabel(value["answers"], "domains", config))
+                if window_batched:
+                    for index, segment in enumerate(window):
+                        prefix = "" if len(window) == 1 else f"segment:{index}:"
+                        answers = {"purposes:" + key: value["answers"][prefix + "purposes:" + key] for key in config["purposes"]}
+                        purposes_by_segment[segment["segment_id"]] = multilabel(answers, "purposes", config)
             document["windows"].append(item)
             window_by_segment.update({s["segment_id"]: item for s in window})
         run["documents"].append(document)
@@ -276,21 +383,30 @@ def classify_corpus(corpus, config, provider: DecisionProvider | None = None, re
                 record["status"] = "error"
                 record["reasons"].append(window["message_code"])
             else:
-                value = evaluate({"title": asset["title"], "target": {"content": segment["content"],
-                    "segment_id": segment["segment_id"]}}, questions_for(config, "segment"))
-                record["purpose_call_index"] = len(run["calls"]) - 1
+                if window["purposes_batched"]:
+                    value = purposes_by_segment[segment["segment_id"]]
+                    record["purpose_call_index"] = window["call_index"]
+                else:
+                    value = evaluate({"title": asset["title"], "target": {"content": segment["content"],
+                        "segment_id": segment["segment_id"]}}, questions_for(config, "segment"))
+                    record["purpose_call_index"] = len(run["calls"]) - 1
                 if not value:
                     record["status"] = "error"
                     record["reasons"].append(run["calls"][-1]["message_code"])
                 else:
-                    purposes = record["purposes"] = multilabel(value["answers"], "purposes", config)
+                    purposes = record["purposes"] = value if window["purposes_batched"] else multilabel(value["answers"], "purposes", config)
                     choice, domains = record["document_type"], record["domains"]
                     if choice["choice"] in ("unknown", "other") or choice["confidence"] < config["choice_confidence_threshold"]:
                         record["reasons"].append("DOCUMENT_UNCERTAIN")
+                    ranked = sorted(choice["probabilities"].values(), reverse=True)
+                    if ranked[0] - ranked[1] < config.get("choice_margin_threshold", 0):
+                        record["reasons"].append("DOCUMENT_AMBIGUOUS")
                     if not domains["labels"] or "unknown" in domains["labels"] or domains["uncertain_labels"]:
                         record["reasons"].append("DOMAIN_UNCERTAIN")
                     if not purposes["labels"] or purposes["uncertain_labels"]:
                         record["reasons"].append("PURPOSE_UNCERTAIN")
+                    if "other" in purposes["labels"] and len(purposes["labels"]) > 1:
+                        record["reasons"].append("PURPOSE_CONFLICT")
                     if not record["reasons"]:
                         routes = {config["routing"]["document_routes"].get(choice["choice"])}
                         routes.update(config["routing"]["purpose_routes"].get(label) for label in purposes["labels"])
@@ -313,15 +429,24 @@ def summarize(run):
     counts = Counter(record["status"] for record in run["records"])
     total = len(run["records"])
     failed = any(c["status"] != "ok" for c in run["calls"])
+    translations = [receipt for call in run["calls"] for receipt in call.get("input_translation", [])]
     return {"status": "error" if failed else "completed", "provider": run["provider"], "requested_model": run["requested_model"],
             "actual_models": sorted({c["model"] for c in run["calls"] if c["model"]}),
             "source_sha256": run["source_sha256"], "rules_version": run["rules_version"], "rules_sha256": run["rules_sha256"],
             "segment_count": total, "status_counts": dict(counts),
             "pending_review_fraction": (total - counts["routed"]) / total if total else 0,
             "bundle_counts": {key: len(rows) for key, rows in run["bundles"].items()},
+            "request_strategy": run["request_strategy"], "unbatched_request_count": run["unbatched_request_count"],
+            "requests_avoided": None if failed else max(0, run["unbatched_request_count"] - len(run["calls"])),
             "call_count": len(run["calls"]), "http_attempts": sum(c["http_attempts"] for c in run["calls"]),
             "error_codes": dict(Counter(c["message_code"] for c in run["calls"] if c["status"] != "ok")),
             "usage": run["usage"], "usage_scope": "validated successful responses only; failed attempts may also be billed",
+            "translation": {"attempted": bool(translations),
+                "applied": any(receipt["status"] in {"translated", "already_english"} for receipt in translations),
+                "target_language": "en" if translations else None,
+                "calls": sum(receipt["translation_calls"] for receipt in translations),
+                "actual_models": sorted({model for receipt in translations for model in receipt["models"]}),
+                "usage": {key: sum(receipt["usage"][key] for receipt in translations) for key in run["usage"]}},
             "duration_ms": run["duration_ms"], "live_accuracy_measured": False,
             "business_rules_published": False}
 

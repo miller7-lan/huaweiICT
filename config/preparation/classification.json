@@ -1,12 +1,21 @@
 {
   "schema_version": 1,
-  "rules_version": "gov-classification-1",
+  "rules_version": "gov-classification-3",
   "provider": "jev",
   "model": "jev-1.13.0",
   "choice_confidence_threshold": 0.8,
+  "choice_margin_threshold": 0.15,
   "positive_probability_threshold": 0.8,
   "negative_probability_threshold": 0.2,
   "window_chars": 6000,
+  "batch_segment_questions": true,
+  "max_questions_per_request": 32,
+  "max_request_bytes": 14000,
+  "translation": {
+    "enabled": true,
+    "provider": "deepseek_official",
+    "target_language": "en"
+  },
   "document_types": {
     "policy": "政策规范：规定权利义务、制度或标准的规范性文件，不凭标题推断权威性或现行有效性。",
     "guide": "办事指南：说明如何申请、办理某项政务服务的指南或材料清单。",

@@ -28,7 +28,9 @@ def D(v): return json.loads(v) if isinstance(v, str) else v
 request = json.loads(REQUEST_JSON_LITERAL)
 opened = D(govkb_open_query(facts=request['facts'], branch_id=request['branch_id'], question=request.get('question', '')))
 task_id = opened['task_id']
+status = opened
 for _ in range(3):
+    if status['status'] == 'can_finalize': break
     govflow_retriever(task=json.dumps({'task_id': task_id}))
     govflow_query_verifier(task=json.dumps({'task_id': task_id}))
     status = D(govkb_query_state(task_id=task_id))

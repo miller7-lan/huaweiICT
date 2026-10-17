@@ -27,7 +27,7 @@
       ],
       "managed_agents": [],
       "model_names": [
-        "gov-qwen3-4b:ctx8192-v1"
+        "deepseek-flash"
       ],
       "skill_names": [],
       "few_shots_prompt": "<code>\nimport json\nraw = govkb_search_evidence(query=QUESTION_LITERAL, kind=KIND_LITERAL)\nvalue = json.loads(raw) if isinstance(raw, str) else raw\nfinal_answer(value['data'].get('answer_markdown', value['message_code']))\n</code>"

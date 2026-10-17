@@ -40,7 +40,7 @@ def ids(answer):
 
 def test_real_role_dispatch_and_fixed_evidence(w):
     answer = w.query(FACTS, BRANCH)
-    assert answer["retrieval_rounds"] == 2
+    assert answer["retrieval_rounds"] == 1
     assert ids(answer) == {"req-paper", "req-card-apply", "req-card-collect", "req-slip"}
     assert {c["role"] for c in w.roles.calls} == {"query_controller", "retriever", "query_verifier"}
     assert all(t["remote_calls"] == 0 and t["model"] is None for t in w.rows("trace"))
@@ -54,10 +54,10 @@ def test_gap_retrieval_stops_at_three_without_inventing_requirements(w):
     assert any(r["reason"] == "EVIDENCE_RETRIEVAL_INCOMPLETE" for r in answer["pending"])
 
 
-def test_unknown_user_fact_does_not_cause_third_search_or_paper_default(w):
+def test_unknown_user_fact_does_not_cause_extra_search_or_paper_default(w):
     f = {k: v for k, v in FACTS.items() if k != "electronic_verified"}
     answer = w.query(f, BRANCH)
-    assert answer["retrieval_rounds"] == 2
+    assert answer["retrieval_rounds"] == 1
     assert "req-paper" not in ids(answer) and "req-electronic" not in ids(answer)
     assert answer["follow_up"]["enabled"]
     next_answer = w.query(FACTS, BRANCH, parent_task=answer["task_id"])

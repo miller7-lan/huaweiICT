@@ -238,7 +238,9 @@ def create_app(engine, driver, token, roles, *, config_url="http://host.docker.i
 
     async def fixture(request):
         if not engine.synthetic: return Response(status_code=404)
-        return HTMLResponse(store.get("state", "fixture_html") or '<html><nav>模拟导航</nav><article id="policy"><p>模拟身份证事项需提交申请表。</p></article></html>')
+        return HTMLResponse(store.get("state", "fixture_html") or '<html><nav>模拟导航</nav><article id="policy"><p>模拟身份证事项需提交申请表。</p></article></html>',
+            headers={"Content-Security-Policy": "sandbox; default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+                     "X-Content-Type-Options": "nosniff", "Cache-Control": "no-store", "Referrer-Policy": "no-referrer"})
 
     async def home(request):
         return HTMLResponse(Path(__file__).with_name("workbench.html").read_text(encoding="utf-8"), headers={"Cache-Control": "no-store"})

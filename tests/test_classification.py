@@ -32,7 +32,7 @@ def fake_response(questions, choice="guide", domains=("identity",), purposes=("m
             answers[key] = {"type": "choice", "choice": choice, "confidence": .99,
                             "probabilities": {k: 1.0 if k == choice else 0.0 for k in q["criteria"]}}
         else:
-            group, label = key.split(":")
+            group, label = key.split(":")[-2:]
             answers[key] = {"type": "noul", "noul": .99 if label in (domains if group == "domains" else purposes) else .01}
     return {"model": model, "answers": answers, "usage": {"input_tokens": 100, "output_tokens": 10}}
 
@@ -141,7 +141,7 @@ def test_uncertain_decisions_do_not_auto_route(mode):
                 if mode == "low_choice": a["document_type"]["confidence"] = .5
                 if mode == "ambiguous_domain": a["domains:health"]["noul"] = .5
                 if mode == "unknown_domain": a["domains:unknown"]["noul"] = .99
-            else:
+            if any(key.startswith("purposes:") for key in a):
                 if mode == "ambiguous_purpose": a["purposes:filling"]["noul"] = .5
                 if mode == "no_purpose": a["purposes:material"]["noul"] = .01
             return value
@@ -220,7 +220,7 @@ def test_long_mixed_document_routes_each_window_without_losing_segments():
     corpus = corpus_for(EXAMPLES[:1])
     asset = corpus["assets"][0]
     asset["segments"] = [{"asset_id": asset["asset_id"], "segment_id": f"s{i}",
-        "content": marker * 4000, "locator": {"kind": "line", "line": i+1}}
+        "content": marker * 1500, "locator": {"kind": "line", "line": i+1}}
         for i, marker in enumerate(("规", "指", "告"))]
     class Mixed:
         name = "mixed-contract-replay"
@@ -232,6 +232,107 @@ def test_long_mixed_document_routes_each_window_without_losing_segments():
     assert [r["routes"] for r in run["records"]] == [
         ["guide_sections", "policy_clauses"], ["guide_sections"], ["guide_sections", "notice_faq"]]
     assert len(run["bundles"]["guide_sections"]) == 3
+
+
+def test_batching_preserves_per_segment_labels_and_reduces_requests():
+    corpus = corpus_for(EXAMPLES[:1])
+    asset = corpus["assets"][0]
+    asset["segments"] = [{"asset_id": asset["asset_id"], "segment_id": f"s{index}",
+        "content": text, "locator": {"kind": "line", "line": index + 1}}
+        for index, text in enumerate(("模拟：提交申请表。", "模拟：本人签字。", "模拟：免收费用。", "模拟：五日办结。", "模拟：到窗口办理。"))]
+    labels = {"s0": "material", "s1": "filling", "s2": "fee", "s3": "time_limit", "s4": "procedure"}
+    before = deepcopy(corpus)
+
+    class PerSegment:
+        name = "per-segment-contract-replay"
+
+        def evaluate(self, state, questions, model):
+            value = fake_response(questions, model=model)
+            for key, answer in value["answers"].items():
+                parts = key.split(":")
+                if len(parts) < 2 or parts[-2] != "purposes":
+                    continue
+                index = int(parts[1]) if parts[0] == "segment" else 0
+                segment = state["segments"][index] if "segments" in state else state["target"]
+                answer["noul"] = .99 if parts[-1] == labels[segment["segment_id"]] else .01
+            return value
+
+    batched = classify_corpus(corpus, CONFIG, PerSegment())
+    separate_config = {**CONFIG, "batch_segment_questions": False}
+    separate = classify_corpus(corpus, separate_config, PerSegment())
+    assert corpus == before
+    assert [record["purposes"]["labels"] for record in batched["records"]] == [[label] for label in labels.values()]
+    assert [record["routes"] for record in batched["records"]] == [record["routes"] for record in separate["records"]]
+    assert batched["summary"]["call_count"] == 3
+    assert separate["summary"]["call_count"] == 6
+    assert batched["summary"]["requests_avoided"] == 3
+    assert all(call["question_count"] <= 32 and call["input_bytes"] <= 14000 for call in batched["calls"])
+    assert all(record["document_call_index"] == record["purpose_call_index"] for record in batched["records"])
+
+
+def test_large_combined_request_falls_back_to_two_bounded_requests():
+    corpus = corpus_for(EXAMPLES[:1])
+    corpus["assets"][0]["segments"][0]["content"] = "模拟资料" * 700
+    run = classify_corpus(corpus, CONFIG, ReplayProvider())
+    assert run["summary"]["status"] == "completed"
+    assert run["summary"]["call_count"] == 2
+    assert not run["documents"][0]["windows"][0]["purposes_batched"]
+    assert all(call["input_bytes"] <= 14000 for call in run["calls"])
+
+
+def test_utf8_budget_splits_windows_and_preserves_all_originals():
+    corpus = corpus_for(EXAMPLES[:1])
+    asset = corpus["assets"][0]
+    asset["segments"] = [{"asset_id": asset["asset_id"], "segment_id": f"s{index}",
+        "content": "模" * 1500, "locator": {"kind": "line", "line": index + 1}} for index in range(3)]
+    run = classify_corpus(corpus, CONFIG, ReplayProvider())
+    assert run["summary"]["status"] == "completed"
+    assert len(run["documents"][0]["windows"]) == 3
+    assert all(call["input_bytes"] <= 14000 for call in run["calls"])
+    assert {row["segment_id"] for rows in run["bundles"].values() for row in rows} == {"s0", "s1", "s2"}
+    assert all(row["content"] == "模" * 1500 for rows in run["bundles"].values() for row in rows)
+
+
+def test_oversized_single_segment_defers_without_sending_or_truncating():
+    corpus = corpus_for(EXAMPLES[:1])
+    corpus["assets"][0]["segments"][0]["content"] = "模" * 6000
+    provider = JevProvider(api_key="test", opener=lambda *args, **kwargs: pytest.fail("Oversized request sent"))
+    run = classify_corpus(corpus, CONFIG, provider)
+    assert run["summary"]["error_codes"] == {"MODEL_INPUT_TOO_LARGE": 1}
+    assert run["summary"]["requests_avoided"] is None
+    assert run["bundles"]["pending_review"][0]["content"] == "模" * 6000
+    assert provider.attempts == 0
+
+
+@pytest.mark.parametrize("mode", ["close_choices", "conflicting_purposes"])
+def test_ambiguous_or_conflicting_answers_require_review(mode):
+    class Ambiguous:
+        name = "ambiguous-contract-replay"
+
+        def evaluate(self, state, questions, model):
+            value = fake_response(questions, model=model)
+            if mode == "close_choices":
+                answer = value["answers"]["document_type"]
+                answer["probabilities"].update(guide=.51, form=.49)
+            else:
+                value["answers"]["purposes:other"]["noul"] = .99
+            return value
+
+    run = classify_corpus(corpus_for(EXAMPLES[:1]), CONFIG, Ambiguous())
+    record = run["records"][0]
+    assert record["routes"] == ["pending_review"]
+    assert ("DOCUMENT_AMBIGUOUS" if mode == "close_choices" else "PURPOSE_CONFLICT") in record["reasons"]
+
+
+@pytest.mark.parametrize("key,value", [("batch_segment_questions", "yes"), ("max_questions_per_request", True),
+    ("max_questions_per_request", 16), ("max_questions_per_request", 33), ("max_request_bytes", 16000),
+    ("choice_margin_threshold", float("nan"))])
+def test_invalid_batch_policy_is_rejected_before_provider(key, value):
+    config = {**CONFIG, key: value}
+    provider = JevProvider(api_key="test", opener=lambda *args, **kwargs: pytest.fail("Invalid configuration sent"))
+    with pytest.raises((ValueError, ClassificationError)):
+        classify_corpus(corpus_for(EXAMPLES[:1]), config, provider)
+    assert provider.attempts == 0
 
 
 @pytest.mark.parametrize("bad_config", [False, True])

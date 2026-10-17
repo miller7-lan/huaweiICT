@@ -12,12 +12,28 @@
   "max_download_bytes": 20971520,
   "prompt_version": "govkb-1",
   "ontology_version": "draft-0.1",
-  "local_model_url": "http://host.docker.internal:11434",
   "models": {
-    "controller": {"provider": "nexent", "model": "gov-qwen3-8b:ctx8192-v1"},
-    "extractor": {"provider": "nexent", "model": "gov-qwen3-4b:ctx8192-v1"},
-    "reviewer": {"provider": "nexent", "model": "gov-qwen3-4b:ctx8192-v1"},
-    "embedding": {"provider": "ollama", "model": "qwen3-embedding:0.6b", "url": "http://host.docker.internal:11434"}
+    "controller": {
+      "provider": "nexent",
+      "model": "deepseek-flash",
+      "local": false
+    },
+    "extractor": {
+      "provider": "nexent",
+      "model": "deepseek-flash",
+      "local": false
+    },
+    "reviewer": {
+      "provider": "nexent",
+      "model": "deepseek-flash",
+      "local": false
+    },
+    "embedding": {
+      "provider": "unconfigured_cloud",
+      "model": null,
+      "url": null,
+      "note": "A chat completion model cannot replace embeddings. Existing indexes remain readable; new dense indexing waits for a separately configured cloud embedding provider."
+    }
   },
   "sources": []
 }

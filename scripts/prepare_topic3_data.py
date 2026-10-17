@@ -120,6 +120,8 @@ def cosine(left, right):
 
 
 def embed(profile, segments):
+    if profile.get("embedding_provider") == "unconfigured_cloud":
+        raise ValueError("Cloud embedding provider is not configured; DeepSeek chat is not an embedding API")
     # Offline provider at the loopback address; no credentials or external API.
     base = profile["embedding_host_url"]
     if base != "http://127.0.0.1:11434":
@@ -151,6 +153,7 @@ def main():
     parser.add_argument("--profile", default="config/preparation/profile.json")
     parser.add_argument("--embed", action="store_true")
     parser.add_argument("--classify", action="store_true", help="Optional Jev candidates; failures do not block embedding")
+    parser.add_argument("--classification-provider", choices=["jev", "vercel_jev_live"], help="Explicit classification transport; does not enable any chat model")
     parser.add_argument("--classification-config", default="config/preparation/classification.json")
     args = parser.parse_args()
     profile = json.loads(inside_workspace(args.profile).read_text(encoding="utf-8-sig"))
@@ -197,7 +200,8 @@ def main():
                 from classify_topic3_data import classify_prepared
                 run, path = classify_prepared(
                     {"dataset_id": manifest["dataset_id"], "data_class": manifest["data_class"], "assets": assets},
-                    inside_workspace(args.classification_config), ROOT / ".runtime/preparation/classification")
+                    inside_workspace(args.classification_config), ROOT / ".runtime/preparation/classification",
+                    provider_name=args.classification_provider)
                 report["classification"] = {"output": str(path.relative_to(ROOT)), **run["summary"]}
             except Exception:
                 # Optional classification/config/output failure must not stop local retrieval.

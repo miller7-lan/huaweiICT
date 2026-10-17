@@ -1,5 +1,6 @@
 """Reproducible full synthetic lifecycle; public evidence contains no credentials."""
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -16,7 +17,7 @@ def write(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False), "utf-8")
 
 
-def run():
+def run(output_directory=None):
     started = time.perf_counter()
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     runtime = ROOT/".runtime/agent-workflow-proof"/run_id
@@ -38,7 +39,7 @@ def run():
     unknown = w.query({k:v for k,v in facts.items() if k != "electronic_verified"}, "branch-adult-self")
     check("未知电子资格不默认要求纸质表", unknown["counts"]["confirmed"] == 3 and unknown["follow_up"]["enabled"])
     before = w.query(facts, "branch-adult-self", parent_task=unknown["task_id"])
-    check("主控实际串行调度检索与条件核验", before["counts"]["confirmed"] == 4 and before["retrieval_rounds"] == 2)
+    check("一次取齐已知依据后独立核验，不固定拆轮", before["counts"]["confirmed"] == 4 and before["retrieval_rounds"] == 1)
     capped = w.query(facts, "branch-adult-self", retriever=lambda n, refs, snap: [])
     check("依据持续缺失时最多三轮，不产生确定要求", capped["retrieval_rounds"] == 3 and capped["counts"]["confirmed"] == 0)
     w.set_profile("changed", actor=actor)
@@ -77,7 +78,7 @@ def run():
     with restored.store.db() as db:
         audit = [{"operation": r[0], "payload": json.loads(r[1])} for r in db.execute("SELECT operation,payload FROM audit")]
     check("核对与发布分别留存记录", any(a["operation"] == "workflow_professional_review" for a in audit) and any(a["operation"] == "workflow_professional_publish" for a in audit))
-    out = ROOT/"evidence/agent-workflow"
+    out = Path(output_directory) if output_directory is not None else ROOT/"evidence/agent-workflow"
     out.mkdir(parents=True, exist_ok=True)
     sources = [*sorted((ROOT/"src/gov_mcp/decision").glob("*.py")), ROOT/"src/gov_mcp/decision/workbench.html",
                ROOT/"config/decision/workflow-source.json", ROOT/"config/decision/providers.template.json", Path(__file__).resolve()]
@@ -96,4 +97,7 @@ def run():
     print(json.dumps({"passed": report["passed"], "total": report["total"], "model_calls": 0, "evidence": str(out)}, ensure_ascii=False))
 
 
-if __name__ == "__main__": run()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, help="Keep this verification in a separate evidence directory")
+    run(parser.parse_args().output)

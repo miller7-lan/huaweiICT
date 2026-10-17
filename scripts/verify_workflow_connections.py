@@ -26,9 +26,10 @@ def main():
         if not passed: raise AssertionError(name)
     config = Connections(ROOT/"config/decision/connections.json")
     probe = config.probe()
-    check("本机 Qwen 与 Nexent 两个服务端实际就绪", all(s["connected"] for s in probe["services"].values()))
-    check("8B 与 4B 目录存在但未调用推理", all(r["model_available"] for r in probe["roles"] if r["transport"] == "ollama"))
-    check("总推理开关关闭，全部凭据绑定为空", not probe["inference_enabled"] and all(r["credential_ref"] is None for r in probe["roles"]))
+    check("本机 Nexent 两个服务端实际就绪", all(s["connected"] for s in probe["services"].values()))
+    cloud_roles = [r for r in probe["roles"] if r["role"] != "jev"]
+    check("六个语言模型角色统一指向云端 DeepSeek", len(cloud_roles) == 6 and all(r["transport"] == "deepseek" for r in cloud_roles))
+    check("总推理开关关闭，配置仅保存凭据引用", not probe["inference_enabled"] and all(r["credential_ref"] == "env:DEEPSEEK_API_KEY" for r in cloud_roles))
     facts = {"reason": "expiry", "age_group": "adult", "self_service": True, "electronic_verified": False}
     before = Workflow(runtime).query(facts, "branch-adult-self")
     before_paused = {r["requirement_id"] for r in before["paused"]}
@@ -87,7 +88,7 @@ except Exception as error: print(json.dumps({'error_type':type(error).__name__})
             state = call("govkb_query_state", {"task_id": key})
             if state["status"] == "can_finalize": break
         answer = call("govkb_finalize_query", {"task_id": key})
-        check("真实分阶段工具完成检索、程序核验和带出处答案", answer["task_id"] == key and answer["retrieval_rounds"] == 2 and answer["snapshot_sha256"] and all(r["evidence"] for s in answer["stages"] for r in s["items"]))
+        check("真实分阶段工具一次取齐已知依据并独立核验", answer["task_id"] == key and answer["retrieval_rounds"] == 1 and answer["snapshot_sha256"] and all(r["evidence"] for s in answer["stages"] for r in s["items"]))
         check("接线不解除已有冲突暂停", {r["requirement_id"] for r in answer["paused"]} == before_paused)
     out = ROOT/"evidence/agent-workflow"
     sources = [*sorted((ROOT/"src/gov_mcp/decision").glob("*.py")), ROOT/"src/gov_mcp/decision/workbench.html",

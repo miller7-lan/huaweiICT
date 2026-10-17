@@ -16,6 +16,10 @@ FACTS = {"reason": "expiry", "age_group": "adult", "self_service": True, "electr
 
 def configured(tmp_path, *, enabled=False, key_ref=None, handler=None, environment=None, jev_factory=None):
     data = json.loads((ROOT/"config/decision/connections.json").read_text("utf-8"))
+    # Keep explicit regression coverage for the historical local transport.
+    data["ollama_url"] = "http://127.0.0.1:11434"
+    for role, row in data["roles"].items():
+        if role != "jev": row.update(transport="ollama", model="gov-qwen3-8b:ctx8192-v1" if role.endswith("controller") else "gov-qwen3-4b:ctx8192-v1", credential_ref=None)
     data["inference_enabled"] = enabled
     data["roles"]["jev"]["credential_ref"] = key_ref
     path = tmp_path/"connections.json"
@@ -101,6 +105,34 @@ def test_native_port_gate_is_before_login_and_binding_check(tmp_path):
     assert not calls
 
 
+@pytest.mark.parametrize("role,tool", [("extractor", "submit_candidates"), ("jev", "check_support")])
+@pytest.mark.parametrize("label", ["private", "public", None, ["synthetic"]])
+def test_nested_restricted_inputs_block_all_transport_routes(tmp_path, role, tool, label):
+    calls = []
+    def jev_factory(**kwargs):
+        pytest.fail("Jev constructed for restricted input")
+    port = configured(tmp_path, enabled=True, handler=lambda req: calls.append(req), jev_factory=jev_factory)
+    payload = {"data_class": "synthetic", "state": {"locator": [{"data_class": label, "text": "fixture"}]}}
+    with pytest.raises(ConnectionError, match="^DATA_CLASS_BLOCKED$"):
+        port.request(role, tool, payload)
+    with pytest.raises(ConnectionError, match="^NATIVE_SCOPE_BLOCKED$"):
+        port.request_nexent("query_controller", payload, binding={}, credentials={})
+    assert not calls and port.inference_requests == 0
+
+
+def test_nested_private_cloud_input_is_blocked_before_credential_read(tmp_path, monkeypatch):
+    from gov_mcp.decision import connections
+    config = json.loads((ROOT/"config/decision/connections.json").read_text("utf-8"))
+    config["inference_enabled"] = True
+    path = tmp_path/"cloud-connections.json"
+    path.write_text(json.dumps(config))
+    port = Connections(path, environment={})
+    monkeypatch.setattr(connections, "load_key", lambda *args: pytest.fail("Credential read before privacy check"))
+    with pytest.raises(ConnectionError, match="^DATA_CLASS_BLOCKED$"):
+        port.request("extractor", "submit_candidates", {"data_class": "synthetic", "evidence": [{"data_class": "private"}]})
+    assert port.inference_requests == 0
+
+
 def test_native_sse_transport_with_fixture_http_only(tmp_path):
     calls = []
     def handler(req):
@@ -125,11 +157,9 @@ def test_staged_workflow_order_idempotency_and_live_gate(tmp_path):
     with pytest.raises(WorkflowError, match="QUERY_NOT_VALIDATED"): w.finalize_query(key)
     first = w.retrieve_query(key)
     assert w.retrieve_query(key) == first
-    assert w.verify_query(key)["needs_more"] is True
-    w.retrieve_query(key)
     assert w.verify_query(key)["status"] == "can_finalize"
     before = w.finalize_query(key)
-    assert before["counts"]["confirmed"] == 4 and before["retrieval_rounds"] == 2
+    assert before["counts"]["confirmed"] == 4 and before["retrieval_rounds"] == 1
     w.configure_demo(actor="demo-professional")
     w.set_profile("changed", actor="demo-professional")
     w.heartbeat(force=True)
@@ -152,7 +182,7 @@ def test_staged_mcp_native_child_boundary(tmp_path):
             call("govkb_retrieve_query", {"task_id": task})
             checked = call("govkb_verify_query", {"task_id": task})
             if not checked["needs_more"]: break
-        assert call("govkb_query_state", {"task_id": task})["rounds"] == 2
+        assert call("govkb_query_state", {"task_id": task})["rounds"] == 1
         assert call("govkb_finalize_query", {"task_id": task})["counts"]["confirmed"] == 4
         assert client.get("/api/connections").status_code == 403
 

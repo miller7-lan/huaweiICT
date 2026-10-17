@@ -181,39 +181,45 @@ class Workflow:
                 self.store.audit("workflow_query_failed", {"task_id": task_id, "code": type(error).__name__}, db)
             raise
 
+    @staticmethod
+    def _evidence_request(draft, found_ids=()):
+        needed = {span["id"] for row in draft["rows"] for span in row["evidence"]}
+        return sorted(needed - set(found_ids))
+
+    def _verify_retrieval(self, draft, snapshot, retrieved, found_ids):
+        assets = {asset["id"]: asset for asset in snapshot["assets"]}
+        spans = {span["id"]: span for span in snapshot["evidence"]}
+        requested = set(self._evidence_request(draft, found_ids)) & set(retrieved["requested"])
+        valid = sorted({span["id"] for span in retrieved["evidence"] if span["id"] in requested and
+            span == spans.get(span["id"]) and assets[span["asset_id"]]["text"][span["start"]:span["end"]] == span["quote"]})
+        gaps = self._evidence_request(draft, set(found_ids) | set(valid))
+        more = bool(gaps) and retrieved["round"] < 3
+        return {"round": retrieved["round"], "requested": sorted(requested), "found": valid,
+                "evidence_gaps": gaps, "needs_more": more, "status": "needs_retrieval" if more else "can_finalize",
+                "unknown_user_fields": sorted({f for row in draft["rows"] for f in row["missing_fields"]}),
+                "condition_results": [{"requirement_id": row["requirement_id"], "result": row["result"], "conditions": row["conditions"]}
+                    for row in draft["rows"]]}
+
     def _execute_query(self, task, version, draft, retriever):
         task_id, branch_id = task["id"], task["branch_id"]
         found = set()
-        needed = {e["id"] for row in draft["rows"] for e in row["evidence"]}
         evidence = {e["id"]: e for e in version["snapshot"]["evidence"]}
-        assets = {a["id"]: a for a in version["snapshot"]["assets"]}
         for number in range(1, 4):
-            missing = needed - found
-            if number == 1:
-                direct = {e for r in version["snapshot"]["requirements"] if r["id"] in {v["requirement_id"] for v in draft["rows"]} for e in r["evidence_ids"]}
-                requested = direct
-            else:
-                requested = missing
+            requested = self._evidence_request(draft, found)
+            if not requested:
+                break
             result = self.roles.invoke("retriever", "retrieve_registered_evidence", lambda:
-                retriever(number, sorted(requested), deepcopy(version["snapshot"])) if retriever else sorted(requested & evidence.keys()))
-            # The verifier rechecks exact spans, even if a future retriever adapter lies.
-            valid = []
-            for key in result:
-                e = evidence.get(key)
-                if e and assets[e["asset_id"]]["text"][e["start"]:e["end"]] == e["quote"]:
-                    valid.append(key)
-            found.update(valid)
-            gaps = sorted(needed-found)
-            record = self.roles.invoke("query_verifier", "verify_conditions", lambda: {
-                "round": number, "requested": sorted(requested), "found": sorted(valid), "evidence_gaps": gaps,
-                "unknown_user_fields": sorted({f for r in draft["rows"] for f in r["missing_fields"]}),
-                "condition_results": [{"requirement_id": r["requirement_id"], "result": r["result"], "conditions": r["conditions"]} for r in draft["rows"]]})
+                retriever(number, list(requested), deepcopy(version["snapshot"])) if retriever else requested)
+            retrieved = {"round": number, "requested": requested, "evidence": [evidence[key] for key in result if key in evidence]}
+            record = self.roles.invoke("query_verifier", "verify_conditions", lambda:
+                self._verify_retrieval(draft, version["snapshot"], retrieved, found))
+            found.update(record["found"])
             with self.store.db(True) as db:
                 task["rounds"].append(record)
                 self.put("query", task_id, task, db)
-                self._event("retriever", "retrieve_registered_evidence", {"round": number, "ids": sorted(requested)}, {"ids": sorted(valid)}, task=task_id, db=db)
+                self._event("retriever", "retrieve_registered_evidence", {"round": number, "ids": requested}, {"ids": record["found"]}, task=task_id, db=db)
                 self._event("query_verifier", "verify_conditions", {"evidence_ids": sorted(found)}, record, task=task_id, db=db)
-            if not gaps: break  # Missing user facts do not trigger more retrieval.
+            if not record["needs_more"]: break
         for row in draft["rows"]:
             if {e["id"] for e in row["evidence"]} - found:
                 row.update(result="unknown", reason="EVIDENCE_RETRIEVAL_INCOMPLETE")
@@ -258,6 +264,8 @@ class Workflow:
                     "branch_id": branch_id, "as_of": draft["as_of"], "question": question, "created_at": self.clock(),
                     "status": "needs_retrieval", "rounds": [], "draft": draft, "answer": None,
                     "staged": True, "found_ids": [], "retrieval": None}
+            if not self._evidence_request(draft):
+                task["status"] = "can_finalize"
             self.put("query", key, task, db)
             self._event("query_controller", "open_query", {"branch_id": branch_id}, {"task_id": key, "version_id": version["id"]}, task=key, db=db)
             return {"task_id": key, "version_id": version["id"], "status": task["status"], "max_rounds": 3}
@@ -269,11 +277,7 @@ class Workflow:
             if task["status"] == "needs_verification": return deepcopy(task["retrieval"])  # Idempotent retry.
             if task["status"] != "needs_retrieval" or len(task["rounds"]) >= 3: raise WorkflowError("RETRIEVAL_NOT_ALLOWED")
             snapshot = self.version(task["version_id"], db)["snapshot"]
-            needed = {e["id"] for r in task["draft"]["rows"] for e in r["evidence"]}
-            if not task["rounds"]:
-                targets = {r["requirement_id"] for r in task["draft"]["rows"]}
-                requested = {e for r in snapshot["requirements"] if r["id"] in targets for e in r["evidence_ids"]}
-            else: requested = needed-set(task["found_ids"])
+            requested = self._evidence_request(task["draft"], task["found_ids"])
             found = [e for e in snapshot["evidence"] if e["id"] in requested]
             # Native roles cannot choose arbitrary URLs or mutate the evidence set.
             value = {"task_id": task_id, "round": len(task["rounds"])+1, "requested": sorted(requested), "evidence": found,
@@ -287,23 +291,17 @@ class Workflow:
         with self.store.db(True) as db:
             task = self.get("query", task_id, db)
             if not task or not task.get("staged"): raise WorkflowError("STAGED_QUERY_REQUIRED")
-            if task["status"] == "can_finalize": return deepcopy(task["rounds"][-1])
+            if task["status"] in {"needs_retrieval", "can_finalize", "complete"} and task["rounds"]:
+                return deepcopy(task["rounds"][-1])
+            if task["status"] in {"can_finalize", "complete"}:
+                snapshot = self.version(task["version_id"], db)["snapshot"]
+                return {"task_id": task_id, **self._verify_retrieval(task["draft"], snapshot,
+                    {"round": 0, "requested": [], "evidence": []}, [])}
             if task["status"] != "needs_verification": raise WorkflowError("VERIFICATION_NOT_ALLOWED")
             snapshot = self.version(task["version_id"], db)["snapshot"]
-            assets = {a["id"]: a for a in snapshot["assets"]}
-            spans = {e["id"]: e for e in snapshot["evidence"]}
             retrieved = task["retrieval"]
-            # Re-read registered spans; do not trust a model's claim of verification.
-            valid = [e["id"] for e in retrieved["evidence"] if e == spans.get(e["id"]) and
-                     assets[e["asset_id"]]["text"][e["start"]:e["end"]] == e["quote"]]
-            found = set(task["found_ids"]) | set(valid)
-            needed = {e["id"] for r in task["draft"]["rows"] for e in r["evidence"]}
-            gaps = sorted(needed-found)
-            more = bool(gaps) and retrieved["round"] < 3
-            result = {"task_id": task_id, "round": retrieved["round"], "requested": retrieved["requested"], "found": sorted(valid),
-                      "evidence_gaps": gaps, "needs_more": more, "status": "needs_retrieval" if more else "can_finalize",
-                      "unknown_user_fields": sorted({f for r in task["draft"]["rows"] for f in r["missing_fields"]}),
-                      "condition_results": [{"requirement_id": r["requirement_id"], "result": r["result"], "conditions": r["conditions"]} for r in task["draft"]["rows"]]}
+            result = {"task_id": task_id, **self._verify_retrieval(task["draft"], snapshot, retrieved, task["found_ids"])}
+            found = set(task["found_ids"]) | set(result["found"])
             task["rounds"].append(result)
             task.update(status=result["status"], found_ids=sorted(found), retrieval=None)
             self.put("query", task_id, task, db)

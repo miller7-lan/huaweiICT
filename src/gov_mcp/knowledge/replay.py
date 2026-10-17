@@ -10,5 +10,6 @@ class SyntheticReplay:
                 answers[key] = {"type": "choice", "choice": "guide", "confidence": .99,
                     "probabilities": {k: float(k == "guide") for k in question["criteria"]}}
             else:
-                answers[key] = {"type": "noul", "noul": .99 if key in {"domains:identity", "purposes:material"} or key.isdigit() else .01}
+                label = ":".join(key.split(":")[-2:])
+                answers[key] = {"type": "noul", "noul": .99 if label in {"domains:identity", "purposes:material"} or key.isdigit() else .01}
         return {"model": model, "answers": answers, "usage": {"input_tokens": 0, "output_tokens": 0}}

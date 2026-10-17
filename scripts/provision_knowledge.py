@@ -126,7 +126,7 @@ def main():
                 "enabled_tool_ids":ids_for({t["name"] for t in agent["tools"]}),
                 "duty_prompt":agent["duty_prompt"],"constraint_prompt":agent["constraint_prompt"],"few_shots_prompt":agent["few_shots_prompt"],
                 "model_ids":[mid],"group_ids":[original["group_id"]],"ingroup_permission":"READ_ONLY","requested_output_tokens":1024,
-                "model_params_override":{str(mid):{"temperature":.1,"extra_params":nonthinking_params()}}})
+                "model_params_override":{str(mid):{"temperature":.1,"extra_params":nonthinking_params(config["models"][role]["model"])}}})
             value=api.call("POST",f"/agent/{aid}/publish",{"version_name":"knowledge-maintenance-v1","release_note":"Versioned maintenance with human rule review; synthetic demo flagged separately"})
             saved["versions"][role]=value["version_no"]
             saved[role+"_id"]=aid
@@ -151,7 +151,7 @@ def main():
         api.call("POST","/agent/update",{"agent_id":saved["query_id"],"duty_prompt":query["duty_prompt"],"constraint_prompt":query["constraint_prompt"],
             "enabled_tool_ids":ids_for({"govkb_search_evidence"}),
             "few_shots_prompt":query["few_shots_prompt"],"group_ids":[original["group_id"]],"ingroup_permission":"READ_ONLY","model_ids":[mid],
-            "model_params_override":{str(mid):{"temperature":.1,"extra_params":nonthinking_params()}}})
+            "model_params_override":{str(mid):{"temperature":.1,"extra_params":nonthinking_params(config["models"]["extractor"]["model"])}}})
         published=api.call("POST",f"/agent/{saved['query_id']}/publish",{"version_name":"knowledge-query-v1","release_note":"Pinned version retrieval with candidate notices and original links"})
         saved.update(query_version=published['version_no'],query_model_id=mid)
         write(checkpoint,saved)

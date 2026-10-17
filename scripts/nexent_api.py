@@ -10,7 +10,9 @@ ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / ".runtime"
 
 
-def nonthinking_params():
+def nonthinking_params(model=None):
+    if model and "deepseek" in model.lower():
+        return {"enable_thinking": False, "__custom__": {"thinking": {"type": "disabled"}}}
     # Nexent's native effort validator does not accept Ollama's "none" here.
     # Custom provider fields survive the pinned reasoning normalization and
     # become extra_body on all three agents' OpenAI-compatible requests.

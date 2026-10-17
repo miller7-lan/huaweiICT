@@ -37,7 +37,7 @@ class ContractReplay:
                 answers[key] = {"type": "choice", "choice": case["document_type"], "confidence": .99,
                     "probabilities": {label: float(label == case["document_type"]) for label in question["criteria"]}}
             else:
-                group, label = key.split(":")
+                group, label = key.split(":")[-2:]
                 answers[key] = {"type": "noul", "noul": .99 if label in case[group] else .01}
         return {"model": model, "answers": answers, "usage": {"input_tokens": 0, "output_tokens": 0}}
 
