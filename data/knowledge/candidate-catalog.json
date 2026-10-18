@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-18T10:28:58.703616+00:00",
+  "captured_at": "2026-10-18T14:23:12.946842+00:00",
   "counts": {
-    "sites": 50,
-    "documents": 46,
-    "revisions": 153,
-    "chunks": 967,
+    "sites": 59,
+    "documents": 48,
+    "revisions": 155,
+    "chunks": 997,
     "versions": 0,
     "heads": 0,
     "jobs": 38,
-    "latest_chunks": 319
+    "latest_chunks": 349
   },
   "sources": [
     {
@@ -29,6 +29,63 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792314861.715735,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-ID-RENEWAL-2025",
+      "label": "公民换领居民身份证（京籍）",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-PASSPORT-FIRST-MATERIALS",
+      "label": "护照首次申领办理材料",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/cjybz/hz/blzn/201905/t20190522_1845633.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/cjybz/hz/blzn/201905/t20190522_1845633.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "CQ-ID-HOUSEHOLD-FAQ-2026",
+      "label": "身份证与户口政策问答",
+      "origin": "https://gaj.cq.gov.cn",
+      "allowed_paths": [
+        "/zwgk/zcjd/zcwd/gpwd/202604/t20260403_15590655.html"
+      ],
+      "seeds": [
+        "https://gaj.cq.gov.cn/zwgk/zcjd/zcwd/gpwd/202604/t20260403_15590655.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "Access denied; source paused",
+      "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -107,6 +164,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "GD-PASSPORT-GUIDE-2021",
+      "label": "普通护照签发服务指南",
+      "origin": "https://crj.gdga.gd.gov.cn",
+      "allowed_paths": [
+        "/zwwbszy/zggmcrj/sqpthz/202108/t20210816_1514.html"
+      ],
+      "seeds": [
+        "https://crj.gdga.gd.gov.cn/zwwbszy/zggmcrj/sqpthz/202108/t20210816_1514.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "GOV-COPYRIGHT-01",
       "label": "中华人民共和国著作权法（2020修正）",
       "origin": "https://www.ncac.gov.cn",
@@ -123,6 +199,25 @@
       "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "GZ-HZ-RESIDENCE-ENDORSEMENT",
+      "label": "签注居住证（凤阳街道）",
+      "origin": "https://www.gdzwfw.gov.cn",
+      "allowed_paths": [
+        "/portal/simple-guide/TE44010500748453905442106041001"
+      ],
+      "seeds": [
+        "https://www.gdzwfw.gov.cn/portal/simple-guide/TE44010500748453905442106041001"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "Expected official HTML not obtained",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
     {
@@ -562,6 +657,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "HZ-RESIDENCE-EXPLANATION",
+      "label": "杭州市流动人口居住证申领实施细则试行解读",
+      "origin": "https://zfgb.hangzhou.gov.cn",
+      "allowed_paths": [
+        "/15/106220253/t101220253064/524785.shtml"
+      ],
+      "seeds": [
+        "https://zfgb.hangzhou.gov.cn/15/106220253/t101220253064/524785.shtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "ID-AMENDMENT-JT-LEAD",
       "label": "居民身份证法（2011修正，附修改决定）：北京交管官方转载",
       "origin": "https://jtgl.beijing.gov.cn",
@@ -963,6 +1077,63 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "SH-ID-LOSS-PROXY-2026",
+      "label": "居民身份证挂失及委托领取指南",
+      "origin": "https://www.shanghai.gov.cn",
+      "allowed_paths": [
+        "/nw17239/20260211/2a349ced3db449a699b75d60a7225b86.html"
+      ],
+      "seeds": [
+        "https://www.shanghai.gov.cn/nw17239/20260211/2a349ced3db449a699b75d60a7225b86.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "Upstream unavailable",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "SUZHOU-RESIDENCE-MATERIALS-2026",
+      "label": "居住证去哪办理及所需材料",
+      "origin": "https://www.suzhou.gov.cn",
+      "allowed_paths": [
+        "/szsrmzf/rdwd/202607/c8867ac51ff945158626544d43f0a58a.shtml"
+      ],
+      "seeds": [
+        "https://www.suzhou.gov.cn/szsrmzf/rdwd/202607/c8867ac51ff945158626544d43f0a58a.shtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "URL outside approved origin",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "SZ-PASSPORT-IDENTITY-2026",
+      "label": "办理护照的身份证件与未成年人材料",
+      "origin": "https://www.sz.gov.cn",
+      "allowed_paths": [
+        "/ztfw/zjbl/wyw/ywzsk/content/post_12651224.html"
+      ],
+      "seeds": [
+        "https://www.sz.gov.cn/ztfw/zjbl/wyw/ywzsk/content/post_12651224.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "[SSL: BAD_ECPOINT] bad ecpoint (_ssl.c:1028)",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "TY-FEE-CATALOG-2026-REFERENCE",
       "label": "汤阴2026收费目录线索",
       "origin": "https://www.tangyin.gov.cn",
@@ -1020,6 +1191,232 @@
     }
   ],
   "documents": [
+    {
+      "source_id": "BJ-ID-RENEWAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+      "revision": "rev-900798fdb5c74c934876fb73",
+      "state": "pending_review",
+      "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+      "original_bytes": 31155,
+      "metadata": {
+        "title": "公民换领居民身份证（京籍）",
+        "region": "北京市",
+        "matter": "resident-id-renewal",
+        "document_type": "official_service_guide",
+        "published_at": "2025-03-03",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 75,
+          "text_sha256": "1268ef4fa8fadc8a9c2f7314e8804500275dc45c61726408828c87655598106e"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 68,
+          "text_sha256": "6eb06147860cee712a13a1d072ed71eaa784cebefcba12bfa7c93f726f1738ec"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 13,
+          "text_sha256": "b8db16be4cf2c85e39456ba16703bf874db1f1d0fb323f212c4dd3478da55c90"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 56,
+          "text_sha256": "f9b8a4263f3f96752adff3d0f58e4b59effc86f7dd982ef92d5fae4766705dc0"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "identity",
+          "characters": 83,
+          "text_sha256": "57d4aabf3c70cb421b90992b49b7b4a72f5c815267e6d995ef05bb2fd110002c"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c1d21f66b95cdb8a56a889d30b9be3bb02a5c9a9d1f681d9f3ac30e2a6f33a3e"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "1d54dfbb21a7897863a331940dee0d76ee10777cccf218b868cedfd9f8eee620"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "7e8ca5a4e1d6502b9f5b5bbd74e2884932b8f739f5515570bd87542a87532480"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "9a0fe8e13025e4870b6c328d2437f24c6718f80864312e34796d1cb6e0bfe822"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "59706d0893d8005dada931b131fea32e66ecd9d1dfe2b03f50cea958e7465d64"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "802a2a48e2fad664470efdc3b1efb8e448708eb48d04be78aa746d4d3be41646"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "identity",
+          "characters": 52,
+          "text_sha256": "933289de4a59300eff1f4043bfd033ae7bb349a4454e95375d94317e7cd9fdc8"
+        },
+        {
+          "locator": "正文段落23",
+          "category": "identity",
+          "characters": 15,
+          "text_sha256": "7d72d2486f39fa0c1e1bdbf404ba8aa99c04f919ddb7e2888b3b3ae9fe97890c"
+        },
+        {
+          "locator": "正文段落24",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867"
+        },
+        {
+          "locator": "正文段落25",
+          "category": "identity",
+          "characters": 54,
+          "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172"
+        }
+      ]
+    },
+    {
+      "source_id": "BJ-PASSPORT-FIRST-MATERIALS",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/cjybz/hz/blzn/201905/t20190522_1845633.html",
+      "revision": "rev-5f5701e1ab02c7855de3bc14",
+      "state": "pending_review",
+      "original_sha256": "d05201c34e0ac2c80b06d49ce01dbf7f520b6f8637510dac16811bb505fc33de",
+      "original_bytes": 31716,
+      "metadata": {
+        "title": "护照首次申领办理材料",
+        "region": "北京市",
+        "matter": "ordinary-passport-first-application",
+        "document_type": "official_service_guide",
+        "published_at": "2025-11-24",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 89,
+          "text_sha256": "ed058fca241b97589a2988f90c795d0164a60388fc337b9681b16a28c424b78a"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "c55d5b1afa54da383e09147e3111be04710f37cc77af615a4baad8a791ebfc0e"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "9eed9292b7db31f36204b4a09fc3bbe33d6d0a087fae9322312101f743fa1d0c"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 38,
+          "text_sha256": "53835c14ce1d26c2f356a6da3c995d37b307e67f47f6a1ab7aaebf96c8307efd"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 33,
+          "text_sha256": "e9bb36b50dc54859b0693ff4eaa40927007053750e2b486b419c8515524e74e2"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "identity",
+          "characters": 128,
+          "text_sha256": "76d725045218cb4fd1160e78d4dcac177f2f799d8fc20c69ab77d97d424a1d91"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 87,
+          "text_sha256": "af58749cbe28756a49ea59b14144928b80eaf44ab786fc450bc876db9fce3e05"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "identity",
+          "characters": 85,
+          "text_sha256": "0efaeb2dd08625b377887209aa7a59399a13f0cc16d65717ba7f7073cc2a62c2"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "aa19833a71c8d10e7af527646a7fc8f39ea84955bd0af893ac57bc09e7db4c2c"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 81,
+          "text_sha256": "de6aac478a39274ecf2245f4c394798f27c79d8224b30beabd7c6121e6e28c63"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 42,
+          "text_sha256": "0be3b4ecb73ebb46a97de1453e4ab955021560c71774d5d81707225ff729a876"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 62,
+          "text_sha256": "e59e3f6c42517aba1f0b8695537133aaa7499d1bf5c5cfe4371c3352c44a407c"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 29,
+          "text_sha256": "63efd5800c8f2dddc1294dc5377fc48f13ccdfec291696462eec356ad818a401"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 73,
+          "text_sha256": "6da7124631847188fa94bb0102b201f4227c930f38dcfa90a64b0a6afc761297"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "procedure",
+          "characters": 9,
+          "text_sha256": "1836b2454aa68cd668dc7b975625517b748ff58593b43acdf959fed7fcd1a877"
+        }
+      ]
+    },
     {
       "source_id": "ERQI-RENEWAL-PORTAL-RENDERED",
       "url": "https://www.hnzwfw.gov.cn/portal/guide/9BA34BC110B96284D26CE82456A51500?region=410103000000",
