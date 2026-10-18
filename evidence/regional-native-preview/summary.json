@@ -1,0 +1,153 @@
+{
+  "status": "PARTIAL_BLOCKED",
+  "scenarios": {
+    "beijing": {
+      "question": "成年、北京本市户籍、本人身份证期满换领：资料怎样记载材料、收费、时限及网办条件？请保留未成年人例外，区分损坏换领网办与期满换领。",
+      "passed": false
+    },
+    "nanjing": {
+      "question": "在南京办理身份证到期换证，省内、省外户籍的周期分别怎样记载？急需用证考生有什么服务，是否明确承诺3天？",
+      "passed": true
+    }
+  },
+  "native_runs": [
+    {
+      "ordinal": 1,
+      "status": "failed",
+      "scenario_id": "beijing",
+      "repair_note": null
+    },
+    {
+      "ordinal": 2,
+      "status": "passed",
+      "scenario_id": "nanjing",
+      "repair_note": "Replaced prose few-shot with scenario-specific executable code and explicit child-call continuation after the observed task ID; repeated Skill/DSML is prohibited."
+    },
+    {
+      "ordinal": 3,
+      "status": "failed",
+      "scenario_id": "beijing",
+      "repair_note": "Use concrete Beijing first-action few-shot and explicit Python child-call continuation; the same correction passed the Nanjing initial run."
+    }
+  ],
+  "native_run_budget": 3,
+  "jev_reserved": 2,
+  "jev_physical_attempts": 2,
+  "successful_jev_responses": 1,
+  "external_block": "TRANSPORT_UNAVAILABLE",
+  "no_additional_live_requests_permitted": true,
+  "receipts": [
+    {
+      "scenario_id": "nanjing",
+      "task_id": "2cc0f4197f8d45b49f029fc746ad0201",
+      "jev_receipts": [
+        {
+          "attempt": 1,
+          "endpoint": "https://api.typesafe.ai/v1/systemone",
+          "requested_model": "jev-1.13.0",
+          "transport_model": "jev-1.13.0",
+          "input_bytes": 3162,
+          "status": "ok",
+          "cost_usd": null,
+          "http_status": 200,
+          "served_model": "jev-1.13.0",
+          "usage": {
+            "input_tokens": 957,
+            "output_tokens": 56
+          },
+          "duration_ms": 764.05
+        }
+      ],
+      "translation_receipts": [
+        {
+          "version": "jev-english-1",
+          "target_language": "en",
+          "status": "translated",
+          "source_state_sha256": "612af4811397fa3ee0e62a2a9985f50548da528eae56fb9b2266724074e26ebf",
+          "source_questions_sha256": "a78ea1ffff448d29d5306da7d0df414dea2736441d173376613d192b4710d4f0",
+          "translation_calls": 1,
+          "cache_hits": 0,
+          "models": [
+            "deepseek-flash"
+          ],
+          "usage": {
+            "input_tokens": 298,
+            "output_tokens": 158
+          },
+          "state_sha256": "2ce6ea96d009a9f7d1c1e323f0881606e8a1022e08dca58d29b54341ad63007a",
+          "questions_sha256": "a78ea1ffff448d29d5306da7d0df414dea2736441d173376613d192b4710d4f0",
+          "input_bytes": 3162
+        }
+      ],
+      "full_english_input_saved": true
+    },
+    {
+      "scenario_id": "beijing",
+      "task_id": "14250bcbda494920b06ff79e62ec3585",
+      "jev_receipts": [
+        {
+          "attempt": 1,
+          "endpoint": "https://api.typesafe.ai/v1/systemone",
+          "requested_model": "jev-1.13.0",
+          "transport_model": "jev-1.13.0",
+          "input_bytes": 6991,
+          "status": "error",
+          "cost_usd": null,
+          "error_code": "TRANSPORT_UNAVAILABLE",
+          "duration_ms": 5611.6
+        }
+      ],
+      "translation_receipts": [
+        {
+          "version": "jev-english-1",
+          "target_language": "en",
+          "status": "translated",
+          "source_state_sha256": "7b50391b002c7e1948c9a8682d4bc398c9750c4cad7d76097f007cd784289cee",
+          "source_questions_sha256": "030ea2c439528a189c91060ce22c7be315cba489a3ed006ab683d471a5ab14d0",
+          "translation_calls": 1,
+          "cache_hits": 0,
+          "models": [
+            "deepseek-flash"
+          ],
+          "usage": {
+            "input_tokens": 653,
+            "output_tokens": 632
+          },
+          "state_sha256": "c79e7b9ad4dba88bf1851264db45a353765cd8ec768ae55077a530a8fd5d1901",
+          "questions_sha256": "030ea2c439528a189c91060ce22c7be315cba489a3ed006ab683d471a5ab14d0",
+          "input_bytes": 6991,
+          "error_code": "JEV_CALL_FAILED"
+        }
+      ],
+      "full_english_input_saved": false
+    }
+  ],
+  "old_databases_unchanged": {
+    "public-native-preview": true,
+    "new-knowledge-experiment-20261018": true
+  },
+  "agents": {
+    "retriever": 23,
+    "verifier": 24,
+    "controller": 25
+  },
+  "old_agent_signatures_preserved_during_each_run": true,
+  "drafts_disabled_unpublished": true,
+  "final_code_sha256": {
+    "src/gov_mcp/regional_preview.py": "2610469f87b0e5934d4535c237847520e38b6b46099c89d1111fa24beceb5fae",
+    "src/gov_mcp/regional_preview_server.py": "b5b5fa16aeda183eae144a26bcabf79b4c2a8d5c925f3a532c9a97f4ac014919",
+    "scripts/provision_regional_native_preview.py": "753d6b0a7a1ffe150cd655d49ef5dba537fbb4323ee91b81cda82ff55de79b13",
+    "scripts/verify_regional_native_preview.py": "0bfd327e35622c15f8cb941f4088d7ec16f5bb5827813ca5deb371e7d06915bc",
+    "config/skills/govkb-regional-preview/SKILL.md": "3a32f49d28b57976cf7405039fe8db9f65ef61af7891fbf6a43785d02acc6622",
+    "tests/test_regional_native_preview.py": "97fd999c4e7bd71ff1ff468dfc0e270a75ce2fc36db867660b6abcd9f8c8829a"
+  },
+  "inference_during_export": 0,
+  "cost_amount": null,
+  "business_publication": false,
+  "limitations": [
+    "Beijing did not pass: transport failure without HTTP response or score.",
+    "Beijing failed attempt retained translated hashes but not complete English input; cannot reconstruct actual English after failure.",
+    "Final code now persists English before HTTP; verified offline only, no extra live request.",
+    "Native child model usage is not fully exposed; observed root usage is not full token usage or cost."
+  ]
+}

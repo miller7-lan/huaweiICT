@@ -1,0 +1,29 @@
+{
+  "passed": false,
+  "stop_reasons": [
+    "TOOL_STAGE_COUNT_MISMATCH",
+    "NATIVE_RUNTIME_ERROR",
+    "STRUCTURED_PROGRAM_RESULT_MISSING"
+  ],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_regional_open_query",
+    "govkb_regional_retrieve",
+    "final_answer",
+    "govkb_regional_verify",
+    "final_answer",
+    "govkb_regional_state",
+    "govkb_regional_finalize",
+    "govkb_regional_state",
+    "govkb_regional_state"
+  ],
+  "answer": null,
+  "scenario_id": "beijing",
+  "evidence_source": "20261018T150717426512Z.json",
+  "model_calls": 0,
+  "code_sha256": "0bfd327e35622c15f8cb941f4088d7ec16f5bb5827813ca5deb371e7d06915bc",
+  "campaign": {
+    "native_runs": 3,
+    "jev_reserved": 2
+  }
+}

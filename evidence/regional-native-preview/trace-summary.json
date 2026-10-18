@@ -1,0 +1,347 @@
+[
+  {
+    "evidence": "20261018T150424205893Z.json",
+    "scenario_id": "beijing",
+    "run_id": "f71650962f0d4525b432ad6daf79655c",
+    "passed_at_execution": false,
+    "stop_reasons": [
+      "ACTUAL_TOOL_TRACE_MISSING",
+      "TOOL_STAGE_COUNT_MISMATCH",
+      "ACTUAL_CHILD_TRACE_MISSING",
+      "STRUCTURED_PROGRAM_RESULT_MISSING"
+    ],
+    "duration_ms": 15103.19,
+    "tools": [
+      {
+        "event_index": 52,
+        "name": "read_skill_md",
+        "depth": 0
+      },
+      {
+        "event_index": 53,
+        "name": "govkb_regional_open_query",
+        "depth": 0
+      }
+    ],
+    "observed_usage_steps": [
+      {
+        "step_number": 1,
+        "step_input_tokens": 6560,
+        "step_output_tokens": 46,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 2,
+        "step_input_tokens": 6746,
+        "step_output_tokens": 63,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      }
+    ],
+    "child_starts": 0,
+    "contains_unexecuted_dsml": true,
+    "action_source": [
+      {
+        "depth": 0,
+        "code": "read_skill_md(skill_name='govkb-regional-preview', additional_files=[])\nopened = govkb_regional_open_query(scenario_id='beijing')\nprint(opened)"
+      }
+    ],
+    "usage_scope": "Observed native token_count events; child model usage may be missing, not total model cost",
+    "execution_source_sha256": {
+      "src/gov_mcp/regional_preview.py": "43dc523ef17e5273e9fc4cde53fe57d8a1c5f9981dbefdf16cac4abd2021deaa",
+      "src/gov_mcp/regional_preview_server.py": "b5b5fa16aeda183eae144a26bcabf79b4c2a8d5c925f3a532c9a97f4ac014919",
+      "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+      "scripts/verify_regional_native_preview.py": "2aefaa60571edc2472d8a1ff9bb7fb2aa2c5dc4eaa5cfbdcc3536ffd534bae40",
+      "scripts/provision_regional_native_preview.py": "2571befaee1e4575e476cef93bca462788d98ff5a3e79136b767514effa0d19c",
+      "config/skills/govkb-regional-preview/SKILL.md": "3a32f49d28b57976cf7405039fe8db9f65ef61af7891fbf6a43785d02acc6622"
+    }
+  },
+  {
+    "evidence": "20261018T150636212995Z.json",
+    "scenario_id": "nanjing",
+    "run_id": "ffe0fecb3e1d413a8b0bdef980e57e15",
+    "passed_at_execution": true,
+    "stop_reasons": [],
+    "duration_ms": 14307.54,
+    "tools": [
+      {
+        "event_index": 52,
+        "name": "read_skill_md",
+        "depth": 0
+      },
+      {
+        "event_index": 53,
+        "name": "govkb_regional_open_query",
+        "depth": 0
+      },
+      {
+        "event_index": 185,
+        "name": "govkb_regional_retrieve",
+        "depth": 1
+      },
+      {
+        "event_index": 186,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 235,
+        "name": "govkb_regional_verify",
+        "depth": 1
+      },
+      {
+        "event_index": 236,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 284,
+        "name": "govkb_regional_state",
+        "depth": 0
+      },
+      {
+        "event_index": 332,
+        "name": "govkb_regional_finalize",
+        "depth": 0
+      },
+      {
+        "event_index": 333,
+        "name": "final_answer",
+        "depth": 0
+      }
+    ],
+    "observed_usage_steps": [
+      {
+        "step_number": 1,
+        "step_input_tokens": 6894,
+        "step_output_tokens": 46,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 2,
+        "step_input_tokens": 7081,
+        "step_output_tokens": 80,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 3,
+        "step_input_tokens": 7421,
+        "step_output_tokens": 39,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 4,
+        "step_input_tokens": 7581,
+        "step_output_tokens": 42,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      }
+    ],
+    "child_starts": 2,
+    "contains_unexecuted_dsml": false,
+    "action_source": [
+      {
+        "depth": 0,
+        "code": "read_skill_md(skill_name='govkb-regional-preview', additional_files=[])\nopened = govkb_regional_open_query(scenario_id='nanjing')\nprint(opened)"
+      },
+      {
+        "depth": 0,
+        "code": "retrieved = govregional_retriever(task='{\"task_id\":\"2cc0f4197f8d45b49f029fc746ad0201\"}')\nverified = govregional_verifier(task='{\"task_id\":\"2cc0f4197f8d45b49f029fc746ad0201\"}')\nprint(verified)"
+      },
+      {
+        "depth": 1,
+        "code": "result = govkb_regional_retrieve(task_id=\"2cc0f4197f8d45b49f029fc746ad0201\")\nfinal_answer(result)"
+      },
+      {
+        "depth": 1,
+        "code": "result = govkb_regional_verify(task_id=\"2cc0f4197f8d45b49f029fc746ad0201\")\nfinal_answer(result)"
+      },
+      {
+        "depth": 0,
+        "code": "state = govkb_regional_state(task_id='2cc0f4197f8d45b49f029fc746ad0201')\nprint(state)"
+      },
+      {
+        "depth": 0,
+        "code": "result = govkb_regional_finalize(task_id='2cc0f4197f8d45b49f029fc746ad0201')\nfinal_answer(result)"
+      }
+    ],
+    "usage_scope": "Observed native token_count events; child model usage may be missing, not total model cost",
+    "execution_source_sha256": {
+      "src/gov_mcp/regional_preview.py": "43dc523ef17e5273e9fc4cde53fe57d8a1c5f9981dbefdf16cac4abd2021deaa",
+      "src/gov_mcp/regional_preview_server.py": "b5b5fa16aeda183eae144a26bcabf79b4c2a8d5c925f3a532c9a97f4ac014919",
+      "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+      "scripts/verify_regional_native_preview.py": "737d084a8e29a96a3303c1e089176b671a760465cfceb4ab451e9e2e011cd5f7",
+      "scripts/provision_regional_native_preview.py": "753d6b0a7a1ffe150cd655d49ef5dba537fbb4323ee91b81cda82ff55de79b13",
+      "config/skills/govkb-regional-preview/SKILL.md": "3a32f49d28b57976cf7405039fe8db9f65ef61af7891fbf6a43785d02acc6622"
+    }
+  },
+  {
+    "evidence": "20261018T150717426512Z.json",
+    "scenario_id": "beijing",
+    "run_id": "86aa820962f64812952349837ca088eb",
+    "passed_at_execution": false,
+    "stop_reasons": [
+      "TOOL_STAGE_COUNT_MISMATCH",
+      "NATIVE_RUNTIME_ERROR",
+      "STRUCTURED_PROGRAM_RESULT_MISSING"
+    ],
+    "duration_ms": 24794.12,
+    "tools": [
+      {
+        "event_index": 52,
+        "name": "read_skill_md",
+        "depth": 0
+      },
+      {
+        "event_index": 53,
+        "name": "govkb_regional_open_query",
+        "depth": 0
+      },
+      {
+        "event_index": 176,
+        "name": "govkb_regional_retrieve",
+        "depth": 1
+      },
+      {
+        "event_index": 177,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 223,
+        "name": "govkb_regional_verify",
+        "depth": 1
+      },
+      {
+        "event_index": 224,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 269,
+        "name": "govkb_regional_state",
+        "depth": 0
+      },
+      {
+        "event_index": 390,
+        "name": "govkb_regional_finalize",
+        "depth": 0
+      },
+      {
+        "event_index": 432,
+        "name": "govkb_regional_state",
+        "depth": 0
+      },
+      {
+        "event_index": 474,
+        "name": "govkb_regional_state",
+        "depth": 0
+      }
+    ],
+    "observed_usage_steps": [
+      {
+        "step_number": 1,
+        "step_input_tokens": 6890,
+        "step_output_tokens": 46,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 2,
+        "step_input_tokens": 7074,
+        "step_output_tokens": 74,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 3,
+        "step_input_tokens": 7251,
+        "step_output_tokens": 37,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 4,
+        "step_input_tokens": 7402,
+        "step_output_tokens": 117,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 5,
+        "step_input_tokens": 7543,
+        "step_output_tokens": 36,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 6,
+        "step_input_tokens": 7694,
+        "step_output_tokens": 36,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      }
+    ],
+    "child_starts": 2,
+    "contains_unexecuted_dsml": false,
+    "action_source": [
+      {
+        "depth": 0,
+        "code": "read_skill_md(skill_name='govkb-regional-preview', additional_files=[])\nopened = govkb_regional_open_query(scenario_id='beijing')\nprint(opened)"
+      },
+      {
+        "depth": 0,
+        "code": "retrieved = govregional_retriever(task='{\"task_id\":\"14250bcbda494920b06ff79e62ec3585\"}')\nverified = govregional_verifier(task='{\"task_id\":\"14250bcbda494920b06ff79e62ec3585\"}')\nprint(verified)"
+      },
+      {
+        "depth": 1,
+        "code": "result = govkb_regional_retrieve(task_id=\"14250bcbda494920b06ff79e62ec3585\")\nfinal_answer(result)"
+      },
+      {
+        "depth": 1,
+        "code": "result = govkb_regional_verify(task_id=\"14250bcbda494920b06ff79e62ec3585\")\nfinal_answer(result)"
+      },
+      {
+        "depth": 0,
+        "code": "state = govkb_regional_state(task_id='14250bcbda494920b06ff79e62ec3585')\nprint(state)"
+      },
+      {
+        "depth": 0,
+        "code": "result = govkb_regional_finalize(task_id='14250bcbda494920b06ff79e62ec3585')\nprint(result)"
+      },
+      {
+        "depth": 0,
+        "code": "state = govkb_regional_state(task_id='14250bcbda494920b06ff79e62ec3585')\nprint(state)"
+      },
+      {
+        "depth": 0,
+        "code": "state = govkb_regional_state(task_id='14250bcbda494920b06ff79e62ec3585')\nprint(state)"
+      }
+    ],
+    "usage_scope": "Observed native token_count events; child model usage may be missing, not total model cost",
+    "execution_source_sha256": {
+      "src/gov_mcp/regional_preview.py": "43dc523ef17e5273e9fc4cde53fe57d8a1c5f9981dbefdf16cac4abd2021deaa",
+      "src/gov_mcp/regional_preview_server.py": "b5b5fa16aeda183eae144a26bcabf79b4c2a8d5c925f3a532c9a97f4ac014919",
+      "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+      "scripts/verify_regional_native_preview.py": "737d084a8e29a96a3303c1e089176b671a760465cfceb4ab451e9e2e011cd5f7",
+      "scripts/provision_regional_native_preview.py": "753d6b0a7a1ffe150cd655d49ef5dba537fbb4323ee91b81cda82ff55de79b13",
+      "config/skills/govkb-regional-preview/SKILL.md": "3a32f49d28b57976cf7405039fe8db9f65ef61af7891fbf6a43785d02acc6622"
+    }
+  }
+]

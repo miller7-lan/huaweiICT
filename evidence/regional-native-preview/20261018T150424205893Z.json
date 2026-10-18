@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-18T15:04:09.106493+00:00",
+  "mode": "regional_public_preview",
+  "published": false,
+  "model_training": false,
+  "native_run_requests": 1,
+  "scenario_id": "beijing",
+  "run_id": "f71650962f0d4525b432ad6daf79655c",
+  "passed": false,
+  "stop_reasons": [
+    "ACTUAL_TOOL_TRACE_MISSING",
+    "TOOL_STAGE_COUNT_MISMATCH",
+    "ACTUAL_CHILD_TRACE_MISSING",
+    "STRUCTURED_PROGRAM_RESULT_MISSING"
+  ],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_regional_open_query"
+  ],
+  "answer": null,
+  "duration_ms": 15103.19,
+  "campaign": {
+    "native_runs": 1,
+    "jev_reserved": 0
+  },
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 2,
+    "step_count": 2,
+    "model_attempt_control": 4,
+    "model_output_thinking": 103,
+    "parse": 1,
+    "tool": 2,
+    "execution_logs": 1,
+    "token_count": 2,
+    "final_answer": 1
+  },
+  "cost_amount": null,
+  "source_sha256": {
+    "src/gov_mcp/regional_preview.py": "43dc523ef17e5273e9fc4cde53fe57d8a1c5f9981dbefdf16cac4abd2021deaa",
+    "src/gov_mcp/regional_preview_server.py": "b5b5fa16aeda183eae144a26bcabf79b4c2a8d5c925f3a532c9a97f4ac014919",
+    "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+    "scripts/verify_regional_native_preview.py": "2aefaa60571edc2472d8a1ff9bb7fb2aa2c5dc4eaa5cfbdcc3536ffd534bae40",
+    "scripts/provision_regional_native_preview.py": "2571befaee1e4575e476cef93bca462788d98ff5a3e79136b767514effa0d19c",
+    "config/skills/govkb-regional-preview/SKILL.md": "3a32f49d28b57976cf7405039fe8db9f65ef61af7891fbf6a43785d02acc6622"
+  }
+}

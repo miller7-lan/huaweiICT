@@ -1,0 +1,37 @@
+{
+  "drafts": {
+    "retriever": {
+      "agent_id": 23,
+      "enabled": false,
+      "published_versions": 0,
+      "max_steps": 3,
+      "output_tokens": 1024
+    },
+    "verifier": {
+      "agent_id": 24,
+      "enabled": false,
+      "published_versions": 0,
+      "max_steps": 3,
+      "output_tokens": 1024
+    },
+    "controller": {
+      "agent_id": 25,
+      "enabled": false,
+      "published_versions": 0,
+      "max_steps": 6,
+      "output_tokens": 1024
+    }
+  },
+  "original_nine_agents_unchanged": true,
+  "health": {
+    "service": "govkb_regional_preview",
+    "status": "UP",
+    "publication_enabled": false,
+    "startup_source_sha256": {
+      "regional_preview.py": "2610469f87b0e5934d4535c237847520e38b6b46099c89d1111fa24beceb5fae",
+      "regional_preview_server.py": "b5b5fa16aeda183eae144a26bcabf79b4c2a8d5c925f3a532c9a97f4ac014919",
+      "knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d"
+    }
+  },
+  "inference_calls": 0
+}
