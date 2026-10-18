@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "purpose": "南京身份证换证问答、天津居住证规范及杭州历史对照独立扩充",
+  "collection_scope": "multiple_regions_and_matters",
+  "business_publication": false,
+  "sources": [
+    {
+      "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "region": "南京市",
+      "matter": "resident-id-renewal",
+      "selector": {"id": "con"},
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "parsed_paragraph_count": 3,
+      "selected_ordinals": [1, 2, 3],
+      "published_at": "2026-01-05",
+      "named_source": "南京公安微信公众号（南京市政府门户转载）",
+      "document_type": "official_service_question_answer",
+      "scope_limits": "南京门户到期换证周期问答，省内/省外户籍分开；考生快速服务无具体天数，不推为所有申请人加急期限，也不作为北京或河南办理时限。"
+    },
+    {
+      "source_id": "TJ-RESIDENCE-MEASURES-2021",
+      "url": "https://www.tj.gov.cn/zwgk/szfwj/tjsrmzf/202112/t20211231_5768456.html",
+      "region": "天津市",
+      "matter": "residence-permit-application",
+      "selector": {"class": "TRS_UEDITOR"},
+      "original_sha256": "c844592ed9c2433d1be6fe81489e919daf4ac3dfb395bcbb55fcff9cee6e7a70",
+      "parsed_paragraph_count": 83,
+      "selected_ordinals": [3, 7, 11, 14, 15, 16, 19, 21, 23, 24, 25, 26, 27, 28, 31, 32, 33, 34, 81, 83],
+      "published_at": "2021-12-31",
+      "named_source": "天津市人民政府",
+      "document_type": "administrative_norm",
+      "document_number": "津政规〔2021〕6号",
+      "document_signed_at": "2021-12-30",
+      "document_stated_effective_from": "2022-01-01",
+      "document_stated_repeal_on": "2026-12-31",
+      "scope_limits": "天津来津公民居住证，保留一般条件、代办证明、京津冀互认例外、签注与变更、外国人及港澳台另依规定。第五条、第十二条的续段一起选入；第四十七条明确2022-01-01施行、2026-12-31废止，尚未核查后续修订或现行执行，不据截至日期单独认证有效。未选积分落户规则。"
+    },
+    {
+      "source_id": "HZ-RESIDENCE-EXPLANATION",
+      "url": "https://zfgb.hangzhou.gov.cn/15/106220253/t101220253064/524785.shtml",
+      "region": "杭州市",
+      "matter": "residence-permit-application",
+      "selector": {"class": "html_content"},
+      "original_sha256": "17b175791df9421b4d1978e82244fa3d61232def38681b13459e1ef8c0207403",
+      "parsed_paragraph_count": 43,
+      "selected_ordinals": [1, 2, 3, 4, 8, 9, 30, 31, 32, 33, 34, 41, 42],
+      "published_at": "2019-05-23",
+      "named_source": "市公安局、12345市长公开电话受理中心联合供稿",
+      "document_type": "historical_official_policy_explanation",
+      "historical_only": true,
+      "scope_limits": "2019年第04期公报历史解读；施行、当时市区名单、基本条件、签注、补换领和费用问答成对保存，仅作历史对照。旧区划、渠道和条件未经现行核查，不能作为2026办事清单或套用天津规则。页面尾部2026生成时间不改写2019发布日期。"
+    }
+  ]
+}
