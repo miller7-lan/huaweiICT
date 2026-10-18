@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-18T14:23:12.946842+00:00",
+  "captured_at": "2026-10-18T14:25:43.907196+00:00",
   "counts": {
-    "sites": 59,
-    "documents": 48,
-    "revisions": 155,
-    "chunks": 997,
+    "sites": 61,
+    "documents": 51,
+    "revisions": 158,
+    "chunks": 1033,
     "versions": 0,
     "heads": 0,
     "jobs": 38,
-    "latest_chunks": 349
+    "latest_chunks": 385
   },
   "sources": [
     {
@@ -1039,6 +1039,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "NJ-ID-RENEWAL-CYCLE-2026",
+      "label": "身份证到期换证领取周期问答",
+      "origin": "https://www.nanjing.gov.cn",
+      "allowed_paths": [
+        "/hdjl/hygq/202601/t20260105_5757179.html"
+      ],
+      "seeds": [
+        "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "RES-GUIDE-01",
       "label": "居住证首次申领（二七区）",
       "origin": "https://eq.jiceng.zhengzhou.gov.cn",
@@ -1129,6 +1148,25 @@
       "page_kind": "document",
       "enabled_at_snapshot": false,
       "paused_reason": "[SSL: BAD_ECPOINT] bad ecpoint (_ssl.c:1028)",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "TJ-RESIDENCE-MEASURES-2021",
+      "label": "天津市居住证管理办法",
+      "origin": "https://www.tj.gov.cn",
+      "allowed_paths": [
+        "/zwgk/szfwj/tjsrmzf/202112/t20211231_5768456.html"
+      ],
+      "seeds": [
+        "https://www.tj.gov.cn/zwgk/szfwj/tjsrmzf/202112/t20211231_5768456.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
@@ -3677,6 +3715,107 @@
       ]
     },
     {
+      "source_id": "HZ-RESIDENCE-EXPLANATION",
+      "url": "https://zfgb.hangzhou.gov.cn/15/106220253/t101220253064/524785.shtml",
+      "revision": "rev-3eb8152eef50ae4c77e1112f",
+      "state": "pending_review",
+      "original_sha256": "17b175791df9421b4d1978e82244fa3d61232def38681b13459e1ef8c0207403",
+      "original_bytes": 33664,
+      "metadata": {
+        "title": "杭州市流动人口居住证申领实施细则试行解读",
+        "region": "杭州市",
+        "matter": "residence-permit-application",
+        "document_type": "historical_official_policy_explanation",
+        "published_at": "2019-05-23",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "historical_context_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 33,
+          "text_sha256": "62733c52f6f8af70bbd93ec51f70a38bbf8ffeb6bdfef1f6b229d7d992e42d68"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 76,
+          "text_sha256": "6d4c24fb1f29cb95490a62741b30a1a73f484ebaa46748dff3be48b8cf6918a5"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "79f456ea8eeff228c54179d5105f2b4609e5913513d18caf8de1b81ef7fb152b"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 83,
+          "text_sha256": "17c68fdb1725b960be26a2216bccd2d2aff8f55fc7ecd08b33faeb3cb23638c9"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "eligibility",
+          "characters": 21,
+          "text_sha256": "24b2068a4b9b0f49fdbb510662884d73fdd32e9ed7c5a839c0756661696f55bb"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "eligibility",
+          "characters": 78,
+          "text_sha256": "7c2267e576206f913ec04bca4b3d43ae01b0cb914f20fa445012437989571499"
+        },
+        {
+          "locator": "正文段落30",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "24b503c182ca0559cc5f0fad214884aaeaf094516927b069c087280b70cdd719"
+        },
+        {
+          "locator": "正文段落31",
+          "category": "eligibility",
+          "characters": 129,
+          "text_sha256": "b8f907bba403ed9de4e034a15bee34c4eab5738305c3c194adf86d344d7d3e8e"
+        },
+        {
+          "locator": "正文段落32",
+          "category": "eligibility",
+          "characters": 138,
+          "text_sha256": "624a62dd6bd748c7f4d951d74b0f2c63d8c6f8e6848bfb921ce60da800c0cc93"
+        },
+        {
+          "locator": "正文段落33",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "94a1fa57f822c4ec534665e8934a731fe2818c5ed9595e5edbe6bd5e1a8398d7"
+        },
+        {
+          "locator": "正文段落34",
+          "category": "identity",
+          "characters": 80,
+          "text_sha256": "a97af4176929032c03e63d9a9dfcd6a9ef27d2d3881280440e587c381d1d6898"
+        },
+        {
+          "locator": "正文段落41",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "7c8204561e9078247f8be80b72822f5b8ae4a12cf3fc14430332c31d64e3bccd"
+        },
+        {
+          "locator": "正文段落42",
+          "category": "procedure",
+          "characters": 122,
+          "text_sha256": "b9516cd82ecadb182c47699cf8c2f9c9b2bf5641107fb4779da512459b23a99d"
+        }
+      ]
+    },
+    {
       "source_id": "ID-AMENDMENT-JT-LEAD",
       "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
       "revision": "rev-bd98fcbde0cda7f52078b310",
@@ -4570,6 +4709,192 @@
           "category": "identity",
           "characters": 117,
           "text_sha256": "d4b8d684a54fb785c1119048dd2698f676224552571d43d15bf2eab654c6f768"
+        }
+      ]
+    },
+    {
+      "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "revision": "rev-6b0fb8bd7de1638a149dbaa9",
+      "state": "pending_review",
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "original_bytes": 29854,
+      "metadata": {
+        "title": "身份证到期换证领取周期问答",
+        "region": "南京市",
+        "matter": "resident-id-renewal",
+        "document_type": "official_service_question_answer",
+        "published_at": "2026-01-05",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 24,
+          "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 58,
+          "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 52,
+          "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+        }
+      ]
+    },
+    {
+      "source_id": "TJ-RESIDENCE-MEASURES-2021",
+      "url": "https://www.tj.gov.cn/zwgk/szfwj/tjsrmzf/202112/t20211231_5768456.html",
+      "revision": "rev-991fec8588548802b19989bc",
+      "state": "pending_review",
+      "original_sha256": "c844592ed9c2433d1be6fe81489e919daf4ac3dfb395bcbb55fcff9cee6e7a70",
+      "original_bytes": 169938,
+      "metadata": {
+        "title": "天津市居住证管理办法",
+        "region": "天津市",
+        "matter": "residence-permit-application",
+        "document_type": "administrative_norm",
+        "document_number": "津政规〔2021〕6号",
+        "published_at": "2021-12-31",
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2021-12-30",
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 11,
+          "text_sha256": "a04f601895df20a7e081042b2e3620764dadff9e233be2ec9fdb949cf7dd3838"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 11,
+          "text_sha256": "f9eff94aca2cf7ab1169a8c696bc2f950675ceb9bd421d2dd76039b35b92a70a"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "household",
+          "characters": 66,
+          "text_sha256": "55b325467c900fd3c1c84f98e5029cc9c81d81110c63747d6617059bdc472f37"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 95,
+          "text_sha256": "b6c674eda53ad0aafa08e9ad370f53577ae70ec7fa71660242d5da0e8611f28e"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 35,
+          "text_sha256": "330ae017485637496bc4af7d8283448942953494fc7d78d0006d4ba4963f5cea"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 79,
+          "text_sha256": "d3738a47d1dd2cf9d143783c8ded006bfadacd07bcdb5827311b053ee8b68da7"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "identity",
+          "characters": 112,
+          "text_sha256": "e6f01be5d890d5dbb1112546c1e14b4a88c51176b4eb3125c2d7a0bb1b0cd877"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "eligibility",
+          "characters": 52,
+          "text_sha256": "ef506f50f14541964b589f33468ca8945aeb5e52412b5c69e71500d6e6b7e88b"
+        },
+        {
+          "locator": "正文段落23",
+          "category": "procedure",
+          "characters": 82,
+          "text_sha256": "adb5a70a3c5fd4c83d6c447d8fd96b5589950139042a22870e32b1dd79b29b9b"
+        },
+        {
+          "locator": "正文段落24",
+          "category": "identity",
+          "characters": 62,
+          "text_sha256": "601cdf816916cd34440d45faf3bb1008000cb53067aace153c2696527c7bd009"
+        },
+        {
+          "locator": "正文段落25",
+          "category": "procedure",
+          "characters": 77,
+          "text_sha256": "68b9769afe21171da7acab9cc36a2e682e6dcfaf044ed4ca8b444aaac2aa7b2d"
+        },
+        {
+          "locator": "正文段落26",
+          "category": "procedure",
+          "characters": 78,
+          "text_sha256": "88d284ade632d2ab1295c5e46cd432d884b17c84c7211fb4f60e5280663fec5f"
+        },
+        {
+          "locator": "正文段落27",
+          "category": "procedure",
+          "characters": 127,
+          "text_sha256": "f0ed5b5fb8ac97d4629ebd2cbdbef31a6ab926b74022b5342c9a033d2cd04571"
+        },
+        {
+          "locator": "正文段落28",
+          "category": "eligibility",
+          "characters": 109,
+          "text_sha256": "3b33d00c83ece0b71bb5b0fd60e557fcfe1015c6e08e18c4e452ac5e731747c9"
+        },
+        {
+          "locator": "正文段落31",
+          "category": "procedure",
+          "characters": 150,
+          "text_sha256": "0779a4640b0339d86d2eb3f3f9d2adb63193c35769703e379f9f970b36edd0b9"
+        },
+        {
+          "locator": "正文段落32",
+          "category": "procedure",
+          "characters": 69,
+          "text_sha256": "769329e4456e1aee7eb9dc663abe67b2dc8a742e6a5129e9c19a0e5d528e0a3a"
+        },
+        {
+          "locator": "正文段落33",
+          "category": "procedure",
+          "characters": 51,
+          "text_sha256": "da9053848193d87e2f1fd5a483e45f8c313f50da19a2bead915796b744fb1384"
+        },
+        {
+          "locator": "正文段落34",
+          "category": "procedure",
+          "characters": 47,
+          "text_sha256": "07340436b8115426d2e47dbbc2e2835f7f1d4c3bad2b787ff7eded900c75b99c"
+        },
+        {
+          "locator": "正文段落81",
+          "category": "procedure",
+          "characters": 67,
+          "text_sha256": "eff1ae7daf21f4087e03471db5a4ccf1028303b946b359eda5cb8e1559a05992"
+        },
+        {
+          "locator": "正文段落83",
+          "category": "procedure",
+          "characters": 37,
+          "text_sha256": "6e9271ff24b7efabb8aaef295a62a3a9c9470f67632bd15ebb15ad7294485f60"
         }
       ]
     },

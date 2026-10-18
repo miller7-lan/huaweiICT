@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-18T14:25:24.313878+00:00",
+  "kind": "actual_multiregion_candidate_intake_not_business_release",
+  "sources": [
+    {
+      "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "region": "南京市",
+      "matter": "resident-id-renewal",
+      "revision": "rev-6b0fb8bd7de1638a149dbaa9",
+      "state": "pending_review",
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "original_bytes": 29854,
+      "selected_paragraphs": 3,
+      "selected_content_sha256": "902a988f188dad0aa4107d7bf61caf4b421947521c0de3d94e956531a4f8adb3",
+      "published_at": "2026-01-05",
+      "scope_limits": "南京门户到期换证周期问答，省内/省外户籍分开；考生快速服务无具体天数，不推为所有申请人加急期限，也不作为北京或河南办理时限。",
+      "normal_guarded_http": true,
+      "body_acquired": true,
+      "body_ingested": true,
+      "automatic_monitoring_enabled": false,
+      "business_approval": false
+    },
+    {
+      "source_id": "TJ-RESIDENCE-MEASURES-2021",
+      "url": "https://www.tj.gov.cn/zwgk/szfwj/tjsrmzf/202112/t20211231_5768456.html",
+      "region": "天津市",
+      "matter": "residence-permit-application",
+      "revision": "rev-991fec8588548802b19989bc",
+      "state": "pending_review",
+      "original_sha256": "c844592ed9c2433d1be6fe81489e919daf4ac3dfb395bcbb55fcff9cee6e7a70",
+      "original_bytes": 169938,
+      "selected_paragraphs": 20,
+      "selected_content_sha256": "522463d1e16f77ae1d8f4318546f9465ea91838ea8b6f3ee63b93c9b58b3a416",
+      "published_at": "2021-12-31",
+      "scope_limits": "天津来津公民居住证，保留一般条件、代办证明、京津冀互认例外、签注与变更、外国人及港澳台另依规定。第五条、第十二条的续段一起选入；第四十七条明确2022-01-01施行、2026-12-31废止，尚未核查后续修订或现行执行，不据截至日期单独认证有效。未选积分落户规则。",
+      "normal_guarded_http": true,
+      "body_acquired": true,
+      "body_ingested": true,
+      "automatic_monitoring_enabled": false,
+      "business_approval": false
+    },
+    {
+      "source_id": "HZ-RESIDENCE-EXPLANATION",
+      "url": "https://zfgb.hangzhou.gov.cn/15/106220253/t101220253064/524785.shtml",
+      "region": "杭州市",
+      "matter": "residence-permit-application",
+      "revision": "rev-3eb8152eef50ae4c77e1112f",
+      "state": "pending_review",
+      "original_sha256": "17b175791df9421b4d1978e82244fa3d61232def38681b13459e1ef8c0207403",
+      "original_bytes": 33664,
+      "selected_paragraphs": 13,
+      "selected_content_sha256": "041bc41b6ec7b9cfbfc20bc0deb180282dfcababc0da1fba32e819e24b37bbba",
+      "published_at": "2019-05-23",
+      "scope_limits": "2019年第04期公报历史解读；施行、当时市区名单、基本条件、签注、补换领和费用问答成对保存，仅作历史对照。旧区划、渠道和条件未经现行核查，不能作为2026办事清单或套用天津规则。页面尾部2026生成时间不改写2019发布日期。",
+      "normal_guarded_http": true,
+      "body_acquired": true,
+      "body_ingested": true,
+      "automatic_monitoring_enabled": false,
+      "business_approval": false
+    }
+  ],
+  "new_documents": 3,
+  "new_revisions": 3,
+  "new_selected_paragraphs": 36,
+  "counts": {
+    "sites": 61,
+    "documents": 51,
+    "revisions": 158,
+    "chunks": 1033,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 385
+  },
+  "latest_states": {
+    "excluded": 28,
+    "pending_review": 16,
+    "reviewed": 7
+  },
+  "gates": {
+    "reviews": 9,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "integrity_checks": {
+    "original_hashes_match": true,
+    "parsed_counts_match": true,
+    "complete_selected_paragraphs_match_archive": true,
+    "all_new_revisions_verified": true,
+    "all_new_records_pending": true,
+    "all_previous_revisions_unchanged": true,
+    "business_gates_unchanged": true,
+    "original_pilot_and_reference_files_unchanged": true,
+    "automatic_monitoring_disabled": true
+  },
+  "protected_files": {
+    "config\\knowledge-scope.json": "37da27bf6f1ca08619f9b748010f9613ae2f682b2eead02ea236fabab50e99fa",
+    ".runtime\\knowledge-update\\knowledge-scope.json": "569aae458ba513800d82feb6195a74613d00722dd415e0d269598a5a85b21663",
+    "evaluation\\knowledge\\holdout-business-reference-draft.json": "4aefbff2cfb71e8ffe54835be493c11317d363ae867bb9b5b1a2d5bbeb0d128f",
+    "evaluation\\knowledge\\holdout-business-questions-draft.json": "4745535a00e6422c679722a560f98f4a5ec2d23e00023ae62fd47024334934bb"
+  },
+  "old_pilot_is_not_expansion_prerequisite": true,
+  "original_bodies_exported": 0,
+  "new_business_releases": 0
+}
