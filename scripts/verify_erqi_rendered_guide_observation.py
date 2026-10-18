@@ -14,6 +14,8 @@ def main():
     store = KnowledgeStore(RUNTIME / "knowledge-update", read_only=True)
     private = store.root / "source-research/erqi-portal-guide-20261018"
     before = read(private / "before-main.json")
+    if store.status()["counts"] != before["counts"]:
+        raise SystemExit("主库已有后续更新；保留最初网页观察阶段回执，不用当前状态覆盖")
     report = read(ROOT / "evaluation/knowledge/erqi-rendered-guide-observation-20261018.json")
     raw = (private / "guide-dom-snapshot.txt").read_bytes()
     text = raw.decode("utf-8")
