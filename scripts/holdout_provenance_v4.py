@@ -47,13 +47,13 @@ def validate_v4_semantics(before, after):
         raise ValueError("v4 provenance cannot change questions, oracles, blockers or acceptance")
 
 
-def literal_anchors(db, before_case, after_sources):
+def literal_anchors(db, before_case, after_sources, source_keys=None):
     anchors = []
     for original in before_case["background_source_anchors"]:
         if original != full_anchor(db, original["source_key"], original["revision"], original["locator"]):
             raise ValueError("Expected an intact complete historical source span")
         anchor = deepcopy(original)
-        if anchor["source_key"] in EXPECTED_REVISIONS:
+        if anchor["source_key"] in (EXPECTED_REVISIONS if source_keys is None else source_keys):
             revision = after_sources[anchor["source_key"]]["revision"]
             matches = [row for row in db.execute("SELECT ordinal,locator,text FROM chunks WHERE revision_id=?", (revision,))
                        if row["locator"] == anchor["locator"] and fingerprint(row["text"].encode()) == anchor["parent_text_sha256"]

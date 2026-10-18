@@ -143,6 +143,9 @@ def migration_evidence(store, db, before, after):
 
 
 def validate_migration(root,store,db,reference):
+    if reference.get("draft_revision") == 5:
+        from holdout_provenance_v5 import validate_v5_migration
+        return validate_v5_migration(root,store,db,reference)
     if reference.get("draft_revision") == 4:
         from holdout_provenance_v4 import validate_v4_migration
         return validate_v4_migration(root,store,db,reference)
@@ -173,6 +176,9 @@ def migration_path(reference):
     elif reference.get("draft_revision") == 4:
         from holdout_provenance_v4 import MIGRATION_V4
         expected = MIGRATION_V4
+    elif reference.get("draft_revision") == 5:
+        from holdout_provenance_v5 import MIGRATION_V5
+        expected = MIGRATION_V5
     else:
         raise ValueError("Unsupported provenance migration version")
     if reference.get("provenance_migration") != {"path":expected.as_posix()}:

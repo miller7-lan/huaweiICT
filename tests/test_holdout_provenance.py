@@ -48,13 +48,16 @@ def test_migration_cannot_change_authorship_or_acceptance(field,value):
         validate_semantics(before,after)
 
 
-@pytest.fixture(params=[3, 4])
+@pytest.fixture(params=[3, 4, 5])
 def screened(tmp_path,monkeypatch,request):
     import export_knowledge_review_packet as exporter
     _,after = drafts()
     if request.param == 4:
         from holdout_provenance_v4 import MIGRATION_V4
         after.update(draft_revision=4,provenance_migration={"path":MIGRATION_V4.as_posix()})
+    if request.param == 5:
+        from holdout_provenance_v5 import MIGRATION_V5
+        after.update(draft_revision=5,provenance_migration={"path":MIGRATION_V5.as_posix()})
     after["content_sha256"] = fingerprint(after)
     directory = tmp_path / "evaluation/knowledge";directory.mkdir(parents=True)
     migration = {"kind":"synthetic migration"};migration["content_sha256"] = fingerprint(migration)
