@@ -98,14 +98,14 @@ function render() {
     for (const option of current.options) byId('choices').append(button(option.label, () => answer(current, option.label)));
   }
   byId('customForm').hidden = !current || Boolean(draft.receipt);
-  byId('aiState').textContent = draft.ai_enabled ? 'DeepSeek 核查端口已启用；仅在你同意并点击核查后调用。' : 'DeepSeek 推理未启用。可以先填写，但不能把本地规则回放冒称为 AI 核查。';
+  byId('aiState').textContent = draft.ai_enabled ? 'DeepSeek 核查端口已启用；需你同意并点击核查。同草稿、同版本、同规范值可复用已验证候选，不重复调用。' : 'DeepSeek 推理未启用。可以先填写，但不能把本地规则回放冒称为 AI 核查。';
   rows(byId('answers'), draft.fields.filter(field => draft.answers[field.id]).map(field => ({...field, ...draft.answers[field.id]})), !draft.receipt);
   byId('reviewControls').hidden = draft.completed !== draft.total || Boolean(draft.receipt) || Boolean(editing);
   byId('verify').disabled = busy || !byId('consent').checked;
   byId('humanReview').hidden = !draft.review || Boolean(draft.receipt) || Boolean(editing);
   if (draft.review && !draft.receipt) {
     const review = draft.review;
-    byId('model').textContent = `核查子 Agent：${review.agent_role} · ${review.model} · 不改变事实，无提交权限`;
+    byId('model').textContent = `核查子 Agent：${review.agent_role} · ${review.model} · ${review.verification_cache_hit ? '本草稿精确缓存，本次未调用模型' : '本轮模型核查'} · 不改变事实，无提交权限`;
     rows(byId('reviewTable'), review.fields, true);
     byId('unknowns').textContent = review.unknown_fields.length ? '以下项仍为未知，不会自动补全：' + review.unknown_fields.map(id => draft.fields.find(field => field.id === id).label).join('、') : '没有未填写的选项；这不等于材料真实、身份已验证或办理资格通过。';
     const previous = byId('branch').value;
@@ -179,7 +179,7 @@ byId('ack').addEventListener('change', render);
 byId('branch').addEventListener('change', render);
 byId('verify').addEventListener('click', () => action(async () => {
   draft = await request('/api/forms/review', body({consent: byId('consent').checked}));
-  byId('ack').checked = false; notify('AI 核查已完成，请逐项检查后再确认提交。');
+  byId('ack').checked = false; notify(draft.review.verification_cache_hit ? '已复用本草稿的已验证候选，本次未调用模型；请重新逐项检查并确认。' : 'AI 核查已完成，请逐项检查后再确认提交。');
 }));
 byId('submit').addEventListener('click', () => action(async () => {
   const output = await request('/api/forms/submit', body({review_id: draft.review.review_id, branch_id: byId('branch').value, acknowledge: byId('ack').checked}));

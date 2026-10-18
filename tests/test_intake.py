@@ -385,6 +385,139 @@ def switch_head(workflow):
         workflow.store.put("state", "wf_head", next_id, db)
 
 
+class CacheVerifierFixture(VerifierFixture):
+    def cache_identity(self, template, values): return "fixture-only-cache-v1"
+
+
+def filled_draft(workflow, **kwargs):
+    form = GuidedForm(workflow, **kwargs)
+    for field, answer in ANSWERS: form.answer(field, answer, form.revision)
+    return form
+
+
+def test_draft_exact_cache_saves_call_but_requires_new_human_confirmation(workflow):
+    form, verifier = filled_draft(workflow), CacheVerifierFixture()
+    form.review(workflow, verifier, form.revision)
+    original_id = form.reviewed["review_id"]
+    form.answer("reason", "到期", form.revision)
+    assert form.reviewed is None
+    form.review(workflow, verifier, form.revision)
+    assert len(verifier.calls) == 1 and form.reviewed["verification_cache_hit"] is True
+    assert form.reviewed["review_id"] != original_id
+    assert form.reviewed["requires_human_confirmation"] is True
+    assert form.reviewed["usage"] == {"input_tokens": 0, "output_tokens": 0}
+    with pytest.raises(FormError, match="FORM_REVIEW_REQUIRED"):
+        form.submit(workflow, revision=form.revision, review_id=original_id, branch_id="branch-adult-self", acknowledge=True)
+    with pytest.raises(FormError, match="FORM_HUMAN_CONFIRMATION_REQUIRED"):
+        form.submit(workflow, revision=form.revision, review_id=form.reviewed["review_id"], branch_id="branch-adult-self", acknowledge=False)
+    assert not workflow.rows("query")
+
+
+def test_cache_is_bound_to_values_version_template_and_verifier(workflow):
+    form, verifier = filled_draft(workflow), CacheVerifierFixture()
+    form.review(workflow, verifier, form.revision)
+    form.answer("electronic_verified", "不清楚", form.revision)
+    form.review(workflow, verifier, form.revision)
+    assert len(verifier.calls) == 2 and form.reviewed["unknown_fields"] == ["electronic_verified"]
+    switch_head(workflow)
+    form.review(workflow, verifier, form.revision)
+    assert len(verifier.calls) == 3 and form.reviewed["verification_cache_hit"] is False
+    form.template["schema_id"] += "-next"
+    form.review(workflow, verifier, form.revision)
+    assert len(verifier.calls) == 4
+    verifier.cache_identity = lambda template, values: "fixture-only-cache-v2"
+    form.review(workflow, verifier, form.revision)
+    assert len(verifier.calls) == 5
+
+
+def test_cache_does_not_cross_drafts_or_bypass_activation(workflow):
+    first, second, verifier = filled_draft(workflow), filled_draft(workflow), CacheVerifierFixture()
+    first.review(workflow, verifier, first.revision)
+    second.review(workflow, verifier, second.revision)
+    assert len(verifier.calls) == 2
+    verifier.active = False
+    with pytest.raises(FormError, match="FORM_AI_NOT_ACTIVATED"):
+        first.review(workflow, verifier, first.revision)
+    assert first.reviewed is None and len(verifier.calls) == 2
+
+
+def test_expired_and_submitted_drafts_clear_cached_candidates(workflow):
+    now = [0.]
+    form, verifier = filled_draft(workflow, clock=lambda: now[0]), CacheVerifierFixture()
+    form.review(workflow, verifier, form.revision)
+    assert form._verification_cache
+    now[0] = 1800
+    with pytest.raises(FormError, match="FORM_EXPIRED"): form.state(verifier)
+    assert not form._verification_cache
+    form = filled_draft(workflow)
+    form.review(workflow, verifier, form.revision)
+    form.submit(workflow, revision=form.revision, review_id=form.reviewed["review_id"], branch_id="branch-adult-self", acknowledge=True)
+    assert not form._verification_cache
+
+
+def test_failed_candidate_is_never_cached(workflow):
+    verifier = CacheVerifierFixture(lambda result: result["output"]["fields"][0].update(value="lost"))
+    form = filled_draft(workflow)
+    for attempt in range(2):
+        with pytest.raises(FormError, match="FORM_AI_CHANGED_FACTS"):
+            form.review(workflow, verifier, form.revision)
+    assert len(verifier.calls) == 2 and not form._verification_cache
+
+
+def test_real_verifier_projection_retains_selected_mapping_null_and_safety_gate(workflow):
+    form = filled_draft(workflow)
+    connection = workflow.connections
+    connection.config["form_verifier_enabled"] = True
+    verifier = DeepSeekFormVerifier(connection)
+    values = {field["id"]: None for field in form.template["fields"]}
+    original = deepcopy(form.template)
+    payload = verifier.payload(form.template, values)
+    assert form.template == original
+    assert all(len(field["options"]) == 1 and field["value"] is None and field["options"][0]["value"] is None for field in payload["fields"])
+    assert all(set(field) == {"id", "value", "options"} for field in payload["fields"])
+    original["fields"][0]["options"][0]["metadata"] = {"data_class": "private"}
+    with pytest.raises(FormError, match="FORM_DATA_CLASS_BLOCKED"):
+        verifier.cache_identity(original, values)
+
+
+def test_cache_identity_changes_with_prompt_and_profile_revalidated(workflow):
+    form = filled_draft(workflow)
+    connection = workflow.connections
+    connection.config["form_verifier_enabled"] = True
+    verifier = DeepSeekFormVerifier(connection)
+    values = {key: answer["value"] for key, answer in form.answers.items()}
+    original = verifier.cache_identity(form.template, values)
+    verifier.prompt += "只核查当前字段。"
+    assert verifier.cache_identity(form.template, values) != original
+    connection.config["deepseek"]["base_url"] = "https://evil.invalid/v1"
+    with pytest.raises(FormError, match="FORM_AI_ROUTE_NOT_ALLOWED"):
+        verifier.cache_identity(form.template, values)
+
+
+def test_exact_cache_still_requires_consent_and_counts_review_attempts(client, verifier, workflow):
+    verifier.cache_identity = lambda template, values: "fixture-http-exact-v1"
+    form = review(client, fill(client))
+    for attempt in range(2):
+        form = client.post("/api/forms/answer", json=body(form, field_id="reason", answer="到期")).json()
+        assert client.post("/api/forms/review", json=body(form, consent=False)).json()["error"] == "FORM_EGRESS_CONSENT_REQUIRED"
+        form = review(client, form)
+        assert form["review"]["verification_cache_hit"] is True
+    assert len(verifier.calls) == 1
+    form = client.post("/api/forms/answer", json=body(form, field_id="reason", answer="到期")).json()
+    assert client.post("/api/forms/review", json=body(form, consent=True)).json()["error"] == "FORM_AI_BUDGET_EXHAUSTED"
+    assert not workflow.rows("query")
+
+
+def test_draft_cache_bounded_to_four_candidates_and_contains_no_raw_answers(workflow):
+    form, verifier = filled_draft(workflow), CacheVerifierFixture()
+    for index in range(6):
+        verifier.cache_identity = lambda template, values, index=index: "fixture-version-"+str(index)
+        form.review(workflow, verifier, form.revision)
+    assert len(form._verification_cache) == 4 and len(verifier.calls) == 6
+    serialized = json.dumps(list(form._verification_cache.values()), ensure_ascii=False)
+    assert "到期了" not in serialized and "我自己" not in serialized and '"original"' not in serialized
+
+
 def test_version_change_during_model_review_discards_candidate(workflow):
     form = GuidedForm(workflow)
     for field, answer in ANSWERS: form.answer(field, answer, form.revision)

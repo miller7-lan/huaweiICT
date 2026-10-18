@@ -5,7 +5,7 @@ import json
 import httpx
 import pytest
 
-from gov_mcp.deepseek import chat, PROFILES, CloudError, ROOT
+from gov_mcp.deepseek import chat, compact_json, PROFILES, CloudError, ROOT
 from gov_mcp.decision.connections import Connections, ConnectionError
 from gov_mcp.knowledge.engine import Engine
 from gov_mcp.knowledge.store import KBError
@@ -123,3 +123,49 @@ def test_active_native_agent_is_not_rebound():
     with pytest.raises(CloudError, match="REFUSE_TO_OVERWRITE_ACTIVE_AGENT"):
         bind_drafts(api, PROFILES["official"], "fixture-secret", {"agents":{"extractor":17}})
     assert not api.agent_writes
+
+
+def test_compact_json_preserves_types_order_and_complete_evidence():
+    value = {"quote": "未成年人不适用；5个工作日，须核对原件。", "ids": ["ev-1", "ev-2"], "unknown": None, "flag": False}
+    packed = compact_json(value)
+    assert json.loads(packed) == value
+    assert list(json.loads(packed)) == list(value)
+    assert len(packed.encode()) < len(json.dumps(value, ensure_ascii=False).encode())
+    assert value["quote"] in packed
+    with pytest.raises(ValueError): compact_json({"value": float("nan")})
+
+
+def test_role_payload_uses_compact_json_without_removing_evidence(tmp_path):
+    payload = {"data_class": "synthetic", "evidence": [{"id": "ev-1", "quote": "未成年人不适用，限5个工作日。"}], "unknown": None}
+    seen = []
+    def handle(request):
+        seen.append(json.loads(request.content)["messages"][1]["content"])
+        return httpx.Response(200, json=fixture_output())
+    conn = port(tmp_path, handle, environment={"DEEPSEEK_API_KEY": "fixture-secret"})
+    conn.request("query_verifier", "verify_conditions", payload)
+    assert seen == [compact_json(payload)] and json.loads(seen[0]) == payload
+
+
+def test_cache_usage_is_retained_without_treating_missing_details_as_zero():
+    value = fixture_output()
+    def call():
+        client = httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, json=value)))
+        return chat(PROFILES["official"], [], client=client, environment={"DEEPSEEK_API_KEY": "fixture-secret"})
+    assert call()["usage"] == {"input_tokens": 20, "output_tokens": 8}
+    value["usage"].update(prompt_cache_hit_tokens=12, prompt_cache_miss_tokens=8)
+    assert call()["usage"] == {"input_tokens": 20, "output_tokens": 8, "input_cache_hit_tokens": 12, "input_cache_miss_tokens": 8}
+
+
+@pytest.mark.parametrize("details", [
+    {"prompt_cache_hit_tokens": 1},
+    {"prompt_cache_hit_tokens": True, "prompt_cache_miss_tokens": 19},
+    {"prompt_cache_hit_tokens": -1, "prompt_cache_miss_tokens": 21},
+    {"prompt_cache_hit_tokens": 10, "prompt_cache_miss_tokens": 11},
+    {"prompt_cache_hit_tokens": "12", "prompt_cache_miss_tokens": 8},
+])
+def test_invalid_cache_usage_is_rejected(details):
+    value = fixture_output()
+    value["usage"].update(details)
+    client = httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, json=value)))
+    with pytest.raises(CloudError, match="INVALID_DEEPSEEK_USAGE"):
+        chat(PROFILES["official"], [], client=client, environment={"DEEPSEEK_API_KEY": "fixture-secret"})

@@ -6,7 +6,7 @@ import json
 import re
 
 from .classification import ClassificationError, fingerprint, request_bytes
-from .deepseek import ROOT, PROFILES, CloudError, chat, load_key
+from .deepseek import ROOT, PROFILES, CloudError, chat, compact_json, load_key
 
 
 VERSION = "jev-english-1"
@@ -52,7 +52,7 @@ class DeepSeekTranslator:
             self.attempts += 1
             return chat(PROFILES["official"], [
                 {"role": "system", "content": PROMPT},
-                {"role": "user", "content": json.dumps(texts, ensure_ascii=False, allow_nan=False)}],
+                {"role": "user", "content": compact_json(texts)}],
                 client=self.client, environment=self.environment, max_output_tokens=8192)
         except CloudError as error:
             if str(error) in {"DEEPSEEK_AUTHENTICATION_FAILED", "DEEPSEEK_PAYMENT_REQUIRED", "DEEPSEEK_ACCESS_DENIED"}:

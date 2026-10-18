@@ -18,6 +18,10 @@ class CloudError(ValueError):
     pass
 
 
+def compact_json(value):
+    return json.dumps(value, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
+
+
 def validate_cloud(config):
     if not isinstance(config, dict) or config != PROFILES.get(config.get("provider")):
         raise CloudError("INVALID_DEEPSEEK_PROFILE")
@@ -52,7 +56,7 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
     else:
         body["reasoning_effort"] = "none"
         body["providerOptions"] = {"gateway": {"only": ["deepseek"]}}
-    if len(json.dumps(body, ensure_ascii=False, allow_nan=False).encode()) > 65536:
+    if len(compact_json(body).encode()) > 65536:
         raise CloudError("MODEL_INPUT_TOO_LARGE")
 
     def send(http):
@@ -80,8 +84,15 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
             usage = value["usage"]
             counts = {k: usage[k] for k in ("prompt_tokens", "completion_tokens")}
             if any(type(v) is not int or v < 0 for v in counts.values()): raise CloudError("INVALID_DEEPSEEK_USAGE")
+            normalized_usage = {"input_tokens": counts["prompt_tokens"], "output_tokens": counts["completion_tokens"]}
+            cache_fields = ("prompt_cache_hit_tokens", "prompt_cache_miss_tokens")
+            if any(field in usage for field in cache_fields):
+                cache_counts = [usage.get(field) for field in cache_fields]
+                if any(type(count) is not int or count < 0 for count in cache_counts) or sum(cache_counts) != counts["prompt_tokens"]:
+                    raise CloudError("INVALID_DEEPSEEK_USAGE")
+                normalized_usage.update(input_cache_hit_tokens=cache_counts[0], input_cache_miss_tokens=cache_counts[1])
             return {"provider": config["provider"], "model": actual, "requested_model": config["model"],
-                    "output": output, "usage": {"input_tokens": counts["prompt_tokens"], "output_tokens": counts["completion_tokens"]},
+                    "output": output, "usage": normalized_usage,
                     "status": "untrusted_machine_candidate"}
         except CloudError: raise
         except httpx.RequestError: raise CloudError("DEEPSEEK_TRANSPORT_UNAVAILABLE") from None

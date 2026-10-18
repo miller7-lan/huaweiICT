@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 import httpx
 
 from gov_mcp.classification import JevProvider, validate_response, with_english_input
-from gov_mcp.deepseek import chat, load_key, validate_cloud, CloudError
+from gov_mcp.deepseek import chat, compact_json, load_key, validate_cloud, CloudError
 from gov_mcp.privacy import data_classes_allowed
 from .models import canonical_hash
 from .adapters import CAPABILITIES
@@ -99,7 +99,7 @@ class Connections:
         self.prepare(role, tool, payload)
         if not self.config["inference_enabled"]: raise ConnectionError("WAITING_FINAL_API_ACTIVATION")
         if not data_classes_allowed(payload, {"synthetic"}): raise ConnectionError("DATA_CLASS_BLOCKED")
-        raw = json.dumps(payload, ensure_ascii=False, allow_nan=False)
+        raw = compact_json(payload)
         if len(raw.encode()) > 64000: raise ConnectionError("MODEL_INPUT_TOO_LARGE")
         with self.lock:
             if self.config["roles"][role]["transport"] == "deepseek":
