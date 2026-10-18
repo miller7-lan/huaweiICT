@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "trace": [
+    {
+      "operation": "/api/tools/prepare_update",
+      "http_status": 200,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "6d55f0902ea3259c",
+          "role": "citizen"
+        }
+      },
+      "screenshot": "output/playwright/m1-BT11-prepare.png",
+      "audit": {
+        "time": "2026-10-12T08:16:59.880096+00:00",
+        "tool": "govx_prepare_update",
+        "request_id": "6d55f0902ea3259c",
+        "role": "citizen",
+        "principal_sha256": "0846e13e46d019f3bf1b629854aa13d6ea36ef0183cde4ea635f5343168a507a",
+        "status": "BLOCKED",
+        "message_code": "FORBIDDEN",
+        "duration_ms": 6.5,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "FORBIDDEN",
+          "data": {
+            "required_permission": "knowledge_maintainer",
+            "request_id": "6d55f0902ea3259c",
+            "role": "citizen"
+          }
+        }
+      },
+      "screenshot_sha256": "79e48bda611503d4f08868287a55502d295d996a6875081e110ae82fb3bf1d8a"
+    },
+    {
+      "operation": "/api/tools/publish_update",
+      "http_status": 200,
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "63f4a1e2b4021dc6",
+          "role": "citizen"
+        }
+      },
+      "screenshot": "output/playwright/m1-BT11-publish.png",
+      "audit": {
+        "time": "2026-10-12T08:17:02.946657+00:00",
+        "tool": "govx_publish_update",
+        "request_id": "63f4a1e2b4021dc6",
+        "role": "citizen",
+        "principal_sha256": "0846e13e46d019f3bf1b629854aa13d6ea36ef0183cde4ea635f5343168a507a",
+        "status": "BLOCKED",
+        "message_code": "FORBIDDEN",
+        "duration_ms": 5.4,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "FORBIDDEN",
+          "data": {
+            "required_permission": "knowledge_maintainer",
+            "request_id": "63f4a1e2b4021dc6",
+            "role": "citizen"
+          }
+        }
+      },
+      "screenshot_sha256": "79e48bda611503d4f08868287a55502d295d996a6875081e110ae82fb3bf1d8a"
+    }
+  ],
+  "captured_at": "2026-10-12T08:17:04.533042+00:00",
+  "source": "agent-operated real workbench UI",
+  "principal_sha256": "0846e13e46d019f3bf1b629854aa13d6ea36ef0183cde4ea635f5343168a507a"
+}

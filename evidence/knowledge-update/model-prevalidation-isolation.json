@@ -1,0 +1,48 @@
+{
+  "captured_at": "2026-10-16T02:25:23.749601+00:00",
+  "run_id": "20261015T205246Z-69f8439f",
+  "passed": true,
+  "checks": {
+    "all_thirty_requests_saved": true,
+    "no_transport_failures": true,
+    "all_provider_runs_ended_normally": true,
+    "model_never_requested_tools": true,
+    "counts_unchanged_during_initial_model_trial": true,
+    "publication_policy_still_unchanged": true,
+    "formal_query_still_stops_without_citations": true
+  },
+  "initial_trial_completed_at": "2026-10-15T21:07:49.474896+00:00",
+  "counts_at_trial_completion": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 55,
+    "chunks": 248,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "counts_at_this_check": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "runtime_changed_after_trial": true,
+  "post_trial_update_evidence": "evidence/knowledge-update/natural-cycle-parent-provenance.json",
+  "initial_trial_report_content_sha256": "ba0b8d5c20c5dc2c7242e630aebfe275314f4140c4f1a8528e4e09afbeda02dd",
+  "previous_private_observation_sha256": "5a8089868867ed5d9f6bc40ed1ac985464d33aa61f98d54f64ac545f900f3010",
+  "correction_note": "Separate the initial model-trial interval from this later live-runtime observation. An earlier isolation record reused the first-trial unchanged flag beside later counts; that observation is preserved privately and no longer represents one interval. The natural six-hour background cycle and subsequent AI scope exclusions explain the later revision counts.",
+  "maximum_actual_prompt_tokens": 3797,
+  "actual_formal_query_result": {
+    "status": "EMPTY",
+    "message_code": "NO_PUBLISHED_KNOWLEDGE",
+    "knowledge_version": null,
+    "citations": []
+  },
+  "scope": "Completion/isolation observations with explicit time intervals; not semantic accuracy, policy validity or a claim that the live database never changes after model completion."
+}

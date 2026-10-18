@@ -1,0 +1,148 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "unauthenticated_state",
+      "http_status": 401,
+      "actual": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "LOGIN_REQUIRED",
+        "data": {}
+      },
+      "passed": true
+    },
+    {
+      "case": "cross_origin_mutation",
+      "http_status": 403,
+      "actual": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ORIGIN_REJECTED",
+        "data": {}
+      },
+      "passed": true
+    },
+    {
+      "case": "citizen_cannot_list_staff_queue",
+      "http_status": 200,
+      "actual": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "request_id": "211e656d33ff5c19",
+          "role": "citizen",
+          "demo_mode": true,
+          "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+          "formal_approval": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "client_role_override_rejected",
+      "http_status": 400,
+      "actual": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "INVALID_ARGUMENTS",
+        "data": {}
+      },
+      "passed": true
+    },
+    {
+      "case": "same_handoff_replayed",
+      "http_status": 200,
+      "actual": {
+        "status": "OK",
+        "items": [],
+        "citations": [],
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "message_code": "HANDOFF_REUSED",
+        "data": {
+          "task_id": "task-5b19a3e8eda6",
+          "handoff_id": "handoff-41a0f3bf7edc",
+          "state": "demo_reviewed",
+          "request_id": "c8f05766d63fb90a",
+          "role": "citizen",
+          "demo_mode": true,
+          "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+          "formal_approval": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "staff_cannot_create_citizen_task",
+      "http_status": 200,
+      "actual": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "request_id": "d87008ca8ecfc118",
+          "role": "staff",
+          "demo_mode": true,
+          "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+          "formal_approval": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "confirmation_required",
+      "http_status": 200,
+      "actual": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONFIRMATION_OR_ASSESSMENT_MISMATCH",
+        "data": {
+          "request_id": "e11d3dbbcba219d9",
+          "role": "staff",
+          "demo_mode": true,
+          "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+          "formal_approval": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "case": "assessment_hash_mismatch",
+      "http_status": 200,
+      "actual": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONFIRMATION_OR_ASSESSMENT_MISMATCH",
+        "data": {
+          "request_id": "c95c033edcc964f0",
+          "role": "staff",
+          "demo_mode": true,
+          "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+          "formal_approval": false
+        }
+      },
+      "passed": true
+    }
+  ],
+  "counts_after": {
+    "tasks": 1,
+    "handoffs": 1,
+    "reviews": 1
+  },
+  "scope": "Real authenticated workbench to MCP calls; separate from actual browser flow evidence."
+}

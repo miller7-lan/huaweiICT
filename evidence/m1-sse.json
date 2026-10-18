@@ -1,0 +1,692 @@
+{
+  "captured_at": "2026-10-12T07:32:51.142455+00:00",
+  "passed": true,
+  "scope": "Live isolated MCP SSE with native login identities; not a replacement for native Agent or UI acceptance",
+  "actual_calls": 16,
+  "records": [
+    {
+      "tool": "govx_get_environment_status",
+      "account_role": "citizen",
+      "result": {
+        "status": "OK",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ENVIRONMENT_READY",
+        "data": {
+          "resources": {
+            "evidence": true,
+            "graph": true,
+            "updates": true
+          },
+          "counts": {
+            "evidence": 0,
+            "cases": 0,
+            "materials": 0,
+            "graph_nodes": 0,
+            "graph_edges": 0,
+            "candidates": 0,
+            "versions": 0
+          },
+          "request_id": "b16d885375c4292d",
+          "role": "citizen"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.449534+00:00",
+        "tool": "govx_get_environment_status",
+        "request_id": "b16d885375c4292d",
+        "role": "citizen",
+        "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
+        "status": "OK",
+        "message_code": "ENVIRONMENT_READY",
+        "duration_ms": 59.2,
+        "result": {
+          "status": "OK",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "ENVIRONMENT_READY",
+          "data": {
+            "resources": {
+              "evidence": true,
+              "graph": true,
+              "updates": true
+            },
+            "counts": {
+              "evidence": 0,
+              "cases": 0,
+              "materials": 0,
+              "graph_nodes": 0,
+              "graph_edges": 0,
+              "candidates": 0,
+              "versions": 0
+            },
+            "request_id": "b16d885375c4292d",
+            "role": "citizen"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_search_evidence",
+      "account_role": "citizen",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_KNOWLEDGE",
+        "data": {
+          "request_id": "fcd1346062636d1f",
+          "role": "citizen"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.501180+00:00",
+        "tool": "govx_search_evidence",
+        "request_id": "fcd1346062636d1f",
+        "role": "citizen",
+        "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
+        "status": "EMPTY",
+        "message_code": "NO_KNOWLEDGE",
+        "duration_ms": 34.77,
+        "result": {
+          "status": "EMPTY",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "NO_KNOWLEDGE",
+          "data": {
+            "request_id": "fcd1346062636d1f",
+            "role": "citizen"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_query_knowledge_graph",
+      "account_role": "citizen",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_GRAPH",
+        "data": {
+          "nodes": [],
+          "edges": [],
+          "request_id": "89eb9a40d80afe9d",
+          "role": "citizen"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.557698+00:00",
+        "tool": "govx_query_knowledge_graph",
+        "request_id": "89eb9a40d80afe9d",
+        "role": "citizen",
+        "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
+        "status": "EMPTY",
+        "message_code": "NO_GRAPH",
+        "duration_ms": 43.19,
+        "result": {
+          "status": "EMPTY",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "NO_GRAPH",
+          "data": {
+            "nodes": [],
+            "edges": [],
+            "request_id": "89eb9a40d80afe9d",
+            "role": "citizen"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_check_case_prerequisites",
+      "account_role": "staff",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "MISSING_CASE_AND_MATERIALS",
+        "data": {
+          "missing": [
+            "case",
+            "materials",
+            "evidence"
+          ],
+          "pending_count": 0,
+          "request_id": "e700e7fa2cfd74d3",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.610539+00:00",
+        "tool": "govx_check_case_prerequisites",
+        "request_id": "e700e7fa2cfd74d3",
+        "role": "staff",
+        "principal_sha256": "edbfad26461c1c19a7d5ffb7d1fbfaa3deb3bb57781d31d9512c1c48190f6bff",
+        "status": "BLOCKED",
+        "message_code": "MISSING_CASE_AND_MATERIALS",
+        "duration_ms": 39.58,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "MISSING_CASE_AND_MATERIALS",
+          "data": {
+            "missing": [
+              "case",
+              "materials",
+              "evidence"
+            ],
+            "pending_count": 0,
+            "request_id": "e700e7fa2cfd74d3",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_check_case_prerequisites",
+      "account_role": "citizen",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "request_id": "b98f8684e6c56eb1",
+          "role": "citizen"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.664679+00:00",
+        "tool": "govx_check_case_prerequisites",
+        "request_id": "b98f8684e6c56eb1",
+        "role": "citizen",
+        "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
+        "status": "BLOCKED",
+        "message_code": "FORBIDDEN",
+        "duration_ms": 38.84,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "FORBIDDEN",
+          "data": {
+            "request_id": "b98f8684e6c56eb1",
+            "role": "citizen"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_get_environment_status",
+      "account_role": "tenant_admin",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "data": {
+          "request_id": "6d330304a56e22f3",
+          "role": null
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.683230+00:00",
+        "tool": "govx_get_environment_status",
+        "request_id": "6d330304a56e22f3",
+        "role": null,
+        "principal_sha256": "b906842d367a1036d56476718f31102291d95e5f819d148234e28d20e6fe2524",
+        "status": "BLOCKED",
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "duration_ms": 3.86,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "ROLE_NOT_CONFIGURED",
+          "data": {
+            "request_id": "6d330304a56e22f3",
+            "role": null
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_prepare_update",
+      "account_role": "citizen",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "025c21b6d3b14f59",
+          "role": "citizen"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.699537+00:00",
+        "tool": "govx_prepare_update",
+        "request_id": "025c21b6d3b14f59",
+        "role": "citizen",
+        "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
+        "status": "BLOCKED",
+        "message_code": "FORBIDDEN",
+        "duration_ms": 3.86,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "FORBIDDEN",
+          "data": {
+            "required_permission": "knowledge_maintainer",
+            "request_id": "025c21b6d3b14f59",
+            "role": "citizen"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_publish_update",
+      "account_role": "citizen",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "fe5d392c86e42fe2",
+          "role": "citizen"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.716948+00:00",
+        "tool": "govx_publish_update",
+        "request_id": "fe5d392c86e42fe2",
+        "role": "citizen",
+        "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
+        "status": "BLOCKED",
+        "message_code": "FORBIDDEN",
+        "duration_ms": 4.65,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "FORBIDDEN",
+          "data": {
+            "required_permission": "knowledge_maintainer",
+            "request_id": "fe5d392c86e42fe2",
+            "role": "citizen"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_prepare_update",
+      "account_role": "staff",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "7d03643af7fbc7b6",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.735508+00:00",
+        "tool": "govx_prepare_update",
+        "request_id": "7d03643af7fbc7b6",
+        "role": "staff",
+        "principal_sha256": "edbfad26461c1c19a7d5ffb7d1fbfaa3deb3bb57781d31d9512c1c48190f6bff",
+        "status": "BLOCKED",
+        "message_code": "FORBIDDEN",
+        "duration_ms": 3.93,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "FORBIDDEN",
+          "data": {
+            "required_permission": "knowledge_maintainer",
+            "request_id": "7d03643af7fbc7b6",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_publish_update",
+      "account_role": "staff",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "required_permission": "knowledge_maintainer",
+          "request_id": "457bb127851f9b77",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.755168+00:00",
+        "tool": "govx_publish_update",
+        "request_id": "457bb127851f9b77",
+        "role": "staff",
+        "principal_sha256": "edbfad26461c1c19a7d5ffb7d1fbfaa3deb3bb57781d31d9512c1c48190f6bff",
+        "status": "BLOCKED",
+        "message_code": "FORBIDDEN",
+        "duration_ms": 4.99,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "FORBIDDEN",
+          "data": {
+            "required_permission": "knowledge_maintainer",
+            "request_id": "457bb127851f9b77",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_prepare_update",
+      "account_role": "developer",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_CHANGES",
+        "data": {
+          "input_count": 0,
+          "candidate_count": 0,
+          "scope": "No processable input in this request; external policies were not checked",
+          "request_id": "871b84b33474dbb5",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.812707+00:00",
+        "tool": "govx_prepare_update",
+        "request_id": "871b84b33474dbb5",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "EMPTY",
+        "message_code": "NO_CHANGES",
+        "duration_ms": 44.24,
+        "result": {
+          "status": "EMPTY",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "NO_CHANGES",
+          "data": {
+            "input_count": 0,
+            "candidate_count": 0,
+            "scope": "No processable input in this request; external policies were not checked",
+            "request_id": "871b84b33474dbb5",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_prepare_update",
+      "account_role": "developer",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_CHANGES",
+        "data": {
+          "input_count": 0,
+          "candidate_count": 0,
+          "scope": "No processable input in this request; external policies were not checked",
+          "request_id": "4184fbdc39e60d74",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.881526+00:00",
+        "tool": "govx_prepare_update",
+        "request_id": "4184fbdc39e60d74",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "EMPTY",
+        "message_code": "NO_CHANGES",
+        "duration_ms": 53.73,
+        "result": {
+          "status": "EMPTY",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "NO_CHANGES",
+          "data": {
+            "input_count": 0,
+            "candidate_count": 0,
+            "scope": "No processable input in this request; external policies were not checked",
+            "request_id": "4184fbdc39e60d74",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_prepare_update",
+      "account_role": "developer",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_CHANGES",
+        "data": {
+          "input_count": 0,
+          "candidate_count": 0,
+          "scope": "No processable input in this request; external policies were not checked",
+          "request_id": "a2d191e567263274",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.934685+00:00",
+        "tool": "govx_prepare_update",
+        "request_id": "a2d191e567263274",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "EMPTY",
+        "message_code": "NO_CHANGES",
+        "duration_ms": 43.47,
+        "result": {
+          "status": "EMPTY",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "NO_CHANGES",
+          "data": {
+            "input_count": 0,
+            "candidate_count": 0,
+            "scope": "No processable input in this request; external policies were not checked",
+            "request_id": "a2d191e567263274",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_publish_update",
+      "account_role": "developer",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "PUBLISH_PREREQUISITES_MISSING",
+        "data": {
+          "missing": [
+            "candidate",
+            "human_confirmation"
+          ],
+          "candidate_count": 0,
+          "version_count": 0,
+          "request_id": "104359ec54ffafe5",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:50.986794+00:00",
+        "tool": "govx_publish_update",
+        "request_id": "104359ec54ffafe5",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "BLOCKED",
+        "message_code": "PUBLISH_PREREQUISITES_MISSING",
+        "duration_ms": 41.83,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "PUBLISH_PREREQUISITES_MISSING",
+          "data": {
+            "missing": [
+              "candidate",
+              "human_confirmation"
+            ],
+            "candidate_count": 0,
+            "version_count": 0,
+            "request_id": "104359ec54ffafe5",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_publish_update",
+      "account_role": "developer",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "PUBLISH_PREREQUISITES_MISSING",
+        "data": {
+          "missing": [
+            "candidate"
+          ],
+          "candidate_count": 0,
+          "version_count": 0,
+          "request_id": "eb0c90b5c03cbb7c",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:51.038087+00:00",
+        "tool": "govx_publish_update",
+        "request_id": "eb0c90b5c03cbb7c",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "BLOCKED",
+        "message_code": "PUBLISH_PREREQUISITES_MISSING",
+        "duration_ms": 34.34,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "PUBLISH_PREREQUISITES_MISSING",
+          "data": {
+            "missing": [
+              "candidate"
+            ],
+            "candidate_count": 0,
+            "version_count": 0,
+            "request_id": "eb0c90b5c03cbb7c",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_publish_update",
+      "account_role": "developer",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CANDIDATE_NOT_FOUND",
+        "data": {
+          "request_id": "22f81bc87cfffc78",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T07:32:51.094940+00:00",
+        "tool": "govx_publish_update",
+        "request_id": "22f81bc87cfffc78",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "BLOCKED",
+        "message_code": "CANDIDATE_NOT_FOUND",
+        "duration_ms": 43.89,
+        "result": {
+          "status": "BLOCKED",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "CANDIDATE_NOT_FOUND",
+          "data": {
+            "request_id": "22f81bc87cfffc78",
+            "role": "staff"
+          }
+        }
+      }
+    }
+  ],
+  "extension_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "candidates": 0,
+    "versions": 0
+  },
+  "database_sha256_before": "95ad55fc5daf82483bb63cd26161685c63ee0fbeecc023b12cf135c8322c26c4",
+  "database_sha256_after": "95ad55fc5daf82483bb63cd26161685c63ee0fbeecc023b12cf135c8322c26c4",
+  "original_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  }
+}

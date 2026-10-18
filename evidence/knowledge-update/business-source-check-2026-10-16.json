@@ -1,0 +1,109 @@
+{
+  "captured_at": "2026-10-15T20:37:53.374399+00:00",
+  "passed": true,
+  "checks": {
+    "normal_25_day_job_done_once": true,
+    "actual_25_day_original_verified": true,
+    "only_complete_25_day_measure_selected": true,
+    "new_measure_still_pending_without_legal_dates": true,
+    "denied_origins_have_no_body_or_success": true,
+    "original_fee_pdf_pauses_preserved": true,
+    "thirty_references_remain_ai_authored_without_test_output_gold": true,
+    "all_archived_case_locators_resolve": true,
+    "later_measure_bound_to_duration_case": true,
+    "business_policy_unchanged": true,
+    "no_formal_version_or_head": true,
+    "existing_twelve_scope_exclusions_preserved": true
+  },
+  "author_kind": "ai",
+  "reviewer": "Codex AI",
+  "pilot_scope": {
+    "region": "郑州市二七区",
+    "matter": "demo-id-renewal",
+    "included_branch": "成年本地户籍、本人、居民身份证到期换领"
+  },
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 55,
+    "chunks": 248,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "source_reports": {
+    "erqi-nearby": {
+      "url": "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml",
+      "body_acquired": false,
+      "source_state": {
+        "last_success": null,
+        "paused_reason": "Access denied; source paused",
+        "failures": 1
+      },
+      "revision": null
+    },
+    "henan-25-days": {
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "body_acquired": true,
+      "source_state": {
+        "last_success": 1792096351.0992856,
+        "paused_reason": null,
+        "failures": 0
+      },
+      "revision": "rev-e6c9bbc9e0f0815a9ac0d96e"
+    },
+    "fee-exemption-2004": {
+      "url": "https://www.ndrc.gov.cn/xxgk/zcfb/qt/200905/t20090512_967638.html",
+      "body_acquired": false,
+      "source_state": {
+        "last_success": null,
+        "paused_reason": "Access denied; source paused",
+        "failures": 1
+      },
+      "revision": null
+    }
+  },
+  "ai_reference_cases": 30,
+  "archived_reference_entries": 9,
+  "web_reference_entries": 12,
+  "unique_source_urls": 18,
+  "case_locator_bindings_checked": 63,
+  "changed_reference_case_ids": [
+    "KQ10",
+    "KQ11",
+    "KQ12",
+    "KQ13",
+    "KQ14"
+  ],
+  "remaining": {
+    "renewal_window": "Original six-month adjustment instrument, commencement/expiry and current pilot implementation not established. Other provinces 2028 end dates are not transferred.",
+    "materials": "Current ordinary adult local expiry-renewal relationship between old ID, household register and shared-data waiver still needs local authority evidence.",
+    "duration": "2024 25-natural-day measure acquired; original commencement, later changes and current local commitment not yet established.",
+    "fees": "Historical primary web texts now identified; current exemptions, proof and subsequent charging instruments remain unresolved."
+  },
+  "human_attestations_created": 0,
+  "business_review_completed": false,
+  "model_accuracy_test_performed_in_this_step": false,
+  "publication_policy_changed": false,
+  "github_push_performed": false,
+  "scope": "Actual normal source intake and source-authored AI draft references. Failed access is not an archive. Not independent human acceptance or a current police-office guarantee.",
+  "workbench_observations": {
+    "checked_at": "2026-10-15T20:39:43.609066+00:00",
+    "source_rows": 29,
+    "document_count": 21,
+    "current_chunks": 124,
+    "published_scopes": 0,
+    "new_duration_candidate_visible": true,
+    "successful_new_source_visible_as_normal": true,
+    "two_denied_new_sources_visible_as_paused": true,
+    "actual_browser_query_stopped": true,
+    "api_query": {
+      "status": "EMPTY",
+      "message_code": "NO_PUBLISHED_KNOWLEDGE",
+      "knowledge_version": null,
+      "citations": []
+    },
+    "scope": "Actual local workbench and API; no Nexent default-UI or formal business-answer acceptance claim."
+  }
+}

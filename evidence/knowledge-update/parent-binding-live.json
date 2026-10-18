@@ -1,0 +1,44 @@
+{
+  "captured_at": "2026-10-16T14:48:35.478523+00:00",
+  "passed": true,
+  "checks": {
+    "real_background_parent_check_completed": true,
+    "same_reviewed_parent_original_and_disposition_retained": true,
+    "no_extra_pdf_fetch_job_or_revision": true,
+    "no_new_document_or_published_version": true,
+    "business_policy_unchanged": true
+  },
+  "job": {
+    "id": 16,
+    "state": "done",
+    "attempts": 1,
+    "owner": "knowledge-worker",
+    "error": null
+  },
+  "parent_url": "https://hnga.henan.gov.cn/2021/06-01/2156062.html",
+  "parent_revision": "rev-c2616eadf981f9c8f1e7dba5",
+  "normal_worker_status_records": [
+    {
+      "site": "HN-POLICY-DISCOVERY",
+      "status": 200
+    }
+  ],
+  "pdf_targets": [
+    "HN-MEASURES-2021-PDF",
+    "HN-REPEAL-2020-PDF",
+    "HN-REPEAL-2021-PDF",
+    "HN-REPEAL-2025B-PDF",
+    "HN-VALIDITY-2025-PDF"
+  ],
+  "counts": {
+    "sites": 39,
+    "documents": 35,
+    "revisions": 111,
+    "chunks": 676,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 285
+  },
+  "scope": "One permitted exact parent recheck through the real worker and ordinary transport. No PDF replay was labelled as a fresh HTTP check, no policy approval or long-term acceptance."
+}

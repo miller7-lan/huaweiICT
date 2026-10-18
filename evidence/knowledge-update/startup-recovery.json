@@ -1,0 +1,66 @@
+{
+  "captured_at": "2026-10-15T17:19:21.9914719Z",
+  "passed": true,
+  "checks": {
+    "task_registered_for_current_user": true,
+    "task_runs_without_elevation": true,
+    "task_hidden_action": true,
+    "login_and_five_minute_triggers_present": true,
+    "scheduled_action_completed_successfully": true,
+    "natural_trigger_followed_fault": true,
+    "owned_supervisor_replaced": true,
+    "no_extra_runtime_supervisor": true,
+    "four_components_alive": true,
+    "listeners_owned_by_this_runtime": true,
+    "active_worker_heartbeats_fresh": true,
+    "recovery_record_ready": true,
+    "real_business_counts_unchanged": true,
+    "no_official_knowledge_published": true
+  },
+  "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+  "mode": "windows_current_user_scheduled_task",
+  "recovery_interval_seconds": 300,
+  "last_task_result": 0,
+  "injected_supervisor_pid": 57748,
+  "recovered_supervisor_pid": 56584,
+  "injection_time": 1792084536,
+  "natural_task_run": "2026-10-15T17:15:54.0000000Z",
+  "recovery_completed": 1792084570,
+  "port_checks": [
+    {
+      "port": 8772,
+      "owned_listener": true
+    },
+    {
+      "port": 8773,
+      "owned_listener": true
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "knowledge-worker",
+      "heartbeat": 1792084745.2869823,
+      "progress": "polling",
+      "stale": false
+    },
+    {
+      "id": "knowledge-maintenance",
+      "heartbeat": 1792084745.315386,
+      "progress": "idle",
+      "stale": false
+    }
+  ],
+  "counts": {
+    "sites": 15,
+    "documents": 4,
+    "revisions": 6,
+    "chunks": 62,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 5,
+    "latest_chunks": 35
+  },
+  "actual_logon_transition_tested": false,
+  "shutdown_or_logged_out_collection_supported": false,
+  "scope": "Actual current-user scheduled-task registration and natural timed recovery after killing only the owned supervisor; no reboot/logoff performed, no policy publication."
+}

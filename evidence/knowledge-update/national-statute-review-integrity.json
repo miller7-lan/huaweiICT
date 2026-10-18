@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-16T16:26:49.712245+00:00",
+  "passed": true,
+  "checks": {
+    "latest_approved_revision_and_digest_match": true,
+    "all_23_clauses_match_actual_collector_categories_and_preface": true,
+    "all_23_texts_match_prior_independent_original": true,
+    "four_page_gazette_original_visual_record_and_exclusion_bound": true,
+    "three_sac_excerpt_clauses_match_but_are_not_treated_as_full_act": true,
+    "incomplete_republication_four_omissions_reproduced_and_not_intaken": true,
+    "date_anomaly_preserved_and_amended_commencement_separated": true,
+    "other_39_configs_and_publication_policy_preserved": true,
+    "one_latest_reviewed_document_three_review_history_and_no_release": true,
+    "full_restore_preserves_review_digest_and_gazette": true,
+    "isolated_actual_collector_keeps_same_body_review_and_stops_changed_fixture": true,
+    "unrelated_source_review_does_not_freeze_or_approve_holdout": true,
+    "user_disabled_recovery_task_remains_disabled": true,
+    "old_development_and_current_holdout_files_unchanged": true
+  },
+  "counts": {
+    "sites": 41,
+    "documents": 37,
+    "revisions": 120,
+    "chunks": 807,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 304
+  },
+  "latest_states": {
+    "excluded": 21,
+    "pending_review": 15,
+    "reviewed": 1
+  },
+  "formal_gates": {
+    "reviews": 3,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "reviewed_revision": "rev-bd98fcbde0cda7f52078b310",
+  "currentness_directory_cutoff": "2026-08-28",
+  "collector_replay": {
+    "kind": "isolated_collector_replay_not_live_fetch",
+    "same_body_preserves_exact_review": true,
+    "changed_fixture_becomes_unreviewed": true,
+    "changed_fixture_fails_review_verification": true,
+    "calls": 2,
+    "external_network_requests": 0,
+    "source_body_fabricated_only_in_isolated_negative_fixture": true,
+    "main_runtime_mutated_by_replay": false,
+    "services_started": false
+  },
+  "new_model_runs": 0,
+  "full_core_regression_rerun": false,
+  "startup_task_reenabled": false,
+  "limits": "Source review and byte/provenance verification only. No complete pilot-material resolution, independent business evaluation, model answer accuracy or release is certified."
+}

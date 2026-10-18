@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "kind": "official_web_observation_not_original_or_business_approval",
+  "observed_on": "2026-10-16",
+  "actor": {
+    "kind": "ai",
+    "name": "Codex AI"
+  },
+  "scope": "郑州市二七区、成年本地户籍、本人居民身份证到期换领",
+  "sources": [
+    {
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "publisher_scope": "郑州市公安局二七分局户籍室，县级公开指南",
+      "read_method": "current read-only web tool view",
+      "observed_material_fields": "Separate entries for household register and original resident ID, with additional minor and away-from-household-city branches.",
+      "observed_service_fields": "15 working days and a 20-yuan ID-card charge are displayed; the page cites the 2003 charging notice.",
+      "visible_publication_or_effective_date": null,
+      "normal_acquisition": "Previously archived original exists as ID-GUIDE-01; current origin remains paused. No new normal request or current original acquired."
+    },
+    {
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml",
+      "publisher_scope": "二七区铭功路街道办事处，乡级公开指南",
+      "read_method": "current read-only web tool view",
+      "observed_material_fields": "Also lists household register and original resident ID separately, then minor and away-from-household-city branches.",
+      "observed_service_fields": "A named office, address, contact and weekday schedule are displayed. These observations do not confirm present availability or statutory commencement.",
+      "visible_publication_or_effective_date": null,
+      "normal_acquisition": "Not attempted because the existing origin has an unresolved access pause. No local original acquired."
+    },
+    {
+      "url": "https://zm.jiceng.zhengzhou.gov.cn/004008002/3351721.jhtml",
+      "publisher_scope": "中牟县公安局青年路派出所，乡级公开指南；超出二七试点地区",
+      "read_method": "current read-only web tool view; separate bounded normal Fetcher probe",
+      "observed_material_fields": "First material entry is original resident ID, followed by guardian and away-from-household-city proof or declaration branches. The displayed list does not add a separate household-register entry for the ordinary adult branch.",
+      "visible_publication_or_effective_date": null,
+      "normal_acquisition": "Stopped; no original retained or canonical import performed. The old probe receipt has no structured phase or HTTP status and cannot establish whether robots or document access failed.",
+      "normal_probe_receipt_sha256": "3271293ee49c1b1fe17d9004cb7722c5df60a5e1ce37816a76791b37a79a5e5b"
+    }
+  ],
+  "findings": [
+    "The two Erqi pages corroborate what local guide fields display; neither resolves their date or relationship to national/provincial norms and later adjustments.",
+    "A nearby county guide differs in material-list presentation. It cannot establish that Erqi has removed its household-register field or that all Zhengzhou offices use one identical list.",
+    "No original Henan six-month adjustment instrument, exact commencement or end date was acquired in this bounded search. Media dates and another province's 2028 end date are not adopted.",
+    "Read-only web observations and a denied normal collection are distinct evidence. No web preview was substituted for an original."
+  ],
+  "canonical_import_performed": false,
+  "current_applicability_approved": false,
+  "business_reference_frozen": false,
+  "official_publication_performed": false
+}

@@ -43,8 +43,10 @@ def test_service_deployment_account_step_cannot_register_or_login():
     root = Path(__file__).resolve().parents[1]
     original = (root / 'vendor/nexent/deploy/docker/deploy.sh').read_text(encoding='utf-8')
     generated = services_only_script(original)
+    assert 'netstat -an 2>/dev/null | grep -i "LISTEN" | grep -qE' in generated
     function = re.search(r'(?ms)^create_default_super_admin_user\(\) \{.*?^\}', generated).group()
-    bash = 'C:/Program Files/Git/bin/bash.exe' if os.name == 'nt' else shutil.which('bash')
+    git = shutil.which('git')
+    bash = str(Path(git).parent.parent / 'bin/bash.exe') if os.name == 'nt' and git else shutil.which('bash')
     if not bash:
         pytest.skip('Bash is unavailable')
     # Any accidental network/client invocation causes failure instead of signup.
@@ -215,6 +217,26 @@ def test_ui_receipt_requires_all_roles_and_unchanged_assets(tmp_path):
     assert not receipts_valid(report, ("citizen",), "native-other", tmp_path)
     (assets / 'trace').write_bytes(b'changed')
     assert not receipts_valid(report, ("citizen",), "native-test", tmp_path)
+
+
+def test_ephemeral_developer_ui_requires_actual_debug_trace_and_request_id(tmp_path):
+    assets = tmp_path / "evidence/native-ui/native-debug"
+    assets.mkdir(parents=True)
+    image = assets / "developer.png"
+    image.write_bytes(b"technical-test-image")
+    trace = assets / "developer-trace.json"
+    trace.write_text(json.dumps({"conversation_id": None, "is_debug": True,
+        "events": [{"type": "final_answer", "content": {"data": {"request_id": "actual-debug-request"}}}]}))
+    record = {"passed": True, "conversation_id": None, "run_mode": "debug", "debug_request_id": "actual-debug-request"}
+    for key, path in (("screenshot", image), ("trace", trace)):
+        record[key] = path.relative_to(tmp_path).as_posix()
+        record[key + "_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    report = {"benchmark_reference": "native-debug", "records": {"developer": record}}
+    assert receipts_valid(report, ("developer",), "native-debug", tmp_path)
+    record["debug_request_id"] = "different-request"
+    assert not receipts_valid(report, ("developer",), "native-debug", tmp_path)
+    report["records"] = {"citizen": record}
+    assert not receipts_valid(report, ("citizen",), "native-debug", tmp_path)
 
 
 def test_native_negative_result_requires_audit_identity_and_no_child():

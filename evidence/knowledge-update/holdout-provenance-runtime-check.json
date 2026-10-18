@@ -1,0 +1,68 @@
+{
+  "captured_at": "2026-10-16T17:26:50.754617+00:00",
+  "passed": true,
+  "checks": {
+    "web_reports_current_archive_counts": true,
+    "actual_both_roles_stop_without_formal_version": true,
+    "supervisor_observation_fresh": true,
+    "worker_and_maintenance_heartbeats_fresh": true,
+    "user_disabled_task_remains_disabled": true,
+    "no_formal_evaluation_version_or_head": true
+  },
+  "task": {
+    "State": "Disabled",
+    "Enabled": false
+  },
+  "mcp_calls": [
+    {
+      "tool": "govkb_get_environment_status",
+      "role": "citizen",
+      "status": "OK",
+      "message_code": "PUBLISHED_KNOWLEDGE_READER_READY"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "citizen",
+      "status": "EMPTY",
+      "message_code": "NO_PUBLISHED_KNOWLEDGE"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "staff",
+      "status": "EMPTY",
+      "message_code": "NO_PUBLISHED_KNOWLEDGE"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "citizen",
+      "status": "BLOCKED",
+      "message_code": "OUT_OF_CONFIRMED_SCOPE"
+    },
+    {
+      "tool": "govkb_get_environment_status",
+      "role": "unmapped",
+      "status": "BLOCKED",
+      "message_code": "ROLE_NOT_CONFIGURED"
+    }
+  ],
+  "unauthenticated_http": 401,
+  "formal_gates": {
+    "reviews": 4,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "counts": {
+    "sites": 41,
+    "documents": 37,
+    "revisions": 123,
+    "chunks": 832,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 303
+  },
+  "services_restarted": false,
+  "windows_task_enabled_or_started": false,
+  "model_requests": 0
+}

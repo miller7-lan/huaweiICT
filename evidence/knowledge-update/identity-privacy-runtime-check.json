@@ -1,0 +1,93 @@
+{
+  "captured_at": "2026-10-16T19:54:20.536003+00:00",
+  "passed": true,
+  "checks": {
+    "web_reports_current_canonical_counts": true,
+    "both_roles_keep_unpublished_evidence_private": true,
+    "supervisor_fresh_and_without_alerts": true,
+    "worker_and_maintenance_heartbeats_fresh": true,
+    "five_minute_recovery_remains_enabled_and_owned": true,
+    "read_only_mcp_health_up": true,
+    "no_formal_evaluation_version_or_publication": true,
+    "current_scoped_privacy_review_counts_match": true
+  },
+  "mcp_calls": [
+    {
+      "tool": "govkb_get_environment_status",
+      "role": "citizen",
+      "status": "OK",
+      "message_code": "PUBLISHED_KNOWLEDGE_READER_READY"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "citizen",
+      "status": "EMPTY",
+      "message_code": "NO_PUBLISHED_KNOWLEDGE"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "staff",
+      "status": "EMPTY",
+      "message_code": "NO_PUBLISHED_KNOWLEDGE"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "citizen",
+      "status": "BLOCKED",
+      "message_code": "OUT_OF_CONFIRMED_SCOPE"
+    },
+    {
+      "tool": "govkb_get_environment_status",
+      "role": "unmapped",
+      "status": "BLOCKED",
+      "message_code": "ROLE_NOT_CONFIGURED"
+    }
+  ],
+  "unauthenticated_http": 401,
+  "formal_gates": {
+    "reviews": 9,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "counts": {
+    "sites": 47,
+    "documents": 43,
+    "revisions": 146,
+    "chunks": 935,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 303
+  },
+  "latest_states": {
+    "excluded": 26,
+    "pending_review": 10,
+    "reviewed": 7
+  },
+  "pending_without_confirmed_commencement": 8,
+  "startup_task": {
+    "status": "observed",
+    "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+    "enabled": true,
+    "task_state": "Ready",
+    "ownership_verified": true,
+    "configuration_matches": true,
+    "last_run": "2026-10-16T19:50:55.0000000Z",
+    "next_run": "2026-10-16T19:55:54.0000000Z",
+    "last_result": 0,
+    "missed_runs": 0,
+    "schema": 1,
+    "checked_at": 1792180450.0685108,
+    "read_only_observation": true
+  },
+  "startup_health": {
+    "code": "healthy",
+    "message": "Windows恢复任务已启用，最近恢复检查正常。",
+    "level": "info"
+  },
+  "services_restarted": false,
+  "windows_task_changed_or_started": false,
+  "model_requests": 0,
+  "business_acceptance_completed": false
+}

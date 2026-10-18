@@ -1,0 +1,107 @@
+{
+  "captured_at": "2026-10-15T20:16:10.485683+00:00",
+  "passed": true,
+  "registered_server": "govkb_public_evidence_mcp",
+  "tool_names": [
+    "govkb_get_environment_status",
+    "govkb_search_evidence"
+  ],
+  "records": [
+    {
+      "tool": "govkb_get_environment_status",
+      "account_role": "citizen",
+      "result": {
+        "status": "OK",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "PUBLISHED_KNOWLEDGE_READER_READY",
+        "data": {
+          "role": "citizen",
+          "matter_id": "demo-id-renewal",
+          "region": "郑州市二七区",
+          "published_scope_count": 0,
+          "candidate_document_count": 20,
+          "publication_required": true,
+          "formal_approval": false
+        }
+      }
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "account_role": "citizen",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "citizen",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "account_role": "staff",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "staff",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "account_role": "citizen",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "OUT_OF_CONFIRMED_SCOPE",
+        "data": {
+          "included_branch": "成年人、本地户籍、本人居民身份证到期换领"
+        }
+      }
+    },
+    {
+      "tool": "govkb_get_environment_status",
+      "account_role": "unmapped",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "data": {}
+      }
+    }
+  ],
+  "unauthenticated_status": 401,
+  "existing_agents_changed": false,
+  "model_run_performed": false,
+  "business_review_completed": false,
+  "scope": "Actual authenticated SSE calls and Nexent MCP registration; no published business knowledge and no end-to-end model answer claimed.",
+  "platform_catalog_verified": true,
+  "platform_tool_names": [
+    "govkb_get_environment_status",
+    "govkb_search_evidence"
+  ]
+}

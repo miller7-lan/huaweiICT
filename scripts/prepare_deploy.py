@@ -82,6 +82,12 @@ def prepare_compose(vendor):
 
 
 def services_only_script(content):
+    # On Windows netstat also lists remote ports of established connections.
+    # Check listeners only so a remote :3000 does not block the local UI.
+    content = content.replace(
+        'netstat -an 2>/dev/null | grep -qE "[:\\.]${port}[[:space:]]"',
+        'netstat -an 2>/dev/null | grep -i "LISTEN" | grep -qE "[:\\.]${port}[[:space:]]"',
+    )
     # Keep the official deployment intact except its automatic account step.
     pattern = r'(?ms)^create_default_super_admin_user\(\) \{.*?^\}\n(?=\nchoose_image_env\(\))'
     replacement = ('create_default_super_admin_user() {\n'

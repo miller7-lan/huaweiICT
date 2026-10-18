@@ -1,0 +1,49 @@
+{
+  "agent_id": 1,
+  "agent_info": {
+    "1": {
+      "agent_id": 1,
+      "name": "govkb_qa_citizen",
+      "display_name": "知识库更新验证（群众）",
+      "author": "ICT 项目组",
+      "description": "固定问题的只读工程验证；正式知识为空时必须停止，不代表已完成业务验收。",
+      "max_steps": 3,
+      "requested_output_tokens": 1024,
+      "is_main_agent": true,
+      "provide_run_summary": false,
+      "allow_chat_metadata": false,
+      "enable_protocol_repair_retry": false,
+      "enabled": true,
+      "duty_prompt": "Execute exactly one complete action. Return the actual final tool result without rewriting it.\n<code>\nimport json\nenvironment = govkb_get_environment_status()\nif isinstance(environment, str):\n    environment = json.loads(environment)\nif environment[\"status\"] != \"OK\":\n    answer = environment\nelse:\n    answer = govkb_search_evidence(query=\"身份证到期换领需要哪些材料\")\nif isinstance(answer, str):\n    answer = json.loads(answer)\nfinal_answer(json.dumps(answer, ensure_ascii=False))\n</code>",
+      "constraint_prompt": "仅作固定问题的工程验证。身份由可信会话注入，保留实际工具结果及角色。禁止伪造工具结果、引用、政策或审批结论。EMPTY/BLOCKED/ERROR立即停止；仅有两个只读工具，不执行维护、发布或写库动作。不得更改tenant_id、user_id。",
+      "tools": [
+        {
+          "class_name": "govkb_get_environment_status",
+          "name": "govkb_get_environment_status",
+          "source": "mcp",
+          "usage": "govkb_public_evidence_mcp",
+          "params": {}
+        },
+        {
+          "class_name": "govkb_search_evidence",
+          "name": "govkb_search_evidence",
+          "source": "mcp",
+          "usage": "govkb_public_evidence_mcp",
+          "params": {}
+        }
+      ],
+      "managed_agents": [],
+      "model_names": [
+        "gov-qwen3-4b:ctx8192-v1"
+      ],
+      "skill_names": [],
+      "few_shots_prompt": "Execute exactly one complete action. Return the actual final tool result without rewriting it.\n<code>\nimport json\nenvironment = govkb_get_environment_status()\nif isinstance(environment, str):\n    environment = json.loads(environment)\nif environment[\"status\"] != \"OK\":\n    answer = environment\nelse:\n    answer = govkb_search_evidence(query=\"身份证到期换领需要哪些材料\")\nif isinstance(answer, str):\n    answer = json.loads(answer)\nfinal_answer(json.dumps(answer, ensure_ascii=False))\n</code>"
+    }
+  },
+  "mcp_info": [
+    {
+      "mcp_server_name": "govkb_public_evidence_mcp",
+      "mcp_url": "http://host.docker.internal:8773/sse"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "captured_at": "2026-10-16T17:09:42.118207+00:00",
+  "passed": true,
+  "checks": {
+    "review_is_latest_and_digest_bound": true,
+    "original_bytes_unchanged": true,
+    "canonical_worker_selection_is_complete_first_measure": true,
+    "unselected_background_still_in_original_and_history": true,
+    "source_observation_is_immutable": true,
+    "publication_date_is_explicitly_not_legal_commencement": true,
+    "review_identity_and_scope_are_honest": true,
+    "one_new_source_review_without_publication": true,
+    "publication_policy_preserved": true,
+    "catalog_exports_exact_date_basis_and_scoped_selection": true,
+    "readiness_reports_actual_service_review": true,
+    "stale_D26_binding_is_detected_without_approval": true,
+    "draft_verifier_truthfully_withholds_integrity": true,
+    "v2_archive_and_active_semantics_preserved": true,
+    "full_restore_preserves_service_review_and_date_basis": true,
+    "other_pending_sources_still_prevent_candidate": true,
+    "actual_config_unchanged_replay_preserves_review": true,
+    "synthetic_body_change_requires_new_review": true,
+    "isolation_did_not_change_live_review_or_publication": true
+  },
+  "revision": "rev-04f1121aa899004c29e55761",
+  "counts": {
+    "sites": 41,
+    "documents": 37,
+    "revisions": 122,
+    "chunks": 809,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 303
+  },
+  "formal_gates": {
+    "reviews": 4,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "draft_stale_sources": [
+    "D26"
+  ],
+  "expected_draft_failed_checks": [
+    "actual_export_contains_both_drafts_and_preserves_empty_approvals",
+    "latest_originals_and_literal_anchor_spans_match"
+  ],
+  "isolated_replay_uses_archived_then_synthetically_mutated_bytes": true,
+  "fixture_is_not_a_new_policy": true,
+  "network_requests_by_replay": 0,
+  "new_model_runs": 0,
+  "candidate_error": "Unreviewed or changed content",
+  "business_acceptance_completed": false,
+  "windows_task_touched": false
+}

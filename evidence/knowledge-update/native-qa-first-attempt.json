@@ -1,0 +1,29 @@
+{
+  "captured_at": "2026-10-15T15:42:52.308772+00:00",
+  "passed": false,
+  "records": [
+    {
+      "role": "citizen",
+      "scenario": "fixed-question",
+      "conversation_id": 70,
+      "checks": {
+        "completed_without_technical_error": false
+      },
+      "passed": false,
+      "duration_ms": 74531.22,
+      "private_trace_sha256": "111024d8b83efde2836ad745f2897d0537922aca09c7222daf6ca14e3e39dded",
+      "failure_class": "ReadTimeout",
+      "route_events": [],
+      "actual_final_result": null
+    }
+  ],
+  "qa_agents": {
+    "govkb_qa_citizen": 10,
+    "govkb_qa_staff": 11
+  },
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "existing_agents_changed": false,
+  "business_review_completed": false,
+  "official_knowledge_published": 0,
+  "scope": "Actual model and read-only MCP fixed-question smoke tests under citizen/staff sessions, plus a role-claim case. No general question accuracy, source validity, UI acceptance or released-policy answers claimed."
+}

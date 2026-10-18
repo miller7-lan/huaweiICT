@@ -1,2 +1,6 @@
 * text=auto eol=lf
 *.ps1 text eol=crlf
+# Acceptance receipts fingerprint exact captured bytes across clones and OSes.
+evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Archived drafts and receipts are sealed against their original captured bytes.
+evaluation/knowledge/archive/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

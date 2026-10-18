@@ -1,0 +1,215 @@
+{
+  "conversation_id": 69,
+  "role": "staff",
+  "expected_child_agent_id": 7,
+  "event_count": 259,
+  "model_output_event_count": 233,
+  "tool_event_count": 3,
+  "route_events": [
+    {
+      "type": "tool",
+      "tool_name": "govm2_get_environment_status",
+      "tool_call_id": "2abdc62a-d61e-4561-8051-3c568ae182b5"
+    },
+    {
+      "type": "subagent_start",
+      "agent_id": 7,
+      "agent_name": "M2工作人员核验Agent",
+      "depth": 1
+    },
+    {
+      "type": "tool",
+      "tool_name": "govm2_check_case_prerequisites",
+      "tool_call_id": "3c430d7e-ae61-407f-96e5-31e7b816840b",
+      "agent_id": 7,
+      "depth": 1
+    },
+    {
+      "type": "tool",
+      "tool_name": "govm2_check_case_prerequisites",
+      "tool_call_id": "326aafb8-d747-4791-84c3-29370c9eb9b6",
+      "agent_id": 7,
+      "depth": 1
+    },
+    {
+      "type": "subagent_end",
+      "agent_id": 7,
+      "agent_name": "M2工作人员核验Agent",
+      "depth": 1
+    }
+  ],
+  "actual_final_result": {
+    "status": "OK",
+    "items": [],
+    "citations": [
+      {
+        "category": "identity",
+        "citation_id": "ID-LAW-01-第十一条",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "locator": "第十一条",
+        "quote": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。 未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。 公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。",
+        "region": "national",
+        "review_status": "pending_business_review",
+        "source_id": "ID-LAW-01",
+        "title": "中华人民共和国居民身份证法",
+        "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+      },
+      {
+        "category": "household",
+        "citation_id": "ID-LAW-01-第十条",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "locator": "第十条",
+        "quote": "第十条 申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿。",
+        "region": "national",
+        "review_status": "pending_business_review",
+        "source_id": "ID-LAW-01",
+        "title": "中华人民共和国居民身份证法",
+        "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+      },
+      {
+        "category": "procedure",
+        "citation_id": "ID-LAW-01-第十二条",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "locator": "第十二条",
+        "quote": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。 公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。",
+        "region": "national",
+        "review_status": "pending_business_review",
+        "source_id": "ID-LAW-01",
+        "title": "中华人民共和国居民身份证法",
+        "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+      },
+      {
+        "category": "household",
+        "citation_id": "ID-GUIDE-01-material-1",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "locator": "材料列表第1项（适用分支待复核）",
+        "quote": "1、居民户口簿；",
+        "region": "郑州市二七区",
+        "review_status": "pending_business_review",
+        "source_id": "ID-GUIDE-01",
+        "title": "居民身份证到期换领、其他原因换领（二七区）",
+        "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml"
+      }
+    ],
+    "knowledge_version": "preview-c1a4bbc3e444094c",
+    "message_code": "PREVIEW_ASSESSMENT_COMPLETE",
+    "data": {
+      "handoff_id": "handoff-41a0f3bf7edc",
+      "task_id": "task-5b19a3e8eda6",
+      "state": "awaiting_demo_review",
+      "materials": {
+        "household_register": "present",
+        "identity_card": "missing"
+      },
+      "missing_draft_items": [
+        "原居民身份证"
+      ],
+      "unknown_items": [],
+      "source_review_pending": [
+        "居民户口簿在本地成年人到期换领中的具体要求",
+        "原件、共享核实和当前政策版本"
+      ],
+      "ready_for_formal_processing": false,
+      "input_origin": "simulated_material_presence",
+      "assessment_sha256": "5fbafa3ee023f71efb3f553facfe7c4cc5828f7d7287f659c9844184bea57c47",
+      "request_id": "92a9f7d6a2b57c5b",
+      "role": "staff",
+      "demo_mode": true,
+      "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+      "formal_approval": false
+    }
+  },
+  "matched_tool_audit": [
+    {
+      "duration_ms": 16.0,
+      "principal_sha256": "edbfad26461c1c19a7d5ffb7d1fbfaa3deb3bb57781d31d9512c1c48190f6bff",
+      "request_id": "92a9f7d6a2b57c5b",
+      "result": {
+        "citations": [
+          {
+            "category": "identity",
+            "citation_id": "ID-LAW-01-第十一条",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "第十一条",
+            "quote": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。 未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。 公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。",
+            "region": "national",
+            "review_status": "pending_business_review",
+            "source_id": "ID-LAW-01",
+            "title": "中华人民共和国居民身份证法",
+            "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+          },
+          {
+            "category": "household",
+            "citation_id": "ID-LAW-01-第十条",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "第十条",
+            "quote": "第十条 申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿。",
+            "region": "national",
+            "review_status": "pending_business_review",
+            "source_id": "ID-LAW-01",
+            "title": "中华人民共和国居民身份证法",
+            "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+          },
+          {
+            "category": "procedure",
+            "citation_id": "ID-LAW-01-第十二条",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "第十二条",
+            "quote": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。 公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。",
+            "region": "national",
+            "review_status": "pending_business_review",
+            "source_id": "ID-LAW-01",
+            "title": "中华人民共和国居民身份证法",
+            "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+          },
+          {
+            "category": "household",
+            "citation_id": "ID-GUIDE-01-material-1",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "材料列表第1项（适用分支待复核）",
+            "quote": "1、居民户口簿；",
+            "region": "郑州市二七区",
+            "review_status": "pending_business_review",
+            "source_id": "ID-GUIDE-01",
+            "title": "居民身份证到期换领、其他原因换领（二七区）",
+            "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml"
+          }
+        ],
+        "data": {
+          "assessment_sha256": "5fbafa3ee023f71efb3f553facfe7c4cc5828f7d7287f659c9844184bea57c47",
+          "demo_mode": true,
+          "formal_approval": false,
+          "handoff_id": "handoff-41a0f3bf7edc",
+          "input_origin": "simulated_material_presence",
+          "materials": {
+            "household_register": "present",
+            "identity_card": "missing"
+          },
+          "missing_draft_items": [
+            "原居民身份证"
+          ],
+          "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+          "ready_for_formal_processing": false,
+          "request_id": "92a9f7d6a2b57c5b",
+          "role": "staff",
+          "source_review_pending": [
+            "居民户口簿在本地成年人到期换领中的具体要求",
+            "原件、共享核实和当前政策版本"
+          ],
+          "state": "awaiting_demo_review",
+          "task_id": "task-5b19a3e8eda6",
+          "unknown_items": []
+        },
+        "items": [],
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "message_code": "PREVIEW_ASSESSMENT_COMPLETE",
+        "status": "OK"
+      },
+      "role": "staff",
+      "time": "2026-10-13T15:24:15.012009+00:00",
+      "tool": "govm2_check_case_prerequisites"
+    }
+  ],
+  "private_trace_sha256": "b51b8878d56696e3d54423d62f3ccfc60fbc793920e4e3d0362ea59b1a0ba3fa",
+  "scope": "Summary of actual SSE route and exact audited tool result; full raw trace stays private. Repeated read calls are counted, not hidden."
+}
