@@ -8,7 +8,7 @@ import urllib.error
 
 import pytest
 
-from gov_mcp.classification import ClassificationError, classify_corpus
+from gov_mcp.classification import ClassificationError, JevProvider, classify_corpus, ENDPOINT as OFFICIAL_ENDPOINT
 from gov_mcp.jev_gateway import VercelJevProvider, ENDPOINT, MODEL, GATEWAY_MODEL
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -141,3 +141,94 @@ def test_missing_credential_creates_an_honest_blocked_report():
     report = runner.run_suite(p)
     assert report["status"] == "blocked" and report["error_code"] == "MISSING_API_KEY"
     assert report["http_attempts"] == 0 and not report["cost_complete"]
+
+
+def official_opener(request, timeout):
+    payload = json.loads(request.data)
+    assert request.full_url == OFFICIAL_ENDPOINT and timeout == 30
+    assert payload["model"] == MODEL and "providerOptions" not in payload
+    value = reply(payload)
+    value["model"] = MODEL
+    value.pop("provider_metadata")
+    return Response(json.dumps(value).encode())
+
+
+def test_official_suite_preserves_usage_without_inventing_billing():
+    provider = JevProvider("official-test-secret", opener=official_opener, max_calls=32)
+    report = runner.run_suite(provider)
+    assert report["status"] == "completed" and report["http_attempts"] == 19
+    assert report["endpoint"] == OFFICIAL_ENDPOINT and report["transport_model"] == MODEL
+    assert report["metrics"]["document_types"]["correct"] == 9
+    assert report["all_originals_preserved"] and report["other_model_calls"] == 0
+    assert report["known_success_cost_usd"] is None and not report["cost_complete"]
+    assert all(r["usage"]["input_tokens"] == 100 for r in report["receipts"])
+    assert "official-test-secret" not in json.dumps(report)
+
+
+def test_official_credentials_never_fall_back_to_gateway(tmp_path, monkeypatch):
+    monkeypatch.delenv("TYPESAFE_API_KEY", raising=False)
+    monkeypatch.setenv("AI_GATEWAY_API_KEY", "gateway-only-secret")
+    key_file = tmp_path/"credentials.json"
+    key_file.write_text(json.dumps({"AI_GATEWAY_API_KEY": "wrong-provider"}), encoding="utf-8")
+    provider = runner.create_provider("jev", key_file)
+    provider.open = lambda *a, **k: pytest.fail("Missing official key must not call a provider")
+    report = runner.run_suite(provider)
+    assert report["status"] == "blocked" and report["http_attempts"] == 0
+    assert report["error_code"] == "MISSING_API_KEY" and not provider.api_key
+    monkeypatch.setenv("TYPESAFE_API_KEY", "official-env-secret")
+    assert runner.create_provider("jev", key_file).api_key == "official-env-secret"
+
+
+def test_official_key_file_is_explicit_and_provider_specific(tmp_path, monkeypatch):
+    monkeypatch.delenv("TYPESAFE_API_KEY", raising=False)
+    key_file = tmp_path/"official.json"
+    key_file.write_text(json.dumps({"TYPESAFE_API_KEY": "official-file-secret"}), encoding="utf-8")
+    assert runner.create_provider("jev", key_file).api_key == "official-file-secret"
+
+
+def test_official_retries_share_the_http_budget():
+    def overloaded(request, timeout):
+        raise urllib.error.HTTPError(request.full_url, 529, "private error", {"Retry-After": "0"}, io.BytesIO(b"secret"))
+    provider = JevProvider("test", opener=overloaded, sleep=lambda _: None, max_calls=1)
+    with pytest.raises(ClassificationError, match="TEST_BUDGET_EXHAUSTED"):
+        provider.evaluate({}, QUESTIONS, MODEL)
+    assert provider.attempts == 1 and len(provider.receipts) == 1
+    assert "private error" not in str(provider.receipts) and "secret" not in str(provider.receipts)
+
+
+def test_official_wrong_model_and_private_input_cannot_count_as_success():
+    def wrong_model(request, timeout):
+        value = reply(json.loads(request.data))
+        return Response(json.dumps(value).encode())  # Gateway-qualified model is not the official ID.
+    provider = JevProvider("test", opener=wrong_model, max_calls=32)
+    with pytest.raises(ClassificationError, match="INVALID_RESPONSE"):
+        provider.evaluate({}, QUESTIONS, MODEL)
+    assert provider.receipts[0]["status"] == "error"
+    private = runner.corpus_for(CASES[:1])
+    private["data_class"] = "private"
+    provider.open = lambda *a, **k: pytest.fail("Private material sent")
+    run = classify_corpus(private, CONFIG, provider)
+    assert provider.attempts == 1 and run["summary"]["status"] == "error"
+
+
+def test_official_transport_honors_configured_proxy_and_blocks_redirects(monkeypatch):
+    import urllib.request
+    monkeypatch.setenv("HTTPS_PROXY", "http://127.0.0.1:7897")
+    provider = JevProvider("test")
+    handlers = provider.open.__self__.handlers
+    proxy = next(h for h in handlers if isinstance(h, urllib.request.ProxyHandler))
+    assert proxy.proxies["https"] == "http://127.0.0.1:7897"
+    redirect = next(h for h in handlers if isinstance(h, urllib.request.HTTPRedirectHandler))
+    assert redirect.redirect_request(None, None, 302, "redirect", {}, "https://other.example/") is None
+
+
+def test_official_access_restriction_is_blocked_after_one_request():
+    def restricted(request, timeout):
+        raise urllib.error.HTTPError(request.full_url, 451, "private upstream message", {}, io.BytesIO(b"private body"))
+    provider = JevProvider("test", opener=restricted, max_calls=32)
+    report = runner.run_suite(provider)
+    assert report["status"] == "blocked" and report["error_code"] == "ACCESS_RESTRICTED"
+    with pytest.raises(ClassificationError, match="ACCESS_RESTRICTED"):
+        provider.evaluate({}, QUESTIONS, MODEL)
+    assert provider.attempts == 1 and provider.receipts[0]["http_status"] == 451
+    assert "private upstream message" not in str(report) and "private body" not in str(report)

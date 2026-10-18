@@ -1,0 +1,202 @@
+{
+  "reviewed_on": "2026-10-18",
+  "timezone": "Asia/Shanghai",
+  "source_commit": "663c40de749cc2e0b4db722039d012e43455a672",
+  "scope": "Static competition requirement comparison and existing evidence fingerprint verification; no business execution or live model verification",
+  "official_rules_source": "docs/赛题3资料/官方赛题摘录.md",
+  "official_rules_live_reverified": false,
+  "official_page_result": "Dynamic HTML shell; full rules, scoring and submission deadline not obtained",
+  "existing_evidence": [
+    {
+      "evidence": "evidence/token-savings-20261018/verification.json",
+      "mode": "synthetic_mock_transport_not_inference",
+      "passed": 8,
+      "total": 8,
+      "actual_remote_model_calls": 0,
+      "fingerprint_checks": [
+        {
+          "path": "src/gov_mcp/deepseek.py",
+          "expected_sha256": "2ae82f59a512dbcfba409848456e2ba7583b299a52624b3063521db32bd1f6c5",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/connections.py",
+          "expected_sha256": "919513b2567e148d27bb0740ff000468d2a8ec0dacccdf12c4d68bb8cfa011ed",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/intake.py",
+          "expected_sha256": "0336d95bf67ee55463d596a512bf90121cffb7113e7ddbd837298cb93c5b31b8",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/intake.js",
+          "expected_sha256": "ab9d59270ac05dceb8683c27caff1892e18ac18cd1da7a291635413540a81b44",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/jev_translation.py",
+          "expected_sha256": "075d295da24e96c824ed21b6e7eb1bdcc79faab5bbf24eeb9a6a3d5e856ddcfd",
+          "matches": true
+        },
+        {
+          "path": "scripts/verify_token_savings.py",
+          "expected_sha256": "b778a1b5d63c0d00e34dc50de2a34daf6b9276c0569f9d769c22b161c957facb",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "evidence": "evidence/token-savings-20261018/intake/verification.json",
+      "mode": "synthetic_http_contract_replay",
+      "passed": 14,
+      "total": 14,
+      "actual_remote_model_calls": 0,
+      "fingerprint_checks": [
+        {
+          "path": "src/gov_mcp/decision/intake.py",
+          "expected_sha256": "0336d95bf67ee55463d596a512bf90121cffb7113e7ddbd837298cb93c5b31b8",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/intake.html",
+          "expected_sha256": "5abc7f8ec10777f54b4c2de1d254a7c7694d23beb7c475695cfec387fa20f979",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/intake.js",
+          "expected_sha256": "ab9d59270ac05dceb8683c27caff1892e18ac18cd1da7a291635413540a81b44",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/intake.css",
+          "expected_sha256": "6e0822d75d8be566e3d2bea0903040fb070bc01432ed64e2f9f0c678a6543b4b",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/server.py",
+          "expected_sha256": "8a1459b94bf851ee8ac5bfa558e8aed7925b07f2e71e6e2599bf6e3be02fc1b9",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/workflow.py",
+          "expected_sha256": "187ddba655bd5e3a7e8bfffa09c87692d529e479cb835bde89ee1c54252e74f7",
+          "matches": true
+        },
+        {
+          "path": "config/decision/intake-form.json",
+          "expected_sha256": "2180b11233217ac75ccf105ac376ca024a513f899c5ed5d7aec07cc0ec3f2210",
+          "matches": true
+        },
+        {
+          "path": "config/decision/connections.json",
+          "expected_sha256": "c08e4c4b3999fe6354f399cf5fc1f2643c629212f4352a24f11138b24536981e",
+          "matches": true
+        },
+        {
+          "path": "scripts/verify_guided_intake.py",
+          "expected_sha256": "b2fcfdacc72d9478e4a05f969d0081a719291bee3aa27a0f7b25118de445bc3d",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "evidence": "evidence/token-savings-20261018/existing-workflow/verification.json",
+      "mode": "synthetic_engineering_only",
+      "passed": 21,
+      "total": 21,
+      "actual_remote_model_calls": 0,
+      "fingerprint_checks": [
+        {
+          "path": "src/gov_mcp/decision/__init__.py",
+          "expected_sha256": "ba3088be2648931059ab618aa11a53b9c38d01026898418bb3d5a3c3535431e9",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/adapters.py",
+          "expected_sha256": "08dbf7d19bb4b5aadac6a29f8018a140382ad7f33ad93ff5b1cd7d206cc704fc",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/connections.py",
+          "expected_sha256": "919513b2567e148d27bb0740ff000468d2a8ec0dacccdf12c4d68bb8cfa011ed",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/intake.py",
+          "expected_sha256": "0336d95bf67ee55463d596a512bf90121cffb7113e7ddbd837298cb93c5b31b8",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/logic.py",
+          "expected_sha256": "36f17d740c1e4b658927830c42a023a43424affbb60a50ffe3d967c14ced57ab",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/models.py",
+          "expected_sha256": "39a6f1b7b2d4b3b32f2bd9db610bfaaeee68832fbed5a081d49cd961b9096024",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/server.py",
+          "expected_sha256": "8a1459b94bf851ee8ac5bfa558e8aed7925b07f2e71e6e2599bf6e3be02fc1b9",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/service.py",
+          "expected_sha256": "fcb8dd78314bfddf60dd1528b3891ee8048e3c4ea921753c375403238f258cf4",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/workflow.py",
+          "expected_sha256": "187ddba655bd5e3a7e8bfffa09c87692d529e479cb835bde89ee1c54252e74f7",
+          "matches": true
+        },
+        {
+          "path": "src/gov_mcp/decision/workbench.html",
+          "expected_sha256": "61d6666f2ed5c69d37ff10dde5501d2132273e199b17e41e32bce99072ef31e8",
+          "matches": true
+        },
+        {
+          "path": "config/decision/workflow-source.json",
+          "expected_sha256": "34a0cf9dbf62fd4187766417c0e2d101f980be6ec77bfb64373d3e8344617c56",
+          "matches": true
+        },
+        {
+          "path": "config/decision/providers.template.json",
+          "expected_sha256": "d9747c289d2e098b4d82fce9614e4430997ae74264981f24633f6fb05375ab9c",
+          "matches": true
+        },
+        {
+          "path": "scripts/verify_agent_workflow.py",
+          "expected_sha256": "07770e60192555df27692771ddd4d41567cb5b965ab996ee386ea6bea714c94b",
+          "matches": true
+        }
+      ]
+    }
+  ],
+  "existing_regression": {
+    "evidence": "evidence/token-savings-20261018/regression.xml",
+    "tests": 579,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "rerun": false
+  },
+  "configuration": {
+    "config/preparation/assets.real.template.json": {
+      "assets_count": 0
+    },
+    "config/preparation/evaluation.template.json": {
+      "cases_count": 0
+    },
+    "config/knowledge/heartbeat.json": {
+      "sources_count": 0
+    },
+    "config/decision/connections.json": {
+      "data_class": "synthetic",
+      "inference_enabled": false,
+      "form_verifier_enabled": false
+    }
+  }
+}

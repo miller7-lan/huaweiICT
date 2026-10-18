@@ -16,7 +16,7 @@ from private_runtime import ensure_private_directory
 def native_settings(profile):
     return {"model_factory": "OpenAI-API-Compatible", "model_name": profile["model"],
             "display_name": profile["model"], "model_type": "llm", "base_url": profile["base_url"],
-            "context_window_tokens": 8192, "max_output_tokens": 1024, "default_output_reserve_tokens": 1024,
+            "context_window_tokens": 16384, "max_output_tokens": 1024, "default_output_reserve_tokens": 1024,
             "temperature": .1, "timeout_seconds": 60, "concurrency_limit": 1,
             "extra_params": {"enable_thinking": False, "__custom__": {"thinking": {"type": "disabled"}}},
             "skip_default_backfill": True}
@@ -24,25 +24,27 @@ def native_settings(profile):
 
 def bind_drafts(api, profile, key, saved):
     """Migrate only the six scoped workflow drafts, never unrelated published agents."""
+    # Reject active agents before making any model/agent changes.
+    for role, agent_id in saved["agents"].items():
+        info = api.call("POST", "/agent/search_info", {"agent_id": agent_id, "version_no": 0})
+        versions = api.call("GET", f"/agent/{agent_id}/versions")
+        if info["name"] != "govflow_"+role or info.get("enabled") is not False or versions.get("total", 0):
+            raise CloudError("REFUSE_TO_OVERWRITE_ACTIVE_AGENT")
     models = api.call("GET", "/model/list")["data"]
     found = [m for m in models if m["display_name"] == profile["model"]]
     if len(found) > 1: raise CloudError("AMBIGUOUS_NATIVE_MODEL")
     if found:
         if found[0]["model_name"] != profile["model"] or found[0]["base_url"] != profile["base_url"]:
             raise CloudError("NATIVE_MODEL_PROFILE_CONFLICT")
-        settings = native_settings(profile)
-        settings.pop("skip_default_backfill")
-        api.call("POST", "/model/update?display_name="+quote(profile["model"], safe=""), {**settings, "api_key": key})
+        # Preserve a verified model's context settings and credential. Rotating
+        # credentials is a separate operation, not a side effect of draft wiring.
     else:
         api.call("POST", "/model/create", {**native_settings(profile), "api_key": key})
     models = api.call("GET", "/model/list")["data"]
-    model_id = next(m["model_id"] for m in models if m["display_name"] == profile["model"])
-    # Preflight every draft before changing any agent.
-    for role, agent_id in saved["agents"].items():
-        info = api.call("POST", "/agent/search_info", {"agent_id": agent_id, "version_no": 0})
-        versions = api.call("GET", f"/agent/{agent_id}/versions")
-        if info["name"] != "govflow_"+role or info.get("enabled") is not False or versions.get("total", 0):
-            raise CloudError("REFUSE_TO_OVERWRITE_ACTIVE_AGENT")
+    model = next(m for m in models if m["display_name"] == profile["model"])
+    if model.get("connect_status") != "available":
+        raise CloudError("NATIVE_MODEL_HEALTHCHECK_REQUIRED")
+    model_id = model["model_id"]
     bindings = {}
     for role, agent_id in saved["agents"].items():
         api.call("POST", "/agent/update", {"agent_id": agent_id, "enabled": False, "model_ids": [model_id],
@@ -79,7 +81,7 @@ def main():
             saved = json.loads(path.read_text("utf-8"))
             api = NexentAPI()
             try:
-                api.login(accounts["developer"])
+                api.login(accounts["tenant_admin"])
                 bindings = bind_drafts(api, profile, key, saved)
             finally: api.close()
             saved.update(model_bindings=bindings, target_provider=profile["provider"], inference_enabled=False, published=False)

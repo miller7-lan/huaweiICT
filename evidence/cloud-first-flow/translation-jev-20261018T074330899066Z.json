@@ -1,0 +1,89 @@
+{
+  "checked_at": "2026-10-18T07:43:30.899066+00:00",
+  "scope": "First bounded Chinese synthetic source -> official DeepSeek translation -> official Jev support verification; not native Nexent execution or model training",
+  "data_class": "synthetic",
+  "network_mode": "existing_environment_proxy",
+  "max_translation_calls": 1,
+  "max_jev_calls": 1,
+  "business_rules_published": false,
+  "cost_usd": null,
+  "status": "completed",
+  "expectations_met": true,
+  "answers": {
+    "supported": {
+      "type": "noul",
+      "noul": 0.96
+    },
+    "unsupported": {
+      "type": "noul",
+      "noul": 0.02
+    }
+  },
+  "jev_usage": {
+    "input_tokens": 337,
+    "output_tokens": 36
+  },
+  "english_input": {
+    "version": "jev-english-1",
+    "state": {
+      "data_class": "synthetic",
+      "text": "Engineering simulation materials: the application form must be submitted when applying. The materials do not state the fee amount."
+    },
+    "questions": {
+      "supported": {
+        "type": "noul",
+        "instructions": "Does the original text explicitly require submission of the application form?"
+      },
+      "unsupported": {
+        "type": "noul",
+        "instructions": "Does the original text explicitly require payment of 100 yuan?"
+      }
+    }
+  },
+  "deepseek_attempts": 1,
+  "jev_attempts": 1,
+  "translation_receipts": [
+    {
+      "version": "jev-english-1",
+      "target_language": "en",
+      "status": "translated",
+      "source_state_sha256": "a2c24ecc299b455c9a46e06be032a9be4c3e5e4fcbebcd9fa4cdad3bf0757956",
+      "source_questions_sha256": "3940f6ec80865915705c39364d3e5473c3233ed1c5d91b721cbd9378b8dd3e5d",
+      "translation_calls": 1,
+      "cache_hits": 0,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage": {
+        "input_tokens": 244,
+        "output_tokens": 65
+      },
+      "state_sha256": "7d02b7bee053c6aadb012721cfbdd3806ceb04708b1db9af8921fdd9d2b5344f",
+      "questions_sha256": "f63ca913102da2def9a53a24d365ec31b4a4d9098863b4abfd84bf6891d644dc",
+      "input_bytes": 461
+    }
+  ],
+  "jev_receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 461,
+      "status": "ok",
+      "cost_usd": null,
+      "http_status": 200,
+      "served_model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 337,
+        "output_tokens": 36
+      },
+      "duration_ms": 859.84
+    }
+  ],
+  "source_sha256": {
+    "src/gov_mcp/deepseek.py": "153245960666f60c08f6f4eab81b20a783b56e94307dec2e7cda2548230007ec",
+    "src/gov_mcp/classification.py": "982d03dcff0398e240a336f1a2ee49f229c30c7ff1b2004fb88b420203cbfb05",
+    "src/gov_mcp/jev_translation.py": "075d295da24e96c824ed21b6e7eb1bdcc79faab5bbf24eeb9a6a3d5e856ddcfd"
+  }
+}

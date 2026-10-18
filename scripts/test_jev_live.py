@@ -10,7 +10,7 @@ import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/"src"))
-from gov_mcp.classification import ClassificationError, classify_corpus, questions_for, validate_response
+from gov_mcp.classification import ClassificationError, JevProvider, ENDPOINT as OFFICIAL_ENDPOINT, classify_corpus, questions_for, validate_response
 from gov_mcp.jev_gateway import VercelJevProvider, MODEL, GATEWAY_MODEL
 
 
@@ -39,7 +39,9 @@ def run_suite(provider):
     report = {"checked_at": datetime.now(timezone.utc).isoformat(), "status": "running",
         "scope": "direct Jev only, no translation; nine engineering examples, not independent business accuracy",
         "input_translation_enabled": False,
-        "data_class": "synthetic", "provider": provider.name, "model": MODEL, "transport_model": GATEWAY_MODEL,
+        "data_class": "synthetic", "provider": provider.name, "model": MODEL,
+        "endpoint": OFFICIAL_ENDPOINT if provider.name == "jev" else "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "transport_model": MODEL if provider.name == "jev" else GATEWAY_MODEL,
         "max_http_calls": 32, "max_request_bytes": 16000, "other_model_calls": 0,
         "business_rules_published": False, "workflow_heartbeat_auto_enabled": False}
     try:
@@ -79,31 +81,41 @@ def run_suite(provider):
         report["all_originals_preserved"] = originals == routed
         report["status"] = "completed"  # Quality metrics are reported separately; not a quality pass.
     except ClassificationError as error:
-        report.update(status="blocked" if str(error) in {"MISSING_API_KEY", "PAYMENT_REQUIRED", "ACCESS_DENIED", "AUTHENTICATION_FAILED"} else "failed", error_code=str(error))
+        report.update(status="blocked" if str(error) in {"MISSING_API_KEY", "PAYMENT_REQUIRED", "ACCESS_DENIED", "AUTHENTICATION_FAILED", "ACCESS_RESTRICTED"} else "failed", error_code=str(error))
     report["http_attempts"] = provider.attempts
     report["receipts"] = deepcopy(provider.receipts)
-    report["known_success_cost_usd"] = str(provider.known_cost)
+    report["known_success_cost_usd"] = str(provider.known_cost) if hasattr(provider, "known_cost") else None
     report["cost_complete"] = bool(provider.receipts) and all(r["status"] == "ok" and r["cost_usd"] is not None for r in provider.receipts)
-    report["cost_scope"] = "reported successful-response cost only; failed attempts may also be billed"
+    report["cost_scope"] = ("official response token usage only; monetary cost unknown, verify TypeSafe billing"
+        if provider.name == "jev" else "reported successful-response cost only; failed attempts may also be billed")
     return report
+
+
+def create_provider(provider_name, key_file=None):
+    """Credentials are provider-specific; never reuse a gateway key for TypeSafe."""
+    field = "TYPESAFE_API_KEY" if provider_name == "jev" else "AI_GATEWAY_API_KEY"
+    key = os.environ.get(field, "")
+    if not key and key_file is not None and key_file.exists():
+        key = json.loads(key_file.read_text("utf-8-sig")).get(field, "")
+    return JevProvider(key, max_calls=32) if provider_name == "jev" else VercelJevProvider(key)
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--live", action="store_true", help="Explicitly allow Jev network calls on synthetic examples")
-    parser.add_argument("--key-file", type=Path, default=ROOT/".runtime/jev/credentials.json")
-    parser.add_argument("--output", type=Path, default=ROOT/"evidence/jev-live/latest.json")
+    parser.add_argument("--provider", choices=["jev", "vercel_jev_live"], default="jev", help="Default: TypeSafe official API; gateway requires explicit selection")
+    parser.add_argument("--key-file", type=Path, help="Optional server-side JSON with the selected provider's credential field")
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if not args.live: parser.error("--live is required; ordinary regression tests never call providers")
-    key = os.environ.get("AI_GATEWAY_API_KEY", "")
-    if not key and args.key_file.exists():
-        key = json.loads(args.key_file.read_text("utf-8"))["AI_GATEWAY_API_KEY"]
-    report = run_suite(VercelJevProvider(key))
-    args.output.parent.mkdir(parents=True, exist_ok=True)
+    key_file = args.key_file or ROOT/(".runtime/jev/official.credentials.json" if args.provider == "jev" else ".runtime/jev/credentials.json")
+    output = args.output or ROOT/("evidence/jev-official/latest.json" if args.provider == "jev" else "evidence/jev-live/latest.json")
+    report = run_suite(create_provider(args.provider, key_file))
+    output.parent.mkdir(parents=True, exist_ok=True)
     sources = [ROOT/"src/gov_mcp/jev_gateway.py", ROOT/"src/gov_mcp/classification.py", Path(__file__).resolve(),
                ROOT/"config/preparation/classification.json", ROOT/"config/preparation/classification.examples.json"]
     report["source_sha256"] = {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources}
-    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False)+"\n", "utf-8")
+    output.write_text(json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False)+"\n", "utf-8")
     print(json.dumps({k: report.get(k) for k in ("status", "error_code", "http_attempts", "known_success_cost_usd")}, ensure_ascii=False))
     return 0 if report["status"] == "completed" else 1
 

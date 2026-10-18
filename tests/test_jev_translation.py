@@ -300,15 +300,15 @@ def test_unavailable_jev_is_checked_before_any_translation(reason):
     assert not translator.calls
 
 
-@pytest.mark.parametrize("gateway", [False, True])
-def test_jev_denial_after_first_request_prevents_later_translation(gateway):
+@pytest.mark.parametrize("gateway,code,expected", [(False,403,"ACCESS_DENIED"), (True,403,"ACCESS_DENIED"), (False,451,"ACCESS_RESTRICTED")])
+def test_jev_denial_after_first_request_prevents_later_translation(gateway, code, expected):
     import io
     import urllib.error
     from gov_mcp.jev_gateway import VercelJevProvider
     sent = []
     def denied(request, timeout):
         sent.append(request)
-        raise urllib.error.HTTPError(request.full_url, 403, "private upstream message", {}, io.BytesIO(b"private"))
+        raise urllib.error.HTTPError(request.full_url, code, "private upstream message", {}, io.BytesIO(b"private"))
     raw = VercelJevProvider("fixture", opener=denied) if gateway else JevProvider("fixture", opener=denied)
     translator = TranslationFixture()
     provider = EnglishJevProvider(raw, translator)
@@ -319,7 +319,7 @@ def test_jev_denial_after_first_request_prevents_later_translation(gateway):
     second = classify_corpus(second_corpus, CONFIG, provider)
     assert initial_calls > 0 and len(translator.calls) == initial_calls
     assert len(sent) == 1
-    assert first["records"][0]["reasons"] == second["records"][0]["reasons"] == ["ACCESS_DENIED"]
+    assert first["records"][0]["reasons"] == second["records"][0]["reasons"] == [expected]
 
 
 @pytest.mark.parametrize("budget", [True, 0, 8193])

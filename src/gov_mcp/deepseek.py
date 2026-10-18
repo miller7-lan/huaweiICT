@@ -98,4 +98,6 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
         except httpx.RequestError: raise CloudError("DEEPSEEK_TRANSPORT_UNAVAILABLE") from None
         except (ValueError, KeyError, TypeError, IndexError): raise CloudError("INVALID_DEEPSEEK_RESPONSE") from None
     if client is not None: return send(client)
-    with httpx.Client(trust_env=False, timeout=60, follow_redirects=False) as http: return send(http)
+    # Cloud calls follow the operator's configured proxy; local Nexent clients
+    # remain separate and direct. Keep certificate verification and no redirects.
+    with httpx.Client(trust_env=True, timeout=60, follow_redirects=False) as http: return send(http)

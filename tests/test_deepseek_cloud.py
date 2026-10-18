@@ -25,6 +25,18 @@ def fixture_output(model="deepseek-v4.1-flash-1017"):
             "usage": {"prompt_tokens": 20, "completion_tokens": 8}}
 
 
+def test_cloud_default_honors_operator_proxy_without_following_redirects(monkeypatch):
+    original = httpx.Client
+    seen = []
+    def client_factory(**kwargs):
+        seen.append(kwargs)
+        return original(transport=httpx.MockTransport(lambda _: httpx.Response(200, json=fixture_output())), trust_env=False)
+    monkeypatch.setattr(httpx, "Client", client_factory)
+    result = chat(PROFILES["official"], [], environment={"DEEPSEEK_API_KEY": "fixture-secret"})
+    assert result["output"] == {"candidate_ids": ["req-slip"]}
+    assert seen[0]["trust_env"] is True and seen[0]["follow_redirects"] is False
+
+
 def test_all_six_cloud_roles_preserve_actual_model_and_never_send_ollama_fields(tmp_path):
     seen = []
     def handler(request):
@@ -123,6 +135,31 @@ def test_active_native_agent_is_not_rebound():
     with pytest.raises(CloudError, match="REFUSE_TO_OVERWRITE_ACTIVE_AGENT"):
         bind_drafts(api, PROFILES["official"], "fixture-secret", {"agents":{"extractor":17}})
     assert not api.agent_writes
+
+
+@pytest.mark.parametrize("available", [False, True])
+def test_native_binding_requires_verified_model_and_preserves_existing_settings(available):
+    class API:
+        def __init__(self): self.bound = False; self.writes = []
+        def call(self, method, path, body=None):
+            if path == "/agent/search_info":
+                return {"name": "govflow_extractor", "enabled": False, "model_ids": [9] if self.bound else []}
+            if path.endswith("/versions"): return {"total": 0}
+            if path == "/model/list":
+                return {"data": [{"model_id": 9, "display_name": "deepseek-flash", "model_name": "deepseek-flash",
+                                  "base_url": PROFILES["official"]["base_url"],
+                                  "connect_status": "available" if available else "not_detected"}]}
+            if path == "/agent/update": self.bound = True; self.writes.append(path); return {}
+            pytest.fail("Unexpected model mutation or inference: " + path)
+    api = API()
+    saved = {"agents": {"extractor": 17}}
+    if available:
+        assert bind_drafts(api, PROFILES["official"], "fixture-secret", saved)["extractor"]["model_id"] == 9
+        assert api.writes == ["/agent/update"]
+    else:
+        with pytest.raises(CloudError, match="NATIVE_MODEL_HEALTHCHECK_REQUIRED"):
+            bind_drafts(api, PROFILES["official"], "fixture-secret", saved)
+        assert not api.writes
 
 
 def test_compact_json_preserves_types_order_and_complete_evidence():

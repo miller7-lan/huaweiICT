@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "stage": "robots",
+      "http_status": 404,
+      "sha256": "b21c99916e7843a51a5488c770371652a7fcabed7ae85d2a7391455768a67b5c"
+    },
+    {
+      "stage": "guide",
+      "http_status": 200,
+      "sha256": "6da53882860f1e469292f932ec3f4ddbeeba2c4df964581411c527d628192eb1",
+      "bytes": 12209
+    }
+  ],
+  "result": {
+    "url": "https://www.hnzwfw.gov.cn/portal/guide/9BA34BC110B96284D26CE82456A51500?region=410103000000",
+    "status": "http_shell",
+    "checked_at": "2026-10-18T14:11:41.355286+00:00",
+    "http_status": 200,
+    "raw_sha256": "6da53882860f1e469292f932ec3f4ddbeeba2c4df964581411c527d628192eb1",
+    "method": "normal_public_http_no_login"
+  }
+}

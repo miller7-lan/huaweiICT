@@ -6,3 +6,7 @@ evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eo
 evaluation/knowledge/archive/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Preserve verbatim failure trace whitespace in this merge's test receipts.
 evidence/merge-m2-20261018/*.xml -text -whitespace
+# Official originals and original failed-test receipts retain captured whitespace.
+evidence/jev-official/*.xml -text -whitespace
+evidence/real-business-first/sources/*.html -text -whitespace
+evidence/public-native-preview/sources/*.html -text -whitespace

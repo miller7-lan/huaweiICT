@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-18T07:31:55.896375+00:00",
+  "scope": "User-requested single retry of official Jev connectivity on fixed synthetic input; not weight training or business accuracy",
+  "provider": "jev",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "model": "jev-1.13.0",
+  "data_class": "synthetic",
+  "max_http_calls": 1,
+  "other_model_calls": 0,
+  "model_training_performed": false,
+  "successful_model_responses": 0,
+  "actual_remote_model_calls": null,
+  "cost_usd": null,
+  "business_rules_published": false,
+  "input_sha256": "bdaa260f47686cb97a900f1a17d524e0491e3fd1ba42634d6d1e6f440807b236",
+  "http_error_diagnostic": {
+    "http_status": 451,
+    "body_truncated": false,
+    "content_type_category": "application/json",
+    "regional_terms_present": true,
+    "legal_or_policy_terms_present": false,
+    "response_body_saved": false
+  },
+  "status": "blocked",
+  "error_code": "UPSTREAM_HTTP_ERROR",
+  "connectivity_passed": false,
+  "http_attempts": 1,
+  "receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 517,
+      "status": "error",
+      "cost_usd": null,
+      "http_status": 451,
+      "error_code": "UPSTREAM_HTTP_ERROR",
+      "duration_ms": 334.58
+    }
+  ],
+  "source_sha256": {
+    "src/gov_mcp/classification.py": "565f9a5be46987ca031ef1c98533846e682f1bfa678947f90e9afb759cb3fc15"
+  }
+}

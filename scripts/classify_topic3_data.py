@@ -25,7 +25,7 @@ def main():
     parser.add_argument("--input", default=".runtime/preparation/run/assets.json")
     parser.add_argument("--config", default="config/preparation/classification.json")
     parser.add_argument("--output", default=".runtime/preparation/classification")
-    parser.add_argument("--provider", choices=["jev", "vercel_jev_live"], help="Explicit live gateway selection; synthetic inputs only")
+    parser.add_argument("--provider", choices=["jev", "vercel_jev_live"], help="jev: TypeSafe official API (configured default); vercel_jev_live: explicit legacy gateway")
     args = parser.parse_args()
     destination = (ROOT / args.output).resolve()
     if not destination.is_relative_to(ROOT / ".runtime/preparation"):

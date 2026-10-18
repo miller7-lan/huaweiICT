@@ -45,39 +45,59 @@ class DecisionProvider(Protocol):
 class JevProvider:
     name = "jev"
 
-    def __init__(self, api_key=None, opener=None, sleep=time.sleep):
+    def __init__(self, api_key=None, opener=None, sleep=time.sleep, *, max_calls=None):
+        if max_calls is not None and (type(max_calls) is not int or not 1 <= max_calls <= 32):
+            raise ValueError("INVALID_CALL_BUDGET")
         self.api_key = os.environ.get("TYPESAFE_API_KEY", "") if api_key is None else api_key
         # Do not follow redirects carrying Authorization to another host.
         class NoRedirect(urllib.request.HTTPRedirectHandler):
             def redirect_request(self, *args, **kwargs):
                 return None
+        # Honor the operator's existing environment/OS proxy; keep TLS verification
+        # and redirect blocking. Do not force direct egress on a proxy-based host.
         self.open = opener or urllib.request.build_opener(NoRedirect()).open
         self.sleep = sleep
         self.attempts = 0
         self.blocked_error = None
+        self.max_calls = max_calls
+        self.receipts = []
 
     def check_ready(self, model):
-        if not self.api_key.strip():
+        if not isinstance(self.api_key, str) or not self.api_key.strip():
             raise ClassificationError("MISSING_API_KEY")
         if self.blocked_error:
             raise ClassificationError(self.blocked_error)
+        if self.max_calls is not None and self.attempts >= self.max_calls:
+            raise ClassificationError("TEST_BUDGET_EXHAUSTED")
 
     def evaluate(self, state, questions, model):
         self.check_ready(model)
         body = json.dumps({"model": model, "state": state, "questions": questions},
                           ensure_ascii=False, allow_nan=False).encode("utf-8")
+        if len(body) > 16000:
+            raise ClassificationError("MODEL_INPUT_TOO_LARGE")
         for attempt in range(2):
+            self.check_ready(model)  # Retries consume the same HTTP budget.
             request = urllib.request.Request(ENDPOINT, data=body, method="POST", headers={
                 "Authorization": "Bearer " + self.api_key, "Content-Type": "application/json"})
             self.attempts += 1
+            start = time.perf_counter()
+            receipt = {"attempt": self.attempts, "endpoint": ENDPOINT, "requested_model": model,
+                       "transport_model": model, "input_bytes": len(body), "status": "error", "cost_usd": None}
             try:
                 with self.open(request, timeout=30) as response:
+                    receipt["http_status"] = getattr(response, "status", 200)
                     raw = response.read(2 * 1024 * 1024 + 1)
                     if len(raw) > 2 * 1024 * 1024:
                         raise ClassificationError("INVALID_RESPONSE")
-                    return json.loads(raw)
+                    value = validate_response(json.loads(raw), questions, model)
+                    receipt.update(status="ok", served_model=value["model"], usage=value["usage"])
+                    return value
             except urllib.error.HTTPError as error:
                 code = error.code
+                receipt["http_status"] = code
+                receipt["error_code"] = {401: "AUTHENTICATION_FAILED", 402: "PAYMENT_REQUIRED", 403: "ACCESS_DENIED",
+                    429: "RATE_LIMITED", 451: "ACCESS_RESTRICTED"}.get(code, "UPSTREAM_HTTP_ERROR")
                 retry = error.headers.get("Retry-After", "1") if error.headers else "1"
                 error.close()
                 if attempt == 0 and (code == 429 or 500 <= code < 600):
@@ -94,14 +114,24 @@ class JevProvider:
                     self.sleep(max(0, delay))
                     continue
                 message_code = {401: "AUTHENTICATION_FAILED", 402: "PAYMENT_REQUIRED", 403: "ACCESS_DENIED",
-                    429: "RATE_LIMITED"}.get(code, "UPSTREAM_HTTP_ERROR")
-                if code in {401, 402, 403}:
+                    429: "RATE_LIMITED", 451: "ACCESS_RESTRICTED"}.get(code, "UPSTREAM_HTTP_ERROR")
+                if code in {401, 402, 403, 451}:
                     self.blocked_error = message_code
                 raise ClassificationError(message_code) from None
             except (TimeoutError, urllib.error.URLError):
+                receipt["error_code"] = "TRANSPORT_UNAVAILABLE"
                 raise ClassificationError("TRANSPORT_UNAVAILABLE") from None
             except (ValueError, UnicodeError):
+                receipt["error_code"] = "INVALID_RESPONSE"
                 raise ClassificationError("INVALID_RESPONSE") from None
+            except ClassificationError as error:
+                receipt["error_code"] = str(error)
+                raise
+            finally:
+                receipt["duration_ms"] = round((time.perf_counter()-start)*1000, 2)
+                self.receipts.append(receipt)
+                if len(self.receipts) > 1024:
+                    del self.receipts[:-1024]
 
 
 def probability(value):
@@ -326,7 +356,7 @@ def classify_corpus(corpus, config, provider: DecisionProvider | None = None, re
             return value
         except ClassificationError as error:
             # Codes are fixed; injected providers cannot leak exception bodies.
-            allowed = {"MISSING_API_KEY", "DATA_CLASS_BLOCKED", "AUTHENTICATION_FAILED", "ACCESS_DENIED", "RATE_LIMITED",
+            allowed = {"MISSING_API_KEY", "DATA_CLASS_BLOCKED", "AUTHENTICATION_FAILED", "ACCESS_DENIED", "ACCESS_RESTRICTED", "RATE_LIMITED",
                        "UPSTREAM_UNAVAILABLE", "UPSTREAM_HTTP_ERROR", "TRANSPORT_UNAVAILABLE", "INVALID_RESPONSE",
                        "PAYMENT_REQUIRED", "MODEL_NOT_PINNED", "UNEXPECTED_SERVED_MODEL", "TEST_BUDGET_EXHAUSTED",
                        "MODEL_INPUT_TOO_LARGE", "INVALID_REQUEST", "TRANSLATION_INFERENCE_DISABLED",

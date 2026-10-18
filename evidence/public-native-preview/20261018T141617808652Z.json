@@ -1,0 +1,212 @@
+{
+  "checked_at": "2026-10-18T14:15:55.858298+00:00",
+  "mode": "public_preview",
+  "published": false,
+  "model_training": false,
+  "native_run_requests": 1,
+  "run_id": "699195e959b74432be775c614c2b4e08",
+  "passed": true,
+  "stop_reasons": [],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_preview_open_query",
+    "govkb_preview_retrieve",
+    "final_answer",
+    "govkb_preview_verify",
+    "final_answer",
+    "govkb_preview_state",
+    "govkb_preview_finalize",
+    "final_answer"
+  ],
+  "answer": {
+    "task_id": "197beadb315d4345b99cf915f52f1c26",
+    "status": "partial_preview",
+    "mode": "public_preview",
+    "data_class": "public",
+    "snapshot_binding": "6127e4bf5867fb5a90412fd2b22804b4c957463395ef78f008efe04c4ef72720",
+    "source_facts": [
+      {
+        "id": "fee",
+        "value": "20元/证",
+        "statement": "The county guide states a standard renewal fee of 20 CNY per card; this does not establish personal fee-relief eligibility.",
+        "citation": {
+          "source_id": "erqi",
+          "section_id": "section-text_04",
+          "quote": "20元/证。按照《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》（发改价格[2003]2322号）的规定。",
+          "start": 0,
+          "end": 61,
+          "raw_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml#section-text_04"
+        },
+        "status": "needs_review",
+        "support": 0.72
+      },
+      {
+        "id": "duration",
+        "value": "15个工作日",
+        "statement": "The county guide states 15 working days; its relationship to other service commitments remains unverified.",
+        "citation": {
+          "source_id": "erqi",
+          "section_id": "section-text_03",
+          "quote": "15个工作日",
+          "start": 0,
+          "end": 6,
+          "raw_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml#section-text_03"
+        },
+        "status": "source_supported",
+        "support": 0.96
+      },
+      {
+        "id": "materials",
+        "value": [
+          "居民户口簿",
+          "原居民身份证"
+        ],
+        "statement": "The county guide lists a household register and the original resident identity card, with separate conditions for minors and cross-city processing. This is a source description, not a confirmed current checklist.",
+        "citation": {
+          "source_id": "erqi",
+          "section_id": "section-txt1",
+          "quote": "1、居民户口簿； 2、原居民身份证； 3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证； 4、跨户籍所在地市异地办证的， 申请人交验证明身份的证件之一后，经书面承诺，可免提交在当地就业、就学、居住的证明材料 。",
+          "start": 0,
+          "end": 113,
+          "raw_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml#section-txt1"
+        },
+        "status": "source_supported",
+        "support": 0.81
+      },
+      {
+        "id": "address",
+        "value": "郑州市二七区铭功路228号铭功路街道便民服务中心",
+        "statement": "The Minggong guide gives the window address shown in this claim's value.",
+        "citation": {
+          "source_id": "minggong",
+          "section_id": "section-text_05",
+          "quote": "郑州市二七区铭功路228号铭功路街道便民服务中心",
+          "start": 0,
+          "end": 24,
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d",
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-text_05"
+        },
+        "status": "source_supported",
+        "support": 0.97
+      },
+      {
+        "id": "phone",
+        "value": "0371—86191017",
+        "statement": "The Minggong guide gives the contact phone number shown in this claim's value.",
+        "citation": {
+          "source_id": "minggong",
+          "section_id": "section-text_06",
+          "quote": "0371—86191017",
+          "start": 0,
+          "end": 13,
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d",
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-text_06"
+        },
+        "status": "source_supported",
+        "support": 0.98
+      }
+    ],
+    "pending_business_conclusions": [
+      {
+        "field": "materials",
+        "status": "paused",
+        "reason": "现行材料与户口簿告知承诺、共享核验关系未核定。"
+      },
+      {
+        "field": "duration",
+        "status": "paused",
+        "reason": "15工作日与其他服务承诺的范围、起止及领取关系未核定。"
+      },
+      {
+        "field": "fee_relief",
+        "status": "paused",
+        "reason": "个人减免资格、证明方式及邮费关系未核定；指南收费栏不等于实际应缴金额。"
+      },
+      {
+        "field": "advance_days",
+        "status": "paused",
+        "reason": "现行提前办理窗口未核定，不从旧指南补出30天或其他天数。"
+      }
+    ],
+    "unknown_fields": [
+      "advance_days"
+    ],
+    "invented_advance_rejected": true,
+    "portal_evidence": "http_shell",
+    "published": false,
+    "formal_approval": false,
+    "notice": "真实公开资料的原文解释预览；待核事项不构成现行办理要求，未提交任何申请。"
+  },
+  "duration_ms": 21956.04,
+  "campaign": {
+    "native_runs": 1,
+    "jev_reserved": 1
+  },
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 6,
+    "model_attempt_control": 12,
+    "model_output_thinking": 391,
+    "parse": 6,
+    "tool": 9,
+    "execution_logs": 6,
+    "token_count": 4,
+    "subagent_start": 2,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "final_answer": 1
+  },
+  "cost_amount": null,
+  "jev_receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 3362,
+      "status": "ok",
+      "cost_usd": null,
+      "http_status": 200,
+      "served_model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1081,
+        "output_tokens": 104
+      },
+      "duration_ms": 4083.94
+    }
+  ],
+  "translation_receipts": [
+    {
+      "version": "jev-english-1",
+      "target_language": "en",
+      "status": "translated",
+      "source_state_sha256": "8bcc5cce870ec8079791d881582e33c548b999f7a1724b044025b8d86a0c606b",
+      "source_questions_sha256": "81ee6bcaeb00166db97f5952ed970047aa86baaf149df550b5a4288767f1e089",
+      "translation_calls": 1,
+      "cache_hits": 0,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage": {
+        "input_tokens": 368,
+        "output_tokens": 229
+      },
+      "state_sha256": "2ddbd507ff0e7559ba8575a6822693d56b99133431548f7a9843f2353b1838c1",
+      "questions_sha256": "81ee6bcaeb00166db97f5952ed970047aa86baaf149df550b5a4288767f1e089",
+      "input_bytes": 3362
+    }
+  ],
+  "full_english_input_saved": true,
+  "exact_final_matches_persistence": true,
+  "source_sha256": {
+    "src/gov_mcp/public_preview.py": "5e4c29ac99d2fdd8c8610894bd69d8abbaf0fe9c83c615b8daf0c4feaa71b0fe",
+    "src/gov_mcp/public_preview_server.py": "58296e094ee04082be84fe7bb03ba0d249d1f136cdba5aaf165f00dd4cb4280b",
+    "scripts/verify_public_native_preview.py": "3158be60a242dd8589429361721024593e931fe32682f30c80fadd91f6323f01",
+    "scripts/provision_public_native_preview.py": "02e0c8320a462ad56a8ae15aaa7f3335803b294405aaefe8dec94da661140eed",
+    "config/skills/govkb-public-preview/SKILL.md": "ff65f99cefaf4f4872976bf1a79f7d442f24fbd62ce5b3883aac96caed9cffe6"
+  }
+}

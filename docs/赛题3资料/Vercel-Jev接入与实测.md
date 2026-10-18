@@ -1,5 +1,7 @@
 # Vercel Jev 接入与实测
 
+2026-10-18 路线变更：后续默认使用 [Jev 官方 API](Jev官方API接入说明.md)，独立实测脚本也已切换默认通道。本文和 `evidence/jev-live/` 保留为历史网关记录；下方旧命令如需继续走网关，须显式增加 `--provider vercel_jev_live`。本次没有向官方或网关发送真实请求。
+
 日期：2026-10-17。已接入独立分类适配器和真实测试入口。本机已有密钥，用户完成绑卡后发起 2 次模拟请求，均返回 HTTP 403，第二次确认原因是 `FREE_TIER_MODEL_RESTRICTED`。固定的 Jev 1.13 尚未调用成功，不能报告真实分类准确率。回归记录见 `evidence/jev-live/regression.xml`；离线通过不能代表真实中文分类效果。
 
 ## 填写已有密钥
