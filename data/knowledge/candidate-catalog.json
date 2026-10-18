@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-18T14:25:43.907196+00:00",
+  "captured_at": "2026-10-18T14:34:40.916278+00:00",
   "counts": {
-    "sites": 61,
-    "documents": 51,
-    "revisions": 158,
-    "chunks": 1033,
+    "sites": 87,
+    "documents": 63,
+    "revisions": 170,
+    "chunks": 1139,
     "versions": 0,
     "heads": 0,
     "jobs": 38,
-    "latest_chunks": 385
+    "latest_chunks": 491
   },
   "sources": [
     {
@@ -29,6 +29,101 @@
       "enabled_at_snapshot": true,
       "paused_reason": null,
       "last_success": 1792314861.715735,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-DRIVER-EXPIRY-2026",
+      "label": "机动车驾驶证期满换证及审验",
+      "origin": "https://jtgl.beijing.gov.cn",
+      "allowed_paths": [
+        "/jgj/93950/jwgk/jsrgl/205294/index.html"
+      ],
+      "seeds": [
+        "https://jtgl.beijing.gov.cn/jgj/93950/jwgk/jsrgl/205294/index.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-ID-FIRST-LOCAL-2025",
+      "label": "公民申领居民身份证（京籍）",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857527.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857527.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-ID-FIRST-NONLOCAL-2026",
+      "label": "公民申领居民身份证（非京籍）",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/sfz/blzn/202609/t20260923_4878113.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/202609/t20260923_4878113.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-ID-LOSS-LOCAL-2025",
+      "label": "公民补领居民身份证（京籍）",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857524.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857524.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-ID-LOSS-NONLOCAL-2025",
+      "label": "公民补领居民身份证（非京籍）",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857523.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857523.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -52,6 +147,63 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "BJ-ID-RENEWAL-NONLOCAL-2025",
+      "label": "公民换领居民身份证（非京籍）",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857525.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857525.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-ID-TEMPORARY-LOCAL-2025",
+      "label": "公民申领临时身份证（京籍）",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857522.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857522.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-MARRIAGE-SERVICE-GUIDE",
+      "label": "婚姻登记办理指南",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/fuwu/bmfw/bmzt/hydj/"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/hydj/"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "BJ-PASSPORT-FIRST-MATERIALS",
       "label": "护照首次申领办理材料",
       "origin": "https://www.beijing.gov.cn",
@@ -60,6 +212,25 @@
       ],
       "seeds": [
         "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/cjybz/hz/blzn/201905/t20190522_1845633.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-SOCIAL-CARD-RULES-2025",
+      "label": "北京市社会保障卡管理办法实施细则",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/cs/gncs/zcwj/202603/t20260327_4567992.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4567992.html"
       ],
       "interval_seconds": 86400,
       "delay_seconds": 5,
@@ -159,6 +330,120 @@
       "delay_seconds": 5,
       "enabled_at_snapshot": false,
       "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FJ-ELECTRONIC-BORDER-PASS-2026",
+      "label": "电子边境管理区通行证签发服务指南",
+      "origin": "https://gat.fujian.gov.cn",
+      "allowed_paths": [
+        "/ztzl/cryjfwwj/bsxz_28282/202604/t20260415_7124989.htm"
+      ],
+      "seeds": [
+        "https://gat.fujian.gov.cn/ztzl/cryjfwwj/bsxz_28282/202604/t20260415_7124989.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FJ-PASSPORT-LOCATION-2026",
+      "label": "申请护照办理地点问答",
+      "origin": "https://gat.fujian.gov.cn",
+      "allowed_paths": [
+        "/ztzl/cryjfwwj/cjwt_28283/202606/t20260609_7160834.htm"
+      ],
+      "seeds": [
+        "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/202606/t20260609_7160834.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FJ-PASSPORT-MATERIALS-2024",
+      "label": "申请普通护照的材料问答",
+      "origin": "https://gat.fujian.gov.cn",
+      "allowed_paths": [
+        "/ztzl/cryjfwwj/cjwt_28283/201912/t20191217_5153598.htm"
+      ],
+      "seeds": [
+        "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/201912/t20191217_5153598.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FJ-PASSPORT-TIME-2024",
+      "label": "申请普通护照办证时限问答",
+      "origin": "https://gat.fujian.gov.cn",
+      "allowed_paths": [
+        "/ztzl/cryjfwwj/cjwt_28283/202004/t20200407_5232056.htm"
+      ],
+      "seeds": [
+        "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/202004/t20200407_5232056.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FZ-TEMPORARY-ID-NONLOCAL-2025",
+      "label": "福建省外户籍居民申领临时居民身份证",
+      "origin": "https://gaj.fuzhou.gov.cn",
+      "allowed_paths": [
+        "/jwxx/ztlm/hzywbszn/jnjmbszn/sfzsl/202403/t20240301_4784880.htm"
+      ],
+      "seeds": [
+        "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/sfzsl/202403/t20240301_4784880.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "GANZHOU-HOUSEHOLD-ID-RESIDENCE-2025",
+      "label": "户口身份证居住证收费与办事指南",
+      "origin": "https://www.ganzhou.gov.cn",
+      "allowed_paths": [
+        "/zfxxgk/c143754/202512/d9648925d637438fbf1791e17913bb86.shtml"
+      ],
+      "seeds": [
+        "https://www.ganzhou.gov.cn/zfxxgk/c143754/202512/d9648925d637438fbf1791e17913bb86.shtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "URL outside approved paths",
       "last_success": null,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
@@ -657,6 +942,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "HUAIBEI-UNEMPLOYMENT-FAQ-2025",
+      "label": "失业保险待遇政策问答",
+      "origin": "https://rsj.huaibei.gov.cn",
+      "allowed_paths": [
+        "/ztzl/qmcbdj/58024204.html"
+      ],
+      "seeds": [
+        "https://rsj.huaibei.gov.cn/ztzl/qmcbdj/58024204.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "HZ-RESIDENCE-EXPLANATION",
       "label": "杭州市流动人口居住证申领实施细则试行解读",
       "origin": "https://zfgb.hangzhou.gov.cn",
@@ -787,6 +1091,44 @@
       "paused_reason": "robots request timed out; no PDF requested in this run",
       "last_success": null,
       "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "JN-CHILD-RESIDENCE-MATERIALS-2026",
+      "label": "无身份证未成年人办理居住证材料流程",
+      "origin": "https://www.jinan.gov.cn",
+      "allowed_paths": [
+        "/col/col118356/art/2026/art_69c06fa842d14b4ab57a23d65d76de81.html"
+      ],
+      "seeds": [
+        "https://www.jinan.gov.cn/col/col118356/art/2026/art_69c06fa842d14b4ab57a23d65d76de81.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "Robots policy could not be checked",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "MD-DRIVER-RENEWAL-MATERIALS-2026",
+      "label": "驾驶证期满换证所需材料",
+      "origin": "https://mdx.gov.cn",
+      "allowed_paths": [
+        "/info/2991/52471.htm"
+      ],
+      "seeds": [
+        "https://mdx.gov.cn/info/2991/52471.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
     {
@@ -982,6 +1324,63 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "NATIONAL-MARRIAGE-REGULATION-2025",
+      "label": "婚姻登记条例国务院令第804号",
+      "origin": "https://www.mee.gov.cn",
+      "allowed_paths": [
+        "/zcwj/gwywj/202504/t20250410_1113983.shtml"
+      ],
+      "seeds": [
+        "https://www.mee.gov.cn/zcwj/gwywj/202504/t20250410_1113983.shtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "URL outside approved paths",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NC-MARRIAGE-MATERIALS-2026",
+      "label": "婚姻登记办理材料说明",
+      "origin": "https://mzj.nc.gov.cn",
+      "allowed_paths": [
+        "/ncsmzj/tzgg/202602/e64666acf6f64f39968a0518b1bfabcc.shtml"
+      ],
+      "seeds": [
+        "https://mzj.nc.gov.cn/ncsmzj/tzgg/202602/e64666acf6f64f39968a0518b1bfabcc.shtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "URL outside approved origin",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NC-RESIDENCE-MATERIALS-2025",
+      "label": "办理居住证所需材料热线问答",
+      "origin": "https://12345.nc.gov.cn",
+      "allowed_paths": [
+        "/12345/rxwd/202506/e08fd984325040638c0022ecbbda319d.shtml"
+      ],
+      "seeds": [
+        "https://12345.nc.gov.cn/12345/rxwd/202506/e08fd984325040638c0022ecbbda319d.shtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": "URL outside approved paths",
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "NDRC-EXEMPT-2004",
       "label": "财政部国家发展改革委关于第二代居民身份证工本费减免政策的通知",
       "origin": "https://www.ndrc.gov.cn",
@@ -1039,6 +1438,44 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "NJ-AWAY-MEDICAL-RECORD-2026",
+      "label": "异地就医承诺制备案问答",
+      "origin": "https://www.nanjing.gov.cn",
+      "allowed_paths": [
+        "/hdjl/hygq/202609/t20260924_5917373.html"
+      ],
+      "seeds": [
+        "https://www.nanjing.gov.cn/hdjl/hygq/202609/t20260924_5917373.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NJ-ID-OLD-CARD-2025",
+      "label": "换证期间旧身份证使用问答",
+      "origin": "https://www.nanjing.gov.cn",
+      "allowed_paths": [
+        "/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html"
+      ],
+      "seeds": [
+        "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "NJ-ID-RENEWAL-CYCLE-2026",
       "label": "身份证到期换证领取周期问答",
       "origin": "https://www.nanjing.gov.cn",
@@ -1047,6 +1484,44 @@
       ],
       "seeds": [
         "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NJ-ID-RENEWAL-FAQ-2025",
+      "label": "身份证换证常见问题解答",
+      "origin": "https://gaj.nanjing.gov.cn",
+      "allowed_paths": [
+        "/njsgaj/202505/t20250529_5573116.html"
+      ],
+      "seeds": [
+        "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "NJ-RESIDENCE-ONLINE-2025",
+      "label": "居住证线上办理的申请条件",
+      "origin": "https://www.nanjing.gov.cn",
+      "allowed_paths": [
+        "/hdjl/dwzsk/gysy/202512/t20251231_5755216.html"
+      ],
+      "seeds": [
+        "https://www.nanjing.gov.cn/hdjl/dwzsk/gysy/202512/t20251231_5755216.html"
       ],
       "interval_seconds": 86400,
       "delay_seconds": 5,
@@ -1093,6 +1568,25 @@
       "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "SANYA-SOCIAL-CARD-FAQ-2026",
+      "label": "人社服务热点问题社会保障卡篇",
+      "origin": "https://hrss.sanya.gov.cn",
+      "allowed_paths": [
+        "/rsjsite/zcwd/202605/11610dd9311a42e583cc8de9c1239c92.shtml"
+      ],
+      "seeds": [
+        "https://hrss.sanya.gov.cn/rsjsite/zcwd/202605/11610dd9311a42e583cc8de9c1239c92.shtml"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
     {
@@ -1230,6 +1724,386 @@
   ],
   "documents": [
     {
+      "source_id": "BJ-ID-FIRST-LOCAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857527.html",
+      "revision": "rev-d4c432fb3e81016ed66b0c9c",
+      "state": "pending_review",
+      "original_sha256": "2ffa3fe075d6de4fa18e6deca59e4d975ac09b4d7e2fe97c34b990977ce695fd",
+      "original_bytes": 32971,
+      "metadata": {
+        "title": "公民申领居民身份证（京籍）",
+        "region": "北京市",
+        "matter": "resident-id-first-application",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-03-03",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 14,
+          "text_sha256": "860129716eb0b3e9e30bdf7e315a6d418fea353bfdee940468c36911ce45021c"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 69,
+          "text_sha256": "f062e69c2d661e6e99478a093743e7d01c3823318562c560768c5a7a66a1d497"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 13,
+          "text_sha256": "b8db16be4cf2c85e39456ba16703bf874db1f1d0fb323f212c4dd3478da55c90"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 56,
+          "text_sha256": "f9b8a4263f3f96752adff3d0f58e4b59effc86f7dd982ef92d5fae4766705dc0"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "identity",
+          "characters": 74,
+          "text_sha256": "bf95401cc6762d399c303ca425e8feb8b44edb0a12692626aef231c7f4873f7c"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c1d21f66b95cdb8a56a889d30b9be3bb02a5c9a9d1f681d9f3ac30e2a6f33a3e"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "1d54dfbb21a7897863a331940dee0d76ee10777cccf218b868cedfd9f8eee620"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "7e8ca5a4e1d6502b9f5b5bbd74e2884932b8f739f5515570bd87542a87532480"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "9a0fe8e13025e4870b6c328d2437f24c6718f80864312e34796d1cb6e0bfe822"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "59706d0893d8005dada931b131fea32e66ecd9d1dfe2b03f50cea958e7465d64"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "23a4c6ee85e9b1b85bd5bd65e7b8f457b86bc0cdbf055a7f14b781501d9dbd7a"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "identity",
+          "characters": 15,
+          "text_sha256": "7d72d2486f39fa0c1e1bdbf404ba8aa99c04f919ddb7e2888b3b3ae9fe97890c"
+        }
+      ]
+    },
+    {
+      "source_id": "BJ-ID-FIRST-NONLOCAL-2026",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/202609/t20260923_4878113.html",
+      "revision": "rev-62213adb6221613f6f736ec8",
+      "state": "pending_review",
+      "original_sha256": "5ad5333dfc0987e73f3b9d010d48425d04f88e84ebe3c371acb166efc468a6af",
+      "original_bytes": 32290,
+      "metadata": {
+        "title": "公民申领居民身份证（非京籍）",
+        "region": "北京市",
+        "matter": "resident-id-first-application-nonlocal",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2026-09-23",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 42,
+          "text_sha256": "bf5480da47231383ac9c8dbeb92bb7d451fd682d47e6a98d30f4201439c3083e"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "household",
+          "characters": 50,
+          "text_sha256": "a1ac9e0e971f709061e60ae86813d6c41361a11c891a3ea1d4d2a59008137686"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 126,
+          "text_sha256": "f61871d89640c98fcb441352b0015a9c5c93ed114f2b90deea82d281d1401cf7"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 149,
+          "text_sha256": "419acf7c98dd920e175cac4bb5d24fcc8b33e36f56e74050d28ce2f79d8a2cdc"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "b6bb81792e6293ed9162b50fb35e44a1da9ac5931c23cae9d5ab47d7e97cddc8"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "e0e9158c6f7eba05666252366b7c0aa02149edf3a5fb52b92fd030f4a5e4dfab"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "identity",
+          "characters": 50,
+          "text_sha256": "46684dc0e37311ae511e536685a0c858569e5961d5aa5d82544b7be16e442145"
+        }
+      ]
+    },
+    {
+      "source_id": "BJ-ID-LOSS-LOCAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857524.html",
+      "revision": "rev-a9d6693dbcbc65a57d5fc95c",
+      "state": "pending_review",
+      "original_sha256": "582c5faa7bf075432d7c00bfaf754b6e4b354ba70193b8e06d3458f8bca659f7",
+      "original_bytes": 31017,
+      "metadata": {
+        "title": "公民补领居民身份证（京籍）",
+        "region": "北京市",
+        "matter": "resident-id-loss-replacement",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-03-03",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 14,
+          "text_sha256": "a6d1e798b74ef774a721112b9ac5043924335063a425ac1451e5d321d0937c2e"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 82,
+          "text_sha256": "3cf87f4eab99233591b184f3b01cea31ea59d735179873423ee82a8425b311f5"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "household",
+          "characters": 33,
+          "text_sha256": "6d131c8621a1e715f0fa6e321d3d10a179178b52628807533c785143e4cb1bc0"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 40,
+          "text_sha256": "7e85cfbd3920f4dd002e3e88ee898034b30366e703cb21ce99ade9382a13dfa3"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "identity",
+          "characters": 76,
+          "text_sha256": "2b20fcc76ba5f163df328e3f1f482a0a84aa8c86c3edbe72c8eeb274673e249e"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c1d21f66b95cdb8a56a889d30b9be3bb02a5c9a9d1f681d9f3ac30e2a6f33a3e"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "1d54dfbb21a7897863a331940dee0d76ee10777cccf218b868cedfd9f8eee620"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "7e8ca5a4e1d6502b9f5b5bbd74e2884932b8f739f5515570bd87542a87532480"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "9a0fe8e13025e4870b6c328d2437f24c6718f80864312e34796d1cb6e0bfe822"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "59706d0893d8005dada931b131fea32e66ecd9d1dfe2b03f50cea958e7465d64"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "175c001968109303df95086415838e8cbfbbcfd59316be8754f316c5b30c4cef"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "identity",
+          "characters": 52,
+          "text_sha256": "e74121310b05db76436d1dbb2d3a6a738d89ee77e10f4f6d3d7a245313170464"
+        },
+        {
+          "locator": "正文段落23",
+          "category": "identity",
+          "characters": 15,
+          "text_sha256": "7d72d2486f39fa0c1e1bdbf404ba8aa99c04f919ddb7e2888b3b3ae9fe97890c"
+        },
+        {
+          "locator": "正文段落24",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "c2ba702ce20a42ed080204e6c514d9485b3d3b1bd944538bae24c5cba012a912"
+        },
+        {
+          "locator": "正文段落25",
+          "category": "identity",
+          "characters": 54,
+          "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172"
+        }
+      ]
+    },
+    {
+      "source_id": "BJ-ID-LOSS-NONLOCAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857523.html",
+      "revision": "rev-f630c06f020d74f41d86b0e0",
+      "state": "pending_review",
+      "original_sha256": "d69bf524c84846cb62d374005a07218256751355764bb7f15f50d088403fc88b",
+      "original_bytes": 30819,
+      "metadata": {
+        "title": "公民补领居民身份证（非京籍）",
+        "region": "北京市",
+        "matter": "resident-id-loss-replacement-nonlocal",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-03-03",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 32,
+          "text_sha256": "07ca79ace9345ff7eca7352f7fb7f616fe2798baa728f614351bda542cbf02cb"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 21,
+          "text_sha256": "a25cbb8f6892d8b1d763fd608aa1fe769d9b179687bfa0685fac4d9720111e9e"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "identity",
+          "characters": 96,
+          "text_sha256": "1f7a2306242f8e6ca6785222588cabf44c0d036cdb54f03a2023bcc1d285a90c"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "0023b30ef4b110e7640f7dd57a9af8a0fcb7f8d4a69381b42dada6f782670077"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 56,
+          "text_sha256": "f9b8a4263f3f96752adff3d0f58e4b59effc86f7dd982ef92d5fae4766705dc0"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "identity",
+          "characters": 78,
+          "text_sha256": "91b5a8ce040facb7bb370075fe1797dede7ea340cd9f8c9db7834be69870770c"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c1d21f66b95cdb8a56a889d30b9be3bb02a5c9a9d1f681d9f3ac30e2a6f33a3e"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "1d54dfbb21a7897863a331940dee0d76ee10777cccf218b868cedfd9f8eee620"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "7e8ca5a4e1d6502b9f5b5bbd74e2884932b8f739f5515570bd87542a87532480"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "9a0fe8e13025e4870b6c328d2437f24c6718f80864312e34796d1cb6e0bfe822"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "018355b3ec74b282dc9b57bead5838bfb2df9d27484622f08c41b09c18983257"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "175c001968109303df95086415838e8cbfbbcfd59316be8754f316c5b30c4cef"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "identity",
+          "characters": 52,
+          "text_sha256": "76e51f4f6f1fc41e3aa319681342c749df5d64e2ec6c597d06d3171a177efb9b"
+        },
+        {
+          "locator": "正文段落24",
+          "category": "identity",
+          "characters": 63,
+          "text_sha256": "0b25d33d669f2cd93b13356c5fbc9bd25cd270dfb0a522d1aceaa16b300c90e9"
+        }
+      ]
+    },
+    {
       "source_id": "BJ-ID-RENEWAL-2025",
       "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
       "revision": "rev-900798fdb5c74c934876fb73",
@@ -1339,6 +2213,220 @@
           "category": "identity",
           "characters": 54,
           "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172"
+        }
+      ]
+    },
+    {
+      "source_id": "BJ-ID-RENEWAL-NONLOCAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857525.html",
+      "revision": "rev-8579bed332c90756c03da42b",
+      "state": "pending_review",
+      "original_sha256": "c6814c5070784bee79d417378a3b85fb4ba690cd12db5cb68673385fc32aac7a",
+      "original_bytes": 31008,
+      "metadata": {
+        "title": "公民换领居民身份证（非京籍）",
+        "region": "北京市",
+        "matter": "resident-id-renewal-nonlocal",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-03-03",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 45,
+          "text_sha256": "9fd94d3b171cf7ad70dabb4d856ea86fed06abc8ba2239044c57493714e3cc7f"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 14,
+          "text_sha256": "aab651cf8ac167e009143620452a0c1b50a1cdcdc0eadb79ebe2753cd4009ee4"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "identity",
+          "characters": 53,
+          "text_sha256": "3a09783490f16b18aec696a0b632094b45e6794d2f5c9880934d884034f1c1a3"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "0023b30ef4b110e7640f7dd57a9af8a0fcb7f8d4a69381b42dada6f782670077"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 56,
+          "text_sha256": "f9b8a4263f3f96752adff3d0f58e4b59effc86f7dd982ef92d5fae4766705dc0"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "identity",
+          "characters": 83,
+          "text_sha256": "ae7b04469aaf77180a966f0390fa2fbfc24d5f7131ab4bb4f63741bfceeffdb1"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c1d21f66b95cdb8a56a889d30b9be3bb02a5c9a9d1f681d9f3ac30e2a6f33a3e"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "1d54dfbb21a7897863a331940dee0d76ee10777cccf218b868cedfd9f8eee620"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "7e8ca5a4e1d6502b9f5b5bbd74e2884932b8f739f5515570bd87542a87532480"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "9a0fe8e13025e4870b6c328d2437f24c6718f80864312e34796d1cb6e0bfe822"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "018355b3ec74b282dc9b57bead5838bfb2df9d27484622f08c41b09c18983257"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "identity",
+          "characters": 38,
+          "text_sha256": "3661ab885a187bb82213cb8a6c858cd3b633c79caa0a5356a3006f30fea43a2f"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "identity",
+          "characters": 52,
+          "text_sha256": "e74121310b05db76436d1dbb2d3a6a738d89ee77e10f4f6d3d7a245313170464"
+        },
+        {
+          "locator": "正文段落24",
+          "category": "identity",
+          "characters": 62,
+          "text_sha256": "7930415ba4a475ebfd6f050e8ec5436460bf0bee099fadb1c304783023ee4359"
+        },
+        {
+          "locator": "正文段落25",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "889eabca8dfbb0c5b7f4ef8e95542e3e4f120b9a4c029a223af7ac7ab3b0047c"
+        }
+      ]
+    },
+    {
+      "source_id": "BJ-ID-TEMPORARY-LOCAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857522.html",
+      "revision": "rev-d99b9e1b064822e009b691c7",
+      "state": "pending_review",
+      "original_sha256": "3e666c17282081c3e71c4d8baf6ce4e460f3b2db0efef78c5a2d62204573e3be",
+      "original_bytes": 30775,
+      "metadata": {
+        "title": "公民申领临时身份证（京籍）",
+        "region": "北京市",
+        "matter": "temporary-resident-id-application",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-03-04",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 46,
+          "text_sha256": "28cd37496c7e83aa75bfb9234da647f2ce57919e505169efebbf91fdadfe2f30"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "characters": 62,
+          "text_sha256": "da6dc4a07061f3235179edbf7aed372bf7a6785920a89116f695e29dbc19e119"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 34,
+          "text_sha256": "2cbc29d9369b1b1b725ed845856ed3558eb1861ea1dc0198b13695ae05873671"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 40,
+          "text_sha256": "7e85cfbd3920f4dd002e3e88ee898034b30366e703cb21ce99ade9382a13dfa3"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "identity",
+          "characters": 28,
+          "text_sha256": "d203007e4dfd05699560b39245bfdbc25c3903065935d0a9563660b6b7d498f8"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 11,
+          "text_sha256": "33eb2332a6a79a177bec87a963048c5ded69002915a99d0890a7ae96c8e0e006"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "20d252c84b29d2e29f7deb5568c9906a4186011003ecd4537dd29905d77cb098"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "identity",
+          "characters": 52,
+          "text_sha256": "933289de4a59300eff1f4043bfd033ae7bb349a4454e95375d94317e7cd9fdc8"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "identity",
+          "characters": 18,
+          "text_sha256": "25ecc05bcb4f170bb569e67551799ddccf2e9d73af1ceccb09d5b6dfb0bf2244"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "identity",
+          "characters": 23,
+          "text_sha256": "8fa5b67adcf74d57d517021d464c36f9935eeafb286784d4f69b6e25b6a0b66c"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "identity",
+          "characters": 19,
+          "text_sha256": "eeb881ee8cb40b8df651ff3979ed13d1330e0dc3df9b2fd53552a5ea1c53df1a"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "identity",
+          "characters": 28,
+          "text_sha256": "b16570d3be5b2a69484692f4e5420db6728505bb2d4f412d5bb10dca8cdb38ad"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "identity",
+          "characters": 55,
+          "text_sha256": "adadcbbffc5246120944171e2ed334f8e5f31d1dd56842ee04fa423768a36899"
         }
       ]
     },
@@ -1637,6 +2725,135 @@
           "category": "fees",
           "characters": 682,
           "text_sha256": "cd06764b3d9283888069506cad95641898e3fef2a9f5936eb7d965998cfa6cbd"
+        }
+      ]
+    },
+    {
+      "source_id": "FJ-PASSPORT-LOCATION-2026",
+      "url": "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/202606/t20260609_7160834.htm",
+      "revision": "rev-facbb2c755ed5a4552c6cbd0",
+      "state": "pending_review",
+      "original_sha256": "432572e1663ef855cd5ec71c50d58c1553009b8edc6680598be35405fd5fbe69",
+      "original_bytes": 42977,
+      "metadata": {
+        "title": "申请护照办理地点问答",
+        "region": "福建省",
+        "matter": "ordinary-passport-application-location",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2026-06-08",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "eligibility",
+          "characters": 148,
+          "text_sha256": "75528d63a3b11afb2a8c7f6505d69d6d2cabe31fd8da0652aaefaaed309ee8c2"
+        }
+      ]
+    },
+    {
+      "source_id": "FJ-PASSPORT-MATERIALS-2024",
+      "url": "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/201912/t20191217_5153598.htm",
+      "revision": "rev-11ddf2178e5116d22a848735",
+      "state": "pending_review",
+      "original_sha256": "abbb0e0d3dd38d4b5846405892966c7c53c7a51902b811fbe5e6ad0869be63cf",
+      "original_bytes": 45195,
+      "metadata": {
+        "title": "申请普通护照的材料问答",
+        "region": "福建省",
+        "matter": "ordinary-passport-application-materials",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2024-01-17",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 18,
+          "text_sha256": "adac28f72aef96b99c5f1454ca4b781639ad282d81260c3381e14a7077f3ba1c"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "c8cbf816a0457b11a67f036e3e1d5af0be8c7d815567d432ece44af04b0f6a7f"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "0df5f6e113b26682b639b844e1f7c0638086a9f89553bb818f11ffbc7a3b2d53"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "identity",
+          "characters": 101,
+          "text_sha256": "6dd72351da6fcd37041c9352200a3db66e2a4f93bc32496e8c1b0af7a91ae8d0"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "characters": 128,
+          "text_sha256": "1bdad1e94c5a3ad60b5919319a9b154bdaaf8a3d6f0f1b79523abd4b26032334"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 83,
+          "text_sha256": "30fc11f2e373d894c128d71159aa11b0243c1a1d57c689ae51350943dd5324ba"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "identity",
+          "characters": 86,
+          "text_sha256": "0574f223d5026cf5853a9931d042b48aac0da606235a0288bc603c327bfc5f23"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "78cb4f48d219ae93ec27b80be63a8070627db69db0adf681b87987425b2babb2"
+        }
+      ]
+    },
+    {
+      "source_id": "FJ-PASSPORT-TIME-2024",
+      "url": "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/202004/t20200407_5232056.htm",
+      "revision": "rev-b92c56f87d3ef81f8ba4e699",
+      "state": "pending_review",
+      "original_sha256": "f3c9d0d067a9cdb638e0819e423a0bb372efecb76b2eb8107ca0cbd2c3d4f310",
+      "original_bytes": 42846,
+      "metadata": {
+        "title": "申请普通护照办证时限问答",
+        "region": "福建省",
+        "matter": "ordinary-passport-processing-time",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2024-11-22",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "eligibility",
+          "characters": 167,
+          "text_sha256": "79a7498fec83793d4f14fb823fa214e01068f62b8adbbb2b26b0e1b6552ce551"
         }
       ]
     },
@@ -4200,6 +5417,125 @@
       ]
     },
     {
+      "source_id": "MD-DRIVER-RENEWAL-MATERIALS-2026",
+      "url": "https://mdx.gov.cn/info/2991/52471.htm",
+      "revision": "rev-42c756e5c4deb66f6f7f6f6b",
+      "state": "pending_review",
+      "original_sha256": "f6d69e547caf76b7080f5f80d5b89cfc7202829fe61ed2ae5e0aeea52ad35e3d",
+      "original_bytes": 32861,
+      "metadata": {
+        "title": "驾驶证期满换证所需材料",
+        "region": "楚雄州牟定县",
+        "matter": "driver-license-expiry-renewal",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2026-02-10",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "18d3dc6755c9027463b1fb79db3ddff55531581ac56cab7156c0cff8fbb9d27f"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 33,
+          "text_sha256": "5686c751047d496935e175fa5678b7b47c59f2457c5f23bd29bd1cd1d59c9332"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "29990aaf0ba13aa8a6bb222d272a57fdd23bfa8a92c5c1beeaf031777f68ca49"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 8,
+          "text_sha256": "35d0c4d19ef67bc1551702a1e89338e0f1d326fac75ae8ac7fc3619b9c11d695"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 9,
+          "text_sha256": "98fcabfc85e41794a6a5ba3ec55801f83c6523a3af315f3c68e258d26bff2b30"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "eligibility",
+          "characters": 15,
+          "text_sha256": "87b5a7d4170dbe50e838718de13e99c6fb6fb0685a5005593941ec4cc2d0793f"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 12,
+          "text_sha256": "974ae456d490a97f646c140672c203b501b8a0d3c97aa1c369977b5696e86fca"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 7,
+          "text_sha256": "6f1be95713b41311d439de6b0035dd4a45ce48800694bd3f2f62e96c8f8afb04"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "f148af987a2d2431625caa0d0ba767de7edfba8b02854debda348a78ed920cad"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 9,
+          "text_sha256": "91ab3f5cf47d396c4cebbeda5a87096ee284bf8767b8c174f9383100fccb3aab"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "b7ed86cc171edb79704327a0b3b930ac21ad47790623de22515f225c4610f197"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "5c19c00ba58a18d3e03e6066834d548f3e9e48390451156be2162359533a6298"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "bfc7e586b5469c420b90f7213f2b25b31d5f5d61e9cc98d000a52bfe53689db7"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "39b505bd62ad5e8f5451c63054aa00304ca8dbf04558dcd4748c80616bc22c3f"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "036f5a8cf1961af7eac1568cda1e0d465ea23880e5044e2436e67a732fc25e11"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 6,
+          "text_sha256": "4a35f8615d0cb2df03680fa5c820b69d1ac8746167b8fecfba57bb556d8c3fb3"
+        }
+      ]
+    },
+    {
       "source_id": "MOF-FEE-2007",
       "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
       "revision": "rev-ddfaf873b73e03ab4202c18c",
@@ -4713,6 +6049,41 @@
       ]
     },
     {
+      "source_id": "NJ-ID-OLD-CARD-2025",
+      "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+      "revision": "rev-b119c7ef339e64b5d2a51e2a",
+      "state": "pending_review",
+      "original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+      "original_bytes": 12752,
+      "metadata": {
+        "title": "换证期间旧身份证使用问答",
+        "region": "南京市",
+        "matter": "resident-id-renewal-old-card-use",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-12-09",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 23,
+          "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "characters": 29,
+          "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+        }
+      ]
+    },
+    {
       "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
       "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
       "revision": "rev-6b0fb8bd7de1638a149dbaa9",
@@ -4750,6 +6121,41 @@
           "category": "procedure",
           "characters": 52,
           "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+        }
+      ]
+    },
+    {
+      "source_id": "NJ-RESIDENCE-ONLINE-2025",
+      "url": "https://www.nanjing.gov.cn/hdjl/dwzsk/gysy/202512/t20251231_5755216.html",
+      "revision": "rev-cf559f0addb896fa702d91bd",
+      "state": "pending_review",
+      "original_sha256": "e22a2bb1678335dfe9e345b4e666b5557e8c25b8805a701e5b7f48f37bbe850c",
+      "original_bytes": 9311,
+      "metadata": {
+        "title": "居住证线上办理的申请条件",
+        "region": "南京市",
+        "matter": "residence-permit-first-online",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-12-18",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "procedure",
+          "characters": 47,
+          "text_sha256": "4418f5e25d3c27e1ef08a25bcd4bbfda152a3265d513d713556ff22cf9f157ce"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 127,
+          "text_sha256": "2b76260077ec1a4a42ad45b0139ce920e9b865ea0d91c53c279c39d233c3b765"
         }
       ]
     },
