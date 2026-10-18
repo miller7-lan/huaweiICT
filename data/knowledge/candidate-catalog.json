@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-16T19:51:46.802832+00:00",
+  "captured_at": "2026-10-18T09:09:13.222714+00:00",
   "counts": {
-    "sites": 47,
-    "documents": 43,
-    "revisions": 146,
-    "chunks": 935,
+    "sites": 48,
+    "documents": 44,
+    "revisions": 148,
+    "chunks": 949,
     "versions": 0,
     "heads": 0,
     "jobs": 38,
-    "latest_chunks": 303
+    "latest_chunks": 310
   },
   "sources": [
     {
@@ -28,7 +28,7 @@
       "page_kind": "index",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792159794.8523903,
+      "last_success": 1792246303.1100302,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -159,7 +159,7 @@
       "page_kind": "index",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792177086.6282856,
+      "last_success": 1792241972.0217943,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -178,7 +178,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792151036.5097306,
+      "last_success": 1792237444.5716922,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -239,7 +239,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792177036.5783079,
+      "last_success": 1792241922.0098226,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -258,7 +258,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792175422.783272,
+      "last_success": 1792246323.794699,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -372,7 +372,7 @@
       },
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792162106.356184,
+      "last_success": 1792246403.8995624,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -435,6 +435,24 @@
       "interval_seconds": 86400,
       "delay_seconds": 5,
       "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "HN-UNDERTAKING-PROCEDURE-2021-WG",
+      "label": "河南证明事项告知承诺制实施方案：程序核查背景",
+      "origin": "https://www.zgwg.gov.cn",
+      "allowed_paths": [
+        "/contents/51892/617385.html"
+      ],
+      "seeds": [
+        "https://www.zgwg.gov.cn/contents/51892/617385.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
       "enabled_at_snapshot": false,
       "paused_reason": null,
       "last_success": null,
@@ -635,7 +653,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792154495.5582767,
+      "last_success": 1792240930.7982392,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -654,7 +672,7 @@
       "page_kind": "document",
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792154500.8369973,
+      "last_success": 1792240936.2397377,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -767,7 +785,7 @@
       "delay_seconds": 5,
       "enabled_at_snapshot": true,
       "paused_reason": null,
-      "last_success": 1792160052.4552054,
+      "last_success": 1792246473.9097953,
       "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
@@ -2934,6 +2952,87 @@
           "category": "procedure",
           "characters": 297,
           "text_sha256": "034e767bf04f5f035ea6e4a0d2e1d8aa000ca0039698dd144e59e67074dbb385"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-UNDERTAKING-PROCEDURE-2021-WG",
+      "url": "https://www.zgwg.gov.cn/contents/51892/617385.html",
+      "revision": "rev-05b3836989c06691498c85c9",
+      "state": "excluded",
+      "original_sha256": "b5d212f2640197b0835582cf7786670717b24a20901e5cc4af99d55add7d17c5",
+      "original_bytes": 32116,
+      "metadata": {
+        "title": "河南省全面推行证明事项告知承诺制工作实施方案",
+        "region": "河南省",
+        "matter": "demo-id-renewal",
+        "document_type": "administrative_implementation_scheme",
+        "published_at": null,
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2021-01-08",
+        "scope_confirmed": false,
+        "collection_role": "governance_reference",
+        "date_basis": {
+          "effective_from": "not established by this archive",
+          "page_publication": "2021-01-15 visible/meta observation, not first publication or legal commencement",
+          "signature": {
+            "locator": "正文段落4",
+            "text_sha256": "d374d5340b0e9b7d1aef761eae4718520b61af8bd57e15ef964d2c9cc098d618"
+          }
+        }
+      },
+      "source_fact_assessment_summary": {
+        "id": "henan-undertaking-procedure-background-20261018",
+        "reviewer_kind": "ai",
+        "assessed_at": "2026-10-18T09:08:43.613623+00:00",
+        "current_applicability": "unknown",
+        "business_approval": false,
+        "human_review_completed": false
+      },
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落9",
+          "category": "eligibility",
+          "characters": 250,
+          "text_sha256": "00fedfaab79eff7f60a2b51e32753ce8631758fd7a0f702e4b40a4daf2a01632"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 370,
+          "text_sha256": "27dda66daf25ac26279a13c18502fdc687ffa1cf6452005c6a50c908dbbd8d74"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "procedure",
+          "characters": 165,
+          "text_sha256": "4403b3dcf11014b8d8d496357dae180777a03c2701a37308882eda3d50750949"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 219,
+          "text_sha256": "593dc06ad6d3d8742c05130654d3db672706d0c75e97a16e907f93dbadd658b0"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 243,
+          "text_sha256": "decf8eb6ce69e70138387b04ebae4be4bce811a35f520b6d6aaaea583b9d6619"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 335,
+          "text_sha256": "34fc2939d7f10a264c1f95694e5edfc829d415cf3cd90b4d0123429ee59c988c"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "eligibility",
+          "characters": 374,
+          "text_sha256": "003ceb4a356cdd8ecb70c067779796264d17ae0d90413b2e0baa5cfef16d01d6"
         }
       ]
     },

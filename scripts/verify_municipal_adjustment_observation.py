@@ -16,6 +16,8 @@ def main():
     private = store.root/"source-research/zhengzhou-consent-adjustment-20261018"
     report = read(ROOT/"evaluation/knowledge/zhengzhou-undertaking-adjustment-observation-20261018.json")
     before = read(private/"before-observation.json")
+    if store.status()["counts"] != before["counts"]:
+        raise SystemExit("主库已有后续资料更新；保留2022公告观察阶段回执，不用当前状态覆盖")
     prior = read(ROOT/"evaluation/knowledge/zhengzhou-household-undertaking-facts-20261017.json")
     source, comparison, attempt = report["source"], report["archived_2021_comparison"], report["normal_fetch_attempt"]
     checks = {
