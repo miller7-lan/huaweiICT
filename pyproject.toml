@@ -10,12 +10,13 @@ dependencies = ["mcp==1.26.0", "httpx==0.28.1", "PyYAML==6.0.3", "pydantic>=2.12
 
 [project.optional-dependencies]
 test = ["pytest==8.4.2"]
+knowledge = ["pypdf==6.20.1"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-gov_mcp = ["*.html", "knowledge/*.html", "decision/*.html", "decision/*.js", "decision/*.css"]
+gov_mcp = ["*.html", "knowledge/*.html", "decision/*.html", "decision/*.js", "decision/*.css", "knowledge_ocr_windows.ps1", "knowledge_startup_windows.ps1"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

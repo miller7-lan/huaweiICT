@@ -1,0 +1,107 @@
+{
+  "run_id": "70c9bddb9eed426ebbddbb3fd1cb606f",
+  "captured_at": "2026-10-16T11:35:53.098895+00:00",
+  "records": [
+    {
+      "role": "citizen",
+      "scenario": "materials",
+      "question": "身份证到期换领需要准备哪些材料？",
+      "conversation_id": 112,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "literal_stop_answer_visible": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 65590.03,
+      "private_trace_sha256": "146ab8c52b119dccfb11030375eb009a349a872d229e7f7bf77023d284c4acd1",
+      "actual_final_result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "citizen",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "query_date": "2026-10-16",
+          "query_view": "current",
+          "source_freshness": [],
+          "update_available": false,
+          "answer": "当前没有已发布且可引用的知识库版本，暂不能据此给出办理结论。"
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "duration",
+      "question": "二七区本地成年居民身份证到期换领的办理时限是什么？",
+      "conversation_id": 113,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "literal_stop_answer_visible": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 20639.75,
+      "private_trace_sha256": "934e7d14044be1ca0d34139e0229356c84ed6209e03bf125ae8aa93aeeabc7cf",
+      "actual_final_result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "staff",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "query_date": "2026-10-16",
+          "query_view": "current",
+          "source_freshness": [],
+          "update_available": false,
+          "answer": "当前没有已发布且可引用的知识库版本，暂不能据此给出办理结论。"
+        }
+      }
+    }
+  ],
+  "passed": true,
+  "verification_suite": "native-answer-stop",
+  "expected_case_count": 2,
+  "candidate_and_publication_counts_unchanged": true,
+  "counts": {
+    "documents": 21,
+    "revisions": 63,
+    "chunks": 293,
+    "latest_chunks": 124,
+    "versions": 0,
+    "heads": 0
+  },
+  "preview_agents": {
+    "govkb_consultation_preview_citizen": 16,
+    "govkb_consultation_preview_staff": 17
+  },
+  "existing_agents_changed": false,
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "runtime_base": "http://127.0.0.1:5022",
+  "question_binding": "govkb_original_question",
+  "business_answer_accuracy_tested": false,
+  "business_review_completed": false,
+  "scope": "Two bounded existing dynamic-question preview calls on the real unpublished store; one authenticated citizen and one staff. Exact original-question fingerprints, actual last-tool copying and literal stop messages checked. No source publication or business answer correctness claim."
+}

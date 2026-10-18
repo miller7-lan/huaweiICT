@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "kind": "resumed_goal_blocked_handoff_not_completion_or_new_business_progress",
+  "captured_at": "2026-10-18T10:58:08.077668+00:00",
+  "assessment": "no_progress",
+  "consecutive_no_progress_goal_turns": 3,
+  "blocked_audit_threshold_satisfied": true,
+  "goal_status_recommended": "blocked",
+  "objective_complete": false,
+  "last_completed_feature_commit": "f1041fe5c5880af5e568a610f9d08aac5ed32c95",
+  "counts": {
+    "sites": 50,
+    "documents": 46,
+    "revisions": 153,
+    "chunks": 967,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 319
+  },
+  "latest_states": {
+    "excluded": 28,
+    "pending_review": 11,
+    "reviewed": 7
+  },
+  "gates": {
+    "reviews": 9,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "jobs": {
+    "done": 34,
+    "failed": 4
+  },
+  "live_acquisition_job_to_wait_for": false,
+  "independent_reference": {
+    "reference_frozen_at": null,
+    "snapshot_binding": null,
+    "observed_run": null,
+    "independence_certified": false,
+    "independent_acceptance_ready": false,
+    "ready_for_business_publication": false
+  },
+  "pending_source_bindings": [
+    {
+      "revision": "rev-ec7e7716b9519d20ee336e0b",
+      "original_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+      "state": "pending_review",
+      "scope_confirmed": true,
+      "current_applicability": "unestablished",
+      "published_at": null,
+      "effective_from": null,
+      "effective_to": null
+    },
+    {
+      "revision": "rev-4b92705f0d8d799adef32b29",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "state": "pending_review",
+      "scope_confirmed": true,
+      "current_applicability": "unknown",
+      "published_at": "2022-08-16",
+      "effective_from": "2022-09-01",
+      "effective_to": null
+    },
+    {
+      "revision": "rev-f9fa285838d66e6267c9f590",
+      "original_sha256": "3d7a49fc0ded9328b2496d7923a58ed2aa1ba0ed7c9cb30a612c4d97f0f5148c",
+      "state": "pending_review",
+      "scope_confirmed": false,
+      "current_applicability": "unknown",
+      "published_at": null,
+      "effective_from": null,
+      "effective_to": null
+    },
+    {
+      "revision": "rev-318878017022327bb0eecc8d",
+      "original_sha256": "1b1cc0eb3bb70b45b7369f6444d18585548682b48797569e851b53a4f846da40",
+      "state": "pending_review",
+      "scope_confirmed": false,
+      "current_applicability": "national_original_exemption_branches_local_current_qualification_and_proof_pending",
+      "published_at": null,
+      "effective_from": "2004-01-01",
+      "effective_to": null
+    }
+  ],
+  "candidate_gate_result": "Unreviewed or changed content",
+  "last_completed_code_regression": {
+    "tests": 644,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "last_code_regression_reexecuted_in_handoff": false,
+  "main_database_sha256": "325836e6abe5df79e3b8df5321ac59a7658e643d5c807f29aefbccef086d4dbb",
+  "main_database_unchanged_since_previous_audit": true,
+  "last_access_stop": {
+    "url": "https://www.zhengzhou.gov.cn/news4/9349914.jhtml",
+    "checked_at": "2026-10-18T10:51:02.445442+00:00",
+    "normal_fetcher": true,
+    "attempted_once": true,
+    "body_acquired": false,
+    "status": 403,
+    "stop_detail": {
+      "phase": "robots",
+      "http_status": 403
+    },
+    "error": "Access denied; source paused"
+  },
+  "remaining_blockers": [
+    "二七区材料清单、户口簿承诺/共享核验与到期网办资格缺少可核定的现行衔接依据。",
+    "省厅规范后续效力、六个月窗口原始调整、困难减免资格与证明/邮费关系仍未完整核定。",
+    "在这些依据未补齐时，独立参考冻结、正式评测、正式版本和两角色新版业务验收不能据现有证据宣称完成。"
+  ],
+  "required_external_change": "可核验的新官方原文、具体事项答复或已允许取得的完整附件，能够补足上述日期、范围及执行关系；不以团队提供链接或开启Windows恢复任务为前提。",
+  "windows_task_observed": {
+    "state": "Disabled",
+    "enabled": false,
+    "reenabled": false
+  },
+  "user_link_is_prerequisite": false,
+  "existing_access_denials_bypassed_or_retried": false,
+  "new_policy_originals_or_approvals": 0,
+  "handoff_only": true,
+  "claim_limits": "This records unchanged blocking conditions and preserves a reviewable handoff; it is not business progress, a completed goal, new tests, a new collection run or permission to lower publication gates."
+}

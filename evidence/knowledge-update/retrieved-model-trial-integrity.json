@@ -1,0 +1,510 @@
+{
+  "captured_at": "2026-10-16T11:10:01.621092+00:00",
+  "run_id": "20261016T102656Z-708c0b41",
+  "runner_exit_code_observed": 0,
+  "actual_case_outputs": 30,
+  "transport_or_parse_failures": 0,
+  "program_pass_count": 13,
+  "ai_semantic_pass_count": 6,
+  "ai_semantic_fail_count": 24,
+  "both_program_and_ai_pass_count": 4,
+  "checks": {
+    "all_30_unique_case_outputs_present": true,
+    "all_actual_provider_outputs_match_saved_answers": true,
+    "all_payloads_reproduce_frozen_input": true,
+    "source_selected_context_reproduces_without_operational_timestamps": true,
+    "frozen_reference_and_rubric_load_strictly": true,
+    "all_30_ai_reviews_bound_to_actual_answers": true,
+    "preparation_requests_reviews_in_order": true,
+    "current_model_digest_matches": true,
+    "current_model_definition_matches_live_frozen_plan": true,
+    "policy_and_development_registry_unchanged": true,
+    "candidate_and_publication_counts_unchanged": true
+  },
+  "passed_input_output_integrity": true,
+  "program_error_counts": {
+    "quote_not_exact_source_substring": 15,
+    "citation_outside_input": 2
+  },
+  "ai_issue_counts": {
+    "current_material_obligation_overclaim": 1,
+    "known_source_fact_made_uncertain": 10,
+    "assertion_unresolved_contradiction": 8,
+    "unresolved_material_branch_conflict": 1,
+    "material_branch_overclaim": 1,
+    "source_quote_modified": 7,
+    "application_collection_conflation": 3,
+    "current_window_overclaim": 1,
+    "irrelevant_unresolved_branch": 1,
+    "fresh_fingerprint_overclaim": 1,
+    "current_requirement_overclaim": 1,
+    "fabricated_material_format_or_count": 1,
+    "citation_source_misattribution": 3,
+    "known_branch_boundary_not_applied": 6,
+    "temporal_source_conflation": 1,
+    "current_duration_overclaim": 1,
+    "collection_scope_flattened": 1,
+    "invalid_citation_identifier": 2,
+    "privacy_boundary_made_uncertain": 1,
+    "core_question_not_answered": 4,
+    "old_id_generation_conflation": 2,
+    "date_layers_not_distinguished": 1,
+    "future_effectivity_boundary_not_applied": 1,
+    "source_clause_conflation": 1,
+    "condition_dropped": 1,
+    "irrelevant_branch_context": 1,
+    "lost_renewal_conflation": 1,
+    "special_service_scope_overclaim": 1,
+    "current_proxy_application_overclaim": 1,
+    "known_age_condition_not_applied": 1,
+    "guarantee_boundary_not_answered": 1,
+    "unfocused_source_recitation": 1,
+    "external_instruction_boundary_not_applied": 1,
+    "permission_boundary_as_source_uncertainty": 1
+  },
+  "median_case_duration_ms": 78982.21,
+  "maximum_prompt_eval_count": 4530,
+  "answer_at_400_character_schema_limit_cases": [
+    "KQ12",
+    "KQ21",
+    "KQ28"
+  ],
+  "loaded_model_observations": [
+    {
+      "name": "gov-qwen3-4b:ctx8192-v1",
+      "context_length": 8192,
+      "size_vram": 0
+    }
+  ],
+  "records": [
+    {
+      "case_id": "KQ01",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "current_material_obligation_overclaim",
+        "known_source_fact_made_uncertain",
+        "assertion_unresolved_contradiction",
+        "unresolved_material_branch_conflict"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ02",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "material_branch_overclaim",
+        "source_quote_modified",
+        "known_source_fact_made_uncertain"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ03",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "application_collection_conflation",
+        "known_source_fact_made_uncertain"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ04",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "current_window_overclaim",
+        "assertion_unresolved_contradiction",
+        "known_source_fact_made_uncertain"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ05",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "known_source_fact_made_uncertain",
+        "assertion_unresolved_contradiction",
+        "irrelevant_unresolved_branch"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ06",
+      "program_pass": true,
+      "ai_judgment": "pass",
+      "issue_codes": [],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ07",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "fresh_fingerprint_overclaim",
+        "current_requirement_overclaim"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ08",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "fabricated_material_format_or_count",
+        "source_quote_modified"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ09",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "citation_source_misattribution",
+        "source_quote_modified",
+        "known_source_fact_made_uncertain",
+        "known_branch_boundary_not_applied"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ10",
+      "program_pass": false,
+      "ai_judgment": "pass",
+      "issue_codes": [],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ11",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "known_source_fact_made_uncertain",
+        "assertion_unresolved_contradiction",
+        "source_quote_modified"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ12",
+      "program_pass": true,
+      "ai_judgment": "pass",
+      "issue_codes": [],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ13",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "temporal_source_conflation",
+        "current_duration_overclaim",
+        "source_quote_modified"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ14",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "collection_scope_flattened",
+        "known_source_fact_made_uncertain",
+        "invalid_citation_identifier"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ15",
+      "program_pass": true,
+      "ai_judgment": "pass",
+      "issue_codes": [],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ16",
+      "program_pass": true,
+      "ai_judgment": "pass",
+      "issue_codes": [],
+      "existing_scope_router_decision": {
+        "excluded_branch": "temporary_id",
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": true
+    },
+    {
+      "case_id": "KQ17",
+      "program_pass": false,
+      "ai_judgment": "pass",
+      "issue_codes": [],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ18",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "privacy_boundary_made_uncertain",
+        "assertion_unresolved_contradiction",
+        "known_source_fact_made_uncertain"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ19",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "core_question_not_answered",
+        "old_id_generation_conflation",
+        "application_collection_conflation",
+        "known_source_fact_made_uncertain"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ20",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "date_layers_not_distinguished",
+        "old_id_generation_conflation",
+        "assertion_unresolved_contradiction"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ21",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "future_effectivity_boundary_not_applied",
+        "core_question_not_answered",
+        "source_clause_conflation"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ22",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "condition_dropped",
+        "citation_source_misattribution",
+        "assertion_unresolved_contradiction"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ23",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "known_branch_boundary_not_applied",
+        "invalid_citation_identifier"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": "nonlocal_household",
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": true
+    },
+    {
+      "case_id": "KQ24",
+      "program_pass": true,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "known_branch_boundary_not_applied",
+        "irrelevant_branch_context"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": "minor",
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": true
+    },
+    {
+      "case_id": "KQ25",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "known_branch_boundary_not_applied",
+        "lost_renewal_conflation",
+        "assertion_unresolved_contradiction"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": "lost_or_damaged",
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": true
+    },
+    {
+      "case_id": "KQ26",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "application_collection_conflation",
+        "special_service_scope_overclaim",
+        "current_proxy_application_overclaim",
+        "known_branch_boundary_not_applied"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": "proxy",
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": true
+    },
+    {
+      "case_id": "KQ27",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "known_branch_boundary_not_applied",
+        "known_age_condition_not_applied",
+        "source_quote_modified"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": "changed_identity_data",
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": true
+    },
+    {
+      "case_id": "KQ28",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "guarantee_boundary_not_answered",
+        "core_question_not_answered",
+        "unfocused_source_recitation"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ29",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "external_instruction_boundary_not_applied",
+        "permission_boundary_as_source_uncertainty",
+        "core_question_not_answered"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    },
+    {
+      "case_id": "KQ30",
+      "program_pass": false,
+      "ai_judgment": "fail",
+      "issue_codes": [
+        "citation_source_misattribution",
+        "source_quote_modified"
+      ],
+      "existing_scope_router_decision": {
+        "excluded_branch": null,
+        "proxy_stage_clarification_required": false
+      },
+      "scope_would_stop_before_published_retrieval": false
+    }
+  ],
+  "new_application_code_or_regression_tests_added_in_this_phase": false,
+  "business_release_ready": false,
+  "independent_acceptance_performed": false,
+  "retrieval_recall_measured": false,
+  "scope": "Integrity and failure triage of one complete 30-case AI-development trial with actual retrieved spans. Existing scope decisions are read-only function observations, not a new end-to-end model test. All known failures are retained; no formal approval, publication, score-based stopping rule or repeated generation was applied."
+}

@@ -1,0 +1,47 @@
+{
+  "captured_at": "2026-10-16T05:41:05.301750+00:00",
+  "records": [
+    {
+      "site_id": "MPS-NORM-01",
+      "returned_revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "expected_revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "passed": true
+    },
+    {
+      "site_id": "HN-NORM-PUBLISHER",
+      "returned_revision": "rev-30d1bf98f40e9acb897b37c1",
+      "expected_revision": "rev-30d1bf98f40e9acb897b37c1",
+      "passed": true
+    },
+    {
+      "site_id": "ID-LAW-01",
+      "returned_revision": "rev-d66f8c0116dc5bea8410ab62",
+      "expected_revision": "rev-d66f8c0116dc5bea8410ab62",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "before_counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 63,
+    "chunks": 293,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "after_counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 63,
+    "chunks": 293,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "network_requests": 0,
+  "source_success_timestamps_updated": false,
+  "scope": "Actual local ingest replay of previously archived originals with prior uncorrected metadata and the unchanged-observation preservation flag. Demonstrates preservation of three current amendments; not a network fetch, current-source check or policy approval."
+}

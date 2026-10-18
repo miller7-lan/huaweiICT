@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-16T16:49:00.481635+00:00",
+  "passed": true,
+  "checks": {
+    "source_states_reviews_policy_and_registry_unchanged": true,
+    "supervisor_and_all_owned_components_restarted": true,
+    "web_and_read_only_mcp_ready": true,
+    "worker_and_maintenance_fresh": true,
+    "five_actual_authenticated_read_only_checks_passed": true,
+    "unauthenticated_mcp_still_rejected": true,
+    "user_disabled_windows_task_unchanged": true,
+    "no_official_version_or_head_added": true,
+    "legacy_citation_payload_and_id_match_previous_committed_function": true
+  },
+  "counts": {
+    "sites": 41,
+    "documents": 37,
+    "revisions": 120,
+    "chunks": 807,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 304
+  },
+  "source_policy_binding": {
+    "revisions": "e16fad96e4b1acfa4dc34f63d39d138d19f36b7727c93efeea7fa416adf14bde",
+    "source_configs": "ccba89541c73b23e5ad9d82ba1be8597ac94e1bbdf62b5819247970d565b9611",
+    "reviews": "2a696306b8a9b8b3d0d259869c466e37bc3b521df02a681d6dff5ae6d37d3199",
+    "registry": "ffb7b9018db471bcf4fdcef8e5e23632f7dc759a9c928e6273c4d0c3812c3cbc",
+    "policy_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d"
+  },
+  "modules": {
+    "knowledge.py": "e01063c6b2ee4214e42d97fc7f9654e085c171f9ffb66def213000179cf47307",
+    "knowledge_dates.py": "4841c149ec5560bc02ab85e93aba46b3916791c5fb41b9e2849e9d53a7bc20d8",
+    "knowledge_answers.py": "86fb44b39b76cae27874da2d97b3f89b3e9c78a8029e6d813ee1b93fd8095fe1"
+  },
+  "read_only_checks": [
+    {
+      "tool": "govkb_get_environment_status",
+      "role": "citizen",
+      "status": "OK",
+      "message_code": "PUBLISHED_KNOWLEDGE_READER_READY"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "citizen",
+      "status": "EMPTY",
+      "message_code": "NO_PUBLISHED_KNOWLEDGE"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "staff",
+      "status": "EMPTY",
+      "message_code": "NO_PUBLISHED_KNOWLEDGE"
+    },
+    {
+      "tool": "govkb_search_evidence",
+      "role": "citizen",
+      "status": "BLOCKED",
+      "message_code": "OUT_OF_CONFIRMED_SCOPE"
+    },
+    {
+      "tool": "govkb_get_environment_status",
+      "role": "unmapped",
+      "status": "BLOCKED",
+      "message_code": "ROLE_NOT_CONFIGURED"
+    }
+  ],
+  "new_model_runs": 0,
+  "startup_task_reenabled": false,
+  "scope": "Own local component deployment, source-state preservation, live read-only MCP, and legacy citation compatibility. No official service source approval, publication, real model accuracy, reboot or continuous-week claim."
+}

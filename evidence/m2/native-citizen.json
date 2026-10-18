@@ -1,0 +1,237 @@
+{
+  "conversation_id": 68,
+  "role": "citizen",
+  "expected_child_agent_id": 8,
+  "event_count": 257,
+  "model_output_event_count": 231,
+  "tool_event_count": 3,
+  "route_events": [
+    {
+      "type": "tool",
+      "tool_name": "govm2_get_environment_status",
+      "tool_call_id": "8ac790fb-2ba3-4b08-8e05-5864aeb04185"
+    },
+    {
+      "type": "subagent_start",
+      "agent_id": 8,
+      "agent_name": "M1群众Agent",
+      "depth": 1
+    },
+    {
+      "type": "tool",
+      "tool_name": "govm2_search_evidence",
+      "tool_call_id": "69ccf0bf-5103-463e-a3d4-f1e5b234ec3e",
+      "agent_id": 8,
+      "depth": 1
+    },
+    {
+      "type": "tool",
+      "tool_name": "govm2_search_evidence",
+      "tool_call_id": "70300f8a-2d15-4ef4-9009-7326139c9821",
+      "agent_id": 8,
+      "depth": 1
+    },
+    {
+      "type": "subagent_end",
+      "agent_id": 8,
+      "agent_name": "M1群众Agent",
+      "depth": 1
+    }
+  ],
+  "actual_final_result": {
+    "status": "OK",
+    "items": [
+      {
+        "text": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。 未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。 公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。",
+        "citation_id": "ID-LAW-01-第十一条",
+        "category": "identity"
+      },
+      {
+        "text": "第十条 申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿。",
+        "citation_id": "ID-LAW-01-第十条",
+        "category": "household"
+      },
+      {
+        "text": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。 公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。",
+        "citation_id": "ID-LAW-01-第十二条",
+        "category": "procedure"
+      },
+      {
+        "text": "1、居民户口簿；",
+        "citation_id": "ID-GUIDE-01-material-1",
+        "category": "household"
+      }
+    ],
+    "citations": [
+      {
+        "citation_id": "ID-LAW-01-第十一条",
+        "source_id": "ID-LAW-01",
+        "title": "中华人民共和国居民身份证法",
+        "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+        "locator": "第十一条",
+        "quote": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。 未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。 公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "category": "identity",
+        "region": "national",
+        "review_status": "pending_business_review"
+      },
+      {
+        "citation_id": "ID-LAW-01-第十条",
+        "source_id": "ID-LAW-01",
+        "title": "中华人民共和国居民身份证法",
+        "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+        "locator": "第十条",
+        "quote": "第十条 申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿。",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "category": "household",
+        "region": "national",
+        "review_status": "pending_business_review"
+      },
+      {
+        "citation_id": "ID-LAW-01-第十二条",
+        "source_id": "ID-LAW-01",
+        "title": "中华人民共和国居民身份证法",
+        "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+        "locator": "第十二条",
+        "quote": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。 公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "category": "procedure",
+        "region": "national",
+        "review_status": "pending_business_review"
+      },
+      {
+        "citation_id": "ID-GUIDE-01-material-1",
+        "source_id": "ID-GUIDE-01",
+        "title": "居民身份证到期换领、其他原因换领（二七区）",
+        "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+        "locator": "材料列表第1项（适用分支待复核）",
+        "quote": "1、居民户口簿；",
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "category": "household",
+        "region": "郑州市二七区",
+        "review_status": "pending_business_review"
+      }
+    ],
+    "knowledge_version": "preview-c1a4bbc3e444094c",
+    "message_code": "PREVIEW_EVIDENCE_FOUND",
+    "data": {
+      "task_id": "task-5b19a3e8eda6",
+      "state": "draft",
+      "question": "身份证到期换领需要哪些材料？户口簿和原身份证应如何核实？",
+      "materials": {
+        "household_register": "unknown",
+        "identity_card": "unknown"
+      },
+      "source_review_status": "pending_business_review",
+      "request_id": "91b3e4aaf5d9b14e",
+      "role": "citizen",
+      "demo_mode": true,
+      "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+      "formal_approval": false
+    }
+  },
+  "matched_tool_audit": [
+    {
+      "duration_ms": 14.49,
+      "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
+      "request_id": "91b3e4aaf5d9b14e",
+      "result": {
+        "citations": [
+          {
+            "category": "identity",
+            "citation_id": "ID-LAW-01-第十一条",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "第十一条",
+            "quote": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。 未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。 公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。",
+            "region": "national",
+            "review_status": "pending_business_review",
+            "source_id": "ID-LAW-01",
+            "title": "中华人民共和国居民身份证法",
+            "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+          },
+          {
+            "category": "household",
+            "citation_id": "ID-LAW-01-第十条",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "第十条",
+            "quote": "第十条 申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿。",
+            "region": "national",
+            "review_status": "pending_business_review",
+            "source_id": "ID-LAW-01",
+            "title": "中华人民共和国居民身份证法",
+            "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+          },
+          {
+            "category": "procedure",
+            "citation_id": "ID-LAW-01-第十二条",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "第十二条",
+            "quote": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。 公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。",
+            "region": "national",
+            "review_status": "pending_business_review",
+            "source_id": "ID-LAW-01",
+            "title": "中华人民共和国居民身份证法",
+            "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml"
+          },
+          {
+            "category": "household",
+            "citation_id": "ID-GUIDE-01-material-1",
+            "knowledge_version": "preview-c1a4bbc3e444094c",
+            "locator": "材料列表第1项（适用分支待复核）",
+            "quote": "1、居民户口簿；",
+            "region": "郑州市二七区",
+            "review_status": "pending_business_review",
+            "source_id": "ID-GUIDE-01",
+            "title": "居民身份证到期换领、其他原因换领（二七区）",
+            "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml"
+          }
+        ],
+        "data": {
+          "demo_mode": true,
+          "formal_approval": false,
+          "materials": {
+            "household_register": "unknown",
+            "identity_card": "unknown"
+          },
+          "notice": "工程演示：资料及材料规则待业务复核；模拟材料声明不代表真实材料或正式审批。",
+          "question": "身份证到期换领需要哪些材料？户口簿和原身份证应如何核实？",
+          "request_id": "91b3e4aaf5d9b14e",
+          "role": "citizen",
+          "source_review_status": "pending_business_review",
+          "state": "draft",
+          "task_id": "task-5b19a3e8eda6"
+        },
+        "items": [
+          {
+            "category": "identity",
+            "citation_id": "ID-LAW-01-第十一条",
+            "text": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。 未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。 公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。"
+          },
+          {
+            "category": "household",
+            "citation_id": "ID-LAW-01-第十条",
+            "text": "第十条 申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿。"
+          },
+          {
+            "category": "procedure",
+            "citation_id": "ID-LAW-01-第十二条",
+            "text": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。 公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。"
+          },
+          {
+            "category": "household",
+            "citation_id": "ID-GUIDE-01-material-1",
+            "text": "1、居民户口簿；"
+          }
+        ],
+        "knowledge_version": "preview-c1a4bbc3e444094c",
+        "message_code": "PREVIEW_EVIDENCE_FOUND",
+        "status": "OK"
+      },
+      "role": "citizen",
+      "time": "2026-10-13T15:16:29.296047+00:00",
+      "tool": "govm2_search_evidence"
+    }
+  ],
+  "private_trace_sha256": "91be24b776c322caa3137795015ba6fb73995747c1ef9a323e514545375ffbd5",
+  "scope": "Summary of actual SSE route and exact audited tool result; full raw trace stays private. Repeated read calls are counted, not hidden."
+}

@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-17T06:44:23.929202+00:00",
+  "scope": "Windows clean-checkout offline synthetic engineering demo",
+  "acceptance_passed": true,
+  "business_acceptance": false,
+  "original_goal_complete": false,
+  "app_goal_replacement_created": false,
+  "initial_remote_clone_commit": "55dc04c44365de0128aaf0773adcf75a6327b91b",
+  "validated_code_commit": "8c498113f85d5a235deb04ac2b6958da13989edd",
+  "remote": "https://github.com/miller7-lan/huaweiICT.git",
+  "branch": "feat/m2-minimal-flow",
+  "fresh_checks": {
+    "initial_runtime_absent": true,
+    "initial_venv_absent": true,
+    "initial_worktree_clean": true,
+    "loaded_from_clean_checkout": true,
+    "initial_citizen_browser_answer_v1_verified": true,
+    "staff_latest_browser_answer_v2_verified": true,
+    "citizen_latest_browser_answer_v2_verified": true,
+    "historical_v1_browser_answer_verified": true,
+    "first_ctrl_c_port_released": true,
+    "existing_runtime_init_rejected": true
+  },
+  "bootstrap": {
+    "python_version": "Python 3.13.2",
+    "fresh_venv": true,
+    "system_site_packages_disabled": true,
+    "pip_download_cache_disabled": true,
+    "seconds": 153.53,
+    "clean_init_exit_code": 0,
+    "clean_update_query_check_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "clean_refresh_exit_code": 0,
+    "no_old_private_runtime_or_credentials_used": true
+  },
+  "v1_checks": {
+    "both_roles_have_literal_citations": true,
+    "category_filter_works": true,
+    "demo_only": true,
+    "latest_version_used": true,
+    "original_v1_intact": true,
+    "unmapped_role_rejected": true
+  },
+  "v2_checks": {
+    "both_roles_have_literal_citations": true,
+    "category_filter_works": true,
+    "demo_only": true,
+    "latest_version_used": true,
+    "old_version_preserved": true,
+    "original_v1_intact": true,
+    "original_v2_intact": true,
+    "pending_update_stopped": true,
+    "unmapped_role_rejected": true
+  },
+  "browser": {
+    "name": "Chrome",
+    "both_current_role_answers_v2": true,
+    "citizen_historical_v1_answer": true,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "screenshots": [
+      {
+        "path": "evidence/team-demo/staff-latest.png",
+        "sha256": "039503aece79c942aa214f4b3fed034bb436323e53416443d4f8501eb8b781e5",
+        "bytes": 120353,
+        "visually_inspected": true
+      },
+      {
+        "path": "evidence/team-demo/citizen-history.png",
+        "sha256": "f194f13fc2bbcc1c6e66cd70d53c76040a9de1fd16751fe066957a80bfb77dd3",
+        "bytes": 121428,
+        "visually_inspected": true
+      }
+    ]
+  },
+  "shutdown": {
+    "method": "Ctrl+C in the owning terminal session",
+    "operator_interrupt_observed_twice": true,
+    "final_port_released": true,
+    "final_port_can_be_bound_again": true,
+    "no_existing_project_process_stopped": true
+  },
+  "code_sha256": {
+    "scripts/team_demo.py": "14af934cd8db334e2242605ee907270dec758c10e217c9018594c45602495a0f",
+    "src/gov_mcp/knowledge_demo.py": "611c4fc80f7f9f47031ab9199d6706b9e5e73538df2139e86e05c5d9a16cf9d0",
+    "src/gov_mcp/knowledge_demo.html": "0b31b3b8db3fd0c618bd50f2260359b566a9bc9344c06805f027f31ccacc196c"
+  },
+  "old_business_versions_heads_evaluations": {
+    "versions": 0,
+    "heads": 0,
+    "snapshot_evaluations": 0
+  },
+  "original_core_and_config_unchanged": true,
+  "five_minute_windows_task_enabled": false,
+  "source_http_fetches": 0,
+  "model_calls": 0,
+  "limits": [
+    "Synthetic HTML replay and tool-level citation answers only; no real-source HTTP collection, real account authentication, Nexent/LLM acceptance, policy-validity certification or long-running deployment acceptance is claimed.",
+    "The application goal remains the old blocked objective; the purpose-built tool refused to replace an unfinished goal. The separate repository delivery checklist is completed."
+  ]
+}

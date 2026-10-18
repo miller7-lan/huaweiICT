@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>知识库离线工程演示</title>
+<style>body{font:16px/1.7 system-ui,sans-serif;max-width:920px;margin:36px auto;padding:0 20px;color:#182637;background:#f7f9fc}h1{font-size:28px}aside{padding:16px;border-left:5px solid #ad6400;background:#fff0cd}form,section{background:white;padding:22px;margin-top:20px;border:1px solid #dce3ed;border-radius:12px}input,select,button{font:inherit;padding:9px;border:1px solid #a1adc0;border-radius:6px}input{width:min(95%,580px)}button{color:white;background:#1454a3;cursor:pointer}pre{white-space:pre-wrap;overflow-wrap:anywhere}label{display:block;margin:10px 0}small{color:#526176}</style>
+<h1>知识库离线工程演示</h1>
+<aside>全部材料与费用均为虚构，只验证工程流程，不可用于实际办事。此演示不联网抓取、不调用大模型，也不会开启五分钟心跳。</aside>
+<form id="form"><label>演示角色 <select id="role"><option value="citizen">群众端</option><option value="staff">工作人员端</option></select></label>
+<label>证据版本 <select id="version"><option value="">最新演示版本</option></select></label>
+<label>问题 <input id="question" value="到期换领模拟材料和费用有哪些？" maxlength="300" required></label>
+<button id="submit">查询原文证据</button><p><small>两个角色使用现有只读查询工具；角色选择用于演示，不代表真实账号登录。</small></p></form>
+<section><h2>引用答复</h2><pre id="answer">请选择角色并查询。</pre><h3>来源与日期</h3><pre id="citations"></pre></section>
+<section><h2>库内版本</h2><pre id="status">正在读取……</pre><small>在终端运行 update 演示待核停止与发布切换；刷新页面查看新版本。按 Ctrl+C 停止服务。</small></section>
+<script>
+async function load(){try{const response=await fetch('/api/status');if(!response.ok)throw Error('演示状态读取失败');const data=await response.json();document.querySelector('#status').textContent=JSON.stringify(data,null,2);for(const v of data.versions){const o=document.createElement('option');o.value=v.version;o.textContent='历史或指定版本 v'+v.number;document.querySelector('#version').append(o);}}catch(e){document.querySelector('#status').textContent=e.message;}}
+document.querySelector('#form').addEventListener('submit',async e=>{e.preventDefault();const button=document.querySelector('#submit');button.disabled=true;try{const params=new URLSearchParams({role:document.querySelector('#role').value,q:document.querySelector('#question').value});const version=document.querySelector('#version').value;if(version)params.set('version',version);const response=await fetch('/api/query?'+params);const data=await response.json();if(!response.ok)throw Error(data.error||'查询失败');document.querySelector('#answer').textContent=data.result.data.answer||data.result.message_code;document.querySelector('#citations').textContent=JSON.stringify(data.result.citations,null,2);}catch(error){document.querySelector('#answer').textContent=error.message;document.querySelector('#citations').textContent='';}finally{button.disabled=false;}});load();
+</script></html>

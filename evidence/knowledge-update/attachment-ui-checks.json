@@ -1,0 +1,63 @@
+{
+  "captured_at": "2026-10-15T20:24:59.420020+00:00",
+  "passed": true,
+  "checks": {
+    "current_counts_match_browser": true,
+    "five_attachment_parent_rows": true,
+    "three_monitored_owners_two_explicit_history_rows": true,
+    "dormant_collectors_do_not_claim_success_or_staleness": true,
+    "ten_monitors_healthy": true,
+    "twelve_scope_exclusions": true,
+    "actual_query_has_no_published_version_or_citations": true,
+    "desktop_attachment_labels_and_query_stop_observed": true,
+    "mobile_390px_no_document_overflow_observed": true,
+    "both_screenshot_layouts_visually_reviewed": true
+  },
+  "counts": {
+    "sites": 26,
+    "documents": 20,
+    "revisions": 54,
+    "chunks": 247,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 21,
+    "latest_chunks": 123
+  },
+  "browser_observations": {
+    "desktop_viewport": [
+      1440,
+      1000
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "source_rows": 26,
+    "waiting_rows": 2,
+    "attachment_rows": 5,
+    "mobile_document_horizontal_overflow": false,
+    "submitted_question": "新发布的PDF会自动进入正式回答吗？",
+    "displayed_response": "尚无已发布知识。当前资料仍待复核，暂不能作为正式办事依据回答。"
+  },
+  "waiting_source_ids": [
+    "HN-OSS-PDF-DISCOVERY",
+    "HN-XCOSS-PDF-DISCOVERY"
+  ],
+  "healthy_source_ids": [
+    "BEIJING-POLICY-DISCOVERY",
+    "HN-MEASURES-2021-PDF",
+    "HN-NORM-PUBLISHER",
+    "HN-POLICY-DISCOVERY",
+    "HN-REPEAL-2020-PDF",
+    "HN-REPEAL-2021-PDF",
+    "HN-UPDATE-GS-01",
+    "ID-AMENDMENT-JT-LEAD",
+    "MPS-NORM-01",
+    "MPS-USE-01"
+  ],
+  "screenshots": [
+    "output/playwright/knowledge-update/attachment-discovery-desktop.png",
+    "output/playwright/knowledge-update/attachment-discovery-mobile.png"
+  ],
+  "scope": "Actual local workbench browser/API observations and visual review. Attachment discovery and OCR remain candidate intake; not Nexent default UI or formal business-answer acceptance."
+}

@@ -1,0 +1,26 @@
+services:
+  govm2-mcp:
+    build:
+      context: .
+      args:
+        PYTHON_IMAGE: ${GOV_MCP_PYTHON_IMAGE:-python:3.11-slim}
+    container_name: govm2-mcp
+    restart: unless-stopped
+    command: ["python", "-m", "gov_mcp.m2_server", "--host", "0.0.0.0", "--port", "8770", "--runtime", "/runtime"]
+    ports:
+      - "127.0.0.1:8770:8770"
+    env_file:
+      - .runtime/m2/mcp.env
+    volumes:
+      - ./.runtime/m2/mcp:/runtime
+    networks:
+      - nexent
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8770/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+networks:
+  nexent:
+    external: true
+    name: nexent_network

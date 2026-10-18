@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "kind": "ai_literal_municipal_undertaking_source_facts_not_business_approval",
+  "captured_at": "2026-10-16T17:57:48.416309+00:00",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "source_id": "ZZ-CONSENT-2021-LIST-LEAD",
+  "revision": "rev-07ed2a518a11319079f32894",
+  "receipt": {
+    "url": "https://www.zzsgsl.org/uploads/allimg/20211115/27-211115101102308.pdf",
+    "final_url": "https://www.zzsgsl.org/uploads/allimg/20211115/27-211115101102308.pdf",
+    "status": 200,
+    "checked_at": "2026-10-16T17:53:53.661354+00:00",
+    "normal_fetcher": true,
+    "bytes": 376114,
+    "sha256": "8d5b49ab0a2ebe42bd9cc66e29c999beeed684d3cec15a65ba4b73e524590d6e",
+    "content_type": "application/pdf",
+    "separate_publisher_copy": true,
+    "source_is_not_the_denied_department_origin": true
+  },
+  "assessment": {
+    "id": "zhengzhou-household-undertaking-facts-20261017",
+    "reviewer_kind": "ai",
+    "reviewer": "Codex AI",
+    "assessed_at": "2026-10-16T17:57:48.416309+00:00",
+    "human_review_completed": false,
+    "business_approval": false,
+    "current_applicability": "exact_municipal_undertaking_row_located_current_Erqi_operation_pending",
+    "facts": {
+      "document_number": "郑政办〔2021〕53号",
+      "signed_at": "2021-09-29",
+      "addressees_include": "各开发区管委会、各区县（市）人民政府、市政府各部门",
+      "entry_number": 10,
+      "department": "郑州市公安局",
+      "administrative_matter": "换领、补领居民身份证",
+      "proof_subject_to_undertaking": "居民户口簿",
+      "verification_method": "现场核查"
+    },
+    "neighbor_guard": {
+      "entry_number": 11,
+      "different_matter": "居民身份证异地受理条件审核证明",
+      "proof": "在当地就读、居住、就业的相关证明",
+      "verification_method": "免予核查",
+      "native_span_sha256": "a58cda00d373661b0a48ba730c344cce8f4c8fd8a7799bc72746df6e45823861",
+      "not_the_verification_method_of_entry_10": true
+    },
+    "relationships": [
+      {
+        "basis": "市级清单第10项",
+        "judgment": "找到户口簿告知承诺的明确事项条目；不同于此前仅找到原则性材料免提交方案。",
+        "limit": "仍需现行清理/延续状态及二七办理部门的告知内容、承诺文本和核查流程。"
+      },
+      {
+        "basis": "国家第12条/河南第7条",
+        "judgment": "信息共享/电子证照确认与书面告知承诺是不同条件路径，不能见到电子信息就自动套承诺制。",
+        "limit": "不认定已完成确认、已作承诺或可跳过核验。"
+      },
+      {
+        "basis": "国规78/省规159/二七旧指南",
+        "judgment": "新条目只涉及居民户口簿，不免除原身份证、登记表、采像、指纹、核对或签名等其他环节。",
+        "limit": "地方指南和上位规范的现行执行关系仍未最终核定。"
+      }
+    ],
+    "source_reputation": {
+      "publisher_copy": "郑州市工商联网站独立公开PDF",
+      "homepage": "https://www.zzsgsl.org/",
+      "homepage_observation": "页脚版权为郑州市工商业联合会；记录豫ICP备13001361号及网站自有部门预算/决算入口。",
+      "government_publishing_entry": "https://zzjt.zhengzhou.gov.cn/tzgg/7658108.jhtml",
+      "government_entry_normal_access": "robots phase HTTP403; stopped without retry",
+      "independent_government_portal_copy_observation": "其他区政府公开副本的第10项字段相符，仅网页观察，没有取得同字节副本或证明全部18页一致。"
+    },
+    "limits": [
+      "未确立精确施行日或首次公开日期，不从签发或文件路径推算。",
+      "没有找到指向本文件的现行清理结论，不据未检出废止推断继续有效，也不按年龄自动推断失效。",
+      "仅核对目标封面/表头/第10项；未审查其余16页事项。",
+      "选页区间是人工核对结果，来源停用；不是自动处理配置或业务批准。"
+    ]
+  },
+  "selected_spans": [
+    {
+      "pdf_page": 1,
+      "start": 5,
+      "end": 168,
+      "parent_native_text_sha256": "7ecd4e1706539af6bdabe02f810c96f779d71f444336fd72d0d743bd64950006",
+      "span_sha256": "b3dbce2933ea2d0ee893b01726ea66d7c6b966d1c62999e232dd299d82759acf",
+      "locator": "PDF第1页：文件身份与送达范围"
+    },
+    {
+      "pdf_page": 2,
+      "start": 0,
+      "end": 51,
+      "parent_native_text_sha256": "e725c53b3d826ef614d9148ce0104943d0b020bc02aa5c7c31c04b64a770c7f2",
+      "span_sha256": "bf0c3ca07f96d072a60237fac14cd0a324686ab540d8db5899e2051e5c1b452a",
+      "locator": "PDF第2页：清单表头"
+    },
+    {
+      "pdf_page": 2,
+      "start": 671,
+      "end": 708,
+      "parent_native_text_sha256": "e725c53b3d826ef614d9148ce0104943d0b020bc02aa5c7c31c04b64a770c7f2",
+      "span_sha256": "e4442387f4ae900d28d2f19e516d0f4ea2e85b32abd9034852031c89a377fea1",
+      "locator": "PDF第2页：第10项户口簿告知承诺"
+    }
+  ],
+  "original_sha256": "8d5b49ab0a2ebe42bd9cc66e29c999beeed684d3cec15a65ba4b73e524590d6e",
+  "page_count": 18,
+  "visually_reviewed_pages": [
+    1,
+    2
+  ],
+  "selected_chunks": 3,
+  "automated_collection_enabled": false,
+  "new_model_runs": 0,
+  "formal_gates": {
+    "reviews": 5,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "counts": {
+    "sites": 43,
+    "documents": 39,
+    "revisions": 126,
+    "chunks": 837,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 307
+  },
+  "content_sha256": "f5c1a9e68df25b277d07433bd13feea6fca93958c9456f549e7b10f9ce00c3a2"
+}

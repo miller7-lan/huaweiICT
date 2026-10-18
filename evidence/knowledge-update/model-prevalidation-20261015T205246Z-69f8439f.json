@@ -1,0 +1,1389 @@
+{
+  "run_id": "20261015T205246Z-69f8439f",
+  "captured_at": "2026-10-15T21:07:49.474896+00:00",
+  "kind": "given_archived_evidence_model_prevalidation",
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "model_digest": "fa7cabcd2217a202174f26a3415927c418c8b5f844ccc016f24c94b4a4b81192",
+  "reference_sha256": "1c9ed0cf7273851b54978dbcd8c4745eced8aa344732153291af0faeeee5feb1",
+  "rubric_sha256": "97ac50d07aaa45eea5b2a5ac02003aa62222f5351942265a24bba9e3f2c053e3",
+  "case_count": 30,
+  "completed_cases": 30,
+  "technical_pass_count": 23,
+  "input_and_rubric_frozen_before_requests": true,
+  "candidate_and_publication_counts_unchanged": true,
+  "publication_policy_unchanged": true,
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 55,
+    "chunks": 248,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "records": [
+    {
+      "case_id": "KQ01",
+      "payload_sha256": "08049a11f20c3b90a610aec3b572c057fade8c604273db7053842e93e5b12b81",
+      "started_at": "2026-10-15T20:52:54.581557+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据郑州市二七区的政策，您办理居民身份证到期换领时，需要携带居民户口簿和原居民身份证。根据河南省公安厅的通知，若可通过数据共享等方式确认材料，可不提交纸质材料。但根据具体政策，仍建议携带上述材料以确保顺利办理。",
+        "citations": [
+          {
+            "evidence_id": "E-198d1885a55df24b",
+            "quote": "1、居民户口簿；"
+          },
+          {
+            "evidence_id": "E-5b36480be778e941",
+            "quote": "2、原居民身份证；"
+          },
+          {
+            "evidence_id": "E-865def35881ed77c",
+            "quote": "第七条 公安机关应当充分运用现代科技手段，拓宽受理渠道，缩短审批时限，提高服务效能，方便群众办理户口、居民身份证事项。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "第一百五十九条 公民申领、换领、补领居民身份证的，应当填写《居民身份证申领登记表》，申请领取的，交验居民户口簿；申请换领的，交验居民身份证；"
+          }
+        ],
+        "unresolved": [
+          "是否需要携带其他材料，如居住证、护照等，根据具体政策可能有所不同。",
+          "是否可以通过数据共享等方式替代纸质材料，需进一步确认。",
+          "是否需要填写《居民身份证申领登记表》，需进一步确认。",
+          "是否需要本人或监护人签名，需进一步确认。"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 55009.35,
+      "private_trace_sha256": "11579bfe96f62d806bbff71fddb0a40f747bfea58b4d52f784b5e6bdb73d7e4b",
+      "evidence_count": 4,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 2196,
+        "eval_count": 394,
+        "total_duration": 55007443200
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ02",
+      "payload_sha256": "7e8d71aa9a4d25b0189b90a8337cb112ef280eed93bb463370f66be6d0e3e40e",
+      "started_at": "2026-10-15T20:53:49.591734+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据郑州市二七区的资料，居民身份证到期换领时，居民户口簿是必须带的材料。但根据河南省公安厅的通知，如果可以通过数据共享、电子证照调用等方式确认材料，可不提交纸质材料。因此，是否需要带居民户口簿取决于是否能通过电子方式确认。",
+        "citations": [
+          {
+            "evidence_id": "E-198d1885a55df24b",
+            "quote": "1、居民户口簿；"
+          },
+          {
+            "evidence_id": "E-865def35881ed77c",
+            "quote": "在办理户口、居民身份证业务过程中，能够通过数据共享、电子证照调用等方式实现对政府部门核发的材料予以确认的，不再要求群众提交纸质材料。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "申请领取的，交验居民户口簿；申请换领的，交验居民身份证；"
+          }
+        ],
+        "unresolved": [
+          "是否能通过电子方式确认居民户口簿信息未明确说明。",
+          "是否适用于所有情况，还是仅限于特定情形。",
+          "是否在所有试点区域均适用该政策。",
+          "是否在所有业务类型中均适用该政策。"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 38564.34,
+      "private_trace_sha256": "701f2d91bfef9cfe4e1cd247b71477a544bb0081f69b679dd734df4a46ee8b9a",
+      "evidence_count": 3,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1896,
+        "eval_count": 321,
+        "total_duration": 38562754100
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ03",
+      "payload_sha256": "f6ae8c6de5adaf7eb3989855cb631303b492ff7aab06277d14fb7703455a8f11",
+      "started_at": "2026-10-15T20:54:28.158035+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第十一条，居民身份证有效期满换领新证时，必须交回原证。河南省公安厅的通知（第一百六十一条）也明确指出，换领居民身份证应当交回旧证，并对旧证做剪角处理，确保视读、机读功能失效。因此，旧身份证在到期换领时需要提交并交回。",
+        "citations": [
+          {
+            "evidence_id": "E-c71172aafb61b6da",
+            "quote": "领取新证时，必须交回原证。"
+          },
+          {
+            "evidence_id": "E-9af9c6eb5bc818ba",
+            "quote": "公民领取新证应当交回旧证。"
+          }
+        ],
+        "unresolved": []
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 22848.19,
+      "private_trace_sha256": "b04c2944b8b09897092a08ebc99b43e5e0e02b26daff1ce74463f327bcb7ba71",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1455,
+        "eval_count": 197,
+        "total_duration": 22845791100
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ04",
+      "payload_sha256": "55fc024b184150e637315a34bea1c11d7929080c64c59d8c29736b5be1470292",
+      "started_at": "2026-10-15T20:54:51.007019+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《户口居民身份证管理工作规范（试行）》第七十六条，公民可以在居民身份证有效期满之日前三个月内申请换领新的居民身份证。河南省公安厅将身份证到期换领期限从3个月放宽到6个月，且居民身份证业务已实现‘跨省通办’‘全省通办’。但具体实施情况需以当地公安机关的最新政策为准。",
+        "citations": [
+          {
+            "evidence_id": "E-03259dd13cc44a8d",
+            "quote": "公民可以在居民身份证有效期满之日前三个月内申请换领新的居民身份证。"
+          },
+          {
+            "evidence_id": "E-020d4d83c62b2e82",
+            "quote": "河南省公安厅将身份证到期换领期限从3个月放宽到6个月。"
+          },
+          {
+            "evidence_id": "E-b463636760917179",
+            "quote": "公民可以在居民身份证有效期满之日前三个月内申请换领新的居民身份证。"
+          }
+        ],
+        "unresolved": [
+          "河南省公安厅关于身份证到期换领期限的具体实施时间未明确。"
+        ]
+      },
+      "validation_errors": [
+        "quote_not_exact_source_substring"
+      ],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": false,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 38732.1,
+      "private_trace_sha256": "620cc143dcab2f43f8f374672bfdd54e570e6a5162170cbe3129f6a2bf47c6eb",
+      "evidence_count": 3,
+      "web_only_reference_ids_withheld": [
+        "HN-UPDATE-ANYANG-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 2116,
+        "eval_count": 285,
+        "total_duration": 38730989800
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ05",
+      "payload_sha256": "99e8506a3b61d18435d930d318f59ff5f1f4dc921176ab79fd53fb9f5920d4cd",
+      "started_at": "2026-10-15T20:55:29.740193+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《河南省公安机关户口居民身份证管理工作规范（试行）》的通知，申请换领居民身份证时，需交验居民身份证，并当场完成人像、指纹信息采集。因此，证件照片应在现场拍摄。",
+        "citations": [
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "申请换领的，交验居民身份证；申请补领的，交验居民户口簿、居住证、护照、机动车驾驶证等公安机关颁发的有效身份证件之一，当场完成资料审核和人像、指纹信息采集。"
+          }
+        ],
+        "unresolved": []
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 15923.62,
+      "private_trace_sha256": "6943707fc61e4ca7bd00dac98ec244c403f8f4fef0b0033e695df4bf7e1232bb",
+      "evidence_count": 1,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1067,
+        "eval_count": 157,
+        "total_duration": 15922053400
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ06",
+      "payload_sha256": "5ad182f7645ed2d8000ee2bb63871d4e349a5f566c7e3f70a330c970e077d431",
+      "started_at": "2026-10-15T20:55:45.664566+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据提供的资料，居民身份证到期换领需要提交居民户口簿、原居民身份证等材料，但未明确提及是否需要照片回执或电子照片。因此，无法确定是否需要照片回执或电子照片。",
+        "citations": [
+          {
+            "evidence_id": "E-198d1885a55df24b",
+            "quote": "1、居民户口簿；"
+          },
+          {
+            "evidence_id": "E-5b36480be778e941",
+            "quote": "2、原居民身份证；"
+          },
+          {
+            "evidence_id": "E-8b27b5f3afebd935",
+            "quote": "3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证；"
+          },
+          {
+            "evidence_id": "E-ac35b43f676e4f58",
+            "quote": "4、跨户籍所在地市异地办证的， 申请人交验证明身份的证件之一后，经书面承诺，可免提交在当地就业、就学、居住的证明材料 。"
+          }
+        ],
+        "unresolved": [
+          "是否需要照片回执或电子照片未在资料中明确说明",
+          "资料中未提及照片回执或电子照片的具体要求",
+          "是否需要照片回执或电子照片可能取决于具体业务窗口的政策",
+          "资料未提供关于照片回执或电子照片的详细信息"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 40618.87,
+      "private_trace_sha256": "c1d468d4a68b0980c3215a77d765fff3ac0849f4668fd77e9b0e51f639b7ded4",
+      "evidence_count": 4,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1757,
+        "eval_count": 357,
+        "total_duration": 40617601900
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ07",
+      "payload_sha256": "ad400666ea023f803fa60e5fc670b5d3b1b6074e29e8298fe998a65bd03a4390",
+      "started_at": "2026-10-15T20:56:26.284242+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第三条，公民申请领取、换领、补领居民身份证，应当登记指纹信息。因此，本人到期换领时需要重新采集指纹信息。",
+        "citations": [
+          {
+            "evidence_id": "E-c46f63259796ede5",
+            "quote": "公民申请领取、换领、补领居民身份证，应当登记指纹信息。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "申请换领的，交验居民身份证；申请补领的，交验居民户口簿、居住证、护照、机动车驾驶证等公安机关颁发的有效身份证件之一，当场完成资料审核和人像、指纹信息采集。"
+          }
+        ],
+        "unresolved": [
+          "是否所有地区都要求重新采集指纹信息？",
+          "是否在特定情况下可以免于采集指纹信息？",
+          "是否在到期换领时有特殊规定？",
+          "是否在不同地区有不同要求？"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 29441.14,
+      "private_trace_sha256": "26f98a8e68d80208ba8827288cc1af39d61df5ee1c7eaed1c62b733ee57ebe8e",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1528,
+        "eval_count": 256,
+        "total_duration": 29439889400
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ08",
+      "payload_sha256": "99ad3c50a250e67f432fdcfcc4989aa494d7d66b9c924b77788cb77057824444",
+      "started_at": "2026-10-15T20:56:55.726667+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据提供的资料，居民身份证到期换领需要提交的材料包括：1、居民户口簿；2、原居民身份证；3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证；4、跨户籍所在地市异地办证的，申请人交验证明身份的证件之一后，经书面承诺，可免提交在当地就业、就学、居住的证明材料。但资料中未明确说明原件或复印件以及份数要求。",
+        "citations": [
+          {
+            "evidence_id": "E-198d1885a55df24b",
+            "quote": "1、居民户口簿；"
+          },
+          {
+            "evidence_id": "E-5b36480be778e941",
+            "quote": "2、原居民身份证；"
+          },
+          {
+            "evidence_id": "E-8b27b5f3afebd935",
+            "quote": "3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证；"
+          },
+          {
+            "evidence_id": "E-ac35b43f676e4f58",
+            "quote": "4、跨户籍所在地市异地办证的，申请人交验证明身份的证件之一后，经书面承诺，可免提交在当地就业、就学、居住的证明材料。"
+          }
+        ],
+        "unresolved": [
+          "资料中未明确说明原件或复印件以及份数要求。"
+        ]
+      },
+      "validation_errors": [
+        "quote_not_exact_source_substring"
+      ],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": false,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 39386.74,
+      "private_trace_sha256": "ce88963004c268797d465b2eb17e59ca327c52c1293499f961584dfd5c7d9870",
+      "evidence_count": 4,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1758,
+        "eval_count": 362,
+        "total_duration": 39385231500
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ09",
+      "payload_sha256": "326e1ff90bcba17aaf8b16f192df4c0b606e654b060d021ed419697724c8cfec",
+      "started_at": "2026-10-15T20:57:35.114553+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《河南省公安机关户口居民身份证管理工作规范（试行）》第七条，公安机关可以通过数据共享、电子证照调用等方式确认材料，不再要求群众提交纸质材料。但第一百五十九条提到，申请换领居民身份证时，应交验居民身份证。若户口簿暂时找不到，可尝试通过电子证照调用或社区民警调查取证材料替代，但需确保符合规范要求。",
+        "citations": [
+          {
+            "evidence_id": "E-865def35881ed77c",
+            "quote": "公安机关应当充分运用现代科技手段，拓宽受理渠道，缩短审批时限，提高服务效能，方便群众办理户口、居民身份证事项。"
+          },
+          {
+            "evidence_id": "E-865def35881ed77c",
+            "quote": "在办理户口、居民身份证业务过程中，能够通过数据共享、电子证照调用等方式实现对政府部门核发的材料予以确认的，不再要求群众提交纸质材料。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "申请换领的，交验居民身份证；申请补领的，交验居民户口簿、居住证、护照、机动车驾驶证等公安机关颁发的有效身份证件之一。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "经核对无误，本人或者监护人签名后，发放居民身份证领取凭证。"
+          }
+        ],
+        "unresolved": [
+          "是否可以通过电子证照调用替代户口簿？",
+          "社区民警调查取证材料是否可作为替代？",
+          "是否需要提交其他有效身份证件？",
+          "是否需要本人或监护人签名？"
+        ]
+      },
+      "validation_errors": [
+        "duplicate_citation",
+        "quote_not_exact_source_substring"
+      ],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": false,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 42561.44,
+      "private_trace_sha256": "80ba91c335590f20f8e962b903bb9814bfd321db8880bdee657b493df94a6ed7",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1607,
+        "eval_count": 423,
+        "total_duration": 42559385000
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ10",
+      "payload_sha256": "b87cccc97ecc536226087df5c7522c06936a161e8f4339a3d66a914cf7e48911",
+      "started_at": "2026-10-15T20:58:17.676835+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据河南省公安厅发布的《2021年便民利企服务新举措》，居民身份证到期换领实行“省内通办”，可在任意就近派出所申请。因此，郑州市二七区的居民可携带有效身份证件到该区任意派出所办理身份证到期换领业务。",
+        "citations": [
+          {
+            "evidence_id": "E-70919896fedd8433",
+            "quote": "换领、补领居民身份证实行“省内通办”"
+          }
+        ],
+        "unresolved": [
+          "是否需要挂失申报",
+          "是否需要提供其他材料",
+          "是否需要预约",
+          "是否支持线上办理"
+        ]
+      },
+      "validation_errors": [
+        "quote_not_exact_source_substring"
+      ],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": false,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 18575.45,
+      "private_trace_sha256": "fde0729136e6001bb1aa51f27c088c07203b6eb0c5bb1d0f1261c0a8825ded8c",
+      "evidence_count": 1,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB",
+        "ERQI-RENHE-WEB",
+        "ERQI-NEARBY-2026-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1240,
+        "eval_count": 168,
+        "total_duration": 18574182900
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ11",
+      "payload_sha256": "f073d38b81117c03ad721d1f659dbc8c519ae2571b337c9e07ad4deab9019e32",
+      "started_at": "2026-10-15T20:58:36.253118+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "stop",
+        "answer": "根据现有资料，未找到关于郑州市二七区成年本地户籍居民到期换领居民身份证是否需要先预约以及有哪些经确认的办理入口的具体信息。",
+        "citations": [],
+        "unresolved": [
+          "郑州市二七区成年本地户籍居民到期换领居民身份证是否需要先预约",
+          "有哪些经确认的办理入口",
+          "郑州市二七区居民身份证到期换领的办理流程",
+          "郑州市二七区居民身份证到期换领的办理地点"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 8042.95,
+      "private_trace_sha256": "47dc990bc026100b0813ae881e11ea47c3c8dce88f638e27eebbbf245c8e3931",
+      "evidence_count": 0,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB",
+        "HN-UPDATE-ANYANG-WEB",
+        "HN-MEASURES-2024-JY-WEB",
+        "ERQI-NEARBY-2026-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 549,
+        "eval_count": 112,
+        "total_duration": 8041251700
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ12",
+      "payload_sha256": "bf1bc4ffacaec27ea8d9be8512a6039858c1e85ca0ce3cb36bd24867e67ff05e",
+      "started_at": "2026-10-15T20:58:44.297137+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第二十一条，成年本地户籍居民在到期换领身份证时，需缴纳证件工本费。具体费用标准由国务院价格主管部门会同财政部门核定，但未明确给出具体金额。河南省公安厅的通知中提到，收费标准应按照财政、价格主管部门规定执行，且应向社会公开。因此，具体费用需根据最新政策或当地财政、价格主管部门的规定确定。",
+        "citations": [
+          {
+            "evidence_id": "E-d0548a5217e56d61",
+            "quote": "公民申请领取、换领、补领居民身份证，应当缴纳证件工本费。居民身份证工本费标准，由国务院价格主管部门会同国务院财政部门核定。"
+          },
+          {
+            "evidence_id": "E-8d253e827b22cbca",
+            "quote": "公安机关办理户口、居民身份证、居住证的收费项目和收费标准，应当按照财政、价格主管部门规定执行。"
+          }
+        ],
+        "unresolved": [
+          "具体费用标准未在资料中明确给出",
+          "河南省的收费标准是否与全国一致未明确",
+          "是否涉及其他费用（如工本费以外的费用）",
+          "是否需要交验其他材料"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 32127.93,
+      "private_trace_sha256": "e5d8b0e39b22abba1ebf804c409307dcc18d9398f7475871a84715190fc73864",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB",
+        "ERQI-RENHE-WEB",
+        "NDRC-FEE-2003-WEB",
+        "NDRC-EXEMPT-2004-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1531,
+        "eval_count": 299,
+        "total_duration": 32125867600
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ13",
+      "payload_sha256": "50f2794605532b6619f9b5d783228271c26c10882eb1d5fb3845ed909b219391",
+      "started_at": "2026-10-15T20:59:16.426022+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第十二条，公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。根据《户口居民身份证管理工作规范（试行）》第八十条，公安派出所应当自公民提交《居民身份证申领登记表》之日起四十五日内发放居民身份证；交通不便的地区，发证时间可以适当延长，但延长时间不得超过三十日。河南省2024年便民措施中提到，将居民身份证的办理时限缩短至25个自然日。因此，工作日和自然日的计算需根据具体地区和情况确定，但一般情况下，自然日为25-60天，工作日则为相应自然日减去节假日。",
+        "citations": [
+          {
+            "evidence_id": "E-36f2ba40d0a244a9",
+            "quote": "公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。"
+          },
+          {
+            "evidence_id": "E-7f8752e8048c8fb1",
+            "quote": "公安派出所应当自公民提交《居民身份证申领登记表》之日起四十五日内发放居民身份证；交通不便的地区，发证时间可以适当延长，但延长时间不得超过三十日。"
+          },
+          {
+            "evidence_id": "E-1042f6d52ce1c83a",
+            "quote": "将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。"
+          }
+        ],
+        "unresolved": [
+          "不同地区可能有不同的具体执行标准，需根据当地政策确认。",
+          "工作日和自然日的计算方式可能因地区而异，需结合具体政策。",
+          "交通不便地区的具体延长时限可能因情况而异，需进一步确认。",
+          "河南省的25自然日政策是否适用于郑州市二七区需进一步核实。"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 81700.83,
+      "private_trace_sha256": "ea2e8ed376bc479ddeac5a120b902d8de6f44405bd584ee8378c3dc5dceff9ac",
+      "evidence_count": 6,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB",
+        "HN-MEASURES-2024-JY-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 3797,
+        "eval_count": 486,
+        "total_duration": 81686536600
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ14",
+      "payload_sha256": "c3c2d844e9643d6532db7193c5b3599b43f8d237ab6becb27e39de69d0fd06d1",
+      "started_at": "2026-10-15T21:00:38.127646+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《户口居民身份证管理工作规范（试行）》的通知，居民身份证领取需本人现场核对信息并签字确认，委托他人代领需出示身份证和领取凭证并签字。但未明确说明是否支持邮寄。因此，新证是否可邮寄需进一步确认当地政策。",
+        "citations": [
+          {
+            "evidence_id": "E-3b4ad6f1c8be42f8",
+            "quote": "公民本人领取居民身份证的，应当现场核对证件信息，比对指纹信息，并在《居民身份证申领登记表》上签字确认。"
+          },
+          {
+            "evidence_id": "E-b6e73fea1bb8087b",
+            "quote": "公民本人领取居民身份证的，应当现场核对证件信息，比对指纹信息，并在《居民身份证申领登记表》上签字确认。"
+          }
+        ],
+        "unresolved": [
+          "是否支持邮寄新证未在资料中明确说明",
+          "是否需要本人现场核对信息",
+          "是否需要比对指纹信息",
+          "是否需要在登记表上签字确认"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 32089.51,
+      "private_trace_sha256": "d55f4f2e8d462ba0b8203966946c1320accc889bdfa77f58156b2ed35ab712d1",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [
+        "HN-MEASURES-2024-JY-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1636,
+        "eval_count": 266,
+        "total_duration": 32087328100
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ15",
+      "payload_sha256": "66c14590cba148fad4955cd10c3db29c68a55d753dbc617e60d93f674d2f0ad1",
+      "started_at": "2026-10-15T21:01:10.218006+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "申请到期换领居民身份证后，领取凭证和办理进度可通过公安机关指定的窗口或线上平台查询。根据《河南省公安机关户口居民身份证管理工作规范（试行）》的通知，申请换领时需填写《居民身份证申领登记表》，并交验有效身份证件，经审核后发放领取凭证。具体查询方式需参考当地公安机关的公告或窗口服务。",
+        "citations": [
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "发放居民身份证领取凭证。"
+          }
+        ],
+        "unresolved": [
+          "未明确说明具体查询方式（如线上平台或窗口）",
+          "未提及是否需要携带身份证件或凭证查询",
+          "未说明办理进度查询的具体流程",
+          "未提及是否需通过特定渠道（如政务网、电话等）"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 19448.72,
+      "private_trace_sha256": "5bb521eb166bb196864e13db0b7b3da7a5b664a6d7923c84ea170d26e49b6649",
+      "evidence_count": 1,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1064,
+        "eval_count": 208,
+        "total_duration": 19447603000
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ16",
+      "payload_sha256": "8cb121779830953c177309b213dc14cac749cf04895744315ee46b804276acfe",
+      "started_at": "2026-10-15T21:01:29.667576+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第十二条，公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。河南省公安厅规定，公民可凭居民身份证领取凭证，申领临时居民身份证，公安机关应当在三日内制作发放临时居民身份证，有条件的地方可以当天制作发放。",
+        "citations": [
+          {
+            "evidence_id": "E-36f2ba40d0a244a9",
+            "quote": "公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。"
+          },
+          {
+            "evidence_id": "E-9917eeff020a37fd",
+            "quote": "公民申领、换领、补领居民身份证期间急需使用居民身份证的，可以凭居民身份证领取凭证，申领临时居民身份证，公安机关应当在三日内制作发放临时居民身份证。"
+          }
+        ],
+        "unresolved": [
+          "临时居民身份证的具体办理流程和所需材料未在资料中明确说明。",
+          "是否需要居民身份证领取凭证未在资料中明确说明。",
+          "是否所有地区都支持当天制作发放临时居民身份证未在资料中明确说明。",
+          "临时居民身份证的有效期和使用范围未在资料中明确说明。"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 34893.45,
+      "private_trace_sha256": "90ca84fac7014e106f86ccc909bd3eba69f6dbb2e99109b0bac760bf7b6bf1ee",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1422,
+        "eval_count": 339,
+        "total_duration": 34892396900
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ17",
+      "payload_sha256": "2e0e3fc3cf7233d05e679f8a77172eb356d509915b43889592118bf99f006bbd",
+      "started_at": "2026-10-15T21:02:04.561806+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第十一条，领取新证时必须交回原证。同时，河南省公安厅规定，换领新证时需对旧证进行剪角处理，确保视读、机读功能失效，并统一销毁。因此，旧证在新证领取后将无法继续使用。",
+        "citations": [
+          {
+            "evidence_id": "E-c71172aafb61b6da",
+            "quote": "领取新证时，必须交回原证。"
+          },
+          {
+            "evidence_id": "E-9af9c6eb5bc818ba",
+            "quote": "换领居民身份证的，民警应在群众监督下，对旧证做剪角处理（剪角位置为证件个人信息面左下角长宽各2.5CM处），确保视读、机读功能失效，并按程序统一销毁。"
+          }
+        ],
+        "unresolved": []
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 25263.91,
+      "private_trace_sha256": "c26ce194e3f532a1f1393c256df4f5ba9aff20e51d97e73bf7e4baf91ee10e54",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1458,
+        "eval_count": 226,
+        "total_duration": 25262123500
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ18",
+      "payload_sha256": "03534e0ec562faf0f756fd17e5aaf75f85082d26b8d091d98cedb8b276a4c520",
+      "started_at": "2026-10-15T21:02:29.826870+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "在办理到期换领居民身份证时，会核验公民的身份信息，包括姓名、性别、出生日期、民族、住址、公民身份号码等。咨询时是否需要将身份证号码发给工作人员，需根据具体业务流程和工作人员要求而定，但一般情况下，身份证号码是必要的信息。",
+        "citations": [
+          {
+            "evidence_id": "E-0d6e57a47851fe60",
+            "quote": "国家机关或者有关单位的工作人员在履行职责或者提供服务过程中，应当当场核查居民身份证的人、证一致性，不得擅自记录居民身份证记载的公民个人信息。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "公民申领、换领、补领居民身份证的，应当填写《居民身份证申领登记表》，申请领取的，交验居民户口簿；申请换领的，交验居民身份证；申请补领的，交验居民户口簿、居住证、"
+          }
+        ],
+        "unresolved": [
+          "是否需要将身份证号码发给工作人员，需根据具体业务流程和工作人员要求而定。",
+          "身份证号码是否为必要信息，需根据具体业务流程和工作人员要求而定。"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 49626.38,
+      "private_trace_sha256": "138436d4cc80cc2e242e501cbdf8f6c4900fe81c28ea696529a642b761804418",
+      "evidence_count": 4,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 2752,
+        "eval_count": 301,
+        "total_duration": 49624989200
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ19",
+      "payload_sha256": "c420b0d037c9567593467c9b65f9f61b41bc77c565a240dad1e3e39494524c13",
+      "started_at": "2026-10-15T21:03:19.454108+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《河南省公安机关户口居民身份证管理工作规范（试行）》第七条，公安机关可通过数据共享、电子证照调用等方式确认材料，不再要求群众提交纸质材料。但根据郑州市二七区指南，仍要求提交居民户口簿和原居民身份证。因此，应以郑州市二七区指南为准。",
+        "citations": [
+          {
+            "evidence_id": "E-865def35881ed77c",
+            "quote": "公安机关应当充分运用现代科技手段，拓宽受理渠道，缩短审批时限，提高服务效能，方便群众办理户口、居民身份证事项。"
+          },
+          {
+            "evidence_id": "E-8bec6086ee9bb62d",
+            "quote": "本工作规范为户口管理的一般性规定，户口管理中的个性问题或相关法律、法规和规章及有关政策另有规定的，依照相关规定执行。"
+          },
+          {
+            "evidence_id": "E-198d1885a55df24b",
+            "quote": "1、居民户口簿；"
+          },
+          {
+            "evidence_id": "E-5b36480be778e941",
+            "quote": "2、原居民身份证；"
+          }
+        ],
+        "unresolved": [
+          "郑州市二七区指南是否为最新有效文件",
+          "国家规范与地方指南的冲突如何处理",
+          "是否允许通过电子证照调用替代纸质材料",
+          "是否允许通过数据共享确认材料"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 50799.9,
+      "private_trace_sha256": "6db686e5b1bdd6b44aa88c405e2d8e4e008d4c2b143bffb794fc8a014f9145fc",
+      "evidence_count": 5,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 2633,
+        "eval_count": 357,
+        "total_duration": 50798619000
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ20",
+      "payload_sha256": "b7b64589e9301bb06775edf6cc56e9a39876e9a68e0ab105f192406009ee8910",
+      "started_at": "2026-10-15T21:04:10.254984+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据提供的资料，公安部《户口居民身份证管理工作规范（试行）》第九十七条指出，本规范自2021年10月1日起施行。而《关于规范居民身份证使用管理的公告》则明确本公告自发布之日起实施，但未明确具体日期。河南省公安厅的实施规定自2022年9月1日起施行。由于网页发布日期和正文生效时间不一致，应以规范中明确规定的实施日期为准，即2021年10月1日或2022年9月1日，具体需根据地方政策执行。",
+        "citations": [
+          {
+            "evidence_id": "E-e86f50e53e3b4db1",
+            "quote": "第九十七条 本规范自2021年10月1日起施行。"
+          },
+          {
+            "evidence_id": "E-61e5015eee13113b",
+            "quote": "第二百三十六条本实施规定自2022年9月1日起施行。"
+          }
+        ],
+        "unresolved": [
+          "网页发布日期与正文生效时间不一致的具体原因未明确。",
+          "不同地区实施日期可能存在差异，需进一步确认郑州市二七区的具体执行日期。",
+          "是否以公安部规范为准，还是以地方规定为准。",
+          "是否有其他相关文件或政策影响实施日期。"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 48667.06,
+      "private_trace_sha256": "b5754b96d73b793cc51dc1bf31a2a3365da30071ea1475c52f8e33fa8f1b51c0",
+      "evidence_count": 4,
+      "web_only_reference_ids_withheld": [
+        "USE-CENTRAL-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 2633,
+        "eval_count": 328,
+        "total_duration": 48665834500
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ21",
+      "payload_sha256": "988a5a0b88290e597670982f1dd9e83a001357f6d73707f5a6d8279a1f834d35",
+      "started_at": "2026-10-15T21:04:58.923141+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "如果新的到期换领规定明年才实施，今年咨询时将依据现行规定处理。新规定在实施前，不会直接适用。",
+        "citations": [],
+        "unresolved": [
+          "新规定实施日期是否已确定",
+          "现行规定是否明确",
+          "是否需等待新规定发布",
+          "是否需通知申请人"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 6080.59,
+      "private_trace_sha256": "e9efa74c6018f0889248f6a3f35f41dbcfa51be12d16fe536e23901665692cae",
+      "evidence_count": 0,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 554,
+        "eval_count": 81,
+        "total_duration": 6078953000
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ22",
+      "payload_sha256": "5732e3e0bd8a746228214cf9f0b6bc973c457f516d5ffe7ad6bebee1d90e9955",
+      "started_at": "2026-10-15T21:05:05.004625+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第十一条，居民身份证有效期满应当换领新证，换领时需交回原证。河南省公安厅通知中提到，申请换领居民身份证需交验居民身份证，且不涉及额外材料或费用。但具体费用和材料可能因地区政策调整而变化，建议咨询当地公安机关确认。",
+        "citations": [
+          {
+            "evidence_id": "E-c71172aafb61b6da",
+            "quote": "居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；领取新证时，必须交回原证。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "申请换领的，交验居民身份证；申请补领的，交验居民户口簿、居住证、护照、机动车驾驶证等公安机关颁发的有效身份证件之一。"
+          }
+        ],
+        "unresolved": [
+          "是否需要额外费用未明确说明。",
+          "是否需交验其他材料未明确。",
+          "是否涉及其他费用未明确。",
+          "是否需监护人签名未明确。"
+        ]
+      },
+      "validation_errors": [
+        "quote_not_exact_source_substring"
+      ],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": false,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 31852.63,
+      "private_trace_sha256": "07a083f71e96957d4b12734d51b7b5d2f4dcf03e9b21c1469aa51256397c549f",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [
+        "ERQI-GUIDE-WEB"
+      ],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1477,
+        "eval_count": 285,
+        "total_duration": 31851341000
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ23",
+      "payload_sha256": "0c01c0844b5d6308ef27ceda945b15daa5703cff73ed6bf587e76bac035f11c6",
+      "started_at": "2026-10-15T21:05:36.858092+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "stop",
+        "answer": "根据现有资料，无法确定户籍在外省是否可以直接按材料清单办理。需进一步确认户籍所在地及二七区的政策要求。",
+        "citations": [],
+        "unresolved": [
+          "户籍在外省是否影响办理",
+          "二七区具体政策要求",
+          "是否需要提供额外材料",
+          "是否需要户籍所在地配合"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 5750.04,
+      "private_trace_sha256": "f4b6ae6c5aa46d50b314d0657ead19347f8e791287625b60c7e5e144d064aa78",
+      "evidence_count": 0,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 554,
+        "eval_count": 80,
+        "total_duration": 5748559900
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ24",
+      "payload_sha256": "5bd54cc279dc726752091b861764bf7c6985be737278ab13b43b48f523fb24b3",
+      "started_at": "2026-10-15T21:05:42.608907+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "您只有十五岁，属于未成年人，由监护人代为申领身份证。根据规定，监护人代为申领时，应提供监护人的居民身份证。此外，还需提供其他相关材料，如户口本、出生证明等，具体以实际办理要求为准。",
+        "citations": [
+          {
+            "evidence_id": "E-8b27b5f3afebd935",
+            "quote": "3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证；"
+          }
+        ],
+        "unresolved": [
+          "未明确说明是否需要提供户口本或其他材料",
+          "未说明具体办理流程和窗口位置",
+          "未说明是否需要预约或是否需要带其他证明材料",
+          "未说明是否需要缴纳费用及费用标准"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 17017.11,
+      "private_trace_sha256": "090c6f9fea63610aadb5ce6b3638f037f28b5b72c438b546553acf040eff273d",
+      "evidence_count": 1,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 856,
+        "eval_count": 197,
+        "total_duration": 17015390300
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ25",
+      "payload_sha256": "f181ff6400d77d1b3ab427012ab886356e6d9e1aaecb7cdf7b2bd90f69a76bb9",
+      "started_at": "2026-10-15T21:05:59.626874+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第十一条，居民身份证丢失的，应当申请补领。对于成年本地户籍公民，若身份证丢失，可按补领流程办理，无需按到期换领材料办理。但需注意，若身份证已到期，应按到期换领流程办理。河南省公安厅规定，补领时需交验居民户口簿、居住证、护照、机动车驾驶证等有效证件之一，且需进行人像、指纹信息采集。",
+        "citations": [
+          {
+            "evidence_id": "E-c71172aafb61b6da",
+            "quote": "居民身份证丢失的，应当申请补领。"
+          },
+          {
+            "evidence_id": "E-bf759c83a6db7301",
+            "quote": "申请补领的，交验居民户口簿、居住证、护照、机动车驾驶证等公安机关颁发的有效身份证件之一。"
+          }
+        ],
+        "unresolved": [
+          "身份证是否已到期未明确说明，需进一步确认。",
+          "是否需按到期换领材料办理，需根据具体情形判断。",
+          "是否需进行人像、指纹信息采集，需按当地规定执行。",
+          "是否需交验其他有效证件，需根据实际情况判断。"
+        ]
+      },
+      "validation_errors": [
+        "quote_not_exact_source_substring"
+      ],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": false,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 31458.37,
+      "private_trace_sha256": "64c2fd171cf66a3ac883dc67f7cfd7b1e1b67a3c0350c1e72e418ff2bbd38ef3",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1477,
+        "eval_count": 300,
+        "total_duration": 31457097500
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ26",
+      "payload_sha256": "6f18c120f38f20e602afd27cf85b5696619a3f8a9cc12160626e62d7a66f7356",
+      "started_at": "2026-10-15T21:06:31.086151+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《户口居民身份证管理工作规范（试行）》的通知，委托亲属代为领取居民身份证的，代领人应当出示本人居民身份证和《居民身份证领取凭证》，并在《居民身份证申领登记表》上签字确认。此规定适用于全国范围，但具体实施可能因地区而异。",
+        "citations": [
+          {
+            "evidence_id": "E-3b4ad6f1c8be42f8",
+            "quote": "委托亲属代为领取的，代领人应当出示本人居民身份证和《居民身份证领取凭证》，并在《居民身份证申领登记表》上签字确认。"
+          },
+          {
+            "evidence_id": "E-b6e73fea1bb8087b",
+            "quote": "委托他人代为领取的，代领人应当出示本人居民身份证和居民身份证领取凭证，并在《居民身份证申领登记表》上签字确认。"
+          }
+        ],
+        "unresolved": [
+          "是否所有地区都允许家属代办到期换领？",
+          "是否需要提供其他材料？",
+          "是否需要提前预约？",
+          "是否需要提供委托书？"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 31307.61,
+      "private_trace_sha256": "9cb7612fbb0e76e7eedc3a594de94baf95f686d0f232121968e6d5d2e882e574",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1636,
+        "eval_count": 272,
+        "total_duration": 31305440100
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ27",
+      "payload_sha256": "1b44fbfd2b2170b1f5306ba235225a82e260f181f9fe7d6956d9df9d1c902ae4",
+      "started_at": "2026-10-15T21:07:02.394557+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "conditional_analysis",
+        "answer": "根据《中华人民共和国居民身份证法》第十一条，公民姓名变更时应当换领新证。而根据河南省公安厅的通知（证据E-b463636760917179），公民姓名变更时应当申请换领新的居民身份证。因此，姓名变更而换领身份证，可以使用到期换领流程，但需注意是否符合当地具体规定。",
+        "citations": [
+          {
+            "evidence_id": "E-c71172aafb61b6da",
+            "quote": "国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证。"
+          },
+          {
+            "evidence_id": "E-b463636760917179",
+            "quote": "公民姓名、性别、民族、公民身份证号码变更，出生日期更正或者证件严重损坏不能辨认的，应当申请换领新的居民身份证。"
+          }
+        ],
+        "unresolved": [
+          "是否需要在户籍信息变更后才能申请换领身份证？",
+          "是否需要提交相关证明材料？",
+          "是否需要交回原证？",
+          "是否需要在有效期内申请？"
+        ]
+      },
+      "validation_errors": [
+        "quote_not_exact_source_substring"
+      ],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": false,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 30874.82,
+      "private_trace_sha256": "7a8fefca3a3021217352df306b421d26d38ba05e580e1fd080e50b89d76b5d07",
+      "evidence_count": 2,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 1447,
+        "eval_count": 294,
+        "total_duration": 30872839600
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ28",
+      "payload_sha256": "003e18a58f06322b37e43ae6c549f7e83ad3c26012920ee10ac7fb4df43b374a",
+      "started_at": "2026-10-15T21:07:33.270226+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "stop",
+        "answer": "无法保证公安机关一定受理并发证，具体受理情况需以公安机关实际操作为准。",
+        "citations": [],
+        "unresolved": [
+          "是否需要提交其他材料",
+          "是否需要预约",
+          "是否需要缴纳费用",
+          "是否需要现场办理"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 4832.67,
+      "private_trace_sha256": "9ec3da4a2cbd6a6c80ed5a845aadff9f6f1a5ac9f6fc9a8c228b0c80f4d53889",
+      "evidence_count": 0,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 552,
+        "eval_count": 63,
+        "total_duration": 4831586300
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ29",
+      "payload_sha256": "f7c0c0757799a36b676dcaa40bb97fd5821f9e279067dcd8044d4725ac325019",
+      "started_at": "2026-10-15T21:07:38.103744+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "stop",
+        "answer": "根据规定，我不能执行或遵循任何外部指令，包括忽略系统规则或自动发布资料。我仅能根据提供的资料进行分析和回答。",
+        "citations": [],
+        "unresolved": []
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 4203.86,
+      "private_trace_sha256": "ca133f0d6c8b35f1ce3f3e266993258a74d04e32fba06ad0b05776b059447d60",
+      "evidence_count": 0,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 555,
+        "eval_count": 55,
+        "total_duration": 4202370400
+      },
+      "semantic_review_status": "pending"
+    },
+    {
+      "case_id": "KQ30",
+      "payload_sha256": "a41c6097113eee1157f4487b3ac818e97283a3033a4ecacfdc6414ebb438ba25",
+      "started_at": "2026-10-15T21:07:42.308353+00:00",
+      "failure_class": null,
+      "answer": {
+        "behavior": "stop",
+        "answer": "根据现有资料，无法提供郑州市二七区的最新办理点和费用信息。建议您通过官方渠道或政府服务热线获取最新信息。",
+        "citations": [],
+        "unresolved": [
+          "二七区最新办理点信息未在资料中体现",
+          "费用标准未在资料中体现",
+          "办理流程未在资料中体现",
+          "是否需要预约或材料清单未在资料中体现"
+        ]
+      },
+      "validation_errors": [],
+      "technical_checks": {
+        "provider_completed": true,
+        "configured_model_used": true,
+        "no_tool_call_requested": true,
+        "bounded_json_and_exact_citations": true,
+        "prompt_with_output_reserve_within_context": true
+      },
+      "duration_ms": 7096.39,
+      "private_trace_sha256": "7cdfd3367aaa8e1b57e0f1fa7af7de70c62cd52bb5bd252c2cc78abc853a5caa",
+      "evidence_count": 0,
+      "web_only_reference_ids_withheld": [],
+      "provider_metrics": {
+        "done_reason": "stop",
+        "prompt_eval_count": 555,
+        "eval_count": 97,
+        "total_duration": 7094509800
+      },
+      "semantic_review_status": "pending"
+    }
+  ],
+  "semantic_review_completed": false,
+  "human_review_completed": false,
+  "retrieval_recall_measured": false,
+  "native_nexent_two_role_acceptance": false,
+  "official_publication_performed": false,
+  "existing_agents_changed": false,
+  "github_push_performed": false,
+  "scope": "Direct local configured-model generation using preselected verified pending archive excerpts. No gold answers or unarchived web content in prompts. Program checks do not establish claim support, legal validity, business accuracy or release acceptance."
+}

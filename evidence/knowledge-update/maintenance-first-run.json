@@ -1,0 +1,105 @@
+{
+  "captured_at": "2026-10-15T16:38:07.971566+00:00",
+  "backup_day": "2026-10-16",
+  "restore_week": "2026-W42",
+  "last_backup": {
+    "directory": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update\\backups\\daily-2026-10-16-d8124259",
+    "manifest_sha256": "b629ae0bfc54fe2f5ce3de96bdd6a02eeea4b9f33880b5c7da922fa546bdf18d",
+    "files": 10,
+    "referenced_originals": 4,
+    "counts": {
+      "documents": 4,
+      "revisions": 6,
+      "chunks": 62,
+      "versions": 0,
+      "heads": 0
+    },
+    "auth_credentials_included": false
+  },
+  "last_restore": {
+    "restored_to": "G:\\桌面\\codex项目\\华为ICT\\huaweiICT\\.runtime\\knowledge-update\\recovery-checks\\weekly-2026-W42-9204ca0f",
+    "counts": {
+      "documents": 4,
+      "revisions": 6,
+      "chunks": 62,
+      "versions": 0,
+      "heads": 0
+    },
+    "referenced_originals": 4,
+    "services_started": false,
+    "credentials_must_be_reprovisioned": true,
+    "source_manifest_sha256": "89b4382a7c7cc88337648be927636bff5231f28318a6a0f8b7f4e16fac11cd97"
+  },
+  "current_alerts": [
+    {
+      "code": "source_paused",
+      "source": "NDRC-FEE-2003"
+    },
+    {
+      "code": "source_paused",
+      "source": "NDRC-FEE-2005"
+    },
+    {
+      "code": "failed_jobs",
+      "job_ids": [
+        5,
+        4
+      ]
+    },
+    {
+      "code": "pending_review",
+      "revision_ids": [
+        "rev-293d24840fc4e53eb17c71ed",
+        "rev-cc5526f72436ae807a3f32f0",
+        "rev-d22b05a6d353b71c8bc504ad",
+        "rev-ec7e7716b9519d20ee336e0b"
+      ]
+    }
+  ],
+  "workers": [
+    {
+      "id": "knowledge-worker",
+      "stale": false,
+      "progress": "polling"
+    },
+    {
+      "id": "official-intake",
+      "stale": false,
+      "progress": "completed"
+    },
+    {
+      "id": "policy-discovery",
+      "stale": false,
+      "progress": "completed"
+    },
+    {
+      "id": "knowledge-maintenance",
+      "stale": false,
+      "progress": "idle"
+    },
+    {
+      "id": "fee-intake",
+      "stale": false,
+      "progress": "completed"
+    },
+    {
+      "id": "discovery-upgrade",
+      "stale": false,
+      "progress": "completed"
+    }
+  ],
+  "baseline_sample": {
+    "last_checked": 1792079143.53739,
+    "signal": "259d06bd210f1594d491e41589130aca77cc3ac7adbbf8010b1b3854ab3bb6a0",
+    "change_event_count": 2
+  },
+  "latest_sample": {
+    "last_checked": 1792082252.9122193,
+    "signal": "7199bb0d5344d99adebf8a0e6cbfdc28abbe601acf159222350d512568346c31",
+    "change_event_count": 3
+  },
+  "elapsed_between_maintenance_ticks_seconds": 3109.3748292922974,
+  "unchanged_state_kept_quiet": null,
+  "natural_full_week_observed": false,
+  "scope": "First real backup/recovery run and bounded unchanged-state observation; not a long-term unattended or production-deployment acceptance"
+}
