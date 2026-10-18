@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-18T10:05:23.959342+00:00",
+  "captured_at": "2026-10-18T10:19:51.610371+00:00",
   "counts": {
     "sites": 49,
     "documents": 45,
-    "revisions": 150,
-    "chunks": 955,
+    "revisions": 151,
+    "chunks": 961,
     "versions": 0,
     "heads": 0,
     "jobs": 38,
-    "latest_chunks": 313
+    "latest_chunks": 316
   },
   "sources": [
     {
@@ -53,7 +53,7 @@
     },
     {
       "id": "ERQI-RENEWAL-PORTAL-RENDERED",
-      "label": "二七区换领材料公开浏览器取证（手动待核，自动采集关闭）",
+      "label": "二七区换领材料及时限公开浏览器取证（手动待核，自动采集关闭）",
       "origin": "https://www.hnzwfw.gov.cn",
       "allowed_paths": [
         "/portal/guide/9BA34BC110B96284D26CE82456A51500"
@@ -1004,12 +1004,12 @@
     {
       "source_id": "ERQI-RENEWAL-PORTAL-RENDERED",
       "url": "https://www.hnzwfw.gov.cn/portal/guide/9BA34BC110B96284D26CE82456A51500?region=410103000000",
-      "revision": "rev-d35d070e36d4b86acfee6d71",
+      "revision": "rev-f9fa285838d66e6267c9f590",
       "state": "pending_review",
-      "original_sha256": "3e1304a5faf17c6cd901f131b685fbb6d03a6dc6f2a9509746600f33384e318e",
-      "original_bytes": 101451,
+      "original_sha256": "3d7a49fc0ded9328b2496d7923a58ed2aa1ba0ed7c9cb30a612c4d97f0f5148c",
+      "original_bytes": 191683,
       "metadata": {
-        "title": "申领居民身份证（换领）：材料弹层浏览器取证（待核）",
+        "title": "申领居民身份证（换领）：材料与时限浏览器取证（待核）",
         "region": "郑州市二七区",
         "matter": "demo-id-renewal",
         "document_type": "rendered_service_guide_observation",
@@ -1017,12 +1017,12 @@
         "effective_from": null,
         "effective_to": null,
         "conflict": true,
-        "extraction_method": "literal_accessibility_dialog_body_selection",
+        "extraction_method": "literal_accessibility_dialog_and_code_table_text_selection",
         "acquisition_kind": "public_browser_accessibility_capture",
         "archive_format": "agent_created_zip_capture_bundle_not_government_original",
         "scope_confirmed": false,
         "collection_role": "rendered_guide_candidate",
-        "extraction_quality_notes": "Three dialog bodies preserved literally; basis screenshot visually inspected. Material relationships, dates, online eligibility, service time and exemptions remain unresolved. No publication-date or commencement inference from capture date."
+        "extraction_quality_notes": "Three original material dialogs preserved; added coding table and complete time explanations. Commitment excludes generic extra steps but does not establish application-to-card collection or postal coverage. 60-workday label and cited legal-day wording remain unresolved; no publication/update/commencement date or online eligibility certified."
       },
       "source_fact_assessment_summary": {
         "id": "erqi-rendered-materials-20261018",
@@ -1051,6 +1051,24 @@
           "category": "legal_basis",
           "characters": 230,
           "text_sha256": "930e88695cefa631c8c1abb8735b4c2e0b8783697e1540708817964c9d7774a3"
+        },
+        {
+          "locator": "公开指南/基本信息/编码信息（浏览器取证待核）",
+          "category": "identity",
+          "characters": 136,
+          "text_sha256": "415391f68f47b574284e2ccc67765bbb95b0aaa79e7107cd7710d85f5faaf6a4"
+        },
+        {
+          "locator": "公开指南/基本信息/承诺办理时限/查看说明（浏览器取证待核）",
+          "category": "duration",
+          "characters": 57,
+          "text_sha256": "38543b2310351a54cdc6c5bf2462bdca2fa0075d14217280f36599a1be2d0783"
+        },
+        {
+          "locator": "公开指南/基本信息/法定办理时限/查看说明（浏览器取证待核）",
+          "category": "legal_basis",
+          "characters": 19,
+          "text_sha256": "9292f505cdace35f98237761bbc086776742b8e1466ad7bb4abb5e2ff18f3eaf"
         }
       ]
     },
