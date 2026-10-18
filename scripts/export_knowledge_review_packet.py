@@ -99,11 +99,16 @@ def holdout_draft_for_review(store, db, policy, registry):
 
 def main():
     from gov_mcp.knowledge_impact import revision_impact, duplicate_candidates
+    from gov_mcp.knowledge_notes import bind_scope_notes
     store = KnowledgeStore(ROOT / ".runtime/knowledge-update", read_only=True)
     dataset_path = ROOT / "evaluation/knowledge/pilot-business-questions.json"
     dataset = json.loads(dataset_path.read_text(encoding="utf-8"))
     ai_path = ROOT / "evaluation/knowledge/pilot-ai-reference-answers.json"
     ai = json.loads(ai_path.read_text(encoding="utf-8")) if ai_path.exists() else None
+    notes_path = ROOT / "evaluation/knowledge/source-scope-notes.json"
+    notes = json.loads(notes_path.read_text(encoding="utf-8")) if notes_path.exists() else None
+    scope_sha256 = fingerprint((ROOT / "config/knowledge-scope.json").read_bytes()) if notes is not None else None
+    scope_notes = bind_scope_notes(store, notes, scope_sha256)
     records = []
     with store.db() as db:
         policy = publication_policy(store)
@@ -143,6 +148,7 @@ def main():
         "scope": dataset["scope"], "records": records, "business_questions": dataset,
         "ai_reference_answers": ai,
         "holdout_design_draft": holdout,
+        "source_scope_notes": scope_notes,
         "evaluation_contract": {"publication_policy": policy,
             "allowed_reference_actor_kinds": ["human", "ai"] if policy.get("review_contract") == "attributed_v2" else ["human"],
             "registered_development_question_sha256": registry, "development_registry_sha256": fingerprint(registry),
@@ -194,6 +200,8 @@ def main():
         "evaluation_review_contract": policy.get("review_contract", "legacy_human_v1"),
         "registered_development_questions": len(registry), "development_registry_sha256": fingerprint(registry),
         "business_review_completed": False,
+        "source_scope_notes": {"status": scope_notes["status"], "bound_count": len(scope_notes["notes"]),
+            "withheld": scope_notes["withheld"], "business_approval": False},
         "revision_impact_available": True, "possible_duplicate_group_count": len(packet["possible_duplicate_groups"]["groups"]),
         "source_coverage": {"national_law": "See reviewed_national_statutes and their bound assessments for completed source reviews. Existing 2011 text, historical 2003 text, and the dated directory remain distinct; the directory cutoff is 2026-08-28, not a guarantee of later legislative status.",
             "national_norms": "See reviewed_operational_norms and reviewed_official_announcements for actually reviewed selected clauses. The original early-renewal clause retains its own live pending watch. The privacy announcement's implementation date comes from its explicit official registry field, not signature or page-publication inference; exact first publication and local material relationships remain unestablished.",
@@ -205,7 +213,8 @@ def main():
             "municipal_household_undertaking": "The exact 2021 municipal row for renewal/replacement household-register undertaking and on-site verification is normally archived from an independently published copy, with native spans and selected-page visual check. Current Erqi procedure/currentness remains unapproved; do not transfer the adjacent away-proof no-verification field to this row.",
             "fees": "See reviewed_fee_clauses for actual scoped approvals. First issue, expiry renewal, hardship exemption/reduction and extra charges remain separate; a normally acquired 2004 hardship original is pending local-currentness/proof review. Do not infer local eligibility or extra fees from the directory citations.",
             "municipal_changes": "2026_erqi_nearby_service_official_web_observation_collector_access_denied_not_locally_archived",
-            "district_guide": "archived_candidate_current_access_paused"}}
+            "district_guide": "Older literal guide archived with collection paused; the newer public-browser capture remains pending with material, time, exemption and online-eligibility relationships unresolved. No HTTP guide-body original is claimed.",
+            "online_handling": "See source_scope_notes for date/type-bound AI scope analysis. The lost/damaged-card online conditions are not proof that expiry renewal is eligible or prohibited; notes do not approve sources or supply test oracles."}}
     (ROOT / "evidence/knowledge-update/review-readiness.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"private_packet": str(path), "candidate_files": len(records), "question_count": len(dataset["cases"]),
                       "human_reviewed_questions": 0}, ensure_ascii=False))
