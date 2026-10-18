@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "kind": "candidate_retrieval_catalog_not_import_or_approval",
-  "captured_at": "2026-10-18T14:37:45.184439+00:00",
+  "captured_at": "2026-10-18T14:44:15.420530+00:00",
   "counts": {
-    "sites": 87,
-    "documents": 71,
-    "revisions": 178,
-    "chunks": 1337,
+    "sites": 95,
+    "documents": 79,
+    "revisions": 186,
+    "chunks": 1476,
     "versions": 0,
     "heads": 0,
     "jobs": 38,
-    "latest_chunks": 689
+    "latest_chunks": 828
   },
   "sources": [
     {
@@ -41,6 +41,25 @@
       ],
       "seeds": [
         "https://jtgl.beijing.gov.cn/jgj/93950/jwgk/jsrgl/205294/index.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "BJ-HOUSING-FUND-RENT-2023",
+      "label": "优化租房提取公积金业务政策解读",
+      "origin": "https://www.beijing.gov.cn",
+      "allowed_paths": [
+        "/zhengce/zcjd/202306/t20230606_3124045.html"
+      ],
+      "seeds": [
+        "https://www.beijing.gov.cn/zhengce/zcjd/202306/t20230606_3124045.html"
       ],
       "interval_seconds": 86400,
       "delay_seconds": 5,
@@ -354,6 +373,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "FJ-HK-MACAO-PERMIT-2025",
+      "label": "往来港澳通行证及签注政务指南",
+      "origin": "https://www.fujian.gov.cn",
+      "allowed_paths": [
+        "/nrrh/sgat/202509/t20250915_7009813.htm"
+      ],
+      "seeds": [
+        "https://www.fujian.gov.cn/nrrh/sgat/202509/t20250915_7009813.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "FJ-PASSPORT-LOCATION-2026",
       "label": "申请护照办理地点问答",
       "origin": "https://gat.fujian.gov.cn",
@@ -400,6 +438,82 @@
       ],
       "seeds": [
         "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/202004/t20200407_5232056.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FZ-BIRTH-COLLECTIVE-2025",
+      "label": "父或母为集体户口的婚生婴儿出生申报",
+      "origin": "https://gaj.fuzhou.gov.cn",
+      "allowed_paths": [
+        "/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358267.htm"
+      ],
+      "seeds": [
+        "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358267.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FZ-BIRTH-DIVORCED-2025",
+      "label": "父母离婚的婚生婴儿出生申报",
+      "origin": "https://gaj.fuzhou.gov.cn",
+      "allowed_paths": [
+        "/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358264.htm"
+      ],
+      "seeds": [
+        "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358264.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FZ-BIRTH-MARRIED-2025",
+      "label": "国内出生婚生婴儿申报户口",
+      "origin": "https://gaj.fuzhou.gov.cn",
+      "allowed_paths": [
+        "/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358262.htm"
+      ],
+      "seeds": [
+        "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358262.htm"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "FZ-RESIDENCE-PERMIT-2025",
+      "label": "居住证申领指南",
+      "origin": "https://gaj.fuzhou.gov.cn",
+      "allowed_paths": [
+        "/jwxx/ztlm/hzywbszn/jnjmbszn/nhjjzz/202205/t20220510_4358885.htm"
+      ],
+      "seeds": [
+        "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/nhjjzz/202205/t20220510_4358885.htm"
       ],
       "interval_seconds": 86400,
       "delay_seconds": 5,
@@ -1647,6 +1761,25 @@
       "business_approval_from_this_export": false
     },
     {
+      "id": "TJ-ELDER-ALLOWANCE-2026",
+      "label": "高龄津贴免申即享发放管理办法试行",
+      "origin": "https://www.tj.gov.cn",
+      "allowed_paths": [
+        "/zwgk/zfxxgkzl/fdzdgknr/zdmsxx220316/yl_157354/zcwj_157367/202609/t20260908_7369542.html"
+      ],
+      "seeds": [
+        "https://www.tj.gov.cn/zwgk/zfxxgkzl/fdzdgknr/zdmsxx220316/yl_157354/zcwj_157367/202609/t20260908_7369542.html"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
+      "business_approval_from_this_export": false
+    },
+    {
       "id": "TJ-RESIDENCE-MEASURES-2021",
       "label": "天津市居住证管理办法",
       "origin": "https://www.tj.gov.cn",
@@ -1701,6 +1834,25 @@
       "paused_reason": null,
       "last_success": null,
       "access_screen_actor_kind": null,
+      "business_approval_from_this_export": false
+    },
+    {
+      "id": "YN-UNEMPLOYMENT-FAQ-2026",
+      "label": "失业保险政策问答",
+      "origin": "https://hrss.yn.gov.cn",
+      "allowed_paths": [
+        "/NewsView.aspx"
+      ],
+      "seeds": [
+        "https://hrss.yn.gov.cn/NewsView.aspx?ClassID=662&NewsID=65236"
+      ],
+      "interval_seconds": 86400,
+      "delay_seconds": 5,
+      "page_kind": "document",
+      "enabled_at_snapshot": false,
+      "paused_reason": null,
+      "last_success": null,
+      "access_screen_actor_kind": "machine",
       "business_approval_from_this_export": false
     },
     {
@@ -1953,6 +2105,179 @@
           "category": "procedure",
           "characters": 9,
           "text_sha256": "61d36d6bf60810e90dc4fcdca995ac190964c84700c891a88b06d1784f4b6369"
+        }
+      ]
+    },
+    {
+      "source_id": "BJ-HOUSING-FUND-RENT-2023",
+      "url": "https://www.beijing.gov.cn/zhengce/zcjd/202306/t20230606_3124045.html",
+      "revision": "rev-6aae9e134d74a7a904e835de",
+      "state": "pending_review",
+      "original_sha256": "8e9e75d50897cb05e47fdba2097dc509c7a47398c7e835fba2d61a966001bbb9",
+      "original_bytes": 29429,
+      "metadata": {
+        "title": "优化租房提取公积金业务政策解读",
+        "region": "北京市",
+        "matter": "housing-fund-rent-withdrawal",
+        "document_type": "historical_official_policy_explanation",
+        "published_at": "2023-06-05",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "historical_context_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "eligibility",
+          "characters": 20,
+          "text_sha256": "4462b896c176bc3e5203096a8bc227dc1cd8a9b2439145724400e8d3898faedc"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 44,
+          "text_sha256": "bf3c0e5666f63dec43847a423d181814212c7ed742e965ef89807986729fdda6"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "a7d7fae1276f1fc431103119be42eeb9fe4b193905379ada4fd5ff9cab803f1f"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "4369d34ac29b5ec4d5868bd3540821b085ee58e9abb4da9778a720b7615683e0"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "71533e4ac76afe8e4ee049ace4f0cd6ccf59f1cf29ba8b69d3031405302c7c12"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "procedure",
+          "characters": 96,
+          "text_sha256": "36d0f07dcf4f4fb826766e6060250a95c00323d612bdd278a00e67b68982dabb"
+        },
+        {
+          "locator": "正文段落9",
+          "category": "procedure",
+          "characters": 31,
+          "text_sha256": "ac2a6d954094cdeabf78766d09cb101a49edf3000cbfdfee416b6f051f5ca1f1"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "56ce3e4ce8a0715de19d7f395ddc188c1ed242124a4d53ad05800f7a083000c3"
+        },
+        {
+          "locator": "正文段落14",
+          "category": "procedure",
+          "characters": 108,
+          "text_sha256": "f7c054febebabcaed3478a8cec614d938dff50d5f0a68c326ff6cf7dfe4775ff"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 139,
+          "text_sha256": "d379961d7e620d3e28e7ed3f8e76fd7b11b84c5225e8e70b9ae0987b4b5472e9"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "eaaaea8a5183f978a8fe5428ea9d1588627152ec22d1f7f56426bd6d49e0a75e"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 63,
+          "text_sha256": "f955b624abdad86ea813e238fa57641d2fade908e1d1708c6c12550a13f8dd8a"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 119,
+          "text_sha256": "d46b2e6473b8db0301aebbb67837cc76a4fb8e2915a2f07a1f4c91895c1ee9f5"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 86,
+          "text_sha256": "8c1fbb883dbd9fe88d71e7def8418982efb8ec20ca7a4ae57e8d355fd391a15f"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "eligibility",
+          "characters": 107,
+          "text_sha256": "f7190c21079ad20eebf158fff6deb92b787399a75ae8e325a922a52f65079b30"
+        },
+        {
+          "locator": "正文段落35",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "4142da97bdfbde7dec586c365e3db0903c6fac0ca4fd22ed715ee1f9f070677e"
+        },
+        {
+          "locator": "正文段落36",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "736d94fb80894933f01d770063a35f43f236c2116bcacda94d1b25f2b487144d"
+        },
+        {
+          "locator": "正文段落37",
+          "category": "procedure",
+          "characters": 51,
+          "text_sha256": "c4eeb286117d3479f72fe073600347213c6a4d4916de9b576ded0ce9a23406d5"
+        },
+        {
+          "locator": "正文段落38",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "f41a539194835f594e8f5cf106ab125425629adb5f602b886e25262da810661e"
+        },
+        {
+          "locator": "正文段落39",
+          "category": "procedure",
+          "characters": 35,
+          "text_sha256": "587950b1fff75052950ea30d685e2541ae84c9ceb9ff32e847da7c1d9823d796"
+        },
+        {
+          "locator": "正文段落40",
+          "category": "procedure",
+          "characters": 72,
+          "text_sha256": "84fcf7f1ce2f26447a86f5333a40fab3338e88ef93a7f3d35be04feab76b5ae3"
+        },
+        {
+          "locator": "正文段落41",
+          "category": "procedure",
+          "characters": 18,
+          "text_sha256": "bd24d88403cc5671a0c6757cd09858a74489b226992e6a798fa6985fd706565f"
+        },
+        {
+          "locator": "正文段落42",
+          "category": "procedure",
+          "characters": 43,
+          "text_sha256": "94abfa3a47e4a952de2b91ac091e54e0d9db5b7ca87a4b2239d4b6280db95268"
+        },
+        {
+          "locator": "正文段落51",
+          "category": "procedure",
+          "characters": 28,
+          "text_sha256": "aae98f646429d5575ec8b9ff6e134c13530b7cc870015f38852b76bb536c106d"
+        },
+        {
+          "locator": "正文段落52",
+          "category": "procedure",
+          "characters": 31,
+          "text_sha256": "94b23db83cdb01f2beb31f81d519d74c39673c5f484bcaae6385ff0a2a53e90e"
         }
       ]
     },
@@ -3639,6 +3964,161 @@
       ]
     },
     {
+      "source_id": "FJ-HK-MACAO-PERMIT-2025",
+      "url": "https://www.fujian.gov.cn/nrrh/sgat/202509/t20250915_7009813.htm",
+      "revision": "rev-8ae976db45c0d49275890ca7",
+      "state": "pending_review",
+      "original_sha256": "2df43280def6127490e6b5199bb2795b280840731e408aa720d7d18e8363cdb5",
+      "original_bytes": 339014,
+      "metadata": {
+        "title": "往来港澳通行证及签注政务指南",
+        "region": "福建省",
+        "matter": "hong-kong-macao-travel-permit",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-09-29",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 86,
+          "text_sha256": "e114e97ba462b80c724983ca910798c69a44887d054d0405146435bf51d33fc2"
+        },
+        {
+          "locator": "正文段落31",
+          "category": "procedure",
+          "characters": 34,
+          "text_sha256": "6d480197203c85625e7ab953a27b70dc35c305ad2d51aabb0f36fae2d8870b02"
+        },
+        {
+          "locator": "正文段落40",
+          "category": "procedure",
+          "characters": 4,
+          "text_sha256": "1048193ca93ad7788cc2723a403ea361214cf0ee6cde77b301763b5f75954f12"
+        },
+        {
+          "locator": "正文段落41",
+          "category": "procedure",
+          "characters": 37,
+          "text_sha256": "3fcf32a751813539efbc6b0070a1ec0f971edd285194e34284bba52d5c47823a"
+        },
+        {
+          "locator": "正文段落42",
+          "category": "household",
+          "characters": 41,
+          "text_sha256": "df29ae55d183120998502c42a78e6bd42c49696c882851873e18eaaa7e78ac11"
+        },
+        {
+          "locator": "正文段落43",
+          "category": "procedure",
+          "characters": 34,
+          "text_sha256": "a156e1c5ebc21d57e55111deb7db7b8efa91c4e9c33d79539e73ec3cfbcc57e9"
+        },
+        {
+          "locator": "正文段落44",
+          "category": "procedure",
+          "characters": 43,
+          "text_sha256": "566ace5745aecfa6b46bde2341b15193adf7da45c7bc25d2678f6ee5cc651843"
+        },
+        {
+          "locator": "正文段落45",
+          "category": "procedure",
+          "characters": 53,
+          "text_sha256": "3e80abdf6fc53254f44ce185663910bfda13617f7582e6cfeaa6a143fdf35234"
+        },
+        {
+          "locator": "正文段落46",
+          "category": "procedure",
+          "characters": 4,
+          "text_sha256": "36b135f99b1276e5f84fc2de68b1d9f5e537fc0b9b205f43cdad43fcb6dbbe84"
+        },
+        {
+          "locator": "正文段落47",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "2932d641bd6e6daf4435a9ce8aecc3864e2e8f18c31742c813ec65c8a78504a8"
+        },
+        {
+          "locator": "正文段落48",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "4df1f8a403c2e5e52a39a6d54fa1d28ef88c544f3952e2f78cbdf5f9db97c516"
+        },
+        {
+          "locator": "正文段落49",
+          "category": "procedure",
+          "characters": 23,
+          "text_sha256": "d971fbd58d22781942a6081693ef01a7ad5e517d66675bcb493290ffa8b78ba3"
+        },
+        {
+          "locator": "正文段落50",
+          "category": "identity",
+          "characters": 35,
+          "text_sha256": "89280553e132c7be7d83a5c4cfe6d9d7aea76b0aacd7d59ec17a955293837a71"
+        },
+        {
+          "locator": "正文段落51",
+          "category": "procedure",
+          "characters": 79,
+          "text_sha256": "3393f9901e56831f86fc8e6f7b67d4b6c83738741378a61ad439005a5a2631aa"
+        },
+        {
+          "locator": "正文段落52",
+          "category": "identity",
+          "characters": 83,
+          "text_sha256": "d3158a861bf60820f9267aff6249f50a0a489b0b52db345ab87d628316597416"
+        },
+        {
+          "locator": "正文段落88",
+          "category": "procedure",
+          "characters": 29,
+          "text_sha256": "82a514e821cbb31903408f7f8ae2960c916944da01cc4090f3c50bf8872dd107"
+        },
+        {
+          "locator": "正文段落89",
+          "category": "identity",
+          "characters": 124,
+          "text_sha256": "4162b72d51e85183bfe4d449e90a8cf3aa9e106784e957733731cfb233acc758"
+        },
+        {
+          "locator": "正文段落95",
+          "category": "procedure",
+          "characters": 45,
+          "text_sha256": "2adf732fbb7ad1b542c97cb002eff6938ea409c6c16ca5d54a9bde6e01cdf30b"
+        },
+        {
+          "locator": "正文段落96",
+          "category": "eligibility",
+          "characters": 117,
+          "text_sha256": "23f824a1a0b95a87725d8f8f893617d37711c133b6680799e0d1a9c71146af26"
+        },
+        {
+          "locator": "正文段落97",
+          "category": "procedure",
+          "characters": 72,
+          "text_sha256": "1b4d19506c5e8262dc690019e7e7cfef68810ca383e8d838f49c7f522982a481"
+        },
+        {
+          "locator": "正文段落98",
+          "category": "procedure",
+          "characters": 59,
+          "text_sha256": "00de158f4eac49979cf5aeeffc979427ac281a1671a307d426c1206ab43236c1"
+        },
+        {
+          "locator": "正文段落202",
+          "category": "procedure",
+          "characters": 98,
+          "text_sha256": "ef08ca3faceea5bbf7968996454a988e60d16efa55c7e4ee9fc09e2ba67b4b3d"
+        }
+      ]
+    },
+    {
       "source_id": "FJ-PASSPORT-LOCATION-2026",
       "url": "https://gat.fujian.gov.cn/ztzl/cryjfwwj/cjwt_28283/202606/t20260609_7160834.htm",
       "revision": "rev-facbb2c755ed5a4552c6cbd0",
@@ -3764,6 +4244,200 @@
           "category": "eligibility",
           "characters": 167,
           "text_sha256": "79a7498fec83793d4f14fb823fa214e01068f62b8adbbb2b26b0e1b6552ce551"
+        }
+      ]
+    },
+    {
+      "source_id": "FZ-BIRTH-COLLECTIVE-2025",
+      "url": "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358267.htm",
+      "revision": "rev-affcb7ab483576f40be23531",
+      "state": "pending_review",
+      "original_sha256": "778983666edc5210fcce2af46a551cf4a5be07ba96d9c4a5f493f5310543ba45",
+      "original_bytes": 31744,
+      "metadata": {
+        "title": "父或母为集体户口的婚生婴儿出生申报",
+        "region": "福州市",
+        "matter": "birth-household-registration-collective-parent",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-02-20",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "household",
+          "characters": 54,
+          "text_sha256": "1c3ffb0035ffc0fcbb68458cacc04bb093b9c4a205a8ffe6b859211a40338489"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "household",
+          "characters": 160,
+          "text_sha256": "5a475d6a20980286a0bbbf770b922fa94c51533abdc76249db93a9772889c2e7"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "household",
+          "characters": 66,
+          "text_sha256": "e65f34bcae44e3be15433510eeea8ddde15506dbb73d53ac462199fad738d071"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 44,
+          "text_sha256": "87482cd1fcb55634441147593a7f717dc56d654c28d728fbc7e9fcd81985c796"
+        }
+      ]
+    },
+    {
+      "source_id": "FZ-BIRTH-DIVORCED-2025",
+      "url": "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358264.htm",
+      "revision": "rev-717ce9b166187b2ea90719d3",
+      "state": "pending_review",
+      "original_sha256": "7281bca12b2f9161a4550177950759e43cd986ab9227ed2a9d225f1b18355533",
+      "original_bytes": 31377,
+      "metadata": {
+        "title": "父母离婚的婚生婴儿出生申报",
+        "region": "福州市",
+        "matter": "birth-household-registration-divorced-parents",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-02-20",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "characters": 142,
+          "text_sha256": "bb8070bc8b5d790ca8118a0c56c75ebe6a950506f2cc258daf2ad62633b830cc"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 37,
+          "text_sha256": "a93e430f119cf8105b152377584b2852e791c6c7501a26e5bb7d5dc4b1637c01"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 44,
+          "text_sha256": "87482cd1fcb55634441147593a7f717dc56d654c28d728fbc7e9fcd81985c796"
+        }
+      ]
+    },
+    {
+      "source_id": "FZ-BIRTH-MARRIED-2025",
+      "url": "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/cssb/202205/t20220509_4358262.htm",
+      "revision": "rev-f37c1b402dcbf11024fc3ccd",
+      "state": "pending_review",
+      "original_sha256": "459e1c5da87c5dd3e468169dd27270ed832b7b6199154240f2d5e7ee15e372e0",
+      "original_bytes": 30593,
+      "metadata": {
+        "title": "国内出生婚生婴儿申报户口",
+        "region": "福州市",
+        "matter": "birth-household-registration",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-02-20",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "household",
+          "characters": 55,
+          "text_sha256": "58ef06b7a695de6286d6d9ed6c0c1fca6bfd49a67750005083328da0b4e21dd5"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 44,
+          "text_sha256": "87482cd1fcb55634441147593a7f717dc56d654c28d728fbc7e9fcd81985c796"
+        }
+      ]
+    },
+    {
+      "source_id": "FZ-RESIDENCE-PERMIT-2025",
+      "url": "https://gaj.fuzhou.gov.cn/jwxx/ztlm/hzywbszn/jnjmbszn/nhjjzz/202205/t20220510_4358885.htm",
+      "revision": "rev-bd3ddc525793c2d9d5d8921b",
+      "state": "pending_review",
+      "original_sha256": "c1c4274b038ca2de36358d384f06763e855a42dcf2d8f4999ab311b50f9ee557",
+      "original_bytes": 36260,
+      "metadata": {
+        "title": "居住证申领指南",
+        "region": "福州市",
+        "matter": "residence-permit-application",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2025-02-20",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "household",
+          "characters": 101,
+          "text_sha256": "8ac2d420109fdf8e74450e709168e4340a94dec4466054dc825eae32d4d6fd61"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "procedure",
+          "characters": 15,
+          "text_sha256": "9dde9dfceb2f8ef967a8727f3346aed038d509c7778d96402d5c6d9eddf928ef"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "characters": 22,
+          "text_sha256": "e67fba7398c652c9dfaa05ed154dd653574f8c13f496e4391ba174e837d44100"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "procedure",
+          "characters": 25,
+          "text_sha256": "d604f3036a977aba833ff3c40e09240166881d04ffc90c9d65db586be8a193e5"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "procedure",
+          "characters": 144,
+          "text_sha256": "4257b50805148e04db73ec4df5a182f1768a3b39fb23444d8d3fb6da874f1a36"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "procedure",
+          "characters": 124,
+          "text_sha256": "f2f947de44120ea00b1763af306b0fee4c4aaf6f65b0fbf44f217072e28df11d"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "procedure",
+          "characters": 37,
+          "text_sha256": "7a337aa849082541a9bf5f6d3cad7f2710d70f9390d021d475e4a081c8254de2"
+        },
+        {
+          "locator": "正文段落8",
+          "category": "identity",
+          "characters": 61,
+          "text_sha256": "0b0ed45a6ae03ec6bf96dfd8c218b867ca1cfa4d567dedda0beaf8c91ea7bd08"
         }
       ]
     },
@@ -7534,6 +8208,234 @@
       ]
     },
     {
+      "source_id": "TJ-ELDER-ALLOWANCE-2026",
+      "url": "https://www.tj.gov.cn/zwgk/zfxxgkzl/fdzdgknr/zdmsxx220316/yl_157354/zcwj_157367/202609/t20260908_7369542.html",
+      "revision": "rev-aa6fc9d318a161100d7da532",
+      "state": "pending_review",
+      "original_sha256": "24f0f420f68e15154f3f839e1c79f850d56f864f03bb26eb1ca6b7912dd2df68",
+      "original_bytes": 162716,
+      "metadata": {
+        "title": "高龄津贴免申即享发放管理办法试行",
+        "region": "天津市",
+        "matter": "elderly-allowance-automatic-payment",
+        "document_type": "administrative_norm",
+        "published_at": "2026-09-07",
+        "effective_from": null,
+        "effective_to": null,
+        "document_signed_at": "2026-09-07",
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "characters": 9,
+          "text_sha256": "0bbd4fd92b90fcc9210b015a5b4d2ecf86edbecbd5d89851a9e1082678786424"
+        },
+        {
+          "locator": "正文段落10",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "09aa890b58c67d4b693dab9f135881895129a703c21f77fcf2ff3c8e34a2e7ed"
+        },
+        {
+          "locator": "正文段落11",
+          "category": "eligibility",
+          "characters": 34,
+          "text_sha256": "fa104bedfed1419003435047c8fa2bd8290a6b689b13792d5beb67a0468e637e"
+        },
+        {
+          "locator": "正文段落12",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "e7b37e5c301ad288d5d044e7f4b327d8082a75de5ab01c96eb36592b8a590096"
+        },
+        {
+          "locator": "正文段落13",
+          "category": "eligibility",
+          "characters": 121,
+          "text_sha256": "8434ec1780b3e3f3352f79b3d66612b8676b2ed9f70cc51b4dc411b97d308d21"
+        },
+        {
+          "locator": "正文段落15",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "86b82a8091e690fb09135d1b6af282a90b41e0be73039affc5a59b2ba0a0603f"
+        },
+        {
+          "locator": "正文段落16",
+          "category": "procedure",
+          "characters": 62,
+          "text_sha256": "ff61608965764a3a2a8cd4d12765b49e4a3d2083a864a25f37cb72862b7d8e73"
+        },
+        {
+          "locator": "正文段落17",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "ed7ff219f88f94440875461b7b75324d371d6364bd2ed8897a05f62ed59d3941"
+        },
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 47,
+          "text_sha256": "087dbd356a6e67ea9d5e3e1b2086a1d6c94f054bee911901ea05c0f0478af21c"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "b663d79c8a78d24fe0ed98d199ed21b46eca66a80df961c26ee5d9b49529a5c1"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 9,
+          "text_sha256": "b0a12cff3637a51f9009d289137a6fa1ee00bcd82b0460c5193b8f65bc48118b"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "procedure",
+          "characters": 121,
+          "text_sha256": "d48befaa23be37c8af588487cf299621a9c2ccf1d3928ffb76538d176e59b9f8"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "procedure",
+          "characters": 62,
+          "text_sha256": "a1fd446a7a98494ff766e853f494d5a21146ebbdf9bf6277f8246729fdaf68c1"
+        },
+        {
+          "locator": "正文段落23",
+          "category": "procedure",
+          "characters": 143,
+          "text_sha256": "f0dd6d6bf9f96fb4c88899c8ffe569d0dc646e6e2ac96e7f5456d0846ab4a181"
+        },
+        {
+          "locator": "正文段落25",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "4218609eb116523a57d92ef5956ecd53b226e89c9fac65996b45a581576501c1"
+        },
+        {
+          "locator": "正文段落26",
+          "category": "procedure",
+          "characters": 75,
+          "text_sha256": "2a4cc8bbfa154b42e05b1d4f13326df0c973526c236e9ee1ad3c1a88868257a6"
+        },
+        {
+          "locator": "正文段落27",
+          "category": "procedure",
+          "characters": 76,
+          "text_sha256": "674bb8449306141fa81649e824e2489de6c502db489a492f7cc596be605cad2f"
+        },
+        {
+          "locator": "正文段落28",
+          "category": "procedure",
+          "characters": 73,
+          "text_sha256": "3164945b47fc872bb2f98ab7cdf5cc6612cf865b931759ab82446ecad38c5ebc"
+        },
+        {
+          "locator": "正文段落29",
+          "category": "procedure",
+          "characters": 88,
+          "text_sha256": "909af63078859ecd9e7a6ac78976fbb9ef04914ff2a546b849517ac7121961a8"
+        },
+        {
+          "locator": "正文段落30",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "8401c1bc504b37113b48ad764dd2f2c6ad39b376680af2596275228a1ee9510d"
+        },
+        {
+          "locator": "正文段落31",
+          "category": "procedure",
+          "characters": 149,
+          "text_sha256": "982ef5144fdbce716078c0bc3a0b3dc231078695f3f7b1bf9582b54742a3c498"
+        },
+        {
+          "locator": "正文段落32",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "ec34db6628d0d2b702542b17b96d4d493989766eedb96ee372f66c3350093878"
+        },
+        {
+          "locator": "正文段落33",
+          "category": "eligibility",
+          "characters": 31,
+          "text_sha256": "7f302b5d1589964abc581c5623739372e3025a1f3ec59ba13add5ab3012e38d7"
+        },
+        {
+          "locator": "正文段落34",
+          "category": "procedure",
+          "characters": 3,
+          "text_sha256": "897f617c1e071541d5e2e001075d99ceeed7b2059998b691cf1dadf4e3bee9fd"
+        },
+        {
+          "locator": "正文段落35",
+          "category": "procedure",
+          "characters": 61,
+          "text_sha256": "b2b014ea771c5283d1583267f41cc7fa98e9bedfa2e667b5cb60d0e5e99df84b"
+        },
+        {
+          "locator": "正文段落36",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "7f99d63c1371dea4d0679d76f8eed24527866adf88e81f748420e186afb1df42"
+        },
+        {
+          "locator": "正文段落37",
+          "category": "procedure",
+          "characters": 60,
+          "text_sha256": "1948d3459781f122ba46474ef389e1385ed6b60bc15a3fbd69800b68ec17646d"
+        },
+        {
+          "locator": "正文段落38",
+          "category": "procedure",
+          "characters": 4,
+          "text_sha256": "8cfab0b7853c0d3c6f7423241f785f046143d1cac175bdb8471da6952418ee0d"
+        },
+        {
+          "locator": "正文段落39",
+          "category": "eligibility",
+          "characters": 96,
+          "text_sha256": "6362e9a69e45b7cd6559f3d44db08689d7a5ddb800a04e4a1b658177ff55e34d"
+        },
+        {
+          "locator": "正文段落40",
+          "category": "procedure",
+          "characters": 69,
+          "text_sha256": "d47030f52ab9e91e7d31a02563561e34fdfcfd900dcc03da2d4071e9f32a3e89"
+        },
+        {
+          "locator": "正文段落42",
+          "category": "procedure",
+          "characters": 4,
+          "text_sha256": "a1a83d12520905d04500752dc17a9387fa11ca09d1d44b56c52d0237edae979c"
+        },
+        {
+          "locator": "正文段落43",
+          "category": "procedure",
+          "characters": 161,
+          "text_sha256": "f7f5de45eda0b0fec5858464ee2a81667a70d437abe4b6252a566671fbe47ff6"
+        },
+        {
+          "locator": "正文段落45",
+          "category": "procedure",
+          "characters": 4,
+          "text_sha256": "9684e6b128d59a1af09953ac30633124c0d4cf858795a2da3b3d623de4a23803"
+        },
+        {
+          "locator": "正文段落46",
+          "category": "procedure",
+          "characters": 44,
+          "text_sha256": "f201c4d409a66669bca1a24dd08babd20ea6bbb3cf601f6f4c2577f49a49870b"
+        }
+      ]
+    },
+    {
       "source_id": "TJ-RESIDENCE-MEASURES-2021",
       "url": "https://www.tj.gov.cn/zwgk/szfwj/tjsrmzf/202112/t20211231_5768456.html",
       "revision": "rev-991fec8588548802b19989bc",
@@ -7711,6 +8613,275 @@
           "category": "identity",
           "characters": 143,
           "text_sha256": "6a42dd96466ce893ed759148b6545d961d27dcfc32781fcd5b167a0b9326707e"
+        }
+      ]
+    },
+    {
+      "source_id": "YN-UNEMPLOYMENT-FAQ-2026",
+      "url": "https://hrss.yn.gov.cn/NewsView.aspx?ClassID=662&NewsID=65236",
+      "revision": "rev-ebc93eea8898990d53722031",
+      "state": "pending_review",
+      "original_sha256": "f9eb7d7201d707223da863e327e23469b72d084b8f7014f774695c1c77ff365b",
+      "original_bytes": 83731,
+      "metadata": {
+        "title": "失业保险政策问答",
+        "region": "云南省",
+        "matter": "unemployment-insurance-benefits",
+        "document_type": "official_service_guide_or_answer",
+        "published_at": "2026-07-01",
+        "effective_from": null,
+        "effective_to": null,
+        "scope_confirmed": false,
+        "collection_role": "multiregion_expansion_candidate"
+      },
+      "source_fact_assessment_summary": null,
+      "pdf_extraction": {},
+      "selected_clauses": [
+        {
+          "locator": "正文段落18",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "dbd6d734668366dab1382c89d8c783a18aad8052eadc211c406e63fa05b930ff"
+        },
+        {
+          "locator": "正文段落19",
+          "category": "procedure",
+          "characters": 58,
+          "text_sha256": "8945bb73042907cc5fdccaf153256bb0c1f9b8ce13a5ae24ba45fa9e0d7a4ba6"
+        },
+        {
+          "locator": "正文段落20",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "ed4b08515d462b4a20b3499876d8b57065d655df4dffa2225a817e7d5aa4524e"
+        },
+        {
+          "locator": "正文段落21",
+          "category": "procedure",
+          "characters": 72,
+          "text_sha256": "c89e92c0fbae32ec097bd560a191bbecf9cf7dae62ae1f230b96dad1602cf344"
+        },
+        {
+          "locator": "正文段落22",
+          "category": "procedure",
+          "characters": 20,
+          "text_sha256": "dd93b89ae7c63e43535dabea71f8fdb2f68b05c53e2d4fa80775f8deb6a5f907"
+        },
+        {
+          "locator": "正文段落23",
+          "category": "procedure",
+          "characters": 29,
+          "text_sha256": "0482cccb7f3a9fa90b8d9dca83b63ee10d007399db6bf6dc11c19a20ee0af71d"
+        },
+        {
+          "locator": "正文段落24",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "e04b71f4a38d4d17e629df3d8e3d61948ad7cbe88960a74ba7442bcdf1c93abc"
+        },
+        {
+          "locator": "正文段落25",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "4b63090a1e198b1a6ecf0377f626dff06745a1ed870ecf24a0756df10e756fc3"
+        },
+        {
+          "locator": "正文段落30",
+          "category": "eligibility",
+          "characters": 18,
+          "text_sha256": "b9d9552f314a4acda8951cf1598c65657164f7ab0b0085780bb39f71978ec688"
+        },
+        {
+          "locator": "正文段落31",
+          "category": "eligibility",
+          "characters": 76,
+          "text_sha256": "bc84160ea1b796e42e684e2c7db83fbee863e3148cfa88b302090cdb58d55c99"
+        },
+        {
+          "locator": "正文段落32",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "68113a5cf12e12baceb3b523651654c8919d85168f26ed9dbf91f6a1de9ce29b"
+        },
+        {
+          "locator": "正文段落33",
+          "category": "eligibility",
+          "characters": 210,
+          "text_sha256": "ea647cff47d1ae6ca0353ee62d7e3a362bc7c73bbe7fc186ca98562c214ecfd5"
+        },
+        {
+          "locator": "正文段落38",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "0bddc09e67b65ae481c5ab6a5d31b0a2dfb6fc3fba73bb4f84894c6388a625f0"
+        },
+        {
+          "locator": "正文段落39",
+          "category": "procedure",
+          "characters": 43,
+          "text_sha256": "9ef4390bfd840cad687b5850695412051d98a6a0fed4246ec6affe33c796f1c0"
+        },
+        {
+          "locator": "正文段落40",
+          "category": "procedure",
+          "characters": 13,
+          "text_sha256": "55e2ce26f8c5f7363761df3434be4a84b8a24d5e83a3b9c6fd77d7efd57fef14"
+        },
+        {
+          "locator": "正文段落41",
+          "category": "identity",
+          "characters": 76,
+          "text_sha256": "51929f56046dffa50560079eb9e3ef9b9c0882a5e6cc24eac06986f29973a062"
+        },
+        {
+          "locator": "正文段落42",
+          "category": "procedure",
+          "characters": 14,
+          "text_sha256": "b7bade346fb1bfdba9c473526c4bd9ac14b5538548a1546a7d5d4c79acd47995"
+        },
+        {
+          "locator": "正文段落43",
+          "category": "procedure",
+          "characters": 21,
+          "text_sha256": "f6096821da19d2e3498581e77f18e9258f7cc299b8616b29c8d2d6a3103b40b7"
+        },
+        {
+          "locator": "正文段落44",
+          "category": "procedure",
+          "characters": 17,
+          "text_sha256": "d6aa6be7ea0a932cee2559a31cd5c1ff2131b4744db591953405fbfdb47c4e2c"
+        },
+        {
+          "locator": "正文段落45",
+          "category": "procedure",
+          "characters": 52,
+          "text_sha256": "9f27098d3e9504ca9f34590f94b8e6e053eae5dd06dc6632300f7bfdc999ea24"
+        },
+        {
+          "locator": "正文段落46",
+          "category": "procedure",
+          "characters": 25,
+          "text_sha256": "b9da3b17844d18d2b5b871e852acbf7f970d130f9b42b870adaa94959f7d076c"
+        },
+        {
+          "locator": "正文段落47",
+          "category": "eligibility",
+          "characters": 45,
+          "text_sha256": "d57c095df57e5cd16762508ecdc87833ea460c0860d62c4e4c37c9032cec20c8"
+        },
+        {
+          "locator": "正文段落48",
+          "category": "procedure",
+          "characters": 19,
+          "text_sha256": "088ba44378df21f3ddbfabc6c0011b52c6a4b37686d0ba3117e21c182819343d"
+        },
+        {
+          "locator": "正文段落49",
+          "category": "procedure",
+          "characters": 34,
+          "text_sha256": "68e0e36bc20114304548fd7322ec83bed87b61c37a9300e1c226bbf766d8a7d2"
+        },
+        {
+          "locator": "正文段落50",
+          "category": "eligibility",
+          "characters": 43,
+          "text_sha256": "423d2c35c54c1d40cfdf7c76da54835921e1dc4b5bfac9e49efd617bc18f223d"
+        },
+        {
+          "locator": "正文段落51",
+          "category": "procedure",
+          "characters": 29,
+          "text_sha256": "ca55e017fa9655bebd4df8c3429e775e36622577cf78a90a4119447b141d3790"
+        },
+        {
+          "locator": "正文段落52",
+          "category": "procedure",
+          "characters": 96,
+          "text_sha256": "1656ed5fa1a159bf05d0fa802a169f421aa7fd7c014c02aea94446d2148ea25d"
+        },
+        {
+          "locator": "正文段落53",
+          "category": "procedure",
+          "characters": 33,
+          "text_sha256": "9b5c5879e978368eb3da71ec40385753e4fe114f2febc30b7f76e6462a5e68e9"
+        },
+        {
+          "locator": "正文段落54",
+          "category": "procedure",
+          "characters": 42,
+          "text_sha256": "cdaff71ccf030e63d11384470c174c63a7ef4898b91c47681962207e631d7fb1"
+        },
+        {
+          "locator": "正文段落75",
+          "category": "procedure",
+          "characters": 18,
+          "text_sha256": "f02e88c87f1074c59cb3abe31304f05aace41e47a5672779c7b49ac135505e2e"
+        },
+        {
+          "locator": "正文段落76",
+          "category": "eligibility",
+          "characters": 28,
+          "text_sha256": "2a4db3ba7656a6306e07298eb129bcea59d464cec7d071bbbee9548b0c3cbdf5"
+        },
+        {
+          "locator": "正文段落101",
+          "category": "procedure",
+          "characters": 26,
+          "text_sha256": "6247096cd9df4c7b72ce84376624c21d68b0e384c89c379569f57cac66e4bceb"
+        },
+        {
+          "locator": "正文段落102",
+          "category": "procedure",
+          "characters": 51,
+          "text_sha256": "2248b9c26bc10bde65912d0b580d4c8849fc30fe0bcec703f3f171ad9e8a4f07"
+        },
+        {
+          "locator": "正文段落103",
+          "category": "procedure",
+          "characters": 28,
+          "text_sha256": "0e1d89e708ce8b17634b1f2b160862181ea7816b91ba5dc8bdcbdc5ecf5b5ee4"
+        },
+        {
+          "locator": "正文段落104",
+          "category": "procedure",
+          "characters": 56,
+          "text_sha256": "c3fc1f22ab90ebc0a34bc4af774a0126dbd72f93250875377ea5d6662c5da31c"
+        },
+        {
+          "locator": "正文段落105",
+          "category": "procedure",
+          "characters": 16,
+          "text_sha256": "37c01d196696310a922d596086840851ebb9c625f9f5c42a8b843b7d5d013554"
+        },
+        {
+          "locator": "正文段落106",
+          "category": "procedure",
+          "characters": 148,
+          "text_sha256": "3c7fde04f2a2b649778142c15ce10e288c719d723ded7d1612156d74d3596336"
+        },
+        {
+          "locator": "正文段落107",
+          "category": "procedure",
+          "characters": 24,
+          "text_sha256": "0044fd25d9c796bc39140fb911a2b92c43e1c41af8a3abd7d0b5026d3e712f8e"
+        },
+        {
+          "locator": "正文段落108",
+          "category": "procedure",
+          "characters": 38,
+          "text_sha256": "1d914f1e85cd70b718f09f99cc96f78510a8b23a4511669b0c971450ed33ffaa"
+        },
+        {
+          "locator": "正文段落201",
+          "category": "procedure",
+          "characters": 23,
+          "text_sha256": "69b8a4b79f3bae71b71faf15d2cf5eb19ee86f43f5c8ede1518c2876060609ef"
+        },
+        {
+          "locator": "正文段落202",
+          "category": "identity",
+          "characters": 62,
+          "text_sha256": "5a3efa215cb3b57bb0d5572ed5623e9f395effe38d87685d01024e505595bbdb"
         }
       ]
     },
