@@ -4,6 +4,7 @@ from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 import json
+import re
 from pathlib import Path
 import sys
 import time
@@ -15,7 +16,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from gov_mcp.matter_lifecycle import MatterLifecycle
 from gov_mcp.matter_native import MatterNative, SERVICE, SCENARIO
 from nexent_api import NexentAPI
-from provision_matter_native import FIRST, PROTOCOL, read, write, signatures, check_draft
+from provision_matter_native import first_action, protocol_text, read, write, signatures, check_draft
 from verify_regional_native_preview import external_failure
 
 
@@ -54,6 +55,7 @@ def main():
     if not args.live: parser.error("--live required; no automatic model calls")
     access = read(args.runtime / "access.json")
     preview = MatterNative(args.runtime, MatterLifecycle(access["lifecycle_root"]))
+    profile = preview.profile
     saved = read(args.runtime / "native-drafts.json")
     events, api, run_id = [], NexentAPI(), None
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
@@ -61,10 +63,12 @@ def main():
         "models": {"controller": "Qwen3-8B", "retriever": "Qwen3-4B", "verifier": "Qwen3-4B"},
         "native_run_requests": 0, "cloud_model_calls": 0, "jev_calls": 0,
         "human_business_review": False, "independent_evaluation": False, "knowledge_published": False}
+    report.update(protocol=profile["protocol"], native_run_limit=profile["run_limit"],
+        run_seconds_limit=profile["run_seconds"], expected_main_code_actions=2 if profile["protocol"] != "legacy" else None)
     start = time.perf_counter(); failure = None
     try:
         with httpx.Client(trust_env=False, timeout=5) as client:
-            health = client.get("http://127.0.0.1:8785/health"); health.raise_for_status()
+            health = client.get(f"http://127.0.0.1:{profile['port']}/health"); health.raise_for_status()
             expected = {name: hashlib.sha256((ROOT / "src/gov_mcp" / name).read_bytes()).hexdigest()
                 for name in ("matter_native.py", "matter_native_server.py", "matter_lifecycle.py", "matter_graph.py", "matter_guidance.py")}
             if health.json().get("startup_source_sha256") != expected:
@@ -76,9 +80,11 @@ def main():
         for role in saved["agents"]: check_draft(api, role, saved)
         run_id = preview.begin(args.repair_note)
         report["run_id"], report["native_run_requests"] = run_id, 1
-        body = {"query": PROTOCOL + "\nStart with this exact action, then use actual returned IDs:\n" + FIRST + "\n/no_think",
+        query = first_action(profile) + "\n/no_think"
+        if profile["protocol"] == "legacy": query = protocol_text(profile) + "\nStart with this exact action, then use actual returned IDs:\n" + query
+        body = {"query": query,
             "agent_id": saved["agents"]["controller"], "model_id": saved["model_ids"]["main"],
-            "version_no": 0, "is_debug": True, "history": [], "requested_output_tokens": 1024,
+            "version_no": 0, "is_debug": True, "history": [], "requested_output_tokens": profile["main_output_tokens"],
             "enable_plan": False, "enable_automation_tool": False}
         with (args.runtime / (stamp + "-events.jsonl")).open("x", encoding="utf-8") as log:
             with api.http.stream("POST", api.runtime_base + "/agent/run", json=body,
@@ -88,7 +94,7 @@ def main():
                 report["runtime_run_id"] = response.headers.get("run_id")
                 for line in response.iter_lines():
                     size += len(line.encode())
-                    if size > 2 * 1024**2 or time.perf_counter() - start > 600:
+                    if size > 2 * 1024**2 or time.perf_counter() - start > profile["run_seconds"]:
                         raise RuntimeError("NATIVE_RUN_BOUND_EXCEEDED")
                     if line.startswith("data:") and line[5:].strip():
                         event = json.loads(line[5:].strip())
@@ -103,6 +109,12 @@ def main():
         if isinstance(error, RuntimeError) and str(error) == "NATIVE_RUN_BOUND_EXCEEDED":
             report["stop_reasons"] = ["NATIVE_RUN_BOUND_EXCEEDED"]
     finally:
+        if run_id and not report.get("passed") and re.fullmatch(r"debug-[0-9a-f]{32}", report.get("runtime_run_id") or ""):
+            try:
+                stop = api.runtime_call("GET", "/agent/stop/" + report["runtime_run_id"])
+                report["owned_runtime_stop"] = {"status": stop.get("status"), "already_stopped": stop.get("already_stopped", False)}
+            except Exception as stop_error:
+                report["owned_runtime_stop_error_type"] = type(stop_error).__name__
         api.close()
         if run_id: preview.finish(run_id, passed=report.get("passed", False), external_failure=bool(failure))
         report.update(duration_ms=round((time.perf_counter() - start) * 1000, 2),
@@ -110,10 +122,11 @@ def main():
         report["actual_tools"] = [e.get("tool_name") for e in events if e.get("type") == "tool"]
         report["model_attempt_begins"] = sum(e.get("type") == "model_attempt_control" and e.get("phase") == "begin" for e in events)
         report["model_attempt_rollbacks"] = sum(e.get("type") == "model_attempt_control" and e.get("phase") == "rollback" for e in events)
+        report["main_code_actions"] = sum(e.get("type") == "parse" and not e.get("depth", 0) for e in events)
         report["code_sha256"] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-            for name in ("scripts/verify_matter_native.py", "scripts/provision_matter_native.py", "config/skills/govmatter-source-proof/SKILL.md")}
+            for name in ("scripts/verify_matter_native.py", "scripts/provision_matter_native.py", "config/skills/" + profile["skill"] + "/SKILL.md")}
         write(args.runtime / (stamp + "-report.json"), report)
-        output = ROOT / "evidence/real-matter-closure/native-qwen" / (stamp + ".json")
+        output = ROOT / "evidence/real-matter-closure" / ("native-batched-v2" if profile["protocol"] != "legacy" else "native-qwen") / (stamp + ".json")
         output.parent.mkdir(exist_ok=True, parents=True); write(output, report)
     print(json.dumps({k: report.get(k) for k in ("passed", "stop_reasons", "external_failure", "error_type", "duration_ms", "event_types", "actual_tools")}, ensure_ascii=False))
     print(json.dumps({"evidence": output.relative_to(ROOT).as_posix(), "native_run_requests": report["native_run_requests"]}))

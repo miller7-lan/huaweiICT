@@ -17,6 +17,23 @@ FACTS = {"region": "南京市", "matter": "resident-id-expiry-renewal", "adult":
     "old_card_valid": True}
 SCENARIO = "nanjing-adult-valid-old-card"
 ACTOR = Principal("native-fixed-public-scenario", "citizen", "service")
+LEGACY = {"schema": 1, "purpose": SERVICE, "native_run_limit": 2,
+    "scenario_id": SCENARIO, "formal_publication": False}
+BATCHED = {"schema": 2, "purpose": SERVICE, "native_run_limit": 1,
+    "scenario_id": SCENARIO, "formal_publication": False, "protocol": "batched-close-v2"}
+
+
+def native_profile(protocol="legacy"):
+    if protocol not in ("legacy", "batched-close-v2"):
+        raise NativeMatterError("UNKNOWN_NATIVE_PROTOCOL")
+    batched = protocol == "batched-close-v2"
+    return {"protocol": protocol, "manifest": deepcopy(BATCHED if batched else LEGACY),
+        "service": "govmatter_native_batched" if batched else SERVICE,
+        "skill": "govmatter-source-proof-batched" if batched else SKILL,
+        "names": {r: ("govmatterbatch_" if batched else "govmatter_") + r for r in ("controller", "retriever", "verifier")},
+        "port": 8787 if batched else 8785, "run_limit": 1 if batched else 2,
+        "run_seconds": 1200 if batched else 600, "main_steps": 3 if batched else 6,
+        "main_output_tokens": 512 if batched else 1024, "child_output_tokens": 256 if batched else 1024}
 
 
 class NativeMatterError(ValueError):
@@ -27,15 +44,15 @@ class MatterNative:
     def __init__(self, root, lifecycle, *, clock=time.time):
         self.root, self.lifecycle, self.clock = Path(root), lifecycle, clock
         manifest = json.loads((self.root / "manifest.json").read_text(encoding="utf-8"))
-        if manifest != {"schema": 1, "purpose": SERVICE, "native_run_limit": 2,
-                        "scenario_id": SCENARIO, "formal_publication": False}:
+        self.profile = native_profile(manifest.get("protocol", "legacy"))
+        if manifest != self.profile["manifest"]:
             raise NativeMatterError("CAMPAIGN_MANIFEST_MISMATCH")
         self.store = Store(self.root / "stages", clock=clock)
 
     def begin(self, repair_note=None):
         with self.store.db(True) as db:
             campaign = self.store.get("state", "campaign", db) or {"attempts": [], "active": None, "closed": False}
-            if campaign["active"] or campaign["closed"] or len(campaign["attempts"]) >= 2:
+            if campaign["active"] or campaign["closed"] or len(campaign["attempts"]) >= self.profile["run_limit"]:
                 raise NativeMatterError("CAMPAIGN_NOT_AVAILABLE")
             if campaign["attempts"] and (not isinstance(repair_note, str) or len(repair_note.strip()) < 12):
                 raise NativeMatterError("CONCRETE_REPAIR_NOTE_REQUIRED")
@@ -51,12 +68,12 @@ class MatterNative:
             if not campaign or campaign["active"] != run_id:
                 raise NativeMatterError("ACTIVE_RUN_MISMATCH")
             campaign["attempts"][-1].update(passed=bool(passed), finished_at=self.clock(), external_failure=bool(external_failure))
-            campaign.update(active=None, closed=bool(passed or external_failure or len(campaign["attempts"]) >= 2))
+            campaign.update(active=None, closed=bool(passed or external_failure or len(campaign["attempts"]) >= self.profile["run_limit"]))
             self.store.put("state", "campaign", campaign, db)
 
     def _active(self, db=None):
         campaign = self.store.get("state", "campaign", db)
-        if not campaign or not campaign["active"] or self.clock() - campaign["attempts"][-1]["started_at"] > 600:
+        if not campaign or not campaign["active"] or self.clock() - campaign["attempts"][-1]["started_at"] > self.profile["run_seconds"]:
             raise NativeMatterError("AUTHORIZED_ACTIVE_RUN_REQUIRED")
         return campaign["active"]
 
@@ -148,6 +165,11 @@ class MatterNative:
 
     def state(self, task_id):
         task = self.task(task_id); self._snapshot(task)
+        if self.profile["protocol"] == "batched-close-v2":
+            if task["status"] not in ("verified", "complete"):
+                raise NativeMatterError("VERIFICATION_REQUIRED_BEFORE_STATE_ACK")
+            if not task.get("state_checked"):
+                self._commit(task, task["status"], {"state_checked": canonical_hash(task["result"])})
         return {"task_id": task_id, "status": task["status"], "version": task["version"],
             "can_finalize": task["status"] in ("verified", "complete"), "knowledge_published": False}
 
@@ -155,6 +177,8 @@ class MatterNative:
         task = self.task(task_id); self._snapshot(task)
         if task["status"] not in ("verified", "complete"):
             raise NativeMatterError("VERIFICATION_REQUIRED")
+        if self.profile["protocol"] == "batched-close-v2" and task.get("state_checked") != canonical_hash(task["result"]):
+            raise NativeMatterError("VERIFIED_STATE_ACK_REQUIRED")
         result = self.lifecycle.query(task["facts"], principal=ACTOR, version_id=task["version"])
         if result != task["result"]:
             raise NativeMatterError("VERIFIED_RESULT_CHANGED")

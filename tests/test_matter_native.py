@@ -7,7 +7,7 @@ import pytest
 from starlette.testclient import TestClient
 
 from gov_mcp.matter_lifecycle import MatterLifecycle, Principal, LifecycleError
-from gov_mcp.matter_native import MatterNative, NativeMatterError, SCENARIO, SERVICE
+from gov_mcp.matter_native import MatterNative, NativeMatterError, SCENARIO, SERVICE, BATCHED, native_profile
 from gov_mcp.matter_native_server import create_app
 
 PACK = Path(__file__).resolve().parents[1] / "data/real-matter-closure/nanjing/review-pack-v1"
@@ -149,3 +149,78 @@ def test_native_assessment_rejects_program_success_without_real_child_trace(nati
     assert not result["passed"] and "ACTUAL_CHILD_TRACE_REQUIRED" in result["stop_reasons"]
     events[-1]["content"] = {**answer, "knowledge_published": True}
     assert "PERSISTENT_FINAL_RESULT_MISMATCH" in assess(events, app, run)["stop_reasons"]
+
+
+def batched(native):
+    legacy, service, tick = native
+    root = legacy.root.parent / "batched-native"; root.mkdir()
+    (root / "manifest.json").write_bytes((json.dumps(BATCHED) + "\n").encode())
+    return MatterNative(root, service, clock=lambda: tick[0]), service, tick
+
+
+def test_batched_requires_verified_state_ack_before_finalize(native):
+    app, _, _ = batched(native)
+    app.begin(); task = app.open(SCENARIO)["task_id"]
+    with pytest.raises(NativeMatterError, match="VERIFICATION_REQUIRED_BEFORE_STATE_ACK"): app.state(task)
+    app.retrieve(task); app.verify(task)
+    with pytest.raises(NativeMatterError, match="VERIFIED_STATE_ACK_REQUIRED"): app.finalize(task)
+    assert app.state(task)["can_finalize"]
+    answer = app.finalize(task)
+    assert answer == app.task(task)["answer"] and not answer["formal_business_answer"]
+
+
+def test_batched_closing_action_executes_children_state_and_exact_final_in_one_action(native):
+    import sys
+    sys.path.insert(0, str(PACK.parents[3] / "scripts"))
+    from provision_matter_native import closing_action
+    app, _, _ = batched(native)
+    app.begin(); task = app.open(SCENARIO)["task_id"]
+    calls, final = [], []
+    def child(operation, name):
+        def call(task):
+            calls.append(name); return operation(json.loads(task)["task_id"])
+        return call
+    def state(task_id): calls.append("state"); return app.state(task_id)
+    def finish(task_id): calls.append("finalize"); return app.finalize(task_id)
+    code = closing_action(native_profile("batched-close-v2"), task).removeprefix("<code>\n").removesuffix("\n</code>")
+    env = {"govmatterbatch_retriever": child(app.retrieve, "retrieve"), "govmatterbatch_verifier": child(app.verify, "verify"),
+        "govmatter_state": state, "govmatter_finalize": finish, "final_answer": final.append, "print": lambda *args: None}
+    exec(compile(code, "explicit_fixed_protocol_fixture", "exec"), {"__builtins__": {}}, env)
+    assert calls == ["retrieve", "verify", "state", "finalize"] and final == [app.task(task)["answer"]]
+
+
+def test_new_batched_activity_never_resets_closed_legacy_budget(native):
+    legacy, _, _ = native
+    run = legacy.begin(); legacy.finish(run, passed=False)
+    run = legacy.begin("Observed child protocol repair fixture"); legacy.finish(run, passed=False)
+    app, _, _ = batched(native)
+    run = app.begin(); app.finish(run, passed=False)
+    with pytest.raises(NativeMatterError, match="CAMPAIGN_NOT_AVAILABLE"): app.begin()
+    with pytest.raises(NativeMatterError, match="CAMPAIGN_NOT_AVAILABLE"): legacy.begin("Another repair fixture note")
+    assert len(legacy.store.get("state", "campaign")["attempts"]) == 2
+    assert len(app.store.get("state", "campaign")["attempts"]) == 1
+
+
+def test_batched_manifest_cannot_increase_budget(native):
+    app, service, tick = batched(native)
+    (app.root / "manifest.json").write_bytes(json.dumps({**BATCHED, "native_run_limit": 2}).encode())
+    with pytest.raises(NativeMatterError, match="CAMPAIGN_MANIFEST_MISMATCH"): MatterNative(app.root, service)
+
+
+def test_batched_pause_after_state_ack_still_stops_final(native):
+    app, service, _ = batched(native)
+    app.begin(); task = app.open(SCENARIO)["task_id"]
+    app.retrieve(task); app.verify(task); app.state(task)
+    service.set_source_enabled("NJ-POLICE-FAQ-2025", False, reason="Pause after acknowledged state fixture", principal=MAINT)
+    with pytest.raises(LifecycleError, match="SOURCE_PAUSED"): app.finalize(task)
+
+
+def test_batched_explicit_time_window_preserves_freshness_and_terminal_budget(native):
+    app, _, tick = batched(native)
+    run = app.begin(); task = app.open(SCENARIO)["task_id"]
+    app.retrieve(task); app.verify(task)
+    tick[0] += 601
+    assert app.state(task)["can_finalize"]
+    tick[0] += 600
+    with pytest.raises(NativeMatterError, match="AUTHORIZED_ACTIVE_RUN_REQUIRED"): app.finalize(task)
+    assert app.store.get("state", "campaign")["active"] == run
