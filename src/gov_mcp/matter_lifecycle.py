@@ -14,6 +14,7 @@ import time
 import uuid
 
 from gov_mcp.knowledge.store import Store, KBError
+from gov_mcp.matter_guidance import guidance, TOPICS
 from gov_mcp.matter_graph import (
     canonical_hash, extract_candidates, file_hash, load_pack,
     preview_ontology, prove, SEED, scope_check,
@@ -179,18 +180,21 @@ class MatterLifecycle:
             raise LifecycleError("不是当前事项的已登记工程版本")
         return value["data"]["candidate"]
 
-    def query(self, facts, *, principal, version_id=None):
+    def query(self, facts, *, principal, version_id=None, topic="old_card_lifecycle"):
         principal.require("citizen", "staff", "maintainer", "professional")
         selected = version_id or self.head()
         if not selected:
             return {"status": "NO_RELEASE", "knowledge_published": False}
         record = self._version(selected)
         pack = self._load(record)
-        gate = scope_check(pack, facts)
+        if topic not in TOPICS:
+            raise LifecycleError("未知查询主题")
+        gate = scope_check(pack, facts, require_old_card_valid=topic == "old_card_lifecycle")
         if gate["status"] != "IN_SCOPE":
             return {**gate, "version": selected, "knowledge_published": False}
-        result = prove(pack, facts, ontology=record["ontology"])
+        result = prove(pack, facts, ontology=record["ontology"]) if topic == "old_card_lifecycle" else guidance(pack, facts, topic, now=self.clock())
         sources = {e["source_id"] for row in result.get("source_relations", []) for e in row["evidence"]}
+        sources.update(c["source_id"] for section in result.get("sections", []) for c in section["citations"])
         if not sources:
             sources = set(record["source_identities"])
         self._guard(record, sources)
@@ -219,16 +223,16 @@ class MatterLifecycle:
         self.store.rollback("rules", target, expected_head, principal.id)
         return {"version": target, "knowledge_published": False, "current_source_controls_still_apply": True}
 
-    def open_case(self, facts, *, principal):
+    def open_case(self, facts, *, principal, topic="old_card_lifecycle"):
         principal.require("citizen", "staff")
-        result = self.query(facts, principal=principal)
-        if result["status"] not in ("DRAFT_PROOF_READY", "NO_SUPPORTED_MULTI_DOCUMENT_PROOF"):
+        result = self.query(facts, principal=principal, topic=topic)
+        if result["status"] not in ("DRAFT_PROOF_READY", "NO_SUPPORTED_MULTI_DOCUMENT_PROOF", "SOURCE_GUIDANCE_PENDING_REVIEW"):
             return result
         case_id = "case-" + uuid.uuid4().hex
         record = self._version(result["version"])
         with self.store.db(True) as db:
             self._guard(record, record["source_identities"], db)
-            self.store.put("runs", case_id, {"id": case_id, "owner": principal.id, "facts": facts,
+            self.store.put("runs", case_id, {"id": case_id, "owner": principal.id, "facts": facts, "topic": topic,
                 "version": result["version"], "state": "draft", "assignee": None, "handoff_hash": None}, db)
             self.store.audit("matter_case_opened", {"case_id": case_id, "version": result["version"],
                 "actor": principal.id, "actor_kind": principal.kind}, db)
@@ -241,7 +245,7 @@ class MatterLifecycle:
             raise LifecycleError("无权读取该会话")
         if principal.id == case["assignee"] and principal.role != "staff":
             raise LifecycleError("交接接收身份已变化")
-        result = self.query(case["facts"], principal=principal, version_id=case["version"])
+        result = self.query(case["facts"], principal=principal, version_id=case["version"], topic=case.get("topic", "old_card_lifecycle"))
         with self.store.db(True) as db:
             current = self.store.get("runs", case_id, db)
             if not current or principal.id not in (current["owner"], current["assignee"]):

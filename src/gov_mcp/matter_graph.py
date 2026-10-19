@@ -135,17 +135,20 @@ def preview_ontology(proposals):
     return ontology
 
 
-def scope_check(pack, facts):
-    allowed = {"region", "matter", "adult", "civil_capacity", "self", "reason", "household", "old_card_valid"}
+def scope_check(pack, facts, *, require_old_card_valid=True):
+    allowed = {"region", "matter", "adult", "civil_capacity", "self", "reason", "household", "old_card_valid", "urgent_exam", "fee_relief_requested"}
     if set(facts) - allowed:
         raise MatterProofError("只接受已定义的无个人身份信息字段")
     fixed = {"region": "南京市", "matter": "resident-id-expiry-renewal",
         "adult": True, "civil_capacity": "full", "self": True, "reason": "expiry", "household": "jiangsu"}
     missing = [k for k in fixed if k not in facts or facts[k] is None]
-    missing += [k for k in ("old_card_valid",) if k not in facts or facts[k] is None]
+    if require_old_card_valid:
+        missing += [k for k in ("old_card_valid",) if k not in facts or facts[k] is None]
     if missing:
         return {"status": "NEEDS_CLARIFICATION", "fields": sorted(set(missing))}
-    if any(type(facts[k]) is not bool for k in ("adult", "self", "old_card_valid")):
+    if any(type(facts[k]) is not bool for k in ("adult", "self")) or any(
+            key in facts and facts[key] is not None and type(facts[key]) is not bool
+            for key in ("old_card_valid", "urgent_exam", "fee_relief_requested")):
         raise MatterProofError("布尔条件必须明确，不能按字符串或数字猜测")
     outside = [k for k, v in fixed.items() if facts[k] != v]
     if outside:
