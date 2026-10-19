@@ -49,7 +49,10 @@ def main():
         raise ValueError("Known local credential matched; nothing exported")
     files["DELIVERY.md"] = files["docs/南京事项项目交付与复现.md"].replace(
         "(南京事项本地原生编排.md)".encode(), "(docs/南京事项本地原生编排.md)".encode())
+    # This nested attributes file overrides outer rules after a Git clone.
+    files[".gitattributes"] = files.get(".gitattributes", b"") + b"\n# Preserve this sealed distribution byte-for-byte.\n* -text -whitespace\n"
     manifest = {"schema": 1, "source_commit": commit, "scope": "public_project_snapshot_without_redundant_distribution_copies",
+        "packaging_transformations": ["add root DELIVERY.md with adjusted document link", "append nested attributes byte-preservation rule"],
         "excluded_redundant_paths": sorted(excluded), "known_local_credential_matches": 0,
         "known_local_credential_scan_available": bool(secrets), "human_business_review": False, "formal_publication": False,
         "files": [{"path": name, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()} for name, raw in sorted(files.items())]}

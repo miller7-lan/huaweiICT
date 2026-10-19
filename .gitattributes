@@ -13,3 +13,5 @@ evidence/public-native-preview/sources/*.html -text -whitespace
 # Sealed input packages preserve the original source bytes, including CRLF.
 data/real-matter-closure/nanjing/update-input-package-v1/** -text -whitespace linguist-generated
 evidence/real-matter-closure/update-cycle/tests-first.xml -text -whitespace
+# Downloadable project copies preserve the sealed manifest's bytes.
+deliveries/** -text -whitespace linguist-generated
