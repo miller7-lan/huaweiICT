@@ -21,17 +21,19 @@ LEGACY = {"schema": 1, "purpose": SERVICE, "native_run_limit": 2,
     "scenario_id": SCENARIO, "formal_publication": False}
 BATCHED = {"schema": 2, "purpose": SERVICE, "native_run_limit": 1,
     "scenario_id": SCENARIO, "formal_publication": False, "protocol": "batched-close-v2"}
+FIRST_ONLY = {**BATCHED, "schema": 3, "protocol": "first-only-v3"}
 
 
 def native_profile(protocol="legacy"):
-    if protocol not in ("legacy", "batched-close-v2"):
+    if protocol not in ("legacy", "batched-close-v2", "first-only-v3"):
         raise NativeMatterError("UNKNOWN_NATIVE_PROTOCOL")
-    batched = protocol == "batched-close-v2"
-    return {"protocol": protocol, "manifest": deepcopy(BATCHED if batched else LEGACY),
-        "service": "govmatter_native_batched" if batched else SERVICE,
-        "skill": "govmatter-source-proof-batched" if batched else SKILL,
-        "names": {r: ("govmatterbatch_" if batched else "govmatter_") + r for r in ("controller", "retriever", "verifier")},
-        "port": 8787 if batched else 8785, "run_limit": 1 if batched else 2,
+    batched = protocol != "legacy"
+    first = protocol == "first-only-v3"
+    return {"protocol": protocol, "manifest": deepcopy(FIRST_ONLY if first else BATCHED if batched else LEGACY),
+        "service": "govmatter_native_first" if first else "govmatter_native_batched" if batched else SERVICE,
+        "skill": "govmatter-source-proof-first" if first else "govmatter-source-proof-batched" if batched else SKILL,
+        "names": {r: ("govmatterfirst_" if first else "govmatterbatch_" if batched else "govmatter_") + r for r in ("controller", "retriever", "verifier")},
+        "port": 8788 if first else 8787 if batched else 8785, "run_limit": 1 if batched else 2,
         "run_seconds": 1200 if batched else 600, "main_steps": 3 if batched else 6,
         "main_output_tokens": 512 if batched else 1024, "child_output_tokens": 256 if batched else 1024}
 
@@ -165,7 +167,7 @@ class MatterNative:
 
     def state(self, task_id):
         task = self.task(task_id); self._snapshot(task)
-        if self.profile["protocol"] == "batched-close-v2":
+        if self.profile["protocol"] != "legacy":
             if task["status"] not in ("verified", "complete"):
                 raise NativeMatterError("VERIFICATION_REQUIRED_BEFORE_STATE_ACK")
             if not task.get("state_checked"):
@@ -177,7 +179,7 @@ class MatterNative:
         task = self.task(task_id); self._snapshot(task)
         if task["status"] not in ("verified", "complete"):
             raise NativeMatterError("VERIFICATION_REQUIRED")
-        if self.profile["protocol"] == "batched-close-v2" and task.get("state_checked") != canonical_hash(task["result"]):
+        if self.profile["protocol"] != "legacy" and task.get("state_checked") != canonical_hash(task["result"]):
             raise NativeMatterError("VERIFIED_STATE_ACK_REQUIRED")
         result = self.lifecycle.query(task["facts"], principal=ACTOR, version_id=task["version"])
         if result != task["result"]:

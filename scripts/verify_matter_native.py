@@ -126,7 +126,8 @@ def main():
         report["code_sha256"] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
             for name in ("scripts/verify_matter_native.py", "scripts/provision_matter_native.py", "config/skills/" + profile["skill"] + "/SKILL.md")}
         write(args.runtime / (stamp + "-report.json"), report)
-        output = ROOT / "evidence/real-matter-closure" / ("native-batched-v2" if profile["protocol"] != "legacy" else "native-qwen") / (stamp + ".json")
+        folder = {"legacy": "native-qwen", "batched-close-v2": "native-batched-v2", "first-only-v3": "native-first-v3"}[profile["protocol"]]
+        output = ROOT / "evidence/real-matter-closure" / folder / (stamp + ".json")
         output.parent.mkdir(exist_ok=True, parents=True); write(output, report)
     print(json.dumps({k: report.get(k) for k in ("passed", "stop_reasons", "external_failure", "error_type", "duration_ms", "event_types", "actual_tools")}, ensure_ascii=False))
     print(json.dumps({"evidence": output.relative_to(ROOT).as_posix(), "native_run_requests": report["native_run_requests"]}))

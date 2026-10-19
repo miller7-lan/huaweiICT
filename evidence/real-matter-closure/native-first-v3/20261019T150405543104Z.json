@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-10-19T15:04:05.543162+00:00",
+  "mode": "govmatter_native_preview",
+  "models": {
+    "controller": "Qwen3-8B",
+    "retriever": "Qwen3-4B",
+    "verifier": "Qwen3-4B"
+  },
+  "native_run_requests": 1,
+  "cloud_model_calls": 0,
+  "jev_calls": 0,
+  "human_business_review": false,
+  "independent_evaluation": false,
+  "knowledge_published": false,
+  "protocol": "first-only-v3",
+  "native_run_limit": 1,
+  "run_seconds_limit": 1200,
+  "expected_main_code_actions": 2,
+  "startup_source_sha256": {
+    "matter_native.py": "ded073efdfdf5f06e8c8f2e8712cda556935ffd764357801140df4687548a561",
+    "matter_native_server.py": "fb845c5046d0b4051f1bc34a632676923f1248f0a3534ce44d83c6ec25a6eb6a",
+    "matter_lifecycle.py": "74abc072db21eb921545923c8e2c3092d56fd84ea58a9d81aadf212f45819e4a",
+    "matter_graph.py": "e3a4a17a9bbb3f281dd2636e3110d3237273c3a5d34da3c65f64d43cc7aa9d2b",
+    "matter_guidance.py": "d49ba8c93466bbbb27bda91a891a3cea898389476f702066bd3aa4eb0b45b2b3"
+  },
+  "run_id": "native-3322b445606846f9a4e9e2078d24e16d",
+  "runtime_run_id": "debug-c5f163b6242f4f53867d5546a1f081f8",
+  "passed": false,
+  "stop_reasons": [
+    "EXACT_TOOL_TRACE_REQUIRED",
+    "STRUCTURED_RESULT_REQUIRED"
+  ],
+  "actual_tools": [
+    "govmatter_retrieve",
+    "govmatter_verify",
+    "govmatter_state",
+    "govmatter_finalize"
+  ],
+  "answer": null,
+  "owned_runtime_stop": {
+    "status": "success",
+    "already_stopped": false
+  },
+  "duration_ms": 328025.09,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 3,
+    "model_attempt_control": 12,
+    "model_output_thinking": 121,
+    "parse": 3,
+    "subagent_start": 2,
+    "tool": 4,
+    "execution_logs": 4,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "token_count": 1,
+    "final_answer": 1
+  },
+  "campaign": {
+    "active": null,
+    "attempts": [
+      {
+        "external_failure": false,
+        "finished_at": 1792422573.562342,
+        "id": "native-3322b445606846f9a4e9e2078d24e16d",
+        "passed": false,
+        "repair_note": "Repair v2 skipped-open failure: first-only few-shot, closing template only in duty after observed task; independent one-run cap",
+        "started_at": 1792422246.5700436
+      }
+    ],
+    "closed": true
+  },
+  "model_attempt_begins": 6,
+  "model_attempt_rollbacks": 3,
+  "main_code_actions": 1,
+  "code_sha256": {
+    "scripts/verify_matter_native.py": "7613efe70cfc0716da5a0b2aedb0f7fb0c7f5b463bce46042b4ccbafafa559c4",
+    "scripts/provision_matter_native.py": "44a314a3ba97cb1c8c05a499ab36a90536a0c2bd48af1e88a33c1283a6443225",
+    "config/skills/govmatter-source-proof-first/SKILL.md": "4a8cd051dcb62681389827dddb9fff4795cf06bbd6506e51d4d59155282a1bfe"
+  }
+}

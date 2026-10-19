@@ -224,3 +224,33 @@ def test_batched_explicit_time_window_preserves_freshness_and_terminal_budget(na
     tick[0] += 600
     with pytest.raises(NativeMatterError, match="AUTHORIZED_ACTIVE_RUN_REQUIRED"): app.finalize(task)
     assert app.store.get("state", "campaign")["active"] == run
+
+
+def test_first_only_repair_keeps_start_example_and_closing_duty_separate():
+    import sys
+    sys.path.insert(0, str(PACK.parents[3] / "scripts"))
+    from provision_matter_native import few_shot_text, protocol_text, first_action
+    profile = native_profile("first-only-v3")
+    example = few_shot_text(profile)
+    assert example == first_action(profile)
+    assert "govmatter_open" in example and "read_skill_md" in example
+    assert "OBSERVED_ID" not in example and "govmatter_finalize" not in example
+    assert "govmatterfirst_verifier" in protocol_text(profile)
+    # Preserve the historical v2 prompt rather than silently rewriting its record.
+    assert "OBSERVED_ID" in few_shot_text(native_profile("batched-close-v2"))
+
+
+def test_first_only_keeps_verified_ack_pause_and_single_terminal_budget(native):
+    legacy, service, tick = native
+    root = legacy.root.parent / "first-only-native"; root.mkdir()
+    manifest = native_profile("first-only-v3")["manifest"]
+    (root / "manifest.json").write_bytes(json.dumps(manifest).encode())
+    app = MatterNative(root, service, clock=lambda: tick[0])
+    run = app.begin(); task = app.open(SCENARIO)["task_id"]
+    app.retrieve(task); app.verify(task)
+    with pytest.raises(NativeMatterError, match="VERIFIED_STATE_ACK_REQUIRED"): app.finalize(task)
+    app.state(task)
+    service.set_source_enabled("NJ-POLICE-FAQ-2025", False, reason="First-only repair pause fixture", principal=MAINT)
+    with pytest.raises(LifecycleError, match="SOURCE_PAUSED"): app.finalize(task)
+    app.finish(run, passed=False)
+    with pytest.raises(NativeMatterError, match="CAMPAIGN_NOT_AVAILABLE"): app.begin()

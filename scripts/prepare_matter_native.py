@@ -16,7 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--runtime", type=Path, required=True)
     parser.add_argument("--lifecycle", type=Path, required=True)
-    parser.add_argument("--protocol", choices=("legacy", "batched-close-v2"), default="legacy")
+    parser.add_argument("--protocol", choices=("legacy", "batched-close-v2", "first-only-v3"), default="legacy")
     args = parser.parse_args()
     if args.runtime.exists() and any(args.runtime.iterdir()):
         parser.error("Existing native activity preserved")
