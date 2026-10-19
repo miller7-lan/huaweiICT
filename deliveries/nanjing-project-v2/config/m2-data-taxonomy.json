@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "phase": "M2",
+  "collection_strategy": "small_traceable_preview_first_then_review_and_expand",
+  "dimensions": {
+    "source": ["source_id", "document_type", "issuer", "url", "sha256"],
+    "region": ["national", "province", "city", "district", "receiving_office_scope"],
+    "matter": ["matter_id", "official_matter_code", "included_branch", "excluded_branch"],
+    "material_category": {
+      "identity": "身份材料",
+      "household": "户籍材料",
+      "eligibility": "适用条件",
+      "procedure": "办理流程"
+    },
+    "applicability": ["age_branch", "local_or_nonlocal", "application_reason", "required_or_conditional_or_alternative", "processing_stage"],
+    "knowledge_version": ["version_id", "source_manifest_sha256", "published_at", "effective_from", "retrieved_at", "review_status"]
+  },
+  "review_states": ["pending_business_review", "reviewed_for_scope", "superseded", "rejected"],
+  "ingestion_checks": ["official_public_source", "normal_access_allowed", "actual_fingerprint", "no_applicant_records", "usage_basis_recorded", "region_and_scope_verified", "duplicate_source_grouped", "rule_conflicts_reviewed"],
+  "expansion_order": ["resolve_current_matter_rules", "complete_one_matter_sources", "add_current_matter_branches", "add_one_more_matter", "consider_more_regions"],
+  "scope": "Taxonomy and collection requirements. Initial implementation has one proposed matter, two preview sources and four chunk categories; broader collection and business review are future work."
+}

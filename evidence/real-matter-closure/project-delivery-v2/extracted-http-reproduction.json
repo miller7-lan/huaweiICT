@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-19T15:47:15.151062+00:00",
+  "checks": [
+    {
+      "check": "all_project_imports_from_current_project_root",
+      "passed": true
+    },
+    {
+      "check": "fresh_private_accounts_and_source_versions_prepared",
+      "passed": true
+    },
+    {
+      "check": "actual_http_page_served",
+      "passed": true
+    },
+    {
+      "check": "citizen_fresh_local_login",
+      "passed": true
+    },
+    {
+      "check": "citizen_server_role",
+      "passed": true
+    },
+    {
+      "check": "staff_fresh_local_login",
+      "passed": true
+    },
+    {
+      "check": "staff_server_role",
+      "passed": true
+    },
+    {
+      "check": "staff-other_fresh_local_login",
+      "passed": true
+    },
+    {
+      "check": "staff-other_server_role",
+      "passed": true
+    },
+    {
+      "check": "seed_four_source_query_stops",
+      "passed": true
+    },
+    {
+      "check": "evolved_query_four_paths_one_conclusion",
+      "passed": true
+    },
+    {
+      "check": "candidate_boundary_preserved",
+      "passed": true
+    },
+    {
+      "check": "old_case_keeps_seed_version",
+      "passed": true
+    },
+    {
+      "check": "actual_handoff_created",
+      "passed": true
+    },
+    {
+      "check": "staff_receives_version_facts_and_proofs",
+      "passed": true
+    },
+    {
+      "check": "unassigned_staff_cannot_read_case",
+      "passed": true
+    },
+    {
+      "check": "confirmation_not_business_approval",
+      "passed": true
+    },
+    {
+      "check": "citizen_history_obeys_current_pause",
+      "passed": true
+    },
+    {
+      "check": "staff_history_obeys_current_pause",
+      "passed": true
+    }
+  ],
+  "mode": "clean_directory_real_local_http_archived_sources_development_scenario",
+  "official_site_requests": 0,
+  "model_calls": 0,
+  "human_business_review": false,
+  "formal_publication": false,
+  "independent_evaluation": false,
+  "nexent_container_rebuilt": false,
+  "native_model_run_in_clean_checkout": false,
+  "authentication_mode": "local_engineering_accounts",
+  "source_dates_refreshed": false,
+  "project_imports": {
+    "matter_graph": "src\\gov_mcp\\matter_graph.py",
+    "matter_lifecycle": "src\\gov_mcp\\matter_lifecycle.py",
+    "matter_guidance": "src\\gov_mcp\\matter_guidance.py",
+    "matter_web": "src\\gov_mcp\\matter_web.py",
+    "matter_native": "src\\gov_mcp\\matter_native.py",
+    "matter_update": "src\\gov_mcp\\matter_update.py",
+    "matter_ocr_handoff": "src\\gov_mcp\\matter_ocr_handoff.py"
+  },
+  "status": "PASSED",
+  "versions": {
+    "seed": "9b81151b4f1494d9c65032d8c84d587850d9405b5a5ac5a65c472f0c60257338",
+    "evolved": "9478d2c6a915b89858aa65b07a81124434e089561462968d81e3f52aba4b8207"
+  },
+  "isolated_source_final_state": "paused",
+  "owned_server_stopped": true
+}

@@ -1,0 +1,4862 @@
+[
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "5af2f12ce6b648e8ba14122394a64488",
+    "input_sha256": "cdfb8c0f6df385461e16a96b72793de6e7c34be6402eeb0115d4cd55ffd102d7",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 2,
+        "excluded": 1,
+        "paused": 2,
+        "pending": 1
+      }
+    },
+    "output_sha256": "2f0994ba3f0a2fa1f88817a466f49bac285fa101881075a5a65de76a36cc1131",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "6ed98e3e025d489aad649eece975ab5f",
+    "time": 1792255438.3883586,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "e0ebe00d651249329785079cafe94319",
+    "input_sha256": "a24751a0db5bc42c7671476902fdfcb1a1b2d724a0b26e30f2952936ef7e5f5f",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [],
+      "found": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 1,
+      "status": "can_finalize",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "b4730d529568ca99763a15370cf96d1de8d008885060342868522a0ea5f9a6d3",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "6ed98e3e025d489aad649eece975ab5f",
+    "time": 1792255438.3835728,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "94dff9294efe47638c9c93ee9d2e7a14",
+    "input_sha256": "161a7db83d94b5d51b2bae3d557fb222e21d70174f2ba3d649315aa9b54710ed",
+    "model": null,
+    "output": {
+      "ids": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ]
+    },
+    "output_sha256": "dcc27748eb274d5f7c5bf9a5303c1776144a6d52cbe6ab695f80e3d366bc7e2d",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "6ed98e3e025d489aad649eece975ab5f",
+    "time": 1792255438.3835728,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "4870d182141f4ad18ee149592eee8a23",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "6ed98e3e025d489aad649eece975ab5f",
+    "time": 1792255438.3805633,
+    "tool": "plan_query"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "45290238a58143bda40063b50c354c7d",
+    "input_sha256": "cdfb8c0f6df385461e16a96b72793de6e7c34be6402eeb0115d4cd55ffd102d7",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 2,
+        "excluded": 1,
+        "paused": 2,
+        "pending": 1
+      }
+    },
+    "output_sha256": "2f0994ba3f0a2fa1f88817a466f49bac285fa101881075a5a65de76a36cc1131",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "b7f62c4b378641a196574b0097ecdd83",
+    "time": 1792255438.3405514,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "96c5534dc6de44b395b7a11f69f4b4d0",
+    "input_sha256": "a24751a0db5bc42c7671476902fdfcb1a1b2d724a0b26e30f2952936ef7e5f5f",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [],
+      "found": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 1,
+      "status": "can_finalize",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "b4730d529568ca99763a15370cf96d1de8d008885060342868522a0ea5f9a6d3",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "b7f62c4b378641a196574b0097ecdd83",
+    "time": 1792255438.335551,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "18d952e8d2294c07809b920201d034b3",
+    "input_sha256": "161a7db83d94b5d51b2bae3d557fb222e21d70174f2ba3d649315aa9b54710ed",
+    "model": null,
+    "output": {
+      "ids": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ]
+    },
+    "output_sha256": "dcc27748eb274d5f7c5bf9a5303c1776144a6d52cbe6ab695f80e3d366bc7e2d",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "b7f62c4b378641a196574b0097ecdd83",
+    "time": 1792255438.335551,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "a8434e83e62747d5bbaba4154a915709",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "b7f62c4b378641a196574b0097ecdd83",
+    "time": 1792255438.3325582,
+    "tool": "plan_query"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "edafdb669efe4218874e7886a66b9be6",
+    "input_sha256": "cdfb8c0f6df385461e16a96b72793de6e7c34be6402eeb0115d4cd55ffd102d7",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 4,
+        "excluded": 1,
+        "paused": 0,
+        "pending": 1
+      }
+    },
+    "output_sha256": "8d796ea913576a74d3dbba3c8370f5471ffcf6f7bbb28fd758d6957c96817cf5",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "82e004c108c0427e93a713b06e307096",
+    "time": 1792255438.3075507,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "579d9977ef0243289fb33f1a6c357a70",
+    "input_sha256": "1b35c500318ef693dfc84b89cbbc90c530fca2b89abcf8dafdb9779b494a2ba3",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [],
+      "found": [
+        "ev-adult",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-substitution",
+        "ev-substitution-unknown",
+        "ev-update-5ba86c921a72a13c24",
+        "ev-update-9061d73e231b49d17c"
+      ],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-substitution",
+        "ev-substitution-unknown",
+        "ev-update-5ba86c921a72a13c24",
+        "ev-update-9061d73e231b49d17c"
+      ],
+      "round": 1,
+      "status": "can_finalize",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "9a641fba158d7e742a4d6399094f0a64bddf556f0999b8ca29ad3fb4100dd3ac",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "82e004c108c0427e93a713b06e307096",
+    "time": 1792255438.302552,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "2b3600ace083438c8022e19ea8abbee6",
+    "input_sha256": "56570df5788eceb35ad50a956bf5a5a7ff344e1d386eb32567fa013e7da310da",
+    "model": null,
+    "output": {
+      "ids": [
+        "ev-adult",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-substitution",
+        "ev-substitution-unknown",
+        "ev-update-5ba86c921a72a13c24",
+        "ev-update-9061d73e231b49d17c"
+      ]
+    },
+    "output_sha256": "5cd2f51eac331ee6b33c45528b121e22613ae48c3eb2a6720f5a4a2fac8d82c6",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "82e004c108c0427e93a713b06e307096",
+    "time": 1792255438.302552,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "7d1756028dc04f6fbcf56feb9290416f",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "82e004c108c0427e93a713b06e307096",
+    "time": 1792255438.2995508,
+    "tool": "plan_query"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "85b37267fdd242ab9932f11d9d1d6c4f",
+    "input_sha256": "cdfb8c0f6df385461e16a96b72793de6e7c34be6402eeb0115d4cd55ffd102d7",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 3,
+        "excluded": 1,
+        "paused": 1,
+        "pending": 1
+      }
+    },
+    "output_sha256": "e5a76fd743645eca6b3af723d5458682f9719608fd17677043712e8fdbc7e0a9",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "28d679ae03d2449099b9ba2dad0450a4",
+    "time": 1792255438.2775493,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "f6f42f65a47845b0a8f7bd815a998cea",
+    "input_sha256": "92ffcabcd646c5799abf914420722aed5d5c0da90d0338ca582a17571e09624a",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [],
+      "found": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-substitution",
+        "ev-substitution-unknown",
+        "ev-update-9061d73e231b49d17c"
+      ],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-substitution",
+        "ev-substitution-unknown",
+        "ev-update-9061d73e231b49d17c"
+      ],
+      "round": 1,
+      "status": "can_finalize",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "e919f25771ffae46fda637a2db31738cdc79c7d5e13c5f284bbc998304f755ca",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "28d679ae03d2449099b9ba2dad0450a4",
+    "time": 1792255438.2715497,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "f0ca6fe10644487cbc91b7f84b33fb8d",
+    "input_sha256": "0912af37c06926ebc25885caff8fac0c8d1e00a681b1145f1fd260bbcecc73b4",
+    "model": null,
+    "output": {
+      "ids": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-substitution",
+        "ev-substitution-unknown",
+        "ev-update-9061d73e231b49d17c"
+      ]
+    },
+    "output_sha256": "eb8194335c612486def45fb5f2a7418a29c1b1cf217c1150105d0d2297f2be16",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "28d679ae03d2449099b9ba2dad0450a4",
+    "time": 1792255438.2715497,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "616468f64265478eb1cfe2916f57546e",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "28d679ae03d2449099b9ba2dad0450a4",
+    "time": 1792255438.268548,
+    "tool": "plan_query"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "9e6a5a42322c4e96adb902ff86f24340",
+    "input_sha256": "cdfb8c0f6df385461e16a96b72793de6e7c34be6402eeb0115d4cd55ffd102d7",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 2,
+        "excluded": 1,
+        "paused": 2,
+        "pending": 1
+      }
+    },
+    "output_sha256": "2f0994ba3f0a2fa1f88817a466f49bac285fa101881075a5a65de76a36cc1131",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "59e7ff60ac0e4bf2936eadffa3faf392",
+    "time": 1792255438.2407088,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "8ac71724997448128a11186606558624",
+    "input_sha256": "a24751a0db5bc42c7671476902fdfcb1a1b2d724a0b26e30f2952936ef7e5f5f",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [],
+      "found": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 1,
+      "status": "can_finalize",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "b4730d529568ca99763a15370cf96d1de8d008885060342868522a0ea5f9a6d3",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "59e7ff60ac0e4bf2936eadffa3faf392",
+    "time": 1792255438.23571,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "0d657ece0338478aa448808e5935854d",
+    "input_sha256": "161a7db83d94b5d51b2bae3d557fb222e21d70174f2ba3d649315aa9b54710ed",
+    "model": null,
+    "output": {
+      "ids": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ]
+    },
+    "output_sha256": "dcc27748eb274d5f7c5bf9a5303c1776144a6d52cbe6ab695f80e3d366bc7e2d",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "59e7ff60ac0e4bf2936eadffa3faf392",
+    "time": 1792255438.23571,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "2a6d220b28474ec687b8ea34bf2d722d",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "59e7ff60ac0e4bf2936eadffa3faf392",
+    "time": 1792255438.2325525,
+    "tool": "plan_query"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "9a1d2b956f38417eb140d04688cacdb7",
+    "input_sha256": "2c1f307fab2426b76f26c2de1e6197a2e36d7cca15c5ed0a2fe018e6bf55f33f",
+    "model": null,
+    "output": {
+      "business_rules_published": false,
+      "documents_version": "41e08f597b1bf8af443b041eb9c394e06c0cba6f2021fb9995c01e1984d5953c"
+    },
+    "output_sha256": "a2d050760e2533bf25e8d58eb9ad1ac830be5687cd8143eee49a27dbb8fd0542",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "update_controller",
+    "run_id": "db1901f0d1b746cd854e27cd29d20f14",
+    "task_id": null,
+    "time": 1792255438.2185502,
+    "tool": "finish_run"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "e0192149b2fe4e35aeaaa0f302c4cd24",
+    "input_sha256": "2c1f307fab2426b76f26c2de1e6197a2e36d7cca15c5ed0a2fe018e6bf55f33f",
+    "model": null,
+    "output": {
+      "business_validity_proven": false,
+      "remote_calls": 0,
+      "signal": "exact_fixture_quote_only_not_jev"
+    },
+    "output_sha256": "30f89e72b08edbd1ba1824e4778e679de7c044eec3a16fc234bdfdc4f2c345a0",
+    "prepared_route": {
+      "credential_ref": null,
+      "model": "jev-1.13.0",
+      "transport": "jev"
+    },
+    "remote_calls": 0,
+    "role": "jev",
+    "run_id": "db1901f0d1b746cd854e27cd29d20f14",
+    "task_id": null,
+    "time": 1792255438.215551,
+    "tool": "check_support"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "730e7b5a8adb487788412d6ef4350fb9",
+    "input_sha256": "2c1f307fab2426b76f26c2de1e6197a2e36d7cca15c5ed0a2fe018e6bf55f33f",
+    "model": null,
+    "output": {
+      "conflicts": [
+        "req-card-apply"
+      ],
+      "exact_evidence": true,
+      "requires_professional": true,
+      "valid_structure": true
+    },
+    "output_sha256": "9fc98aaf41fb0e68c1d06d32ffe81713585be0c72be488f40222d6e9792371a5",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "update_verifier",
+    "run_id": "db1901f0d1b746cd854e27cd29d20f14",
+    "task_id": null,
+    "time": 1792255438.2145512,
+    "tool": "validate_candidates"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "0fa47e4ae4754d269ac8296217283ba3",
+    "input_sha256": "2c1f307fab2426b76f26c2de1e6197a2e36d7cca15c5ed0a2fe018e6bf55f33f",
+    "model": null,
+    "output": {
+      "object_ids": [
+        "req-card-apply",
+        "req-slip"
+      ]
+    },
+    "output_sha256": "dd6f6be4cb77424391049b29ac53af57cc74a0ce0fb20e7efe661a8ccad06c09",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "extractor",
+    "run_id": "db1901f0d1b746cd854e27cd29d20f14",
+    "task_id": null,
+    "time": 1792255438.2125697,
+    "tool": "submit_candidates"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "e6e9e1dae57945049613e748819c3883",
+    "input_sha256": "9e6f3392d5e21e05cf586b7bcb2c041f60679775cced3452bf3865c557343279",
+    "model": null,
+    "output": {
+      "provider": "synthetic_contract_replay_not_jev",
+      "summary": {
+        "actual_models": [],
+        "bundle_counts": {
+          "form_fields": 0,
+          "guide_sections": 2,
+          "notice_faq": 0,
+          "pending_review": 0,
+          "policy_clauses": 0
+        },
+        "business_rules_published": false,
+        "call_count": 2,
+        "duration_ms": 0.54,
+        "error_codes": {},
+        "http_attempts": 0,
+        "live_accuracy_measured": false,
+        "pending_review_fraction": 0.0,
+        "provider": "synthetic_contract_replay_not_jev",
+        "replayed_contract_model": "jev-1.13.0",
+        "request_strategy": "shared_state_batch",
+        "requested_model": "jev-1.13.0",
+        "requests_avoided": 2,
+        "rules_sha256": "9ea8eb0da7607135dd4f71b82e33bd3365bd9812da3db350b9e248bf55f6574a",
+        "rules_version": "gov-classification-3",
+        "segment_count": 2,
+        "source_sha256": "860871e63bddba84856e127406e4b651caf48509d8caa7f8981988b3ee30c740",
+        "status": "completed",
+        "status_counts": {
+          "routed": 2
+        },
+        "translation": {
+          "actual_models": [],
+          "applied": false,
+          "attempted": false,
+          "calls": 0,
+          "target_language": null,
+          "usage": {
+            "input_tokens": 0,
+            "output_tokens": 0
+          }
+        },
+        "unbatched_request_count": 4,
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        },
+        "usage_scope": "validated successful responses only; failed attempts may also be billed"
+      }
+    },
+    "output_sha256": "4bc9a33c578d192cfad31eba39bc0fdca076658a99af07a651d2e6d5ad86bdd4",
+    "prepared_route": {
+      "credential_ref": null,
+      "model": "jev-1.13.0",
+      "transport": "jev"
+    },
+    "remote_calls": 0,
+    "role": "jev",
+    "run_id": "db1901f0d1b746cd854e27cd29d20f14",
+    "task_id": null,
+    "time": 1792255438.2095513,
+    "tool": "classify_changes"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "5e3b30600b32455d9aae453c4a301fdb",
+    "input_sha256": "2c1f307fab2426b76f26c2de1e6197a2e36d7cca15c5ed0a2fe018e6bf55f33f",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "classify_changes",
+        "submit_candidates",
+        "validate_candidates",
+        "finish_run"
+      ]
+    },
+    "output_sha256": "5efb8c3cd693b9d700871209a6f231a7e2d707cc1d335a46d1d31fd126d585d7",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "update_controller",
+    "run_id": "db1901f0d1b746cd854e27cd29d20f14",
+    "task_id": null,
+    "time": 1792255438.2085516,
+    "tool": "plan_update"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "e244a89f768649089ce8ce0562516ae0",
+    "input_sha256": "7eef2b66ab351965c45d8284be7bbe2c77a205194173cba4360211a2424a130e",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 0,
+        "excluded": 0,
+        "paused": 0,
+        "pending": 6
+      }
+    },
+    "output_sha256": "3e9b54bf7f6d14cffa81ba864005dbdc73e60d7bdc9aed44da29cc5598167721",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1889596,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "12bd90b47d174123bf84ab87b2000ed8",
+    "input_sha256": "319fe62cca8a352460de9bc954fd9b520d7d0903dfa45b4399dbafb13000c68d",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "found": [],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 3,
+      "status": "can_finalize",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "fb5e1abab225f810d1f72857933ed4fed0259f9d48823edca02368023ae13089",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1839483,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "6a9c7a85025a477dbad1988ec0b82545",
+    "input_sha256": "e133c5fb0fd2a58b842d779d5bf0dd9cb9c3641a6ad82baf472f10392d652fb3",
+    "model": null,
+    "output": {
+      "ids": []
+    },
+    "output_sha256": "8f05bafd61f29998ca102b333f853628502d4e45d53cff41148d6dd15f011792",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1839483,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "c1db3c74147a4f278c02a35b3f37b9e1",
+    "input_sha256": "319fe62cca8a352460de9bc954fd9b520d7d0903dfa45b4399dbafb13000c68d",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "found": [],
+      "needs_more": true,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 2,
+      "status": "needs_retrieval",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "66f79d172bd3da8cb8a41a1975bd522edb571d63ccfd0af8e24a9ffd37186a12",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1799488,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "486c41dd7b1c4d848a99752c501d07b7",
+    "input_sha256": "f2f550d5ee5cb9d237488fd0d4f1468f3bc4d4c879eabdfe96f049b7f09f6b48",
+    "model": null,
+    "output": {
+      "ids": []
+    },
+    "output_sha256": "8f05bafd61f29998ca102b333f853628502d4e45d53cff41148d6dd15f011792",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1799488,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "0e9e0d8428dd42abb2dc3931ee00d9e9",
+    "input_sha256": "319fe62cca8a352460de9bc954fd9b520d7d0903dfa45b4399dbafb13000c68d",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "found": [],
+      "needs_more": true,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 1,
+      "status": "needs_retrieval",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "8f8e1035f14bb2130c74c1b6f2cd09a07384270bf1209bf70e18129793be4720",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1639478,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "391e31a7f421402bb2f9eecb37e23023",
+    "input_sha256": "161a7db83d94b5d51b2bae3d557fb222e21d70174f2ba3d649315aa9b54710ed",
+    "model": null,
+    "output": {
+      "ids": []
+    },
+    "output_sha256": "8f05bafd61f29998ca102b333f853628502d4e45d53cff41148d6dd15f011792",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1639478,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "6ee0e85e334840ce94bb23c755387d59",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "9cd819e7a6cf4cd6a30421ef08d1e219",
+    "time": 1792255438.1614254,
+    "tool": "plan_query"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "c3861fcb2c8e4c1eb702f5556d8fbda4",
+    "input_sha256": "cdfb8c0f6df385461e16a96b72793de6e7c34be6402eeb0115d4cd55ffd102d7",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 4,
+        "excluded": 1,
+        "paused": 0,
+        "pending": 1
+      }
+    },
+    "output_sha256": "8d796ea913576a74d3dbba3c8370f5471ffcf6f7bbb28fd758d6957c96817cf5",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "622448db85b8486cb22b4c86de5b0463",
+    "time": 1792255438.1564252,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "087e04f9a8b2454aa42da0c6400177cc",
+    "input_sha256": "a24751a0db5bc42c7671476902fdfcb1a1b2d724a0b26e30f2952936ef7e5f5f",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "observed": false,
+                    "op": "eq",
+                    "result": "false"
+                  }
+                ],
+                "op": "not",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [],
+              "result": "false",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "observed": false,
+                "op": "eq",
+                "result": "false"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "false"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [],
+      "found": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 1,
+      "status": "can_finalize",
+      "unknown_user_fields": []
+    },
+    "output_sha256": "b4730d529568ca99763a15370cf96d1de8d008885060342868522a0ea5f9a6d3",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "622448db85b8486cb22b4c86de5b0463",
+    "time": 1792255438.1520696,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "418d6b062d094296b704b641230761ef",
+    "input_sha256": "161a7db83d94b5d51b2bae3d557fb222e21d70174f2ba3d649315aa9b54710ed",
+    "model": null,
+    "output": {
+      "ids": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ]
+    },
+    "output_sha256": "dcc27748eb274d5f7c5bf9a5303c1776144a6d52cbe6ab695f80e3d366bc7e2d",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "622448db85b8486cb22b4c86de5b0463",
+    "time": 1792255438.1520696,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "cf8579b4b6454036b34cc0f698c1c31b",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "622448db85b8486cb22b4c86de5b0463",
+    "time": 1792255438.148722,
+    "tool": "plan_query"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "7e62a0a653034e93ad080f63123ba44a",
+    "input_sha256": "cdfb8c0f6df385461e16a96b72793de6e7c34be6402eeb0115d4cd55ffd102d7",
+    "model": null,
+    "output": {
+      "counts": {
+        "confirmed": 3,
+        "excluded": 0,
+        "paused": 0,
+        "pending": 3
+      }
+    },
+    "output_sha256": "2b3deb84793a829c056461cbc0cd3ea2503c2fa644f29a0cddd4d038b82d9607",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "dbfb2298495644d78fce7f97bee4911a",
+    "time": 1792255438.1437192,
+    "tool": "compose_answer"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "8060765948a542f8ba5a7a21f06eb257",
+    "input_sha256": "a24751a0db5bc42c7671476902fdfcb1a1b2d724a0b26e30f2952936ef7e5f5f",
+    "model": null,
+    "output": {
+      "condition_results": [
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-paper",
+              "issues": [],
+              "missing_fields": [
+                "electronic_verified"
+              ],
+              "result": "unknown",
+              "trace": {
+                "children": [
+                  {
+                    "expected": true,
+                    "field": "electronic_verified",
+                    "op": "eq",
+                    "reason": "MISSING_FACT",
+                    "result": "unknown"
+                  }
+                ],
+                "op": "not",
+                "result": "unknown"
+              }
+            }
+          ],
+          "requirement_id": "req-paper",
+          "result": "unknown"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-electronic",
+              "issues": [],
+              "missing_fields": [
+                "electronic_verified"
+              ],
+              "result": "unknown",
+              "trace": {
+                "expected": true,
+                "field": "electronic_verified",
+                "op": "eq",
+                "reason": "MISSING_FACT",
+                "result": "unknown"
+              }
+            }
+          ],
+          "requirement_id": "req-electronic",
+          "result": "unknown"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-apply",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-card-collect",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-slip",
+          "result": "true"
+        },
+        {
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": "expiry",
+                "field": "reason",
+                "observed": "expiry",
+                "op": "eq",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-adult",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "children": [
+                  {
+                    "expected": "adult",
+                    "field": "age_group",
+                    "observed": "adult",
+                    "op": "eq",
+                    "result": "true"
+                  },
+                  {
+                    "expected": true,
+                    "field": "self_service",
+                    "observed": true,
+                    "op": "eq",
+                    "result": "true"
+                  }
+                ],
+                "op": "all",
+                "result": "true"
+              }
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "issues": [],
+              "missing_fields": [],
+              "result": "true",
+              "trace": {
+                "expected": true,
+                "op": "const",
+                "result": "true"
+              }
+            }
+          ],
+          "requirement_id": "req-residence",
+          "result": "unknown"
+        }
+      ],
+      "evidence_gaps": [],
+      "found": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "needs_more": false,
+      "requested": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "round": 1,
+      "status": "can_finalize",
+      "unknown_user_fields": [
+        "electronic_verified"
+      ]
+    },
+    "output_sha256": "5aad6a3361958b2c497323144ad837d4dbf2e8c452c8295cfc190786c277a236",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_verifier",
+    "run_id": null,
+    "task_id": "dbfb2298495644d78fce7f97bee4911a",
+    "time": 1792255438.1387136,
+    "tool": "verify_conditions"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "36b776c4e4b643b999a63ebd79a31bed",
+    "input_sha256": "161a7db83d94b5d51b2bae3d557fb222e21d70174f2ba3d649315aa9b54710ed",
+    "model": null,
+    "output": {
+      "ids": [
+        "ev-adult",
+        "ev-card-apply",
+        "ev-card-collect",
+        "ev-paper",
+        "ev-reason",
+        "ev-residence",
+        "ev-scope",
+        "ev-slip",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ]
+    },
+    "output_sha256": "dcc27748eb274d5f7c5bf9a5303c1776144a6d52cbe6ab695f80e3d366bc7e2d",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "retriever",
+    "run_id": null,
+    "task_id": "dbfb2298495644d78fce7f97bee4911a",
+    "time": 1792255438.1387136,
+    "tool": "retrieve_registered_evidence"
+  },
+  {
+    "adapter": "deterministic_offline_role_not_model",
+    "id": "7af25ec2aea94e2d98f83100762fa397",
+    "input_sha256": "7ad541663ce8222472513988e3d35a57f66df98c556e08feba1cd06029f3947a",
+    "model": null,
+    "output": {
+      "allowed_tools": [
+        "retrieve_registered_evidence",
+        "verify_conditions"
+      ],
+      "max_rounds": 3
+    },
+    "output_sha256": "4ee0600272a0401bddb460e79dc32461d2989f281d9255fcc1fc2026698f844a",
+    "prepared_route": {
+      "credential_ref": "env:DEEPSEEK_API_KEY",
+      "model": "deepseek-flash",
+      "transport": "deepseek"
+    },
+    "remote_calls": 0,
+    "role": "query_controller",
+    "run_id": null,
+    "task_id": "dbfb2298495644d78fce7f97bee4911a",
+    "time": 1792255438.1347184,
+    "tool": "plan_query"
+  }
+]

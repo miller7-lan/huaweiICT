@@ -1,0 +1,20 @@
+{
+  "original_report": "20261019T133501400168Z.json",
+  "original_report_sha256": "00ed95d0611a66f789099fb326e4bc1c7b3ac445ad7737eaf37622a5875336d8",
+  "private_raw_trace_sha256": "38d2a12b6bbe5567f86f55ae801ffdcde0e2a312d3b12d72a6a604be11e53d1f",
+  "event_count": 646,
+  "observed_tools": [
+    "read_skill_md",
+    "govmatter_open",
+    "govmatter_state",
+    "govmatter_state",
+    "govmatter_state"
+  ],
+  "model_attempt_begin_events": 11,
+  "model_attempt_rollback_events": 3,
+  "child_plain_code_fence_observed": true,
+  "cpu_size_vram_observed": 0,
+  "runtime_cancelled_observed": true,
+  "formal_publication": false,
+  "interpretation": "First native run failed: child output contained unexecuted code text; root repeated state reads; client bound exceeded. CPU initial-chunk timeouts were observed. Not a successful workflow or business acceptance."
+}

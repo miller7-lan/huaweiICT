@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "kind": "governance_validity_research_not_effectivity_approval",
+  "assessed_at": "2026-10-16T15:47:57.024895+00:00",
+  "actor": {
+    "kind": "ai",
+    "name": "Codex AI",
+    "human_attestation": false
+  },
+  "normal_acquisition_attempts": {
+    "henan-2015": {
+      "url": "https://www.moj.gov.cn/pub/sfbgw/flfggz/flfggzdfzwgz/201507/t20150701_140895.html",
+      "checked_at": "2026-10-16T15:39:25.210646+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "Redirect limit exceeded",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": null
+      },
+      "elapsed_seconds": 15.092
+    },
+    "henan-2024": {
+      "url": "https://sfj.zhoukou.gov.cn/sitesources/sfj/page_pc/qmyfzs/yfxz/gfxwjgl/articlec9989232da0d473bba8f4c325a9c49ca.html",
+      "checked_at": "2026-10-16T15:39:25.225923+00:00",
+      "canonical_import": false,
+      "error_class": "SSLError",
+      "error": "[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)",
+      "elapsed_seconds": 0.101
+    },
+    "zhengzhou-consolidated": {
+      "url": "https://public.zhengzhou.gov.cn/attachment/政府令第241号郑州市行政规范性文件管理规定.pdf",
+      "checked_at": "2026-10-16T15:39:25.195679+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "Access denied; source paused",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": 403
+      },
+      "elapsed_seconds": 0.151
+    },
+    "henan-2024-pds": {
+      "url": "https://cgj.pds.gov.cn/contents/16261/410761.html",
+      "checked_at": "2026-10-16T15:40:16.798821+00:00",
+      "canonical_import": false,
+      "status": 200,
+      "bytes": 101378,
+      "sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+      "final_url": "https://cgj.pds.gov.cn/contents/16261/410761.html",
+      "content_type": "text/html",
+      "elapsed_seconds": 5.13
+    }
+  },
+  "canonical_archive": {
+    "captured_at": "2026-10-16T15:44:07.559846+00:00",
+    "source_id": "HN-GOVERNANCE-2024",
+    "url": "https://cgj.pds.gov.cn/contents/16261/410761.html",
+    "original_sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+    "original_bytes": 101378,
+    "ingested_revision": "rev-9cd2817cbbb469432a09a70b",
+    "revision": "rev-2a3287697e1e638806bd4c91",
+    "selected_clauses": [
+      {
+        "locator": "第二条",
+        "text_sha256": "ee86908f6d19337dcd2d5c8805c660f4db5de9fd5488f7886d19f6beb90ae01a"
+      },
+      {
+        "locator": "第二十五条",
+        "text_sha256": "b5668b35589d05b30faad0d00d66bf4d85b951bd90e2a5fbec65212b3cc4abd9"
+      },
+      {
+        "locator": "第三十五条",
+        "text_sha256": "ff3bc35073ca3113c77887981503662b8ff906800478a4e3cf18919b639c3345"
+      },
+      {
+        "locator": "第四十条",
+        "text_sha256": "fb9c020606fe03eb7e5ab1dea6572a079660de9224e3e308463b5f87cd16ac9d"
+      }
+    ],
+    "date_evidence": [
+      {
+        "locator": "正文段落3",
+        "text_sha256": "af42279457cc8d156587e653b64530d41a3c41a16a10ef3237b22397f92043f8"
+      },
+      {
+        "locator": "正文段落5",
+        "text_sha256": "e18c3337c74cdbbdb887f1b17d4b67030fca2bafb3795f56609dd301c0222c97"
+      },
+      {
+        "locator": "正文段落157",
+        "text_sha256": "49f5cf4668c84b6aee20847c1bf3d702b2d804986c1b0e25abacc897475c4a92"
+      }
+    ],
+    "state": "excluded",
+    "monitoring_enabled": false,
+    "business_approval": false,
+    "prior_source_configs_unchanged": true,
+    "counts": {
+      "sites": 40,
+      "documents": 36,
+      "revisions": 113,
+      "chunks": 684,
+      "versions": 0,
+      "heads": 0,
+      "jobs": 36,
+      "latest_chunks": 289
+    }
+  },
+  "facts": [
+    {
+      "id": "governance_scope",
+      "locator": "第二条",
+      "revision": "rev-2a3287697e1e638806bd4c91",
+      "original_sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+      "start": 4,
+      "end": 43,
+      "quote": "本省行政区域内行政规范性文件的制定、备案审查以及相关监督管理工作，适用本办法。",
+      "quote_sha256": "bd42815d064554265ecb881e4f40394927691a8f6dfeeda1c7ec3e24b03c4ac1"
+    },
+    {
+      "id": "stated_expiry",
+      "locator": "第二十五条",
+      "revision": "rev-2a3287697e1e638806bd4c91",
+      "original_sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+      "start": 0,
+      "end": 69,
+      "quote": "第二十五条 行政规范性文件的名称冠以“暂行”“试行”或者涉及的内容属于阶段性工作的，应当载明有效期。有效期届满的，行政规范性文件自动失效。",
+      "quote_sha256": "b5668b35589d05b30faad0d00d66bf4d85b951bd90e2a5fbec65212b3cc4abd9"
+    },
+    {
+      "id": "conflict_coordination",
+      "locator": "第三十五条",
+      "revision": "rev-2a3287697e1e638806bd4c91",
+      "original_sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+      "start": 0,
+      "end": 114,
+      "quote": "第三十五条 县级以上人民政府司法行政部门对报送备案的行政规范性文件进行审查时，发现行政规范性文件之间相互矛盾的，应当进行协调。经协调达成一致意见的，由有关制定机关自行纠正；达不成一致意见的，应当提出处理意见，报本级人民政府决定。",
+      "quote_sha256": "ff3bc35073ca3113c77887981503662b8ff906800478a4e3cf18919b639c3345"
+    },
+    {
+      "id": "periodic_cleanup",
+      "locator": "第四十条",
+      "revision": "rev-2a3287697e1e638806bd4c91",
+      "original_sha256": "23a107b9c0d0668476d6b6f97f61e3163d79abe580e865584061471695ea0fc3",
+      "start": 5,
+      "end": 25,
+      "quote": "行政规范性文件应当每隔2年进行一次清理。",
+      "quote_sha256": "5be3fb4b9f6b884a8d625c4a513a323439933be95f0f939f77a903acfb1a7a59"
+    }
+  ],
+  "bounded_inferences": [
+    {
+      "id": "no_two_year_expiry_from_cleanup",
+      "basis": [
+        "stated_expiry",
+        "periodic_cleanup"
+      ],
+      "finding": "第25条要求试行文件载明有效期、期满自动失效，第40条另规定每隔2年清理；这两条不能直接推出所有试行文件一律2年，或豫公通〔2022〕77号于2024-09-01失效。",
+      "effectivity_decision": false
+    },
+    {
+      "id": "no_indefinite_validity_inference",
+      "basis": [
+        "governance_scope",
+        "stated_expiry"
+      ],
+      "finding": "未从所核条款推得具体失效日，也不能反向证明省厅规范永续或当前全部有效；2024办法对2022文件的具体适用及后续效力状态仍需直接核实。",
+      "effectivity_decision": false
+    },
+    {
+      "id": "no_automatic_material_conflict_resolution",
+      "basis": [
+        "conflict_coordination"
+      ],
+      "finding": "条款描述行政机关协调纠正及处理机制，不是问答系统自行裁定国家78条、省159条和地方材料清单关系的授权。",
+      "effectivity_decision": false
+    }
+  ],
+  "web_only_context": [
+    {
+      "url": "https://www.moj.gov.cn/pub/sfbgw/flfggz/flfggzdfzwgz/201507/t20150701_140895.html",
+      "locator": "旧第28、29条及2015-07-01施行句",
+      "finding": "旧版区分定期清理和目录后果；正常采集未取得原件，不作为2024后当前规则。"
+    },
+    {
+      "url": "https://sfj.zhoukou.gov.cn/sitesources/sfj/page_pc/qmyfzs/yfxz/gfxwjgl/articlec9989232da0d473bba8f4c325a9c49ca.html",
+      "locator": "第2、25、35、40条",
+      "finding": "周口司法局转载供网页对照；正常TLS握手失败，未取得其原件。"
+    },
+    {
+      "url": "https://public.zhengzhou.gov.cn/?a=info&i=guizhang&k=policy&page=2&t=guizhang",
+      "locator": "条目18、2025年12月23日第255号修正说明",
+      "finding": "市规章存在2025修正版本；须先核对适用范围，不用2016旧文、2020征求稿或外地2年条款直接裁定省厅规范失效。正常市PDF入口robots403，未取得PDF或作视觉检查。"
+    }
+  ],
+  "unresolved": [
+    "豫公通〔2022〕77号具体有效期及后续继续有效、延续、修改、清理或解释记录。",
+    "2024管理办法对2022已施行且所核文本未明示终止日规范的具体适用。",
+    "国家规范、河南规范和二七本地清单的材料关系；六个月窗口、2026精确起始日、减免和邮费依据。"
+  ],
+  "next_action": "核对省公安厅或省司法厅针对具体文号的效力、清理、延续、修改或解释记录；不根据标题或清理周期自动填写失效日。资料批准后再做参考冻结和正式验收。",
+  "checks": {
+    "normal_original_matches_receipt_and_archive": true,
+    "four_selected_clauses_reproduce_original": true,
+    "historical_dates_reproduce_raw_page": true,
+    "governance_reference_excluded_disabled_and_not_business_evidence": true,
+    "previous_39_source_configs_preserved": true,
+    "pilot_norm_still_pending_without_invented_expiry": true,
+    "policy_and_formal_gates_preserved": true,
+    "development_results_registry_and_draft_bindings_preserved": true,
+    "full_restore_contains_this_original_and_metadata": true,
+    "failed_probes_not_claimed_as_originals": true
+  },
+  "passed": true,
+  "counts": {
+    "sites": 40,
+    "documents": 36,
+    "revisions": 113,
+    "chunks": 684,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 289
+  },
+  "latest_states": {
+    "excluded": 20,
+    "pending_review": 16
+  },
+  "pending_without_established_effective_from": 13,
+  "formal_gates": {
+    "reviews": 0,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "new_operational_business_approvals": 0,
+  "new_model_runs": 0,
+  "core_code_changed": false,
+  "full_regression_rerun": false,
+  "limits": "Literal governance-rule and archive preservation evidence only; no legal-currentness certificate or business acceptance. Purpose exclusion is not a repeal decision. Publisher layout/media remain private."
+}

@@ -1,0 +1,26 @@
+services:
+  govdocs-mcp:
+    image: ict-gov-blank-mcp
+    pull_policy: never
+    container_name: govdocs-mcp
+    restart: unless-stopped
+    environment:
+      PYTHONPATH: /app/src
+      PYTHONUNBUFFERED: "1"
+    command: ["python", "-m", "gov_mcp.asset_query_server", "--host", "0.0.0.0", "--runtime", "/runtime", "--port", "8774"]
+    ports:
+      - "127.0.0.1:8774:8774"
+    volumes:
+      - ./src:/app/src:ro
+      - ./.runtime/asset-query:/runtime
+    networks:
+      - nexent
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8774/health', timeout=3)"]
+      interval: 10s
+      timeout: 4s
+      retries: 3
+networks:
+  nexent:
+    external: true
+    name: nexent_network

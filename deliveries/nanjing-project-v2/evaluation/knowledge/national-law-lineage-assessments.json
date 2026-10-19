@@ -1,0 +1,492 @@
+{
+  "schema": 1,
+  "captured_at": "2026-10-16T14:23:29.022503+00:00",
+  "reviewer_kind": "ai",
+  "reviewer": "Codex AI",
+  "human_review_completed": false,
+  "current_applicability_after_2026_08_28": "not_certified",
+  "business_release_ready": false,
+  "sources": {
+    "NATIONAL-LAW-DIRECTORY-2026": {
+      "revision": "rev-67c936e015b1b70255dcbf6a",
+      "url": "https://www.samr.gov.cn/fgs/sjdt/art/2026/art_93a4fbac2ce14ab6baab60b0cd452ef4.html",
+      "original_sha256": "ad8056246fd1a2641b73c21e611ae7f222b0d0788bb2ef2201ae3905e2f37caa",
+      "normal_acquisition": true,
+      "state": "excluded",
+      "selected_chunks": 1,
+      "automatic_monitoring_enabled": true
+    },
+    "NATIONAL-LAW-HISTORICAL-2003": {
+      "revision": "rev-d4ff2d4f9bb7f22c0f830139",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/200401/t20040101_781229.html",
+      "original_sha256": "d3a7c952b80f3251df8744a63152985823342bc0428a2beb9b084f1864c683d8",
+      "normal_acquisition": true,
+      "state": "excluded",
+      "selected_chunks": 4,
+      "automatic_monitoring_enabled": false
+    },
+    "EXISTING-ID-LAW-2011": {
+      "revision": "rev-4fe28019d6712c3174914d62",
+      "previous_revision": "rev-d66f8c0116dc5bea8410ab62",
+      "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+      "original_sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
+      "normal_new_acquisition": false,
+      "selected_chunks_before": 4,
+      "selected_chunks": 23,
+      "state": "pending_review",
+      "source_stays_disabled_and_paused": true
+    }
+  },
+  "findings": [
+    {
+      "id": "dated_edition_identity",
+      "finding": "目录记录截至2026-08-28的2011修正版本身份；网页显示2026-09-18 16:33，meta标16:35，两者不作法律施行日。",
+      "anchors": [
+        {
+          "revision": "rev-67c936e015b1b70255dcbf6a",
+          "ordinal": 0,
+          "locator": "正文段落141",
+          "start": 0,
+          "end": 33,
+          "parent_text_sha256": "e289927574317bea8b073806cdcffd9083639f10ecc2006350a59f05c94ca081",
+          "span_sha256": "e289927574317bea8b073806cdcffd9083639f10ecc2006350a59f05c94ca081"
+        }
+      ]
+    },
+    {
+      "id": "validity_badge_is_not_text_edition",
+      "finding": "历史2003文本页面有效性原标记为是，网页显示为现行有效；其第三条缺少2011文本指纹内容，不能单凭页面标签选择法律版本。",
+      "anchors": [
+        {
+          "revision": "rev-d4ff2d4f9bb7f22c0f830139",
+          "ordinal": 0,
+          "locator": "第三条",
+          "start": 0,
+          "end": 111,
+          "parent_text_sha256": "6595eab86b4047403912135a11009498c16399dac19b098d67990c8a79b4c410",
+          "span_sha256": "6595eab86b4047403912135a11009498c16399dac19b098d67990c8a79b4c410"
+        },
+        {
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "ordinal": 2,
+          "locator": "第三条",
+          "start": 0,
+          "end": 144,
+          "parent_text_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b",
+          "span_sha256": "a259d207d991762e5fe0e0d5e1e843aa2fe1b331ed1de0d5746373e206a97d5b"
+        }
+      ]
+    },
+    {
+      "id": "article_numbers_need_version_binding",
+      "finding": "2003与2011的第十九条指向不同正文，引用必须绑定版本、原件和具体条文，不能只按同名法律及条号拼接。",
+      "anchors": [
+        {
+          "revision": "rev-d4ff2d4f9bb7f22c0f830139",
+          "ordinal": 2,
+          "locator": "第十九条",
+          "start": 0,
+          "end": 241,
+          "parent_text_sha256": "5b63536e8f8621707cbafeec58fa1c0eca8493ee929f582802243904cf4633a4",
+          "span_sha256": "5b63536e8f8621707cbafeec58fa1c0eca8493ee929f582802243904cf4633a4"
+        },
+        {
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "ordinal": 18,
+          "locator": "第十九条",
+          "start": 0,
+          "end": 257,
+          "parent_text_sha256": "e9431b681956298c40085014237ace75465f9c3028071a2ad8908ddf0fa14db0",
+          "span_sha256": "e9431b681956298c40085014237ace75465f9c3028071a2ad8908ddf0fa14db0"
+        }
+      ]
+    },
+    {
+      "id": "original_act_and_amendment_dates_differ",
+      "finding": "2003第22条与2011第23条均提原法2004施行；2011末条另有2012/2013证件过渡内容。不能把原法起始日直接改作2011修改决定起始日，修改决定正常原件链仍未补齐。",
+      "anchors": [
+        {
+          "revision": "rev-d4ff2d4f9bb7f22c0f830139",
+          "ordinal": 3,
+          "locator": "第二十二条",
+          "start": 0,
+          "end": 117,
+          "parent_text_sha256": "d4b8d684a54fb785c1119048dd2698f676224552571d43d15bf2eab654c6f768",
+          "span_sha256": "d4b8d684a54fb785c1119048dd2698f676224552571d43d15bf2eab654c6f768"
+        },
+        {
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "ordinal": 22,
+          "locator": "第二十三条",
+          "start": 0,
+          "end": 160,
+          "parent_text_sha256": "0382b2f064658c5b67d2e8942d925effffa9bfc1f06c20a1f6002996688e0ba5",
+          "span_sha256": "0382b2f064658c5b67d2e8942d925effffa9bfc1f06c20a1f6002996688e0ba5"
+        }
+      ]
+    },
+    {
+      "id": "same_archived_original_more_complete_extraction",
+      "finding": "既有原件从4条重提取为23条，原件与原四条保留；不是重新抓取暂停来源，也不是已核定当前全部条款。",
+      "anchors": [
+        {
+          "revision": "rev-4fe28019d6712c3174914d62",
+          "ordinal": 10,
+          "locator": "第十一条",
+          "start": 0,
+          "end": 215,
+          "parent_text_sha256": "1cf76af59af12e90fd7990b1ab4904307ef7fe81444044a0c0576ae7aa8c9016",
+          "span_sha256": "1cf76af59af12e90fd7990b1ab4904307ef7fe81444044a0c0576ae7aa8c9016"
+        }
+      ]
+    }
+  ],
+  "acquisition_observations": [
+    {
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/200401/t20040101_781229.html",
+      "checked_at": "2026-10-16T14:07:20.064190+00:00",
+      "canonical_import": false,
+      "status": 200,
+      "bytes": 31597,
+      "sha256": "d3a7c952b80f3251df8744a63152985823342bc0428a2beb9b084f1864c683d8",
+      "final_url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/qtwj/200401/t20040101_781229.html",
+      "content_type": "text/html; charset=utf-8",
+      "matching_links": [],
+      "elapsed_seconds": 5.172
+    },
+    {
+      "url": "https://gaj.beijing.gov.cn/zhengce/zcfg/202204/t20220402_2653202.html",
+      "checked_at": "2026-10-16T14:08:31.275182+00:00",
+      "canonical_import": false,
+      "status": 404,
+      "bytes": 151,
+      "sha256": "37d777146f5cb32c62b5eec9569dfe4c01179df0f3a70245ff658e31e7b8ea11",
+      "final_url": "https://gaj.beijing.gov.cn/zhengce/zcfg/202204/t20220402_2653202.html",
+      "content_type": "text/html; charset=utf-8",
+      "elapsed_seconds": 5.231
+    },
+    {
+      "url": "https://www.npc.gov.cn/npc/c2/c30834/202603/P020260316580245162685.pdf",
+      "checked_at": "2026-10-16T14:02:06.133984+00:00",
+      "canonical_import": false,
+      "error_class": "SSLError",
+      "error": "[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)",
+      "elapsed_seconds": 0.152
+    },
+    {
+      "url": "https://flk.npc.gov.cn/search",
+      "checked_at": "2026-10-16T14:05:51.979998+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "Access denied; source paused",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": 403
+      },
+      "elapsed_seconds": 0.146
+    },
+    {
+      "url": "https://wb.flk.npc.gov.cn/flfg/PDF/481dce0469334593bc9050435f09d60e.pdf",
+      "checked_at": "2026-10-16T14:02:06.132844+00:00",
+      "canonical_import": false,
+      "error_class": "SSLCertVerificationError",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1028)",
+      "elapsed_seconds": 0.499
+    },
+    {
+      "url": "https://jjjcz.mee.gov.cn/djfg/gjflfg/fl/201110/t20111001_444438.html",
+      "checked_at": "2026-10-16T14:05:51.945774+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "URL outside approved origin",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": null
+      },
+      "elapsed_seconds": 0.882
+    },
+    {
+      "url": "https://jjjcz.mee.gov.cn/djfg/gjflfg/fl/200306/t20030601_444296.html",
+      "checked_at": "2026-10-16T14:05:51.947687+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "URL outside approved origin",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": null
+      },
+      "elapsed_seconds": 5.182
+    },
+    {
+      "url": "https://www.samr.gov.cn/fgs/sjdt/art/2026/art_93a4fbac2ce14ab6baab60b0cd452ef4.html",
+      "checked_at": "2026-10-16T14:02:47.619339+00:00",
+      "canonical_import": false,
+      "status": 200,
+      "bytes": 200008,
+      "sha256": "ad8056246fd1a2641b73c21e611ae7f222b0d0788bb2ef2201ae3905e2f37caa",
+      "final_url": "https://www.samr.gov.cn/fgs/sjdt/art/2026/art_93a4fbac2ce14ab6baab60b0cd452ef4.html",
+      "content_type": "text/html; charset=utf-8",
+      "matching_links": [],
+      "elapsed_seconds": 5.529
+    },
+    {
+      "url": "https://www.samr.gov.cn/fgs/sjdt/index.html",
+      "checked_at": "2026-10-16T14:05:51.951834+00:00",
+      "canonical_import": false,
+      "status": 200,
+      "bytes": 4677,
+      "sha256": "6ed37097ec3475f4d2cd973a9266c926d8628ac9aafef57daf2ee6c88a3ee413",
+      "final_url": "https://www.samr.gov.cn/fgs/sjdt/index.html",
+      "content_type": "text/html; charset=utf-8",
+      "matching_links": [],
+      "elapsed_seconds": 5.219
+    },
+    {
+      "url": "https://www.zjg.gov.cn/zjg/zcfg1/201701/30ad61aaac0c4f7498eb661cde962626.shtml",
+      "checked_at": "2026-10-16T14:07:20.070339+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "URL outside approved origin",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": null
+      },
+      "elapsed_seconds": 0.683
+    }
+  ],
+  "background_refresh_observations": [
+    {
+      "site_id": "HN-NORM-PUBLISHER",
+      "revision": "rev-dfede4448f8bccedf15a59ec",
+      "previous_revision": "rev-30d1bf98f40e9acb897b37c1",
+      "previous_state": "pending_review",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "effective_from",
+        "published_at",
+        "source_fact_assessment",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 8,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-060d2e3a458b69be7cd82fa2",
+      "previous_revision": "rev-0a62b0e1c086b12f92d6b62b",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "selected_content_scope",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 10,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-0a2cd4b66a6c6c1e5a0d6538",
+      "previous_revision": "rev-610210af8967c7ff1022371a",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 11,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-477237f4f11bb3b1e9180233",
+      "previous_revision": "rev-2ceb2ee5c4a192a7f4c59a55",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 12,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-b4e27a0baa07b04b2033aa5d",
+      "previous_revision": "rev-bc49b122bba6b4eacb4e5315",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "selected_content_scope",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 13,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-571462a796240be516bd509c",
+      "previous_revision": "rev-4f4f86c3c7fb597b6f19789f",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "selected_content_scope",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 14,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-542383b9685ff607d29b6ea2",
+      "previous_revision": "rev-c887251972d6cd974e33a6da",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 15,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-80b25a42abaf5893115d827d",
+      "previous_revision": "rev-208b81f93ba412d99ccbb07a",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 16,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-POLICY-DISCOVERY",
+      "revision": "rev-b816053b4ba69f8b83ebf63e",
+      "previous_revision": "rev-aa9a5b2f2a6298980f9bb518",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "source_observation.fields.meta:lastmodifiedtime"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 18,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-MEASURES-2021-PDF",
+      "revision": "rev-3e0ef686ca50ff8c594937f5",
+      "previous_revision": "rev-5d056364588a5d9d7966ce17",
+      "previous_state": "pending_review",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "source_observation.discovery_signal.hints.parent_revision"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 19,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-REPEAL-2020-PDF",
+      "revision": "rev-6938de360787a1cf06a2b03e",
+      "previous_revision": "rev-a02362fd84e07fe80d92ba91",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "source_observation.discovery_signal.hints.parent_revision"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 20,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    },
+    {
+      "site_id": "HN-REPEAL-2021-PDF",
+      "revision": "rev-455ffba059929543e9bd3fe7",
+      "previous_revision": "rev-70c989e3818d7d8dbdbe3e23",
+      "previous_state": "excluded",
+      "same_original": true,
+      "same_body": true,
+      "changed_metadata": [
+        "_excluded_after_revision",
+        "source_observation.discovery_signal.hints.parent_revision"
+      ],
+      "current_state": "pending_review",
+      "job_receipt": {
+        "id": 21,
+        "state": "done",
+        "owner": "knowledge-worker"
+      }
+    }
+  ],
+  "draft_binding_refresh": {
+    "previous_content_sha256": "a8ff3c520140eaddcb934d6632423a47a7e756f6dab61f07eca785760e92e22e",
+    "content_sha256": "0ebcd8528c4b0fca61a0377dcbeea664be9be60ce60d658ef20bdc7f6b186d63",
+    "question_hashes_unchanged": true
+  },
+  "limits": [
+    "目录只覆盖其截止日期，不认证此后现行效力；精确页监测不保证发现另一个URL的新目录。",
+    "SAMR栏目入口为客户端框架，未配置新目录自动发现；未模拟签名或调用模板构建接口。",
+    "暂停来源没有恢复，TLS/证书失败未关闭校验；404和采集失败均不推断法律废止。",
+    "后台另有12份相同原件的观察字段/父修订变化，其中10份曾排除的资料重新待核，未自动沿用排除。",
+    "本地材料、六个月调整、收费关系和独立业务验收仍未解决。"
+  ],
+  "assessment_sha256": "4a361151d4572b18164aac9099dbd62c3f7dd0562b7dd1cc2101c848fca4b39b"
+}

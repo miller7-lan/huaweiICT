@@ -1,0 +1,439 @@
+{
+  "checked_at": "2026-10-19T15:27:49.430292+00:00",
+  "mode": "govmatter_native_preview",
+  "models": {
+    "controller": "Qwen3-8B",
+    "retriever": "Qwen3-4B",
+    "verifier": "Qwen3-4B"
+  },
+  "native_run_requests": 1,
+  "cloud_model_calls": 0,
+  "jev_calls": 0,
+  "human_business_review": false,
+  "independent_evaluation": false,
+  "knowledge_published": false,
+  "protocol": "dataflow-v4",
+  "native_run_limit": 1,
+  "run_seconds_limit": 1200,
+  "expected_main_code_actions": 1,
+  "startup_source_sha256": {
+    "matter_native.py": "63b1ad81c63fabec9c9beeeb6864ab18da7efd2c67a2eb9ddd1399018ff1f58f",
+    "matter_native_server.py": "fb845c5046d0b4051f1bc34a632676923f1248f0a3534ce44d83c6ec25a6eb6a",
+    "matter_lifecycle.py": "74abc072db21eb921545923c8e2c3092d56fd84ea58a9d81aadf212f45819e4a",
+    "matter_graph.py": "e3a4a17a9bbb3f281dd2636e3110d3237273c3a5d34da3c65f64d43cc7aa9d2b",
+    "matter_guidance.py": "d49ba8c93466bbbb27bda91a891a3cea898389476f702066bd3aa4eb0b45b2b3"
+  },
+  "run_id": "native-1dc4befc66994173abe2f06fcb802808",
+  "runtime_run_id": "debug-64d6414e4d6346e6977e50adc2cf6de9",
+  "passed": true,
+  "stop_reasons": [],
+  "actual_tools": [
+    "read_skill_md",
+    "govmatter_open",
+    "govmatter_retrieve",
+    "govmatter_verify",
+    "govmatter_state",
+    "govmatter_finalize"
+  ],
+  "answer": {
+    "task_id": "task-3ba889883137450b8f58daab67526c5e",
+    "scenario_id": "nanjing-adult-valid-old-card",
+    "version": "d2bdfda280f77bcec6b6095a40e394a7cf9fac109ddf01b6cfb206a7a1495e45",
+    "status": "DRAFT_PROOF_READY",
+    "mode": "govmatter_native_preview",
+    "knowledge_published": false,
+    "formal_business_answer": false,
+    "human_review": "pending",
+    "verification": {
+      "human_review": "pending",
+      "jev_called": false,
+      "knowledge_published": false,
+      "method": "exact_original_citation_and_typed_program_proof",
+      "source_documents": [
+        "LAW-ID-BJ-TRAFFIC-2011",
+        "NJ-OLD-CARD-2025",
+        "NJ-POLICE-FAQ-2025"
+      ]
+    },
+    "proofs": [
+      {
+        "triple": [
+          "old_card",
+          "usable_until_return",
+          "collection"
+        ],
+        "evidence": [
+          {
+            "source_id": "NJ-POLICE-FAQ-2025",
+            "source_region": "南京市",
+            "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+            "original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf",
+            "segment_id": "NJ-POLICE-FAQ-2025-P31",
+            "locator": "正文段落31",
+            "start": 0,
+            "end": 26,
+            "quote": "申请换领居民身份证期间，未超期的旧身份证可以继续使用",
+            "context_sha256": "ad4b924450257d443fd559557a9d25d5ec16269ca80d68f85246daec07c6a44c",
+            "title": "南京公安换证问答",
+            "published_at": "2025-05-29",
+            "effective_from": null,
+            "full_context": "申请换领居民身份证期间，未超期的旧身份证可以继续使用。"
+          },
+          {
+            "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+            "source_region": "national",
+            "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+            "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+            "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P12",
+            "locator": "正文段落12",
+            "start": 100,
+            "end": 112,
+            "quote": "领取新证时，必须交回原证",
+            "context_sha256": "aca3b150ddb9c230dcfdfe428be55ce30b89b98b119d594c21936cad15d2533a",
+            "title": "北京交管公布的2011年修正居民身份证法",
+            "published_at": null,
+            "effective_from": "2012-01-01",
+            "full_context": "二、将第十一条第一款修改为:“国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。"
+          }
+        ],
+        "source_ids": [
+          "LAW-ID-BJ-TRAFFIC-2011",
+          "NJ-POLICE-FAQ-2025"
+        ],
+        "proof": {
+          "kind": "join",
+          "rule_id": "TEMPORAL-COMPOSE",
+          "inputs": [
+            {
+              "triple": [
+                "old_card",
+                "usable_during",
+                "processing"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-ae01b9bb558dc3bf3f50"
+              }
+            },
+            {
+              "triple": [
+                "processing",
+                "precedes",
+                "collection"
+              ],
+              "proof": {
+                "kind": "axiom",
+                "basis": "workflow_phase_order_not_policy_claim"
+              }
+            },
+            {
+              "triple": [
+                "old_card",
+                "return_at",
+                "collection"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-27c02950e85ba5cdb3d7"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "triple": [
+          "old_card",
+          "usable_until_return",
+          "collection"
+        ],
+        "evidence": [
+          {
+            "source_id": "NJ-POLICE-FAQ-2025",
+            "source_region": "南京市",
+            "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+            "original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf",
+            "segment_id": "NJ-POLICE-FAQ-2025-P31",
+            "locator": "正文段落31",
+            "start": 0,
+            "end": 26,
+            "quote": "申请换领居民身份证期间，未超期的旧身份证可以继续使用",
+            "context_sha256": "ad4b924450257d443fd559557a9d25d5ec16269ca80d68f85246daec07c6a44c",
+            "title": "南京公安换证问答",
+            "published_at": "2025-05-29",
+            "effective_from": null,
+            "full_context": "申请换领居民身份证期间，未超期的旧身份证可以继续使用。"
+          },
+          {
+            "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+            "source_region": "national",
+            "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+            "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+            "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+            "locator": "正文段落43",
+            "start": 90,
+            "end": 102,
+            "quote": "领取新证时，必须交回原证",
+            "context_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c",
+            "title": "北京交管公布的2011年修正居民身份证法",
+            "published_at": null,
+            "effective_from": "2012-01-01",
+            "full_context": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。"
+          }
+        ],
+        "source_ids": [
+          "LAW-ID-BJ-TRAFFIC-2011",
+          "NJ-POLICE-FAQ-2025"
+        ],
+        "proof": {
+          "kind": "join",
+          "rule_id": "TEMPORAL-COMPOSE",
+          "inputs": [
+            {
+              "triple": [
+                "old_card",
+                "usable_during",
+                "processing"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-ae01b9bb558dc3bf3f50"
+              }
+            },
+            {
+              "triple": [
+                "processing",
+                "precedes",
+                "collection"
+              ],
+              "proof": {
+                "kind": "axiom",
+                "basis": "workflow_phase_order_not_policy_claim"
+              }
+            },
+            {
+              "triple": [
+                "old_card",
+                "return_at",
+                "collection"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-cfeac57c3d7a0d5ae217"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "triple": [
+          "old_card",
+          "usable_until_return",
+          "collection"
+        ],
+        "evidence": [
+          {
+            "source_id": "NJ-OLD-CARD-2025",
+            "source_region": "南京市",
+            "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+            "original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+            "segment_id": "NJ-OLD-CARD-2025-P4",
+            "locator": "正文段落4",
+            "start": 2,
+            "end": 28,
+            "quote": "申请换领居民身份证期间，未超期的旧身份证可以继续使用",
+            "context_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373",
+            "title": "南京市政府旧证使用答复",
+            "published_at": "2025-12-09",
+            "effective_from": null,
+            "full_context": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。"
+          },
+          {
+            "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+            "source_region": "national",
+            "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+            "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+            "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P12",
+            "locator": "正文段落12",
+            "start": 100,
+            "end": 112,
+            "quote": "领取新证时，必须交回原证",
+            "context_sha256": "aca3b150ddb9c230dcfdfe428be55ce30b89b98b119d594c21936cad15d2533a",
+            "title": "北京交管公布的2011年修正居民身份证法",
+            "published_at": null,
+            "effective_from": "2012-01-01",
+            "full_context": "二、将第十一条第一款修改为:“国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。"
+          }
+        ],
+        "source_ids": [
+          "LAW-ID-BJ-TRAFFIC-2011",
+          "NJ-OLD-CARD-2025"
+        ],
+        "proof": {
+          "kind": "join",
+          "rule_id": "TEMPORAL-COMPOSE",
+          "inputs": [
+            {
+              "triple": [
+                "old_card",
+                "usable_during",
+                "processing"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-03d6c921f633743bfdf0"
+              }
+            },
+            {
+              "triple": [
+                "processing",
+                "precedes",
+                "collection"
+              ],
+              "proof": {
+                "kind": "axiom",
+                "basis": "workflow_phase_order_not_policy_claim"
+              }
+            },
+            {
+              "triple": [
+                "old_card",
+                "return_at",
+                "collection"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-27c02950e85ba5cdb3d7"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "triple": [
+          "old_card",
+          "usable_until_return",
+          "collection"
+        ],
+        "evidence": [
+          {
+            "source_id": "NJ-OLD-CARD-2025",
+            "source_region": "南京市",
+            "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+            "original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+            "segment_id": "NJ-OLD-CARD-2025-P4",
+            "locator": "正文段落4",
+            "start": 2,
+            "end": 28,
+            "quote": "申请换领居民身份证期间，未超期的旧身份证可以继续使用",
+            "context_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373",
+            "title": "南京市政府旧证使用答复",
+            "published_at": "2025-12-09",
+            "effective_from": null,
+            "full_context": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。"
+          },
+          {
+            "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+            "source_region": "national",
+            "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+            "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+            "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+            "locator": "正文段落43",
+            "start": 90,
+            "end": 102,
+            "quote": "领取新证时，必须交回原证",
+            "context_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c",
+            "title": "北京交管公布的2011年修正居民身份证法",
+            "published_at": null,
+            "effective_from": "2012-01-01",
+            "full_context": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。"
+          }
+        ],
+        "source_ids": [
+          "LAW-ID-BJ-TRAFFIC-2011",
+          "NJ-OLD-CARD-2025"
+        ],
+        "proof": {
+          "kind": "join",
+          "rule_id": "TEMPORAL-COMPOSE",
+          "inputs": [
+            {
+              "triple": [
+                "old_card",
+                "usable_during",
+                "processing"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-03d6c921f633743bfdf0"
+              }
+            },
+            {
+              "triple": [
+                "processing",
+                "precedes",
+                "collection"
+              ],
+              "proof": {
+                "kind": "axiom",
+                "basis": "workflow_phase_order_not_policy_claim"
+              }
+            },
+            {
+              "triple": [
+                "old_card",
+                "return_at",
+                "collection"
+              ],
+              "proof": {
+                "kind": "source_candidate",
+                "candidate_id": "REL-cfeac57c3d7a0d5ae217"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "limits": [
+      "真实公开原文的开发推导；不是人工业务批准或独立评测。",
+      "缺少来源、条件或确认时不能直接发布为正式办事承诺。"
+    ]
+  },
+  "duration_ms": 369228.82,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 3,
+    "model_attempt_control": 12,
+    "model_output_thinking": 322,
+    "parse": 3,
+    "tool": 6,
+    "subagent_start": 2,
+    "execution_logs": 3,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "token_count": 1,
+    "final_answer": 1
+  },
+  "campaign": {
+    "active": null,
+    "attempts": [
+      {
+        "external_failure": false,
+        "finished_at": 1792424038.6543748,
+        "id": "native-1dc4befc66994173abe2f06fcb802808",
+        "passed": true,
+        "repair_note": "Replace observed placeholder-copy failure with one complete action, parse actual JSON-text MCP open return and bind downstream task IDs; one independent request only",
+        "started_at": 1792423670.5216458
+      }
+    ],
+    "closed": true
+  },
+  "model_attempt_begins": 6,
+  "model_attempt_rollbacks": 3,
+  "main_code_actions": 1,
+  "code_sha256": {
+    "scripts/verify_matter_native.py": "430515fb8c3e291e0c5955833c8526bc95e9a55229c7e5440476fba47de017ee",
+    "scripts/provision_matter_native.py": "0fb25a2908bdbe874a62857d27a61feaa18636bebcf5b5d414494c480fdc6b94",
+    "config/skills/govmatter-source-proof-dataflow/SKILL.md": "950e3bc4f27dea226d13447ee511f5a8c8b61468c90faf0baa0572c6a5e1d82d"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "run_id": "20261016T140543466951Z",
+  "captured_at": "2026-10-16T14:05:43.466951+00:00",
+  "objective": "question-topic QLoRA smoke experiment",
+  "training_completed": false,
+  "optimizer_steps": 0,
+  "production_model_changed": false,
+  "uploaded_data": false,
+  "independent_accuracy": false,
+  "business_rules_trained": false,
+  "stage": "preflight_completed",
+  "source_commit": "4d0a31e9a7eb9db2847c4eea0a0e48a8063f29c8",
+  "dataset": {
+    "train": {
+      "sha256": "a34b195a1cc0603b336d62d0d4cd1fe8adf0c4a22ab09c249b60a01407034f09",
+      "rows": 23,
+      "topics": {
+        "materials_identity": 7,
+        "process_channels": 3,
+        "fees_time": 1,
+        "boundaries_evidence": 12
+      }
+    },
+    "diagnostic": {
+      "sha256": "171d991922c065129f4533228a3474932e8eaa2c0c5aee665a03a41264bdde19",
+      "rows": 7,
+      "topics": {
+        "materials_identity": 2,
+        "fees_time": 1,
+        "process_channels": 1,
+        "boundaries_evidence": 3
+      }
+    }
+  },
+  "model_id": "Qwen/Qwen3-4B",
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "packages": {
+    "torch": "2.9.1+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.1",
+    "accelerate": "1.12.0",
+    "bitsandbytes": "0.50.2",
+    "safetensors": "0.7.0"
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "total_bytes": 8546484224,
+    "free_bytes_before": 7281311744,
+    "capability": [
+      12,
+      0
+    ],
+    "torch_cuda": "12.8"
+  },
+  "elapsed_seconds": 12.859,
+  "exit_code": 0
+}

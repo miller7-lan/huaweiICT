@@ -1,0 +1,85 @@
+{
+  "captured_at": "2026-10-15T10:51:01.015540+00:00",
+  "scope": "real Nexent model orchestration; synthetic website and replayed Jev responses",
+  "real_jev_inference": false,
+  "official_website_verified": false,
+  "agents": {
+    "extractor": 7,
+    "reviewer": 6,
+    "controller": 8
+  },
+  "versions": {
+    "extractor": 2,
+    "reviewer": 2,
+    "controller": 2
+  },
+  "passed": false,
+  "run": {
+    "conversation_id": 150,
+    "deadline": 1792062091.7361367,
+    "fence": 2,
+    "finished_at": 1792061549.930876,
+    "id": "292333ec583f46cfa3fe41da3348caef",
+    "jobs": [
+      "affdb90c8dc34c1f8877750009667f3c"
+    ],
+    "owner": "83538fd5ccad403db538e9656484913a",
+    "started_at": 1792061491.7361367,
+    "status": "NATIVE_EXECUTION_FAILED"
+  },
+  "active_documents": null,
+  "active_rules": null,
+  "candidate_count": 0,
+  "claims_count": 0,
+  "provider": "synthetic_contract_replay_not_jev",
+  "trace_sha256": "d474b2ce2b7c1bc804a8117ceea9669646a1069479a6404a25955ea6ae11c08f",
+  "tool_events": [
+    {
+      "name": "read_skill_md",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "name": "govkb_get_change_batch",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "name": "govkb_classify_changes",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "name": "govkb_get_change_batch",
+      "depth": 1,
+      "agent_id": 6
+    },
+    {
+      "name": "govkb_get_change_batch",
+      "depth": 1,
+      "agent_id": 6
+    },
+    {
+      "name": "govkb_get_change_batch",
+      "depth": 1,
+      "agent_id": 6
+    },
+    {
+      "name": "govkb_finish_run",
+      "depth": null,
+      "agent_id": null
+    }
+  ],
+  "runtime_errors": [
+    "max_steps_reached"
+  ],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_get_change_batch",
+    "govkb_classify_changes",
+    "govkb_get_change_batch",
+    "govkb_get_change_batch",
+    "govkb_get_change_batch",
+    "govkb_finish_run"
+  ]
+}

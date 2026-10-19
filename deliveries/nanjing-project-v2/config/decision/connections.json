@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "inference_enabled": false,
+  "form_verifier_enabled": false,
+  "data_class": "synthetic",
+  "nexent_config_url": "http://127.0.0.1:5010",
+  "nexent_runtime_url": "http://127.0.0.1:5014",
+  "mcp_url": "http://host.docker.internal:8780/mcp/",
+  "roles": {
+    "query_controller": {
+      "transport": "deepseek",
+      "model": "deepseek-flash",
+      "credential_ref": "env:DEEPSEEK_API_KEY"
+    },
+    "retriever": {
+      "transport": "deepseek",
+      "model": "deepseek-flash",
+      "credential_ref": "env:DEEPSEEK_API_KEY"
+    },
+    "query_verifier": {
+      "transport": "deepseek",
+      "model": "deepseek-flash",
+      "credential_ref": "env:DEEPSEEK_API_KEY"
+    },
+    "update_controller": {
+      "transport": "deepseek",
+      "model": "deepseek-flash",
+      "credential_ref": "env:DEEPSEEK_API_KEY"
+    },
+    "extractor": {
+      "transport": "deepseek",
+      "model": "deepseek-flash",
+      "credential_ref": "env:DEEPSEEK_API_KEY"
+    },
+    "update_verifier": {
+      "transport": "deepseek",
+      "model": "deepseek-flash",
+      "credential_ref": "env:DEEPSEEK_API_KEY"
+    },
+    "jev": {
+      "transport": "jev",
+      "model": "jev-1.13.0",
+      "credential_ref": null
+    }
+  },
+  "note": "All six language-model roles use cloud DeepSeek official API. No automatic local fallback. Inference remains disabled until credentials and native dispatch are verified; Jev is independent.",
+  "deepseek": {
+    "provider": "official",
+    "base_url": "https://api.deepseek.com/v1",
+    "model": "deepseek-flash",
+    "credential_ref": "env:DEEPSEEK_API_KEY"
+  }
+}

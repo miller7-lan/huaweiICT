@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "kind": "authentic_source_pair_with_derived_test_excerpts",
+  "sources": [
+    {
+      "role": "old",
+      "source_id": "HN-MEASURES-2024-JY",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-71014e82351747c52e933f86",
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "original_bytes": 36086,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5",
+      "page_publication_date": "2024-10-17",
+      "legal_effective_date_established": false,
+      "original_file": "官方网页原件\\01_旧文件_2024年身份证办理时限.html",
+      "derived_pdf": "01_旧文件_2024年身份证办理时限.pdf",
+      "derived_text": "纯文本导入\\01_旧文件_2024年身份证办理时限.txt",
+      "artifact_kind": "derived_test_excerpt_not_official_original_pdf",
+      "pages": 1
+    },
+    {
+      "role": "new",
+      "source_id": "HN-MEASURES-2026",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "original_bytes": 17887,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e",
+      "page_publication_date": "2026-05-05",
+      "legal_effective_date_established": false,
+      "original_file": "官方网页原件\\02_新文件_2026年身份证办理时限.html",
+      "derived_pdf": "02_新文件_2026年身份证办理时限.pdf",
+      "derived_text": "纯文本导入\\02_新文件_2026年身份证办理时限.txt",
+      "artifact_kind": "derived_test_excerpt_not_official_original_pdf",
+      "pages": 1
+    }
+  ],
+  "package_file": "河南身份证时限_新旧文件更新测试包_20261019.zip",
+  "package_sha256": "e01f2d7b69e833810aecfcd37845c84578e90043b5433146cafc23254c09467b",
+  "package_bytes": 74899,
+  "checks": {
+    "two_official_original_hashes_match": true,
+    "two_complete_first_clauses_match_archive": true,
+    "both_derived_pdfs_are_one_page": true,
+    "pdf_text_extraction_preserves_old_new_values": true,
+    "zip_crc_passed": true,
+    "main_database_byte_hash_unchanged": true,
+    "both_rendered_pages_visually_reviewed": true
+  },
+  "main_database_sha256": "2d0e05907286debf70fc6bd5cfd39bc183f7e74fd9804e21bebed0c6fb3a6195",
+  "actual_model_runs": 0,
+  "same_real_url": false,
+  "real_remote_update_tested": false,
+  "business_update_acceptance_executed": false,
+  "visual_pdf_review_completed": true,
+  "scope": "Package/source integrity checks only. Seven test questions and expected results are not executed model results.",
+  "render_tool": "Poppler pdftoppm, both one-page PDFs visually reviewed",
+  "publication": {
+    "repository_package_path": "data/knowledge/update-test-pairs/henan-id-time-20261019.zip",
+    "repository_extracted_path": "data/knowledge/update-test-pairs/henan-id-time-20261019",
+    "zip_and_extracted_files_match_local_package": true,
+    "manifest_file_hashes_verified": true,
+    "zip_crc_rechecked": true
+  }
+}

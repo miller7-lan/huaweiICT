@@ -1,0 +1,146 @@
+{
+  "captured_at": "2026-10-16T03:28:49.479893+00:00",
+  "baseline_run_id": "20261016T032417Z-14d9b3d8",
+  "corpus_sha256": "ecaddaeab4f1676db52439d3d38e5ee988bb9b8824d237ed3011c5295a47ac41",
+  "reference_sha256": "b27fee85498093dfae5e39b27b81b14f415c7a1e12bbbbc8f2e78b1bf3181d1f",
+  "corpus_documents": 9,
+  "corpus_chunks": 71,
+  "baseline_mean_locator_coverage": 0.45454545454545453,
+  "experimental_methods": [
+    {
+      "method": "normalized_multifield_overlap",
+      "mean": 0.3484848484848485,
+      "rows": [
+        {
+          "id": "KQ01",
+          "covered": 2,
+          "targets": 4
+        },
+        {
+          "id": "KQ03",
+          "covered": 1,
+          "targets": 2
+        },
+        {
+          "id": "KQ04",
+          "covered": 1,
+          "targets": 3
+        },
+        {
+          "id": "KQ05",
+          "covered": 0,
+          "targets": 1
+        },
+        {
+          "id": "KQ07",
+          "covered": 2,
+          "targets": 2
+        },
+        {
+          "id": "KQ10",
+          "covered": 0,
+          "targets": 1
+        },
+        {
+          "id": "KQ12",
+          "covered": 0,
+          "targets": 2
+        },
+        {
+          "id": "KQ13",
+          "covered": 3,
+          "targets": 6
+        },
+        {
+          "id": "KQ14",
+          "covered": 0,
+          "targets": 2
+        },
+        {
+          "id": "KQ15",
+          "covered": 1,
+          "targets": 1
+        },
+        {
+          "id": "KQ18",
+          "covered": 0,
+          "targets": 4
+        }
+      ]
+    },
+    {
+      "method": "idf_cosine_multifield",
+      "mean": 0.13636363636363635,
+      "rows": [
+        {
+          "id": "KQ01",
+          "covered": 2,
+          "targets": 4
+        },
+        {
+          "id": "KQ03",
+          "covered": 0,
+          "targets": 2
+        },
+        {
+          "id": "KQ04",
+          "covered": 0,
+          "targets": 3
+        },
+        {
+          "id": "KQ05",
+          "covered": 0,
+          "targets": 1
+        },
+        {
+          "id": "KQ07",
+          "covered": 1,
+          "targets": 2
+        },
+        {
+          "id": "KQ10",
+          "covered": 0,
+          "targets": 1
+        },
+        {
+          "id": "KQ12",
+          "covered": 0,
+          "targets": 2
+        },
+        {
+          "id": "KQ13",
+          "covered": 3,
+          "targets": 6
+        },
+        {
+          "id": "KQ14",
+          "covered": 0,
+          "targets": 2
+        },
+        {
+          "id": "KQ15",
+          "covered": 0,
+          "targets": 1
+        },
+        {
+          "id": "KQ18",
+          "covered": 0,
+          "targets": 4
+        }
+      ]
+    }
+  ],
+  "method_specs": {
+    "normalization": "Whitespace removal, lowercase and overlapping character bigram sets. Experimental document field is title + locator + original chunk text.",
+    "normalized_multifield_overlap": "Score = number of shared query/document bigrams.",
+    "idf_cosine_multifield": "IDF(term)=ln(1+N/df(term)); score=sum(IDF^2 for shared terms)/sqrt(sum(IDF^2 for document terms)). Query denominator is constant within each question and omitted."
+  },
+  "experiments_are_not_production_rankers": true,
+  "production_ranking_changed": false,
+  "same_questions_reused_for_development": true,
+  "formal_retrieval_recall_measured": false,
+  "human_review_completed": false,
+  "model_requests": 0,
+  "official_publication_performed": false,
+  "conclusion": "Both exploratory scores reduce provisional locator coverage on the same reused development cases. They are not deployed. More lexical fields or rarity weighting alone are not evidence of improvement."
+}

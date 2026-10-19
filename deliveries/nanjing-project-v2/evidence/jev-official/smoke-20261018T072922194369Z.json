@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-10-18T07:29:21.973346+00:00",
+  "scope": "single-request official Jev connectivity and elementary synthetic support smoke; not independent business accuracy",
+  "provider": "jev",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "model": "jev-1.13.0",
+  "data_class": "synthetic",
+  "max_http_calls": 1,
+  "other_model_calls": 0,
+  "model_training_performed": false,
+  "business_rules_published": false,
+  "workflow_inference_enabled": false,
+  "known_success_cost_usd": null,
+  "cost_complete": false,
+  "cost_scope": "Official token usage only; monetary cost unknown. Verify TypeSafe billing.",
+  "input_sha256": "bdaa260f47686cb97a900f1a17d524e0491e3fd1ba42634d6d1e6f440807b236",
+  "status": "failed",
+  "error_code": "UPSTREAM_HTTP_ERROR",
+  "connectivity_passed": false,
+  "actual_remote_model_calls": null,
+  "receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 517,
+      "status": "error",
+      "cost_usd": null,
+      "http_status": 451,
+      "error_code": "UPSTREAM_HTTP_ERROR",
+      "duration_ms": 220.68
+    }
+  ],
+  "source_sha256": {
+    "src/gov_mcp/classification.py": "565f9a5be46987ca031ef1c98533846e682f1bfa678947f90e9afb759cb3fc15"
+  },
+  "http_attempts": 1,
+  "successful_model_responses": 0,
+  "model_execution_confirmed": false,
+  "execution_scope_note": "One HTTP inference request was attempted and received 451. No model response was returned; execution by the model and billing cannot be confirmed."
+}

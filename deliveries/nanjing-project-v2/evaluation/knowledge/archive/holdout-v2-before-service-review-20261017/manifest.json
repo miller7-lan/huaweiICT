@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "kind": "immutable_unfrozen_v2_draft_provenance_archive",
+  "captured_at": "2026-10-16T17:07:47.203231+00:00",
+  "source_commit": "cad63175ba610148bed43b4d1dfb3627b545408e",
+  "byte_scope": "Exact Git blob bytes at source_commit; parsed records equal the unchanged active v2. The captured worktree hash is recorded separately for checkout line-ending differences.",
+  "files": [
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-business-reference-draft.json",
+      "source_path": "evaluation/knowledge/holdout-business-reference-draft.json",
+      "sha256": "a4efa2b9cc0959e9036d5b889b72ad4c37ea6fa3386d6bed654dffd9878dda14",
+      "git_blob_bytes_sha256": "a4efa2b9cc0959e9036d5b889b72ad4c37ea6fa3386d6bed654dffd9878dda14",
+      "parsed_content_equals_commit": true,
+      "captured_worktree_sha256": "33ff7a222fabd4c29200a8c21b8d06f95f20f10b82de63f2b71c2a5d26c931c7"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-business-questions-draft.json",
+      "source_path": "evaluation/knowledge/holdout-business-questions-draft.json",
+      "sha256": "0c31c4237a70f31bdc8cf44a44af4d1f55f52a9a3ddff052f519bbe6804ddc27",
+      "git_blob_bytes_sha256": "0c31c4237a70f31bdc8cf44a44af4d1f55f52a9a3ddff052f519bbe6804ddc27",
+      "parsed_content_equals_commit": true,
+      "captured_worktree_sha256": "00080e7db0b63343cc9bb766ff9ea5c43a475d3829cc9240e2062ac09fa99d50"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-semantic-screening.json",
+      "source_path": "evaluation/knowledge/holdout-semantic-screening.json",
+      "sha256": "fec57195066c633f5c31fe5be17ea4d45f1f50b30bf63afe6a6d7764f6e2c21e",
+      "git_blob_bytes_sha256": "fec57195066c633f5c31fe5be17ea4d45f1f50b30bf63afe6a6d7764f6e2c21e",
+      "parsed_content_equals_commit": true,
+      "captured_worktree_sha256": "8b2b0af91f5afe09b886c75b2ba38a46cebd6a529ebf04d1e614f09df13f07c1"
+    }
+  ],
+  "reason": "D26 service-source selection and attributed review changed; preserve exact v2 records before any future binding migration. The active v2 is now stale and cannot be frozen or executed as acceptance.",
+  "semantic_rewrite_performed": false,
+  "reference_frozen": false,
+  "independence_certified": false,
+  "new_model_runs": 0,
+  "content_sha256": "d12ea80a5a34dd0e302bd23b46347a9bb7a8804102f47cb3a2c2063ba72947da"
+}

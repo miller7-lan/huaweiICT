@@ -1,0 +1,57 @@
+{
+  "status": "PASSED",
+  "explicit_tool_fixtures": true,
+  "real_model_calls": 0,
+  "real_mcp_network_calls": 0,
+  "real_child_agent_invocations": 0,
+  "installed_adapter_executor_used": true,
+  "checks": [
+    {
+      "fixture": "valid_json_text_dataflow",
+      "passed": true,
+      "calls": [
+        "skill",
+        "govmatter_open",
+        "delegate_retriever",
+        "delegate_verifier",
+        "govmatter_state",
+        "govmatter_finalize"
+      ]
+    },
+    {
+      "fixture": "blocked_open",
+      "passed": true,
+      "calls": [
+        "skill",
+        "govmatter_open"
+      ]
+    },
+    {
+      "fixture": "child_prose_only",
+      "passed": true,
+      "calls": [
+        "skill",
+        "govmatter_open",
+        "delegate_retriever",
+        "delegate_verifier",
+        "govmatter_state"
+      ]
+    },
+    {
+      "fixture": "pause_before_final",
+      "passed": true,
+      "calls": [
+        "skill",
+        "govmatter_open",
+        "delegate_retriever",
+        "delegate_verifier",
+        "govmatter_state",
+        "govmatter_finalize"
+      ]
+    }
+  ],
+  "action_sha256": "0245e405e795b9164afc03293104eb582f564174da3c437be45fa33f17ef24a1",
+  "human_business_review": false,
+  "formal_publication": false,
+  "independent_evaluation": false
+}

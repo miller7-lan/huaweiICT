@@ -1,0 +1,126 @@
+{
+  "captured_at": "2026-10-15T11:11:42.736982+00:00",
+  "scope": "real Nexent model orchestration; synthetic website and replayed Jev responses",
+  "real_jev_inference": false,
+  "official_website_verified": false,
+  "agents": {
+    "extractor": 7,
+    "reviewer": 6,
+    "controller": 8
+  },
+  "versions": {
+    "extractor": 7,
+    "reviewer": 7,
+    "controller": 7
+  },
+  "passed": true,
+  "run": {
+    "conversation_id": 155,
+    "deadline": 1792063311.3495283,
+    "fence": 7,
+    "finished_at": 1792062751.4727802,
+    "id": "33665dff7e864dc1b55a1b6e002c8e2a",
+    "jobs": [
+      "b8ce72f37991495fa5ffc4ee983650dd"
+    ],
+    "owner": "c8f8752b465a4a2bbc9fb890a2f42566",
+    "started_at": 1792062711.3495283,
+    "status": "completed"
+  },
+  "active_documents": "9be37bacb608bf00e0a20f95079c8fc20a3c8a082aac2e823c0bd64c6c0807df",
+  "active_rules": "2f040e1accc2818e51dd58f9ef3da95d8af05f13869763bfdfb03a804782036e",
+  "candidate_count": 3,
+  "claims_count": 14,
+  "provider": "synthetic_contract_replay_not_jev",
+  "trace_sha256": "21f8419d9a49249bb3e17e3bc4fad0c3cb0c8db0ce39dac7f4d3aedac4f52480",
+  "tool_events": [
+    {
+      "type": "tool",
+      "name": "read_skill_md",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "type": "tool",
+      "name": "govkb_get_change_batch",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "type": "tool",
+      "name": "govkb_classify_changes",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "type": "tool",
+      "name": "govkb_get_change_batch",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "type": "subagent_start",
+      "name": null,
+      "depth": 1,
+      "agent_id": 7
+    },
+    {
+      "type": "tool",
+      "name": "govkb_submit_candidates",
+      "depth": 1,
+      "agent_id": 7
+    },
+    {
+      "type": "subagent_end",
+      "name": null,
+      "depth": 1,
+      "agent_id": 7
+    },
+    {
+      "type": "tool",
+      "name": "govkb_get_change_batch",
+      "depth": null,
+      "agent_id": null
+    },
+    {
+      "type": "subagent_start",
+      "name": null,
+      "depth": 1,
+      "agent_id": 6
+    },
+    {
+      "type": "tool",
+      "name": "govkb_validate_candidates",
+      "depth": 1,
+      "agent_id": 6
+    },
+    {
+      "type": "subagent_end",
+      "name": null,
+      "depth": 1,
+      "agent_id": 6
+    },
+    {
+      "type": "tool",
+      "name": "govkb_finish_run",
+      "depth": null,
+      "agent_id": null
+    }
+  ],
+  "runtime_errors": [],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_get_change_batch",
+    "govkb_classify_changes",
+    "govkb_get_change_batch",
+    "govkb_submit_candidates",
+    "govkb_get_change_batch",
+    "govkb_validate_candidates",
+    "govkb_finish_run"
+  ],
+  "child_call_ids": [
+    7,
+    6
+  ],
+  "children_completed_in_order": true
+}

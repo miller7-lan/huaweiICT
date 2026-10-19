@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-10-16T11:49:56.761280+00:00",
+  "passed": true,
+  "checks": {
+    "assessment_hash_matches": true,
+    "truthful_ai_and_no_release_claim": true,
+    "source_originals_and_latest_revisions_match": true,
+    "all_unicode_spans_and_parent_hashes_match": true,
+    "same_source_spans_survive_restore": true,
+    "new_source_acquired_and_monitored_normally": true,
+    "new_source_classification_remains_a_proposal": true,
+    "source_branches_and_operators_stay_separate": true,
+    "no_approval_or_publication_created": true,
+    "policy_and_development_registry_preserved": true,
+    "prior_model_results_and_standards_preserved": true,
+    "live_read_only_service_retains_stop": true
+  },
+  "assessment_sha256": "19cc2d4fa537f49ddee63b8eb51ee5e74816b7eeaba7857c5b455cc65ba13b08",
+  "source_count": 4,
+  "comparison_records": 7,
+  "anchors": 10,
+  "canonical_counts": {
+    "sites": 30,
+    "documents": 22,
+    "revisions": 64,
+    "chunks": 296,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 25,
+    "latest_chunks": 127
+  },
+  "new_source_jobs": [
+    {
+      "id": 25,
+      "state": "done",
+      "attempts": 1,
+      "error": null
+    }
+  ],
+  "business_accuracy_measured": false,
+  "scope": "Source/branch provenance and restored literal spans only; no material checklist, current Erqi applicability, release approval or independent business acceptance."
+}

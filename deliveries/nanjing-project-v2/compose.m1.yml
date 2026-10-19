@@ -1,0 +1,26 @@
+services:
+  govx-blank-mcp:
+    build:
+      context: .
+      args:
+        PYTHON_IMAGE: ${GOV_MCP_PYTHON_IMAGE:-python:3.11-slim}
+    container_name: govx-blank-mcp
+    restart: unless-stopped
+    command: ["python", "-m", "gov_mcp.extension_server", "--host", "0.0.0.0", "--port", "8766", "--runtime", "/runtime"]
+    ports:
+      - "127.0.0.1:8766:8766"
+    env_file:
+      - .runtime/m1/mcp.env
+    volumes:
+      - ./.runtime/m1/mcp:/runtime
+    networks:
+      - nexent
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8766/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+networks:
+  nexent:
+    external: true
+    name: nexent_network

@@ -1,0 +1,100 @@
+{
+  "captured_at": "2026-10-11T08:06:33.213177+00:00",
+  "scope": "read-only provisioning verification; no signup, signin, inference or acceptance run performed by the agent",
+  "test_account_role_counts": {
+    "ADMIN": 1,
+    "USER": 2,
+    "DEV": 1
+  },
+  "models": [
+    {
+      "display_name": "gov-qwen3-4b:ctx8192-v1",
+      "context_window_tokens": 8192,
+      "max_output_tokens": 1024,
+      "temperature": 0.1,
+      "concurrency_limit": 1,
+      "extra_params": {
+        "__custom__": {
+          "reasoning_effort": "none"
+        },
+        "enable_thinking": false
+      }
+    },
+    {
+      "display_name": "gov-qwen3-8b:ctx8192-v1",
+      "context_window_tokens": 8192,
+      "max_output_tokens": 1024,
+      "temperature": 0.1,
+      "concurrency_limit": 1,
+      "extra_params": {
+        "__custom__": {
+          "reasoning_effort": "none"
+        },
+        "enable_thinking": false
+      }
+    }
+  ],
+  "published_agent_configuration_verified": {
+    "citizen_assistant": true,
+    "staff_assistant": true,
+    "gov_coordinator": true
+  },
+  "published_versions": {
+    "citizen_assistant": 2,
+    "staff_assistant": 2,
+    "gov_coordinator": 2
+  },
+  "active_model": "gov-qwen3-4b:ctx8192-v1",
+  "role_map_values": [
+    "citizen",
+    "citizen",
+    "staff"
+  ],
+  "mcp_connection_configured": true,
+  "services": {
+    "config": true,
+    "runtime": true,
+    "mcp": true,
+    "ui": true,
+    "container_ollama": true
+  },
+  "business_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  },
+  "provisioning_verified": true,
+  "agent_inference_snapshots": {
+    "citizen_assistant": {
+      "version_no": 2,
+      "temperature": 0.1,
+      "extra_params": {
+        "__custom__": {
+          "reasoning_effort": "none"
+        }
+      },
+      "platform_thinking_enabled": false
+    },
+    "staff_assistant": {
+      "version_no": 2,
+      "temperature": 0.1,
+      "extra_params": {
+        "__custom__": {
+          "reasoning_effort": "none"
+        }
+      },
+      "platform_thinking_enabled": false
+    },
+    "gov_coordinator": {
+      "version_no": 2,
+      "temperature": 0.1,
+      "extra_params": {
+        "__custom__": {
+          "reasoning_effort": "none"
+        }
+      },
+      "platform_thinking_enabled": false
+    }
+  },
+  "normalization_note": "The pinned upstream normalizer removes canonical reasoning fields for model aliases without a catalog capability. With no canonical thinking/effort/budget fields, platform thinking is disabled; __custom__.reasoning_effort=none remains for the provider. Runtime output still requires benchmark verification."
+}

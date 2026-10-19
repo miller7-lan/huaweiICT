@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "request_id": "nanjing-law-gazette-ocr-v1",
+  "status": "awaiting_teammate_output",
+  "document_id": "law-gazette-2011-pages651-654",
+  "source_url": "https://www.pdsxcq.gov.cn/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf",
+  "original_repository_path": "data/real-matter-closure/nanjing/review-pack-v1/originals/law-gazette-2011-pages651-654.pdf",
+  "input_sha256": "95e8decc4bb5aecb5324b7cea311659d26245998b0c6d24049577c8e267220bd",
+  "input_bytes": 2453929,
+  "review_package_manifest_sha256": "b7c0d69295c8b78bc3a22a9f06c666c177bbece20970a581e3618b1228b1bf7e",
+  "pdf_page_count": 4,
+  "requested_pdf_pages": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "language": "zh-Hans-CN",
+  "response_contract": {
+    "validator": "gov_mcp.knowledge_pdf.validate_ocr",
+    "schema": 1,
+    "engine": "windows.media.ocr",
+    "confidence_available": false,
+    "requires_visual_review": true,
+    "page_fields": [
+      "page",
+      "text",
+      "line_count",
+      "width",
+      "height"
+    ],
+    "text": "verbatim recognized text; no inferred corrections",
+    "page_numbering": "1-based PDF page order; not printed page labels"
+  },
+  "existing_ai_visual_anchors": [
+    {
+      "pdf_page": 1,
+      "printed_page": 651,
+      "findings": [
+        "公报2011年第7期及2011年10月29日修正题注可读",
+        "修改决定自2012年1月1日起施行"
+      ]
+    },
+    {
+      "pdf_page": 2,
+      "printed_page": 652,
+      "findings": [
+        "第十一条：有效期满应换领、领新证时必须交回原证",
+        "第十二条：登记表提交起六十日、交通不便延长不超过三十日",
+        "办理期间急需可申请临时居民身份证，具体办法另定"
+      ]
+    }
+  ],
+  "html_crosscheck_source_id": "LAW-ID-BJ-TRAFFIC-2011",
+  "limits": {
+    "ocr_executed_by_this_handoff": false,
+    "ocr_response_received": false,
+    "human_business_review": false,
+    "formal_business_publication": false,
+    "unknown_or_failed_pages_must_stop_acceptance": true,
+    "glyphs_dates_and_legal_rules_require_review": true
+  }
+}

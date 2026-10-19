@@ -1,0 +1,48 @@
+{
+  "execution_status": "not_executed",
+  "cases": [
+    {
+      "id": "OLD_BASELINE",
+      "stage": "old_only_enabled_under_test_environment_gates",
+      "question": "河南省本省户籍居民办理身份证，从受理到领证需要多长时间？",
+      "expected": "引用2024旧资料，25个自然日"
+    },
+    {
+      "id": "NEW_PENDING",
+      "stage": "new_imported_not_reviewed",
+      "question": "新资料是否继承旧文件批准？",
+      "expected": "新增/变更待复核，不继承旧批准；按系统待复核策略响应"
+    },
+    {
+      "id": "NEW_CURRENT",
+      "stage": "new_review_and_publication_completed_in_test_environment",
+      "question": "河南省本省户籍居民办理身份证，从受理到领证需要多长时间？",
+      "expected": "引用2026新资料，15个工作日；保留本省户籍和受理至领证范围"
+    },
+    {
+      "id": "EXAM_SCOPE",
+      "stage": "new_review_and_publication_completed_in_test_environment",
+      "question": "所有急需用证的人都能5个工作日办好吗？",
+      "expected": "不可推广；5工作日仅中高考特殊时期急需用证考生绿色通道"
+    },
+    {
+      "id": "UNIT_CHANGE",
+      "stage": "new_review_and_publication_completed_in_test_environment",
+      "question": "是不是直接缩短10天？",
+      "expected": "不能直接相减；自然日与工作日单位不同"
+    },
+    {
+      "id": "DATE_SCOPE",
+      "stage": "either",
+      "question": "措施精确从哪天施行？",
+      "expected": "本组未建立精确施行日；页面公布和URL日期不能替代"
+    },
+    {
+      "id": "HISTORY",
+      "stage": "after_update",
+      "question": "还能查到2024旧依据吗？",
+      "expected": "保留历史原件、出处及对应旧值；不宣告整份2024措施全部废止"
+    }
+  ],
+  "actual_model_runs": 0
+}

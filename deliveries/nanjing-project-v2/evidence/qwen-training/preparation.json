@@ -1,0 +1,77 @@
+{
+  "captured_at": "2026-10-16T14:03:44.807914+00:00",
+  "source_commit": "4d0a31e9a7eb9db2847c4eea0a0e48a8063f29c8",
+  "source_branch": "origin/feat/m2-minimal-flow",
+  "frozen_files": {
+    "data/knowledge/candidate-catalog.json": {
+      "sha256": "45cbb68130931a7a6fba3adfaeb86f692258e54aad9333fa324cff21f043f885",
+      "bytes": 116167
+    },
+    "evaluation/knowledge/pilot-business-questions.json": {
+      "sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
+      "bytes": 10254
+    },
+    "evaluation/knowledge/pilot-ai-reference-answers.json": {
+      "sha256": "7d30cd495caddddbb2b321448fbf3463a5bd272e4426a0cf7f863cd5303088a6",
+      "bytes": 44337
+    },
+    "evidence/knowledge-update/retrieved-model-trial-integrity.json": {
+      "sha256": "f21f656d80242aa2639852d8503a1a7129829d309448d9dda13d7c42ef8b1c5c",
+      "bytes": 16475
+    }
+  },
+  "experiment_sha256": "1d48db8252d1a92fd7e639221c2b72084405b6889115cbcdbf57fa8ddcbeee15",
+  "catalog_counts": {
+    "sites": 37,
+    "documents": 33,
+    "revisions": 83,
+    "chunks": 505,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 35,
+    "latest_chunks": 261
+  },
+  "catalog_contains_full_original_bodies": false,
+  "prior_trial": {
+    "run_id": "20261016T102656Z-708c0b41",
+    "actual_case_outputs": 30,
+    "program_pass_count": 13,
+    "ai_semantic_pass_count": 6,
+    "both_program_and_ai_pass_count": 4
+  },
+  "training_objective": "four-way question topic classification; no business answer learning",
+  "dataset": {
+    "train": {
+      "sha256": "a34b195a1cc0603b336d62d0d4cd1fe8adf0c4a22ab09c249b60a01407034f09",
+      "rows": 23,
+      "topics": {
+        "materials_identity": 7,
+        "process_channels": 3,
+        "fees_time": 1,
+        "boundaries_evidence": 12
+      }
+    },
+    "diagnostic": {
+      "sha256": "171d991922c065129f4533228a3474932e8eaa2c0c5aee665a03a41264bdde19",
+      "rows": 7,
+      "topics": {
+        "materials_identity": 2,
+        "fees_time": 1,
+        "process_channels": 1,
+        "boundaries_evidence": 3
+      }
+    }
+  },
+  "related_question_families_separated": true,
+  "human_review_completed": false,
+  "independent_test_set": false,
+  "policy_answers_used_as_training_targets": false,
+  "historical_model_outputs_used_as_training_targets": false,
+  "original_materials_restored": false,
+  "local_worktree_merged_or_reset": false,
+  "limits": [
+    "Only 30 pre-existing development questions; diagnostic results are not independent accuracy.",
+    "Fee and duration each have only one question; coarsened labels do not establish coverage.",
+    "No policy validity or applicability is learned or approved by this experiment."
+  ]
+}

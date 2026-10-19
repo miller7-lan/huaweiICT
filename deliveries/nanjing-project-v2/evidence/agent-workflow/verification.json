@@ -1,0 +1,111 @@
+{
+  "run_id": "20261017T074501837547Z",
+  "mode": "synthetic_engineering_only",
+  "actual_remote_model_calls": 0,
+  "real_site_collection_verified": false,
+  "real_jev_accuracy_verified": false,
+  "new_nexent_workflow_verified": false,
+  "passed": 21,
+  "total": 21,
+  "checks": [
+    {
+      "name": "初始来源为空且 API 保持留空",
+      "passed": true
+    },
+    {
+      "name": "无正文变化不执行模型角色或创建版本",
+      "passed": true
+    },
+    {
+      "name": "未知电子资格不默认要求纸质表",
+      "passed": true
+    },
+    {
+      "name": "主控实际串行调度检索与条件核验",
+      "passed": true
+    },
+    {
+      "name": "依据持续缺失时最多三轮，不产生确定要求",
+      "passed": true
+    },
+    {
+      "name": "Jev 合同回放与实际模型明确区分",
+      "passed": true
+    },
+    {
+      "name": "更新主控、整理、核验子角色均调用程序工具",
+      "passed": true
+    },
+    {
+      "name": "新原文及本地稀疏向量自动可检索",
+      "passed": true
+    },
+    {
+      "name": "未经复核业务知识没有生效",
+      "passed": true
+    },
+    {
+      "name": "变更发现即暂停关联要求，其余继续服务",
+      "passed": true
+    },
+    {
+      "name": "未经发布的新原文仅在候选依据区展示",
+      "passed": true
+    },
+    {
+      "name": "未指定截止时间不是逾期",
+      "passed": true
+    },
+    {
+      "name": "人工指定截止时间，逾期不解除暂停",
+      "passed": true
+    },
+    {
+      "name": "分组发布依赖完整项，保留其他冲突",
+      "passed": true
+    },
+    {
+      "name": "确认新要求后才恢复对应服务",
+      "passed": true
+    },
+    {
+      "name": "同义与本体建议需要确认且不扩大执行器权限",
+      "passed": true
+    },
+    {
+      "name": "历史答案不改写，叠加当前可用性",
+      "passed": true
+    },
+    {
+      "name": "回退保留历史与当前冲突控制",
+      "passed": true
+    },
+    {
+      "name": "来源失效明确失败且保留旧版本",
+      "passed": true
+    },
+    {
+      "name": "重启保留任务、版本、暂停和审计",
+      "passed": true
+    },
+    {
+      "name": "核对与发布分别留存记录",
+      "passed": true
+    }
+  ],
+  "elapsed_seconds": 0.363,
+  "source_sha256": {
+    "src/gov_mcp/decision/__init__.py": "ba3088be2648931059ab618aa11a53b9c38d01026898418bb3d5a3c3535431e9",
+    "src/gov_mcp/decision/adapters.py": "08dbf7d19bb4b5aadac6a29f8018a140382ad7f33ad93ff5b1cd7d206cc704fc",
+    "src/gov_mcp/decision/connections.py": "8e0c023be08a012bb921ffce656b083a9ba2125568fffb4f2aec6c5ad67087ad",
+    "src/gov_mcp/decision/logic.py": "36f17d740c1e4b658927830c42a023a43424affbb60a50ffe3d967c14ced57ab",
+    "src/gov_mcp/decision/models.py": "39a6f1b7b2d4b3b32f2bd9db610bfaaeee68832fbed5a081d49cd961b9096024",
+    "src/gov_mcp/decision/server.py": "2da4714ca1f1cedcee17bc12890ee200f7976902d13fd42bd8fb75437ee10de6",
+    "src/gov_mcp/decision/service.py": "fcb8dd78314bfddf60dd1528b3891ee8048e3c4ea921753c375403238f258cf4",
+    "src/gov_mcp/decision/workflow.py": "0410474b9b18478f0e6f77136df2a047bcf50b81d056f218c6d4e0ef69e9bf40",
+    "src/gov_mcp/decision/workbench.html": "1029b4d2b6d0f2bc7b7850f483c27773dea7af5d09ac1cca82992b150dc04b96",
+    "config/decision/workflow-source.json": "34a0cf9dbf62fd4187766417c0e2d101f980be6ec77bfb64373d3e8344617c56",
+    "config/decision/providers.template.json": "d9747c289d2e098b4d82fce9614e4430997ae74264981f24633f6fb05375ab9c",
+    "scripts/verify_agent_workflow.py": "265a9d305066d60a0de3f76a76c4a326823ac64319dbeb908a49ae131ac12334"
+  }
+}

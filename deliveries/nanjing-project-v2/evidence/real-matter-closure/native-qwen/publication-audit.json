@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-19T14:02:49.076216+00:00",
+  "audited_commit": "44d62656acf119b2b550ee4397897c9e2c72f555",
+  "files_checked": 21,
+  "exact_private_credential_and_email_matches": 0,
+  "credential_format_matches_with_correct_boundary": 0,
+  "initial_pattern_false_positives": 40,
+  "false_positive_cause": "The unbounded sk- pattern matched the suffix inside public task- identifiers. All 40 original matches were task identifier suffixes.",
+  "initial_scan_did_not_gate_shell_commit": true,
+  "complete_committed_content_recheck": "passed",
+  "private_runtime_output_and_tmp_not_committed": true,
+  "remote_branch_sha_verified": "44d62656acf119b2b550ee4397897c9e2c72f555",
+  "formal_business_publication": false
+}

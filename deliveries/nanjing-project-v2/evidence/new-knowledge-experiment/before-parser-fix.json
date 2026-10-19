@@ -1,0 +1,265 @@
+{
+  "status": "INCOMPLETE",
+  "checks": {
+    "two_sources_acquired": false,
+    "beijing_has_real_quotes": false,
+    "nanjing_has_real_quotes": true,
+    "region_isolation": true,
+    "erqi_blocked": true,
+    "other_matter_blocked": true,
+    "business_conclusions_paused": true,
+    "no_review_or_publication": true
+  },
+  "counts": {
+    "sites": 2,
+    "documents": 1,
+    "revisions": 1,
+    "chunks": 3,
+    "reviews": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "snapshot": {
+    "captured_at": "2026-10-18T14:43:37.212968+00:00",
+    "catalog_sha256": "847bcaf8965c84ea16e0469e5758468f521363b6cc36e81478c1dabd1fcc1dd2",
+    "bindings": [
+      {
+        "spec": {
+          "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+          "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+          "region": "南京市",
+          "matter": "resident-id-renewal",
+          "selector": {
+            "id": "con"
+          },
+          "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+          "parsed_paragraph_count": 3,
+          "selected_ordinals": [
+            1,
+            2,
+            3
+          ],
+          "published_at": "2026-01-05",
+          "named_source": "南京公安微信公众号（南京市政府门户转载）",
+          "document_type": "official_service_question_answer",
+          "scope_limits": "南京门户到期换证周期问答，省内/省外户籍分开；考生快速服务无具体天数，不推为所有申请人加急期限，也不作为北京或河南办理时限。"
+        },
+        "document": {
+          "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+          "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+          "revision": "rev-6b0fb8bd7de1638a149dbaa9",
+          "state": "pending_review",
+          "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+          "original_bytes": 29854,
+          "metadata": {
+            "title": "身份证到期换证领取周期问答",
+            "region": "南京市",
+            "matter": "resident-id-renewal",
+            "document_type": "official_service_question_answer",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "scope_confirmed": false,
+            "collection_role": "multiregion_expansion_candidate"
+          },
+          "source_fact_assessment_summary": null,
+          "pdf_extraction": {},
+          "selected_clauses": [
+            {
+              "locator": "正文段落1",
+              "category": "identity",
+              "characters": 24,
+              "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+            },
+            {
+              "locator": "正文段落2",
+              "category": "identity",
+              "characters": 58,
+              "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+            },
+            {
+              "locator": "正文段落3",
+              "category": "procedure",
+              "characters": 52,
+              "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+            }
+          ]
+        },
+        "revision_id": "rev-5f47d58d1eb3f91948672314"
+      }
+    ],
+    "acquisitions": [
+      {
+        "source_id": "BJ-ID-RENEWAL-2025",
+        "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+        "checked_at": "2026-10-18T14:43:37.225184+00:00",
+        "method": "normal_configured_proxy_fixed_https_tls_robots",
+        "requests": [
+          {
+            "url": "https://www.beijing.gov.cn/robots.txt",
+            "http_status": 200,
+            "bytes": 592,
+            "sha256": "3303c722517919618c28ae5acaddb7876fc7916467f21bb2f9ab684f9a35a0fb"
+          },
+          {
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "http_status": 200,
+            "bytes": 31155,
+            "sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda"
+          }
+        ],
+        "http_status": 200,
+        "status": "stopped",
+        "error_type": "ValueError"
+      },
+      {
+        "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+        "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+        "checked_at": "2026-10-18T14:43:42.486735+00:00",
+        "method": "normal_configured_proxy_fixed_https_tls_robots",
+        "requests": [
+          {
+            "url": "https://www.nanjing.gov.cn/robots.txt",
+            "http_status": 200,
+            "bytes": 210,
+            "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+          },
+          {
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "http_status": 200,
+            "bytes": 29854,
+            "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+          }
+        ],
+        "http_status": 200,
+        "status": "ingested_pending_review",
+        "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "catalog_original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "raw_matches_catalog": true,
+        "all_selected_quotes_match": true,
+        "selected_chunks": 3,
+        "revision_id": "rev-5f47d58d1eb3f91948672314"
+      }
+    ],
+    "cloud_calls": 0,
+    "formally_published": false
+  },
+  "queries": [
+    {
+      "case_id": "beijing_materials",
+      "question": "身份证期满换领需要哪些材料？",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [],
+        "region": "北京市",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [],
+        "status": "NO_MATCH"
+      }
+    },
+    {
+      "case_id": "nanjing_cycle",
+      "question": "身份证到期换证，省内和省外户籍分别多久？考生怎么办？",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "revision_id": "rev-5f47d58d1eb3f91948672314",
+            "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "locator": "正文段落1",
+            "quote": "问：身份证到期后换证，需要多长时间才能领取新证？",
+            "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "revision_id": "rev-5f47d58d1eb3f91948672314",
+            "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "locator": "正文段落2",
+            "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+            "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "revision_id": "rev-5f47d58d1eb3f91948672314",
+            "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "locator": "正文段落3",
+            "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+            "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          }
+        ],
+        "region": "南京市",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "limits": "南京门户到期换证周期问答，省内/省外户籍分开；考生快速服务无具体天数，不推为所有申请人加急期限，也不作为北京或河南办理时限。"
+          }
+        ],
+        "status": "SOURCE_EXCERPTS"
+      }
+    },
+    {
+      "case_id": "erqi_isolation",
+      "question": "身份证换领材料和时限",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [],
+        "region": "郑州市二七区",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [],
+        "status": "OUT_OF_SCOPE"
+      }
+    },
+    {
+      "case_id": "passport_isolation",
+      "question": "首次申领护照材料",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [],
+        "region": "北京市",
+        "matter": "ordinary-passport-first-application",
+        "source_scope_limits": [],
+        "status": "OUT_OF_SCOPE"
+      }
+    },
+    {
+      "case_id": "online_branch",
+      "question": "到期换领可以直接网上办理吗？损坏换领有什么条件？",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [],
+        "region": "北京市",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [],
+        "status": "NO_MATCH"
+      }
+    }
+  ],
+  "limits": "Real acquisition and deterministic candidate retrieval only; no new Nexent run, cloud model, formal business approval or publication"
+}

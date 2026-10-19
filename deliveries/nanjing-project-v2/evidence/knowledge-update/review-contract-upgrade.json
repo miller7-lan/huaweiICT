@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "kind": "actual_review_contract_upgrade_and_restore",
+  "captured_at": "2026-10-16T05:22:11.571367+00:00",
+  "performed_by": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_attestations_created": 0,
+  "audit_event_at": 1792128031.5843658,
+  "changed": true,
+  "development_registry_sha256": "eae7b4bc11456bdafef0bcd39878e55f37b46554d291dcf8ad2a67c1503245cd",
+  "maintainer": "Codex AI",
+  "policy_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d",
+  "previous_policy_sha256": "99466fa91dd44b1c08b3626f72c3ea27f7dff490d38e6dcdc96ab88b937c3d85",
+  "publication_performed": false,
+  "quality_thresholds_unchanged": true,
+  "registered_development_questions": 40,
+  "checks": {
+    "canonical_candidate_and_publication_counts_unchanged": true,
+    "explicit_policy_transition_recorded": true,
+    "recognized_attributed_policy_active": true,
+    "quality_thresholds_unchanged": true,
+    "all_known_development_questions_registered": true,
+    "old_policy_archive_retained": true,
+    "both_pre_and_post_upgrade_full_backups_verified": true,
+    "restored_attributed_policy_and_registry_match": true,
+    "no_evaluation_or_official_publication_manufactured": true,
+    "web_and_read_only_mcp_ready": true,
+    "worker_and_maintenance_heartbeats_current": true
+  },
+  "passed": true,
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "known_development_seed_sources": [
+    {
+      "path": "evaluation/knowledge/pilot-business-questions.json",
+      "sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e",
+      "question_occurrences": 30
+    },
+    {
+      "path": "evaluation/knowledge/pilot-ai-reference-answers.json",
+      "sha256": "b27fee85498093dfae5e39b27b81b14f415c7a1e12bbbbc8f2e78b1bf3181d1f",
+      "question_occurrences": 30
+    },
+    {
+      "path": "evidence/knowledge-update/native-consultation.json",
+      "sha256": "f1367cc1f3d9e34644b8543640ec7f741cb7bd00d31e88156c0afcca8a8d3ff4",
+      "question_occurrences": 6
+    },
+    {
+      "path": "evidence/knowledge-update/scope-stage-native.json",
+      "sha256": "2e653b2c1006b8a917d7feeaae3665acd29acc0e1ff2f764135012e82c5fa30f",
+      "question_occurrences": 6
+    },
+    {
+      "path": "evidence/knowledge-update/shadow-retrieval.json",
+      "sha256": "28f648fd7931300d9c5984f5b032717aa0140fea73abac93a60e467b5abe4d9b",
+      "question_occurrences": 30
+    },
+    {
+      "path": ".runtime/knowledge-update/model-prevalidation/20261015T205246Z-69f8439f/manifest.json",
+      "sha256": "22809e44bcc647ace754db24e3456c6fe1f27da89dcd7dbed1d8f39a0623de32",
+      "question_occurrences": 30
+    },
+    {
+      "path": ".runtime/knowledge-update/model-prevalidation/20261016T024521Z-29459439/manifest.json",
+      "sha256": "bbbc9b9a52e745fd99a1973f52e3727357111bc518b085ec270b34b8fcf1338d",
+      "question_occurrences": 30
+    }
+  ],
+  "pre_upgrade_backup_report_sha256": "54cf1fe7d14457950b3571038b859d51fefe9b4dccc38bd84ba7e10677275614",
+  "post_upgrade_backup_report_sha256": "4bdc70bb3aa887e7275f976fcd955f4742ce5df7d4176828c0582985f9cc13a0",
+  "new_contract_source_sha256": {
+    "src/gov_mcp/knowledge_review.py": "5947e30dd5bbb3e6c3946a396c056063d1e50c95411fe5bdd14729875e5949ea",
+    "src/gov_mcp/knowledge_quality.py": "b47150cd43edc1dc6f3336d4a9c74906e30c5945f674966d6fe77df87e027d5c"
+  },
+  "business_release_ready": false,
+  "formal_publication_performed": false,
+  "github_push_completed": false,
+  "limits": "Actor identities, actual trace content, semantic independence and policy applicability require separate evidence. Registry covers known archived development questions; matching hashes and passing integrity checks are not business acceptance.",
+  "post_upgrade_concurrency_hardening": {
+    "captured_at": "2026-10-16T05:26:07.995536+00:00",
+    "idempotent_current_cli_result": {
+      "changed": false,
+      "policy_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d",
+      "development_registry_sha256": "eae7b4bc11456bdafef0bcd39878e55f37b46554d291dcf8ad2a67c1503245cd"
+    },
+    "current_contract_source_sha256": {
+      "src/gov_mcp/knowledge_review.py": "cdbfe7afd999c5ad889fbc4c979db4bbedd1af728d832e4b14f56dd2c5255924",
+      "src/gov_mcp/knowledge_quality.py": "b47150cd43edc1dc6f3336d4a9c74906e30c5945f674966d6fe77df87e027d5c"
+    },
+    "note": "After initial successful transition, the upgrade utility was hardened to hold the immediate database write transaction across head check and policy replacement. Separate synthetic concurrency test passed; the current real upgrade command confirms already-upgraded state without publication."
+  }
+}

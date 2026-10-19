@@ -1,0 +1,284 @@
+{
+  "schema": 1,
+  "captured_at": "2026-10-16T12:42:20.211236+00:00",
+  "reviewer_kind": "ai",
+  "reviewer": "Codex AI",
+  "human_review_completed": false,
+  "business_release_ready": false,
+  "current_erqi_applicability": "not_established",
+  "sources": {
+    "HN-NORM-XICHUAN-PDF": {
+      "revision": "rev-cb7478c231c1541d9c8b566a",
+      "original_sha256": "fbb7d6383dc63131fa70cbacac85b6585cb9827a15c806533abf22176d1f5b9c",
+      "url": "https://www.xichuan.gov.cn/ifile/20251229/1766973939411PxhOsju6.pdf",
+      "selected_chunks": 3,
+      "state": "excluded",
+      "automatic_monitoring_enabled": false,
+      "normal_fetcher_acquisition": true,
+      "scope": "保留文件身份及第159、236条对照证据。已有省厅正文来源承担监测；本副本只选3页，不自动采集64页户口业务，不据官方副本存在核定2026年现行效力。"
+    },
+    "HN-FEE-CATALOG-PAGE-2025": {
+      "revision": "rev-6ccbf33056313b8fd8361ced",
+      "original_sha256": "a74116dd13b8a1f88fc51c6bc59563eb1790f0d2e47d5cd350845a08024b5ab5",
+      "url": "https://czt.henan.gov.cn/2025/12-30/3280093.html",
+      "selected_chunks": 1,
+      "state": "excluded",
+      "automatic_monitoring_enabled": false,
+      "normal_fetcher_acquisition": true,
+      "scope": "目录附件来源链留档。页面显示日期、元数据与URL目录日期分别保留，不把目录更新当作收费政策施行日；不将整站目录或附件标题作为业务答案。"
+    },
+    "HN-FEE-CATALOG-XLSX-2025": {
+      "revision": "rev-d806c2a1656f08b00fb5a180",
+      "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+      "selected_chunks": 10,
+      "state": "excluded",
+      "automatic_monitoring_enabled": false,
+      "normal_fetcher_acquisition": true,
+      "scope": "仅保留目录标题、公安部门及收费行相关表头和原单元格值。收费标准列列文号而非金额；不能据此虚构20元单元格、目录有效期、现行减免证明或二七区额外收费。普通采集器尚未配置Excel自动解析，本附件不启用监测。"
+    },
+    "MOF-FEE-2007": {
+      "revision": "rev-ddfaf873b73e03ab4202c18c",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+      "state": "pending_review"
+    },
+    "MOF-FIRST-ISSUE-2018": {
+      "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+      "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm",
+      "state": "pending_review"
+    },
+    "HN-NORM-PUBLISHER": {
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "state": "pending_review"
+    }
+  },
+  "findings": [
+    {
+      "id": "norm_identity",
+      "finding": "原件首页文号豫公通〔2022〕77号，盖章日期2022-07-27；不以2025路径判断发文时间。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "HN-NORM-XICHUAN-PDF",
+          "revision": "rev-cb7478c231c1541d9c8b566a",
+          "chunk_ordinal": 0,
+          "locator": "PDF第1页",
+          "start": 0,
+          "end": 211,
+          "text_sha256": "3837b3481dd165f5ad5c3769fd22bdbcfaa13bbbda30fb7c24e32331d5632b25",
+          "span_sha256": "3837b3481dd165f5ad5c3769fd22bdbcfaa13bbbda30fb7c24e32331d5632b25"
+        }
+      ]
+    },
+    {
+      "id": "renewal_branch_corroborated",
+      "finding": "原件第45页完整第159条与省厅HTML第159条经NFKC及去空白对照一致，未修改任何原文。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "HN-NORM-XICHUAN-PDF",
+          "revision": "rev-cb7478c231c1541d9c8b566a",
+          "chunk_ordinal": 1,
+          "locator": "PDF第45页",
+          "start": 0,
+          "end": 619,
+          "text_sha256": "f14d3699cc86a4d0348824a2990c89e5ed8a56865b21e55c585b107ee8e649ee",
+          "span_sha256": "f14d3699cc86a4d0348824a2990c89e5ed8a56865b21e55c585b107ee8e649ee"
+        },
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
+          "chunk_ordinal": 5,
+          "locator": "第一百五十九条",
+          "start": 0,
+          "end": 162,
+          "text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6",
+          "span_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6"
+        }
+      ]
+    },
+    {
+      "id": "commencement_not_current_validity",
+      "finding": "原件末页载2022-09-01施行及2022-07-27印发；未取得现行效力或延期依据，不能设定两年失效。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "HN-NORM-XICHUAN-PDF",
+          "revision": "rev-cb7478c231c1541d9c8b566a",
+          "chunk_ordinal": 2,
+          "locator": "PDF第64页",
+          "start": 0,
+          "end": 534,
+          "text_sha256": "82401d3e7974e710ce89dbc2e776b63e0c6138c20a7eaf89e1c0f440a4835e51",
+          "span_sha256": "82401d3e7974e710ce89dbc2e776b63e0c6138c20a7eaf89e1c0f440a4835e51"
+        }
+      ]
+    },
+    {
+      "id": "directory_attachment_chain",
+      "finding": "河南财政厅目录入口直接链接本Excel原件；显示日和元数据/URL日期不一致，目录无另行核定施行日。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "HN-FEE-CATALOG-PAGE-2025",
+          "revision": "rev-6ccbf33056313b8fd8361ced",
+          "chunk_ordinal": 0,
+          "locator": "目录正文附件链接标题",
+          "start": 0,
+          "end": 32,
+          "text_sha256": "e2329be8a8574bc180bd08d6ad16cb837ea98198ae325c8f2cefc0a132cea5d1",
+          "span_sha256": "e2329be8a8574bc180bd08d6ad16cb837ea98198ae325c8f2cefc0a132cea5d1"
+        }
+      ]
+    },
+    {
+      "id": "directory_fee_references",
+      "finding": "目录身份证行F36/G36引用财综〔2007〕34号和财税〔2018〕37号；G36没有金额。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "HN-FEE-CATALOG-XLSX-2025",
+          "revision": "rev-d806c2a1656f08b00fb5a180",
+          "chunk_ordinal": 6,
+          "locator": "Excel工作表行政事业性收费!D36",
+          "start": 0,
+          "end": 11,
+          "text_sha256": "87632ef1001bce8e0fd07786845ea07be4f2a17ea0f2a94d8deb62f24793e029",
+          "span_sha256": "87632ef1001bce8e0fd07786845ea07be4f2a17ea0f2a94d8deb62f24793e029"
+        },
+        {
+          "source_id": "HN-FEE-CATALOG-XLSX-2025",
+          "revision": "rev-d806c2a1656f08b00fb5a180",
+          "chunk_ordinal": 8,
+          "locator": "Excel工作表行政事业性收费!F36",
+          "start": 0,
+          "end": 80,
+          "text_sha256": "c706c34a9c25517fe10d8be4b57ade84371005db336079f5097bf3097350c505",
+          "span_sha256": "c706c34a9c25517fe10d8be4b57ade84371005db336079f5097bf3097350c505"
+        },
+        {
+          "source_id": "HN-FEE-CATALOG-XLSX-2025",
+          "revision": "rev-d806c2a1656f08b00fb5a180",
+          "chunk_ordinal": 9,
+          "locator": "Excel工作表行政事业性收费!G36",
+          "start": 0,
+          "end": 23,
+          "text_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c",
+          "span_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c"
+        }
+      ]
+    },
+    {
+      "id": "historical_fee_branches",
+      "finding": "2007通知第一条分别载换领20、遗失补领/损坏换领40、临时证10元；其中首次申领收费须另读2018条款。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "MOF-FEE-2007",
+          "revision": "rev-ddfaf873b73e03ab4202c18c",
+          "chunk_ordinal": 1,
+          "locator": "正文段落4",
+          "start": 0,
+          "end": 287,
+          "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432",
+          "span_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+        }
+      ]
+    },
+    {
+      "id": "first_issue_boundary",
+      "finding": "2018第一条自2018-04-01停征首次申领工本费，不能扩大为到期换领、遗失补领或损坏换领免费。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "MOF-FIRST-ISSUE-2018",
+          "revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+          "chunk_ordinal": 0,
+          "locator": "正文段落4",
+          "start": 0,
+          "end": 29,
+          "text_sha256": "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5",
+          "span_sha256": "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+        }
+      ]
+    },
+    {
+      "id": "extra_charge_limits",
+      "finding": "2007通知禁止违规收费；自愿邮寄服务与该通知用语及后来措施的关系仍须分别核查，未宣称所有邮费均免费或均应收取。",
+      "business_approval": false,
+      "anchors": [
+        {
+          "source_id": "MOF-FEE-2007",
+          "revision": "rev-ddfaf873b73e03ab4202c18c",
+          "chunk_ordinal": 1,
+          "locator": "正文段落4",
+          "start": 0,
+          "end": 287,
+          "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432",
+          "span_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+        },
+        {
+          "source_id": "MOF-FEE-2007",
+          "revision": "rev-ddfaf873b73e03ab4202c18c",
+          "chunk_ordinal": 2,
+          "locator": "正文段落5",
+          "start": 0,
+          "end": 96,
+          "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36",
+          "span_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+        },
+        {
+          "source_id": "MOF-FEE-2007",
+          "revision": "rev-ddfaf873b73e03ab4202c18c",
+          "chunk_ordinal": 3,
+          "locator": "正文段落6",
+          "start": 0,
+          "end": 131,
+          "text_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083",
+          "span_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+        }
+      ]
+    }
+  ],
+  "norm_pdf": {
+    "pages": 64,
+    "pages_visually_inspected": [
+      1,
+      45,
+      64
+    ],
+    "rendered_page_sha256": {
+      "1": "41c4d6f544cd42e30e2640167454369a3fb7008bc4df4f3d3b5b23c411322ebe",
+      "45": "565a0fcc315aefb91df0510c2ed68d9743d4e1e469b251a28729489a1152d47c",
+      "64": "052e73dd270011db876d946ead3284a057a2aa90b964b3092cae802829f440ee"
+    },
+    "original_not_edited": true,
+    "text_layer_artifacts_not_repaired": true
+  },
+  "first_2018_tax_site_access": {
+    "url": "https://szs.mof.gov.cn/zhengcefabu/201804/t20180416_2868702.htm",
+    "stopped": "robots redirected outside approved origin to http://www.mof.gov.cn/404.htm; body not acquired, no policy bypass",
+    "gazette_source_separately_checked": true
+  },
+  "remaining": [
+    "现行二七区材料组合及材料关系",
+    "河南试行规范现行效力及六个月调整依据",
+    "当前减免证明及自愿邮费规则",
+    "独立30题评测与正式两端发布验收"
+  ],
+  "policy_file_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d",
+  "preserved_development_files": {
+    "evaluation/knowledge/pilot-ai-reference-answers.json": "114720c36a13938fdb942d77fdfcab846022e82245321444ffe1e133f7490cf2",
+    "evaluation/knowledge/baselines/20261015T205246Z-69f8439f-reference.json": "1f3558e8e672c945acced675bc711973bce077febe700c97b9e2e8281aaa949d",
+    "evaluation/knowledge/baselines/20261016T024521Z-29459439-reference.json": "eb94b1afaa5142448340b19e172e8bae83de04f2827984fc7c820080f8dd4212",
+    "evaluation/knowledge/baselines/20261016T100533Z-3b77f854-reference.json": "5bc051bba2da95fef79f13302837b5290d061b0b1d60c264c4defac1a8256ff0",
+    "evaluation/knowledge/baselines/20261016T102656Z-708c0b41-reference.json": "5bc051bba2da95fef79f13302837b5290d061b0b1d60c264c4defac1a8256ff0",
+    "evidence/knowledge-update/model-prevalidation.json": "7a534b1545591a46239aa6c7c1616c13d1e0c00345e4bea2b536c2447a2b3db5",
+    "evidence/knowledge-update/model-prevalidation-ai-review.json": "ad6cf2890808e60c78b7d5eb9388bf86103fb749ec07c1beabb0a2d4b9f75e14"
+  },
+  "assessment_sha256": "63741c026ff0930ddae6194e31ab0c2b4ddfc15500e0741119ab6408f2d8bfd9"
+}

@@ -1,0 +1,153 @@
+{
+  "captured_at": "2026-10-15T15:54:05.862411+00:00",
+  "passed": true,
+  "records": [
+    {
+      "role": "citizen",
+      "scenario": "fixed-question",
+      "conversation_id": 74,
+      "checks": {
+        "native_tool_order": true,
+        "exactly_two_actual_read_only_calls": true,
+        "trusted_session_identity": true,
+        "final_matches_actual_last_tool": true,
+        "unpublished_stops_without_citations": true,
+        "actual_role_preserved": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 88603.91,
+      "private_trace_sha256": "ae01f3a324573f052800da5f13f149b043b9fb3f3a8eaa34e6b2bc756ddc1332",
+      "failure_class": null,
+      "route_events": [
+        {
+          "type": "tool",
+          "tool_name": "govkb_get_environment_status",
+          "tool_call_id": "bf791a2b-458a-4b8c-a106-2d661b6de08a"
+        },
+        {
+          "type": "tool",
+          "tool_name": "govkb_search_evidence",
+          "tool_call_id": "d117643a-9b96-4325-81ec-5bcfb28d9a09"
+        }
+      ],
+      "actual_final_result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "citizen",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "fixed-question",
+      "conversation_id": 75,
+      "checks": {
+        "native_tool_order": true,
+        "exactly_two_actual_read_only_calls": true,
+        "trusted_session_identity": true,
+        "final_matches_actual_last_tool": true,
+        "unpublished_stops_without_citations": true,
+        "actual_role_preserved": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 25648.82,
+      "private_trace_sha256": "105f213105e4526eacb5a8f76438f03e203a961ae9ed7198bce94162a3bb08a3",
+      "failure_class": null,
+      "route_events": [
+        {
+          "type": "tool",
+          "tool_name": "govkb_get_environment_status",
+          "tool_call_id": "60fcdbdf-d058-4256-a367-916369ddb053"
+        },
+        {
+          "type": "tool",
+          "tool_name": "govkb_search_evidence",
+          "tool_call_id": "a85ada61-c114-4036-8a82-0ba022b3a30f"
+        }
+      ],
+      "actual_final_result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "staff",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "citizen",
+      "scenario": "claims-staff",
+      "conversation_id": 76,
+      "checks": {
+        "native_tool_order": true,
+        "exactly_two_actual_read_only_calls": true,
+        "trusted_session_identity": true,
+        "final_matches_actual_last_tool": true,
+        "unpublished_stops_without_citations": true,
+        "actual_role_preserved": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 27782.1,
+      "private_trace_sha256": "cae01c7227976092f3e91bf5b522a5ec71b3d28553c2d7bf4b548503d59c0d3e",
+      "failure_class": null,
+      "route_events": [
+        {
+          "type": "tool",
+          "tool_name": "govkb_get_environment_status",
+          "tool_call_id": "f23cc24e-9e2e-4d92-87fc-fece0c9eb256"
+        },
+        {
+          "type": "tool",
+          "tool_name": "govkb_search_evidence",
+          "tool_call_id": "e5c5eafa-54c4-443a-a0f1-97b959b38941"
+        }
+      ],
+      "actual_final_result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "citizen",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [],
+          "update_available": false
+        }
+      }
+    }
+  ],
+  "qa_agents": {
+    "govkb_qa_citizen": 10,
+    "govkb_qa_staff": 11
+  },
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "existing_agents_changed": false,
+  "business_review_completed": false,
+  "official_knowledge_published": 0,
+  "scope": "Actual model and read-only MCP fixed-question smoke tests under citizen/staff sessions, plus a role-claim case. No general question accuracy, source validity, UI acceptance or released-policy answers claimed."
+}

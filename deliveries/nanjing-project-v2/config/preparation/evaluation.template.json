@@ -1,0 +1,9 @@
+{
+  "status": "template",
+  "cases": [],
+  "case_fields": ["case_id", "case_group", "split", "data_class", "region", "matter", "question", "required_source_ids", "expected_claims", "expected_citations", "expected_path", "expected_stop_reason", "knowledge_version", "ontology_version", "reviewer"],
+  "case_categories": ["single_document", "cross_document", "conditional_material", "table_lookup", "image_ocr", "insufficient_evidence", "source_conflict", "out_of_scope", "policy_change", "historical_replay"],
+  "metrics": ["answer_support_rate", "citation_locator_accuracy", "path_support_rate", "candidate_acceptance_rate", "human_review_minutes", "change_detection_precision", "change_detection_recall", "latency_ms", "failure_rate"],
+  "split_policy": "Split by original case group; paraphrases of one case must stay in the same split.",
+  "notes": "No measured scores or official targets. Establish independently reviewed answers before evaluation."
+}

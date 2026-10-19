@@ -1,0 +1,266 @@
+{
+  "captured_at": "2026-10-13T22:33:13.866656+08:00",
+  "purpose": "RAG source discovery and draft evaluation preparation, not model fine-tuning",
+  "selected_matter_status": "proposed_not_team_confirmed",
+  "records": [
+    {
+      "source_id": "ID-LAW-01",
+      "title": "中华人民共和国居民身份证法",
+      "url": "https://public.xinmi.gov.cn/D0107Y/2107317.jhtml",
+      "document_type": "statute",
+      "region": "national",
+      "intended_role": "core_candidate",
+      "published_at": "2011-10-29",
+      "effective_from": "2012-01-01",
+      "locators_to_review": [
+        "第10—12条",
+        "第13条"
+      ],
+      "copyright_screen": "statutory_text_candidate_article5",
+      "business_review_status": "pending_review",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "官方转载；元数据文号与正文修正说明需核对；现行版本待人工确认",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "downloaded",
+        "sha256": "be58d2d95cc072732aa16a9399d1051fc1fc84daee9509a542a4e03781133533",
+        "bytes": 26709,
+        "access_check": "robots_not_present"
+      },
+      "engineering_preview_imported": true
+    },
+    {
+      "source_id": "ID-NORM-01",
+      "title": "河南省公安机关户口居民身份证管理工作规范（试行）",
+      "url": "https://www.xuchang.gov.cn/EpointWebBuilder/frame/ewebeditor/uploadfile/%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E5%8E%85%E5%85%B3%E4%BA%8E%E5%8D%B0%E5%8F%91%E3%80%8A%E6%B2%B3%E5%8D%97%E7%9C%81%E5%85%AC%E5%AE%89%E6%9C%BA%E5%85%B3%E6%88%B7%E5%8F%A3%E5%B1%85%E6%B0%91%E8%BA%AB%E4%BB%BD%E8%AF%81%E7%AE%A1%E7%90%86%E5%B7%A5%E4%BD%9C%E8%A7%84%E8%8C%83%EF%BC%88%E8%AF%95%E8%A1%8C%EF%BC%89%E3%80%8B%E7%9A%84%E9%80%9A%E7%9F%A5.pdf",
+      "document_type": "administrative_norm",
+      "region": "河南省",
+      "intended_role": "core_candidate",
+      "published_at": "2022-07-27",
+      "effective_from": "2022-09-01",
+      "locators_to_review": [
+        "PDF第45—49页：第157—173条",
+        "PDF第3页：第7条",
+        "PDF第64页：第235—236条"
+      ],
+      "copyright_screen": "administrative_document_candidate_article5",
+      "business_review_status": "pending_review",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "64页；网页工具已读取相关条款，PDF视觉核查和本地原件归档未完成；后续调整待核查",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "skipped_robots_or_access_check",
+        "sha256": null,
+        "bytes": null,
+        "access_check": "robots_URLError_no_archive"
+      },
+      "visual_review_status": "unavailable_web_screenshot_failed"
+    },
+    {
+      "source_id": "ID-GUIDE-01",
+      "title": "居民身份证到期换领、其他原因换领（二七区）",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "document_type": "service_guide",
+      "region": "郑州市二七区",
+      "intended_role": "core_candidate",
+      "published_at": null,
+      "effective_from": null,
+      "locators_to_review": [
+        "办理条件",
+        "材料列表1—4"
+      ],
+      "copyright_screen": "no_explicit_open_license_verified",
+      "business_review_status": "pending_review",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "指南同时列多种情形；与省规范材料条目需人工对齐，不能合并成全部必交",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "downloaded",
+        "sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+        "bytes": 12836,
+        "access_check": "robots_not_present"
+      },
+      "engineering_preview_imported": true
+    },
+    {
+      "source_id": "ID-GUIDE-02",
+      "title": "居民身份证到期换领、其他原因换领（铭功路）",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml",
+      "document_type": "service_guide",
+      "region": "郑州市二七区铭功路街道",
+      "intended_role": "cross_check",
+      "published_at": null,
+      "effective_from": null,
+      "locators_to_review": [
+        "条件信息",
+        "材料列表1—4"
+      ],
+      "copyright_screen": "no_explicit_open_license_verified",
+      "business_review_status": "pending_review",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "用于辖区交叉核对；与区级内容高度相近，不能计为独立业务样本",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "not_attempted",
+        "sha256": null,
+        "bytes": null
+      }
+    },
+    {
+      "source_id": "ID-BOUNDARY-01",
+      "title": "临时居民身份证申领（二七区）",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008003/3394708.jhtml",
+      "document_type": "service_guide",
+      "region": "郑州市二七区",
+      "intended_role": "out_of_scope_reference",
+      "published_at": null,
+      "effective_from": null,
+      "locators_to_review": [
+        "办理条件",
+        "材料条目"
+      ],
+      "copyright_screen": "no_explicit_open_license_verified",
+      "business_review_status": "pending_review",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "用于区分事项和范围停止，不替代到期换领规则；未找到可直接下载空白表单",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "not_attempted",
+        "sha256": null,
+        "bytes": null
+      }
+    },
+    {
+      "source_id": "RES-NOTICE-01",
+      "title": "关于进一步明确我市居住证办理有关事项的通知",
+      "url": "https://public.zhengzhou.gov.cn/D0107Y/10036572.jhtml",
+      "document_type": "administrative_notice",
+      "region": "郑州市",
+      "intended_role": "backup_candidate",
+      "published_at": "2021-02-18",
+      "effective_from": null,
+      "locators_to_review": [
+        "附件PDF第2—3页：申领条件、证明材料、信息共享",
+        "附件PDF第4页：签署与印发日期"
+      ],
+      "copyright_screen": "administrative_document_candidate_article5",
+      "business_review_status": "pending_review",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "郑政办〔2021〕8号，PDF4页；签署2021-02-07，印发2021-02-09，网页发布2021-02-18；页面标有效不等于已检查所有后续修订",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "skipped_robots_or_access_check",
+        "sha256": null,
+        "bytes": null,
+        "access_check": "robots_http_502_no_archive"
+      },
+      "signed_at": "2021-02-07",
+      "printed_at": "2021-02-09",
+      "visual_review_status": "unavailable_web_screenshot_failed"
+    },
+    {
+      "source_id": "RES-GUIDE-01",
+      "title": "居住证首次申领（二七区）",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004006002/3389298.jhtml",
+      "document_type": "service_guide",
+      "region": "郑州市二七区",
+      "intended_role": "backup_candidate",
+      "published_at": null,
+      "effective_from": null,
+      "locators_to_review": [
+        "申领条件",
+        "材料列表"
+      ],
+      "copyright_screen": "no_explicit_open_license_verified",
+      "business_review_status": "pending_review",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "与市级通知的登记条件、材料共享表述差异待复核",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "not_attempted",
+        "sha256": null,
+        "bytes": null
+      }
+    },
+    {
+      "source_id": "GOV-COPYRIGHT-01",
+      "title": "中华人民共和国著作权法（2020修正）",
+      "url": "https://www.ncac.gov.cn/xxfb/flfg/flfg_532/202103/t20210309_50530.html",
+      "document_type": "statute",
+      "region": "national",
+      "intended_role": "governance_reference",
+      "published_at": "2021-03-09",
+      "effective_from": "2021-06-01",
+      "locators_to_review": [
+        "第5条"
+      ],
+      "copyright_screen": "statutory_text_candidate_article5",
+      "business_review_status": "not_applicable",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "仅作为资料使用边界依据；不将政府网站上的新闻、图片、指南一律视为开放许可",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "not_attempted",
+        "sha256": null,
+        "bytes": null
+      }
+    },
+    {
+      "source_id": "UPDATE-LEAD-01",
+      "title": "郑州二七警方延伸就近办服务的新闻",
+      "url": "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml",
+      "document_type": "official_news",
+      "region": "郑州市二七区",
+      "intended_role": "excluded_from_corpus",
+      "published_at": "2026-01-23",
+      "effective_from": null,
+      "locators_to_review": [
+        "2025年便民措施的来源线索"
+      ],
+      "copyright_screen": "no_explicit_open_license_verified",
+      "business_review_status": "not_applicable",
+      "approved_for_ingestion": false,
+      "reviewer": null,
+      "quality_notes": "正文含个人案例；只保留标题/日期/链接作为查找更新政策的线索，不下载正文或制作申请人案例",
+      "access_evidence": "web_tool_body_read",
+      "private_archive": {
+        "status": "not_attempted",
+        "sha256": null,
+        "bytes": null
+      }
+    }
+  ],
+  "access_policy": "Public official links only; normal GET and low rate; stop on access failure; no login, captcha, paywall or IP restriction bypass",
+  "excluded_leads": [
+    {
+      "url": "https://www.xichuan.gov.cn/ifile/20251229/1766973939411PxhOsju6.pdf",
+      "reason": "Web request returned 403; no bypass or repeated download"
+    },
+    {
+      "url": "https://www.henan.gov.cn/2023/02-04/2683999.html",
+      "reason": "Official reply is a lead; full page access failed, not accepted as reviewed corpus"
+    },
+    {
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008001/3394615.jhtml",
+      "reason": "Only search extract available in this run; page fetch timed out; not treated as fully reviewed"
+    },
+    {
+      "url": "https://flk.npc.gov.cn/",
+      "reason": "Official database entry could not be read by the web tool; final current-version verification still pending"
+    },
+    {
+      "domain": "nmfpcb.com",
+      "reason": "Non-government domain with gambling branding posing as government content; excluded without opening"
+    }
+  ],
+  "approved_for_ingestion_field_scope": "Human-reviewed business knowledge publication; distinct from explicit user-authorized private engineering preview",
+  "engineering_preview_scope": "Two previously archived official sources, one proposed matter; user requested small-data flow first"
+}

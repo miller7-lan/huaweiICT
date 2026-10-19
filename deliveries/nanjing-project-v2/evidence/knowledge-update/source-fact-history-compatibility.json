@@ -1,0 +1,31 @@
+{
+  "captured_at": "2026-10-16T05:42:08.867187+00:00",
+  "runs": [
+    {
+      "run_id": "20261015T205246Z-69f8439f",
+      "cases": 30,
+      "frozen_reference_sha256": "1c9ed0cf7273851b54978dbcd8c4745eced8aa344732153291af0faeeee5feb1",
+      "manifest_integrity_passed": true
+    },
+    {
+      "run_id": "20261016T024521Z-29459439",
+      "cases": 30,
+      "frozen_reference_sha256": "b27fee85498093dfae5e39b27b81b14f415c7a1e12bbbbc8f2e78b1bf3181d1f",
+      "manifest_integrity_passed": true
+    }
+  ],
+  "historical_files_unchanged_since_prior_commit": {
+    "evidence/knowledge-update/model-prevalidation.json": true,
+    "evidence/knowledge-update/model-prevalidation-ai-review.json": true,
+    "evaluation/knowledge/baselines/20261015T205246Z-69f8439f-reference.json": true,
+    "evaluation/knowledge/baselines/20261016T024521Z-29459439-reference.json": true
+  },
+  "current_reference_sha256": "114720c36a13938fdb942d77fdfcab846022e82245321444ffe1e133f7490cf2",
+  "current_reference_differs_from_frozen_trials": true,
+  "model_requests": 0,
+  "historical_results_rescored": false,
+  "business_acceptance": false,
+  "passed": true,
+  "scope": "Loads both real archived manifests through their existing immutable-input validator and compares public historical report/baseline bytes to the prior committed version. No model rerun or new semantic score.",
+  "comparison_base_commit": "5168af52568952350f61ad51bac7267700b90e08"
+}

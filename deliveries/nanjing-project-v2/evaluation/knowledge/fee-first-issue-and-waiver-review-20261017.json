@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "kind": "attributed_ai_first_issue_fee_review_and_pending_hardship_original",
+  "assessed_at": "2026-10-16T17:37:45.961494+00:00",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "first_issue": {
+    "source_id": "MOF-FIRST-ISSUE-2018",
+    "previous_revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+    "revision": "rev-e41c61067fe70ce4ce221dbf",
+    "review_digest": "d12ccc8c099af9bfe14fcfbad9d236f2d6ba26f1897e9a71faa8e518a0ccb187",
+    "assessment": {
+      "id": "national-first-issue-fee-boundary-20261017",
+      "reviewer": "Codex AI",
+      "reviewer_kind": "ai",
+      "assessed_at": "2026-10-16T17:37:45.961494+00:00",
+      "human_review_completed": false,
+      "business_approval": true,
+      "current_applicability": "national_first_issue_fee_suspension_only_not_renewal_waiver",
+      "scope": {
+        "region": "national",
+        "matter": "demo-id-renewal",
+        "approved_locator": "正文段落4",
+        "purpose": "作为到期换领咨询的首次申领收费边界，不将首次申领停征扩展为换领免征。"
+      },
+      "date_findings": {
+        "clause_stated_start": "2018-04-01",
+        "document_signed_at": "2018-04-12",
+        "body_publication_field": "2018-08-20",
+        "meta_pubdate": "2018-04-16 17:37:00",
+        "exact_first_publication_established": false,
+        "published_at_retained_unknown": true,
+        "reason": "执行日由选入第一条直接规定，不从签发、网页或URL日期推算；不扩展到同文证券、专利等条款。"
+      },
+      "basis": {
+        "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+        "base_revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+        "literal_span_sha256": "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5",
+        "provincial_directory_revision": "rev-d806c2a1656f08b00fb5a180",
+        "provincial_directory_original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+        "directory_locator": "Excel工作表行政事业性收费!G36",
+        "directory_role": "excluded_answer_corpus_corroboration_only",
+        "later_official_web_observation": {
+          "url": "https://gaj.zhoukou.gov.cn/sitesources/gaj/page_pc/xwdt/jfgg/articleed92324f72b049f7853a1776f7c7e525.html",
+          "kind": "2026_official_fee_branches_not_Erqi_implementation",
+          "normal_fetch_retried": false
+        }
+      },
+      "limits": [
+        "不认定到期换领、遗失补领或损坏换领免费。",
+        "不核定二七区困难居民资格、材料免提交、额外照片/邮寄收费或个案免征结果。",
+        "2004减免与2007收费重申、地方目录分别核对；未将目录文号列当金额。",
+        "源码和来源监测保持；任何新变更仍待核。此复核不冻结参考、不认证独立性或批准发布。"
+      ]
+    }
+  },
+  "hardship_original": {
+    "source_id": "FEE-WAIVER-2004-ZJ-LEAD",
+    "revision": "rev-c2f18391171fad5835a6eafe",
+    "original_sha256": "1b1cc0eb3bb70b45b7369f6444d18585548682b48797569e851b53a4f846da40",
+    "receipt": {
+      "url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf",
+      "final_url": "https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web2780/site/attach/0/2206ca49052a400ea2f222ad459e271a.pdf",
+      "status": 200,
+      "checked_at": "2026-10-16T17:33:48.982032+00:00",
+      "normal_fetcher": true,
+      "raw_bytes": 101174,
+      "sha256": "1b1cc0eb3bb70b45b7369f6444d18585548682b48797569e851b53a4f846da40",
+      "content_type": "application/pdf",
+      "new_policy_approval": false
+    },
+    "page_count": 2,
+    "selected_native_text_pages": [
+      1
+    ],
+    "blank_page_visually_checked": 2,
+    "native_text_sha256": "cd06764b3d9283888069506cad95641898e3fef2a9f5936eb7d965998cfa6cbd",
+    "visual_page_png_sha256": [
+      "4d80a72cbae75520e8365f3c07d492c3fb607ad76c95d40084d0d195aa8e6017",
+      "d8629f717774051b9beb6ba419cb017ca3b618abe3df2b3372253b041d877897"
+    ],
+    "document_signed_at": "2004-02-06",
+    "clause_stated_effective_from": "2004-01-01",
+    "business_approval": false,
+    "automated_collection_enabled": false,
+    "parser_was_not_weakened": true
+  },
+  "unresolved": [
+    "2007重申通知执行起点、后来首次申领停征与原金额条款关系、地方困难免减和照片/邮寄关系。",
+    "2021国规第76条三个月与后来六个月窗口信号关系。",
+    "2016使用公告落款、实施字段及不同门户公开日期的解释关系。"
+  ],
+  "expected_stale_holdout_source_key": "F18",
+  "formal_gates": {
+    "reviews": 5,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "counts": {
+    "sites": 42,
+    "documents": 38,
+    "revisions": 125,
+    "chunks": 834,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 304
+  },
+  "new_model_runs": 0,
+  "formal_publication_performed": false,
+  "content_sha256": "6cf4cfef076e03a84b7ee669248a5cd3c95323b9e49d16822bcb95a8f0c89826"
+}

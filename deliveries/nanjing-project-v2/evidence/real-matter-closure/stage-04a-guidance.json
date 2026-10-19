@@ -1,0 +1,124 @@
+{
+  "stage": "04a_scoped_source_guidance",
+  "scope": "Actual read-only queries against persisted real-source engineering version; not browser, native model or business acceptance",
+  "topics": {
+    "overview": {
+      "label": "办理概览",
+      "rule_ids": [
+        "NR01",
+        "NR02",
+        "NR03",
+        "NR04",
+        "NR05",
+        "NR06",
+        "NR07",
+        "NR08",
+        "NR09",
+        "NR10",
+        "NR11",
+        "NR12",
+        "NR13",
+        "NR14",
+        "NR15",
+        "NR16"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "materials": {
+      "label": "材料与例外",
+      "rule_ids": [
+        "NR05",
+        "NR06",
+        "NR07"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "online": {
+      "label": "现场办理与网办限制",
+      "rule_ids": [
+        "NR03",
+        "NR04"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "window": {
+      "label": "提前办理窗口",
+      "rule_ids": [
+        "NR01",
+        "NR02"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "time": {
+      "label": "服务周期与法定期限",
+      "rule_ids": [
+        "NR08",
+        "NR09",
+        "NR14"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "fee": {
+      "label": "工本费与邮费",
+      "rule_ids": [
+        "NR10",
+        "NR11"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "collection": {
+      "label": "领取新证与旧证交回",
+      "rule_ids": [
+        "NR11",
+        "NR12",
+        "NR13"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "temporary": {
+      "label": "急需用证与临时证路径",
+      "rule_ids": [
+        "NR09",
+        "NR15"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    },
+    "progress": {
+      "label": "进度查询指引",
+      "rule_ids": [
+        "NR16"
+      ],
+      "version": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601",
+      "status": "SOURCE_GUIDANCE_PENDING_REVIEW"
+    }
+  },
+  "covered_rules": [
+    "NR01",
+    "NR02",
+    "NR03",
+    "NR04",
+    "NR05",
+    "NR06",
+    "NR07",
+    "NR08",
+    "NR09",
+    "NR10",
+    "NR11",
+    "NR12",
+    "NR13",
+    "NR14",
+    "NR15",
+    "NR16"
+  ],
+  "model_calls": 0,
+  "human_business_review": false,
+  "knowledge_published": false
+}

@@ -2,6 +2,8 @@
 
 **南京事项技术说明：** [六页Word](docs/南京真实事项技术说明.docx)与[同内容文字版](docs/南京真实事项技术说明.md)已整理来源、OCR边界、本体演化、实际Qwen编排、双端权限、复现及未完成验收。Word已渲染并逐页检查，正式业务复核和独立评测仍未完成。
 
+**当前完整交付v2：** [约20.5MB ZIP](deliveries/nanjing-project-v2.zip)及[1465文件解压目录](deliveries/nanjing-project-v2/)包含已经通过的Qwen v4代码、真实轨迹和上述Word；新建Python环境从ZIP解压源码完成19项HTTP检查，包内原生代码与实跑代码仅有换行格式差异。[交付说明](deliveries/README.md)保留完整哈希与历史v1；解压验证未追加模型或重建Nexent容器。
+
 **2026-10-19完整公开项目交付：** [完整ZIP](deliveries/nanjing-project-v1.zip)及[同内容目录](deliveries/nanjing-project-v1/)已上传，1448文件、约20.4MB，包含源码、配置、测试、官方原件和证据。新Python环境安装固定依赖后，从ZIP解压目录启动真实本地HTTP双端，19项检查通过，覆盖版本、交接、越权及当前暂停；[GitHub下载回执](evidence/real-matter-closure/project-delivery/github-download.json)为HTTP200、SHA256一致。[复现说明](docs/南京事项项目交付与复现.md)明确：未重建Nexent容器，未在干净环境重跑原生模型，独立评测尚无冻结案例，正式发布仍关闭。
 
 **2026-10-19南京真实原件更新闭环（工程）：** [更新与双端联调](docs/南京真实原件更新与发布联调.md)实取四份官方HTML，既有来源无变化时保持版本；加入法律原文并发布演化本体后改变在线查询，旧会话固定、工作人员交接及暂停/回退19项检查通过。四条替代证据路径支持同一候选结论，模型调用0。提供[更新输入ZIP](data/real-matter-closure/nanjing/update-input-package-v1.zip)及[解压包](data/real-matter-closure/nanjing/update-input-package-v1/README.md)，117文件包已在新建无依赖环境复现输入校验；当时未覆盖原生主控收尾，后续v4已通过，正式业务发布与独立评测继续待办。

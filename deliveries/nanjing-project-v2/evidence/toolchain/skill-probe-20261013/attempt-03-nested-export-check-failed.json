@@ -1,0 +1,61 @@
+{
+  "captured_at": "2026-10-13T14:57:12.407076+00:00",
+  "scope": "Technical Skill lifecycle and MCP integration only",
+  "checks": {
+    "skill_uploaded": true,
+    "skill_explicitly_bound": true,
+    "isolated_agent_published": true,
+    "native_skill_then_mcp": true
+  },
+  "errors": [
+    {
+      "stage": "private_agent_export",
+      "type": "RuntimeError"
+    }
+  ],
+  "execution": {
+    "conversation_id": 134,
+    "duration_ms": 7508.31,
+    "passed": true,
+    "stop_reasons": [
+      "SKILL_AND_MCP_VERIFIED"
+    ],
+    "result": {
+      "status": "OK",
+      "items": [],
+      "citations": [],
+      "knowledge_version": null,
+      "message_code": "ENVIRONMENT_READY",
+      "data": {
+        "role": "citizen",
+        "resources": {
+          "evidence": {
+            "configured": true,
+            "count": 0
+          },
+          "cases": {
+            "configured": true,
+            "count": 0
+          },
+          "materials": {
+            "configured": true,
+            "count": 0
+          }
+        },
+        "request_id": "78cab4e2a3025fc6"
+      }
+    },
+    "business_counts_after": {
+      "evidence": 0,
+      "cases": 0,
+      "materials": 0
+    }
+  },
+  "actual_tool_order": [
+    "read_skill_md",
+    "get_environment_status"
+  ],
+  "agent_id": 4,
+  "skill_id": 1,
+  "passed": false
+}

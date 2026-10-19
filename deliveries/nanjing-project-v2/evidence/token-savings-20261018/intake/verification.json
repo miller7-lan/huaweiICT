@@ -1,0 +1,77 @@
+{
+  "mode": "synthetic_http_contract_replay",
+  "actual_remote_model_calls": 0,
+  "real_deepseek_quality_verified": false,
+  "official_submission": false,
+  "passed": 14,
+  "total": 14,
+  "checks": [
+    {
+      "name": "未登录不能访问草稿",
+      "passed": true
+    },
+    {
+      "name": "首题与独立入口可用",
+      "passed": true
+    },
+    {
+      "name": "逐项填写不调用核查或创建咨询",
+      "passed": true
+    },
+    {
+      "name": "外发同意必需",
+      "passed": true
+    },
+    {
+      "name": "原回答仅留本地，核查只接收代码",
+      "passed": true
+    },
+    {
+      "name": "未知不补全，结果必须人工检查",
+      "passed": true
+    },
+    {
+      "name": "人工确认不可跳过",
+      "passed": true
+    },
+    {
+      "name": "进入现有咨询而非正式政务提交",
+      "passed": true
+    },
+    {
+      "name": "未知保持追问而非纸质表默认",
+      "passed": true
+    },
+    {
+      "name": "提交后原回答清除",
+      "passed": true
+    },
+    {
+      "name": "重复提交不新增咨询",
+      "passed": true
+    },
+    {
+      "name": "查询历史仍受会话归属限制",
+      "passed": true
+    },
+    {
+      "name": "表单回执继续经过当前暂停门",
+      "passed": true
+    },
+    {
+      "name": "退出使草稿与历史读取失效",
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "src/gov_mcp/decision/intake.py": "0336d95bf67ee55463d596a512bf90121cffb7113e7ddbd837298cb93c5b31b8",
+    "src/gov_mcp/decision/intake.html": "5abc7f8ec10777f54b4c2de1d254a7c7694d23beb7c475695cfec387fa20f979",
+    "src/gov_mcp/decision/intake.js": "ab9d59270ac05dceb8683c27caff1892e18ac18cd1da7a291635413540a81b44",
+    "src/gov_mcp/decision/intake.css": "6e0822d75d8be566e3d2bea0903040fb070bc01432ed64e2f9f0c678a6543b4b",
+    "src/gov_mcp/decision/server.py": "8a1459b94bf851ee8ac5bfa558e8aed7925b07f2e71e6e2599bf6e3be02fc1b9",
+    "src/gov_mcp/decision/workflow.py": "187ddba655bd5e3a7e8bfffa09c87692d529e479cb835bde89ee1c54252e74f7",
+    "config/decision/intake-form.json": "2180b11233217ac75ccf105ac376ca024a513f899c5ed5d7aec07cc0ec3f2210",
+    "config/decision/connections.json": "c08e4c4b3999fe6354f399cf5fc1f2643c629212f4352a24f11138b24536981e",
+    "scripts/verify_guided_intake.py": "b2fcfdacc72d9478e4a05f969d0081a719291bee3aa27a0f7b25118de445bc3d"
+  }
+}
