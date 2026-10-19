@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_NATIVE_FINALIZATION_TIMEOUT",
+  "native_requests": 2,
+  "campaign_closed": true,
+  "attempt_results": [
+    false,
+    false
+  ],
+  "task_states": [
+    "opened",
+    "verified"
+  ],
+  "latest_task_id": "task-ffa88341305f456380c89a636b6b2a6b",
+  "pinned_version": "72af3bad4ea8d05caf6ef7dfe58cb7a3083af0feb954241fd130723a6aa5f516",
+  "actual_child_verification": {
+    "human_review": "pending",
+    "jev_called": false,
+    "knowledge_published": false,
+    "method": "exact_original_citation_and_typed_program_proof",
+    "source_documents": [
+      "LAW-ID-BJ-TRAFFIC-2011",
+      "NJ-OLD-CARD-2025",
+      "NJ-POLICE-FAQ-2025"
+    ]
+  },
+  "program_result_rechecked_without_model_calls": true,
+  "proof_count": 2,
+  "main_final_answer_received": false,
+  "main_state_and_finalizer_missing_in_second_run": true,
+  "unit_tests_unique_passing": 14,
+  "human_business_review": false,
+  "formal_publication": false,
+  "independent_evaluation": false,
+  "cloud_model_calls": 0,
+  "jev_calls": 0,
+  "next_requirements": [
+    "Reduce/restructure the native prompt and address cold prompt/stream timeout for observed local hardware before any newly authorized run.",
+    "Complete main-controller state/finalization and exact persisted-result comparison.",
+    "Keep the two existing run records and closed budget unchanged."
+  ]
+}

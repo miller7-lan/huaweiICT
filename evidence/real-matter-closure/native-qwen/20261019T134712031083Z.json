@@ -1,0 +1,80 @@
+{
+  "checked_at": "2026-10-19T13:47:12.031130+00:00",
+  "mode": "govmatter_native_preview",
+  "models": {
+    "controller": "Qwen3-8B",
+    "retriever": "Qwen3-4B",
+    "verifier": "Qwen3-4B"
+  },
+  "native_run_requests": 1,
+  "cloud_model_calls": 0,
+  "jev_calls": 0,
+  "human_business_review": false,
+  "independent_evaluation": false,
+  "knowledge_published": false,
+  "startup_source_sha256": {
+    "matter_native.py": "514a798edf7da39acacd1d13d61360649cf333ba87532d3097b1320022cb4bac",
+    "matter_native_server.py": "a9adfacbe6eaf3c115fc6ae8bc8da8b93c5cca904e4d91e2da88f9a3f4db4878",
+    "matter_lifecycle.py": "74abc072db21eb921545923c8e2c3092d56fd84ea58a9d81aadf212f45819e4a",
+    "matter_graph.py": "e3a4a17a9bbb3f281dd2636e3110d3237273c3a5d34da3c65f64d43cc7aa9d2b",
+    "matter_guidance.py": "d49ba8c93466bbbb27bda91a891a3cea898389476f702066bd3aa4eb0b45b2b3"
+  },
+  "run_id": "native-166e077dba0c4af58c9db73805b10939",
+  "runtime_run_id": "debug-acde0f0a9c024cd596c89301fa45838c",
+  "passed": false,
+  "error_type": "RuntimeError",
+  "external_failure": null,
+  "stop_reasons": [
+    "NATIVE_RUN_BOUND_EXCEEDED"
+  ],
+  "duration_ms": 655942.63,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 5,
+    "model_attempt_control": 19,
+    "model_output_thinking": 252,
+    "parse": 4,
+    "tool": 4,
+    "execution_logs": 4,
+    "token_count": 2,
+    "subagent_start": 2,
+    "agent_finish": 2,
+    "subagent_end": 2
+  },
+  "campaign": {
+    "active": null,
+    "attempts": [
+      {
+        "external_failure": false,
+        "finished_at": 1792417530.0144143,
+        "id": "native-d7fb8c188393434daba2df20652c44c9",
+        "passed": false,
+        "repair_note": null,
+        "started_at": 1792416902.4529705
+      },
+      {
+        "external_failure": false,
+        "finished_at": 1792418287.970654,
+        "id": "native-166e077dba0c4af58c9db73805b10939",
+        "passed": false,
+        "repair_note": "Fixed observed child prose and wrong delegation-tool name using exact executable leaf-tool examples; restored existing integrated-GPU configuration with unchanged model digests and added no_think instruction.",
+        "started_at": 1792417633.1836941
+      }
+    ],
+    "closed": true
+  },
+  "actual_tools": [
+    "read_skill_md",
+    "govmatter_open",
+    "govmatter_retrieve",
+    "govmatter_verify"
+  ],
+  "model_attempt_begins": 10,
+  "model_attempt_rollbacks": 5,
+  "code_sha256": {
+    "scripts/verify_matter_native.py": "64baf198be0711b0b5acfed225c9c6e9e549f83b0901724ccd0263a6b3d1ad98",
+    "scripts/provision_matter_native.py": "d5939835642b5de7584ceb26e0f0785ab0bf83bf3005818f2bd219c3f4ec3eea",
+    "config/skills/govmatter-source-proof/SKILL.md": "a739c71bebe8e85168b75b1e5412089c6858550fda878cdfa72274375045e839"
+  }
+}

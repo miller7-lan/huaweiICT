@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-10-19T13:35:01.400209+00:00",
+  "mode": "govmatter_native_preview",
+  "models": {
+    "controller": "Qwen3-8B",
+    "retriever": "Qwen3-4B",
+    "verifier": "Qwen3-4B"
+  },
+  "native_run_requests": 1,
+  "cloud_model_calls": 0,
+  "jev_calls": 0,
+  "human_business_review": false,
+  "independent_evaluation": false,
+  "knowledge_published": false,
+  "startup_source_sha256": {
+    "matter_native.py": "514a798edf7da39acacd1d13d61360649cf333ba87532d3097b1320022cb4bac",
+    "matter_native_server.py": "a9adfacbe6eaf3c115fc6ae8bc8da8b93c5cca904e4d91e2da88f9a3f4db4878",
+    "matter_lifecycle.py": "74abc072db21eb921545923c8e2c3092d56fd84ea58a9d81aadf212f45819e4a",
+    "matter_graph.py": "e3a4a17a9bbb3f281dd2636e3110d3237273c3a5d34da3c65f64d43cc7aa9d2b",
+    "matter_guidance.py": "d49ba8c93466bbbb27bda91a891a3cea898389476f702066bd3aa4eb0b45b2b3"
+  },
+  "run_id": "native-d7fb8c188393434daba2df20652c44c9",
+  "passed": false,
+  "error_type": "RuntimeError",
+  "external_failure": null,
+  "duration_ms": 628617.16,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 8,
+    "model_attempt_control": 21,
+    "model_output_thinking": 586,
+    "parse": 5,
+    "tool": 5,
+    "execution_logs": 3,
+    "token_count": 5,
+    "subagent_start": 2,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "warning": 2
+  },
+  "campaign": {
+    "active": null,
+    "attempts": [
+      {
+        "external_failure": false,
+        "finished_at": 1792417530.0144143,
+        "id": "native-d7fb8c188393434daba2df20652c44c9",
+        "passed": false,
+        "repair_note": null,
+        "started_at": 1792416902.4529705
+      }
+    ],
+    "closed": false
+  },
+  "code_sha256": {
+    "scripts/verify_matter_native.py": "c5ec165de9db266f2842e66a4f6b43bdff78a2beedbe6cf52e535ca5df9ed7ca",
+    "scripts/provision_matter_native.py": "dce3edee539822c68b1e3b3df24cdb0674661b53e4c77ac8be6d89cec2b43953",
+    "config/skills/govmatter-source-proof/SKILL.md": "a739c71bebe8e85168b75b1e5412089c6858550fda878cdfa72274375045e839"
+  }
+}
