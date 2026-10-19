@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "kind": "browser_capture_extension_not_business_time_approval",
+  "recorded_at": "2026-10-18T10:18:40.663461+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "source_id": "ERQI-RENEWAL-PORTAL-RENDERED",
+  "url": "https://www.hnzwfw.gov.cn/portal/guide/9BA34BC110B96284D26CE82456A51500?region=410103000000",
+  "prior_revision": "rev-d35d070e36d4b86acfee6d71",
+  "revision": "rev-f9fa285838d66e6267c9f590",
+  "state": "pending_review",
+  "capture_archive_sha256": "3d7a49fc0ded9328b2496d7923a58ed2aa1ba0ed7c9cb30a612c4d97f0f5148c",
+  "capture_archive_bytes": 191683,
+  "manifest": {
+    "schema": 1,
+    "kind": "agent_created_browser_capture_bundle_not_government_download_or_http_original",
+    "source_url": "https://www.hnzwfw.gov.cn/portal/guide/9BA34BC110B96284D26CE82456A51500?region=410103000000",
+    "observed_on": "2026-10-18",
+    "captured_by": "Codex AI",
+    "public_without_login": true,
+    "guide_download_obtained": false,
+    "normal_http_guide_body_obtained": false,
+    "file_inventory": {
+      "initial-guide-dom.txt": {
+        "bytes": 21352,
+        "sha256": "9c861cfb4064331e5e475d9a145b32214754427baad52ef8ce023694b6a14582"
+      },
+      "material-acceptance-ax.txt": {
+        "bytes": 19725,
+        "sha256": "a65f1bfec962b21b0be1764cddc2c4a3e0adbc25a17367b88c86b4732d766460"
+      },
+      "material-basis-ax.txt": {
+        "bytes": 20385,
+        "sha256": "c69d1ba73a9c49132c042c66a6566a956ae01840b5f250a6716fe23b311cf547"
+      },
+      "material-basis.jpg": {
+        "bytes": 90435,
+        "sha256": "7cc82839f9470fdc80c71103c9a77c3fc5f3432452d893950a806fa6d97bca4d"
+      },
+      "material-notes-ax.txt": {
+        "bytes": 19737,
+        "sha256": "6b03acdaad79c4d667a2f14dfa406aad00b57e59c1d34db0758f62254ee53f17"
+      },
+      "expanded-basic-ax.txt": {
+        "bytes": 23531,
+        "sha256": "3d993966117aea3abeeec81a5ff296f6f9a486596bb17088c8b42a8f658a4c69"
+      },
+      "commitment-explanation-ax.txt": {
+        "bytes": 23726,
+        "sha256": "5d00efc7caf23bf7df882922af2694e3a6c063416279ad6801fb250443ebe831"
+      },
+      "statutory-explanation-ax.txt": {
+        "bytes": 23612,
+        "sha256": "f1df6572c32c7fcad7d43b7ec93644b311a37bfb5907e9b1d78167faca7fe9e5"
+      },
+      "commitment-explanation.jpg": {
+        "bytes": 81698,
+        "sha256": "bdfc68f46e3ee1f0cf242484f32c64d3ff8004c7d6a0fce2fae1b9e3debbd7e6"
+      }
+    },
+    "selection": {
+      "method": "Prior three literal dialogs plus visible coding-table text nodes in order and two complete time-dialog bodies",
+      "locators": [
+        "公开指南/申请材料/居民身份证/填报须知（浏览器取证待核）",
+        "公开指南/申请材料/居民身份证/查看受理标准（浏览器取证待核）",
+        "公开指南/申请材料/居民身份证/材料依据（浏览器取证待核）",
+        "公开指南/基本信息/编码信息（浏览器取证待核）",
+        "公开指南/基本信息/承诺办理时限/查看说明（浏览器取证待核）",
+        "公开指南/基本信息/法定办理时限/查看说明（浏览器取证待核）"
+      ]
+    },
+    "limits": "Captured public rendered observations and one screenshot; not a government-issued file or current-business approval. Full page has unresolved material, time, exemption and online eligibility relationships.",
+    "screenshot_media_type": "image/jpeg",
+    "format_note": "Screenshot bytes are JPEG/JFIF. Initial capture used a .png filename; corrected member extension only, without changing any image bytes or dialog text. Initial archive remains in revision history.",
+    "extension": "Expanded visible basic/code information and two time-explanation dialogs; three prior material dialogs and all prior assets preserved byte for byte."
+  },
+  "visible_codes": {
+    "实施主体编码": "11410100MB1K20802F",
+    "实施编码": "11410100MB1K20802F4000709110002",
+    "地方实施编码": "MB1K20802QRP0ENM001",
+    "业务办理项编码": "11410100MB1K20802F400070911000201"
+  },
+  "visible_time_labels": {
+    "commitment_workdays": 6,
+    "statutory_workdays": 60
+  },
+  "new_selected_clauses": [
+    {
+      "locator": "公开指南/基本信息/编码信息（浏览器取证待核）",
+      "text_sha256": "415391f68f47b574284e2ccc67765bbb95b0aaa79e7107cd7710d85f5faaf6a4",
+      "characters": 136
+    },
+    {
+      "locator": "公开指南/基本信息/承诺办理时限/查看说明（浏览器取证待核）",
+      "text_sha256": "38543b2310351a54cdc6c5bf2462bdca2fa0075d14217280f36599a1be2d0783",
+      "characters": 57
+    },
+    {
+      "locator": "公开指南/基本信息/法定办理时限/查看说明（浏览器取证待核）",
+      "text_sha256": "9292f505cdace35f98237761bbc086776742b8e1466ad7bb4abb5e2ff18f3eaf",
+      "characters": 19
+    }
+  ],
+  "existing_reviewed_comparison_bindings": [
+    {
+      "source_id": "ID-AMENDMENT-JT-LEAD",
+      "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+      "revision": "rev-bd98fcbde0cda7f52078b310",
+      "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+      "locator": "第十二条",
+      "text_sha256": "530eae3b47c0f5ae31c958b3b56cad742ba5654e6071062669d73c08e888188a"
+    },
+    {
+      "source_id": "HN-MEASURES-2026",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "locator": "正文段落1",
+      "text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+    }
+  ],
+  "interpretation": {
+    "commitment_excludes_generic_extra_steps": true,
+    "specific_hearing_or_tender_required": false,
+    "six_day_application_to_collection_guaranteed": false,
+    "six_day_postal_delivery_guaranteed": false,
+    "sixty_workday_label_replaces_statutory_days": false,
+    "provincial_fifteen_workday_evidence_overridden": false,
+    "page_update_date_confirmed": false,
+    "business_approval": false
+  },
+  "counts_before": {
+    "sites": 49,
+    "documents": 45,
+    "revisions": 150,
+    "chunks": 955,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 313
+  },
+  "counts_after": {
+    "sites": 49,
+    "documents": 45,
+    "revisions": 151,
+    "chunks": 961,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 316
+  },
+  "old_material_chunks_unchanged": true,
+  "normal_http_guide_originals_added": 0,
+  "new_sources": 0,
+  "new_archive_records": 0,
+  "new_selected_clauses_count": 3,
+  "business_publications": 0,
+  "content_sha256": "11e7be7aaa9ec96c4333534ca86e38a44bad130dfc5bed5541999435186964e6"
+}

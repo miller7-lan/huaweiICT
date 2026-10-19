@@ -1,0 +1,97 @@
+{
+  "captured_at": "2026-10-15T09:35:02.445820+00:00",
+  "client_timezone": "Asia/Shanghai",
+  "scope": "synthetic source retrieval through native Nexent Skill and MCP, not business inference",
+  "cases": [
+    {
+      "case": "text",
+      "query": "演练事项由哪个窗口受理？",
+      "conversation_id": 140,
+      "passed": true,
+      "duration_ms": 7130.18,
+      "stop_reasons": [
+        "SOURCE_RETRIEVAL_VERIFIED"
+      ],
+      "message_code": "EVIDENCE_FOUND",
+      "knowledge_version": "docs-cf8becf5437334d3",
+      "citation_count": 2,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "actual_tool_order": [
+        "read_skill_md",
+        "govdocs_search_evidence"
+      ]
+    },
+    {
+      "case": "table",
+      "query": "演练分支甲需要什么证明？",
+      "conversation_id": 141,
+      "passed": true,
+      "duration_ms": 6410.18,
+      "stop_reasons": [
+        "SOURCE_RETRIEVAL_VERIFIED"
+      ],
+      "message_code": "EVIDENCE_FOUND",
+      "knowledge_version": "docs-cf8becf5437334d3",
+      "citation_count": 2,
+      "modalities": [
+        "image",
+        "table"
+      ],
+      "actual_tool_order": [
+        "read_skill_md",
+        "govdocs_search_evidence"
+      ]
+    },
+    {
+      "case": "image",
+      "query": "申请表需要本人签字吗？",
+      "conversation_id": 142,
+      "passed": true,
+      "duration_ms": 5080.65,
+      "stop_reasons": [
+        "SOURCE_RETRIEVAL_VERIFIED"
+      ],
+      "message_code": "EVIDENCE_FOUND",
+      "knowledge_version": "docs-cf8becf5437334d3",
+      "citation_count": 3,
+      "modalities": [
+        "image",
+        "table",
+        "text"
+      ],
+      "actual_tool_order": [
+        "read_skill_md",
+        "govdocs_search_evidence"
+      ]
+    },
+    {
+      "case": "no_evidence",
+      "query": "办理费用是多少钱？",
+      "conversation_id": 143,
+      "passed": true,
+      "duration_ms": 3421.75,
+      "stop_reasons": [
+        "SOURCE_RETRIEVAL_VERIFIED"
+      ],
+      "message_code": "NO_SUPPORTING_EVIDENCE",
+      "knowledge_version": "docs-cf8becf5437334d3",
+      "citation_count": 0,
+      "modalities": [],
+      "actual_tool_order": [
+        "read_skill_md",
+        "govdocs_search_evidence"
+      ]
+    }
+  ],
+  "errors": [],
+  "original_business_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  },
+  "original_versions_unchanged": true,
+  "passed": true
+}

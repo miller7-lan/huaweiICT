@@ -1,0 +1,225 @@
+{
+  "original_state": {
+    "data_class": "public",
+    "case": {
+      "data_class": "public",
+      "applicant_kind": "fictional",
+      "age_group": "adult",
+      "self_service": true,
+      "household_scope": "local_erqi",
+      "reason": "expiry",
+      "window": "minggong",
+      "personal_data_collected": false
+    },
+    "claims": [
+      {
+        "id": "fee",
+        "value": "20元/证",
+        "statement": "The county guide states a standard renewal fee of 20 CNY per card; this does not establish personal fee-relief eligibility.",
+        "source_text": "20元/证。按照《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》（发改价格[2003]2322号）的规定。"
+      },
+      {
+        "id": "duration",
+        "value": "15个工作日",
+        "statement": "The county guide states 15 working days; its relationship to other service commitments remains unverified.",
+        "source_text": "15个工作日"
+      },
+      {
+        "id": "materials",
+        "value": [
+          "居民户口簿",
+          "原居民身份证"
+        ],
+        "statement": "The county guide lists a household register and the original resident identity card, with separate conditions for minors and cross-city processing. This is a source description, not a confirmed current checklist.",
+        "source_text": "1、居民户口簿； 2、原居民身份证； 3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证； 4、跨户籍所在地市异地办证的， 申请人交验证明身份的证件之一后，经书面承诺，可免提交在当地就业、就学、居住的证明材料 。"
+      },
+      {
+        "id": "address",
+        "value": "郑州市二七区铭功路228号铭功路街道便民服务中心",
+        "statement": "The Minggong guide gives the window address shown in this claim's value.",
+        "source_text": "郑州市二七区铭功路228号铭功路街道便民服务中心"
+      },
+      {
+        "id": "phone",
+        "value": "0371—86191017",
+        "statement": "The Minggong guide gives the contact phone number shown in this claim's value.",
+        "source_text": "0371—86191017"
+      }
+    ]
+  },
+  "original_questions": {
+    "fee": {
+      "type": "noul",
+      "instructions": "Does claim fee accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+    },
+    "duration": {
+      "type": "noul",
+      "instructions": "Does claim duration accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+    },
+    "materials": {
+      "type": "noul",
+      "instructions": "Does claim materials accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+    },
+    "address": {
+      "type": "noul",
+      "instructions": "Does claim address accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+    },
+    "phone": {
+      "type": "noul",
+      "instructions": "Does claim phone accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+    },
+    "invented_advance": {
+      "type": "noul",
+      "instructions": "Do these attached source texts explicitly establish that this adult can renew exactly 30 days in advance?"
+    }
+  },
+  "result": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "fee": {
+        "type": "noul",
+        "noul": 0.72
+      },
+      "duration": {
+        "type": "noul",
+        "noul": 0.96
+      },
+      "materials": {
+        "type": "noul",
+        "noul": 0.81
+      },
+      "address": {
+        "type": "noul",
+        "noul": 0.97
+      },
+      "phone": {
+        "type": "noul",
+        "noul": 0.98
+      },
+      "invented_advance": {
+        "type": "noul",
+        "noul": 0.02
+      }
+    },
+    "usage": {
+      "input_tokens": 1081,
+      "output_tokens": 104
+    },
+    "english_input": {
+      "version": "jev-english-1",
+      "state": {
+        "data_class": "public",
+        "case": {
+          "data_class": "public",
+          "applicant_kind": "fictional",
+          "age_group": "adult",
+          "self_service": true,
+          "household_scope": "local_erqi",
+          "reason": "expiry",
+          "window": "minggong",
+          "personal_data_collected": false
+        },
+        "claims": [
+          {
+            "id": "fee",
+            "value": "20 yuan/certificate",
+            "statement": "The county guide states a standard renewal fee of 20 CNY per card; this does not establish personal fee-relief eligibility.",
+            "source_text": "20 yuan/certificate. In accordance with the provisions of the Notice of the National Development and Reform Commission and the Ministry of Finance on the Resident Identity Card Fee Standards and Related Issues (Fagai Jiage [2003] No. 2322)."
+          },
+          {
+            "id": "duration",
+            "value": "15 working days",
+            "statement": "The county guide states 15 working days; its relationship to other service commitments remains unverified.",
+            "source_text": "15 working days"
+          },
+          {
+            "id": "materials",
+            "value": [
+              "Resident household register",
+              "Original resident identity card"
+            ],
+            "statement": "The county guide lists a household register and the original resident identity card, with separate conditions for minors and cross-city processing. This is a source description, not a confirmed current checklist.",
+            "source_text": "1. Resident household register; 2. Original resident identity card; 3. For residents under the age of sixteen, the guardian shall apply on their behalf, and the guardian's resident identity card shall be provided; 4. For applications made across household registration locations in a different city, after the applicant presents one of the documents proving identity and makes a written commitment, the submission of proof materials of local employment, schooling, or residence may be exempted."
+          },
+          {
+            "id": "address",
+            "value": "Minggong Road Subdistrict Convenience Service Center, No. 228 Minggong Road, Erqi District, Zhengzhou City",
+            "statement": "The Minggong guide gives the window address shown in this claim's value.",
+            "source_text": "Minggong Road Subdistrict Convenience Service Center, No. 228 Minggong Road, Erqi District, Zhengzhou City"
+          },
+          {
+            "id": "phone",
+            "value": "0371—86191017",
+            "statement": "The Minggong guide gives the contact phone number shown in this claim's value.",
+            "source_text": "0371—86191017"
+          }
+        ]
+      },
+      "questions": {
+        "fee": {
+          "type": "noul",
+          "instructions": "Does claim fee accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+        },
+        "duration": {
+          "type": "noul",
+          "instructions": "Does claim duration accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+        },
+        "materials": {
+          "type": "noul",
+          "instructions": "Does claim materials accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+        },
+        "address": {
+          "type": "noul",
+          "instructions": "Does claim address accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+        },
+        "phone": {
+          "type": "noul",
+          "instructions": "Does claim phone accurately describe its own attached source_text? Judge source support only, not current legal applicability."
+        },
+        "invented_advance": {
+          "type": "noul",
+          "instructions": "Do these attached source texts explicitly establish that this adult can renew exactly 30 days in advance?"
+        }
+      }
+    }
+  },
+  "jev_receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 3362,
+      "status": "ok",
+      "cost_usd": null,
+      "http_status": 200,
+      "served_model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1081,
+        "output_tokens": 104
+      },
+      "duration_ms": 4083.94
+    }
+  ],
+  "translation_receipts": [
+    {
+      "version": "jev-english-1",
+      "target_language": "en",
+      "status": "translated",
+      "source_state_sha256": "8bcc5cce870ec8079791d881582e33c548b999f7a1724b044025b8d86a0c606b",
+      "source_questions_sha256": "81ee6bcaeb00166db97f5952ed970047aa86baaf149df550b5a4288767f1e089",
+      "translation_calls": 1,
+      "cache_hits": 0,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage": {
+        "input_tokens": 368,
+        "output_tokens": 229
+      },
+      "state_sha256": "2ddbd507ff0e7559ba8575a6822693d56b99133431548f7a9843f2353b1838c1",
+      "questions_sha256": "81ee6bcaeb00166db97f5952ed970047aa86baaf149df550b5a4288767f1e089",
+      "input_bytes": 3362
+    }
+  ]
+}

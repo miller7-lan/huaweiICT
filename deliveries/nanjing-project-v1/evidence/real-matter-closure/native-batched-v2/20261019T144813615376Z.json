@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-10-19T14:48:13.615472+00:00",
+  "mode": "govmatter_native_preview",
+  "models": {
+    "controller": "Qwen3-8B",
+    "retriever": "Qwen3-4B",
+    "verifier": "Qwen3-4B"
+  },
+  "native_run_requests": 1,
+  "cloud_model_calls": 0,
+  "jev_calls": 0,
+  "human_business_review": false,
+  "independent_evaluation": false,
+  "knowledge_published": false,
+  "protocol": "batched-close-v2",
+  "native_run_limit": 1,
+  "run_seconds_limit": 1200,
+  "expected_main_code_actions": 2,
+  "startup_source_sha256": {
+    "matter_native.py": "eecbd2fcf6a37fa5c3166bfd8c7edee086dadf4634e350ef48f5e9f8b488a210",
+    "matter_native_server.py": "fb845c5046d0b4051f1bc34a632676923f1248f0a3534ce44d83c6ec25a6eb6a",
+    "matter_lifecycle.py": "74abc072db21eb921545923c8e2c3092d56fd84ea58a9d81aadf212f45819e4a",
+    "matter_graph.py": "e3a4a17a9bbb3f281dd2636e3110d3237273c3a5d34da3c65f64d43cc7aa9d2b",
+    "matter_guidance.py": "d49ba8c93466bbbb27bda91a891a3cea898389476f702066bd3aa4eb0b45b2b3"
+  },
+  "run_id": "native-6ce638e2424741b494af98c1adff4477",
+  "runtime_run_id": "debug-e3190ec61e06421fbdc579c698f513b1",
+  "passed": false,
+  "stop_reasons": [
+    "EXACT_TOOL_TRACE_REQUIRED",
+    "STRUCTURED_RESULT_REQUIRED"
+  ],
+  "actual_tools": [
+    "govmatter_retrieve",
+    "govmatter_verify",
+    "govmatter_state",
+    "govmatter_finalize"
+  ],
+  "answer": null,
+  "owned_runtime_stop": {
+    "status": "success",
+    "already_stopped": false
+  },
+  "duration_ms": 385315.1,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 3,
+    "model_attempt_control": 16,
+    "model_output_thinking": 121,
+    "parse": 3,
+    "subagent_start": 2,
+    "tool": 4,
+    "execution_logs": 4,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "token_count": 1,
+    "final_answer": 1
+  },
+  "campaign": {
+    "active": null,
+    "attempts": [
+      {
+        "external_failure": false,
+        "finished_at": 1792421678.9261243,
+        "id": "native-6ce638e2424741b494af98c1adff4477",
+        "passed": false,
+        "repair_note": null,
+        "started_at": 1792421294.710214
+      }
+    ],
+    "closed": true
+  },
+  "model_attempt_begins": 8,
+  "model_attempt_rollbacks": 5,
+  "main_code_actions": 1,
+  "code_sha256": {
+    "scripts/verify_matter_native.py": "bdb9c8927b9bdad4b55e440796c570c6da6ae7453603004d1b216b4528ebc4d8",
+    "scripts/provision_matter_native.py": "38940a956d5bc8c7e2e838c7b8a581f250be979be2d9184a93d5e7a91c069a68",
+    "config/skills/govmatter-source-proof-batched/SKILL.md": "1c9b8c99fcfd8b6f014f18f9531610a4224076a2541a4d4d726c8cb766f92305"
+  }
+}

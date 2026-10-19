@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-10-16T05:04:04.274042+00:00",
+  "native_run_id": "73504144076945b1b533e36f1d22acd6",
+  "checks": {
+    "native_six_cases_passed": true,
+    "counts_match_native_run": true,
+    "official_versions_and_heads_zero": true,
+    "publication_policy_unchanged": true,
+    "web_and_read_only_mcp_running": true,
+    "worker_maintenance_heartbeats_current": true
+  },
+  "passed": true,
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "native_count_comparison_fields": [
+    "chunks",
+    "documents",
+    "heads",
+    "latest_chunks",
+    "revisions",
+    "versions"
+  ],
+  "scope_rule_sha256": "abca8005039768214f513e8a628dcc87e4f1fb5bf4b8076346fc875b48d6cff1",
+  "business_release_ready": false,
+  "human_review_completed": false,
+  "earlier_verification_error": {
+    "captured_at": "2026-10-16T05:00:07.500043+00:00",
+    "passed": false,
+    "failed_check": "counts_match_native_run",
+    "reason": "Compared full service count mapping (including sites/jobs) to the native suite subset. Corrected to explicitly compare the six fields recorded by the native run; no data changes."
+  },
+  "scope": "Current local service, unchanged publication policy and six native candidate/publication count fields, plus actual two-role stage outcomes. No substantive policy-answer, independent business or full-week acceptance claim."
+}

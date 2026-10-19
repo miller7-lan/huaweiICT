@@ -1,0 +1,46 @@
+{
+  "captured_at": "2026-10-16T03:13:25.474625+00:00",
+  "run_ids": [
+    "20261015T205246Z-69f8439f",
+    "20261016T024521Z-29459439"
+  ],
+  "same_model_and_digest": true,
+  "same_question_sequence": true,
+  "raw_source_content_changed_cases": [],
+  "source_revision_and_observation_metadata_may_differ": true,
+  "new_input_has_literal_structure_hints": true,
+  "system_prompts_differ": true,
+  "citation_check_versions_differ": true,
+  "original_rubric_defect_case_excluded_from_paired_comparison": [
+    "KQ14"
+  ],
+  "paired_assessable_cases": 29,
+  "ai_judgment_fail_to_pass": [
+    "KQ02",
+    "KQ06",
+    "KQ08",
+    "KQ13",
+    "KQ15",
+    "KQ18",
+    "KQ26",
+    "KQ27"
+  ],
+  "ai_judgment_pass_to_fail": [
+    "KQ11",
+    "KQ21",
+    "KQ23",
+    "KQ29"
+  ],
+  "second_run_technical_pass": 19,
+  "second_run_ai_pass": 13,
+  "second_run_both_pass": 9,
+  "second_run_max_prompt_tokens": 4811,
+  "no_transport_failures": true,
+  "context_reserve_all_passed": true,
+  "candidate_and_publication_counts_unchanged_during_second_trial": true,
+  "publication_policy_unchanged": true,
+  "dataset_role": "development_prevalidation_not_independent_acceptance",
+  "human_review_completed": false,
+  "business_release_ready": false,
+  "scope": "Paired descriptive AI review on reused development questions. Prompt and citation policy differ; no causal, independent accuracy, retrieval recall or business acceptance claim."
+}

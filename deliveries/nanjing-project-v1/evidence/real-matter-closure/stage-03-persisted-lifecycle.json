@@ -1,0 +1,35 @@
+{
+  "stage": "03_persisted_real_source_engineering_lifecycle",
+  "passed": true,
+  "scope": "Actual local persistence and role boundary execution on public source snapshots; automated roles, no browser/native model or human business acceptance",
+  "checks": {
+    "seed_without_complete_proof": true,
+    "evolved_preview_has_multi_document_proof": true,
+    "old_case_pinned_to_v1": true,
+    "handoff_preserves_v2": true,
+    "staff_explicit_engineering_confirmation": true,
+    "pause_blocks_current_and_historical": true,
+    "rollback_does_not_bypass_current_pause": true,
+    "restart_keeps_head_and_objects": true,
+    "two_immutable_versions": true,
+    "no_business_approval": true
+  },
+  "versions": {
+    "seed": "8e1997b9437bfd15b7c412355f8220e36377effffd6bf48bf65dcac06e865293",
+    "evolved": "1db2b8a7913f9d0ae52c556624a0fa64f85cb6334e5772513bca40e8a793c601"
+  },
+  "counts": {
+    "candidates": 2,
+    "versions": 2,
+    "runs": 2,
+    "audit": 13
+  },
+  "model_api_calls": 0,
+  "http_ui_calls": 0,
+  "human_business_review": false,
+  "formal_business_publication": false,
+  "controlled_pause_injection": true,
+  "old_business_databases_opened": false,
+  "windows_recovery_tasks_changed": false,
+  "handoff_tokens_in_report": false
+}

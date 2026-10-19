@@ -1,0 +1,155 @@
+{
+  "schema": 1,
+  "kind": "normally_archived_official_webprint_copy_reference_not_current_eligibility_approval",
+  "captured_at": "2026-10-18T10:28:43.324085+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "source_id": "FEE-WAIVER-2004-LANGXI",
+  "url": "https://www.ahlx.gov.cn/file_xc/4/202403/202403046c77205b1c9546488e541d934f100c9f.pdf",
+  "initial_revision": "rev-17917a193a037b05ab7c424b",
+  "revision": "rev-29909d3557d47fd304f5e216",
+  "state": "excluded",
+  "original_sha256": "31bb3f2243e383c62408a8d745e5a655b83a226c84305c38ffe5f82f331dcd4f",
+  "normal_fetch_receipts": [
+    {
+      "url": "https://www.ahlx.gov.cn/OpennessContent/show/3167656.html",
+      "checked_at": "2026-10-18T10:24:02.810874+00:00",
+      "normal_fetcher": true,
+      "attempted_once": true,
+      "body_acquired": true,
+      "status": 200,
+      "final_url": "https://www.ahlx.gov.cn/OpennessContent/show/3167656.html",
+      "bytes": 20893,
+      "sha256": "307ea94e2075b4fa9820dfa8c063d452f6d83d780254ab05a9b82132d78ebe36",
+      "content_type": "text/html"
+    },
+    {
+      "url": "https://www.ahlx.gov.cn/file_xc/4/202403/202403046c77205b1c9546488e541d934f100c9f.pdf",
+      "checked_at": "2026-10-18T10:24:08.108467+00:00",
+      "normal_fetcher": true,
+      "attempted_once": true,
+      "body_acquired": true,
+      "status": 200,
+      "final_url": "https://www.ahlx.gov.cn/file_xc/4/202403/202403046c77205b1c9546488e541d934f100c9f.pdf",
+      "bytes": 813961,
+      "sha256": "31bb3f2243e383c62408a8d745e5a655b83a226c84305c38ffe5f82f331dcd4f",
+      "content_type": "application/pdf",
+      "pdf_header_valid": true
+    }
+  ],
+  "parent": {
+    "url": "https://www.ahlx.gov.cn/OpennessContent/show/3167656.html",
+    "sha256": "307ea94e2075b4fa9820dfa8c063d452f6d83d780254ab05a9b82132d78ebe36",
+    "iframe_src": "/file_xc/pdfjs/web/viewer.html?file=/file_xc/4/202403/202403046c77205b1c9546488e541d934f100c9f.pdf",
+    "download_wrapper_web_result": {
+      "url": "https://www.ahlx.gov.cn/upload_xc/download?id=1000018&siteId=4",
+      "http_status": 404,
+      "method": "web tool observation; not a normal Fetcher receipt"
+    }
+  },
+  "pdf_observation": {
+    "format": "government_hosted_webprint_of_ndrc_page_not_sealed_original_notice",
+    "pages": 1,
+    "visual_pages_checked": [
+      1
+    ],
+    "reviewer_kind": "ai",
+    "human_review_completed": false,
+    "native_page_text_sha256": "49d9632d0d26b66f03321fa1a152b2594c21abc1c9ed851f5cc50921fc5ab161",
+    "page_png_sha256": "22d5d880376c57e8c6e26514b72859a80a1eeb6ceba5c581d3d5f21f3115d7cb",
+    "page_text_characters": 1325,
+    "pdf_text_extraction": {
+      "method": "pdf_text_layer",
+      "requires_visual_review": false
+    },
+    "selection_method": "Exact complete first, second and fifth item spans in the native page text; no navigation or ranking-list content selected."
+  },
+  "selected_spans": [
+    {
+      "item": 1,
+      "start": 341,
+      "end": 482,
+      "text_sha256": "d11f5dc88ee0f30704a33123319a6fe0ad431abe2385e349463edaeb8c1ad144"
+    },
+    {
+      "item": 2,
+      "start": 487,
+      "end": 576,
+      "text_sha256": "f2973c35c7ee71a154cf7df3962587b58534dbfd8d68d3150a94c20085007dee"
+    },
+    {
+      "item": 5,
+      "start": 726,
+      "end": 751,
+      "text_sha256": "b5a66399dff9d6ead5a98d847b6c4c21253698a675ae07921d4fa8d520c07d02"
+    }
+  ],
+  "comparison": {
+    "prior_source_id": "FEE-WAIVER-2004-ZJ-LEAD",
+    "prior_revision": "rev-318878017022327bb0eecc8d",
+    "prior_original_sha256": "1b1cc0eb3bb70b45b7369f6444d18585548682b48797569e851b53a4f846da40",
+    "normalization": "whitespace_removal_only_no_glyph_or_punctuation_repair",
+    "items_compared": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "all_five_items_match": true,
+    "prior_native_visual_preface_difference_resolved": false
+  },
+  "dates": {
+    "parent_page_date": "2024-03-04",
+    "printed_site_banner_date": "2022-01-14",
+    "printed_source_publication_field": "2004/02/06",
+    "body_signed_date": "2004-02-06",
+    "document_stated_execution_date": "2004-01-01",
+    "first_publication_verified": false,
+    "current_effectivity_certified": false
+  },
+  "conclusions": {
+    "new_business_rule": false,
+    "current_erqi_eligibility_resolved": false,
+    "current_proof_or_shared_verification_resolved": false,
+    "first_issue_fee_reintroduced": false,
+    "old_pdf_glyph_difference_repaired": false,
+    "all_difficulties_automatically_exempt": false,
+    "business_approval": false,
+    "formal_evaluation_executed": false,
+    "business_published": false
+  },
+  "counts_before": {
+    "sites": 49,
+    "documents": 45,
+    "revisions": 151,
+    "chunks": 961,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 316
+  },
+  "counts_after": {
+    "sites": 50,
+    "documents": 46,
+    "revisions": 153,
+    "chunks": 967,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 319
+  },
+  "normal_archived_pdf_copies_added": 1,
+  "selected_items": [
+    1,
+    2,
+    5
+  ],
+  "remaining_evidence": [
+    "二七区当前困难资格名称、有效证明与共享核验或免提交程序。",
+    "后续调整与地方执行依据；不能把网页显示不允许减免或通常20元覆盖依法减免。"
+  ],
+  "collection_limits": "Only the newly observed Langxi parent and its exact public-preview-linked PDF were normally fetched once. Existing paused NDRC and other sources were not resumed or retried. The parent research HTML is private research evidence, not a second main-corpus document.",
+  "content_sha256": "56ef804c3d48ab0515a498dece3ef52dc36beb81de43b845fde9d129abac44b5"
+}

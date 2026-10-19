@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "run_id": "20261018T082045117471Z",
+  "data_class": "public",
+  "case": {
+    "data_class": "public",
+    "applicant_kind": "fictional",
+    "age_group": "adult",
+    "self_service": true,
+    "household_scope": "local_erqi",
+    "reason": "expiry",
+    "window": "minggong",
+    "personal_data_collected": false
+  },
+  "status": "failed",
+  "knowledge_published": false,
+  "formal_application_submitted": false,
+  "native_real_business_verified": false,
+  "human_review": "pending_professional_review",
+  "scope": "Two official public HTML sources, one fictional local adult expiry case; candidate consultation only",
+  "sources": [
+    {
+      "source_id": "erqi",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "raw_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+      "published_at": null,
+      "effective_at": null
+    },
+    {
+      "source_id": "minggong",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml",
+      "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d",
+      "published_at": null,
+      "effective_at": null
+    }
+  ],
+  "retrieved_at": "2026-10-18T08:20:04.180092+00:00",
+  "cost_amount": null,
+  "evaluation_basis": "Assistant source-reading expectation fixed before inference; not independent human benchmark",
+  "extraction": {
+    "model": "deepseek-flash",
+    "usage": {
+      "input_tokens": 1238,
+      "output_tokens": 416,
+      "input_cache_hit_tokens": 0,
+      "input_cache_miss_tokens": 1238
+    },
+    "status": "untrusted_machine_candidate"
+  },
+  "error_type": "ValueError",
+  "error_code": "SOURCE_READING_EXPECTATION_MISMATCH:materials",
+  "duration_ms": 1992.65,
+  "jev_receipts": [],
+  "translation_receipts": [],
+  "source_sha256": {
+    "scripts/run_public_business_pilot.py": "d03b86000da192e28d53538d3ba2871aac74624230f71b7ff1e382ebc18c0866",
+    "src/gov_mcp/deepseek.py": "153245960666f60c08f6f4eab81b20a783b56e94307dec2e7cda2548230007ec",
+    "src/gov_mcp/classification.py": "982d03dcff0398e240a336f1a2ee49f229c30c7ff1b2004fb88b420203cbfb05",
+    "src/gov_mcp/jev_translation.py": "075d295da24e96c824ed21b6e7eb1bdcc79faab5bbf24eeb9a6a3d5e856ddcfd"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-19T13:23:59.492937+00:00",
+  "execution": "actual_loopback_http_with_existing_nexent_accounts",
+  "automated_operator": true,
+  "checks": [
+    {
+      "check": "citizen_real_signin",
+      "passed": true
+    },
+    {
+      "check": "citizen_trusted_identity",
+      "passed": true
+    },
+    {
+      "check": "staff_real_signin",
+      "passed": true
+    },
+    {
+      "check": "staff_trusted_identity",
+      "passed": true
+    },
+    {
+      "check": "maintainer_real_signin",
+      "passed": true
+    },
+    {
+      "check": "maintainer_trusted_identity",
+      "passed": true
+    },
+    {
+      "check": "client_role_override_rejected",
+      "passed": true
+    },
+    {
+      "check": "injection_source_initially_enabled",
+      "passed": true
+    },
+    {
+      "check": "source_bound_query",
+      "passed": true
+    },
+    {
+      "check": "staff_before_handoff_denied",
+      "passed": true
+    },
+    {
+      "check": "citizen_cannot_pause_source",
+      "passed": true
+    },
+    {
+      "check": "handoff_created",
+      "passed": true
+    },
+    {
+      "check": "handoff_same_conditions_and_version",
+      "passed": true
+    },
+    {
+      "check": "handoff_token_single_use",
+      "passed": true
+    },
+    {
+      "check": "engineering_confirmation_only",
+      "passed": true
+    },
+    {
+      "check": "maintainer_pause",
+      "passed": true
+    },
+    {
+      "check": "citizen_history_stopped",
+      "passed": true
+    },
+    {
+      "check": "staff_history_stopped",
+      "passed": true
+    },
+    {
+      "check": "injected_pause_restored",
+      "passed": true
+    }
+  ],
+  "status": "PASSED",
+  "new_model_calls": 0,
+  "native_agent_execution": false,
+  "human_business_review": false,
+  "formal_business_publication": false,
+  "independent_evaluation": false,
+  "case_id": "case-606af64ef29f4e3bba000e0dd49e6384",
+  "version": "72af3bad4ea8d05caf6ef7dfe58cb7a3083af0feb954241fd130723a6aa5f516",
+  "finished_at": "2026-10-19T13:24:09.667491+00:00",
+  "post_run_verified": {
+    "all_source_flags_enabled": true,
+    "head_equals_case_version": true
+  },
+  "startup_observations": [
+    "Docker Linux engine initially stopped; started existing Docker Desktop with hidden window.",
+    "Services briefly disconnected during dependency startup; no model request sent.",
+    "Configuration and runtime readiness later returned HTTP 200 before real identity acceptance."
+  ],
+  "rule_review_decision": "User explicitly retained candidate status; formal publication remains disabled."
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "ai_visual_observation_of_two_source_unit_boundaries",
+  "reviewer_kind": "ai",
+  "reviewer": "Codex AI",
+  "observed_at": "2026-10-16T04:06:23.259003+00:00",
+  "source_id": "HN-MEASURES-2021-PDF",
+  "revision_observed": "rev-5d056364588a5d9d7966ce17",
+  "raw_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+  "body_sha256": "028053d4c18ecb3abed9352effa15a89a7d8635628856b524d97e3f9ac172195",
+  "unit_algorithm_version": "literal-source-units-v1-408803f5902d",
+  "unit_ids": [
+    "U-02b59be333161b37522f9193",
+    "U-80935387fc1745dea4839a5e"
+  ],
+  "images": [
+    {
+      "name": "page-5.png",
+      "sha256": "4446a0d405e8dc27dba21a6b80296cd6f89689a3ff9b7165a7c4558ac8a748a8"
+    },
+    {
+      "name": "page-6.png",
+      "sha256": "9b7cbd92919e9599bab501a1caccad36570650f813d4393f36e36340d2ad3944"
+    }
+  ],
+  "physical_pages_examined": [
+    5,
+    6
+  ],
+  "findings": "目视原页：第二项省内通办在第5页；第三项标题在第5页末，正文接第6页开头，止于第四项旅馆许可之前。OCR漏掉二、三编号，单元保留归档OCR原貌，没有补写。仅确认这两处阅读边界，不核定2021措施的现行效力或二七区当前执行。",
+  "human_review_completed": false,
+  "current_effectivity_approved": false,
+  "scope": "These two cached source-page images were inspected in this turn and matched their prior render/original provenance. Other proposed unit boundaries are not visually approved by this observation."
+}

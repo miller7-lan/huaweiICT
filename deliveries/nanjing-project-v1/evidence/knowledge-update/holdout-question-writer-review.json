@@ -1,0 +1,55 @@
+{
+  "run_id": "20261016T131527Z-question-writer-ce4f149e",
+  "technical_generation_completed": true,
+  "candidate_count": 30,
+  "distinct_normalized_questions": 12,
+  "duplicate_groups": [
+    [
+      "Q004",
+      "Q008",
+      "Q012"
+    ],
+    [
+      "Q005",
+      "Q007",
+      "Q009",
+      "Q011",
+      "Q013",
+      "Q015"
+    ],
+    [
+      "Q006",
+      "Q010",
+      "Q014"
+    ],
+    [
+      "Q019",
+      "Q023",
+      "Q027"
+    ],
+    [
+      "Q020",
+      "Q022",
+      "Q024",
+      "Q026",
+      "Q028",
+      "Q030"
+    ],
+    [
+      "Q021",
+      "Q025",
+      "Q029"
+    ]
+  ],
+  "role_counts": {
+    "citizen": 15,
+    "staff": 15
+  },
+  "category_counts": {
+    "materials": 30
+  },
+  "batch_accepted": false,
+  "reason": "All 30 proposed items are materials-only, with exact repeats and generic overlaps. Reject the entire batch; no retry and no passing independence/acceptance claim.",
+  "model_requests_retried": 0,
+  "manual_draft_claims_writer_authorship": false
+}

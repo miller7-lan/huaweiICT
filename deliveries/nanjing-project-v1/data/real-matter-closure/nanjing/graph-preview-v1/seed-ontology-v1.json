@@ -1,0 +1,28 @@
+{
+  "version": "temporal-seed-v1",
+  "entity_types": {
+    "old_card": "Credential",
+    "processing": "Phase",
+    "collection": "Phase"
+  },
+  "relations": {
+    "usable_during": [
+      "Credential",
+      "Phase"
+    ],
+    "precedes": [
+      "Phase",
+      "Phase"
+    ]
+  },
+  "axioms": [
+    {
+      "triple": [
+        "processing",
+        "precedes",
+        "collection"
+      ],
+      "kind": "workflow_phase_order_not_policy_claim"
+    }
+  ]
+}

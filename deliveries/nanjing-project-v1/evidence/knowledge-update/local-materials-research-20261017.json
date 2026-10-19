@@ -1,0 +1,168 @@
+{
+  "schema": 1,
+  "kind": "bounded_local_materials_and_exemptions_research",
+  "checked_at": "2026-10-16T16:04:45.495159+00:00",
+  "local_date": "2026-10-17",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "user_source_link_dependency": false,
+  "findings": [
+    {
+      "id": "ERQI-CURRENT-VIEW",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "method": "web_tool_read_only",
+      "previously_known": true,
+      "new_canonical_original": false,
+      "observed_material_items": [
+        "居民户口簿",
+        "原居民身份证"
+      ],
+      "observed_processing_time": "15个工作日",
+      "dates_established": false,
+      "limit": "当前网页可见内容，不认证全部现行适用；未重抓已暂停来源。"
+    },
+    {
+      "id": "ERQI-NEARBY-CHANNELS",
+      "url": "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml",
+      "method": "web_tool_read_only",
+      "previously_known": true,
+      "page_displayed_at": "2026-01-23 09:34",
+      "limit": "就近办渠道报道不是到期换领完整材料清单，具体身份证案例属丢失补领，不计新发现。"
+    },
+    {
+      "id": "ZZ-MATERIAL-EXEMPTIONS",
+      "original_publisher_url": "https://public.zhengzhou.gov.cn/D0104X/9813645.jhtml",
+      "government_republication_url": "https://m.zzhkgq.gov.cn/2026/02-04/3620521.html",
+      "document_number": "郑政办〔2025〕45号",
+      "signed_at_body": "2025-12-18",
+      "publisher_displayed_date_web_only": "2025-12-31",
+      "republication_meta_pubdate": "2026-02-04 15:19:28.0",
+      "republication_meta_lastmodified": "2026-02-04 15:22",
+      "effective_from": null,
+      "normal_archive_receipt": {
+        "url": "https://m.zzhkgq.gov.cn/2026/02-04/3620521.html",
+        "checked_at": "2026-10-16T16:03:04.326297+00:00",
+        "canonical_import": false,
+        "status": 200,
+        "bytes": 95340,
+        "sha256": "d31a107cdaf4455b6203b452bdb702a90eb5f0b751bcadaf40bb4002e0588bed",
+        "final_url": "https://m.zzhkgq.gov.cn/2026/02-04/3620521.html",
+        "content_type": "text/html",
+        "elapsed_seconds": 5.201
+      },
+      "selected_paragraphs": [
+        {
+          "locator": "正文段落4",
+          "text_sha256": "61c972df64108b9b32e1ed5f903dc8831ef867bce51b2a81d37ae88967cb2510",
+          "characters": 11
+        },
+        {
+          "locator": "正文段落14",
+          "text_sha256": "eb03e58a34244db5964efd53fed28c30662237010b80937a1809130630560461",
+          "characters": 97
+        },
+        {
+          "locator": "正文段落20",
+          "text_sha256": "b877776ee4de2ca4866fc97e30d6a5a6171460f191ac54825cf38066968d332a",
+          "characters": 260
+        },
+        {
+          "locator": "正文段落24",
+          "text_sha256": "666584e44c53772c857a0b0c31ea8ef662e687494126a602b4afaa9ef16aac8d",
+          "characters": 123
+        },
+        {
+          "locator": "正文段落32",
+          "text_sha256": "147b2296a6b4c23c4744ecd96cdff07a1dc3a0c29f50df53b163f5c3838434e1",
+          "characters": 308
+        },
+        {
+          "locator": "正文段落35",
+          "text_sha256": "0edceb0d0455d5cbde366dc6a8db72b4db05f6bac791e379c0a847afa21ebf1c",
+          "characters": 303
+        }
+      ],
+      "conditional_modes": [
+        "直接取消",
+        "数据共享",
+        "告知承诺",
+        "部门核验"
+      ],
+      "limit": "一般方案需要具体清单和核验条件；转载无附件，没有建立到期换领户口簿免提交项目。计划公布第二批不证明已公布。"
+    },
+    {
+      "id": "EXEMPTION-ATTACHMENT",
+      "canonical_url": "https://public.zhengzhou.gov.cn/attachment/郑州市政务服务领域证明（证照）事项免提交清单（第一批）.pdf",
+      "method": "web_tool_partial_search_observation",
+      "complete_original_acquired": false,
+      "full_document_review_completed": false,
+      "pilot_exemption_found": false,
+      "absence_established": false,
+      "limit": "检索出现其他事项的身份证字段，不能证明换领事项被纳入或被排除。直接附件打开未取得全文；采集器在父页robots403后不再请求同源附件。"
+    }
+  ],
+  "normal_parent_attempt": {
+    "url": "https://public.zhengzhou.gov.cn/D0104X/9813645.jhtml",
+    "checked_at": "2026-10-16T16:02:21.033810+00:00",
+    "canonical_import": false,
+    "error_class": "AccessStopped",
+    "error": "Access denied; source paused",
+    "access_stop": {
+      "phase": "robots",
+      "http_status": 403
+    },
+    "elapsed_seconds": 0.17
+  },
+  "canonical_sources_added": 0,
+  "canonical_documents_added": 0,
+  "canonical_business_approvals_added": 0,
+  "new_model_runs": 0,
+  "full_regression_rerun": false,
+  "main_counts": {
+    "sites": 40,
+    "documents": 36,
+    "revisions": 113,
+    "reviews": 0,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "publication_policy_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d",
+  "source_configs_sha256": "fc642e11774dab371e4aab6442ee721bd5dd5111111131f286c7d5c6ddbbb7eb",
+  "checks": [
+    {
+      "name": "normal_republication_original_matches_receipt",
+      "passed": true
+    },
+    {
+      "name": "failed_parent_stopped_at_robots_without_body",
+      "passed": true
+    },
+    {
+      "name": "signed_date_bound_to_full_paragraph",
+      "passed": true
+    },
+    {
+      "name": "conditional_rule_and_future_schedule_preserved",
+      "passed": true
+    },
+    {
+      "name": "republication_has_no_attachment_link_or_pilot_checklist",
+      "passed": true
+    },
+    {
+      "name": "main_corpus_and_formal_gates_remain_previous_counts",
+      "passed": true
+    },
+    {
+      "name": "policy_unchanged",
+      "passed": true
+    }
+  ],
+  "checks_passed": 7,
+  "business_material_conflict_resolved": false,
+  "province_current_applicability_certified": false,
+  "business_release_ready": false,
+  "next_research": "继续寻找与二七区到期换领具体材料绑定的公开清单、免提交项目及后续变更，研究任务由Codex承担。"
+}

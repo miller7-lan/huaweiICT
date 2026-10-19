@@ -1,0 +1,27 @@
+{
+  "captured_at": "2026-10-15T19:38:13.522328+00:00",
+  "passed": true,
+  "checks": {
+    "normal_background_worker_claimed_job": true,
+    "actual_unconditional_body_200": true,
+    "ocr_provenance_retained": true,
+    "same_original_and_revision_no_churn": true,
+    "source_freshness_recovered": true
+  },
+  "job": {
+    "id": 19,
+    "site_id": "HN-MEASURES-2021-PDF",
+    "state": "done",
+    "attempts": 1,
+    "owner": "knowledge-worker",
+    "lease_until": null,
+    "error": null
+  },
+  "elapsed_seconds": 87.6,
+  "source_state": {
+    "last_success": 1792093046.5589323,
+    "failures": 0,
+    "paused_reason": null
+  },
+  "scope": "Actual persistent background worker, ordinary guarded PDF body recheck and native OCR; unchanged result deduplicated. Not a simulated process call or business-accuracy acceptance."
+}

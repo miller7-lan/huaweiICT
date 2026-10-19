@@ -1,0 +1,32 @@
+{
+  "ontology_version": "draft-0.1",
+  "status": "draft",
+  "domain": "government-services",
+  "is_official_standard": false,
+  "entity_types": [
+    {"name": "Matter", "label": "事项", "required": ["id", "name", "region"]},
+    {"name": "Condition", "label": "适用条件", "required": ["id", "expression", "source_segment_ids"]},
+    {"name": "Material", "label": "材料", "required": ["id", "name", "source_segment_ids"]},
+    {"name": "Department", "label": "部门", "required": ["id", "name", "region"]},
+    {"name": "Procedure", "label": "办理步骤", "required": ["id", "name", "source_segment_ids"]},
+    {"name": "StandardClause", "label": "规范条款", "required": ["id", "reference", "source_segment_ids"]},
+    {"name": "Asset", "label": "原始资产", "required": ["id", "sha256", "source_id"]}
+  ],
+  "relation_types": [
+    {"name": "requires", "domain": "Matter", "range": "Material"},
+    {"name": "applies_when", "domain": "Matter", "range": "Condition"},
+    {"name": "handled_by", "domain": "Matter", "range": "Department"},
+    {"name": "has_step", "domain": "Matter", "range": "Procedure"},
+    {"name": "aligned_to", "domain": "Matter", "range": "StandardClause"},
+    {"name": "supported_by", "domain": "StandardClause", "range": "Asset"}
+  ],
+  "constraints": {
+    "every_business_edge_requires_source_segment_ids": true,
+    "cross_region_merge_requires_explicit_review": true,
+    "condition_result_values": ["true", "false", "unknown"],
+    "candidate_review_states": ["pending_review", "accepted", "rejected"],
+    "human_review_before_publish": true,
+    "historical_versions_immutable": true
+  },
+  "notes": "Reusable engineering seed, not a completed ontology. Candidate extraction, human review UI, standard alignment and dynamic update still need implementation and business evaluation."
+}

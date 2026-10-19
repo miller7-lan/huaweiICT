@@ -1,0 +1,8 @@
+{
+  "base_sdk_sha256": "1a7dee94e05f7d41ffc4f53570fbeb25b402c5ef45172d049e7b4f75edfbb0b5",
+  "overlay_sha256": "f2c39c588de53193d3780c3adb7d11fcaa15bbeb9f338f77d39ca8b55d39f506",
+  "runtime_verified": true,
+  "scope": "Blank MCP connection failures only; existing routes, success path and cleanup are preserved",
+  "target": "/opt/backend/.venv/lib/python3.11/site-packages/nexent/core/agents/run_agent.py",
+  "source": "scripts/runtime_error_overlay.py"
+}

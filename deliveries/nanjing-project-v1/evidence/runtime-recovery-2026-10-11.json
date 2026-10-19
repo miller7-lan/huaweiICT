@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-10-11T12:03:48.607243+00:00",
+  "sandbox": {
+    "name": "nexent-runtime-sandbox",
+    "image": "nexent/nexent-sandbox:v2.7.0",
+    "status": "running",
+    "restart_policy": "unless-stopped",
+    "owner": "runtime",
+    "variant": "lightweight"
+  },
+  "readiness": {
+    "config": true,
+    "runtime": true,
+    "mcp": true,
+    "ui": true,
+    "container_ollama": true,
+    "runtime_sandbox": true,
+    "runtime_error_overlay": true
+  },
+  "sdk_original_sha256": "1a7dee94e05f7d41ffc4f53570fbeb25b402c5ef45172d049e7b4f75edfbb0b5",
+  "scope": "Existing owned sandbox recovered; no deletion or recreation; live service and SDK overlay checks"
+}

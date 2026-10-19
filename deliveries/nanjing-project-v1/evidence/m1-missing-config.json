@@ -1,0 +1,226 @@
+{
+  "captured_at": "2026-10-12T08:03:26.485688+00:00",
+  "passed": true,
+  "scope": "Separate loopback fault instance; healthy extension and baseline configuration not withdrawn",
+  "records": [
+    {
+      "tool": "govx_get_environment_status",
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "data": {
+          "resources": {
+            "evidence": true,
+            "graph": false,
+            "updates": false
+          },
+          "counts": {
+            "evidence": 0,
+            "cases": 0,
+            "materials": 0,
+            "graph_nodes": 0,
+            "graph_edges": 0,
+            "candidates": 0,
+            "versions": 0
+          },
+          "request_id": "92e94afad69ba5d1",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T08:03:26.454254+00:00",
+        "tool": "govx_get_environment_status",
+        "request_id": "92e94afad69ba5d1",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "ERROR",
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "duration_ms": 2.72,
+        "result": {
+          "status": "ERROR",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "CONNECTION_NOT_CONFIGURED",
+          "data": {
+            "resources": {
+              "evidence": true,
+              "graph": false,
+              "updates": false
+            },
+            "counts": {
+              "evidence": 0,
+              "cases": 0,
+              "materials": 0,
+              "graph_nodes": 0,
+              "graph_edges": 0,
+              "candidates": 0,
+              "versions": 0
+            },
+            "request_id": "92e94afad69ba5d1",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_query_knowledge_graph",
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "data": {
+          "resource": "graph",
+          "request_id": "3b41f199ea3834f3",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T08:03:26.467538+00:00",
+        "tool": "govx_query_knowledge_graph",
+        "request_id": "3b41f199ea3834f3",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "ERROR",
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "duration_ms": 1.56,
+        "result": {
+          "status": "ERROR",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "CONNECTION_NOT_CONFIGURED",
+          "data": {
+            "resource": "graph",
+            "request_id": "3b41f199ea3834f3",
+            "role": "staff"
+          }
+        }
+      }
+    },
+    {
+      "tool": "govx_prepare_update",
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "data": {
+          "resource": "updates",
+          "request_id": "766ca71d50b04587",
+          "role": "staff"
+        }
+      },
+      "audit": {
+        "time": "2026-10-12T08:03:26.473041+00:00",
+        "tool": "govx_prepare_update",
+        "request_id": "766ca71d50b04587",
+        "role": "staff",
+        "principal_sha256": "0f16656d0a5096475bbf5d900989309183d68262e544c4692e1a9ba9cdc6edba",
+        "status": "ERROR",
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "duration_ms": 1.41,
+        "result": {
+          "status": "ERROR",
+          "items": [],
+          "citations": [],
+          "knowledge_version": null,
+          "message_code": "CONNECTION_NOT_CONFIGURED",
+          "data": {
+            "resource": "updates",
+            "request_id": "766ca71d50b04587",
+            "role": "staff"
+          }
+        }
+      }
+    }
+  ],
+  "workbench_audit": [
+    {
+      "time": "2026-10-12T07:51:04.884734+00:00",
+      "tool": "govx_get_environment_status",
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "data": {
+          "resources": {
+            "evidence": true,
+            "graph": false,
+            "updates": false
+          },
+          "counts": {
+            "evidence": 0,
+            "cases": 0,
+            "materials": 0,
+            "graph_nodes": 0,
+            "graph_edges": 0,
+            "candidates": 0,
+            "versions": 0
+          },
+          "request_id": "c1b1a392fb874851",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "time": "2026-10-12T07:51:05.835197+00:00",
+      "tool": "govx_check_case_prerequisites",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "MISSING_CASE_AND_MATERIALS",
+        "data": {
+          "missing": [
+            "case",
+            "materials",
+            "evidence"
+          ],
+          "pending_count": 0,
+          "request_id": "936a2feb21ade6b1",
+          "role": "staff"
+        }
+      }
+    },
+    {
+      "time": "2026-10-12T07:53:04.160750+00:00",
+      "tool": "govx_get_environment_status",
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONNECTION_NOT_CONFIGURED",
+        "data": {
+          "resources": {
+            "evidence": true,
+            "graph": false,
+            "updates": false
+          },
+          "counts": {
+            "evidence": 0,
+            "cases": 0,
+            "materials": 0,
+            "graph_nodes": 0,
+            "graph_edges": 0,
+            "candidates": 0,
+            "versions": 0
+          },
+          "request_id": "06331d0e72f25c5a",
+          "role": "staff"
+        }
+      }
+    }
+  ],
+  "screenshot": "output/playwright/m1-BT13.png"
+}

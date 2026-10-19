@@ -1,0 +1,43 @@
+{
+  "captured_at": "2026-10-15T11:01:29.363387+00:00",
+  "scope": "real Nexent model orchestration; synthetic website and replayed Jev responses",
+  "real_jev_inference": false,
+  "official_website_verified": false,
+  "agents": {
+    "extractor": 7,
+    "reviewer": 6,
+    "controller": 8
+  },
+  "versions": {
+    "extractor": 5,
+    "reviewer": 5,
+    "controller": 5
+  },
+  "passed": false,
+  "run": {
+    "conversation_id": 152,
+    "deadline": 1792062719.7971437,
+    "fence": 4,
+    "finished_at": 1792062120.2994025,
+    "id": "fcb8db59b4dd49ca851b0b4045be5889",
+    "jobs": [
+      "a28b73f578914282a4af23304faf9de4"
+    ],
+    "owner": "8d465e852acf4679b221575bd76e317a",
+    "started_at": 1792062119.7971437,
+    "status": "NATIVE_EXECUTION_FAILED"
+  },
+  "active_documents": "8fd5ea01c8850b1836cf91184cac099b2bfa496c00fe9ebdb3e9de176870edca",
+  "active_rules": null,
+  "candidate_count": 1,
+  "claims_count": 2,
+  "provider": "synthetic_contract_replay_not_jev",
+  "trace_sha256": "d444d538229da199c3125b7f3942d53f15384a20d1110dbf23945ce8e21e2371",
+  "tool_events": [],
+  "runtime_errors": [
+    "error"
+  ],
+  "actual_tools": [],
+  "child_call_ids": [],
+  "children_completed_in_order": false
+}

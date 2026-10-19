@@ -1,0 +1,115 @@
+{
+  "scope": "Document and evidence-reference validation only; no new software or business evaluation run.",
+  "facts_from_commit": "c5bdda49f86b23f2157e9dc62fe83235f381c744",
+  "markdown_local_links": 65,
+  "broken_links": [],
+  "slides": 10,
+  "planned_seconds": 400,
+  "buffer_seconds": 80,
+  "speech_nonwhitespace_characters": 1323,
+  "speech_han_characters": 1170,
+  "archive_evidence": {
+    "sources": 2,
+    "chunks": 8,
+    "regression_passed": 132,
+    "actual_api_checks_passed": 8,
+    "engineering_flows": 1,
+    "business_review_completed": false
+  },
+  "docx": {
+    "sha256": "54ee31a9b0a1846cd16613e19cf9d2727c97e33f3a0f7a71de2c530e86427ffc",
+    "tables": 11,
+    "figures": 3,
+    "zip_and_xml_valid": true,
+    "title_paragraph_borders_removed": true,
+    "rendered_pages": 11
+  },
+  "renderer": {
+    "canonical_render_docx": "unavailable: no bundled LibreOffice on Windows; native LibreOffice not used",
+    "alternative": "Word COM read-only PDF export and bundled Poppler PNG rendering",
+    "visual_review": "passed: all 11 final pages individually inspected",
+    "reviewed_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "read_only_export_preserved_docx_sha256": "54ee31a9b0a1846cd16613e19cf9d2727c97e33f3a0f7a71de2c530e86427ffc",
+    "defects_checked": [
+      "blank_pages",
+      "clipped_or_overlapping_text",
+      "missing_glyphs",
+      "broken_tables",
+      "title_blue_rule",
+      "diagram_legibility"
+    ]
+  },
+  "files": [
+    {
+      "path": "docs/competition/assets/业务流程.png",
+      "bytes": 78067,
+      "sha256": "190e297b9bc8d38398f17f291269b72ed876666776adeb61ebc08050e9da127d"
+    },
+    {
+      "path": "docs/competition/assets/业务流程.svg",
+      "bytes": 3160,
+      "sha256": "9bcef00b186ca218a2e96cb4d48da0f9f5cab8393aecb14896c2503ddb38bc4b"
+    },
+    {
+      "path": "docs/competition/assets/系统架构.png",
+      "bytes": 71914,
+      "sha256": "d7d272bdb3d2e4cb270ea2a0e639162a9152aced6e0181b4e1cf3dc26e3d5fae"
+    },
+    {
+      "path": "docs/competition/assets/系统架构.svg",
+      "bytes": 3167,
+      "sha256": "53004e05994a2919edd8479c8fa6823a19027691c9a957949196a18842b103ed"
+    },
+    {
+      "path": "docs/competition/assets/资料流程.png",
+      "bytes": 80485,
+      "sha256": "10cc5b30ef6b5f1ef8e9824dd74111cde65f15c84ae55108832f914b7d9c39ce"
+    },
+    {
+      "path": "docs/competition/assets/资料流程.svg",
+      "bytes": 3219,
+      "sha256": "8bc556081f35968df818bf25ad998fb5dc332d223e0d21284b29695b779bbfbe"
+    },
+    {
+      "path": "docs/competition/PPT逐页内容与讲稿.md",
+      "bytes": 19224,
+      "sha256": "6154d60785c2faf31f77ff01aae654afbb7308683d485b7e931f157a29a83af0"
+    },
+    {
+      "path": "docs/competition/README.md",
+      "bytes": 1845,
+      "sha256": "5b04b8532d6d800a6c5ff25466a45aa5fec07c07693be72eeba8d451ad809165"
+    },
+    {
+      "path": "docs/competition/参赛策划书.md",
+      "bytes": 24293,
+      "sha256": "8bdfb0f161158a2021b2022d6c4731da88a2c55e338886ade70942c00a514d26"
+    },
+    {
+      "path": "docs/competition/政务多智能体协作系统参赛策划书.docx",
+      "bytes": 255238,
+      "sha256": "54ee31a9b0a1846cd16613e19cf9d2727c97e33f3a0f7a71de2c530e86427ffc"
+    },
+    {
+      "path": "docs/competition/演示证据与素材清单.md",
+      "bytes": 7771,
+      "sha256": "2974e00055003774bd237a79162945d1cfd220a247ee36ccec83c6206d01f6a4"
+    }
+  ],
+  "validated_at_utc": "2026-10-13T16:02:16.153466+00:00",
+  "diagram_visual_review": "3 PNG diagrams inspected; matching editable SVG sources included",
+  "software_tests_rerun": false,
+  "passed": true
+}

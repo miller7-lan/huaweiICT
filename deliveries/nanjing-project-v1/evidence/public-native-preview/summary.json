@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "mode": "public_preview",
+  "scope": "Erqi adult local household, self-service expiry renewal; fictional applicant; source explanation with unresolved business conclusions paused",
+  "execution_evidence": "20261018T141617808652Z.json",
+  "native_runs": 1,
+  "jev_http_attempts": 1,
+  "translation_calls": 1,
+  "duration_ms": 21956.04,
+  "source_support": {
+    "fee": {
+      "support": 0.72,
+      "status": "needs_review"
+    },
+    "duration": {
+      "support": 0.96,
+      "status": "source_supported"
+    },
+    "materials": {
+      "support": 0.81,
+      "status": "source_supported"
+    },
+    "address": {
+      "support": 0.97,
+      "status": "source_supported"
+    },
+    "phone": {
+      "support": 0.98,
+      "status": "source_supported"
+    }
+  },
+  "paused_business_fields": [
+    "materials",
+    "duration",
+    "fee_relief",
+    "advance_days"
+  ],
+  "unknown_fields": [
+    "advance_days"
+  ],
+  "portal_status": "http_shell",
+  "full_english_input_saved": true,
+  "native_real_public_preview_verified": true,
+  "formal_business_acceptance": false,
+  "knowledge_published": false,
+  "existing_agents_unchanged": true,
+  "new_drafts_disabled_unpublished": true,
+  "draft_permissions_readback_verified": true,
+  "targeted_tests_passed": 86,
+  "whole_repository_regression_repeated": false,
+  "final_assessor_rechecked_without_cloud": true,
+  "final_preview_server_sources_verified": {
+    "public_preview.py": "d27d33440879346567e338de6e2253b0cb6da480beebeb3f5ef7c406ec0816b7",
+    "public_preview_server.py": "6b68d664b1300936527f6a7a46dd01cb1d7b191f1f848ba0d0a08dc5a25102d8"
+  },
+  "post_live_changes": "Quota-cause reporting, exact draft permissions, portal provenance and startup source fingerprints strengthened; original successful trace reassessed offline, no new inference.",
+  "usage": {
+    "native_root_only": {
+      "input_tokens": 30057,
+      "output_tokens": 319
+    },
+    "native_child_usage_complete": false,
+    "translation": {
+      "input_tokens": 368,
+      "output_tokens": 229
+    },
+    "jev": {
+      "input_tokens": 1081,
+      "output_tokens": 104
+    }
+  },
+  "cost_amount": null,
+  "heartbeat_evidence": "heartbeat-check.json",
+  "windows_recovery_enabled_by_this_work": false,
+  "final_source_sha256": {
+    "src/gov_mcp/public_preview.py": "d27d33440879346567e338de6e2253b0cb6da480beebeb3f5ef7c406ec0816b7",
+    "src/gov_mcp/public_preview_server.py": "6b68d664b1300936527f6a7a46dd01cb1d7b191f1f848ba0d0a08dc5a25102d8",
+    "scripts/prepare_public_native_preview.py": "879557cc1d50acc1ab896211b4a06e9ed21270c7b34e4f83c27e3246eec79f04",
+    "scripts/provision_public_native_preview.py": "c14fdc4222471e564e9b208872a12471f4eb9d8857d5181ca756c723e5e864b0",
+    "scripts/verify_public_native_preview.py": "1b02a962545dbe8c7d6bcd8434c52b55f6fce834ee710e9a030fa9b392afeaf2",
+    "scripts/start_public_native_preview.ps1": "cbab18577fb69e4d08939aeff51324ede20903fe54fcd65586b4c2498448202a",
+    "scripts/check_project_heartbeat.py": "3fd161a16e57ec12a15e9ce492930f31cf1bde29099fb14fbfeb78abe9975596",
+    "config/skills/govkb-public-preview/SKILL.md": "ff65f99cefaf4f4872976bf1a79f7d442f24fbd62ce5b3883aac96caed9cffe6",
+    "tests/test_public_native_preview.py": "fdcad9ad765a8f955acbf1aaf135128f43bfaabaabb3af82d5a3727251a6191d",
+    "src/gov_mcp/classification.py": "982d03dcff0398e240a336f1a2ee49f229c30c7ff1b2004fb88b420203cbfb05",
+    "src/gov_mcp/jev_translation.py": "075d295da24e96c824ed21b6e7eb1bdcc79faab5bbf24eeb9a6a3d5e856ddcfd",
+    "src/gov_mcp/deepseek.py": "153245960666f60c08f6f4eab81b20a783b56e94307dec2e7cda2548230007ec"
+  }
+}

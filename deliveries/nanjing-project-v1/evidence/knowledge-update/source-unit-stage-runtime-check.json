@@ -1,0 +1,44 @@
+{
+  "captured_at": "2026-10-16T04:18:37.603051+00:00",
+  "checks": {
+    "web_running": true,
+    "mcp_read_only_up": true,
+    "worker_and_maintenance_heartbeats_current": true,
+    "metadata_only_impact_route_responds": true,
+    "formal_query_still_empty": true,
+    "canonical_counts_unchanged": true,
+    "official_heads_and_versions_still_zero": true
+  },
+  "passed": true,
+  "counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "actual_formal_query": {
+    "status": "EMPTY",
+    "message_code": "NO_PUBLISHED_KNOWLEDGE",
+    "knowledge_version": null,
+    "citations": []
+  },
+  "actual_impact_summary": {
+    "revision": "rev-3221c16ab130408cb59cd2b6",
+    "base_revision": "rev-afb82e8141a1a337b3412625",
+    "change_kinds": [
+      "metadata_change"
+    ],
+    "chunk_counts": {
+      "before": 14,
+      "after": 14
+    },
+    "analysis_version": "revision-impact-v1"
+  },
+  "new_model_requests": 0,
+  "production_rank_profiles_changed": false,
+  "scope": "Current owned service restart, read-only health and actual metadata-only impact compatibility; no new visual UI, full-week or business acceptance claim."
+}

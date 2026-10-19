@@ -1,0 +1,77 @@
+{
+  "captured_at": "2026-10-15T09:32:20.532146+00:00",
+  "client_timezone": "Asia/Shanghai",
+  "scope": "synthetic source retrieval through native Nexent Skill and MCP, not business inference",
+  "cases": [
+    {
+      "case": "text",
+      "query": "演练事项由哪个窗口受理？",
+      "conversation_id": 137,
+      "passed": true,
+      "duration_ms": 63408.29,
+      "stop_reasons": [
+        "SOURCE_RETRIEVAL_VERIFIED"
+      ],
+      "message_code": "EVIDENCE_FOUND",
+      "knowledge_version": "docs-cf8becf5437334d3",
+      "citation_count": 2,
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "actual_tool_order": [
+        "read_skill_md",
+        "govdocs_search_evidence"
+      ]
+    },
+    {
+      "case": "table",
+      "query": "演练分支甲需要什么证明？",
+      "conversation_id": 138,
+      "passed": true,
+      "duration_ms": 4562.77,
+      "stop_reasons": [
+        "SOURCE_RETRIEVAL_VERIFIED"
+      ],
+      "message_code": "EVIDENCE_FOUND",
+      "knowledge_version": "docs-cf8becf5437334d3",
+      "citation_count": 2,
+      "modalities": [
+        "image",
+        "table"
+      ],
+      "actual_tool_order": [
+        "read_skill_md",
+        "govdocs_search_evidence"
+      ]
+    },
+    {
+      "case": "image",
+      "query": "申请表需要本人签字吗？",
+      "conversation_id": 139,
+      "passed": false,
+      "duration_ms": 20338.61,
+      "stop_reasons": [
+        "SKILL_MCP_ORDER_MISMATCH",
+        "AUDIT_OR_IDENTITY_MISMATCH",
+        "UNEXPECTED_RESULT",
+        "FINAL_EVIDENCE_REWRITTEN",
+        "EXPECTED_MODALITY_MISSING",
+        "RUNTIME_ERROR"
+      ],
+      "message_code": null,
+      "knowledge_version": null,
+      "citation_count": 0,
+      "modalities": [],
+      "actual_tool_order": []
+    }
+  ],
+  "errors": [],
+  "original_business_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  },
+  "original_versions_unchanged": true,
+  "passed": false
+}

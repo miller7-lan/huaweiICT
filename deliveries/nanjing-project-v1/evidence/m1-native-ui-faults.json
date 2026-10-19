@@ -1,0 +1,1068 @@
+{
+  "captured_at": "2026-10-12T08:43:22.532709+00:00",
+  "passed": true,
+  "source": "actual M1 native UI entry routed to isolated runtime",
+  "records": {
+    "storage_timeout": {
+      "http_status": 200,
+      "conversation_id": 65,
+      "events": [
+        {
+          "type": "conversation_created",
+          "content": {
+            "conversation_id": 65
+          }
+        },
+        {
+          "type": "other",
+          "content": "{\"code\": \"uncertainty_reserve_active\", \"message\": \"W2 applied the unified 10% uncertainty reserve because selected model capability behavior is not fully verified.\", \"budget_fingerprint\": \"4be95c93963c30af5bb26f94f5e08d8f\", \"w1_fingerprint\": \"1e8b1d2f3d1e7a7b5f59db5140e595d1\", \"uncertainty_reserve_tokens\": 820, \"effective_input_limit_tokens\": 7168}",
+          "unit_index": 0
+        },
+        {
+          "type": "agent_new_run",
+          "content": "<MCP_START>",
+          "unit_index": 1
+        },
+        {
+          "type": "agent_new_run",
+          "content": "[Current time: 2026-10-12 16:43:30]\n\n空白技术异常验收：按真实身份检查环境，ERROR 后立即停止，不调用子 Agent 或业务工具。\n\nRun workspace: /mnt/nexent/workdir/120a55ff-2ed1-49cb-9e4a-2be05a3e24fe/74557f97e9f6494a8556ecd5922f250d\nWrite every generated file under: /mnt/nexent/workdir/120a55ff-2ed1-49cb-9e4a-2be05a3e24fe/74557f97e9f6494a8556ecd5922f250d/outputs\nThe code executor already runs in that outputs directory. Use bare relative paths such as 'report.pdf', not 'outputs/report.pdf', to avoid creating an outputs/outputs directory.\nException: run_skill_script(source='workspace') resolves script_path from the run workspace root. If code writes a generated script as bare 'build.js', call run_skill_script with script_path='outputs/build.js'. The generated script itself still writes output artifacts with bare filenames because its CWD is outputs.\nDirect subprocess, os.system, and shell calls for system commands are blocked by the code executor. Use run_skill_script with a skill-bundled wrapper, or use a shell-free Python/Node.js API instead. When sandbox networking is enabled, only a shell-free argv call to sys.executable -m pip install is permitted for dependency installation.\nFor skill-creator output packages, create the new skill under outputs/<new-skill> with normal code-executor file APIs; write_skill_file edits installed tenant skills and does not create files in this run workspace.\nFiles created there are uploaded to MinIO automatically when the run finishes.",
+          "unit_index": 2
+        },
+        {
+          "type": "step_count",
+          "content": "\n**步骤 1** \n",
+          "unit_index": 3
+        },
+        {
+          "type": "model_attempt_control",
+          "content": "",
+          "phase": "begin",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "attempt": 1,
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "<code",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ">\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "import",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " json",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " =",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " go",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "vx",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_get",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_status",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "()\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "if",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " isinstance",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "(environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ",",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " str",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "):\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "   ",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " =",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " json",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ".loads",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "(environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ")\n\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "if",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "[\"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "status",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\"]",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " !=",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " \"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "OK",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\":\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "   ",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " result",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " =",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "elif",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "[\"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "data",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\"][\"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "role",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\"]",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " ==",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " \"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "cit",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "izen",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\":\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "   ",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " result",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " =",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " go",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "vx",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_c",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "itizen",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_ass",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "istant",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "(task",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "=\"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "只",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "调",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "用",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "一次",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " go",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "vx",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_search",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_e",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "vidence",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "，",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "保留",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "真实",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "完整",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "结果",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "并",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "立即",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "结束",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "。",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\")\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "elif",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "[\"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "data",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\"][\"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "role",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\"]",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " ==",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " \"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "staff",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\":\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "   ",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " result",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " =",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " go",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "vx",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_staff",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_ass",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "istant",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "(task",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "=\"",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "只",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "调",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "用",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "一次",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " go",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "vx",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_check",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_case",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_pr",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "erequisites",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "，",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "保留",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "真实",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "完整",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "结果",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "并",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "立即",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "结束",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "。",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\")\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "else",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ":\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "   ",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " result",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " =",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " environment",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "final",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_answer",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "(result",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " if",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " isinstance",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "(result",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ",",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " str",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ")",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " else",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " json",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ".dumps",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "(result",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ",",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": " ensure",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "_ascii",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "=False",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "))\n",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "</",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": "code",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_output_thinking",
+          "content": ">",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "unit_index": 4
+        },
+        {
+          "type": "model_attempt_control",
+          "content": "",
+          "phase": "commit",
+          "attempt_id": "c31eb4834a1247c7a5768fe86daa1430",
+          "attempt": 1,
+          "unit_index": 5
+        },
+        {
+          "type": "parse",
+          "content": "import json\nenvironment = govx_get_environment_status()\nif isinstance(environment, str):\n    environment = json.loads(environment)\n\nif environment[\"status\"] != \"OK\":\n    result = environment\nelif environment[\"data\"][\"role\"] == \"citizen\":\n    result = govx_citizen_assistant(task=\"只调用一次 govx_search_evidence，保留真实完整结果并立即结束。\")\nelif environment[\"data\"][\"role\"] == \"staff\":\n    result = govx_staff_assistant(task=\"只调用一次 govx_check_case_prerequisites，保留真实完整结果并立即结束。\")\nelse:\n    result = environment\nfinal_answer(result if isinstance(result, str) else json.dumps(result, ensure_ascii=False))",
+          "unit_index": 5
+        },
+        {
+          "type": "tool",
+          "content": "",
+          "tool_name": "govx_get_environment_status",
+          "tool_arguments": {},
+          "tool_call_id": "076bb3b9-2659-4b8f-8fbe-61dfc111e522",
+          "unit_index": 6
+        },
+        {
+          "type": "execution_logs",
+          "content": "Last output from code snippet:\n{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"TOOL_TIMEOUT\", \"data\": {\"attempts\": 2, \"request_id\": \"2f8948802b9c183d\", \"role\": \"citizen\"}}",
+          "unit_index": 7
+        },
+        {
+          "type": "token_count",
+          "content": "{\"step_number\": 1, \"duration\": 62.34, \"step_input_tokens\": 5288, \"step_output_tokens\": 153, \"total_output_tokens\": 153, \"estimated_context_tokens\": 6096, \"token_threshold\": 5734, \"context_window_tokens\": 8192, \"effective_input_limit_tokens\": 7168, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 45.9, \"uncompressed_est_tokens\": 11274, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 5288}",
+          "unit_index": 8
+        },
+        {
+          "type": "final_answer",
+          "content": "{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"TOOL_TIMEOUT\", \"data\": {\"attempts\": 2, \"request_id\": \"2f8948802b9c183d\", \"role\": \"citizen\"}}",
+          "unit_index": 9
+        }
+      ],
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "TOOL_TIMEOUT",
+        "data": {
+          "attempts": 2,
+          "request_id": "2f8948802b9c183d",
+          "role": "citizen"
+        }
+      },
+      "screenshot": "output/playwright/m1-native-TOOL_TIMEOUT.png",
+      "passed": true,
+      "audit": [
+        {
+          "time": "2026-10-12T08:44:34.361434+00:00",
+          "tool": "govx_get_environment_status",
+          "request_id": "2f8948802b9c183d",
+          "role": "citizen",
+          "principal_sha256": "0846e13e46d019f3bf1b629854aa13d6ea36ef0183cde4ea635f5343168a507a",
+          "status": "ERROR",
+          "message_code": "TOOL_TIMEOUT",
+          "duration_ms": 4284.66,
+          "result": {
+            "status": "ERROR",
+            "items": [],
+            "citations": [],
+            "knowledge_version": null,
+            "message_code": "TOOL_TIMEOUT",
+            "data": {
+              "attempts": 2,
+              "request_id": "2f8948802b9c183d",
+              "role": "citizen"
+            }
+          }
+        }
+      ],
+      "principal_sha256": "0846e13e46d019f3bf1b629854aa13d6ea36ef0183cde4ea635f5343168a507a",
+      "screenshot_sha256": "5ef797e33ca0f6bfd81f8d3f567e4cb79cf4d4b05cf17016a8a46f1e8c2a6c6a",
+      "lock_released": true
+    },
+    "connection_timeout": {
+      "http_status": 200,
+      "conversation_id": 65,
+      "events": [
+        {
+          "type": "other",
+          "content": "{\"code\": \"uncertainty_reserve_active\", \"message\": \"W2 applied the unified 10% uncertainty reserve because selected model capability behavior is not fully verified.\", \"budget_fingerprint\": \"4be95c93963c30af5bb26f94f5e08d8f\", \"w1_fingerprint\": \"1e8b1d2f3d1e7a7b5f59db5140e595d1\", \"uncertainty_reserve_tokens\": 820, \"effective_input_limit_tokens\": 7168}",
+          "unit_index": 0
+        },
+        {
+          "type": "agent_new_run",
+          "content": "<MCP_START>",
+          "unit_index": 1
+        },
+        {
+          "type": "final_answer",
+          "content": "{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"CONNECTION_TIMEOUT\", \"data\": {\"attempts\": 1, \"phase\": \"mcp_connection\"}}",
+          "unit_index": 2
+        }
+      ],
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "CONNECTION_TIMEOUT",
+        "data": {
+          "attempts": 1,
+          "phase": "mcp_connection"
+        }
+      },
+      "screenshot": "output/playwright/m1-native-CONNECTION_TIMEOUT.png",
+      "passed": true,
+      "audit": [],
+      "principal_sha256": "0846e13e46d019f3bf1b629854aa13d6ea36ef0183cde4ea635f5343168a507a",
+      "screenshot_sha256": "87f2bb0861f0cfe1a4840be6bcafb9247113b4dd6c09ae46434c2af76c53c0e4",
+      "service_restored": true
+    }
+  }
+}

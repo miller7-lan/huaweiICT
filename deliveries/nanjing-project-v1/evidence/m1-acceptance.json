@@ -1,0 +1,384 @@
+{
+  "captured_at": "2026-10-12T10:26:26.096992+00:00",
+  "stage": "M1",
+  "status": "COMPLETE",
+  "passed": 16,
+  "total": 16,
+  "complete": true,
+  "completion_audit": "evidence/m1-completion-audit.json",
+  "basis": "Next-stage implementation plan, section 2/3/5/7; unit checks never replace actual BT acceptance",
+  "records": [
+    {
+      "id": "BT01",
+      "verdict": "PASS",
+      "prerequisite": "新 USER 首次入口、无历史会话，无默认业务案例",
+      "operation": "登录新群众账号，进入原生开始问答，尚未发送消息",
+      "actual": "会话列表 total=0；页面无历史对话；原库及扩展库为空",
+      "evidence": [
+        {
+          "path": "evidence/m1-fresh-account.json",
+          "sha256": "f032f15585438f2a9511a46cdcd56891482be9e6a8a628c102477df48ec7bd78"
+        },
+        {
+          "path": "output/playwright/m1-BT01.png",
+          "sha256": "d464ae6b1dd8ebd77bb3000fe875957c917a9f07e188732a027885971309439a"
+        },
+        {
+          "path": "evidence/m1-baseline.json",
+          "sha256": "544e976bbc2edeca55f0dd2f227427d8cfd8d84aaf6f058dd98aa7ee01ee3084"
+        }
+      ]
+    },
+    {
+      "id": "BT02",
+      "verdict": "PASS",
+      "prerequisite": "群众入口空输入",
+      "operation": "执行模式分别输入空字符串和空白，按 Enter",
+      "actual": "发送禁用；Agent/model dispatch 0；前后实际工具调用计数相同",
+      "evidence": [
+        {
+          "path": "evidence/m1-empty-input.json",
+          "sha256": "e3fc18354fa1cfc11ba78507d801fac77a96ddc8325ff7ba69c201af9aa47bc3"
+        },
+        {
+          "path": "output/playwright/m1-BT02.png",
+          "sha256": "d6fd59fca141c99c5ab0f1eccd81b058b691691da50aaece3095de9a37ef9418"
+        }
+      ]
+    },
+    {
+      "id": "BT03",
+      "verdict": "PASS",
+      "prerequisite": "真实群众会话",
+      "operation": "原生 UI 新会话 55 执行空库技术请求",
+      "actual": "只调用 govx 环境与群众检索；群众子 Agent ID、起止和最终结果与审计匹配",
+      "evidence": [
+        {
+          "path": "evidence/m1-native-ui-citizen.json",
+          "sha256": "4d770b6f7dc2a2df200d89f9dcde794b52feb75b502e5b2495e95f4061055b71"
+        },
+        {
+          "path": "output/playwright/m1-BT03.png",
+          "sha256": "9a48b14b2afcecfd7841c0e965fbb4bc4c3ecb4f7a65d6e868fcc973794760fb"
+        }
+      ]
+    },
+    {
+      "id": "BT04",
+      "verdict": "PASS",
+      "prerequisite": "工作人员登录独立事项工作台",
+      "operation": "打开工作人员入口",
+      "actual": "事项、材料、待办均为 0；无默认业务任务",
+      "evidence": [
+        {
+          "path": "evidence/m1-workbench-api.json",
+          "sha256": "73a8d6af389c72a7b13837b19bb436222898ebda6039633562089a8ab52ab3ba"
+        },
+        {
+          "path": "output/playwright/m1-BT04.png",
+          "sha256": "a3d8af7b287c2d4b856b1f99ac42753f34894c5f3bdd8dfb7b63d78f3bf54894"
+        }
+      ]
+    },
+    {
+      "id": "BT05",
+      "verdict": "PASS",
+      "prerequisite": "平台 ADMIN 未映射业务角色；群众不能通过导航获工作人员权限",
+      "operation": "未映射账号执行原生主 Agent并登录工作台；群众点击工作人员入口",
+      "actual": "ROLE_NOT_CONFIGURED 后无子 Agent；页面要求管理员核实；群众导航 FORBIDDEN",
+      "evidence": [
+        {
+          "path": "evidence/m1-native-unmapped.json",
+          "sha256": "e4b2a35cd8487475d1a6528602c21b52e5d4eabc92caa7686283dddeb8d2e262"
+        },
+        {
+          "path": "evidence/m1-workbench-api.json",
+          "sha256": "73a8d6af389c72a7b13837b19bb436222898ebda6039633562089a8ab52ab3ba"
+        },
+        {
+          "path": "output/playwright/m1-BT05.png",
+          "sha256": "f877155c7aa095d915c4213ffd5c7930fdab1ed42b03b7490f7c3f98c3d266e8"
+        },
+        {
+          "path": "output/playwright/m1-BT11.png",
+          "sha256": "9d10652937c7c1286ebc1b669400275a91a30226eab63a3e6da0abfb2f5fb55e"
+        }
+      ]
+    },
+    {
+      "id": "BT06",
+      "verdict": "PASS",
+      "prerequisite": "知识库为空",
+      "operation": "真实 SSE 与原生群众会话检索",
+      "actual": "EMPTY/NO_KNOWLEDGE；items/citations 均空，knowledge_version=null",
+      "evidence": [
+        {
+          "path": "evidence/m1-sse.json",
+          "sha256": "4ef99e942552b68f406f576a360bc2b03daae1c3e06109a2c2223464e753f3dd"
+        },
+        {
+          "path": "evidence/m1-native-ui-citizen.json",
+          "sha256": "4d770b6f7dc2a2df200d89f9dcde794b52feb75b502e5b2495e95f4061055b71"
+        },
+        {
+          "path": "output/playwright/m1-BT03.png",
+          "sha256": "9a48b14b2afcecfd7841c0e965fbb4bc4c3ecb4f7a65d6e868fcc973794760fb"
+        }
+      ]
+    },
+    {
+      "id": "BT07",
+      "verdict": "PASS",
+      "prerequisite": "图谱空；另一个隔离实例 graph 配置关闭",
+      "operation": "真实 SSE 和工作台图谱查询；缺配置实例再查询",
+      "actual": "正常 EMPTY/NO_GRAPH，节点边为空；未配置 ERROR/CONNECTION_NOT_CONFIGURED",
+      "evidence": [
+        {
+          "path": "evidence/m1-sse.json",
+          "sha256": "4ef99e942552b68f406f576a360bc2b03daae1c3e06109a2c2223464e753f3dd"
+        },
+        {
+          "path": "evidence/m1-missing-config.json",
+          "sha256": "5810cb624116d46c9a61d03eacba6065e37ca6928601cb6f2763d7bce20c5012"
+        },
+        {
+          "path": "output/playwright/m1-BT07.png",
+          "sha256": "208054c1c20190c3e63755cb266731f182b0e1b182b99583eafe7c76129b83ab"
+        }
+      ]
+    },
+    {
+      "id": "BT08",
+      "verdict": "PASS",
+      "prerequisite": "工作人员无事项、材料和证据",
+      "operation": "工作人员原生主 Agent 与工作台核验前提",
+      "actual": "BLOCKED/MISSING_CASE_AND_MATERIALS；缺项完整；没有审批结论",
+      "evidence": [
+        {
+          "path": "evidence/m1-native-staff.json",
+          "sha256": "d3e61d679f35b0160e561031b9e9d44b7e808ef00fdb331141d5975790e0a08f"
+        },
+        {
+          "path": "evidence/m1-workbench-api.json",
+          "sha256": "73a8d6af389c72a7b13837b19bb436222898ebda6039633562089a8ab52ab3ba"
+        },
+        {
+          "path": "output/playwright/m1-BT04.png",
+          "sha256": "a3d8af7b287c2d4b856b1f99ac42753f34894c5f3bdd8dfb7b63d78f3bf54894"
+        }
+      ]
+    },
+    {
+      "id": "BT09",
+      "verdict": "PASS",
+      "prerequisite": "独立维护授权账号，无输入",
+      "operation": "通过真实 SSE、HTTP 及工作台准备空更新",
+      "actual": "EMPTY/NO_CHANGES；无候选或版本；明确没有检查外部政策",
+      "evidence": [
+        {
+          "path": "evidence/m1-sse.json",
+          "sha256": "4ef99e942552b68f406f576a360bc2b03daae1c3e06109a2c2223464e753f3dd"
+        },
+        {
+          "path": "evidence/m1-workbench-api.json",
+          "sha256": "73a8d6af389c72a7b13837b19bb436222898ebda6039633562089a8ab52ab3ba"
+        },
+        {
+          "path": "output/playwright/m1-BT09.png",
+          "sha256": "d790a9e8859898957b87b82ca743350c9152f6318912144cf69e11ba9b1713d0"
+        }
+      ]
+    },
+    {
+      "id": "BT10",
+      "verdict": "PASS",
+      "prerequisite": "无候选变更",
+      "operation": "分别缺确认、提供确认但缺候选、使用不存在候选、无维护权限请求发布",
+      "actual": "全部 BLOCKED；候选和版本数量不变",
+      "evidence": [
+        {
+          "path": "evidence/m1-sse.json",
+          "sha256": "4ef99e942552b68f406f576a360bc2b03daae1c3e06109a2c2223464e753f3dd"
+        },
+        {
+          "path": "evidence/m1-workbench-api.json",
+          "sha256": "73a8d6af389c72a7b13837b19bb436222898ebda6039633562089a8ab52ab3ba"
+        },
+        {
+          "path": "output/playwright/m1-BT10.png",
+          "sha256": "dcd825a7097527b0018b9a797b515066cc2e35e6c73d61e8c645002fbfed1d22"
+        }
+      ]
+    },
+    {
+      "id": "BT11",
+      "verdict": "PASS",
+      "prerequisite": "群众无维护权限",
+      "operation": "真实 SSE 越权调用 prepare/publish；HTTP 图谱写参数及身份伪造；群众在维护页面点击更新和发布",
+      "actual": "维护工具和页面均 FORBIDDEN；图谱写参数和伪造身份 INVALID_ARGUMENTS；实际响应和审计匹配，无写入接口授权",
+      "evidence": [
+        {
+          "path": "evidence/m1-sse.json",
+          "sha256": "4ef99e942552b68f406f576a360bc2b03daae1c3e06109a2c2223464e753f3dd"
+        },
+        {
+          "path": "evidence/m1-workbench-api.json",
+          "sha256": "73a8d6af389c72a7b13837b19bb436222898ebda6039633562089a8ab52ab3ba"
+        },
+        {
+          "path": "evidence/m1-citizen-maintenance-ui.json",
+          "sha256": "8c6589ea51a78dd0a6d36ff1885ae3055e6885e59bbae11201f22f1d705430c1"
+        },
+        {
+          "path": "output/playwright/m1-BT11-prepare.png",
+          "sha256": "79e48bda611503d4f08868287a55502d295d996a6875081e110ae82fb3bf1d8a"
+        },
+        {
+          "path": "output/playwright/m1-BT11-publish.png",
+          "sha256": "79e48bda611503d4f08868287a55502d295d996a6875081e110ae82fb3bf1d8a"
+        }
+      ]
+    },
+    {
+      "id": "BT12",
+      "verdict": "PASS",
+      "prerequisite": "隔离 govx MCP 和独立 SDK 运行容器",
+      "operation": "在 MCP 容器取得实际 SQLite 独占锁，再停止该容器；分别通过原生 API、原生页面和工作台执行，finally 恢复",
+      "actual": "锁超时两次尝试 ERROR/TOOL_TIMEOUT 后停止；断连一次尝试 ERROR/CONNECTION_TIMEOUT，无 Agent 模型或工具调用；锁释放及服务恢复后新会话通过",
+      "evidence": [
+        {
+          "path": "evidence/m1-native-faults.json",
+          "sha256": "1ca6be2781c9d51f296ae5c48ee86a0c7a9788475905fb969bddd4dc75da74b2"
+        },
+        {
+          "path": "evidence/m1-native-ui-faults.json",
+          "sha256": "fbf5758486795bcef55c77e48aff364e00b9692db4dcea18e5a8f44bf9fc5768"
+        },
+        {
+          "path": "evidence/m1-runtime-overlay.json",
+          "sha256": "244d44d18546105743638a69b838c859ad89fd5595c7555161702063c6ba02ae"
+        },
+        {
+          "path": "output/playwright/m1-native-TOOL_TIMEOUT.png",
+          "sha256": "5ef797e33ca0f6bfd81f8d3f567e4cb79cf4d4b05cf17016a8a46f1e8c2a6c6a"
+        },
+        {
+          "path": "output/playwright/m1-native-CONNECTION_TIMEOUT.png",
+          "sha256": "87f2bb0861f0cfe1a4840be6bcafb9247113b4dd6c09ae46434c2af76c53c0e4"
+        }
+      ]
+    },
+    {
+      "id": "BT13",
+      "verdict": "PASS",
+      "prerequisite": "单独缺连接配置实例，正常服务配置保留",
+      "operation": "撤除隔离实例图谱和更新连接配置，登录页面并真实查询",
+      "actual": "页面 ERROR/CONNECTION_NOT_CONFIGURED 后停止；图谱/更新均 ERROR，不宣称成功或空结果",
+      "evidence": [
+        {
+          "path": "evidence/m1-missing-config.json",
+          "sha256": "5810cb624116d46c9a61d03eacba6065e37ca6928601cb6f2763d7bce20c5012"
+        },
+        {
+          "path": "output/playwright/m1-BT13.png",
+          "sha256": "97f3627ee24abf934557edd1c7d08f4e56c86934c8e5be7d54adbda75756591c"
+        }
+      ]
+    },
+    {
+      "id": "BT14",
+      "verdict": "PASS",
+      "prerequisite": "同一维护身份和同一空输入",
+      "operation": "真实 SSE 及维护页面分别连续三次 prepare_update(inputs=[])",
+      "actual": "每组三次 NO_CHANGES；七表数量全为 0；数据库 SHA-256 前后相同，页面响应与审计逐项匹配",
+      "evidence": [
+        {
+          "path": "evidence/m1-sse.json",
+          "sha256": "4ef99e942552b68f406f576a360bc2b03daae1c3e06109a2c2223464e753f3dd"
+        },
+        {
+          "path": "evidence/m1-repeat-empty-ui.json",
+          "sha256": "5a21d0bb02852bab1022aa3fd9423738ebcf1fbd61a44545cccc89b0da9157fc"
+        },
+        {
+          "path": "output/playwright/m1-BT14.png",
+          "sha256": "d790a9e8859898957b87b82ca743350c9152f6318912144cf69e11ba9b1713d0"
+        }
+      ]
+    },
+    {
+      "id": "BT15",
+      "verdict": "PASS",
+      "prerequisite": "群众原生检索返回 EMPTY",
+      "operation": "核对新 UI 会话 55 的子 Agent 结束、主 Agent最终答复和实际审计",
+      "actual": "EMPTY 后无额外工具；子 Agent 先结束；主结果完整透传，无业务推理",
+      "evidence": [
+        {
+          "path": "evidence/m1-native-ui-citizen.json",
+          "sha256": "4d770b6f7dc2a2df200d89f9dcde794b52feb75b502e5b2495e95f4061055b71"
+        },
+        {
+          "path": "output/playwright/m1-BT03.png",
+          "sha256": "9a48b14b2afcecfd7841c0e965fbb4bc4c3ecb4f7a65d6e868fcc973794760fb"
+        }
+      ]
+    },
+    {
+      "id": "BT16",
+      "verdict": "PASS",
+      "prerequisite": "群众、工作人员、未映射及缺配置/异常页面和日志",
+      "operation": "正常、越权、缺配置、真实超时和断连前端响应与日志交叉核对，恢复后复核原生网页；核对原开发账号调试证据",
+      "actual": "角色、停止原因和实际 request_id 一致；连接在工具执行前失败时无 MCP request_id，使用真实会话号和认证身份关联，不编造工具请求；工作台保留受控角色且不将连接异常说成未配置角色",
+      "evidence": [
+        {
+          "path": "evidence/m1-workbench-api.json",
+          "sha256": "73a8d6af389c72a7b13837b19bb436222898ebda6039633562089a8ab52ab3ba"
+        },
+        {
+          "path": "evidence/m1-native-ui-citizen.json",
+          "sha256": "4d770b6f7dc2a2df200d89f9dcde794b52feb75b502e5b2495e95f4061055b71"
+        },
+        {
+          "path": "evidence/m1-native-staff.json",
+          "sha256": "d3e61d679f35b0160e561031b9e9d44b7e808ef00fdb331141d5975790e0a08f"
+        },
+        {
+          "path": "evidence/m1-native-unmapped.json",
+          "sha256": "e4b2a35cd8487475d1a6528602c21b52e5d4eabc92caa7686283dddeb8d2e262"
+        },
+        {
+          "path": "evidence/m1-missing-config.json",
+          "sha256": "5810cb624116d46c9a61d03eacba6065e37ca6928601cb6f2763d7bce20c5012"
+        },
+        {
+          "path": "evidence/m1-native-faults.json",
+          "sha256": "1ca6be2781c9d51f296ae5c48ee86a0c7a9788475905fb969bddd4dc75da74b2"
+        },
+        {
+          "path": "evidence/m1-native-ui-faults.json",
+          "sha256": "fbf5758486795bcef55c77e48aff364e00b9692db4dcea18e5a8f44bf9fc5768"
+        },
+        {
+          "path": "evidence/m1-native-ui-sidecar-recovery.json",
+          "sha256": "42fe2219a21d499589e2012ad0b38f5715dc211a330407157669c8f25b879d08"
+        },
+        {
+          "path": "evidence/native-ui.json",
+          "sha256": "5991e52a688f0972d7eb5856bd4b5dc756d1d6bd042770a081298f02903f344e"
+        },
+        {
+          "path": "evidence/m1-boundary-check.json",
+          "sha256": "64151a86c48cdd196c83b06f610a7d9f8b55dababd8d79d8e7c3fc613acc15ff"
+        }
+      ]
+    }
+  ],
+  "remaining": [],
+  "human_input_required": [],
+  "failure_evidence": [
+    "evidence/m1-native-ui-first-failed.json",
+    "evidence/m1-native-sidecar-first-failed.json",
+    "evidence/m1-native-sidecar-callback-failed.json",
+    "evidence/m1-native-ui-routing-first-failed.json"
+  ]
+}

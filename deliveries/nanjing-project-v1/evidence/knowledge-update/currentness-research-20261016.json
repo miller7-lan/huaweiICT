@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "assessed_at": "2026-10-16T15:06:43.464336+00:00",
+  "actor": {
+    "kind": "ai",
+    "name": "Codex AI",
+    "human_attestation": false
+  },
+  "purpose": "Bounded currentness/materials source research; no new acquisition or business acceptance",
+  "normal_acquisition_attempts": [
+    {
+      "url": "https://www.erqi.gov.cn/xwfbh/9998921.jhtml",
+      "checked_at": "2026-10-16T15:04:09.843895+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "Access denied; source paused",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": 403
+      },
+      "elapsed_seconds": 0.236
+    },
+    {
+      "url": "https://www.zhengzhou.gov.cn/12345/rxdt/9402337.jhtml",
+      "checked_at": "2026-10-16T15:04:09.845913+00:00",
+      "canonical_import": false,
+      "error_class": "AccessStopped",
+      "error": "Access denied; source paused",
+      "access_stop": {
+        "phase": "robots",
+        "http_status": 403
+      },
+      "elapsed_seconds": 0.207
+    }
+  ],
+  "observations": [
+    {
+      "id": "earlier_title_not_new_2025_norm",
+      "url": "https://www.henan.gov.cn/2022/06-20/2474582.html",
+      "title": "关于分户条件的问题",
+      "locator": "回复内容及所引规范名称",
+      "acquisition": "official_web_search_text_only",
+      "finding": "同名户政服务管理规范已见于2022年官方答复；第三方2025标签不能证明有2025新规范。未断言标题完全相同即为同一文号。",
+      "operational_answer_evidence": false
+    },
+    {
+      "id": "erqi_duration_repeat_observation",
+      "url": "https://www.erqi.gov.cn/xwfbh/9998921.jhtml",
+      "title": "好消息！河南压缩身份证、护照办理时间，最短5个工作日可拿证",
+      "locator": "页面2026-04-15 08:59、首段4月13日及压缩居民身份证办理时限段",
+      "acquisition": "official_web_read_only_normal_probe_robots_403",
+      "finding": "与现有2026省厅时限一致，区分本省户籍普通办证与特殊时期考生绿色通道；报道日和获悉日均未明示精确施行日。此前已观察，本轮不计新增。",
+      "new_finding": false,
+      "operational_answer_evidence": false
+    },
+    {
+      "id": "municipal_home_service_reply",
+      "url": "https://www.zhengzhou.gov.cn/12345/rxdt/9402337.jhtml",
+      "title": "车辆年审需要配备反光背心？权威解释在这里……",
+      "locator": "页面2025-06-18 11:50；第4问及答复",
+      "acquisition": "official_web_read_only_normal_probe_robots_403",
+      "finding": "行动不便且身份证到期个案答复支持电话预约上门采集人像的服务线索；不列本地到期换领完整材料，不能据此裁定户口簿要求或所有成年人的上门资格。未将整篇无关问答入库。",
+      "operational_answer_evidence": false
+    },
+    {
+      "id": "jianan_2026_norm_excerpt",
+      "url": "https://www.jianan.gov.cn/jczwgkbzhgfhml/015010/015010013/015010013010/015010013010002/20260817/b4e4133d-d07b-4525-834c-53d0c16d4862.html",
+      "title": "河南省公安机关户口居民身份证管理工作规范（试行）",
+      "locator": "页面2026-08-17；第86至88条",
+      "acquisition": "official_web_search_text_only",
+      "finding": "该乡镇节选针对军人恢复户口，不是二七身份证换领材料或整份规范效力决定。未采集、未移用。",
+      "operational_answer_evidence": false
+    }
+  ],
+  "archived_clause_bindings_rechecked": [
+    {
+      "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "locator": "第七十八条",
+      "text_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33",
+      "current_applicability_approved": false
+    },
+    {
+      "revision": "rev-4b92705f0d8d799adef32b29",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locator": "第一百五十九条",
+      "text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6",
+      "current_applicability_approved": false
+    },
+    {
+      "revision": "rev-4b92705f0d8d799adef32b29",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "locator": "第二百三十六条",
+      "text_sha256": "610ea80302fec85817b8934c221f809aa2e68855912472cded1ed5bf2e785f5f",
+      "current_applicability_approved": false
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "local_materials",
+      "required_evidence": "二七本地到期换领现行材料完整官方清单，以及国家78条、河南159条和共享免纸质条件的具体衔接依据",
+      "status": "not_resolved"
+    },
+    {
+      "id": "current_norm_status",
+      "required_evidence": "与相关规范文号/条款绑定的现行效力、修改或后续适用依据；仅未搜到废止或近期转载不足单独认证",
+      "status": "not_resolved"
+    },
+    {
+      "id": "advance_window",
+      "required_evidence": "河南六个月到期换领调整的原始决定、起止时间和适用范围",
+      "status": "not_resolved"
+    },
+    {
+      "id": "duration_commencement",
+      "required_evidence": "2026时限措施精确开始适用日期；网页显示、修改、转载及记者获悉日分别记录",
+      "status": "not_resolved"
+    }
+  ],
+  "counts": {
+    "sites": 39,
+    "documents": 35,
+    "revisions": 111,
+    "chunks": 676,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 285
+  },
+  "latest_states": {
+    "excluded": 19,
+    "pending_review": 16
+  },
+  "pending_without_established_effective_from": 13,
+  "gates": {
+    "reviews": 0,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "preserved_files": {
+    "evaluation/knowledge/pilot-ai-reference-answers.json": true,
+    "evaluation/knowledge/baselines/20261015T205246Z-69f8439f-reference.json": true,
+    "evaluation/knowledge/baselines/20261016T024521Z-29459439-reference.json": true,
+    "evaluation/knowledge/baselines/20261016T100533Z-3b77f854-reference.json": true,
+    "evaluation/knowledge/baselines/20261016T102656Z-708c0b41-reference.json": true,
+    "evidence/knowledge-update/model-prevalidation.json": true,
+    "evidence/knowledge-update/model-prevalidation-ai-review.json": true
+  },
+  "checks": {
+    "canonical_counts_unchanged": true,
+    "approval_evaluation_publication_counts_stay_zero": true,
+    "prior_development_references_and_results_preserved": true,
+    "publication_policy_unchanged": true,
+    "both_normal_probes_stopped_at_robots_before_document": true,
+    "no_failed_probe_html_original_claimed": true,
+    "latest_pending_and_unknown_dates_not_approved": true
+  },
+  "passed": true,
+  "new_canonical_documents": 0,
+  "new_business_approvals": 0,
+  "new_model_runs": 0,
+  "full_regression_run_this_phase": false,
+  "limitations": "Bounded search is not exhaustive legal-status verification. Preservation checks do not resolve policy facts. Repeated denied Erqi origin attempt is disclosed and not counted as progress. No acceptance or goal completion certified."
+}

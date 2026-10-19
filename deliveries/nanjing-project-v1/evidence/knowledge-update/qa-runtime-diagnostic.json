@@ -1,0 +1,71 @@
+{
+  "selected_models": [
+    {
+      "model_id": 1,
+      "model_name": "gov-qwen3-4b:ctx8192-v1",
+      "display_name": "gov-qwen3-4b:ctx8192-v1",
+      "model_type": "llm",
+      "model_repo": "",
+      "connect_status": "available",
+      "available_field_names": [
+        "access_token",
+        "base_url",
+        "capability_profile_version",
+        "capacity_source",
+        "chunk_batch",
+        "concurrency_limit",
+        "connect_status",
+        "context_window_tokens",
+        "create_time",
+        "created_by",
+        "default_output_reserve_tokens",
+        "delete_flag",
+        "display_name",
+        "expected_chunk_size",
+        "extra_params",
+        "max_input_tokens",
+        "max_output_tokens",
+        "max_tokens",
+        "maximum_chunk_size",
+        "model_appid",
+        "model_factory",
+        "model_id",
+        "model_name",
+        "model_repo",
+        "model_type",
+        "ssl_verify",
+        "temperature",
+        "tenant_id",
+        "timeout_seconds",
+        "tokenizer_family",
+        "top_p",
+        "update_time",
+        "updated_by",
+        "used_token"
+      ],
+      "base_endpoint_without_credentials": "http://host.docker.internal:11434/v1"
+    }
+  ],
+  "available_local_model_names": [
+    "gov-qwen3-8b:ctx8192-v1",
+    "gov-qwen3-4b:ctx8192-v1",
+    "qwen3:8b-q4_K_M",
+    "qwen3:4b-q4_K_M"
+  ],
+  "loaded_local_model_names": [
+    "gov-qwen3-4b:ctx8192-v1"
+  ],
+  "runtime_container": {
+    "proxy_variable_presence": {
+      "HTTP_PROXY": false,
+      "HTTPS_PROXY": false,
+      "NO_PROXY": false
+    },
+    "ollama_trust_env_False": {
+      "status": 200
+    },
+    "ollama_trust_env_True": {
+      "status": 200
+    }
+  }
+}

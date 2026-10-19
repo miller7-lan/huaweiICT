@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "execution_mode": "offline_engineering_only",
+  "roles": {
+    "query_controller": {"provider": null, "model": null, "endpoint": null, "credential_ref": null},
+    "retriever": {"provider": null, "model": null, "endpoint": null, "credential_ref": null},
+    "query_verifier": {"provider": null, "model": null, "endpoint": null, "credential_ref": null},
+    "update_controller": {"provider": null, "model": null, "endpoint": null, "credential_ref": null},
+    "extractor": {"provider": null, "model": null, "endpoint": null, "credential_ref": null},
+    "update_verifier": {"provider": null, "model": null, "endpoint": null, "credential_ref": null},
+    "jev": {"provider": null, "model": null, "endpoint": null, "credential_ref": null}
+  },
+  "note": "All API slots stay empty. The foundation calculates rules; the workflow dispatches deterministic offline roles and explicit Jev contract replays. It never claims actual model inference or new Nexent Agent integration."
+}

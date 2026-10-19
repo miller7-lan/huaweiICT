@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "logical_subject": "henan-resident-id-processing-time",
+  "kind": "real_official_source_successor_pair_not_same_url_snapshots",
+  "sources": [
+    {
+      "role": "old",
+      "source_id": "HN-MEASURES-2024-JY",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-71014e82351747c52e933f86",
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "original_bytes": 36086,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5",
+      "page_publication_date": "2024-10-17",
+      "legal_effective_date_established": false
+    },
+    {
+      "role": "new",
+      "source_id": "HN-MEASURES-2026",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "original_bytes": 17887,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e",
+      "page_publication_date": "2026-05-05",
+      "legal_effective_date_established": false
+    }
+  ],
+  "test_questions": [
+    {
+      "id": "OLD_BASELINE",
+      "stage": "old_only_enabled_under_test_environment_gates",
+      "question": "河南省本省户籍居民办理身份证，从受理到领证需要多长时间？",
+      "expected": "引用2024旧资料，25个自然日"
+    },
+    {
+      "id": "NEW_PENDING",
+      "stage": "new_imported_not_reviewed",
+      "question": "新资料是否继承旧文件批准？",
+      "expected": "新增/变更待复核，不继承旧批准；按系统待复核策略响应"
+    },
+    {
+      "id": "NEW_CURRENT",
+      "stage": "new_review_and_publication_completed_in_test_environment",
+      "question": "河南省本省户籍居民办理身份证，从受理到领证需要多长时间？",
+      "expected": "引用2026新资料，15个工作日；保留本省户籍和受理至领证范围"
+    },
+    {
+      "id": "EXAM_SCOPE",
+      "stage": "new_review_and_publication_completed_in_test_environment",
+      "question": "所有急需用证的人都能5个工作日办好吗？",
+      "expected": "不可推广；5工作日仅中高考特殊时期急需用证考生绿色通道"
+    },
+    {
+      "id": "UNIT_CHANGE",
+      "stage": "new_review_and_publication_completed_in_test_environment",
+      "question": "是不是直接缩短10天？",
+      "expected": "不能直接相减；自然日与工作日单位不同"
+    },
+    {
+      "id": "DATE_SCOPE",
+      "stage": "either",
+      "question": "措施精确从哪天施行？",
+      "expected": "本组未建立精确施行日；页面公布和URL日期不能替代"
+    },
+    {
+      "id": "HISTORY",
+      "stage": "after_update",
+      "question": "还能查到2024旧依据吗？",
+      "expected": "保留历史原件、出处及对应旧值；不宣告整份2024措施全部废止"
+    }
+  ],
+  "test_execution_status": "not_executed",
+  "actual_model_runs": 0,
+  "same_real_url": false,
+  "generated_pdf_is_official_original": false,
+  "new_policy_sources_added": 0
+}

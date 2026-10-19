@@ -1,0 +1,49 @@
+{
+  "captured_at": "2026-10-16T11:37:10.846964+00:00",
+  "passed": true,
+  "checks": {
+    "regression_passed": true,
+    "synthetic_two_role_native_passed": true,
+    "real_dynamic_two_role_stop_passed": true,
+    "preview_runtime_and_baselines_verified": true,
+    "formal_policy_unchanged": true,
+    "canonical_counts_unchanged": true,
+    "model-prevalidation.json_preserved": true,
+    "model-prevalidation-ai-review.json_preserved": true,
+    "services_ready": true
+  },
+  "regression_tests": 486,
+  "native_calls": 4,
+  "readiness_http_status": {
+    "8772": 200,
+    "8773": 200,
+    "11434": 200,
+    "5022": 200
+  },
+  "canonical_counts": {
+    "sites": 29,
+    "documents": 21,
+    "revisions": 63,
+    "chunks": 293,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 24,
+    "latest_chunks": 124
+  },
+  "publication_policy_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d",
+  "synthetic_run_id": "4dcd7f98301a42c4bacdd92fb324e365",
+  "real_stop_run_id": "70c9bddb9eed426ebbddbb3fd1cb606f",
+  "source_files": {
+    "native-answer-fixture.json": "81806283f0497297fae92495c9b92fb9b4e02a5d3c6cdff579fa0598b68652ef",
+    "native-answer-stop.json": "738daffe4f4514dca30ad7d9d324d6cd14008d8f0dab1f2488095372437b9217",
+    "regression-tests.xml": "1a01f8e2ed7acf4d27907181958e6afd2cfb045bf7c766ef3b9cd3c824b31340",
+    "consultation-runtime.json": "f253a6b21d6765d52bd014fb2b8ea18a6b9140f5f0a256e1707c4075914cacc0"
+  },
+  "business_accuracy_measured": false,
+  "official_knowledge_versions_published": 0,
+  "limitations": [
+    "Literal citation integrity is not policy applicability or semantic answer correctness.",
+    "Two positive native cases use a fixed question and synthetic published data; the two real dynamic cases verify unpublished stops.",
+    "Independent business holdout, material relationships, formal release, full week and UI acceptance remain open."
+  ]
+}

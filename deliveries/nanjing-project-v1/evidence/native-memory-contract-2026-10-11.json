@@ -1,0 +1,16 @@
+{
+  "captured_at": "2026-10-11T08:30:19.670970+00:00",
+  "benchmark_reference": "native-20261011T082751728836Z",
+  "scope": "read-only isolated test administrator memory settings; no sign-in performed by agent",
+  "persisted_flags": {
+    "DREAMING_SWITCH": "N",
+    "MEMORY_SWITCH": "N"
+  },
+  "root_cause": "Verifier expected false instead of the pinned native Y/N contract",
+  "source_contract": [
+    "vendor/nexent/backend/services/memory_config_service.py:set_memory_switch",
+    "vendor/nexent/backend/services/memory_config_service.py:set_dreaming_switch",
+    "vendor/nexent/backend/apps/memory_config_app.py:load_configs"
+  ],
+  "native_acceptance_passed": false
+}

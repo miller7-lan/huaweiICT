@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "run_id": "20261018T082128965761Z",
+  "data_class": "public",
+  "case": {
+    "data_class": "public",
+    "applicant_kind": "fictional",
+    "age_group": "adult",
+    "self_service": true,
+    "household_scope": "local_erqi",
+    "reason": "expiry",
+    "window": "minggong",
+    "personal_data_collected": false
+  },
+  "status": "candidate_needs_review",
+  "knowledge_published": false,
+  "formal_application_submitted": false,
+  "native_real_business_verified": false,
+  "human_review": "pending_professional_review",
+  "scope": "Two official public HTML sources, one fictional local adult expiry case; candidate consultation only",
+  "sources": [
+    {
+      "source_id": "erqi",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "raw_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+      "published_at": null,
+      "effective_at": null
+    },
+    {
+      "source_id": "minggong",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml",
+      "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d",
+      "published_at": null,
+      "effective_at": null
+    }
+  ],
+  "retrieved_at": "2026-10-18T08:20:04.180092+00:00",
+  "cost_amount": null,
+  "evaluation_basis": "Assistant source-reading expectation fixed before inference; not independent human benchmark",
+  "extraction_reused_from": "20261018T082045117471Z",
+  "new_extraction_calls": 0,
+  "extraction": {
+    "model": "deepseek-flash",
+    "usage": {
+      "input_tokens": 1238,
+      "output_tokens": 416,
+      "input_cache_hit_tokens": 0,
+      "input_cache_miss_tokens": 1238
+    },
+    "status": "untrusted_machine_candidate"
+  },
+  "candidate": [
+    {
+      "id": "materials",
+      "value": [
+        "居民户口本",
+        "原居民身份证"
+      ],
+      "evidence": [
+        {
+          "source_id": "minggong",
+          "section_id": "section-txt1",
+          "quote": "1、居民户口本； 2、原居民身份证；",
+          "start": 0,
+          "end": 18,
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-txt1",
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d"
+        },
+        {
+          "source_id": "minggong",
+          "section_id": "section-txt1",
+          "quote": "3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证； 4、跨户籍所在地市异地办证的，交验证明身份的证件之一后，经书面承诺，可免提交在当地合法稳定就业、就学、居住的证明材料。",
+          "start": 19,
+          "end": 112,
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-txt1",
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d"
+        }
+      ],
+      "canonical_value": [
+        "居民户口簿",
+        "原居民身份证"
+      ],
+      "normalization": "public_source_alias_户口本_to_户口簿",
+      "status": "pending_professional_review"
+    },
+    {
+      "id": "fee",
+      "value": "20元/证",
+      "evidence": [
+        {
+          "source_id": "minggong",
+          "section_id": "section-text_04",
+          "quote": "20元/证。按照《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》（发改价格[2003]2322号）的规定。",
+          "start": 0,
+          "end": 61,
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-text_04",
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d"
+        }
+      ],
+      "canonical_value": "20元/证",
+      "normalization": null,
+      "status": "pending_professional_review"
+    },
+    {
+      "id": "duration",
+      "value": "15个工作日",
+      "evidence": [
+        {
+          "source_id": "minggong",
+          "section_id": "section-text_03",
+          "quote": "15个工作日",
+          "start": 0,
+          "end": 6,
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-text_03",
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d"
+        }
+      ],
+      "canonical_value": "15个工作日",
+      "normalization": null,
+      "status": "pending_professional_review"
+    },
+    {
+      "id": "guardian_required",
+      "value": false,
+      "evidence": [
+        {
+          "source_id": "minggong",
+          "section_id": "section-text_02",
+          "quote": "居民身份证有效期满的，可申请换领新证。未满16周岁的，由其监护人持本人居民身份证陪同申领。",
+          "start": 0,
+          "end": 45,
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-text_02",
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d"
+        }
+      ],
+      "canonical_value": false,
+      "normalization": null,
+      "status": "pending_professional_review"
+    },
+    {
+      "id": "address",
+      "value": "郑州市二七区铭功路228号铭功路街道便民服务中心",
+      "evidence": [
+        {
+          "source_id": "minggong",
+          "section_id": "section-text_05",
+          "quote": "郑州市二七区铭功路228号铭功路街道便民服务中心",
+          "start": 0,
+          "end": 24,
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-text_05",
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d"
+        }
+      ],
+      "canonical_value": "郑州市二七区铭功路228号铭功路街道便民服务中心",
+      "normalization": null,
+      "status": "pending_professional_review"
+    },
+    {
+      "id": "phone",
+      "value": "0371—86191017",
+      "evidence": [
+        {
+          "source_id": "minggong",
+          "section_id": "section-text_06",
+          "quote": "0371—86191017",
+          "start": 0,
+          "end": 13,
+          "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml#section-text_06",
+          "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d"
+        }
+      ],
+      "canonical_value": "0371—86191017",
+      "normalization": null,
+      "status": "pending_professional_review"
+    },
+    {
+      "id": "advance_days",
+      "value": null,
+      "evidence": [],
+      "canonical_value": null,
+      "normalization": null,
+      "status": "pending_professional_review"
+    }
+  ],
+  "jev_support": {
+    "materials": 0.79,
+    "fee": 0.85,
+    "duration": 0.83,
+    "guardian_required": 0.76,
+    "address": 0.92,
+    "phone": 0.93,
+    "invented_advance": 0.03
+  },
+  "checks": {
+    "source_hash_and_exact_quotes": true,
+    "source_reading_checks": 7,
+    "unknown_advance_abstained": true,
+    "all_six_claims_supported": false,
+    "invented_advance_rejected": true
+  },
+  "duration_ms": 3497.95,
+  "jev_receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 3297,
+      "status": "ok",
+      "cost_usd": null,
+      "http_status": 200,
+      "served_model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 1066,
+        "output_tokens": 123
+      },
+      "duration_ms": 1354.63
+    }
+  ],
+  "translation_receipts": [
+    {
+      "version": "jev-english-1",
+      "target_language": "en",
+      "status": "translated",
+      "source_state_sha256": "8a953db3f966ebaf4cc9ff202b46bc39f8ae009d33bb7feb59f385ea17ced89b",
+      "source_questions_sha256": "55b0426fcf5f1fd669dd5924f820e58cc3654c2779c37e2f1ae05e603af9ace2",
+      "translation_calls": 1,
+      "cache_hits": 0,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage": {
+        "input_tokens": 406,
+        "output_tokens": 288
+      },
+      "state_sha256": "1d71efcf634d613aace12f6fbd725506cefef2397ff72088189a6810a2fdf4dd",
+      "questions_sha256": "55b0426fcf5f1fd669dd5924f820e58cc3654c2779c37e2f1ae05e603af9ace2",
+      "input_bytes": 3297
+    }
+  ],
+  "source_sha256": {
+    "scripts/run_public_business_pilot.py": "a356b7fe730c1f1254d29cc2674b5929fa975246559c45cfb92b30a3b4326369",
+    "src/gov_mcp/deepseek.py": "153245960666f60c08f6f4eab81b20a783b56e94307dec2e7cda2548230007ec",
+    "src/gov_mcp/classification.py": "982d03dcff0398e240a336f1a2ee49f229c30c7ff1b2004fb88b420203cbfb05",
+    "src/gov_mcp/jev_translation.py": "075d295da24e96c824ed21b6e7eb1bdcc79faab5bbf24eeb9a6a3d5e856ddcfd"
+  }
+}

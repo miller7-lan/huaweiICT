@@ -1,0 +1,113 @@
+{
+  "scope": "isolated real SSE transport; not native Nexent agent acceptance",
+  "passed": true,
+  "records": [
+    {
+      "tool": "get_environment_status",
+      "result": {
+        "status": "OK",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ENVIRONMENT_READY",
+        "data": {
+          "role": "citizen",
+          "resources": {
+            "evidence": {
+              "configured": true,
+              "count": 0
+            },
+            "cases": {
+              "configured": true,
+              "count": 0
+            },
+            "materials": {
+              "configured": true,
+              "count": 0
+            }
+          },
+          "request_id": "e86be98c20c433c3"
+        }
+      },
+      "duration_ms": 11.4
+    },
+    {
+      "tool": "search_evidence",
+      "result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_KNOWLEDGE",
+        "data": {
+          "request_id": "e9b60d64f4d19067"
+        }
+      },
+      "duration_ms": 6.76
+    },
+    {
+      "tool": "check_case_prerequisites",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "MISSING_CASE_AND_MATERIALS",
+        "data": {
+          "missing": [
+            "case",
+            "materials",
+            "evidence"
+          ],
+          "request_id": "6edfa53d0dcdad6c"
+        }
+      },
+      "duration_ms": 6.54
+    },
+    {
+      "tool": "check_case_prerequisites",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "FORBIDDEN",
+        "data": {
+          "request_id": "694d803e5ba51b91"
+        }
+      },
+      "duration_ms": 6.28
+    },
+    {
+      "tool": "get_environment_status",
+      "result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "ROLE_NOT_CONFIGURED",
+        "data": {
+          "request_id": "eb236a9e62a0f568"
+        }
+      },
+      "duration_ms": 6.2
+    },
+    {
+      "tool": "search_evidence",
+      "result": {
+        "status": "ERROR",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "TOOL_TIMEOUT",
+        "data": {
+          "attempts": 2,
+          "request_id": "ef8bd359054dbad7"
+        }
+      },
+      "fault_scope": "injected technical storage timeout",
+      "actual_attempts": 2,
+      "duration_ms": 255.97
+    }
+  ]
+}

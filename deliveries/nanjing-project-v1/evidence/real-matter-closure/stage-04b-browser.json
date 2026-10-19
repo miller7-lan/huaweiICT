@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-10-19T13:17:47.554701+00:00",
+  "mode": "local_engineering_accounts",
+  "execution": "actual_loopback_http_and_browser_automated_accounts",
+  "versions": {
+    "seed": "0fe7330e8bab5b6fb383d674a5a64ec63d040d807bef27909f87af4df2dc6658",
+    "evolved": "72af3bad4ea8d05caf6ef7dfe58cb7a3083af0feb954241fd130723a6aa5f516"
+  },
+  "checks": {
+    "unknown_conditions_stop": true,
+    "source_cards_and_material_exceptions": true,
+    "same_case_and_version_handoff": true,
+    "staff_explicit_engineering_confirmation": true,
+    "declared_conditions_visible": true,
+    "reload_persistence": true,
+    "owned_server_restart_relogin_and_case_persistence": true,
+    "injected_source_pause_blocks_history": true,
+    "engineering_rollback_does_not_bypass_pause": true,
+    "restored_evolved_version_and_source": true,
+    "two_document_development_proof_and_trace_visible": true
+  },
+  "narrow_screen": {
+    "viewport": 390,
+    "documentWidth": 390,
+    "bodyWidth": 390
+  },
+  "staff_console": {
+    "expected_http_409": 2,
+    "unexpected_errors_in_this_log": 0
+  },
+  "cases": [
+    {
+      "case_id": "case-3ac91a9d330448e8a52e4c3cf462ae08",
+      "topic": "materials",
+      "state": "staff_confirmed",
+      "version": "72af3bad4ea8d05caf6ef7dfe58cb7a3083af0feb954241fd130723a6aa5f516"
+    },
+    {
+      "case_id": "case-dcd87244e7cb4be98bcff5aadeac6249",
+      "topic": "old_card_lifecycle",
+      "state": "draft",
+      "version": "72af3bad4ea8d05caf6ef7dfe58cb7a3083af0feb954241fd130723a6aa5f516"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "evidence/real-matter-closure/web/citizen-proof.png",
+      "sha256": "0882bc41ba0ba4ecc0e15b96336860212771a92c3e1cf756f0bebc53959e054e",
+      "bytes": 158688
+    },
+    {
+      "path": "evidence/real-matter-closure/web/citizen-narrow.png",
+      "sha256": "4782452fd534525a03c78a03213be5353e00fabd0cc7028f2dfd4d27a67d2605",
+      "bytes": 151821
+    },
+    {
+      "path": "evidence/real-matter-closure/web/staff-confirmed.png",
+      "sha256": "d3b64c816886198fefbfb64b93520267f860c9d580492eac8797ecaef45464c1",
+      "bytes": 166618
+    }
+  ],
+  "limits": {
+    "formal_business_publication": false,
+    "human_business_review": false,
+    "independent_evaluation": false,
+    "nexent_native_execution": false,
+    "real_nexent_signin": false,
+    "new_cloud_model_calls": 0,
+    "real_applicant_data": false,
+    "source_pause_was_controlled_injection": true,
+    "screenshots_are_engineering_examples": true
+  }
+}

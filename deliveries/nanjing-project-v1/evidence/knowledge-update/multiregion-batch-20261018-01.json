@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-18T14:22:18.355284+00:00",
+  "kind": "actual_multiregion_candidate_intake_not_business_release",
+  "sources": [
+    {
+      "source_id": "BJ-ID-RENEWAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+      "region": "北京市",
+      "matter": "resident-id-renewal",
+      "revision": "rev-900798fdb5c74c934876fb73",
+      "state": "pending_review",
+      "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+      "original_bytes": 31155,
+      "selected_paragraphs": 15,
+      "selected_content_sha256": "18f04765ef0f5d7ee319ead09e12bc7e010bd6ed3df58be81d4e58361995d253",
+      "published_at": "2025-03-03",
+      "scope_limits": "京籍居民换领；未成年人要求保留。网办提示仅指损坏换领，须连同户籍、年龄、五年内办证/照片及指纹条件理解，不推为到期网办或河南材料标准。页面日期不是施行日。",
+      "normal_guarded_http": true,
+      "body_acquired": true,
+      "body_ingested": true,
+      "automatic_monitoring_enabled": false,
+      "business_approval": false
+    },
+    {
+      "source_id": "BJ-PASSPORT-FIRST-MATERIALS",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/cjybz/hz/blzn/201905/t20190522_1845633.html",
+      "region": "北京市",
+      "matter": "ordinary-passport-first-application",
+      "revision": "rev-5f5701e1ab02c7855de3bc14",
+      "state": "pending_review",
+      "original_sha256": "d05201c34e0ac2c80b06d49ce01dbf7f520b6f8637510dac16811bb505fc33de",
+      "original_bytes": 31716,
+      "selected_paragraphs": 15,
+      "selected_content_sha256": "6e85108d4eee289ebf9e28091b505dec091ef3830ae2975eef19f82ac436b5d2",
+      "published_at": "2025-11-24",
+      "scope_limits": "北京门户护照首次申领材料指南；保留未成年人、国家工作人员、军人、在京重复提交监护关系等条件；市内免费邮寄范围及户籍地/跨省时限分开。2019 URL路径不是2025页面发布日期或施行日。",
+      "normal_guarded_http": true,
+      "body_acquired": true,
+      "body_ingested": true,
+      "automatic_monitoring_enabled": false,
+      "business_approval": false
+    }
+  ],
+  "new_documents": 2,
+  "new_revisions": 2,
+  "new_selected_paragraphs": 30,
+  "counts": {
+    "sites": 59,
+    "documents": 48,
+    "revisions": 155,
+    "chunks": 997,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 38,
+    "latest_chunks": 349
+  },
+  "latest_states": {
+    "excluded": 28,
+    "pending_review": 13,
+    "reviewed": 7
+  },
+  "gates": {
+    "reviews": 9,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "integrity_checks": {
+    "original_hashes_match": true,
+    "parsed_counts_match": true,
+    "complete_selected_paragraphs_match_archive": true,
+    "all_new_revisions_verified": true,
+    "all_new_records_pending": true,
+    "all_previous_revisions_unchanged": true,
+    "business_gates_unchanged": true,
+    "original_pilot_and_reference_files_unchanged": true,
+    "automatic_monitoring_disabled": true,
+    "reference_and_questions_match_git_head": true
+  },
+  "protected_files": {
+    "config\\knowledge-scope.json": "37da27bf6f1ca08619f9b748010f9613ae2f682b2eead02ea236fabab50e99fa",
+    ".runtime\\knowledge-update\\knowledge-scope.json": "569aae458ba513800d82feb6195a74613d00722dd415e0d269598a5a85b21663",
+    "evaluation/knowledge/holdout-business-reference-draft.json": "4aefbff2cfb71e8ffe54835be493c11317d363ae867bb9b5b1a2d5bbeb0d128f",
+    "evaluation/knowledge/holdout-business-questions-draft.json": "4745535a00e6422c679722a560f98f4a5ec2d23e00023ae62fd47024334934bb"
+  },
+  "old_pilot_is_not_expansion_prerequisite": true,
+  "original_bodies_exported": 0,
+  "new_business_releases": 0
+}

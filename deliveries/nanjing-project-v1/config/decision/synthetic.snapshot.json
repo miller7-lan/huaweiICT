@@ -1,0 +1,666 @@
+{
+  "schema_version": 1,
+  "mode": "synthetic_engineering_only",
+  "demo_date": "2026-10-17",
+  "versions": {
+    "documents": "demo-docs-v1",
+    "knowledge": "demo-knowledge-v1",
+    "ontology": "demo-ontology-v1"
+  },
+  "matter": {
+    "id": "matter-demo-pass",
+    "label": "模拟通行卡到期换领",
+    "region_id": "demo-city"
+  },
+  "fields": [
+    {
+      "id": "reason",
+      "label": "办理原因",
+      "kind": "enum",
+      "options": [
+        "expiry",
+        "lost"
+      ]
+    },
+    {
+      "id": "age_group",
+      "label": "年龄组",
+      "kind": "enum",
+      "options": [
+        "adult",
+        "minor"
+      ]
+    },
+    {
+      "id": "self_service",
+      "label": "是否本人办理",
+      "kind": "boolean",
+      "options": []
+    },
+    {
+      "id": "electronic_verified",
+      "label": "电子申请表是否可验证",
+      "kind": "boolean",
+      "options": []
+    }
+  ],
+  "stages": [
+    {
+      "id": "application",
+      "label": "申请",
+      "order": 0
+    },
+    {
+      "id": "collection",
+      "label": "领取",
+      "order": 1
+    }
+  ],
+  "materials": [
+    {
+      "id": "material-paper",
+      "label": "模拟纸质申请表"
+    },
+    {
+      "id": "material-electronic",
+      "label": "模拟电子申请表"
+    },
+    {
+      "id": "material-old-card",
+      "label": "演练旧卡"
+    },
+    {
+      "id": "material-slip",
+      "label": "模拟领取凭条"
+    },
+    {
+      "id": "material-residence",
+      "label": "模拟居住证明"
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-core",
+      "source_url": "synthetic://gov-demo/core",
+      "title": "模拟通行卡资料-core",
+      "revision": "rev-core-v1",
+      "data_class": "synthetic",
+      "text": "【工程模拟资料，不是真实政务政策】\n模拟市通行卡到期换领分为申请和领取两个环节。\n成年本人到期换领可进入成年本人演练分支。\n未成年人本人情况单独分支，本模拟资料尚未提供其办事清单。\n成年本人演练分支内，申请时需提交模拟申请表。\n成年本人演练分支内，申请时应交验演练旧卡。\n成年本人演练分支内，领取新卡时交回演练旧卡。\n成年本人演练分支内，领取时需出示模拟领取凭条。\n演练旧卡又称旧演练卡，本演练中为同一材料。\n本模拟规则仅供模拟市演练，时间区间为2026-01-01至2027-01-01（不含后者）。\n",
+      "sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa"
+    },
+    {
+      "id": "asset-exception",
+      "source_url": "synthetic://gov-demo/exception",
+      "title": "模拟通行卡资料-exception",
+      "revision": "rev-exception-v1",
+      "data_class": "synthetic",
+      "text": "【工程模拟资料，不是真实政务政策】\n成年本人演练分支中，可验证的模拟电子申请表替代模拟纸质申请表；无法验证时仍需纸质表。\n电子表是否可验证不清楚时，不得推定有或没有替代资格。\n",
+      "sha256": "f8730073436dab4e02cb17d1cfd633793e2c007b36db55790e461e84eeca5ab1"
+    },
+    {
+      "id": "asset-unconfirmed",
+      "source_url": "synthetic://gov-demo/unconfirmed",
+      "title": "模拟通行卡资料-unconfirmed",
+      "revision": "rev-unconfirmed-v1",
+      "data_class": "synthetic",
+      "text": "【工程模拟资料，不是真实政务政策】\n某演练资料提到申请时可出示模拟居住证明，该说法是否适用于模拟市尚未确认。\n另有演练资料把演练旧卡简称为旧证，该别名尚未确认。\n",
+      "sha256": "c80e5bf6646e8b2add7d05b5336e3cdbdd699dd783a48b7cf3eedeb24c514df9"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-reason",
+      "asset_id": "asset-core",
+      "start": 18,
+      "end": 40,
+      "quote": "模拟市通行卡到期换领分为申请和领取两个环节。",
+      "locator": "模拟文本第2行"
+    },
+    {
+      "id": "ev-adult",
+      "asset_id": "asset-core",
+      "start": 41,
+      "end": 61,
+      "quote": "成年本人到期换领可进入成年本人演练分支。",
+      "locator": "模拟文本第3行"
+    },
+    {
+      "id": "ev-minor",
+      "asset_id": "asset-core",
+      "start": 62,
+      "end": 90,
+      "quote": "未成年人本人情况单独分支，本模拟资料尚未提供其办事清单。",
+      "locator": "模拟文本第4行"
+    },
+    {
+      "id": "ev-paper",
+      "asset_id": "asset-core",
+      "start": 91,
+      "end": 113,
+      "quote": "成年本人演练分支内，申请时需提交模拟申请表。",
+      "locator": "模拟文本第5行"
+    },
+    {
+      "id": "ev-card-apply",
+      "asset_id": "asset-core",
+      "start": 114,
+      "end": 135,
+      "quote": "成年本人演练分支内，申请时应交验演练旧卡。",
+      "locator": "模拟文本第6行"
+    },
+    {
+      "id": "ev-card-collect",
+      "asset_id": "asset-core",
+      "start": 136,
+      "end": 158,
+      "quote": "成年本人演练分支内，领取新卡时交回演练旧卡。",
+      "locator": "模拟文本第7行"
+    },
+    {
+      "id": "ev-slip",
+      "asset_id": "asset-core",
+      "start": 159,
+      "end": 182,
+      "quote": "成年本人演练分支内，领取时需出示模拟领取凭条。",
+      "locator": "模拟文本第8行"
+    },
+    {
+      "id": "ev-alias",
+      "asset_id": "asset-core",
+      "start": 183,
+      "end": 204,
+      "quote": "演练旧卡又称旧演练卡，本演练中为同一材料。",
+      "locator": "模拟文本第9行"
+    },
+    {
+      "id": "ev-scope",
+      "asset_id": "asset-core",
+      "start": 205,
+      "end": 251,
+      "quote": "本模拟规则仅供模拟市演练，时间区间为2026-01-01至2027-01-01（不含后者）。",
+      "locator": "模拟文本第10行"
+    },
+    {
+      "id": "ev-substitution",
+      "asset_id": "asset-exception",
+      "start": 18,
+      "end": 60,
+      "quote": "成年本人演练分支中，可验证的模拟电子申请表替代模拟纸质申请表；无法验证时仍需纸质表。",
+      "locator": "模拟文本第2行"
+    },
+    {
+      "id": "ev-substitution-unknown",
+      "asset_id": "asset-exception",
+      "start": 61,
+      "end": 87,
+      "quote": "电子表是否可验证不清楚时，不得推定有或没有替代资格。",
+      "locator": "模拟文本第3行"
+    },
+    {
+      "id": "ev-residence",
+      "asset_id": "asset-unconfirmed",
+      "start": 18,
+      "end": 54,
+      "quote": "某演练资料提到申请时可出示模拟居住证明，该说法是否适用于模拟市尚未确认。",
+      "locator": "模拟文本第2行"
+    },
+    {
+      "id": "ev-alias-candidate",
+      "asset_id": "asset-unconfirmed",
+      "start": 55,
+      "end": 80,
+      "quote": "另有演练资料把演练旧卡简称为旧证，该别名尚未确认。",
+      "locator": "模拟文本第3行"
+    }
+  ],
+  "clauses": [
+    {
+      "id": "clause-main",
+      "label": "模拟主文件的适用范围",
+      "evidence_ids": [
+        "ev-scope"
+      ]
+    },
+    {
+      "id": "clause-residence",
+      "label": "模拟待确认资料",
+      "evidence_ids": [
+        "ev-residence"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "cond-expiry",
+      "evidence_ids": [
+        "ev-reason"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-cond-expiry",
+      "expression": {
+        "op": "eq",
+        "field": "reason",
+        "value": "expiry"
+      }
+    },
+    {
+      "id": "cond-adult",
+      "evidence_ids": [
+        "ev-adult"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-cond-adult",
+      "expression": {
+        "op": "all",
+        "args": [
+          {
+            "op": "eq",
+            "field": "age_group",
+            "value": "adult"
+          },
+          {
+            "op": "eq",
+            "field": "self_service",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "cond-minor",
+      "evidence_ids": [
+        "ev-minor"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-cond-minor",
+      "expression": {
+        "op": "all",
+        "args": [
+          {
+            "op": "eq",
+            "field": "age_group",
+            "value": "minor"
+          },
+          {
+            "op": "eq",
+            "field": "self_service",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "cond-unconditional",
+      "evidence_ids": [
+        "ev-adult"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-cond-unconditional",
+      "expression": {
+        "op": "const",
+        "value": true
+      }
+    },
+    {
+      "id": "cond-paper",
+      "evidence_ids": [
+        "ev-paper",
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-cond-paper",
+      "expression": {
+        "op": "not",
+        "arg": {
+          "op": "eq",
+          "field": "electronic_verified",
+          "value": true
+        }
+      }
+    },
+    {
+      "id": "cond-electronic",
+      "evidence_ids": [
+        "ev-substitution",
+        "ev-substitution-unknown"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-cond-electronic",
+      "expression": {
+        "op": "eq",
+        "field": "electronic_verified",
+        "value": true
+      }
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-expiry",
+      "evidence_ids": [
+        "ev-reason"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-branch-expiry",
+      "label": "到期换领",
+      "parent_id": null,
+      "condition_id": "cond-expiry",
+      "order": 0
+    },
+    {
+      "id": "branch-adult-self",
+      "evidence_ids": [
+        "ev-adult"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-branch-adult-self",
+      "label": "成年本人",
+      "parent_id": "branch-expiry",
+      "condition_id": "cond-adult",
+      "order": 0
+    },
+    {
+      "id": "branch-minor-self",
+      "evidence_ids": [
+        "ev-minor"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-branch-minor-self",
+      "label": "未成年人本人（资料待补齐）",
+      "parent_id": "branch-expiry",
+      "condition_id": "cond-minor",
+      "order": 1
+    }
+  ],
+  "applicability": [
+    {
+      "id": "scope-main",
+      "evidence_ids": [
+        "ev-scope"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-scope-main",
+      "region_id": "demo-city",
+      "clause_ids": [
+        "clause-main"
+      ],
+      "window": {
+        "confirmed": true,
+        "start_inclusive": "2026-01-01",
+        "end_exclusive": "2027-01-01"
+      }
+    },
+    {
+      "id": "scope-residence",
+      "evidence_ids": [
+        "ev-residence"
+      ],
+      "review_status": "candidate",
+      "review_id": null,
+      "region_id": "demo-city",
+      "clause_ids": [
+        "clause-residence"
+      ],
+      "window": {
+        "confirmed": false,
+        "start_inclusive": null,
+        "end_exclusive": null
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req-paper",
+      "evidence_ids": [
+        "ev-paper",
+        "ev-substitution"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-req-paper",
+      "branch_id": "branch-adult-self",
+      "stage_id": "application",
+      "material_id": "material-paper",
+      "action": "提交",
+      "condition_id": "cond-paper",
+      "applicability_id": "scope-main"
+    },
+    {
+      "id": "req-electronic",
+      "evidence_ids": [
+        "ev-substitution"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-req-electronic",
+      "branch_id": "branch-adult-self",
+      "stage_id": "application",
+      "material_id": "material-electronic",
+      "action": "提交",
+      "condition_id": "cond-electronic",
+      "applicability_id": "scope-main"
+    },
+    {
+      "id": "req-card-apply",
+      "evidence_ids": [
+        "ev-card-apply"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-req-card-apply",
+      "branch_id": "branch-adult-self",
+      "stage_id": "application",
+      "material_id": "material-old-card",
+      "action": "交验",
+      "condition_id": "cond-unconditional",
+      "applicability_id": "scope-main"
+    },
+    {
+      "id": "req-card-collect",
+      "evidence_ids": [
+        "ev-card-collect"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-req-card-collect",
+      "branch_id": "branch-adult-self",
+      "stage_id": "collection",
+      "material_id": "material-old-card",
+      "action": "交回",
+      "condition_id": "cond-unconditional",
+      "applicability_id": "scope-main"
+    },
+    {
+      "id": "req-slip",
+      "evidence_ids": [
+        "ev-slip"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-req-slip",
+      "branch_id": "branch-adult-self",
+      "stage_id": "collection",
+      "material_id": "material-slip",
+      "action": "出示",
+      "condition_id": "cond-unconditional",
+      "applicability_id": "scope-main"
+    },
+    {
+      "id": "req-residence",
+      "evidence_ids": [
+        "ev-residence"
+      ],
+      "review_status": "candidate",
+      "review_id": null,
+      "branch_id": "branch-adult-self",
+      "stage_id": "application",
+      "material_id": "material-residence",
+      "action": "出示",
+      "condition_id": "cond-unconditional",
+      "applicability_id": "scope-residence"
+    }
+  ],
+  "aliases": [
+    {
+      "id": "alias-old-card",
+      "evidence_ids": [
+        "ev-alias"
+      ],
+      "review_status": "confirmed",
+      "review_id": "review-alias-old-card",
+      "material_id": "material-old-card",
+      "label": "旧演练卡"
+    },
+    {
+      "id": "alias-unconfirmed",
+      "evidence_ids": [
+        "ev-alias-candidate"
+      ],
+      "review_status": "candidate",
+      "review_id": null,
+      "material_id": "material-old-card",
+      "label": "旧证"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review-cond-expiry",
+      "object_id": "cond-expiry",
+      "object_sha256": "958d6b3d38c4badea38b32d6dc2ed564382a867e4e39fefd3d940cc126eb814f",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-cond-adult",
+      "object_id": "cond-adult",
+      "object_sha256": "156170297ac0e7c0b202c94b588ad9dfe2cba268501dbff72b081b11b42cea80",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-cond-minor",
+      "object_id": "cond-minor",
+      "object_sha256": "84913dd3979e66238da4a5f42f7a6e2e4bb51a2db3dbee4678a0bce086bbd83a",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-cond-unconditional",
+      "object_id": "cond-unconditional",
+      "object_sha256": "4ac0e64ad6d2c209239a2bea9a5defb274dc49a2095e8422c5b704f565d28225",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-cond-paper",
+      "object_id": "cond-paper",
+      "object_sha256": "8fd5521d0c4acbe92d1664d973a2bf75852ea00c60289ce51f1bf16492c61372",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-cond-electronic",
+      "object_id": "cond-electronic",
+      "object_sha256": "7823330b5d917e62218a9f43d1f87b420076463d580978b0d92dfbfa58702d9f",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-branch-expiry",
+      "object_id": "branch-expiry",
+      "object_sha256": "d05ee50f8b4448f648cb587f5aa31fd7388ddead3f3ef61fb545e28cbd4d322f",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-branch-adult-self",
+      "object_id": "branch-adult-self",
+      "object_sha256": "e46adeae62c70eab7d67760161248c6ffd7c8054c1c4fd9cf6fb551d37d8ba10",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-branch-minor-self",
+      "object_id": "branch-minor-self",
+      "object_sha256": "476422aed39da9eaad331d18764838f3e9f9e461a93aedc8702dd3464a10795a",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-scope-main",
+      "object_id": "scope-main",
+      "object_sha256": "764b1a3cdf011fb967e2e037888339c8c5da9982b732c694ebc82661f3740573",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-req-paper",
+      "object_id": "req-paper",
+      "object_sha256": "9541aceffb5b3681792645820ec7a9f492f014db2f04e8e18e99406925f9693c",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-req-electronic",
+      "object_id": "req-electronic",
+      "object_sha256": "e5be63c0192f7bab20bb7178d7acbde1619bd8af236d5ae3d528d6e1d569f2f2",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-req-card-apply",
+      "object_id": "req-card-apply",
+      "object_sha256": "ad6341575ee64eddc92fa305bfe71a1d116fa4ead87b7e4aa87c6411c4da86a8",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-req-card-collect",
+      "object_id": "req-card-collect",
+      "object_sha256": "4f906a1780a91235903e433facd7b373c5960592967077bef37e2cacc8e058a4",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-req-slip",
+      "object_id": "req-slip",
+      "object_sha256": "60583ae797005b6e468a3f425d42333055cae5e0f50e33cf9ef7517d8b5bfa86",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    },
+    {
+      "id": "review-alias-old-card",
+      "object_id": "alias-old-card",
+      "object_sha256": "56fc2b7a17140b9cd042acff6b84fbe563033f1260d806df80e18cff696ae2a3",
+      "actor_id": "fixture-professional",
+      "actor_kind": "simulated_professional",
+      "decision": "accepted",
+      "note": "仅为工程模拟中的已确认样本，不代表真实人员审阅或真实政策发布。"
+    }
+  ]
+}

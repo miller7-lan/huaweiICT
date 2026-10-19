@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "unique_tests_with_passing_record": 46,
+  "original_failures_preserved": [
+    "tests.test_matter_web::test_origin_csrf_host_and_request_size"
+  ],
+  "failure_explanation": "Missing JSON Content-Type in request-size test caused earlier transport rejection; corrected test header, server validation unchanged.",
+  "reports": [
+    {
+      "path": "stage-04b-handoff-display-recheck.xml",
+      "tests": 2,
+      "failed": []
+    },
+    {
+      "path": "stage-04b-http-first.xml",
+      "tests": 44,
+      "failed": [
+        "tests.test_matter_web::test_origin_csrf_host_and_request_size"
+      ]
+    },
+    {
+      "path": "stage-04b-http-size-recheck.xml",
+      "tests": 1,
+      "failed": []
+    },
+    {
+      "path": "stage-04b-nexent-auth-contract.xml",
+      "tests": 2,
+      "failed": []
+    },
+    {
+      "path": "stage-04b-pause-recheck.xml",
+      "tests": 1,
+      "failed": []
+    }
+  ],
+  "passed_tests": [
+    "tests.test_matter_guidance::test_2025_to_2028_window_not_unconditionally_extended",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[collection]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[fee]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[materials]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[online]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[overview]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[progress]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[temporary]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[time]",
+    "tests.test_matter_guidance::test_each_consultation_topic_returns_bound_source_sections[window]",
+    "tests.test_matter_guidance::test_expired_old_card_is_marked_not_applicable_in_collection_topic",
+    "tests.test_matter_guidance::test_fee_relief_is_not_determined_from_standard_fee",
+    "tests.test_matter_guidance::test_future_published_source_is_not_used_as_current_knowledge",
+    "tests.test_matter_guidance::test_incomplete_or_other_branch_does_not_reuse_main_case[change0-NEEDS_CLARIFICATION]",
+    "tests.test_matter_guidance::test_incomplete_or_other_branch_does_not_reuse_main_case[change1-OUT_OF_SCOPE]",
+    "tests.test_matter_guidance::test_incomplete_or_other_branch_does_not_reuse_main_case[change2-OUT_OF_SCOPE]",
+    "tests.test_matter_guidance::test_material_exceptions_are_not_accumulated_into_main_branch",
+    "tests.test_matter_guidance::test_online_exclusion_keeps_full_positive_and_negative_context",
+    "tests.test_matter_guidance::test_overview_covers_all_sixteen_and_does_not_assume_old_card_validity",
+    "tests.test_matter_guidance::test_service_days_and_statutory_days_have_distinct_rules_and_no_exact_date",
+    "tests.test_matter_guidance::test_topic_survives_case_handoff_and_pins_the_same_version",
+    "tests.test_matter_lifecycle::test_compare_and_swap_rejects_obsolete_release_and_rollback",
+    "tests.test_matter_lifecycle::test_existing_unrelated_runtime_is_never_initialized",
+    "tests.test_matter_lifecycle::test_future_observation_time_is_rejected",
+    "tests.test_matter_lifecycle::test_handoff_requires_explicit_code_and_assignee_and_never_approves_business",
+    "tests.test_matter_lifecycle::test_immutable_version_and_original_corruption_are_detected",
+    "tests.test_matter_lifecycle::test_no_actual_business_approval_can_be_created_by_engineering_release",
+    "tests.test_matter_lifecycle::test_pause_blocks_historical_queries_after_rollback",
+    "tests.test_matter_lifecycle::test_paused_handoff_does_not_consume_code_or_confirm",
+    "tests.test_matter_lifecycle::test_real_snapshot_preview_evolution_pins_old_case_and_survives_restart",
+    "tests.test_matter_lifecycle::test_source_metadata_change_immediately_blocks_old_version",
+    "tests.test_matter_lifecycle::test_staleness_cannot_be_refreshed_by_reloading_old_package",
+    "tests.test_matter_lifecycle::test_unchanged_prepare_or_repeat_release_does_not_create_version",
+    "tests.test_matter_lifecycle::test_unprivileged_actor_cannot_prepare_or_release[actor0]",
+    "tests.test_matter_lifecycle::test_unprivileged_actor_cannot_prepare_or_release[actor1]",
+    "tests.test_matter_lifecycle::test_unprivileged_actor_cannot_prepare_or_release[actor2]",
+    "tests.test_matter_web::test_authenticated_static_source_guidance_and_secure_cookie",
+    "tests.test_matter_web::test_cross_account_read_and_handoff_code_isolation",
+    "tests.test_matter_web::test_current_pause_blocks_saved_browser_case",
+    "tests.test_matter_web::test_disabled_account_and_session_expiry_are_revalidated",
+    "tests.test_matter_web::test_login_rate_limit",
+    "tests.test_matter_web::test_logout_invalidates_server_session",
+    "tests.test_matter_web::test_nexent_adapter_does_not_accept_unmapped_or_remote_identity",
+    "tests.test_matter_web::test_nexent_adapter_uses_server_identity_and_trusted_role_map",
+    "tests.test_matter_web::test_no_public_role_claim_or_identity_injection",
+    "tests.test_matter_web::test_origin_csrf_host_and_request_size"
+  ],
+  "javascript_syntax_check": "passed",
+  "real_nexent_provider_calls": 0,
+  "independent_evaluation": false
+}

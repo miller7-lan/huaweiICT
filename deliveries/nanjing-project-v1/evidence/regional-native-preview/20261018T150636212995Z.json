@@ -1,0 +1,190 @@
+{
+  "checked_at": "2026-10-18T15:06:21.911521+00:00",
+  "mode": "regional_public_preview",
+  "published": false,
+  "model_training": false,
+  "native_run_requests": 1,
+  "scenario_id": "nanjing",
+  "run_id": "ffe0fecb3e1d413a8b0bdef980e57e15",
+  "passed": true,
+  "stop_reasons": [],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_regional_open_query",
+    "govkb_regional_retrieve",
+    "final_answer",
+    "govkb_regional_verify",
+    "final_answer",
+    "govkb_regional_state",
+    "govkb_regional_finalize",
+    "final_answer"
+  ],
+  "answer": {
+    "task_id": "2cc0f4197f8d45b49f029fc746ad0201",
+    "scenario_id": "nanjing",
+    "status": "partial_preview",
+    "mode": "regional_public_preview",
+    "data_class": "public",
+    "snapshot_binding": "5078a07b997ac20e5c85d8ed6e2c0f28b25f8cbdcf52ffd3c6343d61895480b4",
+    "source_facts": [
+      {
+        "id": "duration",
+        "value": {
+          "in_province_working_days": 20,
+          "outside_province_additional_working_days": 5
+        },
+        "statement": "The Nanjing answer states a 20-working-day replacement cycle for in-province household registrants. For outside-province registrants, review and issuance by their household-registration police authority adds 5 working days.",
+        "citations": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "locator": "正文段落2",
+            "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+            "start": 0,
+            "end": 58,
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+          }
+        ],
+        "status": "source_supported",
+        "support": 0.96
+      },
+      {
+        "id": "exam_service",
+        "value": "expedited service without a stated day count",
+        "statement": "For candidates urgently needing identity documents, the Nanjing answer describes expedited acceptance, review, production and issuance to shorten the cycle. It does not state a specific number of days.",
+        "citations": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "locator": "正文段落3",
+            "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+            "start": 0,
+            "end": 52,
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+          }
+        ],
+        "status": "source_supported",
+        "support": 0.95
+      }
+    ],
+    "source_context": {
+      "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "revision_id": "rev-5f47d58d1eb3f91948672314",
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "text": "问：身份证到期后换证，需要多长时间才能领取新证？"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "text": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "text": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。"
+        }
+      ],
+      "unselected_body_not_included": true
+    },
+    "unknown_fields": [
+      "exam_expedited_days",
+      "current_applicability"
+    ],
+    "pending_business_conclusions": [
+      {
+        "field": "duration",
+        "status": "paused",
+        "reason": "20工作日及省外增加5工作日为来源记载，现行执行未核定。"
+      },
+      {
+        "field": "exam_service",
+        "status": "paused",
+        "reason": "考生快速服务无明确天数，具体适用及办理承诺待核。"
+      }
+    ],
+    "unsupported_assertion": {
+      "id": "unsupported_exam_three_days",
+      "support": 0.02,
+      "status": "rejected",
+      "accepted_as_business_fact": false
+    },
+    "published": false,
+    "formal_approval": false,
+    "notice": "真实公开资料原文预览，现行业务适用性待核，未提交申请。"
+  },
+  "duration_ms": 14307.54,
+  "campaign": {
+    "native_runs": 2,
+    "jev_reserved": 1
+  },
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 6,
+    "model_attempt_control": 12,
+    "model_output_thinking": 282,
+    "parse": 6,
+    "tool": 9,
+    "execution_logs": 6,
+    "token_count": 4,
+    "subagent_start": 2,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "final_answer": 1
+  },
+  "cost_amount": null,
+  "jev_receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 3162,
+      "status": "ok",
+      "cost_usd": null,
+      "http_status": 200,
+      "served_model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 957,
+        "output_tokens": 56
+      },
+      "duration_ms": 764.05
+    }
+  ],
+  "translation_receipts": [
+    {
+      "version": "jev-english-1",
+      "target_language": "en",
+      "status": "translated",
+      "source_state_sha256": "612af4811397fa3ee0e62a2a9985f50548da528eae56fb9b2266724074e26ebf",
+      "source_questions_sha256": "a78ea1ffff448d29d5306da7d0df414dea2736441d173376613d192b4710d4f0",
+      "translation_calls": 1,
+      "cache_hits": 0,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage": {
+        "input_tokens": 298,
+        "output_tokens": 158
+      },
+      "state_sha256": "2ce6ea96d009a9f7d1c1e323f0881606e8a1022e08dca58d29b54341ad63007a",
+      "questions_sha256": "a78ea1ffff448d29d5306da7d0df414dea2736441d173376613d192b4710d4f0",
+      "input_bytes": 3162
+    }
+  ],
+  "full_english_input_saved": true,
+  "exact_final_matches_persistence": true,
+  "source_sha256": {
+    "src/gov_mcp/regional_preview.py": "43dc523ef17e5273e9fc4cde53fe57d8a1c5f9981dbefdf16cac4abd2021deaa",
+    "src/gov_mcp/regional_preview_server.py": "b5b5fa16aeda183eae144a26bcabf79b4c2a8d5c925f3a532c9a97f4ac014919",
+    "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+    "scripts/verify_regional_native_preview.py": "737d084a8e29a96a3303c1e089176b671a760465cfceb4ab451e9e2e011cd5f7",
+    "scripts/provision_regional_native_preview.py": "753d6b0a7a1ffe150cd655d49ef5dba537fbb4323ee91b81cda82ff55de79b13",
+    "config/skills/govkb-regional-preview/SKILL.md": "3a32f49d28b57976cf7405039fe8db9f65ef61af7891fbf6a43785d02acc6622"
+  }
+}

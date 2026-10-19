@@ -1,0 +1,162 @@
+{
+  "original_state": {
+    "data_class": "public",
+    "case": {
+      "data_class": "public",
+      "applicant_kind": "fictional",
+      "age_group": "adult",
+      "self_service": true,
+      "household_scope": "local_beijing",
+      "reason": "expiry"
+    },
+    "claims": [
+      {
+        "id": "materials",
+        "value": "original resident identity card; on-site service",
+        "statement": "The Beijing guide states that applicants bring the original resident identity card for on-site service. Applicants under sixteen must be accompanied by a guardian and provide the guardian original resident identity card.",
+        "source_text": "申领人持原《居民身份证》现场办理；未满十六周岁的公民，申请换领《居民身份证》的，由监护人带领其现场办理，并提供监护人《居民身份证》原件。"
+      },
+      {
+        "id": "duration",
+        "value": "10 working days from acceptance",
+        "statement": "The Beijing guide states issuance within 10 working days from acceptance; it describes on-site fingerprint and portrait collection, a collection receipt, and return of the old card when collecting the new one.",
+        "source_text": "申领人持原《居民身份证》现场办理，现场进行指纹采集、人像采集等工作，并领取凭证。自受理之日起10个工作日发放证件。申请人持领取凭证领取身份证。领取新证时，须交回旧证。"
+      },
+      {
+        "id": "fees",
+        "value": {
+          "damaged_card_cny": 40,
+          "other_reasons_cny": 20
+        },
+        "statement": "The Beijing guide lists 40 CNY per card for damaged-card replacement and 20 CNY for replacement for other reasons. This does not establish personal fee relief or current applicability.",
+        "source_text": "损坏换领每证40元、其他原因换领证件每证20元。"
+      },
+      {
+        "id": "damaged_online_conditions",
+        "value": "damaged-card branch only",
+        "statement": "The online note is limited to damaged-card replacement for local household registrants aged at least 16, who obtained a resident identity card within 5 years, had a resident identity card photograph collected within 5 years, and successfully registered at least one fingerprint. This does not establish expiry-renewal online eligibility.",
+        "source_text": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：\n本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。"
+      }
+    ],
+    "source_context": [
+      {
+        "locator": "正文段落2",
+        "text": "国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认；居民身份证登记项目出现错误的，公民应当申请换领《居民身份证》。"
+      },
+      {
+        "locator": "正文段落4",
+        "text": "申领人持原《居民身份证》现场办理；未满十六周岁的公民，申请换领《居民身份证》的，由监护人带领其现场办理，并提供监护人《居民身份证》原件。"
+      },
+      {
+        "locator": "正文段落6",
+        "text": "可就近选择任意户籍派出所。"
+      },
+      {
+        "locator": "正文段落8",
+        "text": "城镇地区派出所户籍接待室每周七天对外办公，郊区分局户政大厅周一至周五办公，农村地区派出所双休日实行预约办事制度。"
+      },
+      {
+        "locator": "正文段落10",
+        "text": "申领人持原《居民身份证》现场办理，现场进行指纹采集、人像采集等工作，并领取凭证。自受理之日起10个工作日发放证件。申请人持领取凭证领取身份证。领取新证时，须交回旧证。"
+      },
+      {
+        "locator": "正文段落12",
+        "text": "未满十六周岁的公民，有效期五年；"
+      },
+      {
+        "locator": "正文段落13",
+        "text": "十六周岁至二十五周岁，有效期十年；"
+      },
+      {
+        "locator": "正文段落14",
+        "text": "二十六周岁至四十五周岁，有效期二十年；"
+      },
+      {
+        "locator": "正文段落15",
+        "text": "四十六周岁以上的，长期有效。"
+      },
+      {
+        "locator": "正文段落17",
+        "text": "自受理之日起10个工作日发放证件。"
+      },
+      {
+        "locator": "正文段落19",
+        "text": "损坏换领每证40元、其他原因换领证件每证20元。"
+      },
+      {
+        "locator": "正文段落21",
+        "text": "《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》(特急发改价格[2003]2322号)；"
+      },
+      {
+        "locator": "正文段落23",
+        "text": "《中华人民共和国居民身份证法》"
+      },
+      {
+        "locator": "正文段落24",
+        "text": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务："
+      },
+      {
+        "locator": "正文段落25",
+        "text": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。"
+      }
+    ]
+  },
+  "original_questions": {
+    "materials": {
+      "type": "noul",
+      "instructions": "Does claim materials accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+    },
+    "duration": {
+      "type": "noul",
+      "instructions": "Does claim duration accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+    },
+    "fees": {
+      "type": "noul",
+      "instructions": "Does claim fees accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+    },
+    "damaged_online_conditions": {
+      "type": "noul",
+      "instructions": "Does claim damaged_online_conditions accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+    },
+    "unsupported_expiry_online": {
+      "type": "noul",
+      "instructions": "Do the attached source texts explicitly establish that expiry renewal qualifies for the damaged-card online service?"
+    }
+  },
+  "result": null,
+  "jev_receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 6991,
+      "status": "error",
+      "cost_usd": null,
+      "error_code": "TRANSPORT_UNAVAILABLE",
+      "duration_ms": 5611.6
+    }
+  ],
+  "translation_receipts": [
+    {
+      "version": "jev-english-1",
+      "target_language": "en",
+      "status": "translated",
+      "source_state_sha256": "7b50391b002c7e1948c9a8682d4bc398c9750c4cad7d76097f007cd784289cee",
+      "source_questions_sha256": "030ea2c439528a189c91060ce22c7be315cba489a3ed006ab683d471a5ab14d0",
+      "translation_calls": 1,
+      "cache_hits": 0,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage": {
+        "input_tokens": 653,
+        "output_tokens": 632
+      },
+      "state_sha256": "c79e7b9ad4dba88bf1851264db45a353765cd8ec768ae55077a530a8fd5d1901",
+      "questions_sha256": "030ea2c439528a189c91060ce22c7be315cba489a3ed006ab683d471a5ab14d0",
+      "input_bytes": 6991,
+      "error_code": "JEV_CALL_FAILED"
+    }
+  ]
+}

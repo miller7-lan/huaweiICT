@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "actor_kind": "ai_visual_observation",
+  "human_business_review": false,
+  "formal_publication": false,
+  "pdf_sha256": "95e8decc4bb5aecb5324b7cea311659d26245998b0c6d24049577c8e267220bd",
+  "pdf_pages_viewed": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "printed_pages": [
+    651,
+    652,
+    653,
+    654
+  ],
+  "render_tool": "pdftoppm",
+  "render_dpi": 110,
+  "recognition_accuracy_measured": false,
+  "ocr_text_automatically_corrected": false,
+  "requires_visual_review": true,
+  "page_scope": {
+    "1": "amendment_decision_tail_and_republished_law_start",
+    "2": "republished_law_continued_articles_4_to_14",
+    "3": "republished_law_continued_articles_14_to_20",
+    "4": "republished_law_tail_then_draft_amendment_explanation"
+  },
+  "observed_errors": [
+    {
+      "pdf_page": 1,
+      "image": "记载的项目",
+      "ocr": "记的项目"
+    },
+    {
+      "pdf_page": 4,
+      "image": "人民警察",
+      "ocr": "人民誓察"
+    }
+  ],
+  "scope_guard": "All OCR remains isolated unreviewed page candidates; no ontology inference or published Q&A source binding"
+}

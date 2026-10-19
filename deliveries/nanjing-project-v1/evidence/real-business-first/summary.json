@@ -1,0 +1,52 @@
+{
+  "status": "candidate_needs_review",
+  "data_class": "public",
+  "case": {
+    "data_class": "public",
+    "applicant_kind": "fictional",
+    "age_group": "adult",
+    "self_service": true,
+    "household_scope": "local_erqi",
+    "reason": "expiry",
+    "window": "minggong",
+    "personal_data_collected": false
+  },
+  "execution_evidence": "20261018T082128965761Z.json",
+  "first_attempt_evidence": "20261018T082045117471Z.json",
+  "actual_calls": {
+    "deepseek_extraction": 1,
+    "deepseek_translation": 1,
+    "jev_http": 1
+  },
+  "usage": {
+    "deepseek_input": 1644,
+    "deepseek_output": 704,
+    "jev_input": 1066,
+    "jev_output": 123
+  },
+  "cost_amount": null,
+  "source_reading_checks": 7,
+  "jev_above_threshold": 4,
+  "jev_below_threshold": [
+    "materials",
+    "guardian_required"
+  ],
+  "unknown_fields": [
+    "advance_days"
+  ],
+  "threshold": 0.8,
+  "formal_knowledge_published": false,
+  "native_real_business_verified": false,
+  "independent_professional_benchmark": false,
+  "offline_tests_passed": 8,
+  "final_candidate_reassessed_without_network": true,
+  "full_english_input_preserved_for_this_run": false,
+  "post_run_change": "Save full Jev/English input privately in subsequent runs; no new cloud call after change.",
+  "source_sha256": {
+    "scripts/run_public_business_pilot.py": "a1d3142694e526100d312f37a317a3f2981ef92bc79f28b8f2a8740410a77a7f",
+    "tests/test_public_business_pilot.py": "66a973157e22ad6a9cddbfd3754513f89367facb266161651ef68258a476d668",
+    "src/gov_mcp/deepseek.py": "153245960666f60c08f6f4eab81b20a783b56e94307dec2e7cda2548230007ec",
+    "src/gov_mcp/classification.py": "982d03dcff0398e240a336f1a2ee49f229c30c7ff1b2004fb88b420203cbfb05",
+    "src/gov_mcp/jev_translation.py": "075d295da24e96c824ed21b6e7eb1bdcc79faab5bbf24eeb9a6a3d5e856ddcfd"
+  }
+}

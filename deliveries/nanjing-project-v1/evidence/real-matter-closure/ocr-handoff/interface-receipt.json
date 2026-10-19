@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-19T14:56:50.731914+00:00",
+  "request_id": "nanjing-law-gazette-ocr-v1",
+  "operator": "automated_local_interface_integration",
+  "human_teammate_submission": false,
+  "existing_interface_attempts": 1,
+  "new_ocr_implementation": false,
+  "model_downloads": 0,
+  "cloud_model_calls": 0,
+  "human_business_review": false,
+  "formal_publication": false,
+  "upstream_implementation_sha256": {
+    "src/gov_mcp/knowledge_pdf.py": "fcb2375fd27769425d378f9a74326c2d63e0508d9f7a1bf808cd4d649caceb00",
+    "src/gov_mcp/knowledge_ocr_windows.ps1": "abd2d1d99fd5630a686d40b8e4c4d14592ccbc66973903ec48c911247cdab0a8"
+  },
+  "status": "PASSED",
+  "downstream": {
+    "status": "OCR_CANDIDATE_INGESTED_PENDING_VISUAL_REVIEW",
+    "request_id": "nanjing-law-gazette-ocr-v1",
+    "revision_id": "rev-27eb33f936b088f84d395c45",
+    "input_sha256": "95e8decc4bb5aecb5324b7cea311659d26245998b0c6d24049577c8e267220bd",
+    "pages": 4,
+    "engine": "windows.media.ocr",
+    "confidence_available": false,
+    "requires_visual_review": true,
+    "review_version_head_counts": {
+      "reviews": 0,
+      "versions": 0,
+      "heads": 0
+    },
+    "automatic_monitor_enabled": false,
+    "human_business_review": false,
+    "formal_publication": false
+  },
+  "upstream_implementation_unchanged": true,
+  "anchor_observations": [
+    {
+      "pdf_page": 1,
+      "return_old_card_phrase_observed": false,
+      "statutory_60_days_phrase_observed": false
+    },
+    {
+      "pdf_page": 2,
+      "return_old_card_phrase_observed": true,
+      "statutory_60_days_phrase_observed": true
+    },
+    {
+      "pdf_page": 3,
+      "return_old_card_phrase_observed": false,
+      "statutory_60_days_phrase_observed": false
+    },
+    {
+      "pdf_page": 4,
+      "return_old_card_phrase_observed": false,
+      "statutory_60_days_phrase_observed": false
+    }
+  ],
+  "finished_at": "2026-10-19T14:56:55.937870+00:00"
+}

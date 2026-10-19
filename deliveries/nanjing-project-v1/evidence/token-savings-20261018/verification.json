@@ -1,0 +1,57 @@
+{
+  "mode": "synthetic_mock_transport_not_inference",
+  "actual_remote_model_calls": 0,
+  "real_token_counts_measured": false,
+  "business_quality_measured": false,
+  "baseline_commit": "c5b083407fbb29c48c3fb7c42e40b66cb5263226",
+  "measurement": "UTF-8 bytes of both system and user message contents, not provider tokens",
+  "before_message_bytes": 1303,
+  "after_message_bytes": 1006,
+  "input_byte_reduction_percent": 22.79,
+  "baseline_model_requests_for_two_reviews": 2,
+  "mock_requests_for_two_reviews": 1,
+  "passed": 8,
+  "total": 8,
+  "checks": [
+    {
+      "name": "完整消息含新增安全说明后仍减少 UTF-8 输入字节",
+      "passed": true
+    },
+    {
+      "name": "保留全部字段、规范值和未知，不发送其他选项",
+      "passed": true
+    },
+    {
+      "name": "记录供应商缓存用量但不假冒实际计费",
+      "passed": true
+    },
+    {
+      "name": "同草稿同值编辑后的第二轮核查不重复请求",
+      "passed": true
+    },
+    {
+      "name": "缓存命中本轮用量为零且重新生成人工核查标识",
+      "passed": true
+    },
+    {
+      "name": "缓存不能绕过人工确认",
+      "passed": true
+    },
+    {
+      "name": "没有发布知识或生成咨询提交",
+      "passed": true
+    },
+    {
+      "name": "没有向模型输入发送原始回答或草稿标识",
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "src/gov_mcp/deepseek.py": "2ae82f59a512dbcfba409848456e2ba7583b299a52624b3063521db32bd1f6c5",
+    "src/gov_mcp/decision/connections.py": "919513b2567e148d27bb0740ff000468d2a8ec0dacccdf12c4d68bb8cfa011ed",
+    "src/gov_mcp/decision/intake.py": "0336d95bf67ee55463d596a512bf90121cffb7113e7ddbd837298cb93c5b31b8",
+    "src/gov_mcp/decision/intake.js": "ab9d59270ac05dceb8683c27caff1892e18ac18cd1da7a291635413540a81b44",
+    "src/gov_mcp/jev_translation.py": "075d295da24e96c824ed21b6e7eb1bdcc79faab5bbf24eeb9a6a3d5e856ddcfd",
+    "scripts/verify_token_savings.py": "b778a1b5d63c0d00e34dc50de2a34daf6b9276c0569f9d769c22b161c957facb"
+  }
+}

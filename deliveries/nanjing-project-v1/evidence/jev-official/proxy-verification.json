@@ -1,0 +1,35 @@
+{
+  "reviewed_on": "2026-10-18",
+  "timezone": "Asia/Shanghai",
+  "scope": "Existing proxy restored for official Jev; single model-list check and single successful synthetic inference; related offline regression",
+  "proxy_address_hardcoded": false,
+  "https_verification_preserved": true,
+  "redirects_blocked": true,
+  "user_proxy_settings_changed": false,
+  "live_models_evidence": "evidence/jev-official/proxy-models-20261018T073730394959Z.json",
+  "live_inference_evidence": "evidence/jev-official/proxy-smoke-20261018T073750195325Z.json",
+  "live_inference_http_attempts": 1,
+  "live_successful_model_responses": 1,
+  "live_input_tokens": 348,
+  "live_output_tokens": 54,
+  "monetary_cost_known": false,
+  "full_nexent_workflow_verified": false,
+  "model_training_performed": false,
+  "offline_tests": {
+    "tests": 123,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "first_offline_failure": "451 code was sanitized to generic PROVIDER_ERROR; allowlist updated, affected modules passed on rerun",
+  "live_evidence_baseline_note": "Successful live inference was recorded before the final error-code-only allowlist correction; original source fingerprint retained, no repeated inference for timestamp/fingerprint refresh.",
+  "source_sha256": {
+    "src/gov_mcp/classification.py": "982d03dcff0398e240a336f1a2ee49f229c30c7ff1b2004fb88b420203cbfb05",
+    "scripts/test_jev_live.py": "4a1dae1dac27d27fa8cc3112f18f11301efe563b86b577c9c35688195d010b3e",
+    "tests/test_jev_gateway.py": "978f217749963db45f8e886a97657288fa8095bfcb280747394410ba4d795e77",
+    "tests/test_jev_translation.py": "94c5dbc7d80e57416a15680320664cd7c096197e2e66ca29ea1bf4b157dd120a",
+    "AGENTS.md": "58acff1adeefe682d89134728b7012fcf28ae7cb9511eb87ff99bc2442142c87"
+  },
+  "inference_enabled": false,
+  "form_verifier_enabled": false
+}
