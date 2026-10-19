@@ -64,7 +64,7 @@ def main():
         "native_run_requests": 0, "cloud_model_calls": 0, "jev_calls": 0,
         "human_business_review": False, "independent_evaluation": False, "knowledge_published": False}
     report.update(protocol=profile["protocol"], native_run_limit=profile["run_limit"],
-        run_seconds_limit=profile["run_seconds"], expected_main_code_actions=2 if profile["protocol"] != "legacy" else None)
+        run_seconds_limit=profile["run_seconds"], expected_main_code_actions=1 if profile["protocol"] == "dataflow-v4" else 2 if profile["protocol"] != "legacy" else None)
     start = time.perf_counter(); failure = None
     try:
         with httpx.Client(trust_env=False, timeout=5) as client:
@@ -126,7 +126,7 @@ def main():
         report["code_sha256"] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
             for name in ("scripts/verify_matter_native.py", "scripts/provision_matter_native.py", "config/skills/" + profile["skill"] + "/SKILL.md")}
         write(args.runtime / (stamp + "-report.json"), report)
-        folder = {"legacy": "native-qwen", "batched-close-v2": "native-batched-v2", "first-only-v3": "native-first-v3"}[profile["protocol"]]
+        folder = {"legacy": "native-qwen", "batched-close-v2": "native-batched-v2", "first-only-v3": "native-first-v3", "dataflow-v4": "native-dataflow-v4"}[profile["protocol"]]
         output = ROOT / "evidence/real-matter-closure" / folder / (stamp + ".json")
         output.parent.mkdir(exist_ok=True, parents=True); write(output, report)
     print(json.dumps({k: report.get(k) for k in ("passed", "stop_reasons", "external_failure", "error_type", "duration_ms", "event_types", "actual_tools")}, ensure_ascii=False))

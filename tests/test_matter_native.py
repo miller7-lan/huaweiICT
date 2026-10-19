@@ -254,3 +254,65 @@ def test_first_only_keeps_verified_ack_pause_and_single_terminal_budget(native):
     with pytest.raises(LifecycleError, match="SOURCE_PAUSED"): app.finalize(task)
     app.finish(run, passed=False)
     with pytest.raises(NativeMatterError, match="CAMPAIGN_NOT_AVAILABLE"): app.begin()
+
+
+@pytest.mark.parametrize("failure", [None, "blocked_open", "malformed_open", "child_prose_only", "pause_before_final"])
+def test_dataflow_uses_returned_id_and_stops_before_false_final(native, failure):
+    import sys
+    sys.path.insert(0, str(PACK.parents[3] / "scripts"))
+    from provision_matter_native import dataflow_action
+    legacy, service, tick = native
+    root = legacy.root.parent / "dataflow-native"; root.mkdir()
+    profile = native_profile("dataflow-v4")
+    (root / "manifest.json").write_bytes(json.dumps(profile["manifest"]).encode())
+    app = MatterNative(root, service, clock=lambda: tick[0]); run = app.begin()
+    calls, finals = [], []
+    def wrap(operation, name):
+        def call(task_id):
+            calls.append(name)
+            try: return json.dumps(operation(task_id))
+            except (NativeMatterError, LifecycleError): return json.dumps({"status": "BLOCKED"})
+        return call
+    def open_task(scenario_id):
+        calls.append("open")
+        if failure == "blocked_open": return json.dumps({"status": "BLOCKED"})
+        if failure == "malformed_open": return "{"
+        return json.dumps(app.open(scenario_id))
+    def retrieve(task):
+        calls.append("retrieve"); return app.retrieve(json.loads(task)["task_id"])
+    def verify(task):
+        calls.append("verify")
+        if failure == "child_prose_only": return "I verified it"  # Explicit false-success fixture.
+        return app.verify(json.loads(task)["task_id"])
+    state_tool = wrap(app.state, "state")
+    def state(task_id):
+        value = state_tool(task_id)
+        if failure == "pause_before_final":
+            service.set_source_enabled("LAW-ID-BJ-TRAFFIC-2011", False, reason="Dataflow pause fixture", principal=MAINT)
+        return value
+    env = {"read_skill_md": lambda **kw: calls.append("skill"), "govmatter_open": open_task,
+        "govmatterflow_retriever": retrieve, "govmatterflow_verifier": verify,
+        "govmatter_state": state, "govmatter_finalize": wrap(app.finalize, "finalize"), "final_answer": finals.append}
+    code = dataflow_action(profile).removeprefix("<code>\n").removesuffix("\n</code>")
+    if failure:
+        with pytest.raises((AssertionError, ValueError, KeyError)): exec(code, env)
+        assert not finals
+        if failure in ("blocked_open", "malformed_open"): assert calls == ["skill", "open"]
+        if failure == "child_prose_only": assert "finalize" not in calls
+    else:
+        exec(code, env)
+        assert calls == ["skill", "open", "retrieve", "verify", "state", "finalize"]
+        answer = json.loads(finals[0]); assert answer == app.task(answer["task_id"])["answer"]
+    app.finish(run, passed=False)
+    with pytest.raises(NativeMatterError, match="CAMPAIGN_NOT_AVAILABLE"): app.begin()
+
+
+def test_dataflow_draft_rejects_missing_or_changed_prompt_signature():
+    import sys
+    sys.path.insert(0, str(PACK.parents[3] / "scripts"))
+    from provision_matter_native import check_draft
+    class ChangedAPI:
+        def call(self, *args): return {"duty_prompt": "changed prompt"}
+    for saved in ({}, {"controller": "0" * 64}):
+        with pytest.raises(RuntimeError, match="NATIVE_DRAFT_PROMPT_MISMATCH"):
+            check_draft(ChangedAPI(), "controller", {"protocol": "dataflow-v4", "agents": {"controller": 1}, "prompt_signatures": saved})

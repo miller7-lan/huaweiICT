@@ -22,19 +22,21 @@ LEGACY = {"schema": 1, "purpose": SERVICE, "native_run_limit": 2,
 BATCHED = {"schema": 2, "purpose": SERVICE, "native_run_limit": 1,
     "scenario_id": SCENARIO, "formal_publication": False, "protocol": "batched-close-v2"}
 FIRST_ONLY = {**BATCHED, "schema": 3, "protocol": "first-only-v3"}
+DATAFLOW = {**BATCHED, "schema": 4, "protocol": "dataflow-v4"}
 
 
 def native_profile(protocol="legacy"):
-    if protocol not in ("legacy", "batched-close-v2", "first-only-v3"):
+    if protocol not in ("legacy", "batched-close-v2", "first-only-v3", "dataflow-v4"):
         raise NativeMatterError("UNKNOWN_NATIVE_PROTOCOL")
     batched = protocol != "legacy"
     first = protocol == "first-only-v3"
-    return {"protocol": protocol, "manifest": deepcopy(FIRST_ONLY if first else BATCHED if batched else LEGACY),
-        "service": "govmatter_native_first" if first else "govmatter_native_batched" if batched else SERVICE,
-        "skill": "govmatter-source-proof-first" if first else "govmatter-source-proof-batched" if batched else SKILL,
-        "names": {r: ("govmatterfirst_" if first else "govmatterbatch_" if batched else "govmatter_") + r for r in ("controller", "retriever", "verifier")},
-        "port": 8788 if first else 8787 if batched else 8785, "run_limit": 1 if batched else 2,
-        "run_seconds": 1200 if batched else 600, "main_steps": 3 if batched else 6,
+    flow = protocol == "dataflow-v4"
+    return {"protocol": protocol, "manifest": deepcopy(DATAFLOW if flow else FIRST_ONLY if first else BATCHED if batched else LEGACY),
+        "service": "govmatter_native_dataflow" if flow else "govmatter_native_first" if first else "govmatter_native_batched" if batched else SERVICE,
+        "skill": "govmatter-source-proof-dataflow" if flow else "govmatter-source-proof-first" if first else "govmatter-source-proof-batched" if batched else SKILL,
+        "names": {r: ("govmatterflow_" if flow else "govmatterfirst_" if first else "govmatterbatch_" if batched else "govmatter_") + r for r in ("controller", "retriever", "verifier")},
+        "port": 8789 if flow else 8788 if first else 8787 if batched else 8785, "run_limit": 1 if batched else 2,
+        "run_seconds": 1200 if batched else 600, "main_steps": 2 if flow else 3 if batched else 6,
         "main_output_tokens": 512 if batched else 1024, "child_output_tokens": 256 if batched else 1024}
 
 
