@@ -1,0 +1,838 @@
+{
+  "schema": 1,
+  "kind": "source_bound_machine_proposed_rules_not_business_approval",
+  "scope": {
+    "region": "南京市",
+    "matter": "resident-id-expiry-renewal",
+    "main_branch": {
+      "adult": true,
+      "civil_capacity": "full",
+      "self": true,
+      "reason": "expiry",
+      "household": "jiangsu"
+    },
+    "unknown_requires_clarification": [
+      "adult",
+      "civil_capacity",
+      "self",
+      "reason",
+      "household"
+    ],
+    "excluded": [
+      "real_personal_data",
+      "formal_application_submission"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+      "title": "南京公安换证问答",
+      "original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf",
+      "original_file": "originals/NJ-POLICE-FAQ-2025.html",
+      "checked_at": "2026-10-19T12:15:14.665675+00:00",
+      "published_at": "2025-05-29",
+      "effective_from": null,
+      "effective_from_basis": null,
+      "region": "南京市",
+      "parsed_paragraphs": 42,
+      "selector": {
+        "class": "content"
+      },
+      "segments": [
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P14",
+          "locator": "正文段落14",
+          "category": "procedure",
+          "text": "问1、何时可以换证？",
+          "text_sha256": "3f0e926f3c384c9fb70cbc188b40d842b77844e230fa3c4920f0c0b3da8bf0f5"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P15",
+          "locator": "正文段落15",
+          "category": "identity",
+          "text": "自2025年起至2028年底，申请换领新的居民身份证期限，由原来的“有效期满之日前三个月”放宽至“有效期满之日前六个月”。在居民身份证有效期满前的6个月内，都可以申请换领。",
+          "text_sha256": "9608782fbdf48db3c74314c852ab5dbe0900be47a48f1b3d27444dca9908a1b5"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P16",
+          "locator": "正文段落16",
+          "category": "procedure",
+          "text": "问2、去哪儿办理？可以在网上提交申请吗？",
+          "text_sha256": "1388606f79f104bacd1a7cc31b14a5318394e51ed2e272077468eed008a5e851"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P17",
+          "locator": "正文段落17",
+          "category": "identity",
+          "text": "线下办理：本人（需要现场采集人像、指纹）前往本市任一居民身份证受理点（公安派出所综合服务窗口、政务服务中心户政窗口），可以就近办理，不受户籍地限制。线上办理：江苏户籍居民符合以下条件之一的，可以通过“苏服办”APP，访问“户政服务”模块，申请居民身份证换、补领“全程网办”：（1）16周岁至25周岁的，在近5年内申领过居民身份证且已现场采集人像、指纹信息，现场采集的人像为年满16周岁的照片；（2）26周岁至45周岁的，在近5年内申领过居民身份证且已现场采集人像、指纹信息，现场采集的人像为年满26周岁的照片；（3）46周岁以上的，在近5年内申领过居民身份证且已现场采集人像、指纹信息，现场采集的人像为年满46周岁的照片。对于首次申领居民身份证、证件有效期满换领、未满16周岁居民换、补领的，不予“全程网办”。",
+          "text_sha256": "112173616525e56f347f4c19ef4dfc3bf0ce965bea4b81be217b38826dc31527"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P18",
+          "locator": "正文段落18",
+          "category": "procedure",
+          "text": "问3、需要提交哪些材料？",
+          "text_sha256": "55db3825edca0ff2f9a3650e123b5912633a6eb1642d2441b3fb9c22c650d62d"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P19",
+          "locator": "正文段落19",
+          "category": "identity",
+          "text": "省内户籍居民提交原居民身份证。省外户籍居民提交原居民身份证，以及合法稳定就业、就学或居住的其中一种证明材料。无民事行为能力或限制行为能力人申请换领居民身份证，应由监护人陪同，另需提供监护关系凭证（居民户口簿、出生医学证明等能够证明监护关系的材料）以及监护人居民身份证。",
+          "text_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P20",
+          "locator": "正文段落20",
+          "category": "procedure",
+          "text": "问4、现场拍照可以挑选满意的证件照吗？拍照有哪些注意事项？",
+          "text_sha256": "fdfcdc7cff8eef7c2c1aba1582da669cb0c3630dcb175a7000d8f9ed3387aec0"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P21",
+          "locator": "正文段落21",
+          "category": "identity",
+          "text": "居民身份证相片支持“多拍优选”，申领人可以申请选择一张满意的照片。现场拍照注意事项：（1）姿态：坐姿端正，神态自然，目光平视前方，露出两耳，双肩保持持平。（2）面部：保持清洁，不要化浓妆、不能遮盖或改变脸部重要特征。（3）服装配饰：建议着深色有领上衣，不得穿制式服装，头颈部不得佩戴粗大发饰首饰，不得染过于艳丽的彩发，不得佩戴有色眼镜及镜片反光的眼镜。（4）发式：不得遮挡双耳、眉毛，不要过于蓬松、高耸影响相片布局。（5）其他：禁止佩戴美瞳，脸颈部不得有刺青。",
+          "text_sha256": "131dafb97aecbac47620a32d55d00cb61b3ca4dc9b31af608dfaf41c47843213"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P22",
+          "locator": "正文段落22",
+          "category": "procedure",
+          "text": "问5、需多久领取新证？",
+          "text_sha256": "0695bdfd50ab9e2bbefadd73df492097a4d80fbc243b7100bba8ce46912161a0"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P23",
+          "locator": "正文段落23",
+          "category": "identity",
+          "text": "省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+          "text_sha256": "a45e61e72027b50ec87fcdcdcc442b47d821dce5a9db2081879408d9b9365689"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P24",
+          "locator": "正文段落24",
+          "category": "procedure",
+          "text": "问6、有哪些领取方式？",
+          "text_sha256": "fb3edf1e515d776103e46c881978cd7e0932470b35712c7ccbba6f5b89fc6602"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P25",
+          "locator": "正文段落25",
+          "category": "identity",
+          "text": "可以选择到受理点本人或委托他人领取，或是选择邮寄领取（邮费到付）。受托人代领证件时需出示领证回执及本人居民身份证。",
+          "text_sha256": "fafb6f6172270e6e2b108fc85ef7fe2a3c44a8e9ce33b08ba4191bb323b3acd9"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P26",
+          "locator": "正文段落26",
+          "category": "procedure",
+          "text": "问7、换证收取费用吗？",
+          "text_sha256": "1c67aa64b65cc73c83caffd12cdff96b05390059c5e561dfb2f08566cf8c9df4"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P27",
+          "locator": "正文段落27",
+          "category": "identity",
+          "text": "到期换领居民身份证，收取工本费20元/证。",
+          "text_sha256": "7f68451e14aad64ed973414c72e515d8d01656406e344048899059889ccfe62a"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P28",
+          "locator": "正文段落28",
+          "category": "identity",
+          "text": "问8、如何查询身份证办理进度？",
+          "text_sha256": "1ac9bfcdf929386e140a100891d59035344972bc937291f41bd3a584c7e79482"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P29",
+          "locator": "正文段落29",
+          "category": "identity",
+          "text": "可以通过“苏证通”APP、“苏服办”APP或“南京公安微警务”微信服务号，在“身份证办理进度查询”模块查询。证件状态显示“到达受理点”，表示可以领取证件。",
+          "text_sha256": "6998c6856670af3378bdf07996f0026d83451d0313e839556af38e104512c703"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P30",
+          "locator": "正文段落30",
+          "category": "procedure",
+          "text": "问9、新证办理期间，旧证还能用吗？",
+          "text_sha256": "fd8a1378493478baa67f3e1a56996ce0ac50b7b37e478ae9d100b001457304c7"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P31",
+          "locator": "正文段落31",
+          "category": "identity",
+          "text": "申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+          "text_sha256": "ad4b924450257d443fd559557a9d25d5ec16269ca80d68f85246daec07c6a44c"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P32",
+          "locator": "正文段落32",
+          "category": "identity",
+          "text": "问10、身份证在有效期内，户口簿上登记的信息发生了变化，需要换领身份证吗？",
+          "text_sha256": "a8a33f3d182ec72cf14551af9be36a3c3c0434fa299554a605a56ad8349e39ec"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P33",
+          "locator": "正文段落33",
+          "category": "identity",
+          "text": "户口簿上登记的姓名、性别、民族、出生日期、公民身份号码发生变化，应当及时申请换领新的居民身份证。户口簿上其他登记信息（如户口登记住址、文化程度、婚姻状况等）发生变化，居民身份证在有效期内的，证件可以继续使用。申请换领新的居民身份证后，证件登记的地址将更新为现户口登记住址。",
+          "text_sha256": "fe2af0138c98f50c7e719625b12deba7636a42cc5545de530d3044df0fad2823"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review"
+    },
+    {
+      "source_id": "NJ-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "title": "南京市政府换证周期答复",
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "original_file": "originals/NJ-CYCLE-2026.html",
+      "checked_at": "2026-10-19T12:15:19.985721+00:00",
+      "published_at": "2026-01-05",
+      "effective_from": null,
+      "effective_from_basis": null,
+      "region": "南京市",
+      "parsed_paragraphs": 3,
+      "selector": {
+        "class": "doccontent"
+      },
+      "segments": [
+        {
+          "segment_id": "NJ-CYCLE-2026-P1",
+          "locator": "正文段落1",
+          "category": "identity",
+          "text": "问：身份证到期后换证，需要多长时间才能领取新证？",
+          "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+        },
+        {
+          "segment_id": "NJ-CYCLE-2026-P2",
+          "locator": "正文段落2",
+          "category": "identity",
+          "text": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+          "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+        },
+        {
+          "segment_id": "NJ-CYCLE-2026-P3",
+          "locator": "正文段落3",
+          "category": "procedure",
+          "text": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+          "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review"
+    },
+    {
+      "source_id": "NJ-OLD-CARD-2025",
+      "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+      "title": "南京市政府旧证使用答复",
+      "original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+      "original_file": "originals/NJ-OLD-CARD-2025.html",
+      "checked_at": "2026-10-19T12:15:29.887237+00:00",
+      "published_at": "2025-12-09",
+      "effective_from": null,
+      "effective_from_basis": null,
+      "region": "南京市",
+      "parsed_paragraphs": 4,
+      "selector": {
+        "class": "content"
+      },
+      "segments": [
+        {
+          "segment_id": "NJ-OLD-CARD-2025-P3",
+          "locator": "正文段落3",
+          "category": "identity",
+          "text": "问：申请换领居民身份证期间，旧身份证还能用吗？",
+          "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+        },
+        {
+          "segment_id": "NJ-OLD-CARD-2025-P4",
+          "locator": "正文段落4",
+          "category": "identity",
+          "text": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+          "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review"
+    },
+    {
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+      "title": "北京交管公布的2011年修正居民身份证法",
+      "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+      "original_file": "originals/LAW-ID-BJ-TRAFFIC-2011.html",
+      "checked_at": "2026-10-19T12:17:28.804249+00:00",
+      "published_at": null,
+      "effective_from": "2012-01-01",
+      "effective_from_basis": "amendment_decision_explicit_clause",
+      "region": "national",
+      "parsed_paragraphs": 93,
+      "selector": {
+        "id": "zoom"
+      },
+      "segments": [
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P20",
+          "locator": "正文段落20",
+          "category": "procedure",
+          "text": "本决定自2012年1月1日起施行。",
+          "text_sha256": "895aa8b1a63c11312434d55664de88f01f4855f8b9306ed50440529ea527b96a"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P21",
+          "locator": "正文段落21",
+          "category": "identity",
+          "text": "《中华人民共和国居民身份证法》根据本决定作相应修改，重新公布。",
+          "text_sha256": "0b56c0eab1c11e7c2edc37fd32f55b8894647b924fb0f5ae6e1b2c32ae190a09"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P22",
+          "locator": "正文段落22",
+          "category": "identity",
+          "text": "中华人民共和国居民身份证法",
+          "text_sha256": "3abae16b23ffa142a07f8a5b79f4828722fae6d84152425b5520b5b0ec1529b3"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P23",
+          "locator": "正文段落23",
+          "category": "identity",
+          "text": "（2003年6月28日第十届全国人民代表大会常务委员会第三次会议通过 2003年6月28日中华人民共和国主席令第四号公布 根据2011年10月29日第十一届全国人民代表大会常务委员会第二十三次会议《关于修改〈中华人民共和国居民身份证法〉的决定》修正）",
+          "text_sha256": "f841ace4032c2f3c8be8babb5639a9845100565bfed377d5a38af72d7267bbd1"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+          "locator": "正文段落43",
+          "category": "identity",
+          "text": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。",
+          "text_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P44",
+          "locator": "正文段落44",
+          "category": "identity",
+          "text": "未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。",
+          "text_sha256": "440df7b738c040ed426b85321823c5f8028baa0da624d07a5f5eea09346fe872"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P45",
+          "locator": "正文段落45",
+          "category": "identity",
+          "text": "公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。",
+          "text_sha256": "b249503e4542542ff1af258324b989dd08c7eb08ac669eb2b1cb5fc0865f8b60"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P46",
+          "locator": "正文段落46",
+          "category": "identity",
+          "text": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。",
+          "text_sha256": "eda1e59c8c9a9acd4efea02c1a90d24552b34ae5ac4bbf4f2fb51648d56105cb"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P47",
+          "locator": "正文段落47",
+          "category": "identity",
+          "text": "公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。",
+          "text_sha256": "1e9976099ed4fb9ba955d941c123719945e79a37faae16c0ec3636bf15fd77b8"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review"
+    }
+  ],
+  "citations": [
+    {
+      "id": "CITE-NR01",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+      "start": 20,
+      "end": 29,
+      "quote": "居民身份证有效期满",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c"
+    },
+    {
+      "id": "CITE-NR02",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P15",
+      "start": 0,
+      "end": 14,
+      "quote": "自2025年起至2028年底",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "9608782fbdf48db3c74314c852ab5dbe0900be47a48f1b3d27444dca9908a1b5"
+    },
+    {
+      "id": "CITE-NR03",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P17",
+      "start": 5,
+      "end": 20,
+      "quote": "本人（需要现场采集人像、指纹）",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "112173616525e56f347f4c19ef4dfc3bf0ce965bea4b81be217b38826dc31527"
+    },
+    {
+      "id": "CITE-NR04",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P17",
+      "start": 323,
+      "end": 331,
+      "quote": "证件有效期满换领",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "112173616525e56f347f4c19ef4dfc3bf0ce965bea4b81be217b38826dc31527"
+    },
+    {
+      "id": "CITE-NR05",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P19",
+      "start": 0,
+      "end": 14,
+      "quote": "省内户籍居民提交原居民身份证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+    },
+    {
+      "id": "CITE-NR06",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P19",
+      "start": 32,
+      "end": 53,
+      "quote": "合法稳定就业、就学或居住的其中一种证明材料",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+    },
+    {
+      "id": "CITE-NR07",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P19",
+      "start": 54,
+      "end": 69,
+      "quote": "无民事行为能力或限制行为能力人",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+    },
+    {
+      "id": "CITE-NR08",
+      "source_id": "NJ-CYCLE-2026",
+      "segment_id": "NJ-CYCLE-2026-P2",
+      "start": 16,
+      "end": 22,
+      "quote": "20个工作日",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+    },
+    {
+      "id": "CITE-NR09",
+      "source_id": "NJ-CYCLE-2026",
+      "segment_id": "NJ-CYCLE-2026-P3",
+      "start": 28,
+      "end": 34,
+      "quote": "最大限度缩短",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+    },
+    {
+      "id": "CITE-NR10",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P27",
+      "start": 15,
+      "end": 20,
+      "quote": "20元/证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "7f68451e14aad64ed973414c72e515d8d01656406e344048899059889ccfe62a"
+    },
+    {
+      "id": "CITE-NR11",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P25",
+      "start": 27,
+      "end": 31,
+      "quote": "邮费到付",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "fafb6f6172270e6e2b108fc85ef7fe2a3c44a8e9ce33b08ba4191bb323b3acd9"
+    },
+    {
+      "id": "CITE-NR12",
+      "source_id": "NJ-OLD-CARD-2025",
+      "segment_id": "NJ-OLD-CARD-2025-P4",
+      "start": 14,
+      "end": 28,
+      "quote": "未超期的旧身份证可以继续使用",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+    },
+    {
+      "id": "CITE-NR13",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+      "start": 90,
+      "end": 102,
+      "quote": "领取新证时，必须交回原证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c"
+    },
+    {
+      "id": "CITE-NR14",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P46",
+      "start": 46,
+      "end": 70,
+      "quote": "自公民提交《居民身份证申领登记表》之日起六十日内",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "eda1e59c8c9a9acd4efea02c1a90d24552b34ae5ac4bbf4f2fb51648d56105cb"
+    },
+    {
+      "id": "CITE-NR15",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P47",
+      "start": 32,
+      "end": 45,
+      "quote": "可以申请领取临时居民身份证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "1e9976099ed4fb9ba955d941c123719945e79a37faae16c0ec3636bf15fd77b8"
+    },
+    {
+      "id": "CITE-NR16",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P29",
+      "start": 61,
+      "end": 66,
+      "quote": "到达受理点",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "6998c6856670af3378bdf07996f0026d83451d0313e839556af38e104512c703"
+    }
+  ],
+  "rules": [
+    {
+      "id": "NR01",
+      "title": "期满换领法律基础",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 43,
+      "required_text": "居民身份证有效期满",
+      "predicate": "expiry_requires_renewal",
+      "conditions": {
+        "reason": "expiry"
+      },
+      "note": "期满应换领；不把遗失补领或损坏换领混作本事项。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR01"
+      ]
+    },
+    {
+      "id": "NR02",
+      "title": "提前办理窗口",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 15,
+      "required_text": "自2025年起至2028年底",
+      "predicate": "advance_window_months",
+      "conditions": {
+        "reason": "expiry",
+        "source_service_period": [
+          "2025-01-01",
+          "2029-01-01"
+        ],
+        "months": 6
+      },
+      "note": "来源自述服务期；不是将文章日期或抓取日认作法律施行日。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR02"
+      ]
+    },
+    {
+      "id": "NR03",
+      "title": "本人线下受理",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 17,
+      "required_text": "本人（需要现场采集人像、指纹）",
+      "predicate": "onsite_self_service",
+      "conditions": {
+        "reason": "expiry"
+      },
+      "note": "来源所列南京受理点，不承诺每个网点当前地址、营业时间。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR03"
+      ]
+    },
+    {
+      "id": "NR04",
+      "title": "期满网办排除",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 17,
+      "required_text": "证件有效期满换领",
+      "predicate": "online_application_excluded",
+      "conditions": {
+        "reason": "expiry"
+      },
+      "note": "保留整段年龄及指纹条件，明确期满属于该来源列明的排除，不因满足年龄条件放行。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR04"
+      ]
+    },
+    {
+      "id": "NR05",
+      "title": "省内材料主分支",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 19,
+      "required_text": "省内户籍居民提交原居民身份证",
+      "predicate": "requires_original_id",
+      "conditions": {
+        "household": "jiangsu",
+        "adult": true,
+        "civil_capacity": "full",
+        "self": true
+      },
+      "note": "主分支为成年完全民事行为能力本人；不据此断言所有人均免户口簿或无需其他证明。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR05"
+      ]
+    },
+    {
+      "id": "NR06",
+      "title": "省外材料例外",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 19,
+      "required_text": "合法稳定就业、就学或居住的其中一种证明材料",
+      "predicate": "outprovince_extra_proof",
+      "conditions": {
+        "household": "outside_jiangsu",
+        "proof_choice": [
+          "employment",
+          "education",
+          "residence"
+        ]
+      },
+      "note": "来源阅读例外，尚非本轮主成功分支；三种证明为其一，不累计要求。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR06"
+      ]
+    },
+    {
+      "id": "NR07",
+      "title": "监护例外",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 19,
+      "required_text": "无民事行为能力或限制行为能力人",
+      "predicate": "guardian_exception",
+      "conditions": {
+        "civil_capacity": [
+          "none",
+          "limited"
+        ]
+      },
+      "note": "成年人不等于具有完全民事行为能力；未知时澄清，不能按年龄默认跳过。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR07"
+      ]
+    },
+    {
+      "id": "NR08",
+      "title": "本省换发周期",
+      "source_id": "NJ-CYCLE-2026",
+      "ordinal": 2,
+      "required_text": "20个工作日",
+      "predicate": "service_cycle_workdays",
+      "conditions": {
+        "household": "jiangsu",
+        "days": 20
+      },
+      "note": "保留工作日单位；来源未说明精确计时起点，不推算实际领取日期或替换法定期限。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR08"
+      ]
+    },
+    {
+      "id": "NR09",
+      "title": "考生绿色通道",
+      "source_id": "NJ-CYCLE-2026",
+      "ordinal": 3,
+      "required_text": "最大限度缩短",
+      "predicate": "expedited_days_unknown",
+      "conditions": {
+        "urgent_exam": true
+      },
+      "note": "支持快速环节，不支持明确3天发证；加急天数未知。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR09"
+      ]
+    },
+    {
+      "id": "NR10",
+      "title": "普通到期工本费",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 27,
+      "required_text": "20元/证",
+      "predicate": "standard_fee_cny",
+      "conditions": {
+        "reason": "expiry",
+        "amount": 20,
+        "per": "card"
+      },
+      "note": "仅普通收费基线；困难减免等资格另核，不声称所有人必须缴费。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR10"
+      ]
+    },
+    {
+      "id": "NR11",
+      "title": "领取与邮寄",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 25,
+      "required_text": "邮费到付",
+      "predicate": "collection_options",
+      "conditions": {
+        "options": [
+          "self",
+          "authorized_collector",
+          "post"
+        ],
+        "postage": "cash_on_delivery"
+      },
+      "note": "本轮本人办理不等同不可委托领取；代领回执及代领人身份证条件须保留。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR11"
+      ]
+    },
+    {
+      "id": "NR12",
+      "title": "旧证未超期使用",
+      "source_id": "NJ-OLD-CARD-2025",
+      "ordinal": 4,
+      "required_text": "未超期的旧身份证可以继续使用",
+      "predicate": "old_card_usable_during_processing",
+      "conditions": {
+        "old_card_valid": true,
+        "phase": "processing"
+      },
+      "note": "不能推为过期仍可用或拿到新证后可保留原证。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR12"
+      ]
+    },
+    {
+      "id": "NR13",
+      "title": "领新证交回旧证",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 43,
+      "required_text": "领取新证时，必须交回原证",
+      "predicate": "return_old_on_collection",
+      "conditions": {
+        "phase": "collection"
+      },
+      "note": "与申请时交验、等待期间使用分开；有公报652页视觉交叉核对。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR13"
+      ]
+    },
+    {
+      "id": "NR14",
+      "title": "法定发放期限",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 46,
+      "required_text": "自公民提交《居民身份证申领登记表》之日起六十日内",
+      "predicate": "statutory_issue_limit",
+      "conditions": {
+        "start": "registration_form_submitted",
+        "days": 60,
+        "remote_extension_max_days": 30
+      },
+      "note": "法定日与本地20工作日服务周期分别表示，不自动做工作日/自然日换算。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR14"
+      ]
+    },
+    {
+      "id": "NR15",
+      "title": "急需临时证路径",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 47,
+      "required_text": "可以申请领取临时居民身份证",
+      "predicate": "temporary_id_possible",
+      "conditions": {
+        "phase": "processing",
+        "urgent_need": true
+      },
+      "note": "只说明可申请的法律路径；本轮不核定临时证材料、异地资格、费用或办理天数。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR15"
+      ]
+    },
+    {
+      "id": "NR16",
+      "title": "办证进度查询",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 29,
+      "required_text": "到达受理点",
+      "predicate": "status_query_channels",
+      "conditions": {
+        "channels": [
+          "苏证通APP",
+          "苏服办APP",
+          "南京公安微警务"
+        ]
+      },
+      "note": "不访问用户账户或实际证件进度；仅提供来源指引。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR16"
+      ]
+    }
+  ],
+  "human_review": {
+    "status": "pending",
+    "reviewer": null,
+    "confirmed_package_sha256": null
+  },
+  "knowledge_published": false,
+  "development_tasks": [
+    {
+      "id": "DEV-MH01",
+      "question": "在南京本人换领身份证，等待期间未超期旧证还能用吗？领取新证时是否要交回？",
+      "required_rules": [
+        "NR12",
+        "NR13"
+      ],
+      "requires_distinct_documents": true
+    },
+    {
+      "id": "DEV-MH02",
+      "question": "期满换领急需用证：南京所述服务周期、临时证法律路径分别是什么，能承诺考生三天拿证吗？",
+      "required_rules": [
+        "NR08",
+        "NR09",
+        "NR15"
+      ],
+      "requires_distinct_documents": true
+    }
+  ],
+  "holdout": {
+    "status": "not_created",
+    "human_independence_certified": false
+  },
+  "law_crosscheck": {
+    "source_id": "LAW-NPC-GAZETTE-MIRROR",
+    "url": "https://www.pdsxcq.gov.cn/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf",
+    "original_sha256": "95e8decc4bb5aecb5324b7cea311659d26245998b0c6d24049577c8e267220bd",
+    "original_file": "originals/law-gazette-2011-pages651-654.pdf",
+    "pdf_page": 2,
+    "printed_page": 652,
+    "articles": [
+      "第十一条",
+      "第十二条"
+    ],
+    "visual_check": "law-visual-review.json"
+  }
+}
