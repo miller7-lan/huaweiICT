@@ -1,5 +1,9 @@
 # 南京事项完整公开项目快照
 
+## 原生配置增量包
+
+[下载配置ZIP](nanjing-native-agent-assets-v1.zip)及[解压目录](nanjing-native-agent-assets-v1/)包含实际导出的三个禁用草稿配置和Skill，4文件、4757字节；[来源、校验及恢复边界](../docs/南京原生配置导出与恢复边界.md)。这是去除平台数字ID的恢复参考，不是原生导入API请求体；没有在新Nexent平台验证冷恢复，不覆盖下面已冻结的v2项目包。
+
 ## 当前v2交付
 
 - [下载v2 ZIP](nanjing-project-v2.zip)，20,486,791字节，1465文件。
