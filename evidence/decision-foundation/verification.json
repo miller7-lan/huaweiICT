@@ -1,0 +1,73 @@
+{
+  "captured_at": "2026-10-17T06:26:54.692873+00:00",
+  "mode": "synthetic_engineering_only",
+  "model_calls": 0,
+  "real_policy_advice": false,
+  "agents_executed": false,
+  "passed": true,
+  "snapshot_sha256": "bad8d27e0deb7c9d4253ca6c9b8ffb97af5c0ecf7267587b3b24baf443391177",
+  "fixture_file_sha256": "178827d1822df884ecf591233e483a9ddbaeb795f74811152ed544fe9c8174a0",
+  "source_files_sha256": {
+    "src/gov_mcp/decision/logic.py": "36f17d740c1e4b658927830c42a023a43424affbb60a50ffe3d967c14ced57ab",
+    "src/gov_mcp/decision/models.py": "39a6f1b7b2d4b3b32f2bd9db610bfaaeee68832fbed5a081d49cd961b9096024",
+    "src/gov_mcp/decision/service.py": "b2cd0954576e11a748ea56f4f92a9c31caadbdfe04350fe55dd08aafc9dde452",
+    "scripts/build_decision_fixture.py": "60dbab5c567ca2dec63b8edcc925df9607141a6a8ecf0c57a044b6293e703ed4",
+    "scripts/run_decision_demo.py": "5e9401ecea06a839ca16c75e8196e266a306fb22ccfa1cc3ce0f8edacd7d80e4"
+  },
+  "checks": {
+    "same_material_stage_specific_actions": true,
+    "paper_selected_when_electronic_unverified": true,
+    "electronic_selected_without_paper": true,
+    "unknown_exception_does_not_force_paper": true,
+    "unknown_preserves_independent_items": true,
+    "optional_followup_only_for_missing_condition": true,
+    "unconfirmed_fact_only_in_pending": true,
+    "multiple_document_evidence_present": true,
+    "all_business_edges_have_evidence": true,
+    "fixed_snapshot_current_suspension_checked": true,
+    "unaffected_collection_still_available": true,
+    "configured_public_maintenance_message": true,
+    "candidate_alias_not_applied": true,
+    "uncovered_branch_no_adult_fallback": true,
+    "branch_selection_does_not_invent_facts": true,
+    "api_fields_remain_empty": true
+  },
+  "examples": {
+    "电子表不可验证：采用纸质表": {
+      "counts": {
+        "confirmed": 4,
+        "pending": 1,
+        "excluded": 1,
+        "paused": 0
+      },
+      "status": "partial"
+    },
+    "电子表可验证：采用电子表": {
+      "counts": {
+        "confirmed": 4,
+        "pending": 1,
+        "excluded": 1,
+        "paused": 0
+      },
+      "status": "partial"
+    },
+    "电子表状态未知：保留独立已确认要求": {
+      "counts": {
+        "confirmed": 3,
+        "pending": 3,
+        "excluded": 0,
+        "paused": 0
+      },
+      "status": "partial"
+    },
+    "生成途中发现冲突：返回前暂停": {
+      "counts": {
+        "confirmed": 3,
+        "pending": 1,
+        "excluded": 1,
+        "paused": 1
+      },
+      "status": "partial"
+    }
+  }
+}

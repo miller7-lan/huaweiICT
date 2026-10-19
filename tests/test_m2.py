@@ -136,6 +136,6 @@ def test_classification_keeps_actual_source_region_and_pending_review(tools):
     citation = value["citations"][0]
     assert (citation["source_id"], citation["region"], citation["category"]) == ("official", "national", "identity")
     assert citation["review_status"] == "pending_business_review"
-    audit = [json.loads(line) for line in (tools.runtime / "tool-audit.jsonl").read_text().splitlines()]
+    audit = [json.loads(line) for line in (tools.runtime / "tool-audit.jsonl").read_text(encoding="utf-8").splitlines()]
     assert audit[-1]["result"] == value
     assert audit[-1]["request_id"] == value["data"]["request_id"]

@@ -1,0 +1,763 @@
+{
+  "status": "PASS_SOURCE_LANDING",
+  "checks": {
+    "two_sources_acquired": true,
+    "beijing_has_real_quotes": true,
+    "nanjing_has_real_quotes": true,
+    "region_isolation": true,
+    "erqi_blocked": true,
+    "other_matter_blocked": true,
+    "business_conclusions_paused": true,
+    "online_conditions_preserved": true,
+    "no_review_or_publication": true
+  },
+  "counts": {
+    "sites": 2,
+    "documents": 2,
+    "revisions": 2,
+    "chunks": 18,
+    "reviews": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "snapshot": {
+    "captured_at": "2026-10-18T14:43:37.212968+00:00",
+    "catalog_sha256": "847bcaf8965c84ea16e0469e5758468f521363b6cc36e81478c1dabd1fcc1dd2",
+    "bindings": [
+      {
+        "spec": {
+          "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+          "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+          "region": "南京市",
+          "matter": "resident-id-renewal",
+          "selector": {
+            "id": "con"
+          },
+          "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+          "parsed_paragraph_count": 3,
+          "selected_ordinals": [
+            1,
+            2,
+            3
+          ],
+          "published_at": "2026-01-05",
+          "named_source": "南京公安微信公众号（南京市政府门户转载）",
+          "document_type": "official_service_question_answer",
+          "scope_limits": "南京门户到期换证周期问答，省内/省外户籍分开；考生快速服务无具体天数，不推为所有申请人加急期限，也不作为北京或河南办理时限。"
+        },
+        "document": {
+          "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+          "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+          "revision": "rev-6b0fb8bd7de1638a149dbaa9",
+          "state": "pending_review",
+          "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+          "original_bytes": 29854,
+          "metadata": {
+            "title": "身份证到期换证领取周期问答",
+            "region": "南京市",
+            "matter": "resident-id-renewal",
+            "document_type": "official_service_question_answer",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "scope_confirmed": false,
+            "collection_role": "multiregion_expansion_candidate"
+          },
+          "source_fact_assessment_summary": null,
+          "pdf_extraction": {},
+          "selected_clauses": [
+            {
+              "locator": "正文段落1",
+              "category": "identity",
+              "characters": 24,
+              "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+            },
+            {
+              "locator": "正文段落2",
+              "category": "identity",
+              "characters": 58,
+              "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+            },
+            {
+              "locator": "正文段落3",
+              "category": "procedure",
+              "characters": 52,
+              "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+            }
+          ]
+        },
+        "revision_id": "rev-5f47d58d1eb3f91948672314"
+      },
+      {
+        "spec": {
+          "source_id": "BJ-ID-RENEWAL-2025",
+          "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+          "region": "北京市",
+          "matter": "resident-id-renewal",
+          "selector": {
+            "class": "TRS_Editor"
+          },
+          "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+          "parsed_paragraph_count": 26,
+          "selected_ordinals": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            13,
+            14,
+            15,
+            17,
+            19,
+            21,
+            23,
+            24,
+            25
+          ],
+          "published_at": "2025-03-03",
+          "named_source": "北京市公安局网站",
+          "scope_limits": "京籍居民换领；未成年人要求保留。网办提示仅指损坏换领，须连同户籍、年龄、五年内办证/照片及指纹条件理解，不推为到期网办或河南材料标准。页面日期不是施行日。"
+        },
+        "document": {
+          "source_id": "BJ-ID-RENEWAL-2025",
+          "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+          "revision": "rev-900798fdb5c74c934876fb73",
+          "state": "pending_review",
+          "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+          "original_bytes": 31155,
+          "metadata": {
+            "title": "公民换领居民身份证（京籍）",
+            "region": "北京市",
+            "matter": "resident-id-renewal",
+            "document_type": "official_service_guide",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "scope_confirmed": false,
+            "collection_role": "multiregion_expansion_candidate"
+          },
+          "source_fact_assessment_summary": null,
+          "pdf_extraction": {},
+          "selected_clauses": [
+            {
+              "locator": "正文段落2",
+              "category": "identity",
+              "characters": 75,
+              "text_sha256": "1268ef4fa8fadc8a9c2f7314e8804500275dc45c61726408828c87655598106e"
+            },
+            {
+              "locator": "正文段落4",
+              "category": "identity",
+              "characters": 68,
+              "text_sha256": "6eb06147860cee712a13a1d072ed71eaa784cebefcba12bfa7c93f726f1738ec"
+            },
+            {
+              "locator": "正文段落6",
+              "category": "procedure",
+              "characters": 13,
+              "text_sha256": "b8db16be4cf2c85e39456ba16703bf874db1f1d0fb323f212c4dd3478da55c90"
+            },
+            {
+              "locator": "正文段落8",
+              "category": "procedure",
+              "characters": 56,
+              "text_sha256": "f9b8a4263f3f96752adff3d0f58e4b59effc86f7dd982ef92d5fae4766705dc0"
+            },
+            {
+              "locator": "正文段落10",
+              "category": "identity",
+              "characters": 83,
+              "text_sha256": "57d4aabf3c70cb421b90992b49b7b4a72f5c815267e6d995ef05bb2fd110002c"
+            },
+            {
+              "locator": "正文段落12",
+              "category": "procedure",
+              "characters": 16,
+              "text_sha256": "c1d21f66b95cdb8a56a889d30b9be3bb02a5c9a9d1f681d9f3ac30e2a6f33a3e"
+            },
+            {
+              "locator": "正文段落13",
+              "category": "procedure",
+              "characters": 17,
+              "text_sha256": "1d54dfbb21a7897863a331940dee0d76ee10777cccf218b868cedfd9f8eee620"
+            },
+            {
+              "locator": "正文段落14",
+              "category": "procedure",
+              "characters": 19,
+              "text_sha256": "7e8ca5a4e1d6502b9f5b5bbd74e2884932b8f739f5515570bd87542a87532480"
+            },
+            {
+              "locator": "正文段落15",
+              "category": "procedure",
+              "characters": 14,
+              "text_sha256": "9a0fe8e13025e4870b6c328d2437f24c6718f80864312e34796d1cb6e0bfe822"
+            },
+            {
+              "locator": "正文段落17",
+              "category": "procedure",
+              "characters": 17,
+              "text_sha256": "59706d0893d8005dada931b131fea32e66ecd9d1dfe2b03f50cea958e7465d64"
+            },
+            {
+              "locator": "正文段落19",
+              "category": "procedure",
+              "characters": 24,
+              "text_sha256": "802a2a48e2fad664470efdc3b1efb8e448708eb48d04be78aa746d4d3be41646"
+            },
+            {
+              "locator": "正文段落21",
+              "category": "identity",
+              "characters": 52,
+              "text_sha256": "933289de4a59300eff1f4043bfd033ae7bb349a4454e95375d94317e7cd9fdc8"
+            },
+            {
+              "locator": "正文段落23",
+              "category": "identity",
+              "characters": 15,
+              "text_sha256": "7d72d2486f39fa0c1e1bdbf404ba8aa99c04f919ddb7e2888b3b3ae9fe97890c"
+            },
+            {
+              "locator": "正文段落24",
+              "category": "identity",
+              "characters": 33,
+              "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867"
+            },
+            {
+              "locator": "正文段落25",
+              "category": "identity",
+              "characters": 54,
+              "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172"
+            }
+          ]
+        },
+        "revision_id": "rev-6c473588ae861c51c65bb11a"
+      }
+    ],
+    "acquisitions": [
+      {
+        "source_id": "BJ-ID-RENEWAL-2025",
+        "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+        "checked_at": "2026-10-18T14:43:37.225184+00:00",
+        "method": "normal_configured_proxy_fixed_https_tls_robots",
+        "requests": [
+          {
+            "url": "https://www.beijing.gov.cn/robots.txt",
+            "http_status": 200,
+            "bytes": 592,
+            "sha256": "3303c722517919618c28ae5acaddb7876fc7916467f21bb2f9ab684f9a35a0fb"
+          },
+          {
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "http_status": 200,
+            "bytes": 31155,
+            "sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda"
+          }
+        ],
+        "http_status": 200,
+        "status": "ingested_pending_review",
+        "error_type": "ValueError",
+        "previous_stop": "ValueError: paragraph layout; short headings now retained",
+        "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+        "catalog_original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+        "raw_matches_catalog": true,
+        "all_selected_quotes_match": true,
+        "selected_chunks": 15,
+        "revision_id": "rev-6c473588ae861c51c65bb11a",
+        "offline_parser_repair": true
+      },
+      {
+        "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+        "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+        "checked_at": "2026-10-18T14:43:42.486735+00:00",
+        "method": "normal_configured_proxy_fixed_https_tls_robots",
+        "requests": [
+          {
+            "url": "https://www.nanjing.gov.cn/robots.txt",
+            "http_status": 200,
+            "bytes": 210,
+            "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+          },
+          {
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "http_status": 200,
+            "bytes": 29854,
+            "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+          }
+        ],
+        "http_status": 200,
+        "status": "ingested_pending_review",
+        "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "catalog_original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "raw_matches_catalog": true,
+        "all_selected_quotes_match": true,
+        "selected_chunks": 3,
+        "revision_id": "rev-5f47d58d1eb3f91948672314"
+      }
+    ],
+    "cloud_calls": 0,
+    "formally_published": false
+  },
+  "queries": [
+    {
+      "case_id": "beijing_materials",
+      "question": "身份证期满换领需要哪些材料？",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落2",
+            "quote": "国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认；居民身份证登记项目出现错误的，公民应当申请换领《居民身份证》。",
+            "text_sha256": "1268ef4fa8fadc8a9c2f7314e8804500275dc45c61726408828c87655598106e",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落24",
+            "quote": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：",
+            "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落4",
+            "quote": "申领人持原《居民身份证》现场办理；未满十六周岁的公民，申请换领《居民身份证》的，由监护人带领其现场办理，并提供监护人《居民身份证》原件。",
+            "text_sha256": "6eb06147860cee712a13a1d072ed71eaa784cebefcba12bfa7c93f726f1738ec",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落10",
+            "quote": "申领人持原《居民身份证》现场办理，现场进行指纹采集、人像采集等工作，并领取凭证。自受理之日起10个工作日发放证件。申请人持领取凭证领取身份证。领取新证时，须交回旧证。",
+            "text_sha256": "57d4aabf3c70cb421b90992b49b7b4a72f5c815267e6d995ef05bb2fd110002c",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落21",
+            "quote": "《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》(特急发改价格[2003]2322号)；",
+            "text_sha256": "933289de4a59300eff1f4043bfd033ae7bb349a4454e95375d94317e7cd9fdc8",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          }
+        ],
+        "region": "北京市",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "limits": "京籍居民换领；未成年人要求保留。网办提示仅指损坏换领，须连同户籍、年龄、五年内办证/照片及指纹条件理解，不推为到期网办或河南材料标准。页面日期不是施行日。"
+          }
+        ],
+        "source_context": [
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "selected_clauses": [
+              {
+                "locator": "正文段落2",
+                "category": "identity",
+                "text": "国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认；居民身份证登记项目出现错误的，公民应当申请换领《居民身份证》。"
+              },
+              {
+                "locator": "正文段落4",
+                "category": "identity",
+                "text": "申领人持原《居民身份证》现场办理；未满十六周岁的公民，申请换领《居民身份证》的，由监护人带领其现场办理，并提供监护人《居民身份证》原件。"
+              },
+              {
+                "locator": "正文段落6",
+                "category": "procedure",
+                "text": "可就近选择任意户籍派出所。"
+              },
+              {
+                "locator": "正文段落8",
+                "category": "procedure",
+                "text": "城镇地区派出所户籍接待室每周七天对外办公，郊区分局户政大厅周一至周五办公，农村地区派出所双休日实行预约办事制度。"
+              },
+              {
+                "locator": "正文段落10",
+                "category": "identity",
+                "text": "申领人持原《居民身份证》现场办理，现场进行指纹采集、人像采集等工作，并领取凭证。自受理之日起10个工作日发放证件。申请人持领取凭证领取身份证。领取新证时，须交回旧证。"
+              },
+              {
+                "locator": "正文段落12",
+                "category": "procedure",
+                "text": "未满十六周岁的公民，有效期五年；"
+              },
+              {
+                "locator": "正文段落13",
+                "category": "procedure",
+                "text": "十六周岁至二十五周岁，有效期十年；"
+              },
+              {
+                "locator": "正文段落14",
+                "category": "procedure",
+                "text": "二十六周岁至四十五周岁，有效期二十年；"
+              },
+              {
+                "locator": "正文段落15",
+                "category": "procedure",
+                "text": "四十六周岁以上的，长期有效。"
+              },
+              {
+                "locator": "正文段落17",
+                "category": "procedure",
+                "text": "自受理之日起10个工作日发放证件。"
+              },
+              {
+                "locator": "正文段落19",
+                "category": "procedure",
+                "text": "损坏换领每证40元、其他原因换领证件每证20元。"
+              },
+              {
+                "locator": "正文段落21",
+                "category": "identity",
+                "text": "《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》(特急发改价格[2003]2322号)；"
+              },
+              {
+                "locator": "正文段落23",
+                "category": "identity",
+                "text": "《中华人民共和国居民身份证法》"
+              },
+              {
+                "locator": "正文段落24",
+                "category": "identity",
+                "text": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务："
+              },
+              {
+                "locator": "正文段落25",
+                "category": "identity",
+                "text": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。"
+              }
+            ],
+            "unselected_body_not_included": true
+          }
+        ],
+        "status": "SOURCE_EXCERPTS"
+      }
+    },
+    {
+      "case_id": "nanjing_cycle",
+      "question": "身份证到期换证，省内和省外户籍分别多久？考生怎么办？",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "revision_id": "rev-5f47d58d1eb3f91948672314",
+            "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "locator": "正文段落1",
+            "quote": "问：身份证到期后换证，需要多长时间才能领取新证？",
+            "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "revision_id": "rev-5f47d58d1eb3f91948672314",
+            "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "locator": "正文段落2",
+            "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+            "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "revision_id": "rev-5f47d58d1eb3f91948672314",
+            "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "locator": "正文段落3",
+            "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+            "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f",
+            "published_at": "2026-01-05",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          }
+        ],
+        "region": "南京市",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "limits": "南京门户到期换证周期问答，省内/省外户籍分开；考生快速服务无具体天数，不推为所有申请人加急期限，也不作为北京或河南办理时限。"
+          }
+        ],
+        "source_context": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "revision_id": "rev-5f47d58d1eb3f91948672314",
+            "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "selected_clauses": [
+              {
+                "locator": "正文段落1",
+                "category": "identity",
+                "text": "问：身份证到期后换证，需要多长时间才能领取新证？"
+              },
+              {
+                "locator": "正文段落2",
+                "category": "identity",
+                "text": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。"
+              },
+              {
+                "locator": "正文段落3",
+                "category": "procedure",
+                "text": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。"
+              }
+            ],
+            "unselected_body_not_included": true
+          }
+        ],
+        "status": "SOURCE_EXCERPTS"
+      }
+    },
+    {
+      "case_id": "erqi_isolation",
+      "question": "身份证换领材料和时限",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [],
+        "region": "郑州市二七区",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [],
+        "source_context": [],
+        "status": "OUT_OF_SCOPE"
+      }
+    },
+    {
+      "case_id": "passport_isolation",
+      "question": "首次申领护照材料",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [],
+        "region": "北京市",
+        "matter": "ordinary-passport-first-application",
+        "source_scope_limits": [],
+        "source_context": [],
+        "status": "OUT_OF_SCOPE"
+      }
+    },
+    {
+      "case_id": "online_branch",
+      "question": "到期换领可以直接网上办理吗？损坏换领有什么条件？",
+      "result": {
+        "mode": "public_candidate_preview",
+        "formally_published": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "citations": [
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落24",
+            "quote": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：",
+            "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落19",
+            "quote": "损坏换领每证40元、其他原因换领证件每证20元。",
+            "text_sha256": "802a2a48e2fad664470efdc3b1efb8e448708eb48d04be78aa746d4d3be41646",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落2",
+            "quote": "国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认；居民身份证登记项目出现错误的，公民应当申请换领《居民身份证》。",
+            "text_sha256": "1268ef4fa8fadc8a9c2f7314e8804500275dc45c61726408828c87655598106e",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落4",
+            "quote": "申领人持原《居民身份证》现场办理；未满十六周岁的公民，申请换领《居民身份证》的，由监护人带领其现场办理，并提供监护人《居民身份证》原件。",
+            "text_sha256": "6eb06147860cee712a13a1d072ed71eaa784cebefcba12bfa7c93f726f1738ec",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          },
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "locator": "正文段落10",
+            "quote": "申领人持原《居民身份证》现场办理，现场进行指纹采集、人像采集等工作，并领取凭证。自受理之日起10个工作日发放证件。申请人持领取凭证领取身份证。领取新证时，须交回旧证。",
+            "text_sha256": "57d4aabf3c70cb421b90992b49b7b4a72f5c815267e6d995ef05bb2fd110002c",
+            "published_at": "2025-03-03",
+            "effective_from": null,
+            "effective_to": null,
+            "current_applicability": "unknown"
+          }
+        ],
+        "region": "北京市",
+        "matter": "resident-id-renewal",
+        "source_scope_limits": [
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "limits": "京籍居民换领；未成年人要求保留。网办提示仅指损坏换领，须连同户籍、年龄、五年内办证/照片及指纹条件理解，不推为到期网办或河南材料标准。页面日期不是施行日。"
+          }
+        ],
+        "source_context": [
+          {
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "selected_clauses": [
+              {
+                "locator": "正文段落2",
+                "category": "identity",
+                "text": "国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认；居民身份证登记项目出现错误的，公民应当申请换领《居民身份证》。"
+              },
+              {
+                "locator": "正文段落4",
+                "category": "identity",
+                "text": "申领人持原《居民身份证》现场办理；未满十六周岁的公民，申请换领《居民身份证》的，由监护人带领其现场办理，并提供监护人《居民身份证》原件。"
+              },
+              {
+                "locator": "正文段落6",
+                "category": "procedure",
+                "text": "可就近选择任意户籍派出所。"
+              },
+              {
+                "locator": "正文段落8",
+                "category": "procedure",
+                "text": "城镇地区派出所户籍接待室每周七天对外办公，郊区分局户政大厅周一至周五办公，农村地区派出所双休日实行预约办事制度。"
+              },
+              {
+                "locator": "正文段落10",
+                "category": "identity",
+                "text": "申领人持原《居民身份证》现场办理，现场进行指纹采集、人像采集等工作，并领取凭证。自受理之日起10个工作日发放证件。申请人持领取凭证领取身份证。领取新证时，须交回旧证。"
+              },
+              {
+                "locator": "正文段落12",
+                "category": "procedure",
+                "text": "未满十六周岁的公民，有效期五年；"
+              },
+              {
+                "locator": "正文段落13",
+                "category": "procedure",
+                "text": "十六周岁至二十五周岁，有效期十年；"
+              },
+              {
+                "locator": "正文段落14",
+                "category": "procedure",
+                "text": "二十六周岁至四十五周岁，有效期二十年；"
+              },
+              {
+                "locator": "正文段落15",
+                "category": "procedure",
+                "text": "四十六周岁以上的，长期有效。"
+              },
+              {
+                "locator": "正文段落17",
+                "category": "procedure",
+                "text": "自受理之日起10个工作日发放证件。"
+              },
+              {
+                "locator": "正文段落19",
+                "category": "procedure",
+                "text": "损坏换领每证40元、其他原因换领证件每证20元。"
+              },
+              {
+                "locator": "正文段落21",
+                "category": "identity",
+                "text": "《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》(特急发改价格[2003]2322号)；"
+              },
+              {
+                "locator": "正文段落23",
+                "category": "identity",
+                "text": "《中华人民共和国居民身份证法》"
+              },
+              {
+                "locator": "正文段落24",
+                "category": "identity",
+                "text": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务："
+              },
+              {
+                "locator": "正文段落25",
+                "category": "identity",
+                "text": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。"
+              }
+            ],
+            "unselected_body_not_included": true
+          }
+        ],
+        "status": "SOURCE_EXCERPTS"
+      }
+    }
+  ],
+  "limits": "Real acquisition and deterministic candidate retrieval only; no new Nexent run, cloud model, formal business approval or publication"
+}

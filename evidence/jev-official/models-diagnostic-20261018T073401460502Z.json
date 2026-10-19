@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-18T07:34:01.460502+00:00",
+  "scope": "One read-only GET /v1/models diagnostic; no inference request or training",
+  "endpoint": "https://api.typesafe.ai/v1/models",
+  "method": "GET",
+  "http_attempts": 1,
+  "inference_requests": 0,
+  "credential_sent_only_to_official_origin": true,
+  "network_mode": "direct_current_adapter_policy",
+  "error_body_saved": false,
+  "http_status": 451,
+  "status": "blocked",
+  "content_type": "application/json",
+  "body_truncated": false,
+  "recognized_error_codes": [],
+  "diagnostic_signals": {
+    "regional_terms": true,
+    "explicit_region_unsupported": true,
+    "ip_region_terms": false,
+    "account_terms": false,
+    "auth_terms": false
+  },
+  "recognized_server_family": "cloudflare",
+  "duration_ms": 180.25
+}

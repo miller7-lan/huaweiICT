@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-10-18T11:08:30.411533+00:00",
+  "policy": "local implementation and uncommitted work first",
+  "pre_merge_head": "663c40de749cc2e0b4db722039d012e43455a672",
+  "merged_remote": "e0c1256dde96da3ac273218fed3da00b8e872c79",
+  "merge_commit": "e25ce0943d6bf3eaf1dd4a8cea7e56e825392e00",
+  "preservation": {
+    "files_backed_up": 53,
+    "missing_after_restore": 0,
+    "byte_identical_after_restore": 52,
+    "combined_file": "README.md",
+    "later_intentional_append": "docs/2026-10-18对话决策与接续记录.md",
+    "stash_retained": true,
+    "restore_branch_retained": true,
+    "readme_all_original_lines_preserved": true
+  },
+  "verification": {
+    "first_compatibility": {
+      "passed": 238,
+      "failed": 1,
+      "skipped": 1
+    },
+    "encoding_recheck_passed": 1,
+    "pdf_recheck_passed": 1,
+    "restored_cloud_checks_passed": 85,
+    "distinct_tests_with_final_passing_results": 325,
+    "wheel_built": true,
+    "required_wheel_resources_present": true
+  },
+  "runtime_activated": false,
+  "model_calls": 0,
+  "collection_runs": 0,
+  "remote_push": false,
+  "private_runtime_imported": false,
+  "source_sha256": {
+    "src/gov_mcp/knowledge/__init__.py": "4bbb52ffeb33241b210b6e150386db5990de502840b68047114f083e4b01cb8a",
+    "src/gov_mcp/knowledge/registry.py": "e01063c6b2ee4214e42d97fc7f9654e085c171f9ffb66def213000179cf47307",
+    "scripts/prepare_knowledge.py": "9545c72b8a363aeb6664a91de17b3ea7b52d93fdd74a138632903bf4dc93ec04",
+    "scripts/seed_knowledge_update.py": "10fdf212fd044485e0038565da5345d5ed175b9039da1e65538f6281a57685a2",
+    "pyproject.toml": "f80d59b242aea80acf2090558c5af154e866968ed904788c54620b4a483854d9",
+    "tests/test_m2.py": "441a4fbe6177274a09dd6515952e1f72231f02bf09f0d1237a8882377d32d0c0"
+  }
+}

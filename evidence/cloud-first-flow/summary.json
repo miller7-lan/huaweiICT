@@ -1,0 +1,127 @@
+{
+  "captured_at": "2026-10-18T08:00:19.421525+00:00",
+  "scope": "First cloud rehearsal: separate DeepSeek-to-Jev translation/support chain plus native Nexent query-controller/retriever/verifier Skill/MCP consultation on synthetic data",
+  "passed": true,
+  "not_verified": [
+    "native update orchestration",
+    "real government business accuracy",
+    "ontology evolution",
+    "complete web UI cloud activation",
+    "unified Nexent-invoked Jev path"
+  ],
+  "cloud_translation_jev_evidence": "evidence/cloud-first-flow/translation-jev-20261018T074330899066Z.json",
+  "native_success_evidence": "evidence/cloud-first-flow/native-verified-20261018T075602127986Z.json",
+  "native_run_requests_total": 3,
+  "native_successful_query_runs": 1,
+  "native_healthcheck_requests": 1,
+  "native_event_observations": [
+    {
+      "run_stamp": "20261018T075041711200Z",
+      "model_attempt_event_phases": {
+        "begin": 1,
+        "commit": 1
+      }
+    },
+    {
+      "run_stamp": "20261018T075259257310Z",
+      "model_attempt_event_phases": {
+        "begin": 14,
+        "commit": 14
+      }
+    },
+    {
+      "run_stamp": "20261018T075602127986Z",
+      "model_attempt_event_phases": {
+        "begin": 7,
+        "commit": 7
+      }
+    }
+  ],
+  "offline_trace_reassessment_passed": true,
+  "answer_counts": {
+    "confirmed": 3,
+    "pending": 1,
+    "excluded": 1,
+    "paused": 1
+  },
+  "retrieval_rounds": 1,
+  "native_drafts": {
+    "retriever": {
+      "agent_id": 14,
+      "model_ids": [
+        4
+      ],
+      "enabled": false,
+      "published_versions": 0
+    },
+    "query_verifier": {
+      "agent_id": 15,
+      "model_ids": [
+        4
+      ],
+      "enabled": false,
+      "published_versions": 0
+    },
+    "query_controller": {
+      "agent_id": 16,
+      "model_ids": [
+        4
+      ],
+      "enabled": false,
+      "published_versions": 0
+    },
+    "extractor": {
+      "agent_id": 17,
+      "model_ids": [
+        4
+      ],
+      "enabled": false,
+      "published_versions": 0
+    },
+    "update_verifier": {
+      "agent_id": 18,
+      "model_ids": [
+        4
+      ],
+      "enabled": false,
+      "published_versions": 0
+    },
+    "update_controller": {
+      "agent_id": 19,
+      "model_ids": [
+        4
+      ],
+      "enabled": false,
+      "published_versions": 0
+    }
+  },
+  "workflow_inference_enabled": false,
+  "form_verifier_enabled": false,
+  "model_training_performed": false,
+  "monetary_cost_known": false,
+  "offline_regressions": [
+    {
+      "file": "targeted-regression.xml",
+      "tests": 75,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "file": "binding-regression.xml",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "source_sha256": {
+    "src/gov_mcp/deepseek.py": "153245960666f60c08f6f4eab81b20a783b56e94307dec2e7cda2548230007ec",
+    "scripts/configure_deepseek.py": "c89c022227f2d6a2a9819299710f5b840653bf2b7b78d27da72f6d7ba524fd2c",
+    "scripts/verify_first_cloud_native.py": "ff4e2b2b714f8150d70107095de7fd0a6ba4025c8dac098ddd8c4b8dc3862156",
+    "compose.cloud-proxy.yml": "b4b5a49b6696d9736b2468999b0664d71aa458fb167a888079ddd67411971e21",
+    "tests/test_deepseek_cloud.py": "158932f49b97af965670f307aa0fbc328ffe477ba05c5f2a8cb780f5743ceea9",
+    "tests/test_first_cloud_native.py": "3c507e8c0a560baba5c99a0f5d779af22114deafe7dc4e1bfb03774fd1d88fd7"
+  },
+  "baseline_note": "Successful raw live events retained; final changes strengthen offline assessment and metadata-only binding preflight. No cloud rerun for source fingerprint refresh."
+}

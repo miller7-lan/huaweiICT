@@ -1,0 +1,177 @@
+{
+  "original_state": {
+    "data_class": "public",
+    "case": {
+      "data_class": "public",
+      "applicant_kind": "fictional",
+      "age_group": "adult",
+      "self_service": true,
+      "household_scope": "compare_in_province_and_outside_province",
+      "reason": "expiry"
+    },
+    "claims": [
+      {
+        "id": "duration",
+        "value": {
+          "in_province_working_days": 20,
+          "outside_province_additional_working_days": 5
+        },
+        "statement": "The Nanjing answer states a 20-working-day replacement cycle for in-province household registrants. For outside-province registrants, review and issuance by their household-registration police authority adds 5 working days.",
+        "source_text": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。"
+      },
+      {
+        "id": "exam_service",
+        "value": "expedited service without a stated day count",
+        "statement": "For candidates urgently needing identity documents, the Nanjing answer describes expedited acceptance, review, production and issuance to shorten the cycle. It does not state a specific number of days.",
+        "source_text": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。"
+      }
+    ],
+    "source_context": [
+      {
+        "locator": "正文段落1",
+        "text": "问：身份证到期后换证，需要多长时间才能领取新证？"
+      },
+      {
+        "locator": "正文段落2",
+        "text": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。"
+      },
+      {
+        "locator": "正文段落3",
+        "text": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。"
+      }
+    ]
+  },
+  "original_questions": {
+    "duration": {
+      "type": "noul",
+      "instructions": "Does claim duration accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+    },
+    "exam_service": {
+      "type": "noul",
+      "instructions": "Does claim exam_service accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+    },
+    "unsupported_exam_three_days": {
+      "type": "noul",
+      "instructions": "Do the attached source texts explicitly promise a three-day issuance deadline to candidates using the expedited service?"
+    }
+  },
+  "result": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "duration": {
+        "type": "noul",
+        "noul": 0.96
+      },
+      "exam_service": {
+        "type": "noul",
+        "noul": 0.95
+      },
+      "unsupported_exam_three_days": {
+        "type": "noul",
+        "noul": 0.02
+      }
+    },
+    "usage": {
+      "input_tokens": 957,
+      "output_tokens": 56
+    },
+    "english_input": {
+      "version": "jev-english-1",
+      "state": {
+        "data_class": "public",
+        "case": {
+          "data_class": "public",
+          "applicant_kind": "fictional",
+          "age_group": "adult",
+          "self_service": true,
+          "household_scope": "compare_in_province_and_outside_province",
+          "reason": "expiry"
+        },
+        "claims": [
+          {
+            "id": "duration",
+            "value": {
+              "in_province_working_days": 20,
+              "outside_province_additional_working_days": 5
+            },
+            "statement": "The Nanjing answer states a 20-working-day replacement cycle for in-province household registrants. For outside-province registrants, review and issuance by their household-registration police authority adds 5 working days.",
+            "source_text": "Answer: The renewal cycle for resident identity cards of residents with household registration within the province is 20 working days; resident identity cards of residents with household registration outside the province must be reviewed and issued by the public security organ of the place of household registration, and the renewal cycle is increased by 5 working days."
+          },
+          {
+            "id": "exam_service",
+            "value": "expedited service without a stated day count",
+            "statement": "For candidates urgently needing identity documents, the Nanjing answer describes expedited acceptance, review, production and issuance to shorten the cycle. It does not state a specific number of days.",
+            "source_text": "For examinees who urgently need to use the card, fast acceptance, review and issuance, card production, and distribution of card production information are implemented, to shorten the card production and issuance cycle to the greatest extent and ensure that examinees can smoothly participate in the examination."
+          }
+        ],
+        "source_context": [
+          {
+            "locator": "正文段落1",
+            "text": "Question: After an identity card expires and is renewed, how long does it take to receive the new card?"
+          },
+          {
+            "locator": "正文段落2",
+            "text": "Answer: The renewal cycle for resident identity cards of residents with household registration within the province is 20 working days; resident identity cards of residents with household registration outside the province must be reviewed and issued by the public security organ of the place of household registration, and the renewal cycle is increased by 5 working days."
+          },
+          {
+            "locator": "正文段落3",
+            "text": "For examinees who urgently need to use the card, fast acceptance, review and issuance, card production, and distribution of card production information are implemented, to shorten the card production and issuance cycle to the greatest extent and ensure that examinees can smoothly participate in the examination."
+          }
+        ]
+      },
+      "questions": {
+        "duration": {
+          "type": "noul",
+          "instructions": "Does claim duration accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+        },
+        "exam_service": {
+          "type": "noul",
+          "instructions": "Does claim exam_service accurately describe its own source_text with the attached conditions? Judge source support only, not current applicability."
+        },
+        "unsupported_exam_three_days": {
+          "type": "noul",
+          "instructions": "Do the attached source texts explicitly promise a three-day issuance deadline to candidates using the expedited service?"
+        }
+      }
+    }
+  },
+  "jev_receipts": [
+    {
+      "attempt": 1,
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "requested_model": "jev-1.13.0",
+      "transport_model": "jev-1.13.0",
+      "input_bytes": 3162,
+      "status": "ok",
+      "cost_usd": null,
+      "http_status": 200,
+      "served_model": "jev-1.13.0",
+      "usage": {
+        "input_tokens": 957,
+        "output_tokens": 56
+      },
+      "duration_ms": 764.05
+    }
+  ],
+  "translation_receipts": [
+    {
+      "version": "jev-english-1",
+      "target_language": "en",
+      "status": "translated",
+      "source_state_sha256": "612af4811397fa3ee0e62a2a9985f50548da528eae56fb9b2266724074e26ebf",
+      "source_questions_sha256": "a78ea1ffff448d29d5306da7d0df414dea2736441d173376613d192b4710d4f0",
+      "translation_calls": 1,
+      "cache_hits": 0,
+      "models": [
+        "deepseek-flash"
+      ],
+      "usage": {
+        "input_tokens": 298,
+        "output_tokens": 158
+      },
+      "state_sha256": "2ce6ea96d009a9f7d1c1e323f0881606e8a1022e08dca58d29b54341ad63007a",
+      "questions_sha256": "a78ea1ffff448d29d5306da7d0df414dea2736441d173376613d192b4710d4f0",
+      "input_bytes": 3162
+    }
+  ]
+}

@@ -4,7 +4,7 @@ $projectPath = Split-Path -Parent $PSScriptRoot
 $pythonPath = Join-Path $projectPath '.venv\Scripts\python.exe'
 $runtimePath = Join-Path $projectPath '.runtime\knowledge-update'
 if (-not (Test-Path -LiteralPath (Join-Path $runtimePath 'phase.json'))) {
-    throw 'Run scripts\prepare_knowledge.py first.'
+    throw 'Run scripts\seed_knowledge_update.py first.'
 }
 if (Get-NetTCPConnection -LocalPort 8772 -State Listen -ErrorAction SilentlyContinue) {
     throw 'Port 8772 is already in use. Inspect the existing service before starting another.'

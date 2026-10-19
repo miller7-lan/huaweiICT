@@ -1,0 +1,84 @@
+{
+  "actual_tool_events": [
+    {
+      "name": "read_skill_md",
+      "depth": 0
+    },
+    {
+      "name": "govkb_preview_open_query",
+      "depth": 0
+    },
+    {
+      "name": "govkb_preview_retrieve",
+      "depth": 1
+    },
+    {
+      "name": "final_answer",
+      "depth": 1
+    },
+    {
+      "name": "govkb_preview_verify",
+      "depth": 1
+    },
+    {
+      "name": "final_answer",
+      "depth": 1
+    },
+    {
+      "name": "govkb_preview_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_preview_finalize",
+      "depth": 0
+    },
+    {
+      "name": "final_answer",
+      "depth": 0
+    }
+  ],
+  "event_counts": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 6,
+    "model_attempt_control": 12,
+    "model_output_thinking": 391,
+    "parse": 6,
+    "tool": 9,
+    "execution_logs": 6,
+    "token_count": 4,
+    "subagent_start": 2,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "final_answer": 1
+  },
+  "root_step_usage": [
+    {
+      "step": 1,
+      "input_tokens": 6811,
+      "output_tokens": 148
+    },
+    {
+      "step": 2,
+      "input_tokens": 7128,
+      "output_tokens": 92
+    },
+    {
+      "step": 3,
+      "input_tokens": 7986,
+      "output_tokens": 39
+    },
+    {
+      "step": 4,
+      "input_tokens": 8132,
+      "output_tokens": 40
+    }
+  ],
+  "root_usage_only": {
+    "input_tokens": 30057,
+    "output_tokens": 319
+  },
+  "child_usage_complete": false,
+  "root_final_matches_persistence": true,
+  "raw_events_private": true
+}

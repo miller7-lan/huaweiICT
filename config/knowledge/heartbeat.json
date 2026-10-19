@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "heartbeat_seconds": 30,
+  "check_interval_seconds": 3600,
+  "demo_interval_seconds": 60,
+  "demo_mode": false,
+  "lease_seconds": 120,
+  "run_budget_seconds": 600,
+  "max_documents": 3,
+  "max_segments": 20,
+  "max_download_bytes": 20971520,
+  "prompt_version": "govkb-1",
+  "ontology_version": "draft-0.1",
+  "models": {
+    "controller": {
+      "provider": "nexent",
+      "model": "deepseek-flash",
+      "local": false
+    },
+    "extractor": {
+      "provider": "nexent",
+      "model": "deepseek-flash",
+      "local": false
+    },
+    "reviewer": {
+      "provider": "nexent",
+      "model": "deepseek-flash",
+      "local": false
+    },
+    "embedding": {
+      "provider": "unconfigured_cloud",
+      "model": null,
+      "url": null,
+      "note": "A chat completion model cannot replace embeddings. Existing indexes remain readable; new dense indexing waits for a separately configured cloud embedding provider."
+    }
+  },
+  "sources": []
+}

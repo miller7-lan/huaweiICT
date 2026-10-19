@@ -1,0 +1,199 @@
+{
+  "run_id": "20261016T141737129121Z",
+  "captured_at": "2026-10-16T14:17:37.129121+00:00",
+  "objective": "question-topic QLoRA smoke experiment",
+  "training_completed": true,
+  "optimizer_steps": 8,
+  "production_model_changed": false,
+  "uploaded_data": false,
+  "independent_accuracy": false,
+  "business_rules_trained": false,
+  "stage": "completed",
+  "source_commit": "4d0a31e9a7eb9db2847c4eea0a0e48a8063f29c8",
+  "dataset": {
+    "train": {
+      "sha256": "a34b195a1cc0603b336d62d0d4cd1fe8adf0c4a22ab09c249b60a01407034f09",
+      "rows": 23,
+      "topics": {
+        "materials_identity": 7,
+        "process_channels": 3,
+        "fees_time": 1,
+        "boundaries_evidence": 12
+      }
+    },
+    "diagnostic": {
+      "sha256": "171d991922c065129f4533228a3474932e8eaa2c0c5aee665a03a41264bdde19",
+      "rows": 7,
+      "topics": {
+        "materials_identity": 2,
+        "fees_time": 1,
+        "process_channels": 1,
+        "boundaries_evidence": 3
+      }
+    }
+  },
+  "model_id": "Qwen/Qwen3-4B",
+  "model_revision": "per-file SHA-256 manifest: bb2183413b6845f4d2d50988caea933dc7ba4cb7e9903c41512a6ec400507231",
+  "packages": {
+    "torch": "2.9.1+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.18.1",
+    "accelerate": "1.12.0",
+    "bitsandbytes": "0.50.2",
+    "safetensors": "0.7.0"
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "total_bytes": 8546484224,
+    "free_bytes_before": 7281311744,
+    "capability": [
+      12,
+      0
+    ],
+    "torch_cuda": "12.8"
+  },
+  "model_source": "official_Qwen_ModelScope_per_file_sha256",
+  "model_source_spec_sha256": "bb2183413b6845f4d2d50988caea933dc7ba4cb7e9903c41512a6ec400507231",
+  "huggingface_revision_used": false,
+  "longest_training_example_tokens": 138,
+  "before": {
+    "rows": 7,
+    "matching_draft_labels": 4,
+    "records": [
+      {
+        "case_id": "KQ05",
+        "expected": "materials_identity",
+        "prediction": "process_channels",
+        "raw_output": "{\"topic\": \"process_channels\"}",
+        "matches_draft_label": false
+      },
+      {
+        "case_id": "KQ06",
+        "expected": "materials_identity",
+        "prediction": "boundaries_evidence",
+        "raw_output": "{\"topic\": \"boundaries_evidence\"}",
+        "matches_draft_label": false
+      },
+      {
+        "case_id": "KQ13",
+        "expected": "fees_time",
+        "prediction": "fees_time",
+        "raw_output": "{\"topic\": \"fees_time\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ15",
+        "expected": "process_channels",
+        "prediction": "process_channels",
+        "raw_output": "{\"topic\": \"process_channels\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ20",
+        "expected": "boundaries_evidence",
+        "prediction": "boundaries_evidence",
+        "raw_output": "{\"topic\": \"boundaries_evidence\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ21",
+        "expected": "boundaries_evidence",
+        "prediction": "boundaries_evidence",
+        "raw_output": "{\"topic\": \"boundaries_evidence\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ26",
+        "expected": "boundaries_evidence",
+        "prediction": "process_channels",
+        "raw_output": "{\"topic\": \"process_channels\"}",
+        "matches_draft_label": false
+      }
+    ],
+    "independent_accuracy": false
+  },
+  "trainable_parameters": 2949120,
+  "optimizer_probe": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+  "losses": [
+    1.6935177147388458,
+    0.71538445353508,
+    0.5043146908283234,
+    0.37142250686883926,
+    1.1208194247446954,
+    0.43139469623565674,
+    0.0526617206633091,
+    0.10737314711514045
+  ],
+  "optimizer_probe_changed": true,
+  "adapter_files": {
+    "adapter_config.json": "156f25fe7c528ec5c9e50aae1932936e3e24e03e7597219a03850faac1c33425",
+    "adapter_model.safetensors": "4e575c9f0aa8b048e97a1b30f2cfdf807f4902526cf0762513ce562a710a155c",
+    "added_tokens.json": "79f6ec6fcc423d3a82bfac8b9033b1daac7b7bce06a5f5f441637b480cc605de",
+    "chat_template.jinja": "51fa65c79bb57f058dc7ef8734884bd325fe9d45bb03a61bfef59785d3bc2da9",
+    "merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+    "README.md": "474224524a4bae1f27f6efb59af0a8c720ba4c580e8a199f5423379e0280dde8",
+    "special_tokens_map.json": "57255613bbe23c9497211ca68561ff429a51e871dbaf5a59998fa4c8f7fe168a",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "b2a0d89cf5c89d5d844c56d82e9c3731f862d720a6ce221c31955b628960cde7",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "after": {
+    "rows": 7,
+    "matching_draft_labels": 5,
+    "records": [
+      {
+        "case_id": "KQ05",
+        "expected": "materials_identity",
+        "prediction": "process_channels",
+        "raw_output": "{\"topic\":\"process_channels\"}",
+        "matches_draft_label": false
+      },
+      {
+        "case_id": "KQ06",
+        "expected": "materials_identity",
+        "prediction": "materials_identity",
+        "raw_output": "{\"topic\":\"materials_identity\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ13",
+        "expected": "fees_time",
+        "prediction": "fees_time",
+        "raw_output": "{\"topic\":\"fees_time\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ15",
+        "expected": "process_channels",
+        "prediction": "process_channels",
+        "raw_output": "{\"topic\":\"process_channels\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ20",
+        "expected": "boundaries_evidence",
+        "prediction": "boundaries_evidence",
+        "raw_output": "{\"topic\":\"boundaries_evidence\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ21",
+        "expected": "boundaries_evidence",
+        "prediction": "boundaries_evidence",
+        "raw_output": "{\"topic\":\"boundaries_evidence\"}",
+        "matches_draft_label": true
+      },
+      {
+        "case_id": "KQ26",
+        "expected": "boundaries_evidence",
+        "prediction": "process_channels",
+        "raw_output": "{\"topic\":\"process_channels\"}",
+        "matches_draft_label": false
+      }
+    ],
+    "independent_accuracy": false
+  },
+  "peak_allocated_vram_bytes": 4627862016,
+  "elapsed_seconds": 753.922,
+  "exit_code": 0
+}

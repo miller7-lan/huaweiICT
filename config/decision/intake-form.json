@@ -1,0 +1,39 @@
+{
+  "schema_id": "consultation-intake-v1",
+  "title": "模拟事项咨询信息表",
+  "data_class": "synthetic",
+  "fields": [
+    {
+      "id": "reason", "label": "办理原因", "question": "这次模拟办理的原因是什么？",
+      "options": [
+        {"value": "expiry", "label": "到期换领", "aliases": ["到期", "到期了", "expiry"]},
+        {"value": "lost", "label": "遗失", "aliases": ["丢失", "丢了", "lost"]},
+        {"value": null, "label": "不清楚", "aliases": ["不知道", "待核实"]}
+      ]
+    },
+    {
+      "id": "age_group", "label": "年龄组", "question": "模拟申请人属于哪个年龄组？只选年龄组，不填生日或证件号。",
+      "options": [
+        {"value": "adult", "label": "成年人", "aliases": ["成人", "成年", "adult"]},
+        {"value": "minor", "label": "未成年人", "aliases": ["未成年", "minor"]},
+        {"value": null, "label": "不清楚", "aliases": ["不知道", "待核实"]}
+      ]
+    },
+    {
+      "id": "self_service", "label": "是否本人办理", "question": "这次模拟由本人办理，还是由他人代办？",
+      "options": [
+        {"value": true, "label": "本人办理", "aliases": ["本人", "我自己", "自己办理", "是", "true"]},
+        {"value": false, "label": "他人代办", "aliases": ["代办", "不是本人", "否", "false"]},
+        {"value": null, "label": "不清楚", "aliases": ["不知道", "待核实"]}
+      ]
+    },
+    {
+      "id": "electronic_verified", "label": "模拟电子表校验结果", "question": "模拟电子申请表的校验结果是什么？AI 不验证真实身份或文件真伪。",
+      "options": [
+        {"value": true, "label": "模拟校验通过", "aliases": ["模拟通过", "校验通过", "true"]},
+        {"value": false, "label": "模拟校验未通过", "aliases": ["模拟未通过", "校验未通过", "false"]},
+        {"value": null, "label": "未验证或不清楚", "aliases": ["不清楚", "未验证", "不知道", "待核实"]}
+      ]
+    }
+  ]
+}

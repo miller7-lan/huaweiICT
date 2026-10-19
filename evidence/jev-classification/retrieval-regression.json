@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-10-15T10:04:48.139782+00:00",
+  "scope": "direct MCP regression after classification; not a new native Agent/UI acceptance",
+  "knowledge_version": "docs-cf8becf5437334d3",
+  "snapshot_hashes": {
+    "index.json": "cbd8a6213768a22bd9d5652fc4c8e7205b91148af94cc25e57647a8c4911ed4d",
+    "assets.json": "d79112f97a2ced4b92204200430568de3626ec0826e3881828fb316d2a75cc0b",
+    "vectors.json": "48af8e0e762073b009dbfdfb6de37a8cfc914d702758cbe065b65d1fcf7a0a8f"
+  },
+  "passed": true,
+  "cases": [
+    {
+      "case": "text",
+      "passed": true,
+      "status": "OK",
+      "message_code": "EVIDENCE_FOUND",
+      "citation_count": 2
+    },
+    {
+      "case": "table",
+      "passed": true,
+      "status": "OK",
+      "message_code": "EVIDENCE_FOUND",
+      "citation_count": 2
+    },
+    {
+      "case": "image",
+      "passed": true,
+      "status": "OK",
+      "message_code": "EVIDENCE_FOUND",
+      "citation_count": 3
+    },
+    {
+      "case": "missing",
+      "passed": true,
+      "status": "EMPTY",
+      "message_code": "NO_SUPPORTING_EVIDENCE",
+      "citation_count": 0
+    }
+  ],
+  "snapshot_unchanged": true
+}

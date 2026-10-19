@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-10-18T07:50:41.711200+00:00",
+  "scope": "One Nexent native unpublished-draft debug consultation via real DeepSeek agents and MCP; synthetic sources only",
+  "native_run_requests": 1,
+  "business_rules_published": false,
+  "agent_versions_published": false,
+  "mode": "native_debug",
+  "max_root_steps": 6,
+  "max_child_steps": 3,
+  "http_status": 200,
+  "status": "failed",
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 2,
+    "step_count": 1,
+    "model_attempt_control": 2,
+    "model_output_thinking": 42,
+    "token_count": 1,
+    "final_answer": 1
+  },
+  "tool_trace": [],
+  "root_final_count": 1,
+  "final_is_structured_json": false,
+  "error_events": [],
+  "duration_ms": 7606.41,
+  "error_code": "NATIVE_TOOL_TRACE_MISSING",
+  "native_business_flow_verified": false,
+  "assessment_note": "SSE completed but final output was tool-call markup with no actual tool/subagent events. This is not a passing native business query."
+}

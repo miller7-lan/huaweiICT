@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "rules_version": "gov-classification-3",
+  "provider": "jev",
+  "model": "jev-1.13.0",
+  "choice_confidence_threshold": 0.8,
+  "choice_margin_threshold": 0.15,
+  "positive_probability_threshold": 0.8,
+  "negative_probability_threshold": 0.2,
+  "window_chars": 6000,
+  "batch_segment_questions": true,
+  "max_questions_per_request": 32,
+  "max_request_bytes": 14000,
+  "translation": {
+    "enabled": true,
+    "provider": "deepseek_official",
+    "target_language": "en"
+  },
+  "document_types": {
+    "policy": "政策规范：规定权利义务、制度或标准的规范性文件，不凭标题推断权威性或现行有效性。",
+    "guide": "办事指南：说明如何申请、办理某项政务服务的指南或材料清单。",
+    "form": "表单：供填写的申请表、空白登记表，或描述其字段的模板；材料清单本身不是申请表。",
+    "notice": "通知公告：具体事项的告知、安排、变更或材料提交说明。",
+    "faq": "常见问答：主要以问题和答复解释业务。",
+    "other": "其他：能够识别内容，但不属于上述类型。",
+    "unknown": "无法判断：信息不足或无法确定资料类型。"
+  },
+  "domains": {
+    "identity": "户籍身份：户口、居民身份证、居住登记等。",
+    "social": "社保就业：社会保险、养老、失业、就业服务等，不包括基本医疗保险。",
+    "health": "医保健康：医疗保险、就医、卫生健康服务等。",
+    "business": "企业经营：企业登记、经营许可、涉企服务等。",
+    "housing": "住房建设：住房保障、房产、建设工程服务等。",
+    "general": "综合其他：能够确定是政务服务，但不属于以上领域或是明确的跨领域通用要求。",
+    "unknown": "无法判断：资料没有提供足够信息确定任何业务领域，不能把未知当作综合其他。"
+  },
+  "purposes": {
+    "condition": "条件：申请资格、适用情形、分支条件或例外。",
+    "material": "材料：需提交的文件、证明及其提交要求。",
+    "procedure": "步骤：办理顺序、受理或审核等操作步骤。",
+    "department": "部门：经办机构、受理窗口、主管部门或其职责。",
+    "fee": "费用：收费金额、收费依据或免收费说明。",
+    "time_limit": "时限：办理期限、工作日数量或时效说明。",
+    "standard": "规范条款：明确表达制度规定、条款或标准要求；不判断其法律效力。",
+    "filling": "填写要求：表单字段、字段格式、签字或填写注意事项。",
+    "other": "其他：内容明确，但不属于以上用途；信息不足不能判为其他。"
+  },
+  "routing": {
+    "document_routes": {"policy": "policy_clauses", "guide": "guide_sections", "form": "form_fields", "notice": "notice_faq", "faq": "notice_faq"},
+    "purpose_routes": {"standard": "policy_clauses", "condition": "guide_sections", "material": "guide_sections", "procedure": "guide_sections", "department": "guide_sections", "fee": "guide_sections", "time_limit": "guide_sections", "filling": "form_fields"}
+  }
+}
