@@ -9,6 +9,8 @@
 
 v2源码提交 `20a87385efdadcecb57b3ad4f2d8e4152c0e9308`，包含Qwen原生v4成功实现、实际轨迹、旧失败记录、来源原件及Word。ZIP SHA256：`9d7a907826190121b60880fdeda1d5711f0b3c7cc61dc9c4df7f3486defa746e`。
 
+已从GitHub提交 `03fed176383170e72ee78ec8b1f3e327c7c8a6fd` 实际下载v2 ZIP与独立Word，均为HTTP200/哈希一致，下载ZIP内的Word也与独立版一致。见 [下载回执](../evidence/real-matter-closure/project-delivery-v2/github-download.json)。
+
 1464项文件清单与解压目录一致；新建Python环境从解压目录完成19项真实本地HTTP检查。8份相关原生源码核对实跑原始哈希后，再按CRLF/LF规范化比对包内字节一致；这次解压检查没有追加模型运行，也未重建Nexent容器。原生v4实际成功来自已记录的369.2秒单次活动，正式业务发布及独立评测仍未完成。
 
 ## 历史v1交付
