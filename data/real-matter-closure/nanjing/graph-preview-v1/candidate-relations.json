@@ -1,0 +1,130 @@
+{
+  "method": "two_seed_patterns_not_llm_or_measured_low_resource_gain",
+  "seed": {
+    "version": "temporal-seed-v1",
+    "entity_types": {
+      "old_card": "Credential",
+      "processing": "Phase",
+      "collection": "Phase"
+    },
+    "relations": {
+      "usable_during": [
+        "Credential",
+        "Phase"
+      ],
+      "precedes": [
+        "Phase",
+        "Phase"
+      ]
+    },
+    "axioms": [
+      {
+        "triple": [
+          "processing",
+          "precedes",
+          "collection"
+        ],
+        "kind": "workflow_phase_order_not_policy_claim"
+      }
+    ]
+  },
+  "seed_pattern_count": 2,
+  "manual_rule_cards_used_for_extraction": 0,
+  "candidates": [
+    {
+      "triple": [
+        "old_card",
+        "usable_during",
+        "processing"
+      ],
+      "guard": {
+        "old_card_valid": true
+      },
+      "relation_type": [
+        "Credential",
+        "Phase"
+      ],
+      "pattern_id": "SEED-USE",
+      "role": "seed_known_relation",
+      "evidence": [
+        {
+          "source_id": "NJ-POLICE-FAQ-2025",
+          "source_region": "南京市",
+          "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+          "original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf",
+          "segment_id": "NJ-POLICE-FAQ-2025-P31",
+          "locator": "正文段落31",
+          "start": 0,
+          "end": 26,
+          "quote": "申请换领居民身份证期间，未超期的旧身份证可以继续使用",
+          "context_sha256": "ad4b924450257d443fd559557a9d25d5ec16269ca80d68f85246daec07c6a44c"
+        }
+      ],
+      "review_status": "machine_proposed_pending_human",
+      "id": "REL-ae01b9bb558dc3bf3f50"
+    },
+    {
+      "triple": [
+        "old_card",
+        "usable_during",
+        "processing"
+      ],
+      "guard": {
+        "old_card_valid": true
+      },
+      "relation_type": [
+        "Credential",
+        "Phase"
+      ],
+      "pattern_id": "SEED-USE",
+      "role": "seed_known_relation",
+      "evidence": [
+        {
+          "source_id": "NJ-OLD-CARD-2025",
+          "source_region": "南京市",
+          "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+          "original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+          "segment_id": "NJ-OLD-CARD-2025-P4",
+          "locator": "正文段落4",
+          "start": 2,
+          "end": 28,
+          "quote": "申请换领居民身份证期间，未超期的旧身份证可以继续使用",
+          "context_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+        }
+      ],
+      "review_status": "machine_proposed_pending_human",
+      "id": "REL-03d6c921f633743bfdf0"
+    },
+    {
+      "triple": [
+        "old_card",
+        "return_at",
+        "collection"
+      ],
+      "guard": {},
+      "relation_type": [
+        "Credential",
+        "Phase"
+      ],
+      "pattern_id": "PROPOSE-RETURN",
+      "role": "new_relation_proposal",
+      "evidence": [
+        {
+          "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+          "source_region": "national",
+          "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+          "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+          "locator": "正文段落43",
+          "start": 90,
+          "end": 102,
+          "quote": "领取新证时，必须交回原证",
+          "context_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c"
+        }
+      ],
+      "review_status": "machine_proposed_pending_human",
+      "id": "REL-cfeac57c3d7a0d5ae217"
+    }
+  ],
+  "human_review": "pending"
+}

@@ -1,0 +1,65 @@
+{
+  "version": "temporal-preview-v2-unpublished",
+  "entity_types": {
+    "old_card": "Credential",
+    "processing": "Phase",
+    "collection": "Phase"
+  },
+  "relations": {
+    "usable_during": [
+      "Credential",
+      "Phase"
+    ],
+    "precedes": [
+      "Phase",
+      "Phase"
+    ],
+    "usable_until_return": [
+      "Credential",
+      "Phase"
+    ],
+    "return_at": [
+      "Credential",
+      "Phase"
+    ]
+  },
+  "axioms": [
+    {
+      "triple": [
+        "processing",
+        "precedes",
+        "collection"
+      ],
+      "kind": "workflow_phase_order_not_policy_claim"
+    }
+  ],
+  "inference_rules": [
+    {
+      "id": "TEMPORAL-COMPOSE",
+      "body": [
+        [
+          "?card",
+          "usable_during",
+          "?before"
+        ],
+        [
+          "?before",
+          "precedes",
+          "?after"
+        ],
+        [
+          "?card",
+          "return_at",
+          "?after"
+        ]
+      ],
+      "head": [
+        "?card",
+        "usable_until_return",
+        "?after"
+      ],
+      "description": "同一证件在前阶段可用，后阶段须交回，生成使用至交回阶段的时序关系"
+    }
+  ],
+  "approval": "development_preview_not_published"
+}

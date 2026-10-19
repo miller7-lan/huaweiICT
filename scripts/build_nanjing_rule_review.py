@@ -1,9 +1,7 @@
 """Build an attributed, reviewable real-source rule package without publication."""
-from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
-import shutil
 import sys
 import zipfile
 
