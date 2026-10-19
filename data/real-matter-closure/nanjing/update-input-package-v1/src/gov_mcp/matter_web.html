@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>南京办事资料咨询</title><link rel="stylesheet" href="/assets/matter_web.css"><script src="/assets/matter_web.js" defer></script></head>
+<body>
+<header><div><span class="eyebrow">南京 · 居民身份证期满换领</span><h1>办事资料咨询</h1></div><div class="account"><span id="identity">未登录</span><button id="logout" class="secondary" hidden>退出</button></div></header>
+<main>
+<div class="notice"><strong>真实来源 · 待业务复核</strong><span>当前为工程预览。可核对原文与交接记录，不替代窗口资格核验或正式办事承诺。</span></div>
+<p id="message" role="status" aria-live="polite"></p>
+<section id="login-panel" class="panel narrow"><h2>登录咨询工作台</h2><p id="auth-description" class="muted"></p><form id="login-form"><label>账户<input id="username" autocomplete="username" required maxlength="256"></label><label>密码<input id="password" type="password" autocomplete="current-password" required maxlength="256"></label><button type="submit">登录</button></form></section>
+<div id="workspace" hidden>
+<div class="workspace-head"><h2 id="workspace-title">群众咨询</h2><p class="muted">当前知识预览版本 <code id="head-version"></code> · 正式发布待复核</p></div>
+<div class="layout">
+<aside>
+<section id="query-panel" class="panel"><h2>发起新咨询</h2><p class="muted">仅选择条件，不填写姓名、证件号或联系方式。未知条件请保留“未确认”。</p><form id="query-form">
+<label>咨询主题<select id="topic"></select></label>
+<div class="two"><label>是否成年人<select id="adult"><option value="">未确认</option><option value="true">是</option><option value="false">否</option></select></label><label>是否本人办理<select id="self"><option value="">未确认</option><option value="true">是</option><option value="false">否</option></select></label></div>
+<label>民事行为能力<select id="capacity"><option value="">未确认</option><option value="full">完全民事行为能力</option><option value="limited">限制民事行为能力</option><option value="none">无民事行为能力</option></select></label>
+<div class="two"><label>户籍范围<select id="household"><option value="">未确认</option><option value="jiangsu">江苏省内</option><option value="outside_jiangsu">江苏省外</option></select></label><label>办理原因<select id="reason"><option value="">未确认</option><option value="expiry">有效期满换领</option><option value="loss">遗失补领</option><option value="damage">损坏换领</option></select></label></div>
+<label>旧证是否仍在有效期内<select id="old-valid"><option value="">未确认</option><option value="true">是</option><option value="false">否</option></select><small>跨文档旧证推导需确认此项；材料等主题不据此推测。</small></label>
+<label class="check"><input id="urgent-exam" type="checkbox">需要了解考生加急服务</label><label class="check"><input id="fee-relief" type="checkbox">需要进一步核对费用减免</label>
+<button type="submit">查看来源与适用边界</button></form></section>
+<section id="accept-panel" class="panel" hidden><h2>接收群众交接</h2><form id="accept-form"><label>会话编号<input id="accept-case" required maxlength="100" autocomplete="off"></label><label>一次性交接码<input id="accept-token" type="password" required maxlength="100" autocomplete="off"></label><button type="submit">接收并核对</button></form></section>
+<section class="panel"><h2>本账户会话</h2><p class="muted">刷新后仍可查看。每个会话保留创建时版本。</p><div id="history"></div></section>
+<section id="maintenance-panel" class="panel" hidden><h2>来源维护</h2><p class="muted">暂停始终作用于当前与历史答复。这里不会启用系统心跳或调用模型。</p><div id="source-controls"></div><h3>工程版本切换</h3><p class="muted">旧会话继续固定原版本；切换不能解除当前来源暂停。</p><div id="version-controls"></div></section>
+</aside>
+<div>
+<section id="result-panel" class="panel"><div class="result-heading"><h2>咨询与证据</h2><span id="result-state" class="badge">等待查询</span></div><div id="result"><p class="empty">先登录并明确办理条件，再查看官方来源及其边界。</p></div></section>
+<section id="handoff-panel" class="panel" hidden><h2>交给工作人员</h2><p>交接保留本次主题、条件、原文和知识版本，仅持有交接码的工作人员可接收。</p><button id="handoff-create">生成一次性交接码</button><form id="handoff-details" hidden><label>会话编号<input id="share-case" readonly></label><label>交接码<input id="share-token" type="password" readonly autocomplete="off"></label><button id="handoff-copy" type="button" class="secondary">复制交接码</button></form></section>
+<section id="confirm-panel" class="panel" hidden><h2>工作人员核对</h2><form id="confirm-form"><label>核对说明<textarea id="confirm-note" required maxlength="1000" placeholder="只记录核对结论，不填写个人身份信息"></textarea></label><label class="check"><input id="confirm-check" type="checkbox" required>我已核对本次来源、边界和交接版本；本次仅确认工程交接。</label><button type="submit">确认工程交接</button></form><p class="muted">该操作不会批准业务规则或发布正式知识。</p></section>
+</div></div></div></main><footer>来源可追溯 · 未知不推断 · 冲突暂停 · 历史版本保留</footer>
+</body></html>

@@ -1,0 +1,1680 @@
+{
+  "schema": 1,
+  "kind": "source_bound_machine_proposed_rules_not_business_approval",
+  "scope": {
+    "region": "南京市",
+    "matter": "resident-id-expiry-renewal",
+    "main_branch": {
+      "adult": true,
+      "civil_capacity": "full",
+      "self": true,
+      "reason": "expiry",
+      "household": "jiangsu"
+    },
+    "unknown_requires_clarification": [
+      "adult",
+      "civil_capacity",
+      "self",
+      "reason",
+      "household"
+    ],
+    "excluded": [
+      "real_personal_data",
+      "formal_application_submission"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+      "title": "南京公安换证问答",
+      "original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf",
+      "original_file": "originals/NJ-POLICE-FAQ-2025.html",
+      "checked_at": "2026-10-19T14:18:28.264594+00:00",
+      "published_at": "2025-05-29",
+      "effective_from": null,
+      "effective_from_basis": null,
+      "region": "南京市",
+      "parsed_paragraphs": 42,
+      "selector": {
+        "class": "content"
+      },
+      "segments": [
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P1",
+          "locator": "正文段落1",
+          "category": "procedure",
+          "text": "首页 > 南京市公安局",
+          "text_sha256": "dd0e9703a6ce8c9a66087ea4778e8cff0390f5ef20ec94ae5beec4cbac1834e7"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P2",
+          "locator": "正文段落2",
+          "category": "procedure",
+          "text": "索 引 号： 012948472/2025-36201 信息分类： 公安、安全、司法 / 解读材料 / 其他",
+          "text_sha256": "2fe2f2244ce923a63145eefa8a4d610c2c678e9cd11334fabe0d384bae9abd21"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P3",
+          "locator": "正文段落3",
+          "category": "procedure",
+          "text": "发布机构： 南京市公安局 生成日期： 2025-05-29",
+          "text_sha256": "97d1340fcc7bc7b09a6161b92f250b25131e7c651d6b5400d689af0fee60be27"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P4",
+          "locator": "正文段落4",
+          "category": "procedure",
+          "text": "生效日期： 废止日期：",
+          "text_sha256": "f25f6477e19cea72e4e9f058138c54bce4220e86a52b2570a9fdc4dcf920a478"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P5",
+          "locator": "正文段落5",
+          "category": "identity",
+          "text": "信息名称： 身份证换证常见问题解答！",
+          "text_sha256": "fc91f33d48e03a6e8942aa52c29efeba0706a3b11ac031de5e8b2a97f9a5d24b"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P6",
+          "locator": "正文段落6",
+          "category": "identity",
+          "text": "文 号： 关 键 词： 身份证换证;常见问题解答",
+          "text_sha256": "0dae79bbf24784c7367c1cfa0956be5a554041f0bb0da0cb759de784ef526d46"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P7",
+          "locator": "正文段落7",
+          "category": "procedure",
+          "text": "内容概览：",
+          "text_sha256": "bd86160d4061c2ab7a9656c3ff3c7fce78d223b10c6bbfc6b2afcb8d8a371dca"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P8",
+          "locator": "正文段落8",
+          "category": "procedure",
+          "text": "在线链接地址：",
+          "text_sha256": "c1517d4615421353dea816d3f602de9de45ac0373cd6fb5e2f40be46eaf21231"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P9",
+          "locator": "正文段落9",
+          "category": "procedure",
+          "text": "文件下载：",
+          "text_sha256": "34669ffd951f35d20f87d48bf4f875b45948f0eb4cd5c6a6a68dd5e1aad6e834"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P10",
+          "locator": "正文段落10",
+          "category": "identity",
+          "text": "身份证换证常见问题解答！",
+          "text_sha256": "fbbf2b31eb4bb8e0b20c1e4405565ccf2eee967fecece6187e0097bd1ce7d064"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P11",
+          "locator": "正文段落11",
+          "category": "identity",
+          "text": "2005年至2008年，全国公安机关开展了第二代居民身份证集中换发工作。随着首批有效期为二十年的居民身份证陆续期满，2025年起将迎来居民身份证换证高峰。为方便群众换证，南京公安推广实施居民身份证“全国通办”“全程网办”，延长申请换领新的居民身份证期限，还为高考考生启动办证“绿色通道”，全力提供“就近办、网上办、错峰办、加急办”等便民服务，满足群众多样化需求。",
+          "text_sha256": "b055613486b367dadbc7b8987e3339b154e114eb494c2338bfaa477dabde8db7"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P12",
+          "locator": "正文段落12",
+          "category": "procedure",
+          "text": "特别提醒",
+          "text_sha256": "dbb4aff8df4563d64281c48b8893de77002ea1d994409973e967b4c5a15cc792"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P13",
+          "locator": "正文段落13",
+          "category": "identity",
+          "text": "1960年至1982年期间出生的市民群众，以及即将参加今年高考的考生，请尽快查看居民身份证的有效期限，提前准备换领证件。居民身份证长期有效则无需换证。",
+          "text_sha256": "32ed8a7a81824547c96b5d0bde3d73b91f5bb8f47387e2d8bed11030c7ea1f1c"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P14",
+          "locator": "正文段落14",
+          "category": "procedure",
+          "text": "问1、何时可以换证？",
+          "text_sha256": "3f0e926f3c384c9fb70cbc188b40d842b77844e230fa3c4920f0c0b3da8bf0f5"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P15",
+          "locator": "正文段落15",
+          "category": "identity",
+          "text": "自2025年起至2028年底，申请换领新的居民身份证期限，由原来的“有效期满之日前三个月”放宽至“有效期满之日前六个月”。在居民身份证有效期满前的6个月内，都可以申请换领。",
+          "text_sha256": "9608782fbdf48db3c74314c852ab5dbe0900be47a48f1b3d27444dca9908a1b5"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P16",
+          "locator": "正文段落16",
+          "category": "procedure",
+          "text": "问2、去哪儿办理？可以在网上提交申请吗？",
+          "text_sha256": "1388606f79f104bacd1a7cc31b14a5318394e51ed2e272077468eed008a5e851"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P17",
+          "locator": "正文段落17",
+          "category": "identity",
+          "text": "线下办理：本人（需要现场采集人像、指纹）前往本市任一居民身份证受理点（公安派出所综合服务窗口、政务服务中心户政窗口），可以就近办理，不受户籍地限制。线上办理：江苏户籍居民符合以下条件之一的，可以通过“苏服办”APP，访问“户政服务”模块，申请居民身份证换、补领“全程网办”：（1）16周岁至25周岁的，在近5年内申领过居民身份证且已现场采集人像、指纹信息，现场采集的人像为年满16周岁的照片；（2）26周岁至45周岁的，在近5年内申领过居民身份证且已现场采集人像、指纹信息，现场采集的人像为年满26周岁的照片；（3）46周岁以上的，在近5年内申领过居民身份证且已现场采集人像、指纹信息，现场采集的人像为年满46周岁的照片。对于首次申领居民身份证、证件有效期满换领、未满16周岁居民换、补领的，不予“全程网办”。",
+          "text_sha256": "112173616525e56f347f4c19ef4dfc3bf0ce965bea4b81be217b38826dc31527"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P18",
+          "locator": "正文段落18",
+          "category": "procedure",
+          "text": "问3、需要提交哪些材料？",
+          "text_sha256": "55db3825edca0ff2f9a3650e123b5912633a6eb1642d2441b3fb9c22c650d62d"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P19",
+          "locator": "正文段落19",
+          "category": "identity",
+          "text": "省内户籍居民提交原居民身份证。省外户籍居民提交原居民身份证，以及合法稳定就业、就学或居住的其中一种证明材料。无民事行为能力或限制行为能力人申请换领居民身份证，应由监护人陪同，另需提供监护关系凭证（居民户口簿、出生医学证明等能够证明监护关系的材料）以及监护人居民身份证。",
+          "text_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P20",
+          "locator": "正文段落20",
+          "category": "procedure",
+          "text": "问4、现场拍照可以挑选满意的证件照吗？拍照有哪些注意事项？",
+          "text_sha256": "fdfcdc7cff8eef7c2c1aba1582da669cb0c3630dcb175a7000d8f9ed3387aec0"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P21",
+          "locator": "正文段落21",
+          "category": "identity",
+          "text": "居民身份证相片支持“多拍优选”，申领人可以申请选择一张满意的照片。现场拍照注意事项：（1）姿态：坐姿端正，神态自然，目光平视前方，露出两耳，双肩保持持平。（2）面部：保持清洁，不要化浓妆、不能遮盖或改变脸部重要特征。（3）服装配饰：建议着深色有领上衣，不得穿制式服装，头颈部不得佩戴粗大发饰首饰，不得染过于艳丽的彩发，不得佩戴有色眼镜及镜片反光的眼镜。（4）发式：不得遮挡双耳、眉毛，不要过于蓬松、高耸影响相片布局。（5）其他：禁止佩戴美瞳，脸颈部不得有刺青。",
+          "text_sha256": "131dafb97aecbac47620a32d55d00cb61b3ca4dc9b31af608dfaf41c47843213"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P22",
+          "locator": "正文段落22",
+          "category": "procedure",
+          "text": "问5、需多久领取新证？",
+          "text_sha256": "0695bdfd50ab9e2bbefadd73df492097a4d80fbc243b7100bba8ce46912161a0"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P23",
+          "locator": "正文段落23",
+          "category": "identity",
+          "text": "省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+          "text_sha256": "a45e61e72027b50ec87fcdcdcc442b47d821dce5a9db2081879408d9b9365689"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P24",
+          "locator": "正文段落24",
+          "category": "procedure",
+          "text": "问6、有哪些领取方式？",
+          "text_sha256": "fb3edf1e515d776103e46c881978cd7e0932470b35712c7ccbba6f5b89fc6602"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P25",
+          "locator": "正文段落25",
+          "category": "identity",
+          "text": "可以选择到受理点本人或委托他人领取，或是选择邮寄领取（邮费到付）。受托人代领证件时需出示领证回执及本人居民身份证。",
+          "text_sha256": "fafb6f6172270e6e2b108fc85ef7fe2a3c44a8e9ce33b08ba4191bb323b3acd9"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P26",
+          "locator": "正文段落26",
+          "category": "procedure",
+          "text": "问7、换证收取费用吗？",
+          "text_sha256": "1c67aa64b65cc73c83caffd12cdff96b05390059c5e561dfb2f08566cf8c9df4"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P27",
+          "locator": "正文段落27",
+          "category": "identity",
+          "text": "到期换领居民身份证，收取工本费20元/证。",
+          "text_sha256": "7f68451e14aad64ed973414c72e515d8d01656406e344048899059889ccfe62a"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P28",
+          "locator": "正文段落28",
+          "category": "identity",
+          "text": "问8、如何查询身份证办理进度？",
+          "text_sha256": "1ac9bfcdf929386e140a100891d59035344972bc937291f41bd3a584c7e79482"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P29",
+          "locator": "正文段落29",
+          "category": "identity",
+          "text": "可以通过“苏证通”APP、“苏服办”APP或“南京公安微警务”微信服务号，在“身份证办理进度查询”模块查询。证件状态显示“到达受理点”，表示可以领取证件。",
+          "text_sha256": "6998c6856670af3378bdf07996f0026d83451d0313e839556af38e104512c703"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P30",
+          "locator": "正文段落30",
+          "category": "procedure",
+          "text": "问9、新证办理期间，旧证还能用吗？",
+          "text_sha256": "fd8a1378493478baa67f3e1a56996ce0ac50b7b37e478ae9d100b001457304c7"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P31",
+          "locator": "正文段落31",
+          "category": "identity",
+          "text": "申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+          "text_sha256": "ad4b924450257d443fd559557a9d25d5ec16269ca80d68f85246daec07c6a44c"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P32",
+          "locator": "正文段落32",
+          "category": "identity",
+          "text": "问10、身份证在有效期内，户口簿上登记的信息发生了变化，需要换领身份证吗？",
+          "text_sha256": "a8a33f3d182ec72cf14551af9be36a3c3c0434fa299554a605a56ad8349e39ec"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P33",
+          "locator": "正文段落33",
+          "category": "identity",
+          "text": "户口簿上登记的姓名、性别、民族、出生日期、公民身份号码发生变化，应当及时申请换领新的居民身份证。户口簿上其他登记信息（如户口登记住址、文化程度、婚姻状况等）发生变化，居民身份证在有效期内的，证件可以继续使用。申请换领新的居民身份证后，证件登记的地址将更新为现户口登记住址。",
+          "text_sha256": "fe2af0138c98f50c7e719625b12deba7636a42cc5545de530d3044df0fad2823"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P34",
+          "locator": "正文段落34",
+          "category": "procedure",
+          "text": "【关闭本页】 【打印本页】 【返回顶部】",
+          "text_sha256": "ba31ef92636dc8aafd8434bab17c8ae1c1d9fe140cf1ba381babf96c164ba1d5"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P35",
+          "locator": "正文段落35",
+          "category": "procedure",
+          "text": "网站地图",
+          "text_sha256": "93caefbe3c127cf0b07f2b60c99d47aff639b90c0070a891185518b5ff1db17a"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P36",
+          "locator": "正文段落36",
+          "category": "procedure",
+          "text": "联系我们",
+          "text_sha256": "c044f887b35d4c3a2e4f58b8f3d074b0cc703153a132543070e06da91a96b424"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P37",
+          "locator": "正文段落37",
+          "category": "procedure",
+          "text": "主办单位：南京市公安局 支持单位：南京市城市数字治理中心",
+          "text_sha256": "bc2f4a0d5487150d709f7cf43c4a3181a47897049276e89b526fb8bf6a1e3011"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P38",
+          "locator": "正文段落38",
+          "category": "procedure",
+          "text": "苏ICP备05004952号-7 网站标识码：3201000053",
+          "text_sha256": "b087de6f201d31e6a8b9b8381ad52e3f177bee378570e3018ec904b23297c37f"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P39",
+          "locator": "正文段落39",
+          "category": "procedure",
+          "text": "苏公网安备 32010402000623号",
+          "text_sha256": "85b11505bc6d264e41d8afc9b203e1fdcef8df7495f477c1b967b358a2bc7995"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P40",
+          "locator": "正文段落40",
+          "category": "procedure",
+          "text": "您是本站第 显示网站总访问量",
+          "text_sha256": "14992a411d75eb50d961a90c5d6002e5d5f934be7f0538db3ae8a2ee3ce8948f"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P41",
+          "locator": "正文段落41",
+          "category": "procedure",
+          "text": "位访客",
+          "text_sha256": "b3cb4da904a86506efe85404dbf2864d8f6f9ebcf7e4764d919f04ef676bcfdf"
+        },
+        {
+          "segment_id": "NJ-POLICE-FAQ-2025-P42",
+          "locator": "正文段落42",
+          "category": "procedure",
+          "text": ">",
+          "text_sha256": "62b67e1f685b7fef51102005dddd27774be3fee38c42965c53aab035d0b6b221"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review",
+      "page_observation": {
+        "schema": 1,
+        "media_type": "text/html",
+        "fields": {
+          "html:title": [
+            "身份证换证常见问题解答！_南京市公安局_ 南京市公安局"
+          ],
+          "meta:articletitle": [
+            "身份证换证常见问题解答！"
+          ],
+          "meta:author": [
+            ""
+          ],
+          "meta:contentsource": [
+            "南京市公安局"
+          ],
+          "meta:pubdate": [
+            "2025-05-29 11:47:00"
+          ]
+        }
+      }
+    },
+    {
+      "source_id": "NJ-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "title": "南京市政府换证周期答复",
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "original_file": "originals/NJ-CYCLE-2026.html",
+      "checked_at": "2026-10-19T14:18:33.536012+00:00",
+      "published_at": "2026-01-05",
+      "effective_from": null,
+      "effective_from_basis": null,
+      "region": "南京市",
+      "parsed_paragraphs": 3,
+      "selector": {
+        "class": "doccontent"
+      },
+      "segments": [
+        {
+          "segment_id": "NJ-CYCLE-2026-P1",
+          "locator": "正文段落1",
+          "category": "identity",
+          "text": "问：身份证到期后换证，需要多长时间才能领取新证？",
+          "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+        },
+        {
+          "segment_id": "NJ-CYCLE-2026-P2",
+          "locator": "正文段落2",
+          "category": "identity",
+          "text": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+          "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+        },
+        {
+          "segment_id": "NJ-CYCLE-2026-P3",
+          "locator": "正文段落3",
+          "category": "procedure",
+          "text": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+          "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review",
+      "page_observation": {
+        "schema": 1,
+        "media_type": "text/html",
+        "fields": {
+          "html:title": [
+            "身份证到期后换证，需要多长时间才能领取新证？_回应关切_中共南京市委 南京市人民政府"
+          ],
+          "meta:articletitle": [
+            "身份证到期后换证，需要多长时间才能领取新证？"
+          ],
+          "meta:contentsource": [
+            "南京公安微信公众号"
+          ],
+          "meta:pubdate": [
+            "2026-01-05 11:15"
+          ]
+        }
+      }
+    },
+    {
+      "source_id": "NJ-OLD-CARD-2025",
+      "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+      "title": "南京市政府旧证使用答复",
+      "original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+      "original_file": "originals/NJ-OLD-CARD-2025.html",
+      "checked_at": "2026-10-19T14:18:43.467507+00:00",
+      "published_at": "2025-12-09",
+      "effective_from": null,
+      "effective_from_basis": null,
+      "region": "南京市",
+      "parsed_paragraphs": 4,
+      "selector": {
+        "class": "content"
+      },
+      "segments": [
+        {
+          "segment_id": "NJ-OLD-CARD-2025-P1",
+          "locator": "正文段落1",
+          "category": "identity",
+          "text": "申请换领居民身份证期间，旧身份证还能用吗？",
+          "text_sha256": "d54c7cd2e174a5ebd9bb56bbb8be9ad7f338b399b1b189c25bceac27972f5f00"
+        },
+        {
+          "segment_id": "NJ-OLD-CARD-2025-P2",
+          "locator": "正文段落2",
+          "category": "procedure",
+          "text": "发布时间：2025-12-09",
+          "text_sha256": "26ca255f5477985c87ab6fbe9f1e8fe6a2cb2d8d392f202d8fb34114c765d09b"
+        },
+        {
+          "segment_id": "NJ-OLD-CARD-2025-P3",
+          "locator": "正文段落3",
+          "category": "identity",
+          "text": "问：申请换领居民身份证期间，旧身份证还能用吗？",
+          "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+        },
+        {
+          "segment_id": "NJ-OLD-CARD-2025-P4",
+          "locator": "正文段落4",
+          "category": "identity",
+          "text": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+          "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review",
+      "page_observation": {
+        "schema": 1,
+        "media_type": "text/html",
+        "fields": {
+          "html:title": [
+            "中共南京市委 南京市人民政府"
+          ],
+          "meta:articletitle": [
+            "申请换领居民身份证期间，旧身份证还能用吗？"
+          ],
+          "meta:author": [
+            ""
+          ],
+          "meta:contentsource": [
+            "南京公安微信公众号"
+          ],
+          "meta:pubdate": [
+            "2025-12-09 10:05"
+          ]
+        }
+      }
+    },
+    {
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+      "title": "北京交管公布的2011年修正居民身份证法",
+      "original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46",
+      "original_file": "originals/LAW-ID-BJ-TRAFFIC-2011.html",
+      "checked_at": "2026-10-19T14:18:48.683140+00:00",
+      "published_at": null,
+      "effective_from": "2012-01-01",
+      "effective_from_basis": "amendment_decision_explicit_clause",
+      "region": "national",
+      "parsed_paragraphs": 93,
+      "selector": {
+        "id": "zoom"
+      },
+      "segments": [
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P1",
+          "locator": "正文段落1",
+          "category": "identity",
+          "text": "全国人大常委会关于修改《中华人民共和国居民身份证法》的决定",
+          "text_sha256": "ace8f80004b66b9b3ddbe647156b0f6c69f0721de7c4b4bc1ab54c8e03676859"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P2",
+          "locator": "正文段落2",
+          "category": "procedure",
+          "text": "(2011年10月29日第十一届全国人民代表大会常务委员会第二十三次会议通过",
+          "text_sha256": "95b7abbe44f35883f5f04881ccbdf16e5a911063ef01c6c8dfd37620c5577533"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P3",
+          "locator": "正文段落3",
+          "category": "procedure",
+          "text": "2011年10月29日中华人民共和国主席令第五十一号公布 自2012年1月1日起施行)",
+          "text_sha256": "c0adde40bb33ac69bdf3decafef9b84fa1ddedba9f1e5a82b903f5eb381a7ee7"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P4",
+          "locator": "正文段落4",
+          "category": "procedure",
+          "text": "第一章 总则",
+          "text_sha256": "76c6f9facd16a33d360b9a017670b6b5559d1694b2d0ae346363176b5719af21"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P5",
+          "locator": "正文段落5",
+          "category": "procedure",
+          "text": "第二章 申领和发放",
+          "text_sha256": "19b824251d99dd600001c7dd2782dbd06e9ea8d9bd535efeb0c5a8c0af2b8ddd"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P6",
+          "locator": "正文段落6",
+          "category": "procedure",
+          "text": "第三章 使用和查验",
+          "text_sha256": "3f80384f66ad9bb1e4d360665a58c4687397b66a52a9deeb3e57284b0a0351e5"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P7",
+          "locator": "正文段落7",
+          "category": "procedure",
+          "text": "第四章 法律责任",
+          "text_sha256": "3b1b45f18bbd2e2f47963ed5bc9f4be94063ce5f1e2407bff261a80a90bbf021"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P8",
+          "locator": "正文段落8",
+          "category": "procedure",
+          "text": "第五章 附则",
+          "text_sha256": "f2e594022e586876077c39261bbf04110ef2e19896153a264a98d033046392eb"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P9",
+          "locator": "正文段落9",
+          "category": "identity",
+          "text": "第十一届全国人民代表大会常务委员会第二十三次会议决定对《中华人民共和国居民身份证法》作如下修改:",
+          "text_sha256": "957884791437060be0cf3dc7e5c2411acc3b4f80e56431a5b477e73afc8f8e90"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P10",
+          "locator": "正文段落10",
+          "category": "identity",
+          "text": "一、将第三条第一款修改为:“居民身份证登记的项目包括:姓名、性别、民族、出生日期、常住户口所在地住址、公民身份号码、本人相片、指纹信息、证件的有效期和签发机关。”",
+          "text_sha256": "8c0f88464bcf201bf0074a749fbfcf49f049d85d85911014665080bd03c7c992"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P11",
+          "locator": "正文段落11",
+          "category": "identity",
+          "text": "第三条增加一款，作为第三款:“公民申请领取、换领、补领居民身份证，应当登记指纹信息。”",
+          "text_sha256": "1ed28ca96cc39ad0829e7c8ccdbd7b25368d3fa133fedacd0094a5806a6526ec"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P12",
+          "locator": "正文段落12",
+          "category": "identity",
+          "text": "二、将第十一条第一款修改为:“国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。",
+          "text_sha256": "aca3b150ddb9c230dcfdfe428be55ce30b89b98b119d594c21936cad15d2533a"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P13",
+          "locator": "正文段落13",
+          "category": "identity",
+          "text": "三、第十三条增加一款，作为第二款:“有关单位及其工作人员对履行职责或者提供服务过程中获得的居民身份证记载的公民个人信息，应当予以保密。”",
+          "text_sha256": "c40536a9d06657d098efd01946e32727889bc5337c4f0548b7ce385461a85399"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P14",
+          "locator": "正文段落14",
+          "category": "procedure",
+          "text": "四、第十五条第一款增加一项，作为第四项:“（四）在火车站、长途汽车站、港口、码头、机场或者在重大活动期间设区的市级人民政府规定的场所，需要查明有关人员身份的”。",
+          "text_sha256": "df06a4f4e856d85ba6737efd3350d1d5600a12a5dc25f2aa7bf5ab133cd04c6b"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P15",
+          "locator": "正文段落15",
+          "category": "identity",
+          "text": "五、增加一条，作为第十九条:“国家机关或者金融、电信、交通、教育、医疗等单位的工作人员泄露在履行职责或者提供服务过程中获得的居民身份证记载的公民个人信息，构成犯罪的，依法追究刑事责任；尚不构成犯罪的，由公安机关处十日以上十五日以下拘留，并处五千元罚款，有违法所得的，没收违法所得。",
+          "text_sha256": "4c4bf5bd10b849649fc46f33197ff113c008183f5095abbbdfa41d26498ae253"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P16",
+          "locator": "正文段落16",
+          "category": "procedure",
+          "text": "“单位有前款行为，构成犯罪的，依法追究刑事责任；尚不构成犯罪的，由公安机关对其直接负责的主管人员和其他直接责任人员，处十日以上十五日以下拘留，并处十万元以上五十万元以下罚款，有违法所得的，没收违法所得。",
+          "text_sha256": "b540e1827b82a663c8beede210d78a6190451a17184e6bc4e85ace5fbbd75804"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P17",
+          "locator": "正文段落17",
+          "category": "procedure",
+          "text": "“有前两款行为，对他人造成损害的，依法承担民事责任。”",
+          "text_sha256": "dd21e60023fa0d8caf1ee5688e5eef82acaae5c95bac91bde13d79449b3874ae"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P18",
+          "locator": "正文段落18",
+          "category": "identity",
+          "text": "六、将第二十二条改为第二十三条，第二款修改为:“依照《中华人民共和国居民身份证条例》领取的居民身份证，自2013年1月1日起停止使用。依照本法在2012年1月1日以前领取的居民身份证，在其有效期内，继续有效。”",
+          "text_sha256": "41e926fc0b103b66e0330195cd8c5b4b927a53758275faa252f9bde0b9fad755"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P19",
+          "locator": "正文段落19",
+          "category": "identity",
+          "text": "增加一款，作为第三款:“国家决定换发新一代居民身份证后，原居民身份证的停止使用日期由国务院决定。”",
+          "text_sha256": "e25b87376b32574aaba6ca049af7365fbe0b1d33190ec62e75b222278c23ca89"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P20",
+          "locator": "正文段落20",
+          "category": "procedure",
+          "text": "本决定自2012年1月1日起施行。",
+          "text_sha256": "895aa8b1a63c11312434d55664de88f01f4855f8b9306ed50440529ea527b96a"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P21",
+          "locator": "正文段落21",
+          "category": "identity",
+          "text": "《中华人民共和国居民身份证法》根据本决定作相应修改，重新公布。",
+          "text_sha256": "0b56c0eab1c11e7c2edc37fd32f55b8894647b924fb0f5ae6e1b2c32ae190a09"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P22",
+          "locator": "正文段落22",
+          "category": "identity",
+          "text": "中华人民共和国居民身份证法",
+          "text_sha256": "3abae16b23ffa142a07f8a5b79f4828722fae6d84152425b5520b5b0ec1529b3"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P23",
+          "locator": "正文段落23",
+          "category": "identity",
+          "text": "（2003年6月28日第十届全国人民代表大会常务委员会第三次会议通过 2003年6月28日中华人民共和国主席令第四号公布 根据2011年10月29日第十一届全国人民代表大会常务委员会第二十三次会议《关于修改〈中华人民共和国居民身份证法〉的决定》修正）",
+          "text_sha256": "f841ace4032c2f3c8be8babb5639a9845100565bfed377d5a38af72d7267bbd1"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P24",
+          "locator": "正文段落24",
+          "category": "procedure",
+          "text": "第一章 总则",
+          "text_sha256": "76c6f9facd16a33d360b9a017670b6b5559d1694b2d0ae346363176b5719af21"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P25",
+          "locator": "正文段落25",
+          "category": "procedure",
+          "text": "第一条 为了证明居住在中华人民共和国境内的公民的身份，保障公民的合法权益，便利公民进行社会活动，维护社会秩序，制定本法。",
+          "text_sha256": "41fa752f6744117c7b6e3e0c4f6645e98f7e69026de42a84f214f8ea3811748b"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P26",
+          "locator": "正文段落26",
+          "category": "identity",
+          "text": "第二条 居住在中华人民共和国境内的年满十六周岁的中国公民，应当依照本法的规定申请领取居民身份证；未满十六周岁的中国公民，可以依照本法的规定申请领取居民身份证。",
+          "text_sha256": "05651c985a3e1aa62a3201332d6c9851b51f183653f9e51a17ad34473215d4d5"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P27",
+          "locator": "正文段落27",
+          "category": "identity",
+          "text": "第三条 居民身份证登记的项目包括:姓名、性别、民族、出生日期、常住户口所在地住址、公民身份号码、本人相片、指纹信息、证件的有效期和签发机关。",
+          "text_sha256": "0cb2e17ebbdfeed61936585cced810ce7057831ae02fe8323aa6a3dc4e3d7d4c"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P28",
+          "locator": "正文段落28",
+          "category": "procedure",
+          "text": "公民身份号码是每个公民唯一的、终身不变的身份代码，由公安机关按照公民身份号码国家标准编制。",
+          "text_sha256": "0a74b1d49a0c4274036b490c82d1a26ec22fa355cc350a2fb8081cebeaedfbec"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P29",
+          "locator": "正文段落29",
+          "category": "identity",
+          "text": "公民申请领取、换领、补领居民身份证，应当登记指纹信息。",
+          "text_sha256": "fa7073aa70b68039b7e80abe189e4458ff04f63749209bfa5f6f741430c9d86e"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P30",
+          "locator": "正文段落30",
+          "category": "identity",
+          "text": "第四条 居民身份证使用规范汉字和符合国家标准的数字符号填写。",
+          "text_sha256": "9b111f5214ea03f25985d7deb303d53b1eede1b1c42d5fe74711efd92c43899c"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P31",
+          "locator": "正文段落31",
+          "category": "identity",
+          "text": "民族自治地方的自治机关根据本地区的实际情况，对居民身份证用汉字登记的内容，可以决定同时使用实行区域自治的民族的文字或者选用一种当地通用的文字。",
+          "text_sha256": "a0f7a4edb3fbc0ba58784af418e22d27ca839609765701ed3613bdbe07465f16"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P32",
+          "locator": "正文段落32",
+          "category": "identity",
+          "text": "第五条 十六周岁以上公民的居民身份证的有效期为十年、二十年、长期。十六周岁至二十五周岁的，发给有效期十年的居民身份证；二十六周岁至四十五周岁的，发给有效期二十年的居民身份证；四十六周岁以上的，发给长期有效的居民身份证。",
+          "text_sha256": "236995666d5d60410f6234c18bcecb042ee44ab38e8941afb04f823edb0737c5"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P33",
+          "locator": "正文段落33",
+          "category": "identity",
+          "text": "未满十六周岁的公民，自愿申请领取居民身份证的，发给有效期五年的居民身份证。",
+          "text_sha256": "7df3024ae85b7e82a4826864b180d0ec138edd71973e61306d7ace02e8e0b253"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P34",
+          "locator": "正文段落34",
+          "category": "identity",
+          "text": "第六条 居民身份证式样由国务院公安部门制定。居民身份证由公安机关统一制作、发放。",
+          "text_sha256": "94d3f75e515dd3584bf958222a7d48ebcc3df2db56d3db7964d497893417c054"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P35",
+          "locator": "正文段落35",
+          "category": "identity",
+          "text": "居民身份证具备视读与机读两种功能，视读、机读的内容限于本法第三条第一款规定的项目。",
+          "text_sha256": "7b478001d79ace6fb6c829e341f93893c567e36329c4aee21c65ccb697520f25"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P36",
+          "locator": "正文段落36",
+          "category": "identity",
+          "text": "公安机关及其人民警察对因制作、发放、查验、扣押居民身份证而知悉的公民的个人信息，应当予以保密。",
+          "text_sha256": "e44febd0d319cd5d8688611bd7e624f2a57d7d39fc489b09b08aa459fb20de51"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P37",
+          "locator": "正文段落37",
+          "category": "procedure",
+          "text": "第二章 申领和发放",
+          "text_sha256": "19b824251d99dd600001c7dd2782dbd06e9ea8d9bd535efeb0c5a8c0af2b8ddd"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P38",
+          "locator": "正文段落38",
+          "category": "identity",
+          "text": "第七条 公民应当自年满十六周岁之日起三个月内，向常住户口所在地的公安机关申请领取居民身份证。",
+          "text_sha256": "80d6ab51d97be98009fb5533aa7be9a930c9574bdd7423a66eabb13922b54e3e"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P39",
+          "locator": "正文段落39",
+          "category": "identity",
+          "text": "未满十六周岁的公民，由监护人代为申请领取居民身份证。",
+          "text_sha256": "1fdb8b6de45ae785da71e7931b6bbb0581b39f567ecbb48d66aedb3f15944614"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P40",
+          "locator": "正文段落40",
+          "category": "identity",
+          "text": "第八条 居民身份证由居民常住户口所在地的县级人民政府公安机关签发。",
+          "text_sha256": "bf78bd01d1bdddaee65a61ed3bda9d1676f65c9be1f22a1e46b5e835f1794422"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P41",
+          "locator": "正文段落41",
+          "category": "identity",
+          "text": "第九条 香港同胞、澳门同胞、台湾同胞迁入内地定居的，华侨回国定居的，以及外国人、无国籍人在中华人民共和国境内定居并被批准加入或者恢复中华人民共和国国籍的，在办理常住户口登记时，应当依照本法规定申请领取居民身份证。",
+          "text_sha256": "99eb06565fe25f53cda80616e30f44180e09de1c81bc8e16467c957f87815527"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P42",
+          "locator": "正文段落42",
+          "category": "identity",
+          "text": "第十条 申请领取居民身份证，应当填写《居民身份证申领登记表》，交验居民户口簿。",
+          "text_sha256": "a5fb1720986315c453106f8453861640677649bac49d8bb78f418432073c0627"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+          "locator": "正文段落43",
+          "category": "identity",
+          "text": "第十一条 国家决定换发新一代居民身份证、居民身份证有效期满、公民姓名变更或者证件严重损坏不能辨认的，公民应当换领新证；居民身份证登记项目出现错误的，公安机关应当及时更正，换发新证；领取新证时，必须交回原证。居民身份证丢失的，应当申请补领。",
+          "text_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P44",
+          "locator": "正文段落44",
+          "category": "identity",
+          "text": "未满十六周岁公民的居民身份证有前款情形的，可以申请换领、换发或者补领新证。",
+          "text_sha256": "440df7b738c040ed426b85321823c5f8028baa0da624d07a5f5eea09346fe872"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P45",
+          "locator": "正文段落45",
+          "category": "identity",
+          "text": "公民办理常住户口迁移手续时，公安机关应当在居民身份证的机读项目中记载公民常住户口所在地住址变动的情况，并告知本人。",
+          "text_sha256": "b249503e4542542ff1af258324b989dd08c7eb08ac669eb2b1cb5fc0865f8b60"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P46",
+          "locator": "正文段落46",
+          "category": "identity",
+          "text": "第十二条 公民申请领取、换领、补领居民身份证，公安机关应当按照规定及时予以办理。公安机关应当自公民提交《居民身份证申领登记表》之日起六十日内发放居民身份证；交通不便的地区，办理时间可以适当延长，但延长的时间不得超过三十日。",
+          "text_sha256": "eda1e59c8c9a9acd4efea02c1a90d24552b34ae5ac4bbf4f2fb51648d56105cb"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P47",
+          "locator": "正文段落47",
+          "category": "identity",
+          "text": "公民在申请领取、换领、补领居民身份证期间，急需使用居民身份证的，可以申请领取临时居民身份证，公安机关应当按照规定及时予以办理。具体办法由国务院公安部门规定。",
+          "text_sha256": "1e9976099ed4fb9ba955d941c123719945e79a37faae16c0ec3636bf15fd77b8"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P48",
+          "locator": "正文段落48",
+          "category": "procedure",
+          "text": "第三章 使用和查验",
+          "text_sha256": "3f80384f66ad9bb1e4d360665a58c4687397b66a52a9deeb3e57284b0a0351e5"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P49",
+          "locator": "正文段落49",
+          "category": "identity",
+          "text": "第十三条 公民从事有关活动，需要证明身份的，有权使用居民身份证证明身份，有关单位及其工作人员不得拒绝。",
+          "text_sha256": "261ba62644220c8fa5852eb506e4486293e8540c147fd1ac0a9449b9c429ce54"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P50",
+          "locator": "正文段落50",
+          "category": "identity",
+          "text": "有关单位及其工作人员对履行职责或者提供服务过程中获得的居民身份证记载的公民个人信息，应当予以保密。",
+          "text_sha256": "395affdd1a3fb42e855467b38942f571a124b1976435789a6177e7489a96096e"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P51",
+          "locator": "正文段落51",
+          "category": "identity",
+          "text": "第十四条 有下列情形之一的，公民应当出示居民身份证证明身份:",
+          "text_sha256": "ebca41771bca86e019545be5f07414b2f1746fb908bf2d712bd4c883ee910515"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P52",
+          "locator": "正文段落52",
+          "category": "household",
+          "text": "（一）常住户口登记项目变更；",
+          "text_sha256": "80637cb963202e19262346561df3c60b1620acb876488173bc73eb216c43c135"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P53",
+          "locator": "正文段落53",
+          "category": "procedure",
+          "text": "（二）兵役登记；",
+          "text_sha256": "092a28751b546a7beda99a4046b0561831b5fca9b4aea2b26c374cb5398984bd"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P54",
+          "locator": "正文段落54",
+          "category": "procedure",
+          "text": "（三）婚姻登记、收养登记；",
+          "text_sha256": "56ae2e2068a33a24e87a83890abf852fea58bc98f58ee76bb232431aa4fed9b2"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P55",
+          "locator": "正文段落55",
+          "category": "procedure",
+          "text": "（四）申请办理出境手续；",
+          "text_sha256": "eb0d08f5618fccbe5f81350e5da8a1f806bbf539f9cc953fce3a80ef41ac21f7"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P56",
+          "locator": "正文段落56",
+          "category": "identity",
+          "text": "（五）法律、行政法规规定需要用居民身份证证明身份的其他情形。",
+          "text_sha256": "4580e1890f1d2236279c30d336af3c53bd9bc61cb078c7b81e6c38bb7f0e4ac0"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P57",
+          "locator": "正文段落57",
+          "category": "identity",
+          "text": "依照本法规定未取得居民身份证的公民，从事前款规定的有关活动，可以使用符合国家规定的其他证明方式证明身份。",
+          "text_sha256": "1bad050bf811d2de8c6ca1671a036eb857c69edac57ba2355d295077bb92a3f2"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P58",
+          "locator": "正文段落58",
+          "category": "identity",
+          "text": "第十五条 人民警察依法执行职务，遇有下列情形之一的，经出示执法证件，可以查验居民身份证:",
+          "text_sha256": "cf2190c73e35ec504b171c047349f1e7161506b3def5abe4236c184ee006e008"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P59",
+          "locator": "正文段落59",
+          "category": "procedure",
+          "text": "（一）对有违法犯罪嫌疑的人员，需要查明身份的；",
+          "text_sha256": "41d8f273a659871ec85282a2dc5bd07092c878edfdb9f1566d53ae8f81a9bd3d"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P60",
+          "locator": "正文段落60",
+          "category": "procedure",
+          "text": "（二）依法实施现场管制时，需要查明有关人员身份的；",
+          "text_sha256": "77374aa8070f0c596909a2a4c93c33e6e4de427ffac72f042cdaa1d24d89d2f9"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P61",
+          "locator": "正文段落61",
+          "category": "procedure",
+          "text": "（三）发生严重危害社会治安突发事件时，需要查明现场有关人员身份的；",
+          "text_sha256": "414ab0eafe549aa74d957af611252d1941a42837bc8152160e54a35b027b4d80"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P62",
+          "locator": "正文段落62",
+          "category": "procedure",
+          "text": "（四）在火车站、长途汽车站、港口、码头、机场或者在重大活动期间设区的市级人民政府规定的场所，需要查明有关人员身份的；",
+          "text_sha256": "a692f619ea6bc92932cf8e7cf877764a762cf20bc0e3b8405bd79fc9b9319060"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P63",
+          "locator": "正文段落63",
+          "category": "procedure",
+          "text": "（五）法律规定需要查明身份的其他情形。",
+          "text_sha256": "33a5cf883f53bb39751ef90409809ccfe9886a7ec5777b4fabd794d05bf496f4"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P64",
+          "locator": "正文段落64",
+          "category": "identity",
+          "text": "有前款所列情形之一，拒绝人民警察查验居民身份证的，依照有关法律规定，分别不同情形，采取措施予以处理。",
+          "text_sha256": "93f5c6697e2bd9365fd126ddd2727f7b00cc93434b0d12397b119cf0b5c71ee8"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P65",
+          "locator": "正文段落65",
+          "category": "identity",
+          "text": "任何组织或者个人不得扣押居民身份证。但是，公安机关依照《中华人民共和国刑事诉讼法》执行监视居住强制措施的情形除外。",
+          "text_sha256": "5845708436aa6717c4c502e290d9d41bfb41076c28049ca51c62b37538f85925"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P66",
+          "locator": "正文段落66",
+          "category": "procedure",
+          "text": "第四章 法律责任",
+          "text_sha256": "3b1b45f18bbd2e2f47963ed5bc9f4be94063ce5f1e2407bff261a80a90bbf021"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P67",
+          "locator": "正文段落67",
+          "category": "procedure",
+          "text": "第十六条 有下列行为之一的，由公安机关给予警告，并处二百元以下罚款，有违法所得的，没收违法所得:",
+          "text_sha256": "69fa84e38c9b751e425862d6041beff8a982561ebfa8e65841f5bd80f4d577f1"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P68",
+          "locator": "正文段落68",
+          "category": "identity",
+          "text": "（一）使用虚假证明材料骗领居民身份证的；",
+          "text_sha256": "8ad4a91e038eb957c17ac42ed683f4861e56ddfb61a899d77b73c447e4daa978"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P69",
+          "locator": "正文段落69",
+          "category": "identity",
+          "text": "（二）出租、出借、转让居民身份证的；",
+          "text_sha256": "cbd2c851b932b522df0f167375aec15166b432d4cd4d5f6da4b148ee92febfdc"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P70",
+          "locator": "正文段落70",
+          "category": "identity",
+          "text": "（三）非法扣押他人居民身份证的。",
+          "text_sha256": "f5e0a79d4efbaf735edc0b7ab4e5620415e27a4c3ed3d75996c750a242cfb0bb"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P71",
+          "locator": "正文段落71",
+          "category": "procedure",
+          "text": "第十七条 有下列行为之一的，由公安机关处二百元以上一千元以下罚款，或者处十日以下拘留，有违法所得的，没收违法所得:",
+          "text_sha256": "abcd3b1f16fba357b3a48778c518e045b689f27158a63874eaf442445e4a4583"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P72",
+          "locator": "正文段落72",
+          "category": "identity",
+          "text": "（一）冒用他人居民身份证或者使用骗领的居民身份证的；",
+          "text_sha256": "c4ca7b66dc917fedc6d93e8923ee26726eaa5b611ab429d54ce6a33bfe24cd17"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P73",
+          "locator": "正文段落73",
+          "category": "identity",
+          "text": "（二）购买、出售、使用伪造、变造的居民身份证的。",
+          "text_sha256": "fb7832b9db55be9bc0ca5a1f20a657f4c6af14c25034c2b12e12600cf004e8f9"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P74",
+          "locator": "正文段落74",
+          "category": "identity",
+          "text": "伪造、变造的居民身份证和骗领的居民身份证，由公安机关予以收缴。",
+          "text_sha256": "11e2f4f2d92fbd8bcd0b27c75663063a80a602e805be113cdc4d69d42cb4864a"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P75",
+          "locator": "正文段落75",
+          "category": "identity",
+          "text": "第十八条 伪造、变造居民身份证的，依法追究刑事责任。",
+          "text_sha256": "546a6322a8cf35b0d93af866a99c0ff29223e6aa2615764f57d0970bff3e3a34"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P76",
+          "locator": "正文段落76",
+          "category": "procedure",
+          "text": "有本法第十六条、第十七条所列行为之一，从事犯罪活动的，依法追究刑事责任。",
+          "text_sha256": "50755cbf93ce355d005a8dcd1c442021576bd035b0c818fb148200f0180d51e4"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P77",
+          "locator": "正文段落77",
+          "category": "identity",
+          "text": "第十九条 国家机关或者金融、电信、交通、教育、医疗等单位的工作人员泄露在履行职责或者提供服务过程中获得的居民身份证记载的公民个人信息，构成犯罪的，依法追究刑事责任；尚不构成犯罪的，由公安机关处十日以上十五日以下拘留，并处五千元罚款，有违法所得的，没收违法所得。",
+          "text_sha256": "d9395352d6b2064402e7309d217c9d9e754d452094745f785b30011140e90796"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P78",
+          "locator": "正文段落78",
+          "category": "procedure",
+          "text": "单位有前款行为，构成犯罪的，依法追究刑事责任；尚不构成犯罪的，由公安机关对其直接负责的主管人员和其他直接责任人员，处十日以上十五日以下拘留，并处十万元以上五十万元以下罚款，有违法所得的，没收违法所得。",
+          "text_sha256": "84c52c2f3ee038cdef9ec6791968b3c578c199e336ee3a80f52cdcc9aa1950dd"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P79",
+          "locator": "正文段落79",
+          "category": "procedure",
+          "text": "有前两款行为，对他人造成损害的，依法承担民事责任。",
+          "text_sha256": "c39865fedd4a899272b1b2ee112b58f900f158988cc4a421c2ac49def33f0509"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P80",
+          "locator": "正文段落80",
+          "category": "procedure",
+          "text": "第二十条 人民警察有下列行为之一的，根据情节轻重，依法给予行政处分；构成犯罪的，依法追究刑事责任:",
+          "text_sha256": "8ad6f55333f588863025cf0f76f4ae5467c1c63903e78523512dddd8f4a2ae9b"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P81",
+          "locator": "正文段落81",
+          "category": "identity",
+          "text": "（一）利用制作、发放、查验居民身份证的便利，收受他人财物或者谋取其他利益的；",
+          "text_sha256": "999e2336e33d752b2ae9ad1a800bead3100e14d66bb1872ceab4d56eba858701"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P82",
+          "locator": "正文段落82",
+          "category": "identity",
+          "text": "（二）非法变更公民身份号码，或者在居民身份证上登载本法第三条第一款规定项目以外的信息或者故意登载虚假信息的；",
+          "text_sha256": "e357ef15dcebb5f7d9b78c847f2ca380992d8cf9d7cffd8da913737b2dd2706a"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P83",
+          "locator": "正文段落83",
+          "category": "identity",
+          "text": "（三）无正当理由不在法定期限内发放居民身份证的；",
+          "text_sha256": "9c21aaff9a9f2606f5443a620e970b542c48394dbb5be248ca6d8f7ed4e3be16"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P84",
+          "locator": "正文段落84",
+          "category": "identity",
+          "text": "（四）违反规定查验、扣押居民身份证，侵害公民合法权益的；",
+          "text_sha256": "38650d2bd683556e129cc11b69a61d108e52446e8a744a7b53e6b8f0b93a6874"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P85",
+          "locator": "正文段落85",
+          "category": "identity",
+          "text": "（五）泄露因制作、发放、查验、扣押居民身份证而知悉的公民个人信息，侵害公民合法权益的。",
+          "text_sha256": "744f059c009b1a0f3a4623ff8d8b3307f7c50fdd919674f4ea71266379acf37d"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P86",
+          "locator": "正文段落86",
+          "category": "procedure",
+          "text": "第五章 附则",
+          "text_sha256": "f2e594022e586876077c39261bbf04110ef2e19896153a264a98d033046392eb"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P87",
+          "locator": "正文段落87",
+          "category": "identity",
+          "text": "第二十一条 公民申请领取、换领、补领居民身份证，应当缴纳证件工本费。居民身份证工本费标准，由国务院价格主管部门会同国务院财政部门核定。",
+          "text_sha256": "29aa88930bb7d99136fb04360c2403fb1725ddf233a63c594eed17e036671812"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P88",
+          "locator": "正文段落88",
+          "category": "identity",
+          "text": "对城市中领取最低生活保障金的居民、农村中有特殊生活困难的居民，在其初次申请领取和换领居民身份证时，免收工本费。对其他生活确有困难的居民，在其初次申请领取和换领居民身份证时，可以减收工本费。免收和减收工本费的具体办法，由国务院财政部门会同国务院价格主管部门规定。",
+          "text_sha256": "950f737e9cf9d7d6508ff336448cabd5c0fc2964d6a089615d992b333636c17d"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P89",
+          "locator": "正文段落89",
+          "category": "identity",
+          "text": "公安机关收取的居民身份证工本费，全部上缴国库。",
+          "text_sha256": "967c015916d73660f9de06d98254e4e510162181320db397f8607cac570446f4"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P90",
+          "locator": "正文段落90",
+          "category": "identity",
+          "text": "第二十二条 现役的人民解放军军人、人民武装警察申请领取和发放居民身份证的具体办法，由国务院和中央军事委员会另行规定。",
+          "text_sha256": "c77ac296b8adbe651b9f0f6060e4a2a9a1151d6b62d75cec484a99d5c349e017"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P91",
+          "locator": "正文段落91",
+          "category": "identity",
+          "text": "第二十三条 本法自2004年1月1日起施行，《中华人民共和国居民身份证条例》同时废止。",
+          "text_sha256": "0fd0b3ed7252c3a4975db1a143fdceb312442cb493158d24ca970929cb80624d"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P92",
+          "locator": "正文段落92",
+          "category": "identity",
+          "text": "依照《中华人民共和国居民身份证条例》领取的居民身份证，自2013年1月1日起停止使用。依照本法在2012年1月1日以前领取的居民身份证，在其有效期内，继续有效。",
+          "text_sha256": "153f5e9762c8d2dd21789cbe2dc03d81618a36b3d781023ea85e826e99003df7"
+        },
+        {
+          "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P93",
+          "locator": "正文段落93",
+          "category": "identity",
+          "text": "国家决定换发新一代居民身份证后，原居民身份证的停止使用日期由国务院决定。",
+          "text_sha256": "84ce27b0c308afc5f1a71d61cde094b8f259e434fcee89cbdb97fb85a1310c7a"
+        }
+      ],
+      "scope_review": "machine_source_comparison_not_human_business_review",
+      "page_observation": {
+        "schema": 1,
+        "media_type": "text/html",
+        "fields": {
+          "html:title": [
+            "中华人民共和国居民身份证法"
+          ],
+          "meta:articletitle": [
+            "中华人民共和国居民身份证法"
+          ],
+          "meta:author": [
+            ""
+          ],
+          "meta:contentsource": [
+            "北京市公安局公安交通管理局"
+          ],
+          "meta:pubdate": [
+            "2011-10-10 10:02"
+          ]
+        }
+      }
+    }
+  ],
+  "citations": [
+    {
+      "id": "CITE-NR01",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+      "start": 20,
+      "end": 29,
+      "quote": "居民身份证有效期满",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c"
+    },
+    {
+      "id": "CITE-NR02",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P15",
+      "start": 0,
+      "end": 14,
+      "quote": "自2025年起至2028年底",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "9608782fbdf48db3c74314c852ab5dbe0900be47a48f1b3d27444dca9908a1b5"
+    },
+    {
+      "id": "CITE-NR03",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P17",
+      "start": 5,
+      "end": 20,
+      "quote": "本人（需要现场采集人像、指纹）",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "112173616525e56f347f4c19ef4dfc3bf0ce965bea4b81be217b38826dc31527"
+    },
+    {
+      "id": "CITE-NR04",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P17",
+      "start": 323,
+      "end": 331,
+      "quote": "证件有效期满换领",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "112173616525e56f347f4c19ef4dfc3bf0ce965bea4b81be217b38826dc31527"
+    },
+    {
+      "id": "CITE-NR05",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P19",
+      "start": 0,
+      "end": 14,
+      "quote": "省内户籍居民提交原居民身份证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+    },
+    {
+      "id": "CITE-NR06",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P19",
+      "start": 32,
+      "end": 53,
+      "quote": "合法稳定就业、就学或居住的其中一种证明材料",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+    },
+    {
+      "id": "CITE-NR07",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P19",
+      "start": 54,
+      "end": 69,
+      "quote": "无民事行为能力或限制行为能力人",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "8ac7d0e5252af9eeb2d43d598719d8d41c776eed1389604e475f7dcb93a78c7f"
+    },
+    {
+      "id": "CITE-NR08",
+      "source_id": "NJ-CYCLE-2026",
+      "segment_id": "NJ-CYCLE-2026-P2",
+      "start": 16,
+      "end": 22,
+      "quote": "20个工作日",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+    },
+    {
+      "id": "CITE-NR09",
+      "source_id": "NJ-CYCLE-2026",
+      "segment_id": "NJ-CYCLE-2026-P3",
+      "start": 28,
+      "end": 34,
+      "quote": "最大限度缩短",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+    },
+    {
+      "id": "CITE-NR10",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P27",
+      "start": 15,
+      "end": 20,
+      "quote": "20元/证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "7f68451e14aad64ed973414c72e515d8d01656406e344048899059889ccfe62a"
+    },
+    {
+      "id": "CITE-NR11",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P25",
+      "start": 27,
+      "end": 31,
+      "quote": "邮费到付",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "fafb6f6172270e6e2b108fc85ef7fe2a3c44a8e9ce33b08ba4191bb323b3acd9"
+    },
+    {
+      "id": "CITE-NR12",
+      "source_id": "NJ-OLD-CARD-2025",
+      "segment_id": "NJ-OLD-CARD-2025-P4",
+      "start": 14,
+      "end": 28,
+      "quote": "未超期的旧身份证可以继续使用",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+    },
+    {
+      "id": "CITE-NR13",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P43",
+      "start": 90,
+      "end": 102,
+      "quote": "领取新证时，必须交回原证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "9f81b6a84328f25b9b49d9b46a9a7004588c5fcf046708cc584ef6c79f73b33c"
+    },
+    {
+      "id": "CITE-NR14",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P46",
+      "start": 46,
+      "end": 70,
+      "quote": "自公民提交《居民身份证申领登记表》之日起六十日内",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "eda1e59c8c9a9acd4efea02c1a90d24552b34ae5ac4bbf4f2fb51648d56105cb"
+    },
+    {
+      "id": "CITE-NR15",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "segment_id": "LAW-ID-BJ-TRAFFIC-2011-P47",
+      "start": 32,
+      "end": 45,
+      "quote": "可以申请领取临时居民身份证",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "1e9976099ed4fb9ba955d941c123719945e79a37faae16c0ec3636bf15fd77b8"
+    },
+    {
+      "id": "CITE-NR16",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "segment_id": "NJ-POLICE-FAQ-2025-P29",
+      "start": 61,
+      "end": 66,
+      "quote": "到达受理点",
+      "offset_unit": "unicode_code_points",
+      "context_sha256": "6998c6856670af3378bdf07996f0026d83451d0313e839556af38e104512c703"
+    }
+  ],
+  "rules": [
+    {
+      "id": "NR01",
+      "title": "期满换领法律基础",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 43,
+      "required_text": "居民身份证有效期满",
+      "predicate": "expiry_requires_renewal",
+      "conditions": {
+        "reason": "expiry"
+      },
+      "note": "期满应换领；不把遗失补领或损坏换领混作本事项。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR01"
+      ]
+    },
+    {
+      "id": "NR02",
+      "title": "提前办理窗口",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 15,
+      "required_text": "自2025年起至2028年底",
+      "predicate": "advance_window_months",
+      "conditions": {
+        "reason": "expiry",
+        "source_service_period": [
+          "2025-01-01",
+          "2029-01-01"
+        ],
+        "months": 6
+      },
+      "note": "来源自述服务期；不是将文章日期或抓取日认作法律施行日。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR02"
+      ]
+    },
+    {
+      "id": "NR03",
+      "title": "本人线下受理",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 17,
+      "required_text": "本人（需要现场采集人像、指纹）",
+      "predicate": "onsite_self_service",
+      "conditions": {
+        "reason": "expiry"
+      },
+      "note": "来源所列南京受理点，不承诺每个网点当前地址、营业时间。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR03"
+      ]
+    },
+    {
+      "id": "NR04",
+      "title": "期满网办排除",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 17,
+      "required_text": "证件有效期满换领",
+      "predicate": "online_application_excluded",
+      "conditions": {
+        "reason": "expiry"
+      },
+      "note": "保留整段年龄及指纹条件，明确期满属于该来源列明的排除，不因满足年龄条件放行。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR04"
+      ]
+    },
+    {
+      "id": "NR05",
+      "title": "省内材料主分支",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 19,
+      "required_text": "省内户籍居民提交原居民身份证",
+      "predicate": "requires_original_id",
+      "conditions": {
+        "household": "jiangsu",
+        "adult": true,
+        "civil_capacity": "full",
+        "self": true
+      },
+      "note": "主分支为成年完全民事行为能力本人；不据此断言所有人均免户口簿或无需其他证明。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR05"
+      ]
+    },
+    {
+      "id": "NR06",
+      "title": "省外材料例外",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 19,
+      "required_text": "合法稳定就业、就学或居住的其中一种证明材料",
+      "predicate": "outprovince_extra_proof",
+      "conditions": {
+        "household": "outside_jiangsu",
+        "proof_choice": [
+          "employment",
+          "education",
+          "residence"
+        ]
+      },
+      "note": "来源阅读例外，尚非本轮主成功分支；三种证明为其一，不累计要求。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR06"
+      ]
+    },
+    {
+      "id": "NR07",
+      "title": "监护例外",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 19,
+      "required_text": "无民事行为能力或限制行为能力人",
+      "predicate": "guardian_exception",
+      "conditions": {
+        "civil_capacity": [
+          "none",
+          "limited"
+        ]
+      },
+      "note": "成年人不等于具有完全民事行为能力；未知时澄清，不能按年龄默认跳过。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR07"
+      ]
+    },
+    {
+      "id": "NR08",
+      "title": "本省换发周期",
+      "source_id": "NJ-CYCLE-2026",
+      "ordinal": 2,
+      "required_text": "20个工作日",
+      "predicate": "service_cycle_workdays",
+      "conditions": {
+        "household": "jiangsu",
+        "days": 20
+      },
+      "note": "保留工作日单位；来源未说明精确计时起点，不推算实际领取日期或替换法定期限。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR08"
+      ]
+    },
+    {
+      "id": "NR09",
+      "title": "考生绿色通道",
+      "source_id": "NJ-CYCLE-2026",
+      "ordinal": 3,
+      "required_text": "最大限度缩短",
+      "predicate": "expedited_days_unknown",
+      "conditions": {
+        "urgent_exam": true
+      },
+      "note": "支持快速环节，不支持明确3天发证；加急天数未知。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR09"
+      ]
+    },
+    {
+      "id": "NR10",
+      "title": "普通到期工本费",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 27,
+      "required_text": "20元/证",
+      "predicate": "standard_fee_cny",
+      "conditions": {
+        "reason": "expiry",
+        "amount": 20,
+        "per": "card"
+      },
+      "note": "仅普通收费基线；困难减免等资格另核，不声称所有人必须缴费。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR10"
+      ]
+    },
+    {
+      "id": "NR11",
+      "title": "领取与邮寄",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 25,
+      "required_text": "邮费到付",
+      "predicate": "collection_options",
+      "conditions": {
+        "options": [
+          "self",
+          "authorized_collector",
+          "post"
+        ],
+        "postage": "cash_on_delivery"
+      },
+      "note": "本轮本人办理不等同不可委托领取；代领回执及代领人身份证条件须保留。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR11"
+      ]
+    },
+    {
+      "id": "NR12",
+      "title": "旧证未超期使用",
+      "source_id": "NJ-OLD-CARD-2025",
+      "ordinal": 4,
+      "required_text": "未超期的旧身份证可以继续使用",
+      "predicate": "old_card_usable_during_processing",
+      "conditions": {
+        "old_card_valid": true,
+        "phase": "processing"
+      },
+      "note": "不能推为过期仍可用或拿到新证后可保留原证。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR12"
+      ]
+    },
+    {
+      "id": "NR13",
+      "title": "领新证交回旧证",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 43,
+      "required_text": "领取新证时，必须交回原证",
+      "predicate": "return_old_on_collection",
+      "conditions": {
+        "phase": "collection"
+      },
+      "note": "与申请时交验、等待期间使用分开；有公报652页视觉交叉核对。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR13"
+      ]
+    },
+    {
+      "id": "NR14",
+      "title": "法定发放期限",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 46,
+      "required_text": "自公民提交《居民身份证申领登记表》之日起六十日内",
+      "predicate": "statutory_issue_limit",
+      "conditions": {
+        "start": "registration_form_submitted",
+        "days": 60,
+        "remote_extension_max_days": 30
+      },
+      "note": "法定日与本地20工作日服务周期分别表示，不自动做工作日/自然日换算。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR14"
+      ]
+    },
+    {
+      "id": "NR15",
+      "title": "急需临时证路径",
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "ordinal": 47,
+      "required_text": "可以申请领取临时居民身份证",
+      "predicate": "temporary_id_possible",
+      "conditions": {
+        "phase": "processing",
+        "urgent_need": true
+      },
+      "note": "只说明可申请的法律路径；本轮不核定临时证材料、异地资格、费用或办理天数。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR15"
+      ]
+    },
+    {
+      "id": "NR16",
+      "title": "办证进度查询",
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "ordinal": 29,
+      "required_text": "到达受理点",
+      "predicate": "status_query_channels",
+      "conditions": {
+        "channels": [
+          "苏证通APP",
+          "苏服办APP",
+          "南京公安微警务"
+        ]
+      },
+      "note": "不访问用户账户或实际证件进度；仅提供来源指引。",
+      "review_status": "pending_human_review",
+      "citation_ids": [
+        "CITE-NR16"
+      ]
+    }
+  ],
+  "human_review": {
+    "status": "pending",
+    "reviewer": null,
+    "confirmed_package_sha256": null
+  },
+  "knowledge_published": false,
+  "development_tasks": [
+    {
+      "id": "DEV-MH01",
+      "question": "在南京本人换领身份证，等待期间未超期旧证还能用吗？领取新证时是否要交回？",
+      "required_rules": [
+        "NR12",
+        "NR13"
+      ],
+      "requires_distinct_documents": true
+    },
+    {
+      "id": "DEV-MH02",
+      "question": "期满换领急需用证：南京所述服务周期、临时证法律路径分别是什么，能承诺考生三天拿证吗？",
+      "required_rules": [
+        "NR08",
+        "NR09",
+        "NR15"
+      ],
+      "requires_distinct_documents": true
+    }
+  ],
+  "holdout": {
+    "status": "not_created",
+    "human_independence_certified": false
+  },
+  "law_crosscheck": {
+    "source_id": "LAW-NPC-GAZETTE-MIRROR",
+    "url": "https://www.pdsxcq.gov.cn/upload/files/2023/6/353f9d72ee36b1751de857cf71917117.pdf",
+    "original_sha256": "95e8decc4bb5aecb5324b7cea311659d26245998b0c6d24049577c8e267220bd",
+    "original_file": "originals/law-gazette-2011-pages651-654.pdf",
+    "pdf_page": 2,
+    "printed_page": 652,
+    "articles": [
+      "第十一条",
+      "第十二条"
+    ],
+    "visual_check": "law-visual-review.json"
+  },
+  "observation": {
+    "kind": "live_fixed_official_capture",
+    "receipt_file": "capture-receipt.json",
+    "receipt_sha256": "427f5bf2bc85e9c1a5e348e5e2ca72e3be07657f7cef60b81f8737a933d1fbc0"
+  }
+}

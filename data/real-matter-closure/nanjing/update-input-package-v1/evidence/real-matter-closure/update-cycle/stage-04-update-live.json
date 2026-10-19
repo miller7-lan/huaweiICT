@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-19T14:18:16.535358+00:00",
+  "status": "PASSED",
+  "scope": "actual public originals in controlled source registration; not a historical website policy change",
+  "checks": [
+    {
+      "check": "citizen_real_nexent_login",
+      "passed": true
+    },
+    {
+      "check": "citizen_trusted_identity",
+      "passed": true
+    },
+    {
+      "check": "staff_real_nexent_login",
+      "passed": true
+    },
+    {
+      "check": "staff_trusted_identity",
+      "passed": true
+    },
+    {
+      "check": "three_source_baseline_stops_complete_proof",
+      "passed": true
+    },
+    {
+      "check": "all_four_actual_official_originals_observed",
+      "passed": true
+    },
+    {
+      "check": "actual_no_change_keeps_version_and_candidate_counts",
+      "passed": true
+    },
+    {
+      "check": "same_observation_replay_no_extra_processing",
+      "passed": true
+    },
+    {
+      "check": "new_source_without_relation_evolution_still_stops",
+      "passed": true
+    },
+    {
+      "check": "source_and_ontology_update_changes_live_web_query",
+      "passed": true
+    },
+    {
+      "check": "old_web_case_remains_old_version_and_incomplete",
+      "passed": true
+    },
+    {
+      "check": "new_version_handoff_created",
+      "passed": true
+    },
+    {
+      "check": "staff_receives_updated_version_conditions_and_proofs",
+      "passed": true
+    },
+    {
+      "check": "updated_handoff_confirmation_is_not_business_approval",
+      "passed": true
+    },
+    {
+      "check": "citizen_new_history_stops_on_current_law_pause",
+      "passed": true
+    },
+    {
+      "check": "staff_new_history_stops_on_current_law_pause",
+      "passed": true
+    },
+    {
+      "check": "rollback_does_not_bypass_new_case_dependency_pause",
+      "passed": true
+    },
+    {
+      "check": "old_incomplete_case_does_not_gain_the_paused_relation",
+      "passed": true
+    },
+    {
+      "check": "restored_engineering_head_preserves_confirmed_case",
+      "passed": true
+    }
+  ],
+  "model_calls": 0,
+  "native_agent_calls": 0,
+  "jev_calls": 0,
+  "human_business_review": false,
+  "formal_publication": false,
+  "independent_evaluation": false,
+  "old_case_id": "case-887491f3ac0e48e4b9b7c771121f1fa3",
+  "actual_http_receipts": [
+    {
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "status": "captured_pending_review",
+      "checked_at": "2026-10-19T14:18:28.264594+00:00",
+      "requests": [
+        {
+          "url": "https://gaj.nanjing.gov.cn/robots.txt",
+          "http_status": 200,
+          "bytes": 210,
+          "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+        },
+        {
+          "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+          "http_status": 200,
+          "bytes": 26068,
+          "sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf"
+        }
+      ]
+    },
+    {
+      "source_id": "NJ-CYCLE-2026",
+      "status": "captured_pending_review",
+      "checked_at": "2026-10-19T14:18:33.536012+00:00",
+      "requests": [
+        {
+          "url": "https://www.nanjing.gov.cn/robots.txt",
+          "http_status": 200,
+          "bytes": 210,
+          "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+        },
+        {
+          "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+          "http_status": 200,
+          "bytes": 29854,
+          "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+        }
+      ]
+    },
+    {
+      "source_id": "NJ-OLD-CARD-2025",
+      "status": "captured_pending_review",
+      "checked_at": "2026-10-19T14:18:43.467507+00:00",
+      "requests": [
+        {
+          "url": "https://www.nanjing.gov.cn/robots.txt",
+          "http_status": 200,
+          "bytes": 210,
+          "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+        },
+        {
+          "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+          "http_status": 200,
+          "bytes": 12752,
+          "sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c"
+        }
+      ]
+    },
+    {
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "status": "captured_pending_review",
+      "checked_at": "2026-10-19T14:18:48.683140+00:00",
+      "requests": [
+        {
+          "url": "https://jtgl.beijing.gov.cn/robots.txt",
+          "http_status": 404,
+          "bytes": 150,
+          "sha256": "9ede61b760042ba9d4729a4d24a847a939dff3b0d0eea6408d4f53d9489ec1f5"
+        },
+        {
+          "url": "https://jtgl.beijing.gov.cn/jgj/jgxx/flfg/fl/203777/index.html",
+          "http_status": 200,
+          "bytes": 54492,
+          "sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46"
+        }
+      ]
+    }
+  ],
+  "template_comparison": [
+    {
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "kind": "unchanged"
+    },
+    {
+      "source_id": "NJ-CYCLE-2026",
+      "kind": "unchanged"
+    },
+    {
+      "source_id": "NJ-OLD-CARD-2025",
+      "kind": "unchanged"
+    },
+    {
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "kind": "unchanged"
+    }
+  ],
+  "versions": {
+    "baseline_three_seed": "b416dea206d7bd6bff1a495d5d9a7c5ba04ed07e047db4862c20fa66b5fbb524",
+    "four_seed": "5c1adf4bdd0491e62ab5bf5b9a1c29c125f12db1f7698145c6c0c541b13919e0",
+    "four_evolved": "d2bdfda280f77bcec6b6095a40e394a7cf9fac109ddf01b6cfb206a7a1495e45"
+  },
+  "updates": {
+    "unchanged": "388286cd52766a12af53de0ae3a9f5302d00443c306288c0e6d0ce95c7900508",
+    "source_added": "e30194d1da959c0aadfe4db490b034bcafb46af100709700cbdfb8f30ccadace",
+    "ontology_evolved": "b217b35de74f44478d9c40a2f9eac6a93bca3fde3975d02e7293ee437e1a6f28"
+  },
+  "added_rules": [
+    "NR01",
+    "NR13",
+    "NR14",
+    "NR15"
+  ],
+  "source_delta": [
+    {
+      "source_id": "LAW-ID-BJ-TRAFFIC-2011",
+      "kind": "source_added",
+      "old_original_sha256": null,
+      "new_original_sha256": "49c3fa50897dfd3dd4a315ef8d5d5899f113d2760fc82b476732a348ba678b46"
+    },
+    {
+      "source_id": "NJ-CYCLE-2026",
+      "kind": "checked_body_unchanged",
+      "old_original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "new_original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+    },
+    {
+      "source_id": "NJ-OLD-CARD-2025",
+      "kind": "checked_body_unchanged",
+      "old_original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+      "new_original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c"
+    },
+    {
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "kind": "checked_body_unchanged",
+      "old_original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf",
+      "new_original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf"
+    }
+  ],
+  "new_case_id": "case-8954f40525a646c0ba202335748504e0",
+  "proof_count": 4,
+  "human_review": "pending",
+  "finished_at": "2026-10-19T14:19:00.663892+00:00"
+}

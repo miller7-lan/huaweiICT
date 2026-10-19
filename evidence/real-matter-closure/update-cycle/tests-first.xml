@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="10" failures="0" skipped="0" tests="10" time="2.045" timestamp="2026-10-19T22:15:36.667826+08:00" hostname="李嘉杰的电脑"><testcase classname="tests.test_matter_update" name="test_whole_document_unchanged_refresh_keeps_semantic_version_and_replays_once" time="0.142"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_whole_document_unchanged_0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_whole_document_unchanged_0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_real_original_addition_and_ontology_stage_are_both_required" time="0.110"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_real_original_addition_an0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_real_original_addition_an0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_body_change_outside_old_citations_pauses_history_before_any_release" time="0.129"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_body_change_outside_old_c0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_body_change_outside_old_c0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_capture_receipt_cannot_be_replaced_by_timestamp_edit" time="0.138"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_capture_receipt_cannot_be0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_capture_receipt_cannot_be0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_omitted_whole_body_paragraph_is_rejected_even_with_new_manifest" time="0.130"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_omitted_whole_body_paragr0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_omitted_whole_body_paragr0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_source_metadata_change_blocks_even_when_text_unchanged" time="0.118"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_source_metadata_change_bl0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_source_metadata_change_bl0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_failed_capture_blocks_only_known_affected_source_and_never_resumes" time="0.119"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_failed_capture_blocks_onl0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_failed_capture_blocks_onl0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_old_archive_cannot_refresh_source_or_overwrite_newer_observation" time="0.115"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_old_archive_cannot_refres0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_old_archive_cannot_refres0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_release_cas_and_role_boundary" time="0.121"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_release_cas_and_role_boun0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_release_cas_and_role_boun0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase><testcase classname="tests.test_matter_update" name="test_source_removal_pauses_current_history_and_capture_inspection_is_honest" time="0.185"><error message="failed on setup with &quot;gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界&quot;">tmp_path = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_source_removal_pauses_cur0')
+
+    @pytest.fixture
+    def update(tmp_path):
+        tick = [NOW]
+        lifecycle = MatterLifecycle(tmp_path / "service", clock=lambda: tick[0])
+        updater = MatterUpdater(tmp_path / "updates", lifecycle, clock=lambda: tick[0])
+        baseline = tmp_path / "baseline"
+&gt;       build_snapshot(PACK, baseline, LOCAL)
+
+tests\test_matter_update.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\gov_mcp\matter_update.py:85: in build_snapshot
+    target = safe_child(destination.resolve(), relative); target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/ljj20/AppData/Local/Temp/pytest-of-ljj20/pytest-178/test_source_removal_pauses_cur0/baseline')
+relative = 'originals/NJ-POLICE-FAQ-2025.html'
+
+    def safe_child(root, relative):
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()) or not target.is_file():
+&gt;           raise MatterProofError("来源路径无效或越界")
+E           gov_mcp.matter_graph.MatterProofError: 来源路径无效或越界
+
+src\gov_mcp\matter_graph.py:30: MatterProofError</error></testcase></testsuite></testsuites>

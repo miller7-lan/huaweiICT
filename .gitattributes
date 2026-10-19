@@ -10,3 +10,6 @@ evidence/merge-m2-20261018/*.xml -text -whitespace
 evidence/jev-official/*.xml -text -whitespace
 evidence/real-business-first/sources/*.html -text -whitespace
 evidence/public-native-preview/sources/*.html -text -whitespace
+# Sealed input packages preserve the original source bytes, including CRLF.
+data/real-matter-closure/nanjing/update-input-package-v1/** -text -whitespace linguist-generated
+evidence/real-matter-closure/update-cycle/tests-first.xml -text -whitespace

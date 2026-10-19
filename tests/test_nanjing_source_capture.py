@@ -69,3 +69,15 @@ def test_html_disguised_as_pdf_does_not_get_saved_as_original(monkeypatch, tmp_p
     result = capture.collect(sources=(capture.SOURCES[-1],), runtime=tmp_path)
     assert result["sources"][0]["status"] == "stopped"
     assert not list(tmp_path.glob("*.pdf"))
+
+
+def test_new_update_cli_selects_only_four_existing_html_urls(monkeypatch, tmp_path):
+    import sys
+    called = []
+    monkeypatch.setattr(sys, "argv", [str(SCRIPT), "--collect", "--group", "matter-html", "--runtime", str(tmp_path)])
+    monkeypatch.setattr(capture, "collect", lambda **kwargs: called.append(kwargs) or
+        {"sources": [], "model_calls": 0, "knowledge_published": False})
+    capture.main()
+    assert called[0]["runtime"] == tmp_path
+    assert len(called[0]["sources"]) == 4 and all(s[3] == "html" for s in called[0]["sources"])
+    assert not any(s[0].startswith("NPC") for s in called[0]["sources"])

@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "captured_at": "2026-10-19T14:18:22.951034+00:00",
+  "region": "南京市",
+  "matter": "resident-id-expiry-renewal",
+  "model_calls": 0,
+  "human_business_review": false,
+  "knowledge_published": false,
+  "sources": [
+    {
+      "source_id": "NJ-POLICE-FAQ-2025",
+      "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+      "title": "南京公安换证问答",
+      "kind": "html",
+      "page_publication_date_hint": "2025-05-29",
+      "effective_from": null,
+      "requests": [
+        {
+          "url": "https://gaj.nanjing.gov.cn/robots.txt",
+          "http_status": 200,
+          "bytes": 210,
+          "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+        },
+        {
+          "url": "https://gaj.nanjing.gov.cn/njsgaj/202505/t20250529_5573116.html",
+          "http_status": 200,
+          "bytes": 26068,
+          "sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf"
+        }
+      ],
+      "checked_at": "2026-10-19T14:18:28.264594+00:00",
+      "status": "captured_pending_review",
+      "filename": "NJ-POLICE-FAQ-2025.html",
+      "original_sha256": "f77b9602b6a2aeecd817de104f063d39c887fa30cd0b6e5c71fcb557661b51cf",
+      "bytes": 26068,
+      "content_type": "text/html"
+    },
+    {
+      "source_id": "NJ-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "title": "南京市政府换证周期答复",
+      "kind": "html",
+      "page_publication_date_hint": "2026-01-05",
+      "effective_from": null,
+      "requests": [
+        {
+          "url": "https://www.nanjing.gov.cn/robots.txt",
+          "http_status": 200,
+          "bytes": 210,
+          "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+        },
+        {
+          "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+          "http_status": 200,
+          "bytes": 29854,
+          "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+        }
+      ],
+      "checked_at": "2026-10-19T14:18:33.536012+00:00",
+      "status": "captured_pending_review",
+      "filename": "NJ-CYCLE-2026.html",
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "bytes": 29854,
+      "content_type": "text/html"
+    },
+    {
+      "source_id": "NJ-OLD-CARD-2025",
+      "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+      "title": "南京市政府旧证使用答复",
+      "kind": "html",
+      "page_publication_date_hint": "2025-12-09",
+      "effective_from": null,
+      "requests": [
+        {
+          "url": "https://www.nanjing.gov.cn/robots.txt",
+          "http_status": 200,
+          "bytes": 210,
+          "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36"
+        },
+        {
+          "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+          "http_status": 200,
+          "bytes": 12752,
+          "sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c"
+        }
+      ],
+      "checked_at": "2026-10-19T14:18:43.467507+00:00",
+      "status": "captured_pending_review",
+      "filename": "NJ-OLD-CARD-2025.html",
+      "original_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+      "bytes": 12752,
+      "content_type": "text/html"
+    }
+  ]
+}

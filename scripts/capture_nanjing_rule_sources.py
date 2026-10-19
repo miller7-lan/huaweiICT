@@ -138,12 +138,15 @@ def collect(*, sources=SOURCES, runtime=RUNTIME):
 def main():
     parser = argparse.ArgumentParser(description="南京规则核查官方原件的一次性有界采集")
     parser.add_argument("--collect", action="store_true", help="首次采集；拒绝覆盖或重复请求")
-    parser.add_argument("--group", choices=("nanjing", "law-mirror", "national-law"), default="nanjing",
+    parser.add_argument("--group", choices=("nanjing", "law-mirror", "national-law", "matter-html"), default="nanjing",
                         help="固定来源组；每组仅允许一次采集，不重试已停止来源")
+    parser.add_argument("--runtime", type=Path, help="显式指定新的采集活动目录；已有attempt记录仍拒绝覆盖")
     args = parser.parse_args()
     sources, runtime = {"nanjing": (SOURCES, RUNTIME),
         "law-mirror": (LAW_MIRROR, RUNTIME.parent / "nanjing-law-mirror-v1"),
-        "national-law": (NATIONAL_LAW, RUNTIME.parent / "nanjing-national-law-v1")}[args.group]
+        "national-law": (NATIONAL_LAW, RUNTIME.parent / "nanjing-national-law-v1"),
+        "matter-html": (tuple(s for s in SOURCES + NATIONAL_LAW if s[3] == "html"), RUNTIME.parent / "nanjing-matter-html-v1")}[args.group]
+    runtime = args.runtime or runtime
     if args.collect:
         value = collect(sources=sources, runtime=runtime)
     else:
