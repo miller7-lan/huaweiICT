@@ -193,6 +193,13 @@ class MatterLifecycle:
         if gate["status"] != "IN_SCOPE":
             return {**gate, "version": selected, "knowledge_published": False}
         result = prove(pack, facts, ontology=record["ontology"]) if topic == "old_card_lifecycle" else guidance(pack, facts, topic, now=self.clock())
+        source_details = {s["source_id"]: s for s in pack["sources"]}
+        segment_details = {row["segment_id"]: row for s in pack["sources"] for row in s["segments"]}
+        for proof in result.get("proofs", []):
+            for evidence in proof["evidence"]:
+                source = source_details[evidence["source_id"]]
+                evidence.update(title=source["title"], published_at=source["published_at"],
+                    effective_from=source["effective_from"], full_context=segment_details[evidence["segment_id"]]["text"])
         sources = {e["source_id"] for row in result.get("source_relations", []) for e in row["evidence"]}
         sources.update(c["source_id"] for section in result.get("sections", []) for c in section["citations"])
         if not sources:
@@ -236,7 +243,7 @@ class MatterLifecycle:
                 "version": result["version"], "state": "draft", "assignee": None, "handoff_hash": None}, db)
             self.store.audit("matter_case_opened", {"case_id": case_id, "version": result["version"],
                 "actor": principal.id, "actor_kind": principal.kind}, db)
-        return {"case_id": case_id, **result}
+        return {"case_id": case_id, "state": "draft", "declared_conditions": deepcopy(facts), **result}
 
     def read_case(self, case_id, *, principal):
         principal.require("citizen", "staff")
@@ -250,7 +257,7 @@ class MatterLifecycle:
             current = self.store.get("runs", case_id, db)
             if not current or principal.id not in (current["owner"], current["assignee"]):
                 raise LifecycleError("会话读取权限已变化")
-        return {"case_id": case_id, "state": case["state"], **result}
+        return {"case_id": case_id, "state": case["state"], "declared_conditions": deepcopy(case["facts"]), **result}
 
     def handoff(self, case_id, *, principal):
         principal.require("citizen")
