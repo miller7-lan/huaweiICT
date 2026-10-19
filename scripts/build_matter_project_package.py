@@ -31,7 +31,8 @@ def main():
                 raise ValueError("Private path found in tracked snapshot")
             files[name] = archive.read(item)
     required = ("scripts/reproduce_matter_project.py", "scripts/verify_matter_update_inputs.py", "scripts/provision_matter_native.py",
-        "config/skills/govmatter-source-proof-first/SKILL.md", "docs/南京事项项目交付与复现.md")
+        "config/skills/govmatter-source-proof-dataflow/SKILL.md", "docs/南京事项项目交付与复现.md",
+        "docs/南京真实事项技术说明.docx")
     if not all(name in files for name in required): raise ValueError("Committed delivery entrypoints required")
     # Exact matches against local credentials; never export their values or hashes.
     secrets = set()
