@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-19T16:08:21.825056+00:00",
+  "actual_input": "evaluation/real-matter-closure/independent-submission.template.json",
+  "actual_result": "REFERENCE_NOT_READY",
+  "expected_cli_exit_code": 2,
+  "unique_contract_cases_with_pass_records": 9,
+  "additional_privacy_assertion_recheck_count": 1,
+  "test_fixtures_are_not_independent_business_cases": true,
+  "reference_groups_received": 0,
+  "reference_frozen": false,
+  "human_attribution_verified": false,
+  "independence_certified": false,
+  "predictions_executed": 0,
+  "model_calls": 0,
+  "formal_publication": false,
+  "code_sha256": {
+    "src/gov_mcp/matter_eval_intake.py": "11b50ef1fef192fbb0c3311e5e13042240a60e0fd71e387a8e8cb071f9e7cfca",
+    "scripts/check_matter_independent_submission.py": "0563bbc14dae5561015dd8d0a99affe15f4a5fb5f2573dd6107dbfe3cfa7fa55",
+    "src/gov_mcp/knowledge_review.py": "cdbfe7afd999c5ad889fbc4c979db4bbedd1af728d832e4b14f56dd2c5255924"
+  },
+  "remote_audit": {
+    "fetch_prune_completed": true,
+    "teammate_ref": "origin/codex/sync-m1-m2",
+    "teammate_commit": "d51a48366477b7a100a9844440caffd94117d027",
+    "unmerged_teammate_commits": 0
+  }
+}
