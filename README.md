@@ -1,8 +1,10 @@
 # 政务多智能体协作系统：工程与验收记录
 
+**南京事项技术说明：** [六页Word](docs/南京真实事项技术说明.docx)与[同内容文字版](docs/南京真实事项技术说明.md)已整理来源、OCR边界、本体演化、实际Qwen编排、双端权限、复现及未完成验收。Word已渲染并逐页检查，正式业务复核和独立评测仍未完成。
+
 **2026-10-19完整公开项目交付：** [完整ZIP](deliveries/nanjing-project-v1.zip)及[同内容目录](deliveries/nanjing-project-v1/)已上传，1448文件、约20.4MB，包含源码、配置、测试、官方原件和证据。新Python环境安装固定依赖后，从ZIP解压目录启动真实本地HTTP双端，19项检查通过，覆盖版本、交接、越权及当前暂停；[GitHub下载回执](evidence/real-matter-closure/project-delivery/github-download.json)为HTTP200、SHA256一致。[复现说明](docs/南京事项项目交付与复现.md)明确：未重建Nexent容器，未在干净环境重跑原生模型，独立评测尚无冻结案例，正式发布仍关闭。
 
-**2026-10-19南京真实原件更新闭环（工程）：** [更新与双端联调](docs/南京真实原件更新与发布联调.md)实取四份官方HTML，既有来源无变化时保持版本；加入法律原文并发布演化本体后改变在线查询，旧会话固定、工作人员交接及暂停/回退19项检查通过。四条替代证据路径支持同一候选结论，模型调用0。提供[完整ZIP](data/real-matter-closure/nanjing/update-input-package-v1.zip)及[解压包](data/real-matter-closure/nanjing/update-input-package-v1/README.md)，117文件包已在新建无依赖环境复现输入校验；正式业务发布、独立评测和原生主控收尾仍待完成。
+**2026-10-19南京真实原件更新闭环（工程）：** [更新与双端联调](docs/南京真实原件更新与发布联调.md)实取四份官方HTML，既有来源无变化时保持版本；加入法律原文并发布演化本体后改变在线查询，旧会话固定、工作人员交接及暂停/回退19项检查通过。四条替代证据路径支持同一候选结论，模型调用0。提供[更新输入ZIP](data/real-matter-closure/nanjing/update-input-package-v1.zip)及[解压包](data/real-matter-closure/nanjing/update-input-package-v1/README.md)，117文件包已在新建无依赖环境复现输入校验；当时未覆盖原生主控收尾，后续v4已通过，正式业务发布与独立评测继续待办。
 
 **2026-10-19南京本地原生编排v4通过：** 按用户选择使用Qwen8B主控和两个4B子Agent；宿主指导的单动作从MCP实际JSON文本返回提取任务ID，真实完成Skill、五工具及双子Agent链路，369.2秒通过，最终答复与持久记录一致。四来源142段、四条替代路径支持一个候选结论。[实际轨迹与既有失败](docs/南京事项本地原生编排.md)全部保留，旧2+1+1次和v4 1次均关闭；旧Agent签名未变，正式发布仍关闭。沿用已有OCR接口实际调用一次，[四页识别结果及下游候选入库](docs/南京扫描公报OCR下游联调.md)通过；上游实现未改，非队友人工提交，OCR字词/文类仍待人工复核。项目v1包固定较早提交，不含v4增量。
 
