@@ -31,13 +31,14 @@ def safe_child(root, relative):
     return target
 
 
-def load_pack(root):
+def load_pack(root, *, read_file=None):
     root = Path(root).resolve()
-    manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+    read = read_file or (lambda relative: safe_child(root, relative).read_bytes())
+    manifest = json.loads(read("manifest.json"))
     for item in manifest["files"]:
-        if file_hash(safe_child(root, item["path"]).read_bytes()) != item["sha256"]:
+        if file_hash(read(item["path"])) != item["sha256"]:
             raise MatterProofError("交付包文件指纹变化：" + item["path"])
-    raw = (root / "rules-and-sources.json").read_bytes()
+    raw = read("rules-and-sources.json")
     if file_hash(raw) != manifest["rules_sha256"]:
         raise MatterProofError("规则包指纹变化")
     pack = json.loads(raw)
@@ -45,7 +46,7 @@ def load_pack(root):
     for source in pack["sources"]:
         if source["source_id"] in sources:
             raise MatterProofError("来源编号重复")
-        original = safe_child(root, source["original_file"]).read_bytes()
+        original = read(source["original_file"])
         if file_hash(original) != source["original_sha256"]:
             raise MatterProofError("官方原件指纹变化")
         rows, _ = parse_html(original, source["selector"], min_text_length=1)
