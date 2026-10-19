@@ -24,6 +24,7 @@ def main():
     parser.add_argument("--runtime", type=Path, default=ROOT / ".runtime/real-matter-closure/matter-web-stage04")
     parser.add_argument("--auth", choices=("local-engineering", "nexent"), required=True)
     parser.add_argument("--role-map", type=Path)
+    parser.add_argument("--pack", type=Path, default=PACK, help="Existing source-bound pack; never refreshes captured dates")
     args = parser.parse_args()
     if args.runtime.exists() and any(args.runtime.iterdir()):
         parser.error("现有网页活动保留，不覆盖账户、会话或版本")
@@ -50,7 +51,7 @@ def main():
     actor = Principal("web-technical-initializer", "maintainer", "service")
     versions = {}
     for stage in ("seed", "evolved"):
-        candidate = service.prepare(PACK, ontology_stage=stage, principal=actor)
+        candidate = service.prepare(args.pack, ontology_stage=stage, principal=actor)
         versions[stage] = service.release_preview(candidate["candidate_id"], service.head(),
             note="Initial source-bound web engineering release; not human approval", principal=actor)["version"]
     write(args.runtime / "preparation.json", {"mode": mode, "versions": versions,
