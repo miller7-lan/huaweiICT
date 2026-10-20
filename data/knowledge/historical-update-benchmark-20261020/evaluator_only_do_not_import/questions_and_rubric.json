@@ -1,0 +1,84 @@
+[
+  {
+    "id": "DISCOVER-CN-HUKOU-2016",
+    "source_id": "CN-HUKOU-2016",
+    "question": "截至2026-10-20，请检查这份旧资料的后续修订、替代文件和地方适用规则。列出官方证据、日期、原文定位及变更条款；无法核实则明确待核实。",
+    "expected": "不以年代直接判废；区分成文、发布、生效和抓取日期；保留旧版；无新证据不编造替代政策。",
+    "gold_current_policy": "not_established",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "DISCOVER-CN-MEDICAL-MERGE-2016",
+    "source_id": "CN-MEDICAL-MERGE-2016",
+    "question": "截至2026-10-20，请检查这份旧资料的后续修订、替代文件和地方适用规则。列出官方证据、日期、原文定位及变更条款；无法核实则明确待核实。",
+    "expected": "不以年代直接判废；区分成文、发布、生效和抓取日期；保留旧版；无新证据不编造替代政策。",
+    "gold_current_policy": "not_established",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "DISCOVER-HZ-RESIDENCE-EXPLANATION",
+    "source_id": "HZ-RESIDENCE-EXPLANATION",
+    "question": "截至2026-10-20，请检查这份旧资料的后续修订、替代文件和地方适用规则。列出官方证据、日期、原文定位及变更条款；无法核实则明确待核实。",
+    "expected": "不以年代直接判废；区分成文、发布、生效和抓取日期；保留旧版；无新证据不编造替代政策。",
+    "gold_current_policy": "not_established",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "DISCOVER-TJ-RESIDENCE-MEASURES-2021",
+    "source_id": "TJ-RESIDENCE-MEASURES-2021",
+    "question": "截至2026-10-20，请检查这份旧资料的后续修订、替代文件和地方适用规则。列出官方证据、日期、原文定位及变更条款；无法核实则明确待核实。",
+    "expected": "不以年代直接判废；区分成文、发布、生效和抓取日期；保留旧版；无新证据不编造替代政策。",
+    "gold_current_policy": "not_established",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "DISCOVER-CN-OUTPATIENT-2021",
+    "source_id": "CN-OUTPATIENT-2021",
+    "question": "截至2026-10-20，请检查这份旧资料的后续修订、替代文件和地方适用规则。列出官方证据、日期、原文定位及变更条款；无法核实则明确待核实。",
+    "expected": "不以年代直接判废；区分成文、发布、生效和抓取日期；保留旧版；无新证据不编造替代政策。",
+    "gold_current_policy": "not_established",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "DISCOVER-BJ-HOUSING-FUND-RENT-2023",
+    "source_id": "BJ-HOUSING-FUND-RENT-2023",
+    "question": "截至2026-10-20，请检查这份旧资料的后续修订、替代文件和地方适用规则。列出官方证据、日期、原文定位及变更条款；无法核实则明确待核实。",
+    "expected": "不以年代直接判废；区分成文、发布、生效和抓取日期；保留旧版；无新证据不编造替代政策。",
+    "gold_current_policy": "not_established",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "DISCOVER-HN-MEASURES-2024-JY",
+    "source_id": "HN-MEASURES-2024-JY",
+    "question": "截至2026-10-20，请检查这份旧资料的后续修订、替代文件和地方适用规则。列出官方证据、日期、原文定位及变更条款；无法核实则明确待核实。",
+    "expected": "不以年代直接判废；区分成文、发布、生效和抓取日期；保留旧版；无新证据不编造替代政策。",
+    "gold_current_policy": "not_established",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "HENAN-KNOWN-CHANGE",
+    "source_id": "HN-MEASURES-2024-JY",
+    "question": "检查河南本省户籍居民身份证办理时限后续变化。",
+    "expected": "旧摘录25个自然日；评测员2026年后继资料15个工作日，不能直接相减；考生绿色通道5个工作日须保留限定。两份不同网址，不是同网址改版。",
+    "gold_current_policy": "bounded_2024_2026_successor_pair_not_exhaustive_current_law",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "DATE-CONTROL",
+    "question": "2016年公开发布的国办发〔2015〕96号是否表示成文日期也是2016年？",
+    "expected": "否，成文2015-12-31，公开发布2016-01-14。",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "REGION-CONTROL",
+    "question": "可以把2019杭州居住证条件直接替换为2021天津的条件吗？",
+    "expected": "不可以；先核对地区、对象、事项，不把异地文件作为修订。",
+    "model_execution_status": "not_executed"
+  },
+  {
+    "id": "NO-CHANGE-CONTROL",
+    "question": "检索到新文章就应该覆盖旧政策吗？",
+    "expected": "不应；需证明适用范围和继承关系，新闻转载或日期差异不足以证明修订。",
+    "model_execution_status": "not_executed"
+  }
+]
