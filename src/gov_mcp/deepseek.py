@@ -1,11 +1,17 @@
 """Cloud DeepSeek transport shared by role routing and native provisioning."""
 import json
+import math
 import os
 from pathlib import Path
 
 import httpx
 
+from .json_output import contract_messages, object_from_json, validate_contract
+
 ROOT = Path(__file__).resolve().parents[2]
+# Conservative sampling for structured extraction; the small trial showed no
+# accuracy advantage, and zero temperature does not guarantee determinism.
+DEFAULT_TEMPERATURE = 0.0
 PROFILES = {
     "vercel": {"provider": "vercel", "base_url": "https://ai-gateway.vercel.sh/v1",
                "model": "deepseek/deepseek-v4.1-flash", "credential_ref": "env:AI_GATEWAY_API_KEY"},
@@ -43,14 +49,24 @@ def load_key(config, environment=None):
     return key.strip()
 
 
-def chat(config, messages, *, client=None, environment=None, json_output=True, max_output_tokens=1024):
+def chat(config, messages, *, client=None, environment=None, json_output=True, max_output_tokens=1024,
+         temperature=DEFAULT_TEMPERATURE, response_model=None):
     validate_cloud(config)
     if type(max_output_tokens) is not int or not 1 <= max_output_tokens <= 8192:
         raise CloudError("INVALID_OUTPUT_TOKEN_BUDGET")
+    if type(temperature) not in (int, float) or not math.isfinite(temperature) or not 0 <= temperature <= 2:
+        raise CloudError("INVALID_TEMPERATURE")
+    if response_model is not None:
+        if json_output is not True:
+            raise CloudError("INVALID_OUTPUT_CONTRACT")
+        try:
+            messages = contract_messages(messages, response_model)
+        except (ValueError, TypeError):
+            raise CloudError("INVALID_OUTPUT_CONTRACT") from None
     key = load_key(config, environment)
     if not key: raise CloudError("WAITING_DEEPSEEK_CREDENTIAL")
     body = {"model": config["model"], "messages": messages, "stream": False, "max_tokens": max_output_tokens,
-            "temperature": .1}
+            "temperature": temperature}
     if json_output: body["response_format"] = {"type": "json_object"}
     if config["provider"] == "official": body["thinking"] = {"type": "disabled"}
     else:
@@ -71,7 +87,7 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
                     size += len(chunk)
                     if size > 1024*1024: raise CloudError("DEEPSEEK_RESPONSE_TOO_LARGE")
                     chunks.append(chunk)
-            value = json.loads(b"".join(chunks))
+            value = object_from_json(b"".join(chunks))
             choice = value["choices"][0]
             if choice["finish_reason"] != "stop": raise CloudError("DEEPSEEK_OUTPUT_INCOMPLETE")
             actual = value["model"]
@@ -79,8 +95,13 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
                 raise CloudError("UNEXPECTED_SERVED_MODEL")
             message = choice["message"]
             if message.get("tool_calls"): raise CloudError("UNEXPECTED_TOOL_CALL")
-            output = json.loads(message["content"]) if json_output else message["content"]
-            if json_output and not isinstance(output, dict): raise CloudError("INVALID_DEEPSEEK_OUTPUT")
+            if json_output:
+                try:
+                    output = object_from_json(message["content"])
+                except (ValueError, TypeError, RecursionError):
+                    raise CloudError("INVALID_DEEPSEEK_OUTPUT") from None
+            else:
+                output = message["content"]
             usage = value["usage"]
             counts = {k: usage[k] for k in ("prompt_tokens", "completion_tokens")}
             if any(type(v) is not int or v < 0 for v in counts.values()): raise CloudError("INVALID_DEEPSEEK_USAGE")
@@ -91,12 +112,23 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
                 if any(type(count) is not int or count < 0 for count in cache_counts) or sum(cache_counts) != counts["prompt_tokens"]:
                     raise CloudError("INVALID_DEEPSEEK_USAGE")
                 normalized_usage.update(input_cache_hit_tokens=cache_counts[0], input_cache_miss_tokens=cache_counts[1])
-            return {"provider": config["provider"], "model": actual, "requested_model": config["model"],
-                    "output": output, "usage": normalized_usage,
-                    "status": "untrusted_machine_candidate"}
+            result = {"provider": config["provider"], "model": actual, "requested_model": config["model"],
+                      "output": output, "usage": normalized_usage,
+                      "status": "untrusted_machine_candidate"}
+            if response_model is not None:
+                try:
+                    validate_contract(output, response_model)
+                except ValueError:
+                    error = CloudError("DEEPSEEK_OUTPUT_CONTRACT_VIOLATION")
+                    # Explicit experiment callers can retain the unmodified
+                    # rejected candidate. str(error) remains a sanitized code;
+                    # production callers must never treat this as a result.
+                    error.candidate_result = result
+                    raise error from None
+            return result
         except CloudError: raise
         except httpx.RequestError: raise CloudError("DEEPSEEK_TRANSPORT_UNAVAILABLE") from None
-        except (ValueError, KeyError, TypeError, IndexError): raise CloudError("INVALID_DEEPSEEK_RESPONSE") from None
+        except (ValueError, KeyError, TypeError, IndexError, RecursionError): raise CloudError("INVALID_DEEPSEEK_RESPONSE") from None
     if client is not None: return send(client)
     # Cloud calls follow the operator's configured proxy; local Nexent clients
     # remain separate and direct. Keep certificate verification and no redirects.

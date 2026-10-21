@@ -1,0 +1,24 @@
+{
+  "user_instruction": "修复问题，直到完成目的，可以适度调用api",
+  "attempt": "repair-20261020-a6",
+  "executed_date": "2026-10-21",
+  "prior_attempt": "repair-20261020-a5",
+  "per_attempt_native_runs": 1,
+  "reason_for_new_attempt": "Enable native strict closed output protocol; bounded no-action format repair preserves tool evidence. Correct Skill files path schema after local 422. No business/tool/provider retry.",
+  "controller_max_steps": 6,
+  "child_max_steps_each": 4,
+  "max_model_begin_events": 14,
+  "max_output_tokens_per_step": 1024,
+  "source_sha256": {
+    "src/gov_mcp/successor_update.py": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+    "src/gov_mcp/successor_update_server.py": "9f2eb4f5e20b3cc636b2c4344effdfa3219b335edb223d760a2333ca356b2246",
+    "scripts/check_successor_autonomy_cloud.py": "074f665e9ef874dfd07236989ea08ce7dc6952632a859c56a31b369453f294e2",
+    "tests/test_successor_update.py": "d4773fabe8f6c56419fb2b973049c0c96378f398b65dc473d954f9040a64be9f",
+    "config/skills/govkb-successor-update/SKILL.md": "f7898551710f39a2f0889e26ccdd2d714abe167983c09b18c74523ecdc69c8aa",
+    "src/gov_mcp/knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+    "src/gov_mcp/knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2"
+  },
+  "cost": "unknown",
+  "jev_calls": 0,
+  "translation_calls": 0
+}

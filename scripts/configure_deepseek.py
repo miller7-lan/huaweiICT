@@ -8,7 +8,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/"src"))
-from gov_mcp.deepseek import load_key, chat, validate_cloud, CloudError
+from gov_mcp.deepseek import DEFAULT_TEMPERATURE, load_key, chat, validate_cloud, CloudError
 from nexent_api import NexentAPI
 from private_runtime import ensure_private_directory
 
@@ -17,7 +17,7 @@ def native_settings(profile):
     return {"model_factory": "OpenAI-API-Compatible", "model_name": profile["model"],
             "display_name": profile["model"], "model_type": "llm", "base_url": profile["base_url"],
             "context_window_tokens": 16384, "max_output_tokens": 1024, "default_output_reserve_tokens": 1024,
-            "temperature": .1, "timeout_seconds": 60, "concurrency_limit": 1,
+            "temperature": DEFAULT_TEMPERATURE, "timeout_seconds": 60, "concurrency_limit": 1,
             "extra_params": {"enable_thinking": False, "__custom__": {"thinking": {"type": "disabled"}}},
             "skip_default_backfill": True}
 
@@ -48,7 +48,7 @@ def bind_drafts(api, profile, key, saved):
     bindings = {}
     for role, agent_id in saved["agents"].items():
         api.call("POST", "/agent/update", {"agent_id": agent_id, "enabled": False, "model_ids": [model_id],
-            "model_params_override": {str(model_id): {"temperature": .1, "extra_params": native_settings(profile)["extra_params"]}}})
+            "model_params_override": {str(model_id): {"temperature": DEFAULT_TEMPERATURE, "extra_params": native_settings(profile)["extra_params"]}}})
         info = api.call("POST", "/agent/search_info", {"agent_id": agent_id, "version_no": 0})
         if info["model_ids"] != [model_id] or info["enabled"] is not False: raise CloudError("NATIVE_BINDING_NOT_VERIFIED")
         bindings[role] = {"agent_id": agent_id, "model_id": model_id, "model": profile["model"], "published": False}

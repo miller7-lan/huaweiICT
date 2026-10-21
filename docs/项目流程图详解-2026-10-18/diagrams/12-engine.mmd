@@ -1,0 +1,22 @@
+flowchart TD
+    ntick["Worker.tick独立心跳"]
+    ndue["工作启动门"]
+    npoll["Engine.poll采集并比较group"]
+    njobs["select_jobs选择有界批次"]
+    nnative["NativeDriver／回放编排"]
+    ndocs["publish_documents"]
+    nrules["人工review／规则发布"]
+    nretry["等待凭据／等待供应商／重试"]
+    ntick -->|"无活动线程"| ndue
+    ndue -->|"获租约"| npoll
+    npoll -->|"检查完成"| njobs
+    njobs -->|"有选中任务及凭据"| nnative
+    njobs -->|"无模型工作但待发布"| ndocs
+    nnative -->|"全部processed"| ndocs
+    nnative -->|"外部失败"| nretry
+    njobs -->|"缺凭据"| nretry
+    ndocs -->|"待人工复核"| nrules
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class ndue,njobs gate
+    class nretry stop

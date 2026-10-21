@@ -1,0 +1,17 @@
+flowchart TD
+    nm1["M1身份和环境工具"]
+    ntask["M2群众创建task"]
+    nsearch["查引用与声明材料"]
+    nhandoff["幂等交接"]
+    nstaff["工作人员队列与前置核对"]
+    nconfirm["显式确认assessment_sha256"]
+    ndone["demo_reviewed＋工具审计"]
+    nm1 -->|"后续独立M2入口"| ntask
+    ntask -->|"draft"| nsearch
+    nsearch -->|"群众发起"| nhandoff
+    nhandoff -->|"工作人员可见"| nstaff
+    nstaff -->|"展示评估后"| nconfirm
+    nconfirm -->|"一致且确认"| ndone
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nconfirm gate

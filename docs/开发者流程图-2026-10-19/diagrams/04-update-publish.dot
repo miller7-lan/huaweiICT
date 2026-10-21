@@ -1,0 +1,32 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.5", ranksep="0.6", splines=polyline, fontname="Microsoft YaHei"];
+node [shape=box, style="rounded,filled", width=4.5, fontname="Microsoft YaHei", fontsize=12, margin="0.18,0.16"];
+edge [fontname="Microsoft YaHei", fontsize=10, color="#708299", arrowsize=0.75];
+tick [id="04-update-publish-tick", label=<<B>heartbeat(force=False)</B><BR/><FONT POINT-SIZE="10">30秒ticker；paused且非force则返回；单写租约120秒<BR ALIGN="LEFT"/>、轮预算600秒。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:407</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.heartbeat"];
+claim [id="04-update-publish-claim", label=<<B>Store.claim</B><BR/><FONT POINT-SIZE="10">租约有效→already_running；接管时fence递增，旧ru<BR ALIGN="LEFT"/>nning标interrupted。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">store.py:128</FONT>>, fillcolor="#fff3d9", color="#b8852b", tooltip="src/gov_mcp/knowledge/store.py:Store.claim"];
+check [id="04-update-publish-check", label=<<B>_check(source, run, interval)</B><BR/><FONT POINT-SIZE="10">比较来源＋内容＋配置指纹；unchanged只更新检查时<BR ALIGN="LEFT"/>间；失败记来源错误。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:445</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow._check"];
+block [id="04-update-publish-block", label=<<B>立即落库package + block</B><BR/><FONT POINT-SIZE="10">新包processing/discovered；旧未发布包superseded<BR ALIGN="LEFT"/>；受影响requirement即刻暂停。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:445</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/decision/workflow.py:Workflow._check"];
+process [id="04-update-publish-process", label=<<B>_process的持久化阶段</B><BR/><FONT POINT-SIZE="10">discovered→classified→extracted→validated→aw<BR ALIGN="LEFT"/>aiting_review；租约失效拒绝写入。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:524</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow._process"];
+docs [id="04-update-publish-docs", label=<<B>写documents与本地稀疏索引</B><BR/><FONT POINT-SIZE="10">wf_documents推进；候选可供查看，但不切换wf_head<BR ALIGN="LEFT"/>业务知识。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:524</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/decision/workflow.py:Workflow._process"];
+review [id="04-update-publish-review", label=<<B>review(package_id, object_ids)</B><BR/><FONT POINT-SIZE="10">专业角色选择accepted/rejected，记录actor＋basis_<BR ALIGN="LEFT"/>hash；拒绝项继续暂停。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:625</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.review"];
+tx [id="04-update-publish-tx", label=<<B>publish：BEGIN IMMEDIATE</B><BR/><FONT POINT-SIZE="10">expected_head必须等于当前头；包仍awaiting_review<BR ALIGN="LEFT"/>，source_guard仍有效。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:641</FONT>>, fillcolor="#fff3d9", color="#b8852b", tooltip="src/gov_mcp/decision/workflow.py:Workflow.publish"];
+basis [id="04-update-publish-basis", label=<<B>复核与依赖是否仍一致？</B><BR/><FONT POINT-SIZE="10">同actor已accepted、basis_hash匹配；候选依赖相对b<BR ALIGN="LEFT"/>ase未变。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:641</FONT>>, fillcolor="#fff3d9", color="#b8852b", tooltip="src/gov_mcp/decision/workflow.py:Workflow.publish"];
+snapshot [id="04-update-publish-snapshot", label=<<B>创建并校验新快照</B><BR/><FONT POINT-SIZE="10">合并所选要求/别名；本体提案executable=false；完<BR ALIGN="LEFT"/>整图、review及span验证。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:106</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow._version"];
+switch [id="04-update-publish-switch", label=<<B>原子切换wf_head</B><BR/><FONT POINT-SIZE="10">写wf_versions、ontology_version、accepted_hash、<BR ALIGN="LEFT"/>package状态及审计；COMMIT。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:641</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/decision/workflow.py:Workflow.publish"];
+rollback [id="04-update-publish-rollback", label=<<B>任一验证失败：ROLLBACK</B><BR/><FONT POINT-SIZE="10">不留下半发布；expected_head错误返回BASE_VERSION_<BR ALIGN="LEFT"/>CHANGED。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">store.py:43</FONT>>, fillcolor="#fff0ef", color="#b9625c", tooltip="src/gov_mcp/knowledge/store.py:Store.db"];
+history [id="04-update-publish-history", label=<<B>显式rollback(target, expected_head)</B><BR/><FONT POINT-SIZE="10">仅切换历史头；旧block不自动清除，返回前继续检查<BR ALIGN="LEFT"/>当前暂停。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:723</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.rollback"];
+tick -> claim [label="允许工作", style="solid"];
+claim -> check [label="获租约；每轮最多3包/来源", style="solid"];
+check -> block [label="指纹改变", style="solid"];
+block -> process [label="已持久化", style="solid"];
+process -> docs [label="完成核验", style="solid"];
+docs -> review [label="awaiting_review", style="solid"];
+review -> tx [label="人工发起发布", style="solid"];
+tx -> basis [label="版本与来源通过", style="solid"];
+basis -> snapshot [label="通过", style="solid"];
+snapshot -> switch [label="校验成功", style="solid"];
+basis -> rollback [label="不一致", style="solid"];
+tx -> rollback [label="版本/来源失败", style="solid"];
+snapshot -> rollback [label="结构或引用失败", style="solid"];
+switch -> history [label="需要历史回退时", style="dashed"];
+}

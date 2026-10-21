@@ -1,0 +1,22 @@
+flowchart TD
+    ncontext["检查manifest与当前gates"]
+    nbudget["begin_run预算门"]
+    nopen["主控open_query固定情境"]
+    nret["检索子Agent retrieve"]
+    nverify["核验子Agent verify"]
+    njev["DeepSeek英译→Jev单次支持核验"]
+    nfinal["finalize重新核对绑定与回执"]
+    nstop["外部失败立即封闭本轮"]
+    nout["partial_preview持久化答复"]
+    ncontext -->|"通过"| nbudget
+    nbudget -->|"获准本轮"| nopen
+    nopen -->|"opened"| nret
+    nret -->|"retrieved"| nverify
+    nverify -->|"预留额度后"| njev
+    njev -->|"有效回执"| nfinal
+    njev -->|"外部失败"| nstop
+    nfinal -->|"来源支持与业务暂停并列"| nout
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class ncontext,nbudget,nverify,nfinal gate
+    class nstop stop

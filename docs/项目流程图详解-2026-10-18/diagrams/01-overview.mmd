@@ -1,0 +1,21 @@
+flowchart TD
+    nuser["用户／专业人员"]
+    nnative["Nexent 主控与子 Agent"]
+    nfiles["资料、配置与历史证据"]
+    ndecision["8780 决策工作台"]
+    npublic["8781／8782 原生公开预览"]
+    nregistry["公开资料修订库"]
+    nlegacy["M1／M2／资产查询"]
+    nengine["8775 维护引擎／8778回放"]
+    nsafety["贯穿全程的返回门"]
+    nuser -->|"网页入口"| ndecision
+    nnative -->|"专用MCP"| npublic
+    nfiles -->|"来源配置"| nregistry
+    ndecision -->|"并列历史入口"| nlegacy
+    nnative -->|"原生维护编排"| nengine
+    nregistry -->|"查询／发布校验"| nsafety
+    npublic -->|"返回前重验"| nsafety
+    ndecision -->|"返回前重验"| nsafety
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nsafety gate

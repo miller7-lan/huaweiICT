@@ -1,0 +1,82 @@
+{
+  "evidence": "20261020T043255632355Z.json",
+  "native_run_requests": 1,
+  "tools": [
+    {
+      "event_index": 58,
+      "name": "read_skill_md",
+      "depth": 0
+    },
+    {
+      "event_index": 59,
+      "name": "govkb_crossdoc_open_query",
+      "depth": 0
+    },
+    {
+      "event_index": 197,
+      "name": "govkb_crossdoc_retrieve",
+      "depth": 1
+    },
+    {
+      "event_index": 198,
+      "name": "final_answer",
+      "depth": 1
+    },
+    {
+      "event_index": 249,
+      "name": "govkb_crossdoc_verify",
+      "depth": 1
+    },
+    {
+      "event_index": 250,
+      "name": "final_answer",
+      "depth": 1
+    },
+    {
+      "event_index": 300,
+      "name": "govkb_crossdoc_state",
+      "depth": 0
+    },
+    {
+      "event_index": 350,
+      "name": "govkb_crossdoc_finalize",
+      "depth": 0
+    },
+    {
+      "event_index": 351,
+      "name": "final_answer",
+      "depth": 0
+    }
+  ],
+  "child_starts": 2,
+  "model_observations": {
+    "observed_model_step_begins": 6,
+    "step_attempt_numbers": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "root_steps": 4,
+    "child_steps": 2,
+    "observed_root_input_tokens": 30104,
+    "observed_root_output_tokens": 221,
+    "child_token_usage": null,
+    "total_token_usage": null,
+    "amount_billed": null,
+    "scope": "Native attempt-control events show six model steps at attempt1; child tokens not exposed; not a provider HTTP audit or full bill.",
+    "observed_model_step_commits": 6,
+    "phase_counts": {
+      "begin": 6,
+      "commit": 6
+    }
+  },
+  "events_sha256": "150352315251e5747e87031f223fb1d3bbc2df971111d83352aa0d0346e1419a",
+  "raw_stream_sha256": "da86a26be3468cb1d237fe86f1b6ffe47c8ed5a80b095c5f78aa0370cac8a5a9",
+  "request_sha256": "da69446152bace26f5ec307601462d5e5f637ccff16b185075263cbc0e8c960b",
+  "answer_sha256": "a09a81b7de97218f1d12dcd8196e983372850ed672c1f8cabd67eda2a33fbc40",
+  "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "passed": true
+}

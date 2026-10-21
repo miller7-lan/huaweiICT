@@ -1,0 +1,120 @@
+{
+  "status": "PASS_BOUNDED_CROSSDOC_NATIVE",
+  "date": "2026-10-19",
+  "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "core_checks": {
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "wiring_checks": {
+    "tests": 39,
+    "failures": 0,
+    "errors": 0,
+    "source": "parallel agent completed targeted pytest; existing run reused without repetition",
+    "test_file": "tests/test_crossdoc_native_wiring.py",
+    "tested_source_sha256": {
+      "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+      "scripts/verify_crossdoc_native_preview.py": "0109be9b5fe8fffe9cf6651536bdeaa6f24453dbb36e8535e68f193a9bb021d7",
+      "config/skills/govkb-crossdoc-preview/SKILL.md": "d642fa6a921262aa862c98da23f62fdccd17bc69849905ad1d9fc1e7c4f37ed1",
+      "tests/test_crossdoc_native_wiring.py": "97f263a86f9fafc07df935e0ea40fd97804dffd606d1cb5056906ccbe9c01659"
+    }
+  },
+  "actual_document_ablation": "one derived with both; unknown after removing either",
+  "local_official_acquisition_http": 2,
+  "browser_page_reads": 2,
+  "browser_origin_http_attempts": "not exposed by browser tool",
+  "old_cycle_source_reused": true,
+  "native_campaign": {
+    "native_runs": 1,
+    "max_native_runs": 1,
+    "tasks": 1,
+    "run_status": "passed",
+    "jev_calls": 0,
+    "translation_calls": 0
+  },
+  "native_model_execution_proven": true,
+  "new_jev_calls": 0,
+  "new_translation_calls": 0,
+  "native_drafts": {
+    "controller": 28,
+    "retriever": 26,
+    "verifier": 27
+  },
+  "drafts_disabled_unpublished": true,
+  "old_twelve_agents_unchanged": true,
+  "local_docker_started_existing_configuration": true,
+  "docker_rebuilt": false,
+  "business_knowledge_published": false,
+  "git_pushed": false,
+  "gates": {
+    "inference_enabled": false,
+    "form_verifier_enabled": false
+  },
+  "source_sha256": {
+    "src/gov_mcp/crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+    "src/gov_mcp/crossdoc_preview.py": "be2b5ab7b03e4e69d87787b477b957596685941bc8759a1189d58bc19a799ec3",
+    "src/gov_mcp/crossdoc_preview_server.py": "b1f30f001317163aea452111e04053dabf5bc3b1278c3fdcfcbe61d0c98f4dd1",
+    "scripts/prepare_crossdoc_sources.py": "d606804c4090be3bd20ccb4025c267fe22ffdade71e2be3f5255ea1dc9d23218",
+    "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+    "scripts/verify_crossdoc_native_preview.py": "0109be9b5fe8fffe9cf6651536bdeaa6f24453dbb36e8535e68f193a9bb021d7",
+    "config/skills/govkb-crossdoc-preview/SKILL.md": "d642fa6a921262aa862c98da23f62fdccd17bc69849905ad1d9fc1e7c4f37ed1",
+    "tests/test_crossdoc_reasoning.py": "e9de55ac66e84a52a0c85f6ed7322175f0431e59d3b1d55fd0998bce8592bc99",
+    "tests/test_crossdoc_preview.py": "b0dffb3d39d7c888022362f6f2ad19d7d39ed505e8491b0aa62565c2b2cb7e55",
+    "tests/test_crossdoc_native_wiring.py": "97f263a86f9fafc07df935e0ea40fd97804dffd606d1cb5056906ccbe9c01659"
+  },
+  "limits": [
+    "Archived public sources and fixed fictional normalized interval; current business applicability stays unknown and paused.",
+    "One successful native run proves this bounded workflow, not general graph planning or independent semantic accuracy.",
+    "Six observed model steps at attempt1; provider transport retries not independently audited and child token usage missing.",
+    "Overall asset-to-ontology-to-decision integration, independent effects and clean-environment reproduction still require separate evidence."
+  ],
+  "preparation_date": "2026-10-19",
+  "execution_date": "2026-10-20",
+  "native_evidence": "20261020T043255632355Z.json",
+  "native_duration_ms": 13440.1,
+  "native_actual_tools": [
+    "read_skill_md",
+    "govkb_crossdoc_open_query",
+    "govkb_crossdoc_retrieve",
+    "final_answer",
+    "govkb_crossdoc_verify",
+    "final_answer",
+    "govkb_crossdoc_state",
+    "govkb_crossdoc_finalize",
+    "final_answer"
+  ],
+  "native_child_starts": 2,
+  "native_run_requests": 1,
+  "automatic_retry": false,
+  "model_observations": {
+    "observed_model_step_begins": 6,
+    "step_attempt_numbers": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "root_steps": 4,
+    "child_steps": 2,
+    "observed_root_input_tokens": 30104,
+    "observed_root_output_tokens": 221,
+    "child_token_usage": null,
+    "total_token_usage": null,
+    "amount_billed": null,
+    "scope": "Native attempt-control events show six model steps at attempt1; child tokens not exposed; not a provider HTTP audit or full bill.",
+    "observed_model_step_commits": 6,
+    "phase_counts": {
+      "begin": 6,
+      "commit": 6
+    }
+  },
+  "original_source_database_unchanged": true,
+  "original_source_database_sha256": "dddb884671592181d945cef5a7ad019d299694589b731db83184b682d7a38d90",
+  "source_binding_unchanged": true,
+  "program_answer_equals_native_final": true,
+  "human_authorization": "One complete process; internal multiple model requests allowed; no retry."
+}

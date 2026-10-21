@@ -1,0 +1,71 @@
+{
+  "status": "LOCAL_IMPLEMENTED_PENDING_HUMAN_STRUCTURAL_REVIEW",
+  "recorded_at": "2026-10-20T04:43:51.170952+00:00",
+  "candidate_id": "bf7d3d08b1ac25e832a2902d4fa8dc60dd4f2456c7adca612992a014150c9640",
+  "current_head": "1ca18aa9d0a9e85032b633bb11e0b4dcfe4aef40518c46a1b4c238fe8a7b0933",
+  "candidate_status": "pending_review",
+  "active_instances": 0,
+  "audit_operations": [
+    "publish_rules",
+    "ontology_candidate"
+  ],
+  "actual_preparation": "Official archived originals verified, copied to a new private scope, candidate submitted; baseline query blocked.",
+  "directed_tests": {
+    "passed": 34,
+    "result": "test-execution.json"
+  },
+  "independent_code_review": "No blocking defect found; fixed built-in scalar output types documented.",
+  "source_sha256": {
+    "src/gov_mcp/ontology_crossdoc.py": "0774556e6a4487105763867ca88121be27cb138a0b3a7705a5cf429d84334085",
+    "scripts/run_ontology_crossdoc.py": "5e082d888a67575886185b2a5348ee4846c94edd6b9b18fbb21399adfcf79886",
+    "tests/test_ontology_crossdoc.py": "06c8ff42966bdd5bd24492dd5bc71d588ef19b9b63ae855a115e83e3ad16f6c4",
+    "src/gov_mcp/ontology_evolution.py": "60f9b2101407050cf32fcc288775c3333dbb9cfde0a808ca305c9231b83930b4",
+    "src/gov_mcp/ontology_seed.py": "9568d474f983ee86c601c2ff246ae702d529fdc970344734d1432adc4c497d34",
+    "src/gov_mcp/crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+    "src/gov_mcp/knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2",
+    "config/preparation/ontology.seed.json": "8749153fdd6831b8e9a706085e485b36a006c8b62017a54d2941e4112c2b0c7b"
+  },
+  "previous_native_fingerprints_match": {
+    "src/gov_mcp/crossdoc_reasoning.py": true,
+    "src/gov_mcp/crossdoc_preview.py": true,
+    "src/gov_mcp/crossdoc_preview_server.py": true,
+    "scripts/prepare_crossdoc_sources.py": true,
+    "scripts/provision_crossdoc_native_preview.py": true,
+    "scripts/verify_crossdoc_native_preview.py": true,
+    "config/skills/govkb-crossdoc-preview/SKILL.md": true,
+    "tests/test_crossdoc_reasoning.py": true,
+    "tests/test_crossdoc_preview.py": true,
+    "tests/test_crossdoc_native_wiring.py": true
+  },
+  "original_runtime_pins_unchanged": {
+    ".runtime/crossdoc-native-preview-20261019/manifest.json": true,
+    ".runtime/crossdoc-native-preview-20261019/gates.json": true,
+    ".runtime/crossdoc-native-preview-20261019/crossdoc.sqlite3": true,
+    ".runtime/new-knowledge-experiment-20261018/knowledge.sqlite3": true
+  },
+  "existing_native_budget": {
+    "native_runs": 1,
+    "statuses": [
+      "passed"
+    ],
+    "tasks": 1
+  },
+  "new_model_calls": 0,
+  "new_http_calls": 0,
+  "new_native_runs": 0,
+  "new_adapter_real_native_execution": false,
+  "real_candidate_activated": false,
+  "real_archive_demonstration": "pending explicit human structural confirmation",
+  "business_conclusion_status": "PAUSED_UNREVIEWED",
+  "current_applicability": "unknown",
+  "formally_published": false,
+  "git_pushed": false,
+  "document_links_checked": 7,
+  "document_links_valid": true,
+  "limits": [
+    "Bounded Nanjing source grammar and three operators, not generic graph planning.",
+    "Tests use synthetic fixtures; real candidate activation and local demonstration still pending.",
+    "Historical native evidence validates unchanged earlier workflow only.",
+    "Current-policy approval, independent business effects and clean-environment reproduction remain unverified."
+  ]
+}

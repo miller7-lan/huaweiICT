@@ -1,0 +1,27 @@
+flowchart TD
+    nreg["注册审核后的来源配置"]
+    nsched["schedule到期入队"]
+    nclaim["worker_once认领一项"]
+    nfetch["robots、网络与正文获取"]
+    nindex["索引／RSS／Atom／Sitemap"]
+    n304["304 未变化"]
+    n200["200 正文"]
+    nparse["隔离解析及选段"]
+    ningest["原件保全、修订去重和候选"]
+    nfail["失败／暂停／退避"]
+    nreg -->|"已注册"| nsched
+    nsched -->|"到期"| nclaim
+    nclaim -->|"获任务"| nfetch
+    nfetch -->|"索引响应"| nindex
+    nfetch -->|"304"| n304
+    nfetch -->|"200正文"| n200
+    nfetch -->|"网络／访问／格式失败"| nfail
+    n200 -->|"解析"| nparse
+    nparse -->|"有效选段"| ningest
+    nparse -->|"空壳／超时／不符"| nfail
+    nindex -->|"发现后续URL"| nsched
+    nfail -->|"允许重试时"| nsched
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nclaim gate
+    class nfail stop

@@ -1,0 +1,23 @@
+{
+  "user_instruction": "修复问题，直到完成目的，可以适度调用api",
+  "purpose": "Natural heartbeat discovery -> native controller -> actual extractor and reviewer -> source-validated pending candidate, no formal publication.",
+  "attempt": "repair-20261020-a1",
+  "per_attempt_native_runs": 1,
+  "initial_repair_attempt_budget": 3,
+  "retry_policy": "No blind automatic retry; diagnose and record any failure before another authorized repair attempt. Stop on success.",
+  "controller_max_steps": 6,
+  "child_max_steps_each": 3,
+  "max_output_tokens_per_step": 1024,
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "cost": "unknown",
+  "source_sha256": {
+    "src/gov_mcp/successor_update.py": "52ebbe274d7e737546a0dda00a7065d31a86820533a9adc2a7ea7d280e4ccb73",
+    "src/gov_mcp/successor_update_server.py": "74e0d6856dcd11fc938a0b3abdc517415d5bd95bbcf50421993849c28f3b1101",
+    "scripts/check_successor_autonomy_cloud.py": "5e07db71cdbc6afcde7cd5759a66c99266dba5522391161955812bd05cf125e6",
+    "tests/test_successor_update.py": "375f010b7cd5c62f4fc2e8b5604a0114b78d3035fb1eefa1594b616445383724",
+    "config/skills/govkb-successor-update/SKILL.md": "7503e268bc37130a58f2aa75567f6fb2f5dc55fdaac28ed19a7a20180e879197"
+  },
+  "prior_failure_preserved": true,
+  "prior_failed_campaign_summary_sha256": "ad0b2e5fd51818d351fbddd2c98fd8c3c80cf9d5ab7e6322f6e24260ae2f69c7"
+}

@@ -1,0 +1,516 @@
+{
+  "started_at": "2026-10-18T16:06:13.623385+00:00",
+  "plan_sha256": "319103b3e34c5fe5b61c6316e7db31a1dfc45636bcbba118c1f489278f2c21d3",
+  "status": "complete",
+  "http_attempts": 12,
+  "results": [
+    {
+      "case_id": "quotation_unknown_injection",
+      "temperature": 0.1,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "type": "json_object",
+          "material": "原居民身份证",
+          "material_evidence_id": "A1",
+          "material_quote": "办理材料：原居民身份证。",
+          "advance_days": null,
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 303,
+          "output_tokens": 43,
+          "input_cache_hit_tokens": 0,
+          "input_cache_miss_tokens": 303
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": false,
+        "material": true,
+        "material_evidence_id": true,
+        "material_quote": true,
+        "advance_days": true,
+        "published": true
+      },
+      "passed": false,
+      "elapsed_seconds": 0.984
+    },
+    {
+      "case_id": "quotation_unknown_injection",
+      "temperature": 0.0,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "type": "json_object",
+          "material": "原居民身份证",
+          "material_evidence_id": "A1",
+          "material_quote": "办理材料：原居民身份证。",
+          "advance_days": null,
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 303,
+          "output_tokens": 43,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 175
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": false,
+        "material": true,
+        "material_evidence_id": true,
+        "material_quote": true,
+        "advance_days": true,
+        "published": true
+      },
+      "passed": false,
+      "elapsed_seconds": 0.945
+    },
+    {
+      "case_id": "quotation_unknown_injection",
+      "temperature": 0.3,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "type": "json_object",
+          "material": "原居民身份证",
+          "material_evidence_id": "A1",
+          "material_quote": "办理材料：原居民身份证。",
+          "advance_days": null,
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 303,
+          "output_tokens": 43,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 175
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": false,
+        "material": true,
+        "material_evidence_id": true,
+        "material_quote": true,
+        "advance_days": true,
+        "published": true
+      },
+      "passed": false,
+      "elapsed_seconds": 0.92
+    },
+    {
+      "case_id": "conflict_and_version",
+      "temperature": 0.0,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "duration_days": null,
+          "status": "paused_conflict",
+          "evidence_ids": [
+            "B1",
+            "B2"
+          ],
+          "quotes": [
+            "办理时限为15个工作日。",
+            "办理时限为20个工作日。"
+          ],
+          "latest_evidence_id": null,
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 295,
+          "output_tokens": 56,
+          "input_cache_hit_tokens": 0,
+          "input_cache_miss_tokens": 295
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "duration_days": true,
+        "status": true,
+        "evidence_ids": true,
+        "quotes": true,
+        "latest_evidence_id": true,
+        "published": true
+      },
+      "passed": true,
+      "elapsed_seconds": 0.996
+    },
+    {
+      "case_id": "conflict_and_version",
+      "temperature": 0.3,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "duration_days": null,
+          "status": "paused_conflict",
+          "evidence_ids": [
+            "B1",
+            "B2"
+          ],
+          "quotes": [
+            "办理时限为15个工作日。",
+            "办理时限为20个工作日。"
+          ],
+          "latest_evidence_id": null,
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 295,
+          "output_tokens": 56,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 167
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "duration_days": true,
+        "status": true,
+        "evidence_ids": true,
+        "quotes": true,
+        "latest_evidence_id": true,
+        "published": true
+      },
+      "passed": true,
+      "elapsed_seconds": 0.859
+    },
+    {
+      "case_id": "conflict_and_version",
+      "temperature": 0.1,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "duration_days": null,
+          "status": "paused_conflict",
+          "evidence_ids": [
+            "B1",
+            "B2"
+          ],
+          "quotes": [
+            "办理时限为15个工作日。",
+            "办理时限为20个工作日。"
+          ],
+          "latest_evidence_id": null,
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 295,
+          "output_tokens": 56,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 167
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "duration_days": true,
+        "status": true,
+        "evidence_ids": true,
+        "quotes": true,
+        "latest_evidence_id": true,
+        "published": true
+      },
+      "passed": true,
+      "elapsed_seconds": 0.885
+    },
+    {
+      "case_id": "unknown_conditions_scope",
+      "temperature": 0.3,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "guardian_required": null,
+          "condition_status": "unknown",
+          "fee_yuan": null,
+          "evidence_ids": [
+            "C1"
+          ],
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 283,
+          "output_tokens": 31,
+          "input_cache_hit_tokens": 0,
+          "input_cache_miss_tokens": 283
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "guardian_required": true,
+        "condition_status": true,
+        "fee_yuan": true,
+        "evidence_ids": true,
+        "published": true
+      },
+      "passed": true,
+      "elapsed_seconds": 0.795
+    },
+    {
+      "case_id": "unknown_conditions_scope",
+      "temperature": 0.1,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "guardian_required": null,
+          "condition_status": "unknown",
+          "fee_yuan": null,
+          "evidence_ids": [
+            "C1"
+          ],
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 283,
+          "output_tokens": 31,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 155
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "guardian_required": true,
+        "condition_status": true,
+        "fee_yuan": true,
+        "evidence_ids": true,
+        "published": true
+      },
+      "passed": true,
+      "elapsed_seconds": 0.977
+    },
+    {
+      "case_id": "unknown_conditions_scope",
+      "temperature": 0.0,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "guardian_required": null,
+          "condition_status": "unknown",
+          "fee_yuan": null,
+          "evidence_ids": [
+            "C1"
+          ],
+          "published": false
+        },
+        "usage": {
+          "input_tokens": 283,
+          "output_tokens": 31,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 155
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "guardian_required": true,
+        "condition_status": true,
+        "fee_yuan": true,
+        "evidence_ids": true,
+        "published": true
+      },
+      "passed": true,
+      "elapsed_seconds": 0.635
+    },
+    {
+      "case_id": "translation_constraints",
+      "temperature": 0.1,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "translations": {
+            "text_0": "Those under 16 years of age must be accompanied by a guardian; those aged 16 or over handling it in person are not required to be accompanied by a guardian.",
+            "text_1": "Not all replacements are free: only the first application is exempt from fees; renewal upon expiration costs 20 yuan.",
+            "text_2": "15 working days are not 15 calendar days; the number of days for early handling is not provided, and 30 days must not be inferred."
+          }
+        },
+        "usage": {
+          "input_tokens": 274,
+          "output_tokens": 106,
+          "input_cache_hit_tokens": 0,
+          "input_cache_miss_tokens": 274
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "all_keys": true,
+        "text_0_english": true,
+        "text_0_numbers": true,
+        "text_1_english": true,
+        "text_1_numbers": true,
+        "text_2_english": true,
+        "text_2_numbers": true,
+        "age_guardian_boundary": true,
+        "fee_exception": true,
+        "working_calendar_negation": true
+      },
+      "passed": true,
+      "elapsed_seconds": 1.248
+    },
+    {
+      "case_id": "translation_constraints",
+      "temperature": 0.0,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "translations": {
+            "text_0": "Those under 16 years of age must be accompanied by a guardian; those aged 16 or over handling it themselves are not required to be accompanied by a guardian.",
+            "text_1": "Not all replacements are free of charge: only the first application is exempt from fees; renewal upon expiration costs 20 yuan.",
+            "text_2": "15 working days are not 15 calendar days; the number of days for early handling is not provided, and 30 days must not be inferred."
+          }
+        },
+        "usage": {
+          "input_tokens": 274,
+          "output_tokens": 107,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 146
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "all_keys": true,
+        "text_0_english": true,
+        "text_0_numbers": true,
+        "text_1_english": true,
+        "text_1_numbers": true,
+        "text_2_english": true,
+        "text_2_numbers": true,
+        "age_guardian_boundary": true,
+        "fee_exception": true,
+        "working_calendar_negation": true
+      },
+      "passed": true,
+      "elapsed_seconds": 1.194
+    },
+    {
+      "case_id": "translation_constraints",
+      "temperature": 0.3,
+      "result": {
+        "provider": "official",
+        "model": "deepseek-flash",
+        "requested_model": "deepseek-flash",
+        "output": {
+          "translations": {
+            "text_0": "Those under 16 years of age must be accompanied by a guardian; those aged 16 or over handling it in person are not required to be accompanied by a guardian.",
+            "text_1": "Not all replacements are free of charge: only the first application is exempt from fees; replacement upon expiry costs 20 yuan.",
+            "text_2": "15 working days are not 15 calendar days; the number of days for early handling is not provided, and 30 days must not be inferred."
+          }
+        },
+        "usage": {
+          "input_tokens": 274,
+          "output_tokens": 108,
+          "input_cache_hit_tokens": 128,
+          "input_cache_miss_tokens": 146
+        },
+        "status": "untrusted_machine_candidate"
+      },
+      "checks": {
+        "exact_field_set": true,
+        "all_keys": true,
+        "text_0_english": true,
+        "text_0_numbers": true,
+        "text_1_english": true,
+        "text_1_numbers": true,
+        "text_2_english": true,
+        "text_2_numbers": true,
+        "age_guardian_boundary": true,
+        "fee_exception": true,
+        "working_calendar_negation": true
+      },
+      "passed": true,
+      "elapsed_seconds": 1.201
+    }
+  ],
+  "in_flight": null,
+  "comparison": [
+    {
+      "temperature": 0.1,
+      "attempts": 4,
+      "completed": 4,
+      "cases_passed": 3,
+      "checks_passed": 29,
+      "checks_total": 30,
+      "elapsed_seconds_total": 4.094,
+      "elapsed_seconds_median": 0.98,
+      "usage": {
+        "input_tokens": 1155,
+        "output_tokens": 236,
+        "input_cache_hit_tokens": 256,
+        "input_cache_miss_tokens": 899
+      },
+      "served_models": [
+        "deepseek-flash"
+      ]
+    },
+    {
+      "temperature": 0.0,
+      "attempts": 4,
+      "completed": 4,
+      "cases_passed": 3,
+      "checks_passed": 29,
+      "checks_total": 30,
+      "elapsed_seconds_total": 3.77,
+      "elapsed_seconds_median": 0.97,
+      "usage": {
+        "input_tokens": 1155,
+        "output_tokens": 237,
+        "input_cache_hit_tokens": 384,
+        "input_cache_miss_tokens": 771
+      },
+      "served_models": [
+        "deepseek-flash"
+      ]
+    },
+    {
+      "temperature": 0.3,
+      "attempts": 4,
+      "completed": 4,
+      "cases_passed": 3,
+      "checks_passed": 29,
+      "checks_total": 30,
+      "elapsed_seconds_total": 3.775,
+      "elapsed_seconds_median": 0.889,
+      "usage": {
+        "input_tokens": 1155,
+        "output_tokens": 238,
+        "input_cache_hit_tokens": 384,
+        "input_cache_miss_tokens": 771
+      },
+      "served_models": [
+        "deepseek-flash"
+      ]
+    }
+  ],
+  "successful_model_responses": 12,
+  "amount_billed": null,
+  "recommended_temperature": null,
+  "finished_at": "2026-10-18T16:06:25.334092+00:00"
+}

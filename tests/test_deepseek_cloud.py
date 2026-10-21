@@ -30,7 +30,12 @@ def test_cloud_default_honors_operator_proxy_without_following_redirects(monkeyp
     seen = []
     def client_factory(**kwargs):
         seen.append(kwargs)
-        return original(transport=httpx.MockTransport(lambda _: httpx.Response(200, json=fixture_output())), trust_env=False)
+        def handle(request):
+            body = json.loads(request.content)
+            assert body["temperature"] == 0.0
+            assert body["thinking"] == {"type": "disabled"}
+            return httpx.Response(200, json=fixture_output())
+        return original(transport=httpx.MockTransport(handle), trust_env=False)
     monkeypatch.setattr(httpx, "Client", client_factory)
     result = chat(PROFILES["official"], [], environment={"DEEPSEEK_API_KEY": "fixture-secret"})
     assert result["output"] == {"candidate_ids": ["req-slip"]}
@@ -149,7 +154,10 @@ def test_native_binding_requires_verified_model_and_preserves_existing_settings(
                 return {"data": [{"model_id": 9, "display_name": "deepseek-flash", "model_name": "deepseek-flash",
                                   "base_url": PROFILES["official"]["base_url"],
                                   "connect_status": "available" if available else "not_detected"}]}
-            if path == "/agent/update": self.bound = True; self.writes.append(path); return {}
+            if path == "/agent/update":
+                assert body["model_params_override"]["9"]["temperature"] == 0.0
+                assert body["model_params_override"]["9"]["extra_params"]["__custom__"]["thinking"] == {"type": "disabled"}
+                self.bound = True; self.writes.append(path); return {}
             pytest.fail("Unexpected model mutation or inference: " + path)
     api = API()
     saved = {"agents": {"extractor": 17}}

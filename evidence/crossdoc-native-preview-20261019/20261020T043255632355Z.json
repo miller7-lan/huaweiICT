@@ -1,0 +1,324 @@
+{
+  "checked_at": "2026-10-20T04:32:55.632874+00:00",
+  "mode": "crossdoc_archived_preview",
+  "scenario_id": "nanjing_outside_old_card",
+  "published": false,
+  "formal_approval": false,
+  "native_run_requests": 1,
+  "native_run_budget": 1,
+  "automatic_retry": false,
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "cost_amount": null,
+  "passed": true,
+  "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "service_startup_source_sha256": {
+    "crossdoc_preview.py": "be2b5ab7b03e4e69d87787b477b957596685941bc8759a1189d58bc19a799ec3",
+    "crossdoc_preview_server.py": "b1f30f001317163aea452111e04053dabf5bc3b1278c3fdcfcbe61d0c98f4dd1",
+    "crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e"
+  },
+  "source_sha256": {
+    "src/gov_mcp/crossdoc_preview.py": "be2b5ab7b03e4e69d87787b477b957596685941bc8759a1189d58bc19a799ec3",
+    "src/gov_mcp/crossdoc_preview_server.py": "b1f30f001317163aea452111e04053dabf5bc3b1278c3fdcfcbe61d0c98f4dd1",
+    "src/gov_mcp/crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+    "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+    "scripts/verify_crossdoc_native_preview.py": "0109be9b5fe8fffe9cf6651536bdeaa6f24453dbb36e8535e68f193a9bb021d7",
+    "config/skills/govkb-crossdoc-preview/SKILL.md": "d642fa6a921262aa862c98da23f62fdccd17bc69849905ad1d9fc1e7c4f37ed1"
+  },
+  "run_id": "41133092a01b48e2ae92f47547db30d9",
+  "request_sha256": "da69446152bace26f5ec307601462d5e5f637ccff16b185075263cbc0e8c960b",
+  "stop_reasons": [],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_crossdoc_open_query",
+    "govkb_crossdoc_retrieve",
+    "final_answer",
+    "govkb_crossdoc_verify",
+    "final_answer",
+    "govkb_crossdoc_state",
+    "govkb_crossdoc_finalize",
+    "final_answer"
+  ],
+  "answer": {
+    "task_id": "a024edd45c5e4d1f882d54c87ad34e40",
+    "mode": "crossdoc_archived_preview",
+    "published": false,
+    "formal_approval": false,
+    "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+    "verification_method": "deterministic_source_bound",
+    "reasoning": {
+      "schema_version": 1,
+      "status": "derived",
+      "conclusion": "cannot_establish_full_cycle_coverage",
+      "reason": "HISTORICAL_ARCHIVE_COMPARISON_ONLY",
+      "facts": {
+        "region": "南京市",
+        "matter": "resident-id-renewal",
+        "household": "outside_province",
+        "remaining_validity_working_days": 22,
+        "normalized_same_start_and_unit": true,
+        "lost_or_reported": false,
+        "exam_expedited": false
+      },
+      "trace": [
+        {
+          "id": "c1",
+          "depends_on": [],
+          "rule": "select_household_branch_and_add_increment",
+          "inputs": {
+            "household": "outside_province",
+            "base_working_days": 20,
+            "outside_increment_working_days": 5
+          },
+          "output": {
+            "usual_waiting_working_days": 25
+          },
+          "evidence": [
+            {
+              "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+              "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+              "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+              "region": "南京市",
+              "matter": "resident-id-renewal",
+              "locator": "正文段落1",
+              "quote": "问：身份证到期后换证，需要多长时间才能领取新证？",
+              "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+            },
+            {
+              "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+              "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+              "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+              "region": "南京市",
+              "matter": "resident-id-renewal",
+              "locator": "正文段落2",
+              "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+              "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+            },
+            {
+              "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+              "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+              "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+              "region": "南京市",
+              "matter": "resident-id-renewal",
+              "locator": "正文段落3",
+              "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+              "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+            }
+          ]
+        },
+        {
+          "id": "u1",
+          "depends_on": [
+            "c1"
+          ],
+          "rule": "intersect_waiting_interval_with_unexpired_old_card_interval",
+          "inputs": {
+            "waiting_interval_from": "c1.output.usual_waiting_working_days",
+            "remaining_validity_working_days": 22,
+            "normalized_same_start_and_unit": true
+          },
+          "output": {
+            "old_card_interval_working_days": 22,
+            "old_card_usable_only_while_unexpired": true
+          },
+          "evidence": [
+            {
+              "source_id": "NJ-ID-OLD-CARD-2025",
+              "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+              "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+              "region": "南京市",
+              "matter": "resident-id-renewal-old-card-use",
+              "locator": "正文段落1",
+              "quote": "问：申请换领居民身份证期间，旧身份证还能用吗？",
+              "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+            },
+            {
+              "source_id": "NJ-ID-OLD-CARD-2025",
+              "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+              "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+              "region": "南京市",
+              "matter": "resident-id-renewal-old-card-use",
+              "locator": "正文段落2",
+              "quote": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+              "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+            }
+          ]
+        },
+        {
+          "id": "j1",
+          "depends_on": [
+            "c1",
+            "u1"
+          ],
+          "rule": "compare_derived_intervals",
+          "inputs": {
+            "waiting_from": "c1.output.usual_waiting_working_days",
+            "usable_from": "u1.output.old_card_interval_working_days"
+          },
+          "output": {
+            "full_cycle_coverage_established": false
+          },
+          "evidence": [
+            {
+              "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+              "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+              "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+              "region": "南京市",
+              "matter": "resident-id-renewal",
+              "locator": "正文段落2",
+              "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+              "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+            },
+            {
+              "source_id": "NJ-ID-OLD-CARD-2025",
+              "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+              "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+              "region": "南京市",
+              "matter": "resident-id-renewal-old-card-use",
+              "locator": "正文段落2",
+              "quote": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+              "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+            }
+          ]
+        }
+      ],
+      "scope_mapping": {
+        "region": "南京市",
+        "from_matter": "resident-id-renewal-old-card-use",
+        "to_matter": "resident-id-renewal",
+        "approved_for": "engineering_fixed_preview_only",
+        "formal_approval": false
+      },
+      "archive_mode": "frozen_historical_archive_not_current_policy",
+      "current_applicability": "unknown",
+      "business_conclusion_status": "PAUSED_UNREVIEWED",
+      "formally_published": false,
+      "formal_approval": false,
+      "actual_issuance_date": null,
+      "actual_gap_days": null,
+      "usual_waiting_working_days": 25,
+      "explanation": "假定同一起点与工作日口径，旧证剩余有效区间不足以覆盖来源描述的常规等待区间；不据此认定实际领证日期或实际缺证天数。"
+    }
+  },
+  "answer_sha256": "a09a81b7de97218f1d12dcd8196e983372850ed672c1f8cabd67eda2a33fbc40",
+  "duration_ms": 13440.1,
+  "campaign": {
+    "native_runs": 1,
+    "max_native_runs": 1,
+    "tasks": 1,
+    "run_status": "passed",
+    "jev_calls": 0,
+    "translation_calls": 0
+  },
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 6,
+    "model_attempt_control": 12,
+    "model_output_thinking": 300,
+    "parse": 6,
+    "tool": 9,
+    "execution_logs": 6,
+    "token_count": 4,
+    "subagent_start": 2,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "final_answer": 1
+  },
+  "events_sha256": "150352315251e5747e87031f223fb1d3bbc2df971111d83352aa0d0346e1419a",
+  "source_sha256_after": {
+    "src/gov_mcp/crossdoc_preview.py": "be2b5ab7b03e4e69d87787b477b957596685941bc8759a1189d58bc19a799ec3",
+    "src/gov_mcp/crossdoc_preview_server.py": "b1f30f001317163aea452111e04053dabf5bc3b1278c3fdcfcbe61d0c98f4dd1",
+    "src/gov_mcp/crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+    "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+    "scripts/verify_crossdoc_native_preview.py": "0109be9b5fe8fffe9cf6651536bdeaa6f24453dbb36e8535e68f193a9bb021d7",
+    "config/skills/govkb-crossdoc-preview/SKILL.md": "d642fa6a921262aa862c98da23f62fdccd17bc69849905ad1d9fc1e7c4f37ed1"
+  },
+  "trace": {
+    "tools": [
+      {
+        "event_index": 58,
+        "name": "read_skill_md",
+        "depth": 0
+      },
+      {
+        "event_index": 59,
+        "name": "govkb_crossdoc_open_query",
+        "depth": 0
+      },
+      {
+        "event_index": 197,
+        "name": "govkb_crossdoc_retrieve",
+        "depth": 1
+      },
+      {
+        "event_index": 198,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 249,
+        "name": "govkb_crossdoc_verify",
+        "depth": 1
+      },
+      {
+        "event_index": 250,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 300,
+        "name": "govkb_crossdoc_state",
+        "depth": 0
+      },
+      {
+        "event_index": 350,
+        "name": "govkb_crossdoc_finalize",
+        "depth": 0
+      },
+      {
+        "event_index": 351,
+        "name": "final_answer",
+        "depth": 0
+      }
+    ],
+    "child_starts": 2,
+    "observed_usage_steps": [
+      {
+        "step_number": 1,
+        "step_input_tokens": 6854,
+        "step_output_tokens": 52,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 2,
+        "step_input_tokens": 7174,
+        "step_output_tokens": 84,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 3,
+        "step_input_tokens": 7937,
+        "step_output_tokens": 41,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 4,
+        "step_input_tokens": 8139,
+        "step_output_tokens": 44,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      }
+    ],
+    "usage_scope": "Observed native token_count events; child model usage may be missing, not total model cost"
+  },
+  "request_record_sha256": "7da774df26375489b933987accb137fa4fd72a20a2a20864d5903004a41c3490",
+  "raw_stream_sha256": "da86a26be3468cb1d237fe86f1b6ffe47c8ed5a80b095c5f78aa0370cac8a5a9"
+}

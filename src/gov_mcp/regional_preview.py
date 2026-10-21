@@ -8,7 +8,7 @@ import uuid
 
 from gov_mcp.classification import ClassificationError, JevProvider, validate_response
 from gov_mcp.deepseek import PROFILES, load_key, chat
-from gov_mcp.jev_translation import DeepSeekTranslator, EnglishJevProvider, PROMPT, VERSION, text_slots
+from gov_mcp.jev_translation import DeepSeekTranslator, EnglishJevProvider, PROMPT, VERSION, text_slots, translation_contract
 from gov_mcp.knowledge import KnowledgeStore
 from gov_mcp.knowledge_landing import retrieve as candidate_retrieve
 from gov_mcp.privacy import data_classes_allowed
@@ -136,7 +136,8 @@ class OneRegionalTranslation(DeepSeekTranslator):
         self.attempts += 1
         try:
             return chat(PROFILES['official'], [{'role': 'system', 'content': PROMPT},
-                {'role': 'user', 'content': json.dumps(texts, ensure_ascii=False, separators=(',', ':'))}], max_output_tokens=1024)
+                {'role': 'user', 'content': json.dumps(texts, ensure_ascii=False, separators=(',', ':'))}],
+                max_output_tokens=1024, response_model=translation_contract(texts))
         except Exception:
             raise ClassificationError('TRANSLATION_UNAVAILABLE') from None
 

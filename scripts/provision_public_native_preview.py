@@ -12,6 +12,7 @@ from mcp.client.sse import sse_client
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from gov_mcp.public_preview import CASE, QUESTION, SERVICE, SKILL, TOOLS, fingerprint, read, write
+from gov_mcp.deepseek import DEFAULT_TEMPERATURE
 from nexent_api import NexentAPI, nonthinking_params
 from private_runtime import ensure_private_directory
 
@@ -137,7 +138,7 @@ def main():
                 "constraint_prompt": "Only fixed public preview tools. No imports, DSML, publication, workspace, files, memory, credential access or extra network. Never rewrite the actual final tool result.",
                 "max_steps": 6 if role == "controller" else 3, "requested_output_tokens": 1024,
                 "provide_run_summary": False, "allow_chat_metadata": False, "enable_protocol_repair_retry": False,
-                "model_params_override": {str(model_id): {"temperature": .1, "extra_params": nonthinking_params("deepseek-flash")}},
+                "model_params_override": {str(model_id): {"temperature": DEFAULT_TEMPERATURE, "extra_params": nonthinking_params("deepseek-flash")}},
                 "enabled_skill_ids": [saved["skill_id"]] if role == "controller" else [],
                 "enabled_tool_ids": [tool_ids[n] for n in ROLE_TOOLS[role]],
                 "related_agent_ids": [saved["agents"][r] for r in ("retriever", "verifier")] if role == "controller" else [],

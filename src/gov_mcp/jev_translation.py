@@ -5,8 +5,11 @@ from copy import deepcopy
 import json
 import re
 
+from pydantic import Field, create_model
+
 from .classification import ClassificationError, fingerprint, request_bytes
 from .deepseek import ROOT, PROFILES, CloudError, chat, compact_json, load_key
+from .json_output import StrictOutput
 
 
 VERSION = "jev-english-1"
@@ -34,6 +37,15 @@ def inference_enabled():
         return False
 
 
+def translation_contract(texts):
+    """Require exactly the requested aliases, including keys unsafe as Python names."""
+    if not isinstance(texts, dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in texts.items()):
+        raise ValueError("INVALID_TRANSLATION_INPUT")
+    values = create_model("TranslationValues", __base__=StrictOutput, **{
+        f"slot_{index}": (str, Field(alias=key)) for index, key in enumerate(texts)})
+    return create_model("TranslationOutput", __base__=StrictOutput, translations=(values, ...))
+
+
 class DeepSeekTranslator:
     def __init__(self, *, client=None, environment=None, enabled=None):
         self.client, self.environment, self.enabled = client, environment, enabled
@@ -47,13 +59,15 @@ class DeepSeekTranslator:
         if self.blocked:
             raise ClassificationError("TRANSLATION_UNAVAILABLE")
         try:
+            contract = translation_contract(texts)
             if not load_key(PROFILES["official"], self.environment):
                 raise CloudError("WAITING_DEEPSEEK_CREDENTIAL")
             self.attempts += 1
             return chat(PROFILES["official"], [
                 {"role": "system", "content": PROMPT},
                 {"role": "user", "content": compact_json(texts)}],
-                client=self.client, environment=self.environment, max_output_tokens=8192)
+                client=self.client, environment=self.environment, max_output_tokens=8192,
+                response_model=contract)
         except CloudError as error:
             if str(error) in {"DEEPSEEK_AUTHENTICATION_FAILED", "DEEPSEEK_PAYMENT_REQUIRED", "DEEPSEEK_ACCESS_DENIED"}:
                 self.blocked = True

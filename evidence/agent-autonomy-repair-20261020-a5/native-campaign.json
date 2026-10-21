@@ -1,0 +1,30 @@
+{
+  "run_id": "f6b3e20be2194b9094f4c5ae3ee9ce8c",
+  "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+  "implementation": {
+    "successor_update.py": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+    "successor_update_server.py": "9f2eb4f5e20b3cc636b2c4344effdfa3219b335edb223d760a2333ca356b2246",
+    "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+    "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2"
+  },
+  "reserved_at": "2026-10-20T14:37:33.110378+00:00",
+  "status": "failed",
+  "native_run_budget": 1,
+  "error_code": "NATIVE_PERSISTED_FINAL_MISSING",
+  "duration_ms": 10766.0,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 3,
+    "step_count": 3,
+    "model_attempt_control": 6,
+    "model_output_thinking": 383,
+    "parse": 2,
+    "tool": 5,
+    "subagent_start": 1,
+    "execution_logs": 2,
+    "agent_finish": 1,
+    "subagent_end": 1,
+    "token_count": 1,
+    "final_answer": 1
+  }
+}

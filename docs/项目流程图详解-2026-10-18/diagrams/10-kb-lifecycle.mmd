@@ -1,0 +1,22 @@
+flowchart TD
+    nraw["内容寻址归档原件"]
+    ndedup["正文／元数据／观察信号去重"]
+    npending["pending_review"]
+    nreview["人工review并绑定digest"]
+    nexclude["exclude／reopen／amend"]
+    ncandidate["按地区＋事项建立candidate"]
+    nquality["绑定独立评测与发布质量门"]
+    npub["明确维护人确认后publish"]
+    nback["rollback历史published版本"]
+    nraw -->|"生成指纹"| ndedup
+    ndedup -->|"变化新增"| npending
+    npending -->|"符合条件后人工确认"| nreview
+    npending -->|"排除／纠正"| nexclude
+    nexclude -->|"重开／amend"| npending
+    nreview -->|"reviewed"| ncandidate
+    ncandidate -->|"版本绑定"| nquality
+    nquality -->|"核验达标"| npub
+    npub -->|"显式需要时"| nback
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class ndedup,nreview,nquality,npub gate

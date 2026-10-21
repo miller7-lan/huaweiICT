@@ -1,0 +1,85 @@
+{
+  "status": "PASS_BOUNDED_UPDATE",
+  "interval_seconds": 60,
+  "natural_clock_observations": [
+    5.344,
+    30.0,
+    60.0,
+    115.368
+  ],
+  "local_first_observation": "2026-10-18T23:20:47.197005+08:00",
+  "local_last_observation": "2026-10-18T23:22:37.220930+08:00",
+  "existing_heartbeats": {
+    "agent-workflow": {
+      "advanced": true,
+      "first_timestamp": 1792336821.685721,
+      "last_timestamp": 1792336941.7374542,
+      "last_status": null,
+      "paused": true
+    },
+    "knowledge": {
+      "advanced": true,
+      "first_timestamp": 1792336819.5594602,
+      "last_timestamp": 1792336939.6823003,
+      "last_status": "waiting_sources",
+      "paused": false
+    },
+    "knowledge-demo": {
+      "advanced": true,
+      "first_timestamp": 1792336819.556781,
+      "last_timestamp": 1792336939.6824076,
+      "last_status": "idle",
+      "paused": true
+    }
+  },
+  "checks": {
+    "three_real_clock_heartbeats": true,
+    "worker_heartbeat_advances": true,
+    "two_scheduled_official_checks": true,
+    "unchanged_source_no_duplicate_revision": true,
+    "official_original_and_quotes_match": true,
+    "candidate_only": true
+  },
+  "real_http_attempts": 4,
+  "http_statuses": [
+    200,
+    200,
+    200,
+    200
+  ],
+  "second_get_conditional": false,
+  "final_counts": {
+    "documents": 1,
+    "revisions": 1,
+    "chunks": 3,
+    "reviews": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "source_pause": "Bounded experiment completed; no recurring task registered",
+  "worker_progress": "completed",
+  "source_changed_in_real_world": false,
+  "actual_model_calls": 0,
+  "closed_model_campaigns": {
+    "public-native-preview": {
+      "native_runs": 1,
+      "jev_reserved": 1
+    },
+    "regional-native-preview": {
+      "native_runs": 3,
+      "jev_reserved": 2
+    }
+  },
+  "tests": {
+    "update_scheduler_and_boundaries": 14,
+    "process_lock_and_recovery": 3,
+    "full_regression_run": false
+  },
+  "final_script_sha256": "c5182554806607180baa8f337943571cb7239001cc76ebf9ec383a367fed68ad",
+  "limitations": [
+    "Existing production collector on 8775 has zero sources; no permanent real-source update deployment was enabled.",
+    "Test uses the fixed official URL proxy transport with the actual candidate scheduler and worker, not the unmodified default direct-DNS CLI transport.",
+    "Change detection and review/publication gates were checked using synthetic unit fixtures, not an observed new official policy.",
+    "No OS task registration, paid model run or formal publication."
+  ]
+}

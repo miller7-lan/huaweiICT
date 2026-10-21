@@ -1,0 +1,20 @@
+flowchart TD
+    ninput["query＋region＋matter＋日期"]
+    nversion["查scope中的published版本"]
+    nnone["EMPTY：无已发布知识"]
+    nmembers["逐成员验证原件、正文与复核"]
+    nrank["字面召回并绑定完整引用"]
+    ncurrent["重查最新状态及来源新鲜度"]
+    nblocked["BLOCKED且不返回citations"]
+    nok["OK／EMPTY及历史标记"]
+    ninput -->|"校验输入"| nversion
+    nversion -->|"无匹配版本"| nnone
+    nversion -->|"存在"| nmembers
+    nmembers -->|"验证通过"| nrank
+    nrank -->|"检索结果"| ncurrent
+    ncurrent -->|"当前视图且存在风险"| nblocked
+    ncurrent -->|"无阻断或显式历史版本"| nok
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nversion,nmembers,ncurrent gate
+    class nnone,nblocked stop

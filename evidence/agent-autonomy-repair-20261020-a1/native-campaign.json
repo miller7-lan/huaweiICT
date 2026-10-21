@@ -1,0 +1,27 @@
+{
+  "run_id": "a4a275faa1ea4c1f9f9002b59fd7f1cc",
+  "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+  "implementation": {
+    "successor_update.py": "52ebbe274d7e737546a0dda00a7065d31a86820533a9adc2a7ea7d280e4ccb73",
+    "successor_update_server.py": "74e0d6856dcd11fc938a0b3abdc517415d5bd95bbcf50421993849c28f3b1101",
+    "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+    "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2"
+  },
+  "reserved_at": "2026-10-20T14:20:31.725095+00:00",
+  "status": "failed",
+  "native_run_budget": 1,
+  "error_code": "TASK_TOOL_BLOCKED",
+  "duration_ms": 14937.0,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 3,
+    "step_count": 5,
+    "model_attempt_control": 10,
+    "model_output_thinking": 800,
+    "parse": 5,
+    "tool": 5,
+    "execution_logs": 4,
+    "token_count": 1,
+    "subagent_start": 1
+  }
+}

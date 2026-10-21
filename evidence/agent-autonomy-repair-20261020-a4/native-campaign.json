@@ -1,0 +1,28 @@
+{
+  "run_id": "75179109f8f640e3abbd9cddb3699b51",
+  "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+  "implementation": {
+    "successor_update.py": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+    "successor_update_server.py": "74e0d6856dcd11fc938a0b3abdc517415d5bd95bbcf50421993849c28f3b1101",
+    "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+    "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2"
+  },
+  "reserved_at": "2026-10-20T14:32:45.570708+00:00",
+  "status": "failed",
+  "native_run_budget": 1,
+  "error_code": "NATIVE_CHILD_OR_CONTROLLER_FAILED",
+  "duration_ms": 12829.0,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 2,
+    "step_count": 6,
+    "model_attempt_control": 12,
+    "model_output_thinking": 547,
+    "parse": 6,
+    "tool": 6,
+    "token_count": 6,
+    "warning": 2,
+    "execution_logs": 4,
+    "max_steps_reached": 1
+  }
+}

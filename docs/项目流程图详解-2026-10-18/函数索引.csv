@@ -1,0 +1,1489 @@
+﻿file,name,kind,line,end,signature,event_count,call_count
+scripts/audit_knowledge_update.py,$module,module,1,103,,1,3
+scripts/audit_knowledge_update.py,main,function,17,99,,11,53
+scripts/audit_knowledge_update.py,main.Fixture,class,30,33,,0,0
+scripts/audit_knowledge_update.py,main.Fixture.fetch,function,32,33,"self, source, url",1,1
+scripts/audit_knowledge_update.py,main.release,function,37,43,,1,6
+scripts/audit_knowledge_update.py,main.query,function,45,46,version=None,1,1
+scripts/audit_knowledge_update.py,main.FailedFixture,class,69,71,,0,0
+scripts/audit_knowledge_update.py,main.FailedFixture.fetch,function,70,71,"self, source, url",1,1
+scripts/audit_knowledge_update.py,main.UnchangedFixture,class,76,78,,0,0
+scripts/audit_knowledge_update.py,main.UnchangedFixture.fetch,function,77,78,"self, source, url",1,0
+scripts/audit_m1_completion.py,$module,module,1,154,,1,1
+scripts/audit_m1_completion.py,read,function,21,22,path,1,2
+scripts/audit_m1_completion.py,main,function,25,150,,62,130
+scripts/audit_m2_minimal_flow.py,$module,module,1,108,,1,1
+scripts/audit_m2_minimal_flow.py,read,function,12,13,path,1,2
+scripts/audit_m2_minimal_flow.py,rows,function,16,17,path,2,4
+scripts/audit_m2_minimal_flow.py,baseline_counts,function,20,23,path,4,6
+scripts/audit_m2_minimal_flow.py,main,function,26,104,,39,80
+scripts/benchmark_agent_workflow.py,$module,module,1,47,,1,1
+scripts/benchmark_agent_workflow.py,main,function,16,43,,4,38
+scripts/benchmark_native.py,$module,module,1,229,,1,5
+scripts/benchmark_native.py,snapshot,function,30,44,,4,14
+scripts/benchmark_native.py,snapshot.Memory,class,32,33,,1,0
+scripts/benchmark_native.py,read_audit,function,47,53,offset,5,5
+scripts/benchmark_native.py,run_payload,function,56,63,"state, query, conversation, model, agent_name='gov_coordinator'",1,0
+scripts/benchmark_native.py,check_parameters,function,66,69,info,3,6
+scripts/benchmark_native.py,check_loaded,function,72,74,"info, model",2,4
+scripts/benchmark_native.py,run_case,function,77,130,"api, state, scenario, model, repeat, *, role_override=None, agent_name='gov_coordinator', query_override=None, assessor=None, check_business_counts=True",21,43
+scripts/benchmark_native.py,run_case.sample,function,90,93,,1,4
+scripts/benchmark_native.py,main,function,133,223,warmup_only=False,31,77
+scripts/build_agents.py,$module,module,1,60,,1,1
+scripts/build_agents.py,tool,function,19,20,name,1,0
+scripts/build_agents.py,agent,function,23,33,"number, name, title, duty, tool_name, children=()",2,3
+scripts/build_agents.py,build_bundle,function,36,49,,2,4
+scripts/build_agents.py,main,function,52,56,,0,7
+scripts/build_decision_fixture.py,$module,module,1,151,,1,5
+scripts/build_decision_fixture.py,build_fixture,function,15,131,,5,45
+scripts/build_decision_fixture.py,build_fixture.ev,function,41,47,"source, line_number, evidence_id",1,4
+scripts/build_decision_fixture.py,build_fixture.reviewed,function,67,75,"item, confirmed=True",3,1
+scripts/build_decision_fixture.py,build_fixture.eq,function,76,76,"field, value",1,0
+scripts/build_decision_fixture.py,build_fixture.requirement,function,96,99,"key, stage, material, action, condition, evidence, *, candidate=False",2,1
+scripts/build_decision_fixture.py,main,function,134,147,,3,21
+scripts/build_flow_atlas.py,$module,module,1,528,,1,3
+scripts/build_flow_atlas.py,sha,function,23,24,raw,1,2
+scripts/build_flow_atlas.py,rel,function,27,28,path,1,2
+scripts/build_flow_atlas.py,snippet,function,31,35,node,4,2
+scripts/build_flow_atlas.py,scan,function,38,150,,35,59
+scripts/build_flow_atlas.py,scan.walk,function,40,55,directory,9,18
+scripts/build_flow_atlas.py,scan.register,function,91,119,"node, name, owner, body, begin, finish, kind",3,8
+scripts/build_flow_atlas.py,scan.register.visit,function,93,113,n,22,38
+scripts/build_flow_atlas.py,scan.definitions,function,121,128,"parent, prefix=''",3,7
+scripts/build_flow_atlas.py,diagram,function,155,162,"key, title, subtitle, rows, edges",4,4
+scripts/build_flow_atlas.py,node,function,165,166,"ident, label, note, ref, kind='process'",1,0
+scripts/build_flow_atlas.py,define_diagrams,function,169,334,,0,166
+scripts/build_flow_atlas.py,wrap,function,340,349,"text, limit",5,3
+scripts/build_flow_atlas.py,svg_for,function,352,394,graph,14,23
+scripts/build_flow_atlas.py,mermaid_for,function,397,408,g,6,10
+scripts/build_flow_atlas.py,write_csv,function,411,413,"name, rows, fields",1,4
+scripts/build_flow_atlas.py,build,function,416,475,,33,75
+scripts/build_flow_atlas.py,make_markdown,function,478,524,data,2,7
+scripts/check_docker.py,$module,module,1,13,,2,4
+scripts/check_knowledge_qa_runtime.py,$module,module,1,51,,1,1
+scripts/check_knowledge_qa_runtime.py,main,function,12,47,,10,27
+scripts/check_native_ready.py,$module,module,1,74,,2,2
+scripts/check_native_ready.py,probe_services,function,15,57,,15,13
+scripts/check_native_ready.py,main,function,60,70,,5,14
+scripts/check_project_heartbeat.py,$module,module,1,76,,1,8
+scripts/check_project_heartbeat.py,inspect,function,13,68,,23,61
+scripts/classify_topic3_data.py,$module,module,1,40,,2,6
+scripts/classify_topic3_data.py,classify_prepared,function,13,20,"corpus, config_path, output_directory, *, provider_name=None",4,6
+scripts/classify_topic3_data.py,main,function,23,36,,3,16
+scripts/collect_topic3_references.py,$module,module,1,121,,1,3
+scripts/collect_topic3_references.py,TextParser,class,30,48,,0,0
+scripts/collect_topic3_references.py,TextParser.__init__,function,31,34,self,0,2
+scripts/collect_topic3_references.py,TextParser.handle_starttag,function,36,40,"self, tag, attrs",2,1
+scripts/collect_topic3_references.py,TextParser.handle_endtag,function,42,44,"self, tag",1,1
+scripts/collect_topic3_references.py,TextParser.handle_data,function,46,48,"self, data",1,1
+scripts/collect_topic3_references.py,record,function,51,55,"path, origin, kind, **metadata",1,8
+scripts/collect_topic3_references.py,collect_page,function,58,78,item,9,19
+scripts/collect_topic3_references.py,main,function,81,117,,9,40
+scripts/compare_model_parameters.py,$module,module,1,250,,2,6
+scripts/compare_model_parameters.py,cases,function,34,78,,1,0
+scripts/compare_model_parameters.py,messages,function,81,83,case,2,1
+scripts/compare_model_parameters.py,assess,function,86,109,"case, output",15,29
+scripts/compare_model_parameters.py,digest,function,112,113,value,1,4
+scripts/compare_model_parameters.py,write,function,116,120,"path, value",0,5
+scripts/compare_model_parameters.py,plan,function,123,138,,4,5
+scripts/compare_model_parameters.py,summarize,function,141,164,report,20,26
+scripts/compare_model_parameters.py,run_live,function,167,219,"directory, frozen",17,42
+scripts/compare_model_parameters.py,main,function,222,246,,13,26
+scripts/configure_deepseek.py,$module,module,1,101,,2,6
+scripts/configure_deepseek.py,native_settings,function,16,22,profile,1,0
+scripts/configure_deepseek.py,bind_drafts,function,25,55,"api, profile, key, saved",19,22
+scripts/configure_deepseek.py,main,function,58,98,,18,37
+scripts/connect_knowledge_mcp.py,$module,module,1,83,,1,3
+scripts/connect_knowledge_mcp.py,verify,function,23,49,"identities, token",13,9
+scripts/connect_knowledge_mcp.py,verify.client,function,24,25,**kwargs,1,1
+scripts/connect_knowledge_mcp.py,main,function,52,79,,6,31
+scripts/container_storage_lock.py,$module,module,1,52,,0,0
+scripts/container_storage_lock.py,container_storage_lock,function,11,52,,16,16
+scripts/create_admin_invite.py,$module,module,1,56,,1,1
+scripts/create_admin_invite.py,create_invite,function,10,41,"api, runtime=RUNTIME, persist_state=save_state",10,25
+scripts/create_admin_invite.py,main,function,44,52,,1,6
+scripts/download_models.py,$module,module,1,134,,1,1
+scripts/download_models.py,OfficialRedirects,class,22,31,,0,0
+scripts/download_models.py,OfficialRedirects.redirect_request,function,23,31,"self, req, fp, code, msg, headers, newurl",6,5
+scripts/download_models.py,sha256,function,34,39,path,3,6
+scripts/download_models.py,fetch_blob,function,42,93,"opener, root, blob",34,36
+scripts/download_models.py,main,function,96,130,,15,35
+scripts/download_qwen_training_base.py,$module,module,1,119,,1,3
+scripts/download_qwen_training_base.py,file_sha,function,21,26,path,3,6
+scripts/download_qwen_training_base.py,validate_spec,function,29,44,spec,16,15
+scripts/download_qwen_training_base.py,verify_base,function,47,55,"directory: Path, spec: dict",7,10
+scripts/download_qwen_training_base.py,download_file,function,58,93,"directory, row, direct",24,31
+scripts/download_qwen_training_base.py,main,function,96,115,,4,22
+scripts/draft_holdout_questions.py,$module,module,1,104,,1,1
+scripts/draft_holdout_questions.py,main,function,44,100,,16,77
+scripts/export_asset_query.py,$module,module,1,58,,2,2
+scripts/export_asset_query.py,main,function,13,54,,19,45
+scripts/export_asset_query.py,main.skill_parts,function,24,26,text,1,4
+scripts/export_knowledge_catalog.py,$module,module,1,54,,1,1
+scripts/export_knowledge_catalog.py,main,function,10,50,,13,37
+scripts/export_knowledge_review_packet.py,$module,module,1,224,,1,3
+scripts/export_knowledge_review_packet.py,semantic_screening_for_review,function,15,51,"reference, registry",22,38
+scripts/export_knowledge_review_packet.py,holdout_draft_for_review,function,54,97,"store, db, policy, registry",23,37
+scripts/export_knowledge_review_packet.py,main,function,100,220,,33,91
+scripts/finalize_henan_norm.py,$module,module,1,77,,1,1
+scripts/finalize_henan_norm.py,main,function,18,73,,24,49
+scripts/finalize_henan_scans.py,$module,module,1,135,,1,1
+scripts/finalize_henan_scans.py,main,function,40,131,,41,87
+scripts/finalize_henan_update.py,$module,module,1,69,,1,1
+scripts/finalize_henan_update.py,main,function,16,65,,20,50
+scripts/finalize_knowledge_intake.py,$module,module,1,178,,1,3
+scripts/finalize_knowledge_intake.py,model_trial_summary,function,21,42,"trial, review",6,18
+scripts/finalize_knowledge_intake.py,main,function,45,174,,55,134
+scripts/finalize_statute_mirror.py,$module,module,1,72,,1,3
+scripts/finalize_statute_mirror.py,main,function,17,68,,23,49
+scripts/holdout_provenance.py,$module,module,1,186,,0,3
+scripts/holdout_provenance.py,read,function,19,20,path,1,3
+scripts/holdout_provenance.py,sealed,function,23,24,value,2,3
+scripts/holdout_provenance.py,semantic_projection,function,27,28,reference,3,1
+scripts/holdout_provenance.py,validate_semantics,function,31,41,"before, after",7,14
+scripts/holdout_provenance.py,archive_reference,function,44,55,root,10,11
+scripts/holdout_provenance.py,source_binding,function,58,74,"store, db, source_id, url, revision=None",6,10
+scripts/holdout_provenance.py,full_anchor,function,77,83,"db, key, revision, locator",3,8
+scripts/holdout_provenance.py,expected_anchors,function,86,95,"db, before_case, after_sources",6,3
+scripts/holdout_provenance.py,migration_evidence,function,98,142,"store, db, before, after",34,43
+scripts/holdout_provenance.py,validate_migration,function,145,169,"root, store, db, reference",14,29
+scripts/holdout_provenance.py,migration_path,function,172,186,reference,7,7
+scripts/holdout_provenance_v4.py,$module,module,1,133,,0,2
+scripts/holdout_provenance_v4.py,archive_v3,function,22,35,root,12,16
+scripts/holdout_provenance_v4.py,validate_v4_semantics,function,38,47,"before, after",7,17
+scripts/holdout_provenance_v4.py,literal_anchors,function,50,65,"db, before_case, after_sources, source_keys=None",10,12
+scripts/holdout_provenance_v4.py,v4_evidence,function,68,112,"store, db, before, after",28,33
+scripts/holdout_provenance_v4.py,validate_v4_migration,function,115,133,"root, store, db, reference",8,25
+scripts/holdout_provenance_v5.py,$module,module,1,101,,0,2
+scripts/holdout_provenance_v5.py,archive_v4,function,15,28,root,12,16
+scripts/holdout_provenance_v5.py,validate_v5_semantics,function,31,40,"before, after",7,17
+scripts/holdout_provenance_v5.py,v5_evidence,function,43,80,"store, db, before, after",22,27
+scripts/holdout_provenance_v5.py,validate_v5_migration,function,83,101,"root, store, db, reference",8,25
+scripts/intake_business_updates.py,$module,module,1,172,,1,1
+scripts/intake_business_updates.py,main,function,87,168,,29,54
+scripts/intake_fee_documents.py,$module,module,1,73,,1,3
+scripts/intake_fee_documents.py,main,function,18,69,,13,30
+scripts/intake_henan_sources.py,$module,module,1,107,,1,1
+scripts/intake_henan_sources.py,main,function,49,103,,23,51
+scripts/intake_official_knowledge.py,$module,module,1,96,,1,3
+scripts/intake_official_knowledge.py,main,function,35,92,,15,33
+scripts/intake_statute_mirror.py,$module,module,1,67,,1,3
+scripts/intake_statute_mirror.py,main,function,20,63,,11,39
+scripts/m1_assessment.py,$module,module,1,23,,0,0
+scripts/m1_assessment.py,assess_m1,function,8,23,"events, audit, role, principal, child_id",6,8
+scripts/m1_browser_login.py,$module,module,1,50,,1,1
+scripts/m1_browser_login.py,main,function,12,46,,11,25
+scripts/m1_ui_trace_proxy.py,$module,module,1,78,,1,1
+scripts/m1_ui_trace_proxy.py,M1Handler,class,15,52,,0,0
+scripts/m1_ui_trace_proxy.py,M1Handler.upstream,function,16,35,"self, body",13,12
+scripts/m1_ui_trace_proxy.py,M1Handler.forwarded_headers,function,37,47,"self, headers",6,6
+scripts/m1_ui_trace_proxy.py,M1Handler.observe_conversation,function,49,52,"self, conversation_id, capture",3,2
+scripts/m1_ui_trace_proxy.py,main,function,55,74,,2,16
+scripts/m2_browser_login.py,$module,module,1,45,,1,1
+scripts/m2_browser_login.py,main,function,12,41,,9,22
+scripts/migrate_holdout_provenance.py,$module,module,1,77,,1,1
+scripts/migrate_holdout_provenance.py,main,function,15,73,,20,53
+scripts/migrate_holdout_provenance_v4.py,$module,module,1,100,,1,1
+scripts/migrate_holdout_provenance_v4.py,serialize,function,16,17,value,1,2
+scripts/migrate_holdout_provenance_v4.py,main,function,20,96,,28,68
+scripts/migrate_holdout_provenance_v5.py,$module,module,1,101,,1,1
+scripts/migrate_holdout_provenance_v5.py,serialize,function,17,18,value,1,2
+scripts/migrate_holdout_provenance_v5.py,main,function,21,97,,28,68
+scripts/nexent_api.py,$module,module,1,78,,0,2
+scripts/nexent_api.py,nonthinking_params,function,13,19,model=None,4,1
+scripts/nexent_api.py,NexentAPI,class,22,48,,0,0
+scripts/nexent_api.py,NexentAPI.__init__,function,23,26,"self, base='http://127.0.0.1:5010', runtime_base='http://127.0.0.1:5014'",0,3
+scripts/nexent_api.py,NexentAPI.call,function,28,29,"self, method, path, body=None",1,1
+scripts/nexent_api.py,NexentAPI.runtime_call,function,31,32,"self, method, path, body=None",1,1
+scripts/nexent_api.py,NexentAPI._call,function,34,40,"self, base, method, path, body",4,3
+scripts/nexent_api.py,NexentAPI.login,function,42,45,"self, credentials",1,2
+scripts/nexent_api.py,NexentAPI.close,function,47,48,self,0,1
+scripts/nexent_api.py,save_state,function,51,54,state,0,3
+scripts/nexent_api.py,activate_model,function,57,78,"api, state, model",4,9
+scripts/predict_qwen_topic.py,$module,module,1,71,,1,3
+scripts/predict_qwen_topic.py,main,function,14,67,,22,50
+scripts/prepare_ai_business_review.py,$module,module,1,157,,1,3
+scripts/prepare_ai_business_review.py,main,function,101,153,,26,46
+scripts/prepare_asset_query.py,$module,module,1,59,,1,1
+scripts/prepare_asset_query.py,main,function,13,55,,20,39
+scripts/prepare_deploy.py,$module,module,1,166,,1,1
+scripts/prepare_deploy.py,port_parts,function,14,34,value,13,6
+scripts/prepare_deploy.py,bind_compose_ports,function,37,63,"content, legacy=False",16,26
+scripts/prepare_deploy.py,prepare_compose,function,66,81,vendor,5,16
+scripts/prepare_deploy.py,services_only_script,function,84,99,content,3,3
+scripts/prepare_deploy.py,disabled_monitoring_env,function,102,111,text,5,3
+scripts/prepare_deploy.py,main,function,114,162,,14,37
+scripts/prepare_henan_attachments.py,$module,module,1,116,,1,1
+scripts/prepare_henan_attachments.py,collector_configs,function,21,35,parent,2,5
+scripts/prepare_henan_attachments.py,main,function,38,112,,43,77
+scripts/prepare_henan_discovery.py,$module,module,1,87,,1,1
+scripts/prepare_henan_discovery.py,main,function,24,83,,27,59
+scripts/prepare_henan_interpretation_discovery.py,$module,module,1,91,,1,1
+scripts/prepare_henan_interpretation_discovery.py,main,function,19,87,,33,59
+scripts/prepare_holdout_draft.py,$module,module,1,237,,1,1
+scripts/prepare_holdout_draft.py,collect_questions,function,124,130,"value, result",6,7
+scripts/prepare_holdout_draft.py,main,function,133,233,,46,107
+scripts/prepare_knowledge.py,$module,module,1,62,,1,1
+scripts/prepare_knowledge.py,write,function,13,16,"path, value",0,4
+scripts/prepare_knowledge.py,main,function,19,59,,12,49
+scripts/prepare_knowledge_mcp.py,$module,module,1,31,,1,3
+scripts/prepare_knowledge_mcp.py,main,function,14,27,,3,18
+scripts/prepare_knowledge_retrieval_trial.py,$module,module,1,168,,1,7
+scripts/prepare_knowledge_retrieval_trial.py,selected_evidence,function,25,72,"store, selected, units",26,49
+scripts/prepare_knowledge_retrieval_trial.py,model_descriptor,function,75,90,"store, offline_model_run=None",7,13
+scripts/prepare_knowledge_retrieval_trial.py,prepare,function,93,160,"retrieval_run, offline_model_run=None",23,70
+scripts/prepare_knowledge_runtime.py,$module,module,1,90,,1,1
+scripts/prepare_knowledge_runtime.py,question_overlay,function,27,33,original,4,6
+scripts/prepare_knowledge_runtime.py,main,function,36,86,,18,51
+scripts/prepare_m1.py,$module,module,1,48,,1,1
+scripts/prepare_m1.py,main,function,14,44,,6,29
+scripts/prepare_m1_runtime.py,$module,module,1,118,,1,2
+scripts/prepare_m1_runtime.py,ensure_control_network,function,20,30,docker,6,8
+scripts/prepare_m1_runtime.py,connection_overlay,function,33,40,original,3,4
+scripts/prepare_m1_runtime.py,sandbox_overlay,function,43,58,original,6,9
+scripts/prepare_m1_runtime.py,main,function,61,114,,9,41
+scripts/prepare_m2.py,$module,module,1,116,,1,1
+scripts/prepare_m2.py,PlainText,class,14,33,,0,0
+scripts/prepare_m2.py,PlainText.__init__,function,15,17,self,0,2
+scripts/prepare_m2.py,PlainText.handle_starttag,function,19,23,"self, tag, attrs",2,1
+scripts/prepare_m2.py,PlainText.handle_endtag,function,25,29,"self, tag",2,2
+scripts/prepare_m2.py,PlainText.handle_data,function,31,33,"self, value",1,1
+scripts/prepare_m2.py,plain,function,36,39,data,1,5
+scripts/prepare_m2.py,main,function,42,112,,19,58
+scripts/prepare_m2_runtime.py,$module,module,1,66,,1,1
+scripts/prepare_m2_runtime.py,main,function,16,62,,12,41
+scripts/prepare_national_law_lineage.py,$module,module,1,145,,1,1
+scripts/prepare_national_law_lineage.py,read,function,32,33,path,1,2
+scripts/prepare_national_law_lineage.py,main,function,36,141,,42,91
+scripts/prepare_policy_discovery.py,$module,module,1,50,,1,3
+scripts/prepare_policy_discovery.py,main,function,14,46,,10,25
+scripts/prepare_public_native_preview.py,$module,module,1,92,,1,5
+scripts/prepare_public_native_preview.py,portal_capture,function,21,59,root,17,26
+scripts/prepare_public_native_preview.py,main,function,62,88,,4,26
+scripts/prepare_qwen_training.py,$module,module,1,131,,1,3
+scripts/prepare_qwen_training.py,digest,function,26,27,data: bytes,1,2
+scripts/prepare_qwen_training.py,write_json,function,30,32,"path: Path, data",0,3
+scripts/prepare_qwen_training.py,build_rows,function,35,66,"dataset: dict, config: dict",23,19
+scripts/prepare_qwen_training.py,prepare,function,69,113,"config: dict, output: Path, public_report: Path | None=None",7,25
+scripts/prepare_qwen_training.py,main,function,116,127,,0,10
+scripts/prepare_regional_native_preview.py,$module,module,1,37,,1,5
+scripts/prepare_regional_native_preview.py,main,function,16,33,,5,22
+scripts/prepare_runtime.py,$module,module,1,43,,1,1
+scripts/prepare_runtime.py,main,function,10,39,,10,27
+scripts/prepare_topic3_data.py,$module,module,1,228,,2,4
+scripts/prepare_topic3_data.py,write_json,function,21,23,"path, value",0,3
+scripts/prepare_topic3_data.py,inside_workspace,function,26,30,value,3,3
+scripts/prepare_topic3_data.py,generate_demo,function,33,55,,8,16
+scripts/prepare_topic3_data.py,parse_asset,function,58,112,"asset, engine",31,38
+scripts/prepare_topic3_data.py,parse_asset.add,function,68,76,"content, locator, confidence=None",5,9
+scripts/prepare_topic3_data.py,cosine,function,115,119,"left, right",6,6
+scripts/prepare_topic3_data.py,embed,function,122,146,"profile, segments",17,22
+scripts/prepare_topic3_data.py,main,function,149,224,,23,52
+scripts/private_runtime.py,$module,module,1,44,,1,4
+scripts/private_runtime.py,ensure_private_directory,function,7,39,path: Path,9,23
+scripts/probe_statute_mirrors.py,$module,module,1,46,,1,3
+scripts/probe_statute_mirrors.py,main,function,20,42,,7,24
+scripts/probe_topic3_toolchain.py,$module,module,1,98,,2,2
+scripts/probe_topic3_toolchain.py,main,function,18,94,,33,67
+scripts/propose_knowledge_classification.py,$module,module,1,39,,1,1
+scripts/propose_knowledge_classification.py,main,function,10,35,,9,23
+scripts/provision_agent_workflow.py,$module,module,1,151,,3,4
+scripts/provision_agent_workflow.py,make_bundle,function,43,66,root_role,9,5
+scripts/provision_agent_workflow.py,write,function,69,72,"path, value",0,4
+scripts/provision_agent_workflow.py,main,function,75,148,,26,56
+scripts/provision_agent_workflow.py,main.ids_for,function,97,100,names,5,6
+scripts/provision_asset_query.py,$module,module,1,92,,2,2
+scripts/provision_asset_query.py,main,function,12,88,,17,64
+scripts/provision_asset_query.py,main.save,function,23,24,,0,2
+scripts/provision_knowledge.py,$module,module,1,166,,2,2
+scripts/provision_knowledge.py,bundle,function,11,65,"config, service_name, service_url, suffix=''",8,8
+scripts/provision_knowledge.py,main,function,68,163,,28,72
+scripts/provision_knowledge.py,main.ids_for,function,91,94,tool_names,5,6
+scripts/provision_knowledge_qa.py,$module,module,1,142,,1,1
+scripts/provision_knowledge_qa.py,resolve_tool_ids,function,16,24,"tools, service=SERVICE",6,7
+scripts/provision_knowledge_qa.py,bundle,function,27,61,"role, consultation=False",5,8
+scripts/provision_knowledge_qa.py,main,function,64,138,,32,55
+scripts/provision_m1.py,$module,module,1,121,,1,1
+scripts/provision_m1.py,transform,function,18,27,value,10,8
+scripts/provision_m1.py,save,function,30,33,"path, value",0,4
+scripts/provision_m1.py,main,function,36,117,,27,66
+scripts/provision_m2.py,$module,module,1,103,,1,1
+scripts/provision_m2.py,bundle,function,11,41,,3,10
+scripts/provision_m2.py,main,function,44,99,,20,43
+scripts/provision_nexent.py,$module,module,1,113,,1,1
+scripts/provision_nexent.py,main,function,11,109,,33,72
+scripts/provision_public_native_preview.py,$module,module,1,174,,1,7
+scripts/provision_public_native_preview.py,original_signatures,function,31,37,api,4,6
+scripts/provision_public_native_preview.py,check_owned_draft,function,40,54,"info, role, saved",13,23
+scripts/provision_public_native_preview.py,handshake,function,57,72,token,11,12
+scripts/provision_public_native_preview.py,handshake.client,function,58,59,**kwargs,1,1
+scripts/provision_public_native_preview.py,main,function,75,170,,43,79
+scripts/provision_regional_native_preview.py,$module,module,1,193,,1,5
+scripts/provision_regional_native_preview.py,first_action,function,23,26,scenario_id,3,2
+scripts/provision_regional_native_preview.py,original_signatures,function,46,53,api,5,8
+scripts/provision_regional_native_preview.py,check_owned_draft,function,56,70,"info, role, saved",13,23
+scripts/provision_regional_native_preview.py,handshake,function,73,88,token,11,12
+scripts/provision_regional_native_preview.py,handshake.client,function,74,75,**kwargs,1,1
+scripts/provision_regional_native_preview.py,main,function,91,189,,43,84
+scripts/provision_topic3_embedding.py,$module,module,1,81,,2,2
+scripts/provision_topic3_embedding.py,local_embed,function,20,24,payload,2,5
+scripts/provision_topic3_embedding.py,main,function,27,77,,20,41
+scripts/recheck_provincial_access.py,$module,module,1,87,,1,3
+scripts/recheck_provincial_access.py,main,function,22,83,,18,49
+scripts/recheck_provincial_access.py,main.observed_request,function,64,67,"url, headers",2,2
+scripts/record_access_stop_deployment.py,$module,module,1,78,,1,1
+scripts/record_access_stop_deployment.py,read,function,15,16,path,1,2
+scripts/record_access_stop_deployment.py,main,function,19,74,,30,61
+scripts/record_duration_update_assessment.py,$module,module,1,105,,1,1
+scripts/record_duration_update_assessment.py,main,function,33,101,,20,54
+scripts/record_fee_norm_evidence.py,$module,module,1,199,,1,1
+scripts/record_fee_norm_evidence.py,compact,function,49,50,text,1,2
+scripts/record_fee_norm_evidence.py,workbook_cells,function,53,75,path,21,29
+scripts/record_fee_norm_evidence.py,selected_chunks,function,78,91,"source_id, path",11,8
+scripts/record_fee_norm_evidence.py,anchor,function,94,98,"db, source_id, revision, ordinal",1,7
+scripts/record_fee_norm_evidence.py,main,function,101,195,,22,73
+scripts/record_henan_visual_findings.py,$module,module,1,100,,1,1
+scripts/record_henan_visual_findings.py,main,function,44,96,,24,48
+scripts/record_knowledge_impacts.py,$module,module,1,28,,1,3
+scripts/record_knowledge_impacts.py,main,function,14,24,,4,16
+scripts/record_knowledge_maintenance.py,$module,module,1,38,,1,1
+scripts/record_knowledge_maintenance.py,main,function,10,34,,5,21
+scripts/record_m1_citizen_maintenance.py,$module,module,1,39,,1,1
+scripts/record_m1_citizen_maintenance.py,main,function,12,35,,11,28
+scripts/record_m1_empty_input.py,$module,module,1,38,,1,1
+scripts/record_m1_empty_input.py,main,function,10,34,,7,23
+scripts/record_m1_empty_input.py,main.count,function,17,19,,2,5
+scripts/record_m1_repeat_empty_ui.py,$module,module,1,39,,1,1
+scripts/record_m1_repeat_empty_ui.py,main,function,11,36,,14,39
+scripts/record_m1_ui_trace.py,$module,module,1,53,,1,1
+scripts/record_m1_ui_trace.py,main,function,13,49,,14,45
+scripts/record_minio_build.py,$module,module,1,30,,1,1
+scripts/record_minio_build.py,main,function,9,26,,3,13
+scripts/record_native_ui.py,$module,module,1,79,,1,1
+scripts/record_native_ui.py,main,function,14,75,,35,75
+scripts/report_regional_native_preview.py,$module,module,1,92,,1,5
+scripts/report_regional_native_preview.py,main,function,15,88,,25,65
+scripts/review_observation_refresh.py,$module,module,1,238,,1,1
+scripts/review_observation_refresh.py,read,function,41,42,path,1,2
+scripts/review_observation_refresh.py,state,function,45,50,store,5,10
+scripts/review_observation_refresh.py,apply_plan,function,53,89,"store, plan, expected=None",23,23
+scripts/review_observation_refresh.py,replay,function,92,115,"store, plan, results",12,23
+scripts/review_observation_refresh.py,replay.observation,function,96,100,,5,7
+scripts/review_observation_refresh.py,prepare,function,118,186,"store, research",26,59
+scripts/review_observation_refresh.py,main,function,189,234,,20,46
+scripts/run_decision_demo.py,$module,module,1,137,,1,5
+scripts/run_decision_demo.py,write_json,function,21,23,"path, value",0,3
+scripts/run_decision_demo.py,all_items,function,26,27,answer,3,0
+scripts/run_decision_demo.py,ids,function,30,31,answer,2,1
+scripts/run_decision_demo.py,make_markdown,function,34,54,"examples, checks",14,18
+scripts/run_decision_demo.py,main,function,57,133,,37,86
+scripts/run_new_knowledge_experiment.py,$module,module,1,231,,1,5
+scripts/run_new_knowledge_experiment.py,write,function,24,26,"path, value",0,3
+scripts/run_new_knowledge_experiment.py,NoRedirect,class,29,31,,0,0
+scripts/run_new_knowledge_experiment.py,NoRedirect.redirect_request,function,30,31,"self, *args, **kwargs",1,0
+scripts/run_new_knowledge_experiment.py,configured_proxy_request,function,34,56,"url, headers",13,21
+scripts/run_new_knowledge_experiment.py,acquire,function,59,138,repair_proxy=False,29,55
+scripts/run_new_knowledge_experiment.py,acquire.observe,function,108,114,"url, headers",2,7
+scripts/run_new_knowledge_experiment.py,replay,function,150,179,snapshot,15,24
+scripts/run_new_knowledge_experiment.py,ingest_saved,function,182,214,,19,36
+scripts/run_new_knowledge_experiment.py,main,function,217,227,,6,13
+scripts/run_public_business_pilot.py,$module,module,1,269,,2,6
+scripts/run_public_business_pilot.py,digest,function,37,38,raw,1,2
+scripts/run_public_business_pilot.py,write,function,41,43,"path, value",0,3
+scripts/run_public_business_pilot.py,Sections,class,46,72,,0,0
+scripts/run_public_business_pilot.py,Sections.__init__,function,48,50,self,0,2
+scripts/run_public_business_pilot.py,Sections.handle_starttag,function,52,59,"self, tag, attrs",6,5
+scripts/run_public_business_pilot.py,Sections.handle_data,function,61,63,"self, data",1,1
+scripts/run_public_business_pilot.py,Sections.handle_endtag,function,65,72,"self, tag",5,4
+scripts/run_public_business_pilot.py,prepare,function,75,100,,8,25
+scripts/run_public_business_pilot.py,checked_snapshot,function,103,125,snapshot,20,22
+scripts/run_public_business_pilot.py,assess_candidate,function,128,173,"candidate, snapshot",44,33
+scripts/run_public_business_pilot.py,run,function,183,250,resume=None,29,52
+scripts/run_public_business_pilot.py,main,function,253,265,,4,9
+scripts/run_topic3_skill_probe.py,$module,module,1,154,,2,2
+scripts/run_topic3_skill_probe.py,main,function,14,150,,32,89
+scripts/run_topic3_skill_probe.py,main.checkpoint,function,29,30,,0,2
+scripts/run_topic3_skill_probe.py,main.assess,function,90,109,"events, audit, role, principal",18,22
+scripts/runtime_error_overlay.py,$module,module,1,113,,1,3
+scripts/runtime_error_overlay.py,patched_source,function,46,59,original,5,13
+scripts/runtime_error_overlay.py,prepare_overlay,function,62,68,root=ROOT,1,6
+scripts/runtime_error_overlay.py,mount_overlay,function,71,86,"content, source",8,8
+scripts/runtime_error_overlay.py,main,function,89,109,,6,17
+scripts/runtime_sandbox.py,$module,module,1,58,,1,2
+scripts/runtime_sandbox.py,inspect_sandbox,function,11,24,docker,10,7
+scripts/runtime_sandbox.py,sandbox_ready,function,27,35,,7,2
+scripts/runtime_sandbox.py,recover_sandbox,function,38,54,,11,8
+scripts/seed_knowledge_observations.py,$module,module,1,49,,1,3
+scripts/seed_knowledge_observations.py,main,function,14,45,,11,31
+scripts/seed_knowledge_update.py,$module,module,1,87,,1,3
+scripts/seed_knowledge_update.py,main,function,18,83,,29,56
+scripts/start_m1_missing_config.py,$module,module,1,37,,1,1
+scripts/start_m1_missing_config.py,main,function,17,33,,3,16
+scripts/team_demo.py,$module,module,1,67,,1,3
+scripts/team_demo.py,main,function,15,63,,26,46
+scripts/technical_controls.py,$module,module,1,10,,0,0
+scripts/technical_controls.py,disable_technical_memory,function,4,10,api,4,5
+scripts/test_jev_live.py,$module,module,1,123,,2,6
+scripts/test_jev_live.py,corpus_for,function,17,22,cases,2,3
+scripts/test_jev_live.py,set_metrics,function,25,31,pairs,6,16
+scripts/test_jev_live.py,run_suite,function,34,91,provider,27,44
+scripts/test_jev_live.py,create_provider,function,94,100,"provider_name, key_file=None",5,7
+scripts/test_jev_live.py,main,function,103,120,,9,22
+scripts/test_live_knowledge_heartbeat.py,$module,module,1,204,,2,6
+scripts/test_live_knowledge_heartbeat.py,BoundedOfficialFetcher,class,25,46,,0,0
+scripts/test_live_knowledge_heartbeat.py,BoundedOfficialFetcher.__init__,function,26,28,"self, store",0,2
+scripts/test_live_knowledge_heartbeat.py,BoundedOfficialFetcher._request,function,30,46,"self, url, headers",7,17
+scripts/test_live_knowledge_heartbeat.py,configure,function,49,63,store,2,6
+scripts/test_live_knowledge_heartbeat.py,observe,function,66,74,"store, started",5,14
+scripts/test_live_knowledge_heartbeat.py,resume_due_check,function,77,120,,19,38
+scripts/test_live_knowledge_heartbeat.py,main,function,123,167,,19,41
+scripts/test_live_knowledge_heartbeat.py,finish_report,function,170,200,"store, binding, fetcher, observations, snapshots",17,29
+scripts/train_qwen_topic.py,$module,module,1,256,,1,3
+scripts/train_qwen_topic.py,sha,function,28,29,raw: bytes,1,2
+scripts/train_qwen_topic.py,write_json,function,32,34,"path: Path, data",0,3
+scripts/train_qwen_topic.py,load_dataset,function,37,64,directory: Path,30,24
+scripts/train_qwen_topic.py,encode_example,function,67,78,"tokenizer, row: dict, max_length: int",4,10
+scripts/train_qwen_topic.py,diagnostic,function,81,104,"model, tokenizer, rows, torch",8,14
+scripts/train_qwen_topic.py,main,function,107,252,,36,112
+scripts/ui_trace_proxy.py,$module,module,1,134,,1,1
+scripts/ui_trace_proxy.py,conversation_id_from,function,21,26,"header, request_id",7,6
+scripts/ui_trace_proxy.py,parse_events,function,29,37,raw,6,9
+scripts/ui_trace_proxy.py,Handler,class,40,112,,0,0
+scripts/ui_trace_proxy.py,Handler.log_message,function,43,44,"self, *_",0,0
+scripts/ui_trace_proxy.py,Handler.upstream,function,46,47,"self, body",1,0
+scripts/ui_trace_proxy.py,Handler.observe_conversation,function,49,50,"self, conversation_id, capture",0,0
+scripts/ui_trace_proxy.py,Handler.forwarded_headers,function,52,53,"self, headers",1,0
+scripts/ui_trace_proxy.py,Handler.forward,function,55,110,self,21,38
+scripts/ui_trace_proxy.py,main,function,115,130,,2,10
+scripts/upgrade_policy_discovery.py,$module,module,1,81,,1,3
+scripts/upgrade_policy_discovery.py,main,function,22,77,,28,53
+scripts/verify_access_stop_diagnostics.py,$module,module,1,122,,1,1
+scripts/verify_access_stop_diagnostics.py,canonical_binding,function,21,27,,4,9
+scripts/verify_access_stop_diagnostics.py,main,function,30,118,,27,67
+scripts/verify_access_stop_diagnostics.py,main.synthetic_request,function,56,61,"url, headers",4,3
+scripts/verify_access_stop_diagnostics.py,main.UnknownFetcher,class,63,65,,0,0
+scripts/verify_access_stop_diagnostics.py,main.UnknownFetcher.fetch,function,64,65,"self, config, url",1,1
+scripts/verify_agent_workflow.py,$module,module,1,103,,1,8
+scripts/verify_agent_workflow.py,write,function,16,17,"path, value",0,2
+scripts/verify_agent_workflow.py,run,function,20,97,output_directory=None,25,97
+scripts/verify_agent_workflow.py,run.check,function,29,31,"name, ok",2,3
+scripts/verify_agent_workflow.py,run.publish,function,58,60,ids,1,3
+scripts/verify_asset_query_faults.py,$module,module,1,80,,2,2
+scripts/verify_asset_query_faults.py,call_tool,function,17,26,"token, identity",6,6
+scripts/verify_asset_query_faults.py,call_tool.client_factory,function,18,19,**kwargs,1,1
+scripts/verify_asset_query_faults.py,main,function,29,76,,16,40
+scripts/verify_asset_query_native.py,$module,module,1,91,,2,2
+scripts/verify_asset_query_native.py,main,function,13,87,,13,44
+scripts/verify_asset_query_native.py,main.assess,function,37,64,"events, _unused_original_audit, role, principal",25,34
+scripts/verify_classification.py,$module,module,1,124,,2,6
+scripts/verify_classification.py,example_corpus,function,18,23,cases,2,3
+scripts/verify_classification.py,ContractReplay,class,26,42,,0,0
+scripts/verify_classification.py,ContractReplay.__init__,function,29,30,"self, cases",0,0
+scripts/verify_classification.py,ContractReplay.evaluate,function,32,42,"self, state, questions, model",6,4
+scripts/verify_classification.py,measure,function,45,57,"run, cases",8,12
+scripts/verify_classification.py,order_comparison,function,60,72,"left, right",7,4
+scripts/verify_classification.py,order_comparison.decisions,function,66,68,r,1,2
+scripts/verify_classification.py,integrity,function,75,84,"run, corpus",9,6
+scripts/verify_classification.py,main,function,87,120,,17,28
+scripts/verify_classification_retrieval.py,$module,module,1,73,,2,6
+scripts/verify_classification_retrieval.py,check,function,20,43,"token, identity, version",9,8
+scripts/verify_classification_retrieval.py,check.factory,function,21,22,**kwargs,1,1
+scripts/verify_classification_retrieval.py,main,function,46,69,,9,26
+scripts/verify_dated_service_scope.py,$module,module,1,150,,1,1
+scripts/verify_dated_service_scope.py,read,function,15,16,path,1,3
+scripts/verify_dated_service_scope.py,main,function,19,146,,51,115
+scripts/verify_dated_service_scope.py,main.Fixture,class,102,108,,0,0
+scripts/verify_dated_service_scope.py,main.Fixture.__init__,function,103,104,"self, sid, url, payload",0,0
+scripts/verify_dated_service_scope.py,main.Fixture.fetch,function,105,108,"self, config, url",3,0
+scripts/verify_dated_service_scope.py,main.replay,function,109,119,"item, payload",8,11
+scripts/verify_duration_update.py,$module,module,1,98,,1,1
+scripts/verify_duration_update.py,main,function,15,94,,29,93
+scripts/verify_erqi_material_capture.py,$module,module,1,133,,1,1
+scripts/verify_erqi_material_capture.py,read,function,13,14,path,1,2
+scripts/verify_erqi_material_capture.py,dialog_body,function,17,22,"raw, title",3,6
+scripts/verify_erqi_material_capture.py,jpeg_dimensions,function,25,44,raw,14,10
+scripts/verify_erqi_material_capture.py,main,function,47,129,,55,107
+scripts/verify_erqi_rendered_guide_observation.py,$module,module,1,49,,1,1
+scripts/verify_erqi_rendered_guide_observation.py,read,function,9,10,path,1,2
+scripts/verify_erqi_rendered_guide_observation.py,main,function,13,45,,25,57
+scripts/verify_erqi_service_metadata.py,$module,module,1,98,,1,1
+scripts/verify_erqi_service_metadata.py,read,function,13,14,path,1,2
+scripts/verify_erqi_service_metadata.py,main,function,17,94,,46,116
+scripts/verify_fee_boundary_review.py,$module,module,1,101,,1,1
+scripts/verify_fee_boundary_review.py,read,function,16,17,path,1,3
+scripts/verify_fee_boundary_review.py,main,function,20,97,,31,82
+scripts/verify_fee_foundation.py,$module,module,1,119,,1,1
+scripts/verify_fee_foundation.py,read,function,16,16,path,1,3
+scripts/verify_fee_foundation.py,main,function,19,116,,44,126
+scripts/verify_fee_foundation.py,main.Fixture,class,98,102,,0,0
+scripts/verify_fee_foundation.py,main.Fixture.__init__,function,99,99,"self, payload",0,0
+scripts/verify_fee_foundation.py,main.Fixture.fetch,function,100,102,"self, c, url",3,0
+scripts/verify_fee_foundation.py,main.replay,function,103,108,payload,5,9
+scripts/verify_fee_norm_evidence.py,$module,module,1,108,,1,1
+scripts/verify_fee_norm_evidence.py,main,function,16,104,,29,94
+scripts/verify_fee_waiver_copy.py,$module,module,1,89,,1,1
+scripts/verify_fee_waiver_copy.py,read,function,11,12,path,1,2
+scripts/verify_fee_waiver_copy.py,item_spans,function,15,18,text,3,9
+scripts/verify_fee_waiver_copy.py,main,function,21,85,,46,93
+scripts/verify_first_cloud_native.py,$module,module,1,120,,2,6
+scripts/verify_first_cloud_native.py,assess,function,18,40,"events, workflow",20,23
+scripts/verify_first_cloud_native.py,main,function,43,117,,25,68
+scripts/verify_guided_intake.py,$module,module,1,83,,1,8
+scripts/verify_guided_intake.py,ContractVerifier,class,18,26,,0,0
+scripts/verify_guided_intake.py,ContractVerifier.__init__,function,19,19,self,0,0
+scripts/verify_guided_intake.py,ContractVerifier.enabled,function,20,20,self,1,0
+scripts/verify_guided_intake.py,ContractVerifier.verify,function,21,26,"self, template, values",5,7
+scripts/verify_guided_intake.py,run,function,29,77,output,12,68
+scripts/verify_guided_intake.py,run.check,function,31,33,"name, value",2,3
+scripts/verify_henan_service_review.py,$module,module,1,145,,1,1
+scripts/verify_henan_service_review.py,read,function,16,17,path,1,3
+scripts/verify_henan_service_review.py,main,function,20,141,,31,85
+scripts/verify_henan_service_review.py,main.ArchivedFixture,class,98,106,,0,0
+scripts/verify_henan_service_review.py,main.ArchivedFixture.__init__,function,99,101,"self, payload",0,0
+scripts/verify_henan_service_review.py,main.ArchivedFixture.fetch,function,103,106,"self, actual_config, url",3,0
+scripts/verify_henan_service_review.py,main.replay,function,108,116,payload,5,9
+scripts/verify_holdout_draft.py,$module,module,1,216,,1,1
+scripts/verify_holdout_draft.py,read,function,17,18,path,1,3
+scripts/verify_holdout_draft.py,main,function,21,212,,85,170
+scripts/verify_identity_privacy_review.py,$module,module,1,134,,1,1
+scripts/verify_identity_privacy_review.py,read,function,16,17,path,1,3
+scripts/verify_identity_privacy_review.py,main,function,20,130,,38,103
+scripts/verify_identity_privacy_review.py,main.Fixture,class,94,100,,0,0
+scripts/verify_identity_privacy_review.py,main.Fixture.__init__,function,95,96,"self, payload",0,0
+scripts/verify_identity_privacy_review.py,main.Fixture.fetch,function,97,100,"self, actual, url",3,0
+scripts/verify_identity_privacy_review.py,main.replay,function,101,109,payload,6,7
+scripts/verify_knowledge_backup.py,$module,module,1,44,,1,3
+scripts/verify_knowledge_backup.py,main,function,16,40,,4,23
+scripts/verify_knowledge_consultation.py,$module,module,1,124,,1,1
+scripts/verify_knowledge_consultation.py,main,function,27,120,"cases=None, evidence_prefix='native-consultation', scope_description=None",47,91
+scripts/verify_knowledge_formats.py,$module,module,1,41,,2,2
+scripts/verify_knowledge_formats.py,main,function,9,38,,6,12
+scripts/verify_knowledge_lifecycle.py,$module,module,1,96,,2,2
+scripts/verify_knowledge_lifecycle.py,main,function,15,93,,24,64
+scripts/verify_knowledge_lifecycle.py,main.state,function,21,22,,1,3
+scripts/verify_knowledge_lifecycle.py,main.action,function,23,24,"name, body",1,3
+scripts/verify_knowledge_lifecycle.py,main.approve,function,25,31,s,5,4
+scripts/verify_knowledge_material_relations.py,$module,module,1,93,,1,1
+scripts/verify_knowledge_material_relations.py,main,function,19,89,,25,77
+scripts/verify_knowledge_model_prevalidation.py,$module,module,1,430,,1,3
+scripts/verify_knowledge_model_prevalidation.py,model_payload,function,59,70,"model, case, profile='raw_v1'",4,3
+scripts/verify_knowledge_model_prevalidation.py,validate_answer,function,73,105,"answer, evidence, citation_policy='unique_anchor_v1'",29,29
+scripts/verify_knowledge_model_prevalidation.py,run_directory,function,108,115,run_id,6,6
+scripts/verify_knowledge_model_prevalidation.py,prepare,function,118,194,profile='raw_v1',20,77
+scripts/verify_knowledge_model_prevalidation.py,load_manifest,function,197,216,run_id,12,21
+scripts/verify_knowledge_model_prevalidation.py,run,function,219,265,run_id,22,49
+scripts/verify_knowledge_model_prevalidation.py,summarize,function,268,310,run_id,8,35
+scripts/verify_knowledge_model_prevalidation.py,write_summary_files,function,313,321,"output, run_id, report",1,7
+scripts/verify_knowledge_model_prevalidation.py,validate_review,function,324,335,"record, review",9,15
+scripts/verify_knowledge_model_prevalidation.py,export_standards,function,338,365,run_id,8,28
+scripts/verify_knowledge_model_prevalidation.py,summarize_reviews,function,368,402,run_id,11,33
+scripts/verify_knowledge_model_prevalidation.py,main,function,405,426,,6,15
+scripts/verify_knowledge_native.py,$module,module,1,84,,2,2
+scripts/verify_knowledge_native.py,main,function,14,81,,29,77
+scripts/verify_knowledge_qa_agents.py,$module,module,1,89,,1,1
+scripts/verify_knowledge_qa_agents.py,main,function,13,85,,35,75
+scripts/verify_knowledge_runtime.py,$module,module,1,56,,1,1
+scripts/verify_knowledge_runtime.py,digest,function,14,16,"container, path",1,3
+scripts/verify_knowledge_runtime.py,main,function,19,52,,9,29
+scripts/verify_knowledge_scope_stage_native.py,$module,module,1,18,,3,1
+scripts/verify_knowledge_shadow_retrieval.py,$module,module,1,137,,1,3
+scripts/verify_knowledge_shadow_retrieval.py,load_corpus,function,18,41,"store, region, matter",12,14
+scripts/verify_knowledge_shadow_retrieval.py,rank,function,44,48,"question, corpus",5,7
+scripts/verify_knowledge_shadow_retrieval.py,evaluate,function,51,79,"cases, corpus",20,19
+scripts/verify_knowledge_shadow_retrieval.py,validate_reference,function,82,87,reference,4,7
+scripts/verify_knowledge_shadow_retrieval.py,main,function,90,133,,3,35
+scripts/verify_knowledge_source_facts.py,$module,module,1,107,,1,3
+scripts/verify_knowledge_source_facts.py,main,function,17,103,,30,75
+scripts/verify_knowledge_source_units.py,$module,module,1,231,,1,3
+scripts/verify_knowledge_source_units.py,parent_keys,function,25,26,unit,2,0
+scripts/verify_knowledge_source_units.py,topic_codes,function,32,33,text,3,1
+scripts/verify_knowledge_source_units.py,rank_units,function,36,79,"question, corpus, profile='literal'",37,27
+scripts/verify_knowledge_source_units.py,rank_intent_units,function,82,113,"question, corpus, profile='intent_normalized_v2'",10,10
+scripts/verify_knowledge_source_units.py,rank_intent_units.ordered,function,85,90,text,6,3
+scripts/verify_knowledge_source_units.py,rank_intent_units.add,function,92,102,unit,6,6
+scripts/verify_knowledge_source_units.py,build_units,function,116,133,"corpus, bindings",9,10
+scripts/verify_knowledge_source_units.py,evaluate_units,function,136,164,"cases, corpus, profile='literal'",21,28
+scripts/verify_knowledge_source_units.py,main,function,167,227,,18,59
+scripts/verify_knowledge_unit_integrity.py,$module,module,1,101,,1,3
+scripts/verify_knowledge_unit_integrity.py,main,function,17,97,,39,66
+scripts/verify_m1_missing_config.py,$module,module,1,53,,1,1
+scripts/verify_m1_missing_config.py,collect,function,14,28,user,6,8
+scripts/verify_m1_missing_config.py,collect.factory,function,16,17,**kwargs,1,1
+scripts/verify_m1_missing_config.py,main,function,31,49,,6,18
+scripts/verify_m1_native.py,$module,module,1,112,,1,1
+scripts/verify_m1_native.py,run,function,16,92,"role, label, state, *, terminal=None, runtime_url='http://127.0.0.1:5014', connection_failure=False",42,73
+scripts/verify_m1_native.py,main,function,95,108,,3,12
+scripts/verify_m1_native_faults.py,$module,module,1,153,,1,1
+scripts/verify_m1_native_faults.py,extension_lock,function,21,55,docker,13,13
+scripts/verify_m1_native_faults.py,require_service,function,58,67,url,7,5
+scripts/verify_m1_native_faults.py,capture_ui,function,70,90,expected_code,17,19
+scripts/verify_m1_native_faults.py,main,function,93,149,,16,45
+scripts/verify_m1_native_faults.py,main.checkpoint,function,105,106,,0,2
+scripts/verify_m1_native_ui_faults.py,$module,module,1,71,,1,1
+scripts/verify_m1_native_ui_faults.py,capture,function,14,40,"code, principal",18,24
+scripts/verify_m1_native_ui_faults.py,main,function,43,68,,7,24
+scripts/verify_m1_native_ui_faults.py,main.save,function,52,52,,0,2
+scripts/verify_m1_original_regression.py,$module,module,1,23,,1,1
+scripts/verify_m1_original_regression.py,main,function,9,19,,4,9
+scripts/verify_m1_sse.py,$module,module,1,91,,1,1
+scripts/verify_m1_sse.py,verify,function,17,57,identities,12,9
+scripts/verify_m1_sse.py,verify.local_client,function,20,21,**kwargs,1,1
+scripts/verify_m1_sse.py,main,function,60,87,,10,35
+scripts/verify_m1_workbench.py,$module,module,1,58,,1,1
+scripts/verify_m1_workbench.py,main,function,12,54,,22,32
+scripts/verify_model_settings.py,$module,module,1,50,,1,1
+scripts/verify_model_settings.py,main,function,11,46,,13,39
+scripts/verify_municipal_adjustment_observation.py,$module,module,1,55,,1,1
+scripts/verify_municipal_adjustment_observation.py,read,function,10,11,path,1,2
+scripts/verify_municipal_adjustment_observation.py,main,function,14,51,,23,45
+scripts/verify_national_law_lineage.py,$module,module,1,142,,1,1
+scripts/verify_national_law_lineage.py,read,function,18,19,path,1,2
+scripts/verify_national_law_lineage.py,compact,function,22,23,value,1,2
+scripts/verify_national_law_lineage.py,main,function,26,138,,35,99
+scripts/verify_national_law_lineage.py,main.chunks,function,62,63,row,2,2
+scripts/verify_national_law_lineage.py,main.anchor,function,107,109,"row, chunk",1,5
+scripts/verify_native_faults.py,$module,module,1,149,,2,2
+scripts/verify_native_faults.py,root_final,function,19,24,events,8,7
+scripts/verify_native_faults.py,terminal_assessor,function,27,54,"tool, status, code",1,0
+scripts/verify_native_faults.py,terminal_assessor.evaluate,function,28,53,"events, audit, role, principal",24,34
+scripts/verify_native_faults.py,connection_assessor,function,57,66,"events, audit, role, principal",7,15
+scripts/verify_native_faults.py,main,function,69,145,,27,65
+scripts/verify_native_knowledge_versions.py,$module,module,1,323,,1,4
+scripts/verify_native_knowledge_versions.py,main,function,35,317,presentation_only=False,33,102
+scripts/verify_native_knowledge_versions.py,main.Fixture,class,62,65,,0,0
+scripts/verify_native_knowledge_versions.py,main.Fixture.fetch,function,64,65,"self, source, url",1,1
+scripts/verify_native_knowledge_versions.py,main.checkpoint,function,76,78,,1,2
+scripts/verify_native_knowledge_versions.py,main.collect,function,80,84,,2,4
+scripts/verify_native_knowledge_versions.py,main.publish_fixture,function,86,91,,1,6
+scripts/verify_native_knowledge_versions.py,main.start_server,function,93,117,root,11,19
+scripts/verify_native_knowledge_versions.py,main.stop_server,function,119,129,,5,6
+scripts/verify_native_knowledge_versions.py,main.configure_agent,function,131,149,"role, pinned_version=None",4,10
+scripts/verify_native_knowledge_versions.py,main.run_case,function,151,213,"role, scenario, expected_code, version, marker=None, historical=False",40,72
+scripts/verify_official_attachment_flow.py,$module,module,1,93,,1,1
+scripts/verify_official_attachment_flow.py,main,function,25,89,,31,72
+scripts/verify_parent_binding_live.py,$module,module,1,93,,1,1
+scripts/verify_parent_binding_live.py,pdf_state,function,18,22,"db, targets",5,8
+scripts/verify_parent_binding_live.py,main,function,25,89,,24,76
+scripts/verify_preparation_rehearsal.py,$module,module,1,60,,1,3
+scripts/verify_preparation_rehearsal.py,main,function,17,56,,37,39
+scripts/verify_privacy_provenance_v5.py,$module,module,1,71,,1,1
+scripts/verify_privacy_provenance_v5.py,main,function,14,67,,16,46
+scripts/verify_public_native_preview.py,$module,module,1,134,,2,6
+scripts/verify_public_native_preview.py,assess,function,20,56,"events, preview, run_id",30,40
+scripts/verify_public_native_preview.py,main,function,59,130,,26,74
+scripts/verify_qwen_training.py,$module,module,1,60,,1,3
+scripts/verify_qwen_training.py,main,function,13,56,,27,38
+scripts/verify_regional_native_preview.py,$module,module,1,201,,2,6
+scripts/verify_regional_native_preview.py,external_failure,function,22,45,"events, error=None",14,13
+scripts/verify_regional_native_preview.py,assess,function,48,89,"events, preview, run_id",32,43
+scripts/verify_regional_native_preview.py,main,function,92,197,,43,106
+scripts/verify_renewal_window_review.py,$module,module,1,112,,1,1
+scripts/verify_renewal_window_review.py,read,function,16,17,path,1,3
+scripts/verify_renewal_window_review.py,main,function,20,108,,29,81
+scripts/verify_renewal_window_review.py,main.Fixture,class,72,76,,0,0
+scripts/verify_renewal_window_review.py,main.Fixture.__init__,function,73,73,"self, payload",0,0
+scripts/verify_renewal_window_review.py,main.Fixture.fetch,function,74,76,"self, c, url",3,0
+scripts/verify_renewal_window_review.py,main.replay,function,77,84,payload,6,9
+scripts/verify_source_scope_notes.py,$module,module,1,73,,1,1
+scripts/verify_source_scope_notes.py,read,function,13,14,path,1,2
+scripts/verify_source_scope_notes.py,main,function,17,69,,29,63
+scripts/verify_sse.py,$module,module,1,89,,1,1
+scripts/verify_sse.py,verify,function,20,51,"port, token",17,18
+scripts/verify_sse.py,verify.local_client,function,22,23,**kwargs,1,1
+scripts/verify_sse.py,main,function,54,85,,12,28
+scripts/verify_token_savings.py,$module,module,1,98,,1,8
+scripts/verify_token_savings.py,run,function,26,92,output,16,52
+scripts/verify_token_savings.py,run.check,function,29,31,"name, passed",2,3
+scripts/verify_token_savings.py,run.handle,function,33,42,request,3,6
+scripts/verify_undertaking_and_operational_sources.py,$module,module,1,151,,1,1
+scripts/verify_undertaking_and_operational_sources.py,read,function,18,19,path,1,3
+scripts/verify_undertaking_and_operational_sources.py,main,function,22,147,,40,120
+scripts/verify_undertaking_and_operational_sources.py,main.Fixture,class,123,127,,0,0
+scripts/verify_undertaking_and_operational_sources.py,main.Fixture.__init__,function,124,124,"self, payload",0,0
+scripts/verify_undertaking_and_operational_sources.py,main.Fixture.fetch,function,125,127,"self, c, url",3,0
+scripts/verify_undertaking_and_operational_sources.py,main.run,function,128,134,payload,4,9
+scripts/verify_undertaking_procedure_background.py,$module,module,1,67,,1,1
+scripts/verify_undertaking_procedure_background.py,read,function,10,11,path,1,2
+scripts/verify_undertaking_procedure_background.py,main,function,14,63,,23,60
+scripts/verify_workflow_connections.py,$module,module,1,106,,1,3
+scripts/verify_workflow_connections.py,main,function,18,103,,35,77
+scripts/verify_workflow_connections.py,main.check,function,24,26,"name, passed",2,3
+scripts/verify_workflow_connections.py,main.rpc,function,56,61,"method, params",3,6
+scripts/verify_workflow_connections.py,main.call,function,62,65,"name, arguments",2,4
+scripts/write_m1_acceptance.py,$module,module,1,92,,1,1
+scripts/write_m1_acceptance.py,main,function,10,84,,16,29
+scripts/write_m1_acceptance.py,PathLabel,function,87,88,path,1,1
+scripts/write_status.py,$module,module,1,181,,1,1
+scripts/write_status.py,read_json,function,21,25,"file, default=None",4,2
+scripts/write_status.py,probe_platform,function,28,57,,10,10
+scripts/write_status.py,receipts_valid,function,60,89,"report, roles, reference, root",30,28
+scripts/write_status.py,collect_status,function,92,169,"root, platform=None",35,69
+scripts/write_status.py,main,function,172,177,,1,8
+src/gov_mcp/__init__.py,$module,module,1,1,,0,0
+src/gov_mcp/acceptance.py,$module,module,1,121,,0,0
+src/gov_mcp/acceptance.py,assess,function,8,84,"events, audit, role, principal, child_id=None",62,85
+src/gov_mcp/acceptance.py,select_model,function,87,121,"records, model_checks=None",27,32
+src/gov_mcp/asset_query.py,$module,module,1,148,,0,0
+src/gov_mcp/asset_query.py,canonical,function,17,18,value,1,1
+src/gov_mcp/asset_query.py,digest,function,21,22,value,1,4
+src/gov_mcp/asset_query.py,terms,function,25,28,text,2,4
+src/gov_mcp/asset_query.py,cosine,function,31,35,"left, right",6,6
+src/gov_mcp/asset_query.py,AssetQuery,class,38,148,,0,0
+src/gov_mcp/asset_query.py,AssetQuery.__init__,function,39,41,"self, runtime: Path, embedder=None",1,1
+src/gov_mcp/asset_query.py,AssetQuery.load,function,43,75,self,28,40
+src/gov_mcp/asset_query.py,AssetQuery.role,function,77,80,"self, tenant_id, user_id",2,4
+src/gov_mcp/asset_query.py,AssetQuery.embed,function,82,91,"self, query, vectors",6,10
+src/gov_mcp/asset_query.py,AssetQuery.search,function,93,148,"self, tenant_id, user_id, query, limit=4",27,48
+src/gov_mcp/asset_query_server.py,$module,module,1,110,,1,8
+src/gov_mcp/asset_query_server.py,create_app,function,18,101,runtime,4,18
+src/gov_mcp/asset_query_server.py,create_app.govdocs_search_evidence,function,30,32,"query: str, tenant_id: str, user_id: str, limit: int=4",1,1
+src/gov_mcp/asset_query_server.py,create_app.page,function,34,36,body,1,1
+src/gov_mcp/asset_query_server.py,create_app.health,function,38,43,request,4,5
+src/gov_mcp/asset_query_server.py,create_app.home,function,45,56,request,6,14
+src/gov_mcp/asset_query_server.py,create_app.evidence,function,58,75,request,11,13
+src/gov_mcp/asset_query_server.py,create_app.original,function,77,85,request,8,5
+src/gov_mcp/asset_query_server.py,create_app.routed,function,92,100,"scope, receive, send",6,7
+src/gov_mcp/classification.py,$module,module,1,490,,0,0
+src/gov_mcp/classification.py,fingerprint,function,30,32,value,1,4
+src/gov_mcp/classification.py,ClassificationError,class,35,36,,0,0
+src/gov_mcp/classification.py,DecisionProvider,class,39,42,,0,0
+src/gov_mcp/classification.py,DecisionProvider.evaluate,function,42,42,"self, state: dict, questions: dict, model: str",0,0
+src/gov_mcp/classification.py,JevProvider,class,45,134,,0,0
+src/gov_mcp/classification.py,JevProvider.__init__,function,48,63,"self, api_key=None, opener=None, sleep=time.sleep, *, max_calls=None",6,5
+src/gov_mcp/classification.py,JevProvider.__init__.NoRedirect,class,53,55,,0,0
+src/gov_mcp/classification.py,JevProvider.__init__.NoRedirect.redirect_request,function,54,55,"self, *args, **kwargs",1,0
+src/gov_mcp/classification.py,JevProvider.check_ready,function,65,71,"self, model",8,5
+src/gov_mcp/classification.py,JevProvider.evaluate,function,73,134,"self, state, questions, model",31,38
+src/gov_mcp/classification.py,probability,function,137,140,value,4,3
+src/gov_mcp/classification.py,validate_config,function,143,182,config,44,50
+src/gov_mcp/classification.py,configured_provider,function,185,193,config,4,4
+src/gov_mcp/classification.py,with_english_input,function,196,200,"provider, config, *, translator=None",3,4
+src/gov_mcp/classification.py,questions_for,function,203,217,"config, scope, reverse=False",5,5
+src/gov_mcp/classification.py,batch_questions,function,220,228,"config, segments, reverse=False",4,5
+src/gov_mcp/classification.py,request_bytes,function,231,233,"state, questions, model",1,3
+src/gov_mcp/classification.py,classification_windows,function,236,252,"asset, config, reverse=False",11,8
+src/gov_mcp/classification.py,validate_response,function,255,278,"value, questions, model",22,20
+src/gov_mcp/classification.py,multilabel,function,281,286,"answers, group, config",4,2
+src/gov_mcp/classification.py,document_windows,function,289,301,"asset, bound",7,7
+src/gov_mcp/classification.py,classify_corpus,function,304,455,"corpus, config, provider: DecisionProvider | None=None, reverse_choices=False, *, allow_public=False",49,71
+src/gov_mcp/classification.py,classify_corpus.evaluate,function,334,374,"state, questions",17,27
+src/gov_mcp/classification.py,summarize,function,458,481,run,19,19
+src/gov_mcp/classification.py,save_run,function,484,490,"run, directory",2,4
+src/gov_mcp/core.py,$module,module,1,103,,0,0
+src/gov_mcp/core.py,result,function,11,19,"status: str, code: str, **data",1,0
+src/gov_mcp/core.py,BlankStore,class,22,46,,0,0
+src/gov_mcp/core.py,BlankStore.__init__,function,23,32,"self, path: Path, timeout: float=2",1,4
+src/gov_mcp/core.py,BlankStore.counts,function,34,46,self,8,8
+src/gov_mcp/core.py,GovernmentTools,class,49,103,,0,0
+src/gov_mcp/core.py,GovernmentTools.__init__,function,50,53,"self, store: BlankStore, role_map_path: Path, retry_delay: float=0.25",0,0
+src/gov_mcp/core.py,GovernmentTools.role,function,55,63,"self, tenant_id: str, user_id: str",9,9
+src/gov_mcp/core.py,GovernmentTools._run,function,65,84,"self, tenant_id: str, user_id: str, fn: Callable",14,12
+src/gov_mcp/core.py,GovernmentTools.get_environment_status,function,86,93,"self, tenant_id: str, user_id: str",2,3
+src/gov_mcp/core.py,GovernmentTools.search_evidence,function,95,96,"self, tenant_id: str, user_id: str",1,2
+src/gov_mcp/core.py,GovernmentTools.check_case_prerequisites,function,98,103,"self, tenant_id: str, user_id: str",2,3
+src/gov_mcp/decision/__init__.py,$module,module,1,11,,0,0
+src/gov_mcp/decision/adapters.py,$module,module,1,35,,0,0
+src/gov_mcp/decision/adapters.py,OfflineRoles,class,17,35,,0,0
+src/gov_mcp/decision/adapters.py,OfflineRoles.__init__,function,23,29,"self, config_path",7,9
+src/gov_mcp/decision/adapters.py,OfflineRoles.invoke,function,31,35,"self, role, tool, action, *, metadata=None",5,6
+src/gov_mcp/decision/connections.py,$module,module,1,212,,0,0
+src/gov_mcp/decision/connections.py,ConnectionError,class,21,22,,0,0
+src/gov_mcp/decision/connections.py,Connections,class,25,199,,0,0
+src/gov_mcp/decision/connections.py,Connections.__init__,function,26,58,"self, path, *, client=None, environment=None, jev_factory=JevProvider",39,33
+src/gov_mcp/decision/connections.py,Connections.describe,function,60,62,self,3,1
+src/gov_mcp/decision/connections.py,Connections.prepare,function,64,68,"self, role, tool, payload",3,4
+src/gov_mcp/decision/connections.py,Connections.probe,function,70,96,self,4,3
+src/gov_mcp/decision/connections.py,Connections.probe.reads,function,72,94,client,13,12
+src/gov_mcp/decision/connections.py,Connections.request,function,98,148,"self, role, tool, payload",27,29
+src/gov_mcp/decision/connections.py,Connections.request.send,function,134,146,client,11,14
+src/gov_mcp/decision/connections.py,Connections.request_nexent,function,150,199,"self, role, payload, *, binding, credentials",20,21
+src/gov_mcp/decision/connections.py,Connections.request_nexent.send,function,165,196,client,22,29
+src/gov_mcp/decision/connections.py,WiredRoles,class,202,212,,0,0
+src/gov_mcp/decision/connections.py,WiredRoles.__init__,function,204,205,"self, offline, connections",0,0
+src/gov_mcp/decision/connections.py,WiredRoles.calls,function,208,208,self,1,0
+src/gov_mcp/decision/connections.py,WiredRoles.invoke,function,210,212,"self, role, tool, action",1,2
+src/gov_mcp/decision/intake.py,$module,module,1,212,,0,0
+src/gov_mcp/decision/intake.py,FormError,class,15,16,,0,0
+src/gov_mcp/decision/intake.py,folded,function,19,20,text,1,3
+src/gov_mcp/decision/intake.py,template_for,function,23,36,snapshot,15,11
+src/gov_mcp/decision/intake.py,DeepSeekFormVerifier,class,39,86,,0,0
+src/gov_mcp/decision/intake.py,DeepSeekFormVerifier.__init__,function,47,48,"self, connections",0,0
+src/gov_mcp/decision/intake.py,DeepSeekFormVerifier.enabled,function,50,51,self,1,1
+src/gov_mcp/decision/intake.py,DeepSeekFormVerifier.payload,function,53,70,"self, template, values",23,19
+src/gov_mcp/decision/intake.py,DeepSeekFormVerifier.cache_identity,function,72,74,"self, template, values",1,2
+src/gov_mcp/decision/intake.py,DeepSeekFormVerifier.verify,function,76,86,"self, template, values",4,4
+src/gov_mcp/decision/intake.py,GuidedForm,class,89,212,,0,0
+src/gov_mcp/decision/intake.py,GuidedForm.__init__,function,90,99,"self, workflow, *, clock=time.monotonic",0,6
+src/gov_mcp/decision/intake.py,GuidedForm.alive,function,101,107,self,3,4
+src/gov_mcp/decision/intake.py,GuidedForm.expected,function,109,111,"self, revision",3,3
+src/gov_mcp/decision/intake.py,GuidedForm.state,function,113,122,"self, verifier",7,14
+src/gov_mcp/decision/intake.py,GuidedForm.answer,function,124,138,"self, field_id, text, revision",16,15
+src/gov_mcp/decision/intake.py,GuidedForm.review,function,140,193,"self, workflow, verifier, revision",41,55
+src/gov_mcp/decision/intake.py,GuidedForm.submit,function,195,212,"self, workflow, *, revision, review_id, branch_id, acknowledge",16,14
+src/gov_mcp/decision/logic.py,$module,module,1,151,,0,0
+src/gov_mcp/decision/logic.py,Truth,class,12,15,,0,0
+src/gov_mcp/decision/logic.py,RuleError,class,18,19,,0,0
+src/gov_mcp/decision/logic.py,valid_value,function,22,40,"value: Any, spec: dict",19,8
+src/gov_mcp/decision/logic.py,validate_expression,function,43,81,"expression: dict, fields: dict[str, dict]",0,1
+src/gov_mcp/decision/logic.py,validate_expression.visit,function,46,79,"node, depth",35,26
+src/gov_mcp/decision/logic.py,conjunction,function,84,87,values: list[Truth],5,1
+src/gov_mcp/decision/logic.py,disjunction,function,90,93,values: list[Truth],5,1
+src/gov_mcp/decision/logic.py,Evaluation,class,97,101,,0,0
+src/gov_mcp/decision/logic.py,evaluate,function,104,151,"expression: dict, facts: dict, fields: dict[str, dict]",4,5
+src/gov_mcp/decision/logic.py,evaluate.walk,function,111,149,node,14,19
+src/gov_mcp/decision/models.py,$module,module,1,282,,0,4
+src/gov_mcp/decision/models.py,canonical_hash,function,19,21,value,1,4
+src/gov_mcp/decision/models.py,Record,class,24,25,,0,1
+src/gov_mcp/decision/models.py,Reviewed,class,28,32,,0,0
+src/gov_mcp/decision/models.py,reviewed_hash,function,35,68,"record: Reviewed | dict, snapshot",5,8
+src/gov_mcp/decision/models.py,reviewed_hash.visit,function,48,64,key,8,11
+src/gov_mcp/decision/models.py,Review,class,71,78,,0,0
+src/gov_mcp/decision/models.py,FactField,class,81,94,,0,2
+src/gov_mcp/decision/models.py,FactField.check_options,function,88,94,self,8,7
+src/gov_mcp/decision/models.py,Versions,class,97,100,,0,0
+src/gov_mcp/decision/models.py,Matter,class,103,106,,0,0
+src/gov_mcp/decision/models.py,Stage,class,109,112,,0,1
+src/gov_mcp/decision/models.py,Material,class,115,117,,0,0
+src/gov_mcp/decision/models.py,Asset,class,120,127,,0,1
+src/gov_mcp/decision/models.py,Evidence,class,130,136,,0,2
+src/gov_mcp/decision/models.py,Clause,class,139,142,,0,0
+src/gov_mcp/decision/models.py,Condition,class,145,146,,0,0
+src/gov_mcp/decision/models.py,Branch,class,149,153,,0,1
+src/gov_mcp/decision/models.py,Window,class,156,165,,0,0
+src/gov_mcp/decision/models.py,Window.check_window,function,162,165,self,4,1
+src/gov_mcp/decision/models.py,Applicability,class,168,171,,0,0
+src/gov_mcp/decision/models.py,Requirement,class,174,180,,0,0
+src/gov_mcp/decision/models.py,Alias,class,183,185,,0,0
+src/gov_mcp/decision/models.py,KnowledgeSnapshot,class,188,282,,0,12
+src/gov_mcp/decision/models.py,KnowledgeSnapshot.integrity,function,208,272,self,62,46
+src/gov_mcp/decision/models.py,KnowledgeSnapshot._dependencies,function,275,279,"item, dependencies",7,4
+src/gov_mcp/decision/models.py,KnowledgeSnapshot.json_fingerprint,function,281,282,self,1,2
+src/gov_mcp/decision/server.py,$module,module,1,413,,1,1
+src/gov_mcp/decision/server.py,create_app,function,29,392,"workflow, professional_token, mcp_token, *, start_worker=True, form_verifier=None",2,16
+src/gov_mcp/decision/server.py,create_app.govkb_open_query,function,38,40,"facts: dict, branch_id: str, question: str=''",1,1
+src/gov_mcp/decision/server.py,create_app.govkb_retrieve_query,function,43,45,task_id: str,1,1
+src/gov_mcp/decision/server.py,create_app.govkb_verify_query,function,48,50,task_id: str,1,1
+src/gov_mcp/decision/server.py,create_app.govkb_finalize_query,function,53,55,task_id: str,1,1
+src/gov_mcp/decision/server.py,create_app.govkb_query_state,function,58,62,task_id: str,4,4
+src/gov_mcp/decision/server.py,create_app.govkb_query,function,65,67,"facts: dict, branch_id: str, question: str=''",1,1
+src/gov_mcp/decision/server.py,create_app.govkb_get_change_batch,function,70,72,run_id: str,2,1
+src/gov_mcp/decision/server.py,create_app.batch,function,74,77,batch_id,3,2
+src/gov_mcp/decision/server.py,create_app.govkb_classify_changes,function,80,83,batch_id: str,1,1
+src/gov_mcp/decision/server.py,create_app.govkb_submit_candidates,function,86,90,"batch_id: str, candidates: list[dict]",3,2
+src/gov_mcp/decision/server.py,create_app.govkb_validate_candidates,function,93,96,candidate_id: str,1,2
+src/gov_mcp/decision/server.py,create_app.govkb_finish_run,function,99,105,"run_id: str, summary: str",7,6
+src/gov_mcp/decision/server.py,create_app.govkb_check_registered_sources,function,108,110,,1,1
+src/gov_mcp/decision/server.py,create_app.ticker,function,112,117,,3,4
+src/gov_mcp/decision/server.py,create_app.lifespan,function,120,127,app,6,4
+src/gov_mcp/decision/server.py,create_app.session,function,129,133,"request, professional=False",7,5
+src/gov_mcp/decision/server.py,create_app.home,function,135,137,request,1,4
+src/gov_mcp/decision/server.py,create_app.form_home,function,139,141,request,1,4
+src/gov_mcp/decision/server.py,create_app.form_asset,function,143,147,request,4,6
+src/gov_mcp/decision/server.py,create_app.form_api,function,149,209,request,53,47
+src/gov_mcp/decision/server.py,create_app.login,function,211,238,request,19,24
+src/gov_mcp/decision/server.py,create_app.logout,function,240,244,request,1,4
+src/gov_mcp/decision/server.py,create_app.api,function,246,327,request,65,72
+src/gov_mcp/decision/server.py,create_app.api.connection_state,function,295,303,,3,7
+src/gov_mcp/decision/server.py,create_app.Gate,class,329,383,,0,0
+src/gov_mcp/decision/server.py,create_app.Gate.__init__,function,331,332,"self, app",0,0
+src/gov_mcp/decision/server.py,create_app.Gate.__call__,function,334,383,"self, scope, receive, send",32,32
+src/gov_mcp/decision/server.py,create_app.Gate.__call__.guarded_send,function,338,344,message,1,3
+src/gov_mcp/decision/server.py,create_app.Gate.__call__.bounded_receive,function,371,375,,3,1
+src/gov_mcp/decision/server.py,main,function,395,410,,2,17
+src/gov_mcp/decision/service.py,$module,module,1,306,,0,0
+src/gov_mcp/decision/service.py,DecisionError,class,21,22,,0,0
+src/gov_mcp/decision/service.py,AvailabilityGate,class,25,46,,0,0
+src/gov_mcp/decision/service.py,AvailabilityGate.__init__,function,31,35,"self, known_ids",0,2
+src/gov_mcp/decision/service.py,AvailabilityGate.suspend,function,37,46,"self, object_id, *, change_id, reason",9,9
+src/gov_mcp/decision/service.py,DecisionService,class,49,306,,0,0
+src/gov_mcp/decision/service.py,DecisionService.__init__,function,50,69,"self, snapshot: KnowledgeSnapshot",11,8
+src/gov_mcp/decision/service.py,DecisionService.fork,function,71,81,self,1,3
+src/gov_mcp/decision/service.py,DecisionService.from_file,function,84,88,"cls, path",3,6
+src/gov_mcp/decision/service.py,DecisionService._facts,function,90,99,"self, facts",13,14
+src/gov_mcp/decision/service.py,DecisionService._record_dependencies,function,101,107,"self, records",3,2
+src/gov_mcp/decision/service.py,DecisionService._path,function,109,116,"self, branch_id",4,5
+src/gov_mcp/decision/service.py,DecisionService.branch_options,function,118,140,"self, facts, parent_id=None",19,14
+src/gov_mcp/decision/service.py,DecisionService._condition,function,142,151,"self, condition_id, facts, cache=None",7,5
+src/gov_mcp/decision/service.py,DecisionService._scope,function,153,167,"self, scope, region_id, as_of",8,1
+src/gov_mcp/decision/service.py,DecisionService._citations,function,169,178,"self, ids",2,4
+src/gov_mcp/decision/service.py,DecisionService._requirement,function,180,224,"self, requirement, facts, region_id, as_of, cache=None",10,25
+src/gov_mcp/decision/service.py,DecisionService.prepare,function,226,248,"self, facts, branch_id, *, region_id=None, as_of=None",15,15
+src/gov_mcp/decision/service.py,DecisionService.finalize,function,250,303,"self, task_id",32,28
+src/gov_mcp/decision/service.py,DecisionService.answer,function,305,306,"self, facts, branch_id, *, region_id=None, as_of=None",1,2
+src/gov_mcp/decision/workflow.py,$module,module,1,756,,0,2
+src/gov_mcp/decision/workflow.py,WorkflowError,class,31,32,,0,0
+src/gov_mcp/decision/workflow.py,tokens,function,35,38,text,3,4
+src/gov_mcp/decision/workflow.py,vector,function,41,46,text,5,6
+src/gov_mcp/decision/workflow.py,Workflow,class,49,756,,0,0
+src/gov_mcp/decision/workflow.py,Workflow.__init__,function,50,74,"self, root, *, clock=time.time, snapshot_path=None",6,30
+src/gov_mcp/decision/workflow.py,Workflow.get,function,76,80,"self, kind, key, db=None",5,5
+src/gov_mcp/decision/workflow.py,Workflow.put,function,82,83,"self, kind, key, value, db",0,2
+src/gov_mcp/decision/workflow.py,Workflow.rows,function,85,93,"self, kind, db=None, *, limit=None, offset=0",17,9
+src/gov_mcp/decision/workflow.py,Workflow._count,function,95,96,"self, kind, db",1,2
+src/gov_mcp/decision/workflow.py,Workflow._packages,function,98,104,"self, statuses, db=None, *, limit=10000",9,8
+src/gov_mcp/decision/workflow.py,Workflow._version,function,106,111,"self, snapshot, base, actor, db",1,6
+src/gov_mcp/decision/workflow.py,Workflow.version,function,113,121,"self, version_id=None, db=None",9,9
+src/gov_mcp/decision/workflow.py,Workflow._event,function,123,132,"self, role, tool, inputs, outputs, *, task=None, run=None, db=None",4,8
+src/gov_mcp/decision/workflow.py,Workflow._service,function,134,154,"self, version, db",11,15
+src/gov_mcp/decision/workflow.py,Workflow.branches,function,156,158,"self, facts, parent=None",2,4
+src/gov_mcp/decision/workflow.py,Workflow.query,function,160,184,"self, facts, branch_id, *, parent_task=None, version_id=None, as_of=None, retriever=None, question='', expected_head=None",16,25
+src/gov_mcp/decision/workflow.py,Workflow._evidence_request,function,187,189,"draft, found_ids=()",3,2
+src/gov_mcp/decision/workflow.py,Workflow._verify_retrieval,function,191,203,"self, draft, snapshot, retrieved, found_ids",10,11
+src/gov_mcp/decision/workflow.py,Workflow._execute_query,function,205,247,"self, task, version, draft, retriever, *, expected_head=None",21,33
+src/gov_mcp/decision/workflow.py,Workflow.history,function,249,257,"self, task_id",7,6
+src/gov_mcp/decision/workflow.py,Workflow.open_query,function,259,275,"self, facts, branch_id, question=''",6,12
+src/gov_mcp/decision/workflow.py,Workflow.retrieve_query,function,277,292,"self, task_id",11,14
+src/gov_mcp/decision/workflow.py,Workflow.verify_query,function,294,313,"self, task_id",12,17
+src/gov_mcp/decision/workflow.py,Workflow.finalize_query,function,315,335,"self, task_id",11,17
+src/gov_mcp/decision/workflow.py,Workflow.search_documents,function,337,365,"self, text",14,27
+src/gov_mcp/decision/workflow.py,Workflow.documents,function,367,378,"self, version_id=None",15,12
+src/gov_mcp/decision/workflow.py,Workflow.configure_demo,function,380,388,"self, *, actor",2,6
+src/gov_mcp/decision/workflow.py,Workflow.set_profile,function,390,397,"self, profile, *, actor",5,7
+src/gov_mcp/decision/workflow.py,Workflow.control,function,399,405,"self, *, paused, interval, actor",4,8
+src/gov_mcp/decision/workflow.py,Workflow.heartbeat,function,407,427,"self, *, force=False",15,18
+src/gov_mcp/decision/workflow.py,Workflow._packet,function,429,440,"self, source",7,6
+src/gov_mcp/decision/workflow.py,Workflow._source_hash,function,442,443,"self, source, packet",1,1
+src/gov_mcp/decision/workflow.py,Workflow._check,function,445,492,"self, source, run, interval",21,38
+src/gov_mcp/decision/workflow.py,Workflow._extract_packet,function,494,522,"self, packet, snapshot, package_id",11,15
+src/gov_mcp/decision/workflow.py,Workflow._process,function,524,602,"self, key, run",29,56
+src/gov_mcp/decision/workflow.py,Workflow._source_guard,function,604,609,"self, package, db",5,6
+src/gov_mcp/decision/workflow.py,Workflow.deadline,function,611,623,"self, package_id, deadline, *, actor",9,9
+src/gov_mcp/decision/workflow.py,Workflow.review,function,625,639,"self, package_id, object_ids, *, actor, decision, note",16,19
+src/gov_mcp/decision/workflow.py,Workflow.publish,function,641,706,"self, package_id, object_ids, expected_head, *, actor",43,59
+src/gov_mcp/decision/workflow.py,Workflow._compact_snapshot,function,709,721,data,9,1
+src/gov_mcp/decision/workflow.py,Workflow.rollback,function,723,730,"self, target, expected_head, *, actor",4,6
+src/gov_mcp/decision/workflow.py,Workflow.status,function,732,756,"self, page=0",18,19
+src/gov_mcp/deepseek.py,$module,module,1,108,,0,2
+src/gov_mcp/deepseek.py,CloudError,class,19,20,,0,0
+src/gov_mcp/deepseek.py,compact_json,function,23,24,value,1,1
+src/gov_mcp/deepseek.py,validate_cloud,function,27,30,config,4,4
+src/gov_mcp/deepseek.py,load_key,function,33,45,"config, environment=None",11,10
+src/gov_mcp/deepseek.py,chat,function,48,108,"config, messages, *, client=None, environment=None, json_output=True, max_output_tokens=1024, temperature=DEFAULT_TEMPERATURE",16,15
+src/gov_mcp/deepseek.py,chat.send,function,67,104,http,38,32
+src/gov_mcp/extension.py,$module,module,1,147,,0,0
+src/gov_mcp/extension.py,ExtensionStore,class,19,48,,0,0
+src/gov_mcp/extension.py,ExtensionStore.__init__,function,20,38,"self, path: Path, timeout: float=2",1,4
+src/gov_mcp/extension.py,ExtensionStore.counts,function,40,48,self,8,8
+src/gov_mcp/extension.py,ExtensionTools,class,51,147,,0,0
+src/gov_mcp/extension.py,ExtensionTools.__init__,function,52,55,"self, runtime: Path, retry_delay: float=0.25, timeout: float=2",0,2
+src/gov_mcp/extension.py,ExtensionTools.principal,function,57,64,"self, tenant_id, user_id",6,9
+src/gov_mcp/extension.py,ExtensionTools.config,function,66,70,self,5,7
+src/gov_mcp/extension.py,ExtensionTools.execute,function,72,109,"self, name, tenant_id, user_id, **arguments",13,27
+src/gov_mcp/extension.py,ExtensionTools._dispatch,function,111,147,"self, name, role, counts, config, arguments",30,24
+src/gov_mcp/extension_server.py,$module,module,1,75,,1,1
+src/gov_mcp/extension_server.py,create_app,function,17,62,"runtime: Path, token: str",4,11
+src/gov_mcp/extension_server.py,create_app.govx_get_environment_status,function,28,30,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/extension_server.py,create_app.govx_search_evidence,function,33,35,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/extension_server.py,create_app.govx_query_knowledge_graph,function,38,40,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/extension_server.py,create_app.govx_check_case_prerequisites,function,43,45,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/extension_server.py,create_app.govx_prepare_update,function,48,50,"tenant_id: str, user_id: str, inputs: list[str] | None=None",2,1
+src/gov_mcp/extension_server.py,create_app.govx_publish_update,function,53,55,"tenant_id: str, user_id: str, candidate_id: str | None=None, confirmed: bool=False",1,1
+src/gov_mcp/extension_server.py,create_app.health,function,57,58,request,1,1
+src/gov_mcp/extension_server.py,main,function,65,71,,0,7
+src/gov_mcp/jev_gateway.py,$module,module,1,127,,0,0
+src/gov_mcp/jev_gateway.py,safe_http_diagnostic,function,18,35,error,23,7
+src/gov_mcp/jev_gateway.py,load_gateway_key,function,38,43,,3,7
+src/gov_mcp/jev_gateway.py,VercelJevProvider,class,46,127,,0,0
+src/gov_mcp/jev_gateway.py,VercelJevProvider.__init__,function,49,58,"self, api_key=None, *, opener=None, max_calls=32",5,7
+src/gov_mcp/jev_gateway.py,VercelJevProvider.__init__.NoRedirect,class,53,54,,0,0
+src/gov_mcp/jev_gateway.py,VercelJevProvider.__init__.NoRedirect.redirect_request,function,54,54,"self, *args, **kwargs",1,0
+src/gov_mcp/jev_gateway.py,VercelJevProvider.check_ready,function,60,65,"self, model",10,7
+src/gov_mcp/jev_gateway.py,VercelJevProvider.evaluate,function,67,127,"self, state, questions, model",30,44
+src/gov_mcp/jev_translation.py,$module,module,1,187,,0,2
+src/gov_mcp/jev_translation.py,inference_enabled,function,29,34,,4,3
+src/gov_mcp/jev_translation.py,DeepSeekTranslator,class,37,60,,0,0
+src/gov_mcp/jev_translation.py,DeepSeekTranslator.__init__,function,38,41,"self, *, client=None, environment=None, enabled=None",0,0
+src/gov_mcp/jev_translation.py,DeepSeekTranslator.translate,function,43,60,"self, texts",12,9
+src/gov_mcp/jev_translation.py,text_slots,function,63,94,"state, questions",8,11
+src/gov_mcp/jev_translation.py,text_slots.visit,function,66,82,value,11,13
+src/gov_mcp/jev_translation.py,EnglishJevProvider,class,97,187,,0,0
+src/gov_mcp/jev_translation.py,EnglishJevProvider.__init__,function,98,104,"self, provider, translator=None, *, max_request_bytes=14000, cache_entries=512",1,2
+src/gov_mcp/jev_translation.py,EnglishJevProvider.attempts,function,107,108,self,1,1
+src/gov_mcp/jev_translation.py,EnglishJevProvider.api_key,function,111,112,self,1,1
+src/gov_mcp/jev_translation.py,EnglishJevProvider.evaluate,function,114,187,"self, state, questions, model",44,62
+src/gov_mcp/knowledge/__init__.py,$module,module,1,4,,0,0
+src/gov_mcp/knowledge/engine.py,$module,module,1,444,,0,0
+src/gov_mcp/knowledge/engine.py,validate_settings,function,21,36,config,26,36
+src/gov_mcp/knowledge/engine.py,Engine,class,39,444,,0,0
+src/gov_mcp/knowledge/engine.py,Engine.__init__,function,40,55,"self, store, config, classification, *, provider=None, fetcher=None, embedder=None, synthetic=False",12,12
+src/gov_mcp/knowledge/engine.py,Engine.ontology,function,57,59,self,2,4
+src/gov_mcp/knowledge/engine.py,Engine.processing_hash,function,62,64,self,1,2
+src/gov_mcp/knowledge/engine.py,Engine.embed,function,66,84,"self, contents",15,20
+src/gov_mcp/knowledge/engine.py,Engine.poll,function,86,133,"self, run, force=False",28,51
+src/gov_mcp/knowledge/engine.py,Engine.select_jobs,function,135,153,"self, run",16,18
+src/gov_mcp/knowledge/engine.py,Engine.context,function,155,167,"self, run_id, batch_id=None",13,13
+src/gov_mcp/knowledge/engine.py,Engine.classify,function,169,187,"self, run_id, batch_id",10,17
+src/gov_mcp/knowledge/engine.py,Engine.submit,function,189,221,"self, run_id, batch_id, candidates, ontology_proposals=None",34,44
+src/gov_mcp/knowledge/engine.py,Engine.validate,function,223,257,"self, run_id, candidate_id, review",23,36
+src/gov_mcp/knowledge/engine.py,Engine.finish_job,function,259,265,"self, run_id, batch_id, summary",6,7
+src/gov_mcp/knowledge/engine.py,Engine.publish_documents,function,267,308,"self, run",55,56
+src/gov_mcp/knowledge/engine.py,Engine.needs_publication,function,310,317,self,10,9
+src/gov_mcp/knowledge/engine.py,Engine.source_is_authorized,function,319,336,"self, source, evidence=None",16,19
+src/gov_mcp/knowledge/engine.py,Engine.source_can_publish,function,338,341,"self, source",2,8
+src/gov_mcp/knowledge/engine.py,Engine.review_candidate,function,343,377,"self, candidate_id, expected_base, actor, *, accept=True, acknowledge=False",21,27
+src/gov_mcp/knowledge/engine.py,Engine.requeue_candidate,function,379,388,"self, candidate_id",6,9
+src/gov_mcp/knowledge/engine.py,Engine.search,function,390,439,"self, query, kind='documents', version_id=None",41,51
+src/gov_mcp/knowledge/engine.py,Engine._terms,function,442,444,query,1,1
+src/gov_mcp/knowledge/native.py,$module,module,1,88,,0,0
+src/gov_mcp/knowledge/native.py,NativeDriver,class,11,80,,0,0
+src/gov_mcp/knowledge/native.py,NativeDriver.__init__,function,12,13,"self, root, *, config_url='http://host.docker.internal:5010', runtime_url='http://host.docker.internal:5014'",0,0
+src/gov_mcp/knowledge/native.py,NativeDriver._session,function,15,27,self,4,10
+src/gov_mcp/knowledge/native.py,NativeDriver.run,function,29,72,"self, engine, run",23,39
+src/gov_mcp/knowledge/native.py,NativeDriver.stop,function,74,80,"self, run",3,6
+src/gov_mcp/knowledge/native.py,release_local,function,83,88,"config, role",4,7
+src/gov_mcp/knowledge/registry.py,$module,module,1,608,,0,0
+src/gov_mcp/knowledge/registry.py,encode,function,13,14,value,1,1
+src/gov_mcp/knowledge/registry.py,fingerprint,function,17,18,value,2,5
+src/gov_mcp/knowledge/registry.py,KnowledgeStore,class,21,608,,0,0
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.__init__,function,24,112,"self, runtime, read_only=False",7,9
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.initialize,function,115,127,"cls, runtime",6,15
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.db,function,130,138,self,4,5
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.log,function,141,142,"db, action, data",0,3
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.scope_regions,function,144,147,"self, region",2,5
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.resume,function,149,162,"self, site_id, confirmed=False",7,10
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.register,function,164,180,"self, config",7,17
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.ingest,function,182,234,"self, site_id, url, raw, metadata, chunks, preserve_metadata_if_unchanged=False",34,47
+src/gov_mcp/knowledge/registry.py,KnowledgeStore._content,function,236,241,"self, db, revision_id",4,6
+src/gov_mcp/knowledge/registry.py,KnowledgeStore._verify,function,243,253,"self, db, revision_id, require_review=True",8,9
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.review,function,255,272,"self, revision_id, reviewer, confirmed=False",12,18
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.exclude,function,274,292,"self, revision_id, reviewer, reason, confirmed=False",8,25
+src/gov_mcp/knowledge/registry.py,KnowledgeStore._verify_exclusion,function,294,298,"self, db, revision",3,5
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.reopen,function,300,319,"self, revision_id, reviewer, confirmed=False",7,20
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.amend,function,321,334,"self, revision_id, metadata",8,13
+src/gov_mcp/knowledge/registry.py,KnowledgeStore._scope_members,function,336,363,"self, db, region, matter",16,18
+src/gov_mcp/knowledge/registry.py,KnowledgeStore._scope_members.matches,function,343,345,row,2,2
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.candidate,function,365,380,"self, region, matter",9,16
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.publish,function,382,405,"self, version, reviewer, confirmed=False",15,18
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.evaluation_binding,function,407,410,"self, version",2,2
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.propose_classification,function,412,426,"self, revision",6,14
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.record_evaluation,function,428,441,"self, version, report, reviewer, confirmed=False",8,19
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.publication_check,function,443,453,"self, version",6,10
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.rollback,function,455,466,"self, version, maintainer, confirmed=False",7,11
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.search,function,468,551,"self, query, region, matter, version=None, as_of=None, category=None",56,63
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.status,function,553,599,self,24,47
+src/gov_mcp/knowledge/registry.py,KnowledgeStore.backup,function,601,608,"self, target",5,9
+src/gov_mcp/knowledge/replay.py,$module,module,1,15,,0,0
+src/gov_mcp/knowledge/replay.py,SyntheticReplay,class,3,15,,0,0
+src/gov_mcp/knowledge/replay.py,SyntheticReplay.evaluate,function,6,15,"self, state, questions, model",6,5
+src/gov_mcp/knowledge/server.py,$module,module,1,304,,1,1
+src/gov_mcp/knowledge/server.py,create_app,function,31,272,"engine, driver, token, roles, *, config_url='http://host.docker.internal:5010', authenticator=None, start_worker=True",2,15
+src/gov_mcp/knowledge/server.py,create_app.role,function,40,41,user,1,4
+src/gov_mcp/knowledge/server.py,create_app.scoped,function,43,45,"run_id, tenant_id, user_id",3,3
+src/gov_mcp/knowledge/server.py,create_app.execute,function,47,57,"name, run_id, tenant_id, user_id, action",4,10
+src/gov_mcp/knowledge/server.py,create_app.govkb_get_change_batch,function,60,72,"run_id: str, tenant_id: str, user_id: str, batch_id: str | None=None",1,1
+src/gov_mcp/knowledge/server.py,create_app.govkb_get_change_batch.action,function,62,71,,9,7
+src/gov_mcp/knowledge/server.py,create_app.govkb_classify_changes,function,75,81,"run_id: str, batch_id: str, tenant_id: str, user_id: str",1,1
+src/gov_mcp/knowledge/server.py,create_app.govkb_classify_changes.action,function,77,80,,1,2
+src/gov_mcp/knowledge/server.py,create_app.govkb_submit_candidates,function,84,88,"run_id: str, batch_id: str, candidates: list[dict], tenant_id: str, user_id: str, ontology_proposals: list[dict] | None=None",1,2
+src/gov_mcp/knowledge/server.py,create_app.govkb_validate_candidates,function,91,97,"run_id: str, candidate_id: str, review: dict, tenant_id: str, user_id: str",1,1
+src/gov_mcp/knowledge/server.py,create_app.govkb_validate_candidates.action,function,93,96,,1,2
+src/gov_mcp/knowledge/server.py,create_app.govkb_finish_run,function,100,102,"run_id: str, batch_id: str, summary: str, tenant_id: str, user_id: str",1,2
+src/gov_mcp/knowledge/server.py,create_app.govkb_search_evidence,function,105,127,"query: str, tenant_id: str, user_id: str, kind: str='documents', version: str | None=None",12,25
+src/gov_mcp/knowledge/server.py,create_app.identity,function,129,139,request,11,8
+src/gov_mcp/knowledge/server.py,create_app.login,function,141,166,request,16,25
+src/gov_mcp/knowledge/server.py,create_app.logout,function,168,172,request,1,4
+src/gov_mcp/knowledge/server.py,create_app.state,function,174,182,request,8,14
+src/gov_mcp/knowledge/server.py,create_app.operation,function,184,218,request,28,43
+src/gov_mcp/knowledge/server.py,create_app.search,function,220,226,request,7,10
+src/gov_mcp/knowledge/server.py,create_app.original,function,228,237,request,9,7
+src/gov_mcp/knowledge/server.py,create_app.fixture,function,239,243,request,4,3
+src/gov_mcp/knowledge/server.py,create_app.home,function,245,246,request,1,4
+src/gov_mcp/knowledge/server.py,create_app.health,function,248,249,request,1,2
+src/gov_mcp/knowledge/server.py,create_app.lifespan,function,253,256,app,3,2
+src/gov_mcp/knowledge/server.py,create_app.gated,function,262,271,"scope, receive, send",8,11
+src/gov_mcp/knowledge/server.py,main,function,275,301,,13,36
+src/gov_mcp/knowledge/sources.py,$module,module,1,188,,0,0
+src/gov_mcp/knowledge/sources.py,BodyParser,class,18,52,,0,0
+src/gov_mcp/knowledge/sources.py,BodyParser.__init__,function,19,21,"self, selector",0,2
+src/gov_mcp/knowledge/sources.py,BodyParser.handle_starttag,function,23,33,"self, tag, attrs",10,9
+src/gov_mcp/knowledge/sources.py,BodyParser.handle_endtag,function,35,41,"self, tag",4,3
+src/gov_mcp/knowledge/sources.py,BodyParser.handle_data,function,43,45,"self, data",3,2
+src/gov_mcp/knowledge/sources.py,BodyParser.text,function,47,52,self,8,8
+src/gov_mcp/knowledge/sources.py,check_source,function,58,67,"source, synthetic=False",14,15
+src/gov_mcp/knowledge/sources.py,Fetcher,class,70,188,,0,0
+src/gov_mcp/knowledge/sources.py,Fetcher.__init__,function,71,73,"self, store, max_bytes=20 * 1024 * 1024, client=None, synthetic=False, resolver=socket.getaddrinfo, ocr=None",0,0
+src/gov_mcp/knowledge/sources.py,Fetcher.allowed,function,75,89,"self, source, url",21,12
+src/gov_mcp/knowledge/sources.py,Fetcher.parse,function,91,148,"self, source, resource, raw, content_type",41,53
+src/gov_mcp/knowledge/sources.py,Fetcher.fetch,function,150,188,"self, source, previous=None, force_full=False",29,33
+src/gov_mcp/knowledge/store.py,$module,module,1,222,,0,0
+src/gov_mcp/knowledge/store.py,encoded,function,13,14,value,1,1
+src/gov_mcp/knowledge/store.py,digest,function,17,18,value,1,4
+src/gov_mcp/knowledge/store.py,KBError,class,21,22,,0,0
+src/gov_mcp/knowledge/store.py,Store,class,25,222,,0,0
+src/gov_mcp/knowledge/store.py,Store.__init__,function,26,40,"self, root, clock=time.time",1,5
+src/gov_mcp/knowledge/store.py,Store.db,function,43,55,"self, write=False",5,6
+src/gov_mcp/knowledge/store.py,Store.get,function,57,66,"self, table, key, db=None",9,6
+src/gov_mcp/knowledge/store.py,Store.put,function,68,75,"self, table, key, value, db=None",6,5
+src/gov_mcp/knowledge/store.py,Store.rows,function,77,81,"self, table",5,4
+src/gov_mcp/knowledge/store.py,Store.audit,function,83,87,"self, operation, value, db=None",3,5
+src/gov_mcp/knowledge/store.py,Store.object,function,89,105,"self, data",7,14
+src/gov_mcp/knowledge/store.py,Store.read_object,function,107,113,"self, key",7,8
+src/gov_mcp/knowledge/store.py,Store.enqueue,function,115,126,"self, run, source_id, assets, processing_hash",4,10
+src/gov_mcp/knowledge/store.py,Store.claim,function,128,143,"self, owner, lease_seconds, budget",8,10
+src/gov_mcp/knowledge/store.py,Store.assert_lease,function,145,148,"self, run, db",4,8
+src/gov_mcp/knowledge/store.py,Store.renew,function,150,155,"self, run, seconds",1,5
+src/gov_mcp/knowledge/store.py,Store.update_job,function,157,160,"self, run, job",1,4
+src/gov_mcp/knowledge/store.py,Store.finish,function,162,171,"self, run, status",3,8
+src/gov_mcp/knowledge/store.py,Store.abort,function,173,183,"self, run, status",7,9
+src/gov_mcp/knowledge/store.py,Store.version,function,185,189,"self, version_id",4,3
+src/gov_mcp/knowledge/store.py,Store.publish,function,191,212,"self, kind, data, expected_base, actor, run=None, db=None",14,15
+src/gov_mcp/knowledge/store.py,Store.rollback,function,214,222,"self, kind, target, expected_base, actor",6,8
+src/gov_mcp/knowledge/worker.py,$module,module,1,99,,0,0
+src/gov_mcp/knowledge/worker.py,Worker,class,10,99,,0,0
+src/gov_mcp/knowledge/worker.py,Worker.__init__,function,11,16,"self, engine, driver",0,2
+src/gov_mcp/knowledge/worker.py,Worker.round,function,18,52,"self, run, force=False",17,27
+src/gov_mcp/knowledge/worker.py,Worker.tick,function,54,82,self,33,37
+src/gov_mcp/knowledge/worker.py,Worker.start,function,84,92,self,0,2
+src/gov_mcp/knowledge/worker.py,Worker.start.loop,function,85,90,,3,5
+src/gov_mcp/knowledge/worker.py,Worker.stop,function,94,99,self,4,5
+src/gov_mcp/knowledge_answers.py,$module,module,1,107,,0,0
+src/gov_mcp/knowledge_answers.py,bind_citation,function,19,43,source,23,25
+src/gov_mcp/knowledge_answers.py,select_citations,function,46,61,"catalog, version, selected_ids=None",17,15
+src/gov_mcp/knowledge_answers.py,render_answer,function,78,107,value,18,11
+src/gov_mcp/knowledge_attachments.py,$module,module,1,212,,0,0
+src/gov_mcp/knowledge_attachments.py,source_ids,function,10,13,values,4,8
+src/gov_mcp/knowledge_attachments.py,validate_attachments,function,16,54,config,26,52
+src/gov_mcp/knowledge_attachments.py,dormant_collector,function,57,59,"db, config",2,6
+src/gov_mcp/knowledge_attachments.py,dependencies,function,62,70,"db, roots",4,10
+src/gov_mcp/knowledge_attachments.py,choose_source,function,73,110,"store, db, parent_config, url",30,34
+src/gov_mcp/knowledge_attachments.py,stable_parent_signal,function,113,138,"store, db, parent, signal, previous",16,14
+src/gov_mcp/knowledge_attachments.py,discover_attachments,function,141,203,"store, config, revision, raw, now",31,52
+src/gov_mcp/knowledge_attachments.py,attachment_status,function,206,212,db,4,8
+src/gov_mcp/knowledge_backup.py,$module,module,1,157,,0,0
+src/gov_mcp/knowledge_backup.py,file_digest,function,18,23,path,3,6
+src/gov_mcp/knowledge_backup.py,checked_path,function,26,42,"root, name",18,16
+src/gov_mcp/knowledge_backup.py,database_manifest,function,45,56,path,12,18
+src/gov_mcp/knowledge_backup.py,create_bundle,function,59,103,"store, target",22,50
+src/gov_mcp/knowledge_backup.py,restore_bundle,function,106,157,"source, target",34,67
+src/gov_mcp/knowledge_classify.py,$module,module,1,51,,0,1
+src/gov_mcp/knowledge_classify.py,suggest,function,32,51,"chunks, metadata",13,8
+src/gov_mcp/knowledge_cli.py,$module,module,1,164,,1,1
+src/gov_mcp/knowledge_cli.py,main,function,12,160,,44,118
+src/gov_mcp/knowledge_dates.py,$module,module,1,57,,0,1
+src/gov_mcp/knowledge_dates.py,reviewed_start,function,15,52,"store, db, row, metadata",21,36
+src/gov_mcp/knowledge_dates.py,citation_date_fields,function,55,57,metadata,2,1
+src/gov_mcp/knowledge_demo.py,$module,module,1,236,,1,1
+src/gov_mcp/knowledge_demo.py,read_json,function,24,25,path,1,3
+src/gov_mcp/knowledge_demo.py,write_json,function,28,29,"path, value",0,3
+src/gov_mcp/knowledge_demo.py,fixture,function,32,38,number,3,1
+src/gov_mcp/knowledge_demo.py,demo_store,function,41,55,runtime,11,16
+src/gov_mcp/knowledge_demo.py,ingest_fixture,function,58,72,"store, number",4,7
+src/gov_mcp/knowledge_demo.py,initialize,function,75,105,runtime,8,24
+src/gov_mcp/knowledge_demo.py,query,function,108,116,"runtime, role, question=QUESTION, version=None",7,5
+src/gov_mcp/knowledge_demo.py,update,function,119,133,runtime,6,12
+src/gov_mcp/knowledge_demo.py,refresh,function,136,144,runtime,5,6
+src/gov_mcp/knowledge_demo.py,check,function,147,174,runtime,17,25
+src/gov_mcp/knowledge_demo.py,create_app,function,177,208,runtime,1,8
+src/gov_mcp/knowledge_demo.py,create_app.home,function,186,188,request,1,3
+src/gov_mcp/knowledge_demo.py,create_app.health,function,190,191,request,1,1
+src/gov_mcp/knowledge_demo.py,create_app.favicon,function,193,194,request,1,1
+src/gov_mcp/knowledge_demo.py,create_app.search,function,196,201,request,4,7
+src/gov_mcp/knowledge_demo.py,create_app.status,function,203,205,request,1,3
+src/gov_mcp/knowledge_demo.py,main,function,211,232,,7,17
+src/gov_mcp/knowledge_discovery.py,$module,module,1,432,,0,4
+src/gov_mcp/knowledge_discovery.py,validate_discovery,function,20,58,config,40,65
+src/gov_mcp/knowledge_discovery.py,configured_kind,function,61,64,"config, url",4,2
+src/gov_mcp/knowledge_discovery.py,target_kind,function,67,69,"db, config, url",2,3
+src/gov_mcp/knowledge_discovery.py,watches_unclassified,function,72,74,"config, metadata, region, matter",3,2
+src/gov_mcp/knowledge_discovery.py,watched_source_ids,function,77,81,"db, region, matter",3,4
+src/gov_mcp/knowledge_discovery.py,HTMLDiscovery,class,84,137,,0,0
+src/gov_mcp/knowledge_discovery.py,HTMLDiscovery.__init__,function,85,91,"self, base, selector=None, pagination=None, keywords=None, untitled=False, numbered=None, full_title=False",1,2
+src/gov_mcp/knowledge_discovery.py,HTMLDiscovery.matches,function,94,95,"attrs, selector",6,4
+src/gov_mcp/knowledge_discovery.py,HTMLDiscovery.handle_starttag,function,97,116,"self, tag, pairs",24,26
+src/gov_mcp/knowledge_discovery.py,HTMLDiscovery.handle_data,function,118,120,"self, text",1,1
+src/gov_mcp/knowledge_discovery.py,HTMLDiscovery.handle_endtag,function,122,137,"self, tag",20,10
+src/gov_mcp/knowledge_discovery.py,xml_root,function,140,163,raw,18,14
+src/gov_mcp/knowledge_discovery.py,child_text,function,166,168,"element, name",3,5
+src/gov_mcp/knowledge_discovery.py,parse_index,function,171,248,"raw, kind, base, config",52,80
+src/gov_mcp/knowledge_discovery.py,entry_recency,function,251,265,entry,10,8
+src/gov_mcp/knowledge_discovery.py,enqueue_cycle,function,268,285,"db, config, now",7,15
+src/gov_mcp/knowledge_discovery.py,queue_target,function,288,309,"db, config, cycle, entry, depth, now, root=False",16,20
+src/gov_mcp/knowledge_discovery.py,record_index,function,312,353,"store, config, url, kind, raw, final_url, now",16,31
+src/gov_mcp/knowledge_discovery.py,delegate_document,function,356,382,"store, db, config, cycle, entry, depth, parent, kind, now",13,25
+src/gov_mcp/knowledge_discovery.py,document_discovery_signal,function,385,390,"db, config, url",4,6
+src/gov_mcp/knowledge_discovery.py,refresh_unchanged_document,function,393,416,"store, config, url",9,17
+src/gov_mcp/knowledge_discovery.py,discovery_status,function,419,432,db,4,14
+src/gov_mcp/knowledge_fetch.py,$module,module,1,630,,0,0
+src/gov_mcp/knowledge_fetch.py,AccessStopped,class,27,36,,0,0
+src/gov_mcp/knowledge_fetch.py,AccessStopped.__init__,function,28,31,"self, message, *, phase='unknown', http_status=None",0,2
+src/gov_mcp/knowledge_fetch.py,AccessStopped.detail,function,33,36,self,4,1
+src/gov_mcp/knowledge_fetch.py,validate_config,function,39,110,config,71,112
+src/gov_mcp/knowledge_fetch.py,allowed_url,function,113,127,"config, url, robots=False",20,18
+src/gov_mcp/knowledge_fetch.py,Fetcher,class,130,240,,0,0
+src/gov_mcp/knowledge_fetch.py,Fetcher.__init__,function,131,132,"self, store",0,0
+src/gov_mcp/knowledge_fetch.py,Fetcher._request,function,134,159,"self, url, headers",16,21
+src/gov_mcp/knowledge_fetch.py,Fetcher._get,function,161,167,"self, config, url, headers=None, robots=False",6,1
+src/gov_mcp/knowledge_fetch.py,Fetcher._get_checked,function,169,194,"self, config, url, headers=None, robots=False",18,21
+src/gov_mcp/knowledge_fetch.py,Fetcher.fetch,function,196,227,"self, config, url",26,21
+src/gov_mcp/knowledge_fetch.py,Fetcher._get_document,function,229,240,"self, config, url, headers, policy, has_robots",2,1
+src/gov_mcp/knowledge_fetch.py,Fetcher._get_document.guarded,function,232,235,"target, request_headers",4,3
+src/gov_mcp/knowledge_fetch.py,RetryLater,class,243,253,,0,0
+src/gov_mcp/knowledge_fetch.py,RetryLater.__init__,function,244,253,"self, value",4,8
+src/gov_mcp/knowledge_fetch.py,ArticleParser,class,256,301,,0,0
+src/gov_mcp/knowledge_fetch.py,ArticleParser.__init__,function,257,262,"self, selector, excluded_selectors=None",1,2
+src/gov_mcp/knowledge_fetch.py,ArticleParser.handle_starttag,function,264,282,"self, tag, attrs",20,19
+src/gov_mcp/knowledge_fetch.py,ArticleParser.handle_endtag,function,284,295,"self, tag",8,7
+src/gov_mcp/knowledge_fetch.py,ArticleParser.handle_data,function,297,301,"self, text",3,2
+src/gov_mcp/knowledge_fetch.py,PageSignals,class,304,332,,0,1
+src/gov_mcp/knowledge_fetch.py,PageSignals.__init__,function,311,313,self,0,2
+src/gov_mcp/knowledge_fetch.py,PageSignals.handle_starttag,function,315,322,"self, tag, attrs",4,8
+src/gov_mcp/knowledge_fetch.py,PageSignals.handle_endtag,function,324,328,"self, tag",1,3
+src/gov_mcp/knowledge_fetch.py,PageSignals.handle_data,function,330,332,"self, text",1,1
+src/gov_mcp/knowledge_fetch.py,observe_html,function,335,360,"raw, selectors=None, *, content_selector=None, excluded_selectors=None",18,30
+src/gov_mcp/knowledge_fetch.py,IndexLinks,class,363,380,,0,0
+src/gov_mcp/knowledge_fetch.py,IndexLinks.__init__,function,364,366,self,0,2
+src/gov_mcp/knowledge_fetch.py,IndexLinks.handle_starttag,function,368,371,"self, tag, attrs",2,3
+src/gov_mcp/knowledge_fetch.py,IndexLinks.handle_data,function,373,375,"self, text",1,1
+src/gov_mcp/knowledge_fetch.py,IndexLinks.handle_endtag,function,377,380,"self, tag",3,4
+src/gov_mcp/knowledge_fetch.py,discover_links,function,383,394,"raw, keywords=None, limit=25",9,8
+src/gov_mcp/knowledge_fetch.py,parse_html,function,397,413,"raw, selector, min_text_length=8, excluded_selectors=None",10,15
+src/gov_mcp/knowledge_fetch.py,select_paragraph_keywords,function,416,421,"chunks, keywords, expected=1",5,3
+src/gov_mcp/knowledge_fetch.py,select_paragraph_groups,function,424,432,"chunks, groups",8,7
+src/gov_mcp/knowledge_fetch.py,article_section,function,435,451,"chunks, start_title=None",13,11
+src/gov_mcp/knowledge_fetch.py,select_articles,function,454,473,"chunks, included, categories=None",11,12
+src/gov_mcp/knowledge_fetch.py,schedule,function,476,500,"store, now=None",14,18
+src/gov_mcp/knowledge_fetch.py,worker_once,function,503,630,"store, fetcher=None, owner=None, now=None",80,118
+src/gov_mcp/knowledge_impact.py,$module,module,1,159,,0,0
+src/gov_mcp/knowledge_impact.py,compact,function,20,21,text,1,1
+src/gov_mcp/knowledge_impact.py,field_deltas,function,24,38,"before, after, path='', depth=0",10,10
+src/gov_mcp/knowledge_impact.py,localized,function,41,45,chunks,2,3
+src/gov_mcp/knowledge_impact.py,revision_impact,function,48,116,"store, revision, base=None, include_excerpts=False",37,51
+src/gov_mcp/knowledge_impact.py,duplicate_candidates,function,119,159,store,15,45
+src/gov_mcp/knowledge_landing.py,$module,module,1,112,,0,0
+src/gov_mcp/knowledge_landing.py,verified_chunks,function,23,53,"raw, spec, document",19,21
+src/gov_mcp/knowledge_landing.py,retrieve,function,56,112,"store, bindings, query, region, matter",29,39
+src/gov_mcp/knowledge_lock.py,$module,module,1,34,,0,0
+src/gov_mcp/knowledge_lock.py,process_lock,function,8,34,path,9,15
+src/gov_mcp/knowledge_maintenance.py,$module,module,1,120,,1,1
+src/gov_mcp/knowledge_maintenance.py,maintenance_lock,function,18,19,root,1,1
+src/gov_mcp/knowledge_maintenance.py,maintenance_tick,function,22,98,"store, now=None, owner='maintenance-once', backup=create_bundle, restore=restore_bundle",46,64
+src/gov_mcp/knowledge_maintenance.py,main,function,101,116,,6,13
+src/gov_mcp/knowledge_notes.py,$module,module,1,74,,0,0
+src/gov_mcp/knowledge_notes.py,bind_scope_notes,function,7,74,"store, artifact, scope_sha256",49,61
+src/gov_mcp/knowledge_pdf.py,$module,module,1,101,,2,7
+src/gov_mcp/knowledge_pdf.py,checked_text,function,16,20,text,4,7
+src/gov_mcp/knowledge_pdf.py,windows_ocr,function,23,36,"path, language",12,16
+src/gov_mcp/knowledge_pdf.py,validate_ocr,function,39,62,"result, page_count, sha256, language",10,29
+src/gov_mcp/knowledge_pdf.py,extract_document,function,65,87,"path, ocr=None",22,26
+src/gov_mcp/knowledge_pdf.py,extract,function,90,92,path,1,1
+src/gov_mcp/knowledge_quality.py,$module,module,1,177,,0,1
+src/gov_mcp/knowledge_quality.py,publication_policy,function,16,22,store,5,3
+src/gov_mcp/knowledge_quality.py,binding,function,25,53,"store, db, version",9,29
+src/gov_mcp/knowledge_quality.py,validate_report,function,56,144,"store, db, version, report",59,87
+src/gov_mcp/knowledge_quality.py,validate_report.references,function,112,121,values,8,10
+src/gov_mcp/knowledge_quality.py,verify_publication,function,147,177,"store, db, version",17,32
+src/gov_mcp/knowledge_query.py,$module,module,1,185,,0,3
+src/gov_mcp/knowledge_query.py,signal_text,function,36,38,text,1,3
+src/gov_mcp/knowledge_query.py,question_signals,function,41,62,question,17,12
+src/gov_mcp/knowledge_query.py,source_topics,function,65,73,text,11,10
+src/gov_mcp/knowledge_query.py,question_signals_v2,function,84,91,question,5,5
+src/gov_mcp/knowledge_query.py,source_topics_v2,function,94,106,text,9,10
+src/gov_mcp/knowledge_query.py,question_demands,function,109,118,question,4,6
+src/gov_mcp/knowledge_query.py,intent_source_key,function,121,143,"question, unit, identity_context=False",14,16
+src/gov_mcp/knowledge_query.py,source_topics_v3,function,154,165,text,4,8
+src/gov_mcp/knowledge_query.py,intent_source_key_v3,function,168,185,"question, unit, identity_context=False",12,16
+src/gov_mcp/knowledge_retrieval.py,$module,module,1,20,,0,0
+src/gov_mcp/knowledge_retrieval.py,query_grams,function,9,11,query,2,5
+src/gov_mcp/knowledge_retrieval.py,score_literal,function,14,15,"grams, text",2,2
+src/gov_mcp/knowledge_retrieval.py,top_five,function,18,20,ranked,2,1
+src/gov_mcp/knowledge_review.py,$module,module,1,192,,0,0
+src/gov_mcp/knowledge_review.py,question_fingerprint,function,14,16,question,1,5
+src/gov_mcp/knowledge_review.py,development_registry,function,19,20,db,2,1
+src/gov_mcp/knowledge_review.py,register_development_questions,function,23,41,"store, questions, source",15,25
+src/gov_mcp/knowledge_review.py,upgrade_review_contract,function,44,90,"store, expected_policy, expected_registry, maintainer, confirmed=False",23,36
+src/gov_mcp/knowledge_review.py,reference_fingerprint,function,93,97,report,3,1
+src/gov_mcp/knowledge_review.py,observation_fingerprint,function,100,103,report,3,1
+src/gov_mcp/knowledge_review.py,_text,function,106,107,value,2,3
+src/gov_mcp/knowledge_review.py,_digest,function,110,111,value,2,3
+src/gov_mcp/knowledge_review.py,_time,function,114,123,value,8,6
+src/gov_mcp/knowledge_review.py,_actor,function,126,133,actor,9,11
+src/gov_mcp/knowledge_review.py,validate_attributed_review,function,136,192,report,50,77
+src/gov_mcp/knowledge_scope.py,$module,module,1,77,,0,6
+src/gov_mcp/knowledge_scope.py,_explicitly_negated,function,20,22,"text, start",2,3
+src/gov_mcp/knowledge_scope.py,_excluded_nonproxy_branch,function,25,43,question,11,4
+src/gov_mcp/knowledge_scope.py,scope_decision,function,46,71,question,17,30
+src/gov_mcp/knowledge_scope.py,excluded_branch,function,74,77,question,3,1
+src/gov_mcp/knowledge_server.py,$module,module,1,61,,1,1
+src/gov_mcp/knowledge_server.py,create_app,function,17,48,"runtime, token, port=8773",7,13
+src/gov_mcp/knowledge_server.py,create_app.govkb_get_environment_status,function,29,31,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/knowledge_server.py,create_app.govkb_search_evidence,function,34,41,"tenant_id: str, user_id: str, query: str, knowledge_version: str | None=None, as_of: str | None=None",1,1
+src/gov_mcp/knowledge_server.py,create_app.health,function,43,44,request,1,1
+src/gov_mcp/knowledge_server.py,main,function,51,57,,0,7
+src/gov_mcp/knowledge_service.py,$module,module,1,94,,1,1
+src/gov_mcp/knowledge_service.py,supervise,function,15,77,"store, port=8772",24,32
+src/gov_mcp/knowledge_service.py,supervise.start,function,28,36,name,3,6
+src/gov_mcp/knowledge_service.py,main,function,80,90,,3,8
+src/gov_mcp/knowledge_startup.py,$module,module,1,82,,0,0
+src/gov_mcp/knowledge_startup.py,startup_health,function,13,47,"startup, now=None",34,35
+src/gov_mcp/knowledge_startup.py,startup_health.outcome,function,16,17,"code, message, level='warning'",1,0
+src/gov_mcp/knowledge_startup.py,observe_startup_task,function,50,82,store,14,27
+src/gov_mcp/knowledge_structure.py,$module,module,1,88,,0,1
+src/gov_mcp/knowledge_structure.py,structure,function,30,73,text,22,25
+src/gov_mcp/knowledge_structure.py,brief,function,76,88,text,4,5
+src/gov_mcp/knowledge_tools.py,$module,module,1,69,,0,0
+src/gov_mcp/knowledge_tools.py,KnowledgeTools,class,15,69,,0,0
+src/gov_mcp/knowledge_tools.py,KnowledgeTools.__init__,function,16,20,"self, runtime",0,5
+src/gov_mcp/knowledge_tools.py,KnowledgeTools.execute,function,22,69,"self, name, tenant_id, user_id, **arguments",13,33
+src/gov_mcp/knowledge_units.py,$module,module,1,138,,0,1
+src/gov_mcp/knowledge_units.py,propose,function,16,127,chunks,57,81
+src/gov_mcp/knowledge_units.py,propose.incomplete,function,33,35,reason,1,1
+src/gov_mcp/knowledge_units.py,propose.span,function,42,45,"index, start, end",1,2
+src/gov_mcp/knowledge_units.py,propose.new_unit,function,47,50,"part, heading=None, flags=None",2,1
+src/gov_mcp/knowledge_units.py,materialize,function,130,138,"proposal, chunks",7,5
+src/gov_mcp/knowledge_web.py,$module,module,1,66,,1,1
+src/gov_mcp/knowledge_web.py,create_app,function,14,54,runtime,1,7
+src/gov_mcp/knowledge_web.py,create_app.home,function,17,19,request,1,3
+src/gov_mcp/knowledge_web.py,create_app.status,function,21,22,request,1,2
+src/gov_mcp/knowledge_web.py,create_app.search,function,24,30,request,4,9
+src/gov_mcp/knowledge_web.py,create_app.impact,function,32,40,request,7,6
+src/gov_mcp/knowledge_web.py,create_app.favicon,function,42,43,request,1,1
+src/gov_mcp/knowledge_web.py,create_app.loopback,function,47,53,"scope, receive, send",3,9
+src/gov_mcp/knowledge_web.py,main,function,57,62,,0,6
+src/gov_mcp/m2.py,$module,module,1,315,,0,0
+src/gov_mcp/m2.py,now,function,22,23,,1,2
+src/gov_mcp/m2.py,canonical,function,26,27,value,1,1
+src/gov_mcp/m2.py,digest,function,30,31,value,1,4
+src/gov_mcp/m2.py,WorkflowBlocked,class,34,36,,0,0
+src/gov_mcp/m2.py,WorkflowBlocked.__init__,function,35,36,"self, code, **data",0,0
+src/gov_mcp/m2.py,M2Store,class,39,122,,0,0
+src/gov_mcp/m2.py,M2Store.__init__,function,40,78,"self, runtime: Path, timeout=2",4,8
+src/gov_mcp/m2.py,M2Store.connect,function,81,94,"self, write=False",5,6
+src/gov_mcp/m2.py,M2Store.seed_preview,function,96,117,"self, sources, chunks",13,15
+src/gov_mcp/m2.py,M2Store.counts,function,119,122,self,3,3
+src/gov_mcp/m2.py,M2Tools,class,125,315,,0,0
+src/gov_mcp/m2.py,M2Tools.__init__,function,126,129,"self, runtime: Path",0,3
+src/gov_mcp/m2.py,M2Tools.principal,function,131,136,"self, tenant, user",4,7
+src/gov_mcp/m2.py,M2Tools.execute,function,138,168,"self, name, tenant_id, user_id, **args",12,21
+src/gov_mcp/m2.py,M2Tools.task,function,170,177,"self, db, tenant, user, role, task_id=None",6,5
+src/gov_mcp/m2.py,M2Tools.handoff,function,179,186,"self, db, tenant, handoff_id=None",4,5
+src/gov_mcp/m2.py,M2Tools.citation,function,188,192,"self, row",1,0
+src/gov_mcp/m2.py,M2Tools.evidence,function,194,201,"self, db, task, query",5,9
+src/gov_mcp/m2.py,M2Tools.assessment,function,203,219,"self, db, row",3,3
+src/gov_mcp/m2.py,M2Tools.dispatch,function,221,315,"self, db, name, tenant, user, role, args",55,79
+src/gov_mcp/m2_server.py,$module,module,1,85,,1,1
+src/gov_mcp/m2_server.py,create_app,function,17,72,"runtime: Path, token: str",4,11
+src/gov_mcp/m2_server.py,create_app.govm2_get_environment_status,function,27,29,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/m2_server.py,create_app.govm2_create_task,function,32,34,"tenant_id: str, user_id: str, question: str",1,1
+src/gov_mcp/m2_server.py,create_app.govm2_search_evidence,function,37,39,"tenant_id: str, user_id: str, task_id: str | None=None, query: str | None=None",1,1
+src/gov_mcp/m2_server.py,create_app.govm2_declare_materials,function,42,44,"tenant_id: str, user_id: str, task_id: str, materials: dict[str, str]",1,1
+src/gov_mcp/m2_server.py,create_app.govm2_create_handoff,function,47,49,"tenant_id: str, user_id: str, task_id: str, idempotency_key: str",1,1
+src/gov_mcp/m2_server.py,create_app.govm2_list_handoffs,function,52,54,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/m2_server.py,create_app.govm2_check_case_prerequisites,function,57,59,"tenant_id: str, user_id: str, handoff_id: str | None=None",1,1
+src/gov_mcp/m2_server.py,create_app.govm2_confirm_review,function,62,65,"tenant_id: str, user_id: str, handoff_id: str, assessment_sha256: str, confirmed: bool=False",1,1
+src/gov_mcp/m2_server.py,create_app.health,function,67,68,request,1,1
+src/gov_mcp/m2_server.py,main,function,75,81,,0,7
+src/gov_mcp/m2_workbench.py,$module,module,1,210,,1,1
+src/gov_mcp/m2_workbench.py,create_app,function,23,198,"runtime: Path, config_url='http://127.0.0.1:5010', mcp_url='http://127.0.0.1:8770/sse', native_url='http://127.0.0.1:5018'",1,12
+src/gov_mcp/m2_workbench.py,create_app.record,function,32,37,"user, action, value, **extra",1,8
+src/gov_mcp/m2_workbench.py,create_app.identity,function,39,52,request,11,9
+src/gov_mcp/m2_workbench.py,create_app.role_for,function,54,60,user,5,5
+src/gov_mcp/m2_workbench.py,create_app.call,function,62,76,"name, user, **arguments",7,9
+src/gov_mcp/m2_workbench.py,create_app.call.factory,function,63,64,**kwargs,1,1
+src/gov_mcp/m2_workbench.py,create_app.home,function,78,80,request,1,4
+src/gov_mcp/m2_workbench.py,create_app.login,function,82,98,request,10,18
+src/gov_mcp/m2_workbench.py,create_app.logout,function,100,104,request,1,4
+src/gov_mcp/m2_workbench.py,create_app.state,function,106,110,request,3,5
+src/gov_mcp/m2_workbench.py,create_app.operation,function,112,127,request,9,12
+src/gov_mcp/m2_workbench.py,create_app.native,function,129,181,request,29,47
+src/gov_mcp/m2_workbench.py,create_app.gated,function,187,197,"scope, receive, send",7,12
+src/gov_mcp/m2_workbench.py,main,function,201,206,,0,6
+src/gov_mcp/privacy.py,$module,module,1,25,,0,0
+src/gov_mcp/privacy.py,data_classes_allowed,function,4,25,"payload, allowed_classes",16,15
+src/gov_mcp/public_preview.py,$module,module,1,393,,0,2
+src/gov_mcp/public_preview.py,PreviewError,class,42,43,,0,0
+src/gov_mcp/public_preview.py,utcnow,function,46,47,,1,2
+src/gov_mcp/public_preview.py,read,function,50,51,path,1,3
+src/gov_mcp/public_preview.py,write,function,54,58,"path, value",0,5
+src/gov_mcp/public_preview.py,Sections,class,61,86,,0,0
+src/gov_mcp/public_preview.py,Sections.__init__,function,62,64,self,0,2
+src/gov_mcp/public_preview.py,Sections.handle_starttag,function,66,73,"self, tag, attrs",6,5
+src/gov_mcp/public_preview.py,Sections.handle_data,function,75,77,"self, text",1,1
+src/gov_mcp/public_preview.py,Sections.handle_endtag,function,79,86,"self, tag",5,4
+src/gov_mcp/public_preview.py,source_digest,function,89,91,raw,1,2
+src/gov_mcp/public_preview.py,check_manifest,function,94,137,root,34,43
+src/gov_mcp/public_preview.py,source_facts,function,140,161,manifest,7,7
+src/gov_mcp/public_preview.py,source_facts.cite,function,142,147,"source_id, section_id",1,1
+src/gov_mcp/public_preview.py,OneTranslation,class,164,168,,0,0
+src/gov_mcp/public_preview.py,OneTranslation.translate,function,165,168,"self, texts",3,3
+src/gov_mcp/public_preview.py,LiveVerifier,class,171,200,,0,0
+src/gov_mcp/public_preview.py,LiveVerifier.__call__,function,173,200,"self, state, questions, output",15,24
+src/gov_mcp/public_preview.py,Preview,class,203,393,,0,0
+src/gov_mcp/public_preview.py,Preview.__init__,function,204,212,"self, root, verifier=None",1,4
+src/gov_mcp/public_preview.py,Preview.db,function,215,222,self,3,2
+src/gov_mcp/public_preview.py,Preview._save,function,224,225,"self, db, task",0,2
+src/gov_mcp/public_preview.py,Preview._get,function,227,233,"self, db, task_id",6,7
+src/gov_mcp/public_preview.py,Preview._context,function,235,246,"self, task=None",9,14
+src/gov_mcp/public_preview.py,Preview.begin_run,function,248,264,"self, repair_note=None",12,21
+src/gov_mcp/public_preview.py,Preview.finish_run,function,266,271,"self, run_id, passed",3,4
+src/gov_mcp/public_preview.py,Preview.open_query,function,273,290,"self, case, question",9,17
+src/gov_mcp/public_preview.py,Preview.retrieve,function,292,301,"self, task_id",6,8
+src/gov_mcp/public_preview.py,Preview.verify,function,303,352,"self, task_id",30,44
+src/gov_mcp/public_preview.py,Preview.state,function,354,357,"self, task_id",2,3
+src/gov_mcp/public_preview.py,Preview.finalize,function,359,384,"self, task_id",18,16
+src/gov_mcp/public_preview.py,Preview.get_task,function,386,388,"self, task_id",2,2
+src/gov_mcp/public_preview.py,Preview.counts,function,390,393,self,3,5
+src/gov_mcp/public_preview_server.py,$module,module,1,81,,1,1
+src/gov_mcp/public_preview_server.py,create_app,function,16,62,"preview, token, port=8781",5,15
+src/gov_mcp/public_preview_server.py,create_app.execute,function,25,30,"operation, *args",6,5
+src/gov_mcp/public_preview_server.py,create_app.govkb_preview_open_query,function,33,35,"case: dict, question: str",1,1
+src/gov_mcp/public_preview_server.py,create_app.govkb_preview_retrieve,function,38,40,task_id: str,1,1
+src/gov_mcp/public_preview_server.py,create_app.govkb_preview_verify,function,43,45,task_id: str,1,1
+src/gov_mcp/public_preview_server.py,create_app.govkb_preview_state,function,48,50,task_id: str,1,1
+src/gov_mcp/public_preview_server.py,create_app.govkb_preview_finalize,function,53,55,task_id: str,1,1
+src/gov_mcp/public_preview_server.py,create_app.health,function,57,59,request,1,1
+src/gov_mcp/public_preview_server.py,main,function,65,77,,3,13
+src/gov_mcp/regional_preview.py,$module,module,1,342,,0,2
+src/gov_mcp/regional_preview.py,scenario,function,50,53,identifier,4,2
+src/gov_mcp/regional_preview.py,check_context,function,56,102,"root, candidate_root=CANDIDATES, catalog_path=None",43,48
+src/gov_mcp/regional_preview.py,source_facts,function,105,129,"identifier, context",3,6
+src/gov_mcp/regional_preview.py,source_facts.fact,function,106,112,"key, ordinals, value, statement",3,3
+src/gov_mcp/regional_preview.py,OneRegionalTranslation,class,132,141,,0,0
+src/gov_mcp/regional_preview.py,OneRegionalTranslation.translate,function,133,141,"self, texts",6,4
+src/gov_mcp/regional_preview.py,RegionalLiveVerifier,class,144,177,,0,0
+src/gov_mcp/regional_preview.py,RegionalLiveVerifier.__call__,function,145,177,"self, state, questions, output",15,23
+src/gov_mcp/regional_preview.py,RegionalLiveVerifier.__call__.persist_before_http,function,157,162,"english_state, english_questions, model",1,4
+src/gov_mcp/regional_preview.py,RegionalPreview,class,180,342,,0,0
+src/gov_mcp/regional_preview.py,RegionalPreview.__init__,function,181,185,"self, root, verifier=None, *, candidate_root=CANDIDATES, catalog_path=None",1,4
+src/gov_mcp/regional_preview.py,RegionalPreview._context,function,187,191,"self, task=None",4,2
+src/gov_mcp/regional_preview.py,RegionalPreview.begin_run,function,193,218,"self, scenario_id, repair_note=None",25,28
+src/gov_mcp/regional_preview.py,RegionalPreview.finish_run,function,220,228,"self, run_id, passed",5,7
+src/gov_mcp/regional_preview.py,RegionalPreview.open_query,function,230,246,"self, scenario_id",7,15
+src/gov_mcp/regional_preview.py,RegionalPreview.retrieve,function,248,258,"self, task_id",6,8
+src/gov_mcp/regional_preview.py,RegionalPreview.verify,function,260,309,"self, task_id",35,51
+src/gov_mcp/regional_preview.py,RegionalPreview.state,function,311,314,"self, task_id",2,3
+src/gov_mcp/regional_preview.py,RegionalPreview.finalize,function,316,342,"self, task_id",20,17
+src/gov_mcp/regional_preview_server.py,$module,module,1,81,,1,1
+src/gov_mcp/regional_preview_server.py,create_app,function,16,62,"preview, token, port=8782",5,15
+src/gov_mcp/regional_preview_server.py,create_app.execute,function,25,30,"operation, *args",6,5
+src/gov_mcp/regional_preview_server.py,create_app.govkb_regional_open_query,function,33,35,scenario_id: str,1,1
+src/gov_mcp/regional_preview_server.py,create_app.govkb_regional_retrieve,function,38,40,task_id: str,1,1
+src/gov_mcp/regional_preview_server.py,create_app.govkb_regional_verify,function,43,45,task_id: str,1,1
+src/gov_mcp/regional_preview_server.py,create_app.govkb_regional_state,function,48,50,task_id: str,1,1
+src/gov_mcp/regional_preview_server.py,create_app.govkb_regional_finalize,function,53,55,task_id: str,1,1
+src/gov_mcp/regional_preview_server.py,create_app.health,function,57,59,request,1,1
+src/gov_mcp/regional_preview_server.py,main,function,65,77,,3,13
+src/gov_mcp/server.py,$module,module,1,109,,1,1
+src/gov_mcp/server.py,BearerGate,class,22,40,,0,0
+src/gov_mcp/server.py,BearerGate.__init__,function,23,26,"self, app, token: str, security=None",0,0
+src/gov_mcp/server.py,BearerGate.__call__,function,28,40,"self, scope, receive, send",7,11
+src/gov_mcp/server.py,create_app,function,43,93,"runtime: Path, token: str",5,15
+src/gov_mcp/server.py,create_app.record,function,57,71,"name: str, operation, tenant_id: str, user_id: str",2,13
+src/gov_mcp/server.py,create_app.get_environment_status,function,74,76,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/server.py,create_app.search_evidence,function,79,81,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/server.py,create_app.check_case_prerequisites,function,84,86,"tenant_id: str, user_id: str",1,1
+src/gov_mcp/server.py,create_app.health,function,88,89,request,1,1
+src/gov_mcp/server.py,main,function,96,105,,1,11
+src/gov_mcp/workbench.py,$module,module,1,164,,1,1
+src/gov_mcp/workbench.py,create_app,function,23,152,"runtime: Path, config_url='http://127.0.0.1:5010', mcp_url='http://127.0.0.1:8766/sse'",1,11
+src/gov_mcp/workbench.py,create_app.identity,function,31,45,request,11,9
+src/gov_mcp/workbench.py,create_app.call,function,47,82,"name, user, **arguments",8,18
+src/gov_mcp/workbench.py,create_app.call.mapped_role,function,48,57,,6,6
+src/gov_mcp/workbench.py,create_app.call.local_client,function,58,59,**kwargs,1,1
+src/gov_mcp/workbench.py,create_app.home,function,84,86,request,1,4
+src/gov_mcp/workbench.py,create_app.login,function,88,104,request,10,17
+src/gov_mcp/workbench.py,create_app.logout,function,106,110,request,1,4
+src/gov_mcp/workbench.py,create_app.state,function,112,116,request,3,5
+src/gov_mcp/workbench.py,create_app.workbench,function,118,122,request,3,5
+src/gov_mcp/workbench.py,create_app.operation,function,124,134,request,6,11
+src/gov_mcp/workbench.py,create_app.gated,function,140,151,"scope, receive, send",6,10
+src/gov_mcp/workbench.py,main,function,155,160,,0,6

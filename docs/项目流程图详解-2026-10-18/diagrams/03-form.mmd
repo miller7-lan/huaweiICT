@@ -1,0 +1,25 @@
+flowchart TD
+    nstart["创建会话专属表单"]
+    nanswer["按顺序回答／编辑"]
+    nrev["revision递增，旧确认失效"]
+    nstop["返回澄清／阻断"]
+    nconsent["完整性、同意与AI预算"]
+    nverify["只读 DeepSeek 格式核查"]
+    ncheck["逐字段核对模型输出"]
+    nhuman["人工逐项检查并确认"]
+    nsubmit["进入现有本地咨询"]
+    nstart -->|"开始"| nanswer
+    nanswer -->|"保存规范值"| nrev
+    nanswer -->|"无效"| nstop
+    nrev -->|"继续回答／编辑"| nanswer
+    nrev -->|"全部完成"| nconsent
+    nconsent -->|"未启用／无同意／预算耗尽"| nstop
+    nconsent -->|"允许"| nverify
+    nverify -->|"返回JSON"| ncheck
+    ncheck -->|"修改事实／结构不符"| nstop
+    ncheck -->|"通过"| nhuman
+    nhuman -->|"确认且版本一致"| nsubmit
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nrev,nconsent,ncheck,nhuman gate
+    class nstop stop

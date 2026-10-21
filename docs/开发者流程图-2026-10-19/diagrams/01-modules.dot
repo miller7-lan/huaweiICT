@@ -1,0 +1,32 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.5", ranksep="0.6", splines=polyline, fontname="Microsoft YaHei"];
+node [shape=box, style="rounded,filled", width=4.5, fontname="Microsoft YaHei", fontsize=12, margin="0.18,0.16"];
+edge [fontname="Microsoft YaHei", fontsize=10, color="#708299", arrowsize=0.75];
+web [id="01-modules-web", label=<<B>decision.server.create_app</B><BR/><FONT POINT-SIZE="10">8780网页与MCP入口；认证、参数检查、响应封装。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">server.py:29</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/server.py:create_app"];
+form [id="01-modules-form", label=<<B>intake.GuidedForm</B><BR/><FONT POINT-SIZE="10">本机会话草稿；版本、AI格式核查、人工确认后进入Wo<BR ALIGN="LEFT"/>rkflow.query。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">intake.py:89</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/intake.py:GuidedForm"];
+wf [id="01-modules-wf", label=<<B>workflow.Workflow</B><BR/><FONT POINT-SIZE="10">咨询编排、分阶段MCP状态、模拟更新、逐项复核和发<BR ALIGN="LEFT"/>布。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:49</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow"];
+service [id="01-modules-service", label=<<B>service.DecisionService</B><BR/><FONT POINT-SIZE="10">prepare固定事实与依赖；finalize重读当前暂停并分<BR ALIGN="LEFT"/>流结果。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">service.py:49</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/service.py:DecisionService"];
+logic [id="01-modules-logic", label=<<B>logic.evaluate</B><BR/><FONT POINT-SIZE="10">严格类型及true / false / unknown规则；不靠模型猜<BR ALIGN="LEFT"/>未知事实。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">logic.py:104</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/logic.py:evaluate"];
+wired [id="01-modules-wired", label=<<B>connections.WiredRoles.invoke</B><BR/><FONT POINT-SIZE="10">当前调用prepare登记路由，再进入OfflineRoles；这<BR ALIGN="LEFT"/>里不会自动发模型请求。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">connections.py:210</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/connections.py:WiredRoles.invoke"];
+offline [id="01-modules-offline", label=<<B>adapters.OfflineRoles.invoke</B><BR/><FONT POINT-SIZE="10">白名单检查后执行action()；remote_calls=0。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">adapters.py:31</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/adapters.py:OfflineRoles.invoke"];
+db [id="01-modules-db", label=<<B>knowledge.store.Store</B><BR/><FONT POINT-SIZE="10">SQLite事务、KV记录、租约fence、版本CAS；Workflow<BR ALIGN="LEFT"/>复用这层。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">store.py:25</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/knowledge/store.py:Store"];
+preview [id="01-modules-preview", label=<<B>Preview / RegionalPreview</B><BR/><FONT POINT-SIZE="10">8781/8782独立public预览；预算与来源绑定后才调用<BR ALIGN="LEFT"/>专用LiveVerifier。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">public_preview.py:203</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/public_preview.py:Preview"];
+cloud [id="01-modules-cloud", label=<<B>EnglishJevProvider.evaluate</B><BR/><FONT POINT-SIZE="10">DeepSeek英译→Jev；保留原文和回执；独立于工作台<BR ALIGN="LEFT"/>离线角色。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">jev_translation.py:114</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/jev_translation.py:EnglishJevProvider.evaluate"];
+registry [id="01-modules-registry", label=<<B>registry.KnowledgeStore</B><BR/><FONT POINT-SIZE="10">公开资料原件、修订、复核、评测与scope发布；独立<BR ALIGN="LEFT"/>数据库。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">registry.py:21</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/knowledge/registry.py:KnowledgeStore"];
+fetch [id="01-modules-fetch", label=<<B>knowledge_fetch.worker_once</B><BR/><FONT POINT-SIZE="10">自然调度的采集任务；robots、正文解析、去重及重试<BR ALIGN="LEFT"/>。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">knowledge_fetch.py:503</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/knowledge_fetch.py:worker_once"];
+engine [id="01-modules-engine", label=<<B>knowledge.Engine + Worker</B><BR/><FONT POINT-SIZE="10">8775维护引擎，另一套Agent候选/文档/规则发布流程<BR ALIGN="LEFT"/>。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">engine.py:39</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/knowledge/engine.py:Engine"];
+web -> wf [label="api / MCP", style="solid"];
+web -> form [label="form_api", style="solid"];
+form -> wf [label="submit → query", style="solid"];
+wf -> service [label="_service → prepare / finalize", style="solid"];
+service -> logic [label="_condition → evaluate", style="solid"];
+wf -> wired [label="roles.invoke", style="solid"];
+wired -> offline [label="offline.invoke(action)", style="solid"];
+wf -> db [label="get / put / db(True)", style="solid"];
+preview -> cloud [label="LiveVerifier", style="solid"];
+fetch -> registry [label="ingest / propose_classification", style="solid"];
+engine -> db [label="独立runtime复用Store", style="dashed"];
+subgraph cluster0 {label="8780 咨询工作台"; color="#bfcddd"; style="rounded,dashed"; web;form;wf;service;logic;wired;offline;}
+subgraph cluster1 {label="独立公开预览"; color="#bfcddd"; style="rounded,dashed"; preview;cloud;}
+subgraph cluster2 {label="独立公开修订库"; color="#bfcddd"; style="rounded,dashed"; fetch;registry;}
+}

@@ -1,0 +1,17 @@
+flowchart TD
+    nprep["准备文本、表格、图文资产"]
+    nrole["tenant/user角色与参数"]
+    nload["加载snapshot并验证完整性"]
+    nlex["主题覆盖及字面候选门"]
+    nembed["查询embedding与余弦排序"]
+    nout["原文＋版本＋可点击定位"]
+    naudit["审计必须成功"]
+    nprep -->|"离线快照"| nload
+    nrole -->|"有权限"| nload
+    nload -->|"校验通过"| nlex
+    nlex -->|"有字面候选"| nembed
+    nembed -->|"余弦排名"| nout
+    nout -->|"返回前记录"| naudit
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nrole,nload,nlex,naudit gate

@@ -1,0 +1,26 @@
+{
+  "mode": "crossdoc_archived_preview",
+  "scenario_id": "nanjing_outside_old_card",
+  "service": "govkb_crossdoc_preview",
+  "port": 8783,
+  "agents": {
+    "controller": "govcrossdoc_controller",
+    "retriever": "govcrossdoc_retriever",
+    "verifier": "govcrossdoc_verifier"
+  },
+  "tools": [
+    "govkb_crossdoc_finalize",
+    "govkb_crossdoc_open_query",
+    "govkb_crossdoc_retrieve",
+    "govkb_crossdoc_state",
+    "govkb_crossdoc_verify"
+  ],
+  "drafts_disabled_unpublished": true,
+  "native_run_budget": 1,
+  "automatic_retry": false,
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "api_requests_this_plan": 0,
+  "inference_calls_this_plan": 0,
+  "apply_requires": "--apply"
+}

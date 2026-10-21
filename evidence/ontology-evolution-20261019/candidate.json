@@ -1,0 +1,108 @@
+{
+  "prepared_at": "2026-10-19T11:32:48.286339+00:00",
+  "mode": "engineering_structure_review",
+  "candidate_id": "4a6acdb46cb9aab10e94466ae9d5de4ab4162be366f1c5acd3b33db4c06a572b",
+  "expected_head": "4e5fa16200e512856e3028be49a82d323ae442777ba5fcd85777c872ee08e362",
+  "candidate": {
+    "ambiguous_boundaries": [
+      "age_years",
+      "card_years",
+      "photo_years"
+    ],
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "channel": "online",
+    "citations": [
+      {
+        "locator": "正文段落24",
+        "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+        "quote": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：",
+        "revision_id": "rev-6c473588ae861c51c65bb11a",
+        "source_id": "BJ-ID-RENEWAL-2025",
+        "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867",
+        "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+      },
+      {
+        "locator": "正文段落25",
+        "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+        "quote": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。",
+        "revision_id": "rev-6c473588ae861c51c65bb11a",
+        "source_id": "BJ-ID-RENEWAL-2025",
+        "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172",
+        "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+      }
+    ],
+    "conditions": [
+      {
+        "field": "local_household",
+        "op": "eq",
+        "value": true
+      },
+      {
+        "field": "age_years",
+        "op": "gte",
+        "value": 16
+      },
+      {
+        "field": "card_years",
+        "op": "lte",
+        "value": 5
+      },
+      {
+        "field": "photo_years",
+        "op": "lte",
+        "value": 5
+      },
+      {
+        "field": "fingerprint_count",
+        "op": "gte",
+        "value": 1
+      }
+    ],
+    "construction_metrics": {
+      "cloud_calls": 0,
+      "derived_conditions": 5,
+      "seed_examples": 1,
+      "source_clauses": 2,
+      "source_documents": 1,
+      "threshold_values_from_source": 4
+    },
+    "current_applicability": "unknown",
+    "data_class": "public",
+    "entity_type": {
+      "label": "办理渠道",
+      "name": "ServiceChannel"
+    },
+    "extraction_method": "bounded_grammar_v1",
+    "formal_approval": false,
+    "formally_published": false,
+    "relation_type": {
+      "domain": "Matter",
+      "name": "available_via",
+      "operator": "all",
+      "range": "ServiceChannel"
+    },
+    "schema_version": 1,
+    "scope": {
+      "branch": "damaged",
+      "matter": "resident-id-renewal",
+      "region": "北京市"
+    },
+    "status": "pending_review"
+  },
+  "source_binding": "1329d4beeab21b6fbb93f9f3febe1b332092bc458b660eccaa9ef3b6ea1da8a4",
+  "candidate_status": "pending_review",
+  "new_model_calls": 0,
+  "new_http_calls": 0,
+  "business_approval": false,
+  "before_query": {
+    "status": "UNSUPPORTED_RELATION",
+    "source_conditions_result": "unknown",
+    "version": "4e5fa16200e512856e3028be49a82d323ae442777ba5fcd85777c872ee08e362",
+    "formally_published": false,
+    "formal_approval": false,
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "current_applicability": "unknown",
+    "trace": [],
+    "citations": []
+  }
+}

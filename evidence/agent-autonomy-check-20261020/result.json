@@ -1,0 +1,201 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "checks": {
+    "native_success": false,
+    "two_managed_child_starts": true,
+    "extract_and_review_children_executed": false,
+    "single_candidate": false,
+    "pending_human_review": false,
+    "no_formal_versions": true,
+    "no_tool_blocks": true,
+    "real_heartbeat_progressed": true,
+    "old_then_new_detected": true,
+    "source_guard_preserved": true,
+    "tool_whitelist": true,
+    "no_duplicate_submit_review": false,
+    "budget_closed": true
+  },
+  "campaign": {
+    "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+    "duration_ms": 21031.0,
+    "error_code": "PermissionError",
+    "event_types": {
+      "agent_finish": 1,
+      "agent_new_run": 4,
+      "execution_logs": 4,
+      "max_steps_reached": 1,
+      "model_attempt_control": 13,
+      "model_output_thinking": 1338,
+      "other": 1,
+      "parse": 5,
+      "step_count": 7,
+      "subagent_end": 1,
+      "subagent_start": 2,
+      "token_count": 1,
+      "tool": 5
+    },
+    "implementation": {
+      "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2",
+      "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+      "successor_update.py": "659a8314a459678f066b31eb07b9bbcebfa7779c8197f769e64dbe68509c0aca",
+      "successor_update_server.py": "353586189b8ef19897c6ff34f974ad3eb837bcf45fd1121f02face10a29b7245"
+    },
+    "native_run_budget": 1,
+    "reserved_at": "2026-10-20T14:02:40.909530+00:00",
+    "run_id": "3dc726725d0f4b3ba5c688794fda2d7e",
+    "status": "failed"
+  },
+  "receipt": null,
+  "tools": [
+    {
+      "name": "read_skill_md",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    }
+  ],
+  "heartbeat_samples": 17,
+  "cloud_model_steps": [
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "e04eb548fbbc47b3af40b694450dcce9",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "e04eb548fbbc47b3af40b694450dcce9",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 1, \"duration\": 1.14, \"step_input_tokens\": 6454, \"step_output_tokens\": 87, \"total_output_tokens\": 87, \"estimated_context_tokens\": 7307, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 45.3, \"uncompressed_est_tokens\": 13370, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 6454}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "03a01e0f768f4e34906f8b4d6f9e08b0",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "03a01e0f768f4e34906f8b4d6f9e08b0",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "begin",
+      "attempt_id": "22839d6c584243c5b48bea0f22327967",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "commit",
+      "attempt_id": "22839d6c584243c5b48bea0f22327967",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "begin",
+      "attempt_id": "cdb688e8e759463abc8279de41f32091",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "commit",
+      "attempt_id": "cdb688e8e759463abc8279de41f32091",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "begin",
+      "attempt_id": "179b9ad1e1b4466292daaf01578c3c5f",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "commit",
+      "attempt_id": "179b9ad1e1b4466292daaf01578c3c5f",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "begin",
+      "attempt_id": "fc7a218792ba46d1bf40b0e3ae421abb",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "2e5486c0aa434188997fa5d173557b77",
+      "phase": "commit",
+      "attempt_id": "fc7a218792ba46d1bf40b0e3ae421abb",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 30,
+      "depth": 1,
+      "invocation_id": "445db109d06949e19e02f70a2dc2657f",
+      "phase": "begin",
+      "attempt_id": "3093917a886d44879d2d5994b09eda87",
+      "attempt": 1
+    }
+  ],
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "real_remote_change": false,
+  "formal_business_approval": false,
+  "notes": "Actual native cloud agents under production Worker ticks; archive arrival is replayed. Long-term monitoring, live-site discovery and formal business publication are not validated."
+}
