@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-21T22:09:28.583919+08:00",
+  "scope": "henan_old_new_test_materials_only",
+  "checks": {
+    "existing_manifest_file_hashes": true,
+    "live_source_bytes_match": true,
+    "literal_policy_anchors": true,
+    "pdf_one_page_and_key_values": true,
+    "henan_read_only_http": true,
+    "no_published_knowledge_stop": true,
+    "foreign_host_rejected_403": true,
+    "post_rejected_405": true,
+    "main_database_bytes_unchanged_during_checks": true,
+    "scheduled_task_remains_disabled": true
+  },
+  "sources": [
+    {
+      "role": "old",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "observed_on": "2026-10-21",
+      "local_normal_http_status": 200,
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "bytes": 36086,
+      "live_bytes_match_archive": true,
+      "pdf_pages": 1
+    },
+    {
+      "role": "new",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "observed_on": "2026-10-21",
+      "local_normal_http_status": 200,
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "bytes": 17887,
+      "live_bytes_match_archive": true,
+      "pdf_pages": 1
+    }
+  ],
+  "pdf_visual_review": {
+    "reviewer_kind": "ai",
+    "reviewed_on": "2026-10-21",
+    "pages": 2,
+    "result": "两页已渲染并逐页检查，无裁切、重叠或缺字"
+  },
+  "service": {
+    "url": "http://127.0.0.1:8772",
+    "mode": "knowledge_update",
+    "counts": {
+      "sites": 95,
+      "documents": 79,
+      "revisions": 186,
+      "chunks": 1476,
+      "versions": 0,
+      "heads": 0,
+      "jobs": 38,
+      "latest_chunks": 828
+    },
+    "pending_review": 44,
+    "query_message_code": "NO_PUBLISHED_KNOWLEDGE",
+    "launched": "web_only_no_worker_or_maintenance"
+  },
+  "scheduled_task": {
+    "name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+    "state": "Disabled"
+  },
+  "main_database_sha256": "2d0e05907286debf70fc6bd5cfd39bc183f7e74fd9804e21bebed0c6fb3a6195",
+  "ai_review_items": 8,
+  "human_review_completed": false,
+  "actual_model_runs": 0,
+  "question_execution_status": "not_executed",
+  "nexent_import_and_answer_switch_executed": false,
+  "formal_business_publication": false,
+  "web_reader_new_source_status": 403,
+  "local_normal_http_new_source_status": 200,
+  "delivery": {
+    "directory": "deliveries/henan-update-review-20261021",
+    "zip": "deliveries/henan-update-review-20261021.zip",
+    "bytes": 86304,
+    "sha256": "80ab44b136d5e235da23c7b96831cd2c459d01373499db8261525f2fbffa75e1",
+    "files_in_zip": 15,
+    "zip_crc_and_directory_bytes_match": true
+  }
+}
