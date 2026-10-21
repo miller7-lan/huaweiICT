@@ -4,6 +4,8 @@
 
 2026-10-21仅替换本次新旧文件测试资料。[完整ZIP](henan-update-review-20261021.zip)及[同内容目录](henan-update-review-20261021/)共15文件，包含2024旧文与2026后继文的官方HTML、标注的PDF/TXT测试摘录、8项AI差异核查和7题待执行预期。两份官网本轮正常HTTP200且哈希未变；[执行回执](../evidence/knowledge-update/henan-handoff-20261021.json)记录10项资料/只读HTTP检查通过。真人签字、模型问答和目标系统启用切换未完成。[任务与运行说明](../docs/河南新旧文件任务清单与交接-20261021.md)。
 
+交付提交`669b69c`的ZIP与独立清单已从GitHub实际下载，均为HTTP200且字节与本地一致；ZIP内15个文件也逐个匹配解压目录。[下载回执](../evidence/knowledge-update/henan-handoff-20261021-github.json)记录86,304字节及SHA256 `80ab44b136d5e235da23c7b96831cd2c459d01373499db8261525f2fbffa75e1`。
+
 ## 南京事项完整公开项目快照
 
 ## 原生配置增量包
