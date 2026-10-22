@@ -1,0 +1,44 @@
+{
+  "status": "PASS_LOCAL_PROCESS_RECOVERY",
+  "before": {
+    "action": "healthy",
+    "ready": true,
+    "recovery_paused": false,
+    "task_installed": true,
+    "task_name": "HuaweiICT-AgentWorkflow-D6F1A1FCF53B8781",
+    "checked_at": 1792579404,
+    "head": "3a9e25903f91f54ab95b504711ec6b05c8b8281a15be03d49637f1da28806bf8",
+    "version_count": 2,
+    "heartbeat_at": 1792579403.780828,
+    "business_paused": true,
+    "model_calls": 0
+  },
+  "actual_os_logon_transition_tested": false,
+  "model_calls": 0,
+  "publication": false,
+  "duplicate_prevented": true,
+  "manual_pause_prevented_restart": true,
+  "resume_restored": true,
+  "after": {
+    "action": "healthy",
+    "ready": true,
+    "recovery_paused": false,
+    "task_installed": true,
+    "task_name": "HuaweiICT-AgentWorkflow-D6F1A1FCF53B8781",
+    "checked_at": 1792579415,
+    "head": "3a9e25903f91f54ab95b504711ec6b05c8b8281a15be03d49637f1da28806bf8",
+    "version_count": 2,
+    "heartbeat_at": 1792579413.650194,
+    "business_paused": true,
+    "model_calls": 0
+  },
+  "recovery_elapsed_seconds": 5.9440406,
+  "scheduled_task_restored_listener": true,
+  "head_unchanged": true,
+  "version_count_unchanged": true,
+  "business_remained_paused": true,
+  "task_trigger_types": [
+    "MSFT_TaskLogonTrigger",
+    "MSFT_TaskTimeTrigger"
+  ]
+}

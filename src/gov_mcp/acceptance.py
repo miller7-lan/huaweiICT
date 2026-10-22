@@ -1,8 +1,9 @@
 """Fail-closed validation of real native traces, tool audits, and model selection."""
 
-import json
 import math
 import statistics
+
+from .json_output import exact_json_equal, object_from_json
 
 
 def assess(events, audit, role, principal, child_id=None):
@@ -58,7 +59,7 @@ def assess(events, audit, role, principal, child_id=None):
         if len(finals) == 1 and isinstance(finals[0], dict):
             value = finals[0]
         else:
-            value = json.loads("".join(finals))
+            value = object_from_json("".join(finals))
         if value["status"] != expected_status or value["message_code"] != expected_code:
             errors.append("final_status_mismatch")
         if value["items"] != [] or value["citations"] != [] or value["knowledge_version"] is not None:
@@ -67,12 +68,12 @@ def assess(events, audit, role, principal, child_id=None):
             errors.append("final_result_not_correlated_to_actual_call")
         if audit:
             terminal = audit[-1].get("result", {})
-            if any(value.get(key) != terminal.get(key) for key in
+            if any(not exact_json_equal(value.get(key), terminal.get(key)) for key in
                    ("status", "items", "citations", "knowledge_version", "message_code", "data")):
                 errors.append("final_result_differs_from_actual_call")
         if role == "staff" and value["data"].get("missing") != ["case", "materials", "evidence"]:
             errors.append("missing_prerequisites_not_preserved")
-    except (ValueError, TypeError, KeyError):
+    except (ValueError, TypeError, KeyError, RecursionError):
         errors.append("invalid_or_missing_final_answer")
     if audit:
         environment = audit[0].get("result", {})

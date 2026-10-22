@@ -26,7 +26,7 @@ def main():
     ensure_private_directory(private)
     report = {"captured_at": datetime.now(timezone.utc).isoformat(), "client_timezone": "Asia/Shanghai",
               "scope": "Current local technical smoke; not multimodal, ontology, Skills execution, or business acceptance",
-              "services": probe_services(), "native_cases": [], "inventory": {}, "errors": []}
+              "services": probe_services(require_local_models=args.run_native), "native_cases": [], "inventory": {}, "errors": []}
     api = NexentAPI()
     stage = "service_readiness"
     try:

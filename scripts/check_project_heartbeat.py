@@ -10,6 +10,19 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def inspect_source_watch(root=ROOT):
+    path = Path(root) / '.runtime/official-source-watch/knowledge.sqlite3'
+    if not path.is_file(): return {'exists': False}
+    with sqlite3.connect(path.resolve().as_uri()+'?mode=ro', uri=True) as db:
+        sources = [{'id':r[0], 'next_check':r[1], 'last_success':r[2], 'paused':r[3] is not None}
+                   for r in db.execute('SELECT id,next_check,last_success,paused_reason FROM sites')]
+        worker = db.execute("SELECT heartbeat FROM workers WHERE id='official-source-watch'").fetchone()
+        counts = {t:db.execute('SELECT COUNT(*) FROM '+t).fetchone()[0] for t in ('documents','revisions','versions','heads')}
+    return {'exists': True, 'mode':'observation_only', 'sources':sources, 'counts':counts,
+            'heartbeat_age_seconds':round(time.time()-worker[0],2) if worker else None,
+            'automatic_publication':False, 'model_dispatch_enabled':False}
+
+
 def inspect():
     report = {"checked_at": datetime.now(timezone.utc).isoformat(), "inspection_only": True,
               "model_requests": 0, "tasks_changed": False, "runtimes": {}, "ports": {}}
@@ -39,13 +52,14 @@ def inspect():
             report["runtimes"].setdefault(name, {}).update(config_enabled=config.get("enabled"),
                 heartbeat_seconds=config.get("heartbeat_seconds"), check_interval_seconds=config.get("check_interval_seconds"),
                 demo_mode=config.get("demo_mode"), configured_source_count=len(config.get("sources", [])))
+    report['runtimes']['official-source-watch'] = inspect_source_watch()
     for port in (8772, 8773, 8775, 8778, 8780, 8781):
         with socket.socket() as probe:
             probe.settimeout(1)
             report["ports"][str(port)] = probe.connect_ex(("127.0.0.1", port)) == 0
     flags = subprocess.CREATE_NO_WINDOW if hasattr(subprocess, "CREATE_NO_WINDOW") else 0
     try:
-        code = "@{tasks=@(Get-ScheduledTask -ErrorAction Stop | Where-Object {$_.TaskName -like 'HuaweiICT-KnowledgeUpdate-*'} | ForEach-Object {@{name=$_.TaskName;state=[string]$_.State;enabled=$_.Settings.Enabled}})} | ConvertTo-Json -Depth 5 -Compress"
+        code = "@{tasks=@(Get-ScheduledTask -ErrorAction Stop | Where-Object {$_.TaskName -like 'HuaweiICT-KnowledgeUpdate-*' -or $_.TaskName -like 'HuaweiICT-AgentWorkflow-*'} | ForEach-Object {@{name=$_.TaskName;state=[string]$_.State;enabled=$_.Settings.Enabled}})} | ConvertTo-Json -Depth 5 -Compress"
         value = subprocess.check_output(["powershell", "-NoLogo", "-NoProfile", "-NonInteractive", "-Command", code], timeout=20, creationflags=flags)
         report["windows_recovery"] = json.loads(value)
     except (OSError, subprocess.SubprocessError, ValueError) as error:

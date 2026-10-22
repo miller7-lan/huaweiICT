@@ -1,4 +1,4 @@
-param([ValidateSet('general','mainland')][string]$RegistryProfile = 'general', [switch]$ProvisionAccounts, [switch]$BuildMinioFromSource)
+param([ValidateSet('general','mainland')][string]$RegistryProfile = 'general', [switch]$ProvisionAccounts, [switch]$BuildMinioFromSource, [switch]$RequireLocalModels)
 $ErrorActionPreference = 'Stop'
 $TaskRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $TaskRoot
@@ -42,8 +42,11 @@ try {
 if ($LASTEXITCODE -ne 0) { throw 'MCP container startup failed.' }
 & $Python scripts/runtime_sandbox.py
 if ($LASTEXITCODE -ne 0) { throw 'Runtime sandbox recovery failed.' }
-& $Python scripts/check_native_ready.py --wait-seconds 120
-if ($LASTEXITCODE -ne 0) { throw 'Native service or container-to-Ollama readiness failed. No account login was attempted.' }
+$ReadinessArguments = @('scripts/check_native_ready.py', '--wait-seconds', '120')
+# Legacy account provisioning also creates and publishes the two local models.
+if ($RequireLocalModels -or $ProvisionAccounts) { $ReadinessArguments += '--require-local-models' }
+& $Python @ReadinessArguments
+if ($LASTEXITCODE -ne 0) { throw 'Requested native readiness checks failed. No account login was attempted.' }
 if ($ProvisionAccounts) {
     & (Join-Path $PSScriptRoot 'initialize_accounts.ps1')
     if ($LASTEXITCODE -ne 0) { throw 'Native provisioning failed; no acceptance claim can be made.' }

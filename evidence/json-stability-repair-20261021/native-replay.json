@@ -1,0 +1,104 @@
+{
+  "status": "PASS_OFFLINE_REPAIRED_NATIVE_BOUNDARY",
+  "recorded_at_utc": "2026-10-21T14:36:17.357050+00:00",
+  "new_model_calls": 0,
+  "new_http_calls": 0,
+  "new_native_runs": 0,
+  "nanjing_recorded_answer_current_assess_passed": true,
+  "nanjing_type_mutations": [
+    {
+      "path": [
+        "reasoning",
+        "trace",
+        0,
+        "output"
+      ],
+      "accepted": false,
+      "failed_checks": [
+        "persisted_answer"
+      ]
+    },
+    {
+      "path": [
+        "reasoning",
+        "schema_version"
+      ],
+      "accepted": false,
+      "failed_checks": [
+        "persisted_answer"
+      ]
+    },
+    {
+      "path": [
+        "reasoning",
+        "formal_approval"
+      ],
+      "accepted": false,
+      "failed_checks": [
+        "persisted_answer"
+      ]
+    },
+    {
+      "path": [
+        "published"
+      ],
+      "accepted": false,
+      "failed_checks": [
+        "persisted_answer",
+        "paused_business"
+      ]
+    }
+  ],
+  "a6_recorded_answer_exactly_matches_receipt": true,
+  "a6_type_mutations": [
+    {
+      "path": [
+        "published"
+      ],
+      "accepted": false
+    },
+    {
+      "path": [
+        "candidate",
+        "difference",
+        "new",
+        "value"
+      ],
+      "accepted": false
+    },
+    {
+      "path": [
+        "candidate",
+        "formal_approval"
+      ],
+      "accepted": false
+    }
+  ],
+  "a6_scope": "Current comparison expression only; full driver rejection uses fabricated regression fixtures.",
+  "protected_inputs_unchanged": true,
+  "protected_input_sha256": {
+    "evidence/ontology-crossdoc-native-20261021/20261021T133609700710Z.json": "78f5a89704f08351eb7d7cec72b3674f0aa7bea0c329673a8eb347b35872ff3c",
+    ".runtime/ontology-crossdoc-native-20261021/20261021T133609700710Z-events.json": "cd347907684687ce8fbaa5b6f391afc812ac3468565e8694c26d8eb35fa44d57",
+    ".runtime/ontology-crossdoc-native-20261021/ontology-binding.json": "bcd6d1910904d7428a52166a73c353012885775d52bed6b8ee98c52855aa1c53",
+    ".runtime/ontology-crossdoc-native-20261021/native-drafts.json": "4313c76fd781737ca442845488b6a3ed88669172e49b7e600124fbb124d7fcb8",
+    "evidence/ontology-crossdoc-native-20261021/latest.json": "c0be2490b4bb6dd58c726cc39da333d0b05da4a96dae4f6a38f587924a719d3f",
+    ".runtime/ontology-crossdoc-native-20261021/crossdoc.sqlite3": "23904fa7a222174a80ce815f203af7eff42a7302c9301a0ad11443bc36f9f10a",
+    ".runtime/ontology-crossdoc-20261020/ontology/knowledge.sqlite3": "e12bfd84c8f66f5e8da01ab12d1ac23989f542ea9e9685ab839a78fa3b1b94af",
+    ".runtime/agent-autonomy-repair-20261020-a6/native-events.json": "0e95d0666db0e9ca50a9e03a849e7e03924e28f5de1f6369b58f8d85d81686f4",
+    ".runtime/agent-autonomy-repair-20261020-a6/state/knowledge.sqlite3": "b41cf7859d2729d3c23ae32868533e7216edf1d090ed08fb8a7d41297f0e0697",
+    "evidence/json-stability-20261021/core-probes.json": "dd49371ed08083e5a952ba499a114d8cd8330a185c6df6d047270b920908e04c",
+    "evidence/json-stability-20261021/core-probes.py": "dbf87ddc0876507e240a71670b1812a92c1c668df9bc88cc28ac6b54342bb4c3",
+    "evidence/json-stability-20261021/native-probes.json": "613bb179a3653d69edf19224c6e3efd34546240bb1c6ae748767089e9e73f1e3",
+    "evidence/json-stability-20261021/native-probes.py": "9c0355e86360a48d3ddc56e8a319cfb3beefa17f0afd3bdb53731f36f8b81bdc",
+    "evidence/json-stability-20261021/summary.json": "387e6d2df2e155f82074f0f141ee0c6d45199d23ac482a7c6a80f129bd2c5f90",
+    "evidence/json-stability-20261021/targeted-checks.xml": "c3a7afa2d664523a800864c605b0d212592a30fdb72d00671d32d523a903cb29"
+  },
+  "current_source_sha256": {
+    "src/gov_mcp/json_output.py": "da372ca4f9015475790e11556ca65ad813d647cb042d89c0bcbe5cb8d0c6e745",
+    "scripts/verify_ontology_crossdoc_native.py": "7e2e3823b06eb67290268c5ee9b15be8a11fb601f664dcda4a7448926f543d0f",
+    "scripts/check_successor_autonomy_cloud.py": "07e06a2a71f829320b6216fc42314d56d900598f3761eae9ad1ffbdbeb710d34",
+    "scripts/reassess_ontology_crossdoc_native.py": "32567e793e9e9d2a3d072664467aa93cac5f483fb3ce2845008570590e679ed8"
+  },
+  "script_sha256": "88ab3f1f1435805b753620f3c3791746333c1a02bd235110f8d48cdc966fd0c1",
+  "limitation": "Offline replay does not establish new real-model compliance or live service code-loading state."
+}

@@ -9,6 +9,7 @@ import urllib.error
 import urllib.request
 
 from .classification import ClassificationError, validate_response
+from .json_output import object_from_json
 
 ENDPOINT = "https://ai-gateway.vercel.sh/typesafe/v1/systemone"
 MODEL = "jev-1.13.0"
@@ -83,7 +84,7 @@ class VercelJevProvider:
                 receipt["http_status"] = response.status
                 raw = response.read(2*1024*1024+1)
                 if len(raw) > 2*1024*1024: raise ClassificationError("INVALID_RESPONSE")
-                value = json.loads(raw)
+                value = object_from_json(raw)
             # Preserve the actual returned model instead of relabelling an alias/fallback.
             served = value.get("model")
             receipt["served_model"] = served
@@ -119,7 +120,7 @@ class VercelJevProvider:
         except (TimeoutError, urllib.error.URLError):
             self.blocked_error = receipt["error_code"] = "TRANSPORT_UNAVAILABLE"
             raise ClassificationError("TRANSPORT_UNAVAILABLE") from None
-        except (ValueError, KeyError, TypeError, AttributeError):
+        except (ValueError, KeyError, TypeError, AttributeError, RecursionError):
             self.blocked_error = receipt["error_code"] = "INVALID_RESPONSE"
             raise ClassificationError("INVALID_RESPONSE") from None
         finally:

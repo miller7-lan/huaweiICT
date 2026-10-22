@@ -3,6 +3,7 @@
 import ast
 from copy import deepcopy
 import json
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -127,6 +128,45 @@ def test_actual_trace_and_correlated_result_are_required():
     events[-1]["content"] = json.dumps(value)
     assert not assess(events, audit, "citizen", "authenticated")["passed"]
     assert not assess(events, audit + [audit[-1]], "citizen", "authenticated")["passed"]
+
+
+@pytest.mark.parametrize("original,replacement", [(False, 0), (1, True), (25, 25.0)])
+def test_correlated_native_result_preserves_nested_json_types(original, replacement):
+    events, audit = trace()
+    audit[-1]["result"]["data"]["typed_value"] = original
+    value = deepcopy(audit[-1]["result"])
+    events[-1]["content"] = json.dumps(value)
+    assert assess(events, audit, "citizen", "trusted")["passed"] is True
+    value["data"]["typed_value"] = replacement
+    events[-1]["content"] = json.dumps(value)
+    result = assess(events, audit, "citizen", "trusted")
+    assert result["passed"] is False
+    assert "final_result_differs_from_actual_call" in result["stop_reasons"]
+
+
+@pytest.mark.parametrize("malformed", ["duplicate", "nan", "overflow", "depth"])
+def test_native_final_string_uses_strict_object_parser(malformed):
+    events, audit = trace()
+    raw = json.dumps(audit[-1]["result"])
+    if malformed == "duplicate":
+        raw = '{"status":"incorrect",' + raw[1:]
+    elif malformed == "nan":
+        raw = '{"unused":NaN,' + raw[1:]
+    elif malformed == "overflow":
+        raw = '{"unused":1e999,' + raw[1:]
+    else:
+        depth = sys.getrecursionlimit() + 100
+        raw = '{"nested":' + '[' * depth + '0' + ']' * depth + '}'
+    events[-1]["content"] = raw
+    result = assess(events, audit, "citizen", "trusted")
+    assert result["passed"] is False
+    assert "invalid_or_missing_final_answer" in result["stop_reasons"]
+
+
+def test_legitimate_native_final_object_is_preserved():
+    events, audit = trace()
+    events[-1]["content"] = deepcopy(audit[-1]["result"])
+    assert assess(events, audit, "citizen", "trusted")["passed"] is True
 
 
 def test_native_bundle_matches_pinned_upstream_import_schema():

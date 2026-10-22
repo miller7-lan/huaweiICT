@@ -12,7 +12,7 @@ import httpx
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from gov_mcp.json_output import object_from_json
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from nexent_api import NexentAPI
 from provision_crossdoc_native_preview import (NAMES, SCENARIO, TOOLS, PROTOCOL, SKILL, first_action,
     check_drafts, check_service, check_skill, original_signatures, read, write, fingerprint, source_digest)
@@ -91,7 +91,8 @@ def assess(events, preview, run_id):
             errors.append("FINAL_ANSWER_ORDER_MISMATCH")
         task = preview.get_task(answer["task_id"])
         if (task["run_id"] != run_id or task["status"] != "complete"
-                or task["answer"] != answer or preview.finalize(answer["task_id"]) != answer):
+                or not exact_json_equal(task["answer"], answer)
+                or not exact_json_equal(preview.finalize(answer["task_id"]), answer)):
             errors.append("PERSISTED_RESULT_MISMATCH")
         context = preview.preflight()
         reasoning = answer["reasoning"]

@@ -20,9 +20,22 @@ def port(tmp_path, handler, *, enabled=True, environment=None):
     return Connections(path, client=httpx.Client(transport=httpx.MockTransport(handler)), environment=environment or {})
 
 
-def fixture_output(model="deepseek-v4.1-flash-1017"):
-    return {"model": model, "choices": [{"finish_reason": "stop", "message": {"content": '{"candidate_ids":["req-slip"]}'}}],
+def fixture_output(model="deepseek-v4.1-flash-1017", *, output=None):
+    content = json.dumps({"candidate_ids": ["req-slip"]} if output is None else output)
+    return {"model": model, "choices": [{"finish_reason": "stop", "message": {"content": content}}],
             "usage": {"prompt_tokens": 20, "completion_tokens": 8}}
+
+
+ROLE_OUTPUTS = {
+    "query_controller": {"allowed_tools": ["retrieve_registered_evidence", "verify_conditions"], "max_rounds": 3,
+                         "evidence_ids": [], "unknown_user_fields": []},
+    "retriever": {"evidence": [], "missing_evidence_ids": []},
+    "query_verifier": {"condition_results": [], "evidence_gaps": [], "unknown_user_fields": [], "needs_more": False},
+    "update_controller": {"package_ids": [], "allowed_tools": ["classify_changes", "submit_candidates", "validate_candidates", "finish_run"],
+                          "requires_professional": True},
+    "extractor": {"candidates": []},
+    "update_verifier": {"valid_structure": True, "exact_evidence": True, "conflicts": [], "omissions": [], "notes": [], "requires_professional": True},
+}
 
 
 def test_cloud_default_honors_operator_proxy_without_following_redirects(monkeypatch):
@@ -51,7 +64,9 @@ def test_all_six_cloud_roles_preserve_actual_model_and_never_send_ollama_fields(
         assert request.headers["authorization"] == "Bearer fixture-secret"
         assert body["thinking"] == {"type": "disabled"} and body["response_format"] == {"type": "json_object"}
         assert not {"keep_alive", "options", "think", "reasoning_effort"} & set(body)
-        return httpx.Response(200, json=fixture_output())
+        role = body["messages"][0]["content"].split("角色=", 1)[1].split("，", 1)[0]
+        assert "Output contract:" in body["messages"][0]["content"]
+        return httpx.Response(200, json=fixture_output(output=ROLE_OUTPUTS[role]))
     conn = port(tmp_path, handler, environment={"DEEPSEEK_API_KEY": "fixture-secret"})
     tools = {"query_controller": "plan_query", "retriever": "retrieve_registered_evidence", "query_verifier": "verify_conditions",
              "update_controller": "plan_update", "extractor": "submit_candidates", "update_verifier": "validate_candidates"}
@@ -185,7 +200,7 @@ def test_role_payload_uses_compact_json_without_removing_evidence(tmp_path):
     seen = []
     def handle(request):
         seen.append(json.loads(request.content)["messages"][1]["content"])
-        return httpx.Response(200, json=fixture_output())
+        return httpx.Response(200, json=fixture_output(output=ROLE_OUTPUTS["query_verifier"]))
     conn = port(tmp_path, handle, environment={"DEEPSEEK_API_KEY": "fixture-secret"})
     conn.request("query_verifier", "verify_conditions", payload)
     assert seen == [compact_json(payload)] and json.loads(seen[0]) == payload

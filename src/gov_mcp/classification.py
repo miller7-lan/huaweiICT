@@ -21,6 +21,7 @@ import urllib.request
 import uuid
 
 from gov_mcp.privacy import data_classes_allowed
+from gov_mcp.json_output import object_from_json
 
 
 ENDPOINT = "https://api.typesafe.ai/v1/systemone"
@@ -90,7 +91,7 @@ class JevProvider:
                     raw = response.read(2 * 1024 * 1024 + 1)
                     if len(raw) > 2 * 1024 * 1024:
                         raise ClassificationError("INVALID_RESPONSE")
-                    value = validate_response(json.loads(raw), questions, model)
+                    value = validate_response(object_from_json(raw), questions, model)
                     receipt.update(status="ok", served_model=value["model"], usage=value["usage"])
                     return value
             except urllib.error.HTTPError as error:
@@ -121,7 +122,7 @@ class JevProvider:
             except (TimeoutError, urllib.error.URLError):
                 receipt["error_code"] = "TRANSPORT_UNAVAILABLE"
                 raise ClassificationError("TRANSPORT_UNAVAILABLE") from None
-            except (ValueError, UnicodeError):
+            except (ValueError, UnicodeError, RecursionError):
                 receipt["error_code"] = "INVALID_RESPONSE"
                 raise ClassificationError("INVALID_RESPONSE") from None
             except ClassificationError as error:
@@ -135,7 +136,7 @@ class JevProvider:
 
 
 def probability(value):
-    if type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= 1:
+    if type(value) not in (int, float) or not 0 <= value <= 1 or not math.isfinite(value):
         raise ClassificationError("INVALID_RESPONSE")
     return value
 
@@ -252,30 +253,83 @@ def classification_windows(asset, config, reverse=False):
             yield current
 
 
+def _validate_response_json(value):
+    """Direct provider adapters must obey the same finite JSON value boundary."""
+    if value is None or type(value) in (str, bool, int):
+        return
+    if type(value) is float:
+        if not math.isfinite(value):
+            raise ValueError()
+        return
+    if type(value) is list:
+        for item in value:
+            _validate_response_json(item)
+        return
+    if type(value) is dict:
+        for key, item in value.items():
+            if type(key) is not str:
+                raise ValueError()
+            _validate_response_json(item)
+        return
+    raise ValueError()
+
+
 def validate_response(value, questions, model):
     try:
-        if value["model"] != model or set(value["answers"]) != set(questions):
+        _validate_response_json(value)
+        # Official Jev observations use model/answers/usage. The existing
+        # gateway adapter preserves provider_metadata, an explicitly opaque
+        # supplier extension namespace (routing/cost/generation identifiers).
+        # EnglishJevProvider adds english_input locally for the audit trail.
+        required = {"model", "answers", "usage"}
+        if (type(value) is not dict or not required <= set(value)
+                or set(value) - required - {"provider_metadata", "english_input"}):
+            raise ValueError()
+        if "provider_metadata" in value and type(value["provider_metadata"]) is not dict:
+            raise ValueError()
+        if "english_input" in value:
+            english = value["english_input"]
+            if (type(english) is not dict or set(english) != {"version", "state", "questions"}
+                    or type(english["version"]) is not str or not english["version"]
+                    or type(english["state"]) is not dict or type(english["questions"]) is not dict):
+                raise ValueError()
+        if (type(model) is not str or type(value["model"]) is not str or value["model"] != model
+                or type(questions) is not dict or type(value["answers"]) is not dict
+                or set(value["answers"]) != set(questions)):
             raise ValueError()
         for key, question in questions.items():
             answer = value["answers"][key]
-            if answer["type"] != question["type"]:
+            if (type(key) is not str or type(question) is not dict or type(answer) is not dict
+                    or question["type"] not in {"choice", "noul"}
+                    or answer["type"] != question["type"]):
                 raise ValueError()
             if question["type"] == "choice":
+                if set(answer) != {"type", "choice", "confidence", "probabilities"}:
+                    raise ValueError()
                 probs = answer["probabilities"]
-                if set(probs) != set(question["criteria"]) or answer["choice"] not in probs:
+                if (type(probs) is not dict or type(answer["choice"]) is not str
+                        or type(question["criteria"]) is not dict
+                        or set(probs) != set(question["criteria"]) or answer["choice"] not in probs):
                     raise ValueError()
                 values = [probability(p) for p in probs.values()]
                 if abs(sum(values) - 1) > .001 or probs[answer["choice"]] < max(values):
                     raise ValueError()
                 probability(answer["confidence"])
             else:
+                if set(answer) != {"type", "noul"}:
+                    raise ValueError()
                 probability(answer["noul"])
+        if type(value["usage"]) is not dict or set(value["usage"]) != {"input_tokens", "output_tokens"}:
+            raise ValueError()
         for key in ("input_tokens", "output_tokens"):
             if type(value["usage"][key]) is not int or value["usage"][key] < 0:
                 raise ValueError()
-    except (KeyError, TypeError, ValueError, AttributeError):
+        # Deep copying a valid but deeply nested supplier metadata tree can
+        # exhaust recursion before the validation walk does. Keep that failure
+        # in the same sanitized boundary as parsing and field validation.
+        return deepcopy(value)
+    except (KeyError, TypeError, ValueError, AttributeError, RecursionError, OverflowError):
         raise ClassificationError("INVALID_RESPONSE") from None
-    return deepcopy(value)
 
 
 def multilabel(answers, group, config):

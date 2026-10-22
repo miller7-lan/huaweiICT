@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 import httpx
 
 from gov_mcp.knowledge import fingerprint
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from nexent_api import NexentAPI, ROOT, RUNTIME
 
 
@@ -43,9 +44,9 @@ def main():
                     if time.monotonic()-start > 180:
                         raise TimeoutError("Fixed-question run exceeded total deadline")
                     if line.startswith("data:") and line[5:].strip():
-                        events.append(json.loads(line[5:].strip()))
+                        events.append(object_from_json(line[5:].strip()))
             finals = [event["content"] for event in events if event.get("type") == "final_answer" and not event.get("depth", 0)]
-            value = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else json.loads("".join(finals))
+            value = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else object_from_json("".join(finals))
             with log.open("rb") as stream:
                 stream.seek(offset)
                 audit = [json.loads(line) for line in stream.read().decode("utf-8").splitlines() if line]
@@ -53,11 +54,11 @@ def main():
             checks = {"native_tool_order": [event.get("tool_name") for event in tool_events] == ["govkb_get_environment_status", "govkb_search_evidence"],
                 "exactly_two_actual_read_only_calls": [row["tool"] for row in audit] == ["get_environment_status", "search_evidence"],
                 "trusted_session_identity": bool(audit) and all(row["principal_sha256"] == principal for row in audit),
-                "final_matches_actual_last_tool": bool(audit) and value == audit[-1]["result"],
+                "final_matches_actual_last_tool": bool(audit) and exact_json_equal(value, audit[-1]["result"]),
                 "unpublished_stops_without_citations": value.get("status") == "EMPTY" and value.get("message_code") == "NO_PUBLISHED_KNOWLEDGE" and not value.get("citations") and value.get("knowledge_version") is None,
                 "actual_role_preserved": value.get("data", {}).get("role") == role,
                 "no_error_or_step_limit": not any(event.get("type") in ("error", "max_steps_reached") for event in events)}
-        except (httpx.HTTPError, TimeoutError, ValueError, OSError, KeyError, TypeError) as error:
+        except (httpx.HTTPError, TimeoutError, ValueError, OSError, KeyError, TypeError, RecursionError) as error:
             failed = type(error).__name__
             checks = {"completed_without_technical_error": False}
             if conversation is not None:

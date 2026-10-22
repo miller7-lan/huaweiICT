@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 import httpx
 
 from gov_mcp.knowledge import KnowledgeStore, fingerprint
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from gov_mcp.knowledge_answers import STOP_MESSAGES
 from nexent_api import NexentAPI, ROOT, RUNTIME
 from private_runtime import ensure_private_directory
@@ -64,9 +65,9 @@ def main(cases=None, evidence_prefix="native-consultation", scope_description=No
                     if time.monotonic()-start > 180:
                         raise TimeoutError("Dynamic preview exceeded total deadline")
                     if line.startswith("data:") and line[5:].strip():
-                        events.append(json.loads(line[5:].strip()))
+                        events.append(object_from_json(line[5:].strip()))
             finals = [event["content"] for event in events if event.get("type") == "final_answer" and not event.get("depth", 0)]
-            answer = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else json.loads("".join(finals))
+            answer = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else object_from_json("".join(finals))
             with log.open("rb") as stream:
                 stream.seek(offset)
                 audit = [json.loads(line) for line in stream.read().decode("utf-8").splitlines() if line]
@@ -77,7 +78,7 @@ def main(cases=None, evidence_prefix="native-consultation", scope_description=No
                 "two_actual_server_calls": [row["tool"] for row in audit] == ["get_environment_status", "search_evidence"],
                 "exact_latest_question_reached_server": len(audit) == 2 and audit[-1].get("argument_sha256") == expected_hash,
                 "trusted_identity_and_role": bool(audit) and all(row["principal_sha256"] == principal for row in audit) and audit[0]["result"].get("data", {}).get("role") == role,
-                "final_matches_actual_tool_result": bool(audit) and answer == audit[-1]["result"],
+                "final_matches_actual_tool_result": bool(audit) and exact_json_equal(answer, audit[-1]["result"]),
                 "correct_stop_without_candidate_leak": answer.get("message_code") == expected and answer.get("status") in ("EMPTY", "BLOCKED") and not answer.get("citations") and not answer.get("items") and answer.get("knowledge_version") is None,
                 "literal_stop_answer_visible": answer.get("data", {}).get("answer") == STOP_MESSAGES[expected],
                 "no_error_or_step_limit": not any(event.get("type") in ("error", "max_steps_reached") for event in events),

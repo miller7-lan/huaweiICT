@@ -11,6 +11,7 @@ import httpx
 from m1_assessment import assess_m1
 from nexent_api import NexentAPI, ROOT, RUNTIME
 from gov_mcp.extension import ExtensionStore
+from gov_mcp.json_output import exact_json_equal, object_from_json
 
 
 def run(role, label, state, *, terminal=None, runtime_url="http://127.0.0.1:5014", connection_failure=False):
@@ -47,8 +48,8 @@ def run(role, label, state, *, terminal=None, runtime_url="http://127.0.0.1:5014
                     if time.perf_counter() - start > 240:
                         raise TimeoutError("M1 native total deadline")
                     if line.startswith("data:") and line[5:].strip():
-                        events.append(json.loads(line[5:].strip()))
-        except (httpx.HTTPError, TimeoutError, ValueError) as error:
+                        events.append(object_from_json(line[5:].strip()))
+        except (httpx.HTTPError, TimeoutError, ValueError, RecursionError) as error:
             failed = type(error).__name__
             api.http.get(api.runtime_base + f"/agent/stop/{conversation}", headers={"Authorization": "Bearer " + api.token}, timeout=10).raise_for_status()
         with path.open("rb") as source:
@@ -58,8 +59,8 @@ def run(role, label, state, *, terminal=None, runtime_url="http://127.0.0.1:5014
         if terminal:
             finals = [e.get("content") for e in events if e.get("type") == "final_answer" and not e.get("depth", 0)]
             try:
-                value = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else json.loads("".join(finals))
-            except (ValueError, TypeError):
+                value = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else object_from_json("".join(finals))
+            except (ValueError, TypeError, RecursionError):
                 value = None
             passed = (isinstance(value, dict) and (value.get("status"), value.get("message_code")) == terminal and
                 value.get("items") == value.get("citations") == [] and value.get("knowledge_version") is None and
@@ -70,7 +71,7 @@ def run(role, label, state, *, terminal=None, runtime_url="http://127.0.0.1:5014
                     not any(e.get("type") == "tool" or e.get("type", "").startswith("model_output") for e in events))
             else:
                 passed = (passed and len(audit) == 1 and audit[0]["tool"] == "govx_get_environment_status" and
-                    all(value.get(k) == audit[0]["result"].get(k) for k in ("status", "items", "citations", "knowledge_version", "message_code", "data")))
+                    all(exact_json_equal(value.get(k), audit[0]["result"].get(k)) for k in ("status", "items", "citations", "knowledge_version", "message_code", "data")))
                 if terminal[1] == "TOOL_TIMEOUT":
                     passed = passed and value.get("data", {}).get("attempts") == 2
             assessment = {"passed": passed, "result": value, "stop_reasons": [terminal[1] if passed else "TERMINAL_CONTRACT_NOT_MET"]}

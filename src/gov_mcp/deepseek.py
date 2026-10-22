@@ -88,13 +88,24 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
                     if size > 1024*1024: raise CloudError("DEEPSEEK_RESPONSE_TOO_LARGE")
                     chunks.append(chunk)
             value = object_from_json(b"".join(chunks))
-            choice = value["choices"][0]
+            choices = value.get("choices")
+            # This request asks for one completion. Validate the provider
+            # envelope before reading fields; malformed shapes must stay in
+            # the sanitized CloudError boundary without retry or truncation.
+            if not isinstance(choices, list) or len(choices) != 1 or not isinstance(choices[0], dict):
+                raise CloudError("INVALID_DEEPSEEK_RESPONSE")
+            choice = choices[0]
             if choice["finish_reason"] != "stop": raise CloudError("DEEPSEEK_OUTPUT_INCOMPLETE")
             actual = value["model"]
             if not isinstance(actual, str) or not 1 <= len(actual) <= 120 or "deepseek" not in actual.lower():
                 raise CloudError("UNEXPECTED_SERVED_MODEL")
             message = choice["message"]
-            if message.get("tool_calls"): raise CloudError("UNEXPECTED_TOOL_CALL")
+            if not isinstance(message, dict) or not isinstance(message.get("content"), str):
+                raise CloudError("INVALID_DEEPSEEK_RESPONSE")
+            tool_calls = message.get("tool_calls")
+            if tool_calls is not None and not isinstance(tool_calls, list):
+                raise CloudError("INVALID_DEEPSEEK_RESPONSE")
+            if tool_calls: raise CloudError("UNEXPECTED_TOOL_CALL")
             if json_output:
                 try:
                     output = object_from_json(message["content"])
@@ -103,6 +114,8 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
             else:
                 output = message["content"]
             usage = value["usage"]
+            if not isinstance(usage, dict):
+                raise CloudError("INVALID_DEEPSEEK_RESPONSE")
             counts = {k: usage[k] for k in ("prompt_tokens", "completion_tokens")}
             if any(type(v) is not int or v < 0 for v in counts.values()): raise CloudError("INVALID_DEEPSEEK_USAGE")
             normalized_usage = {"input_tokens": counts["prompt_tokens"], "output_tokens": counts["completion_tokens"]}

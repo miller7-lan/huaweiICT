@@ -1,0 +1,7 @@
+{
+  "cause": "Windows PowerShell 5.1 singleton CimInstance has no Count property; listener falsely appeared missing",
+  "paid_model_calls": 0,
+  "status": "SCHEDULED_OBSERVER_NOT_EXECUTED",
+  "effect": "Duplicate bind attempts exited; source hook not reached",
+  "fix": "Wrap the listener function result in an explicit array; require task exit code zero in acceptance"
+}

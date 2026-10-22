@@ -10,6 +10,45 @@ class StrictOutput(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True, allow_inf_nan=False)
 
 
+def exact_json_equal(left, right):
+    """Compare JSON values without Python's bool/int or int/float equivalence.
+
+    Only builtin JSON container and scalar types are accepted. Reject cycles,
+    nonfinite floats and non-string object keys, including in persisted values.
+    Strings and numbers are never normalized or repaired.
+    """
+    active = set()
+
+    def equal(a, b):
+        kind = type(a)
+        if kind is not type(b):
+            return False
+        if kind in (str, bool, int, type(None)):
+            return a == b
+        if kind is float:
+            return math.isfinite(a) and math.isfinite(b) and a == b
+        if kind not in (dict, list):
+            return False
+        pair = (id(a), id(b))
+        if pair in active:
+            return False
+        active.add(pair)
+        try:
+            if kind is dict:
+                return (all(type(key) is str for key in a)
+                        and all(type(key) is str for key in b)
+                        and a.keys() == b.keys()
+                        and all(equal(a[key], b[key]) for key in a))
+            return len(a) == len(b) and all(equal(x, y) for x, y in zip(a, b))
+        finally:
+            active.remove(pair)
+
+    try:
+        return equal(left, right)
+    except RecursionError:
+        return False
+
+
 def object_from_json(raw):
     def pairs(items):
         result = {}

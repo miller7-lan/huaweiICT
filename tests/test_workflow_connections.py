@@ -62,7 +62,8 @@ def test_qwen_request_shape_and_untrusted_output_after_explicit_gate(tmp_path):
         assert req.url.path == "/api/chat" and body["keep_alive"] == 0 and body["stream"] is False
         assert body["think"] is False and body["options"]["num_ctx"] == 8192
         assert not req.headers.get("Authorization")
-        return httpx.Response(200, json={"model": body["model"], "done": True, "message": {"content": '{"candidate_ids": ["req-slip"]}'}, "eval_count": 8})
+        assert "Output contract:" in body["messages"][0]["content"]
+        return httpx.Response(200, json={"model": body["model"], "done": True, "message": {"content": '{"candidates": []}'}, "eval_count": 8})
     port = configured(tmp_path, enabled=True, handler=handler)
     result = port.request("extractor", "submit_candidates", {"data_class": "synthetic", "text": "模拟资料"})
     assert result["status"] == "untrusted_machine_candidate" and result["usage"]["output_tokens"] == 8

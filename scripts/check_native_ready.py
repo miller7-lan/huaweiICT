@@ -1,4 +1,4 @@
-"""Probe local native services and container-to-Ollama access without login."""
+"""Probe native services, with optional legacy dual-Qwen checks, without login."""
 
 import argparse
 import json
@@ -12,7 +12,7 @@ import httpx
 from runtime_sandbox import sandbox_ready
 
 
-def probe_services():
+def probe_services(*, require_local_models=False):
     endpoints = {"config": "http://127.0.0.1:5010/health/ready",
                  "runtime": "http://127.0.0.1:5014/health/ready",
                  "mcp": "http://127.0.0.1:8765/health",
@@ -24,10 +24,11 @@ def probe_services():
                 checks[name] = client.get(url).is_success
             except httpx.HTTPError:
                 checks[name] = False
-    checks["container_ollama"] = False
     checks["runtime_sandbox"] = sandbox_ready()
     docker = shutil.which("docker")
-    if docker and checks["runtime"]:
+    if require_local_models:
+        checks["container_ollama"] = False
+    if require_local_models and docker and checks["runtime"]:
         code = (
             "import json,urllib.request; "
             "d=json.load(urllib.request.urlopen('http://host.docker.internal:11434/v1/models',timeout=3)); "
@@ -60,10 +61,12 @@ def probe_services():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--wait-seconds", type=int, default=0)
+    parser.add_argument("--require-local-models", action="store_true",
+                        help="Also require both legacy Qwen aliases from the runtime container")
     args = parser.parse_args()
     deadline = time.monotonic() + max(0, args.wait_seconds)
     while True:
-        checks = probe_services()
+        checks = probe_services(require_local_models=args.require_local_models)
         if all(checks.values()) or time.monotonic() >= deadline:
             print(json.dumps(checks))
             return 0 if all(checks.values()) else 1

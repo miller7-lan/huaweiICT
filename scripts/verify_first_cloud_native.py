@@ -11,6 +11,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from gov_mcp.decision.workflow import Workflow
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from nexent_api import NexentAPI
 from private_runtime import ensure_private_directory
 
@@ -29,12 +30,12 @@ def assess(events, workflow):
     finals = [e.get("content") for e in events if e.get("type") == "final_answer" and not e.get("depth", 0)]
     answer = None
     try:
-        answer = json.loads(finals[-1]) if isinstance(finals[-1], str) else finals[-1]
+        answer = object_from_json(finals[-1]) if isinstance(finals[-1], str) else finals[-1]
         if not isinstance(answer, dict): raise ValueError()
         task = workflow.get("query", answer["task_id"])
-        if not task or task["status"] != "complete" or task["answer"] != answer:
+        if not task or task["status"] != "complete" or not exact_json_equal(task["answer"], answer):
             errors.append("PERSISTED_RESULT_MISMATCH")
-    except (ValueError, TypeError, KeyError, IndexError):
+    except (ValueError, TypeError, KeyError, IndexError, RecursionError):
         errors.append("STRUCTURED_PROGRAM_RESULT_MISSING")
     return {"passed": not errors, "stop_reasons": errors, "actual_tools": tools,
             "answer": answer if not errors else None}
@@ -98,7 +99,7 @@ No publication, rollback, workspace, memory, credential access or extra network.
                 if size > 2 * 1024**2 or time.perf_counter() - start > 120:
                     raise RuntimeError("NATIVE_RUN_BOUND_EXCEEDED")
                 if line.startswith("data:") and line[5:].strip():
-                    event = json.loads(line[5:].strip())
+                    event = object_from_json(line[5:].strip())
                     if isinstance(event, dict): events.append(event)
         report.update(assess(events, Workflow(ROOT / ".runtime/agent-workflow")))
     except Exception as error:

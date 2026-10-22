@@ -3,11 +3,12 @@ from copy import deepcopy
 import json
 from pathlib import Path
 import sys
+from types import SimpleNamespace
 
 import pytest
 
 from gov_mcp import successor_update as update
-from gov_mcp.knowledge.store import KBError, digest
+from gov_mcp.knowledge.store import KBError, Store, digest
 
 OLD = "一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。"
 NEW = "一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考特殊时期急需用证考生通过“绿色通道”申办居民身份证时限由15个自然日缩短至5个工作日。"
@@ -208,3 +209,67 @@ def test_native_state_wire_preserves_control_gates_without_json_imports():
     sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
     from check_successor_autonomy_cloud import native_event_failure
     assert native_event_failure({'type':'warning','content':'Code execution failed: string has no attribute get'})=='NATIVE_CODE_EXECUTION_FAILED'
+
+
+@pytest.mark.parametrize("path,replacement", [
+    (None, None),
+    (["published"], 0),
+    (["candidate", "formal_approval"], 0),
+    (["candidate", "difference", "new", "value"], 15.0),
+])
+def test_native_driver_preserves_receipt_types_and_closes_budget(tmp_path, monkeypatch, path, replacement):
+    """Exercise the real driver boundary through a fake in-memory transport."""
+    import check_successor_autonomy_cloud as cloud
+    runtime, output = tmp_path / "runtime", tmp_path / "evidence"
+    runtime.mkdir()
+    monkeypatch.setattr(cloud, "RUNTIME", runtime)
+    monkeypatch.setattr(cloud, "OUTPUT", output)
+    monkeypatch.setattr(cloud, "native_trace_checks", lambda *_: True)
+    monkeypatch.setattr(cloud, "legacy_signatures", lambda *_: {})
+    monkeypatch.setattr(cloud, "check_drafts", lambda *_: None)
+    store = Store(tmp_path / "state")
+    monkeypatch.setattr(store, "assert_lease", lambda *_: None)
+    engine = SimpleNamespace(store=store, snapshot=lambda: {"binding": "synthetic-binding"})
+    receipt = {"published": False, "candidate": {"formal_approval": False,
+               "difference": {"new": {"value": 15}}}}
+    store.put("state", "final_receipt", receipt)
+    changed = deepcopy(receipt)
+    if path:
+        target = changed
+        for key in path[:-1]:
+            target = target[key]
+        target[path[-1]] = replacement
+
+    class Response:
+        def __enter__(self): return self
+        def __exit__(self, *_): return False
+        def raise_for_status(self): pass
+        def iter_lines(self):
+            yield "data: " + json.dumps({"type": "final_answer", "depth": 0,
+                                        "content": json.dumps(changed)})
+
+    class API:
+        token, runtime_base = "synthetic-token", "http://synthetic.invalid"
+        def __init__(self): self.http, self.requests, self.stops = self, 0, 0
+        def stream(self, *_args, **_kwargs):
+            self.requests += 1
+            return Response()
+        def runtime_call(self, method, endpoint, *_):
+            if method == "PUT":
+                return {"data": {"conversation_id": "synthetic-conversation"}}
+            self.stops += 1
+            return {}
+
+    api = API()
+    saved = {"agents": {"controller": 1}, "model_id": 2, "legacy_signatures": {}}
+    driver = cloud.CloudDriver(api, saved)
+    run = {"id": "synthetic-run"}
+    if path:
+        with pytest.raises(KBError, match="^NATIVE_FINAL_DIFFERS_FROM_RECEIPT$"):
+            driver.run(engine, run)
+    else:
+        driver.run(engine, run)
+    campaign = store.get("state", "native_campaign")
+    assert campaign["status"] == ("failed" if path else "passed")
+    assert store.get("state", "paused") is True
+    assert api.requests == 1 and api.stops == int(bool(path))

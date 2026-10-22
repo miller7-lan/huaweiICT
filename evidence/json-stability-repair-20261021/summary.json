@@ -1,0 +1,98 @@
+{
+  "status": "PASS_LOCAL_JSON_REPAIRS_WITH_OFFLINE_VERIFICATION",
+  "recorded_at_utc": "2026-10-21T14:45:32.649005+00:00",
+  "fixed_categories": [
+    "recursive_receipt_types_and_values",
+    "strict_external_json_parsing",
+    "sanitized_provider_envelope_errors",
+    "eight_role_tool_candidate_contracts"
+  ],
+  "new_model_calls": 0,
+  "new_real_http_calls": 0,
+  "new_native_runs": 0,
+  "source_sha256": {
+    "src/gov_mcp/json_output.py": "da372ca4f9015475790e11556ca65ad813d647cb042d89c0bcbe5cb8d0c6e745",
+    "src/gov_mcp/acceptance.py": "de345028d04202a293b9b08edf14d82a81dc90394d712620b1c67c3b119ea12b",
+    "src/gov_mcp/classification.py": "4a46e02b7808db023787dd3ecb8c1f94e5f31887875ba9a06fcd32c980500d9d",
+    "src/gov_mcp/jev_gateway.py": "19397ea9f34747ca8593da4c80b82bd30ea279d17c76ba23ca4568b72c25b4fa",
+    "src/gov_mcp/deepseek.py": "92f1c342fe491fa04ba0206895b1d1c457ce571946a190df2d673e46b1b4a7ac",
+    "src/gov_mcp/decision/connections.py": "037ed10cd0f659951a889731a03299f11306edd8fda0e1cd0a04f8886fa98145",
+    "src/gov_mcp/decision/output_contracts.py": "0f778aca484923be14070511ffd99d2055acf839310cc5a255a0e0f84a5652ab",
+    "scripts/check_successor_autonomy_cloud.py": "07e06a2a71f829320b6216fc42314d56d900598f3761eae9ad1ffbdbeb710d34",
+    "scripts/verify_ontology_crossdoc_native.py": "54ff91eae67256ea445690f0fd256a2ee6bc0c6a143dff0fcb3381355357efeb",
+    "scripts/verify_crossdoc_native_preview.py": "16a4cfdf740b397d62436e2d2194d41064f5c069b0b4e18bccaeb69320754248",
+    "scripts/verify_first_cloud_native.py": "4e3a60e48075fa0b5f005e288a94e1fc4cba5842b57547bd59f08a4441a3f0f0",
+    "scripts/verify_public_native_preview.py": "54ea1ca7caf4fd58df8edf9d0eaf59335adccf7a8f64911d96332a841a569ccb",
+    "scripts/verify_regional_native_preview.py": "66f1317c00bb2648f4b5553be99c44c360d20275f055cce42407e214d04395dd",
+    "scripts/verify_knowledge_consultation.py": "68a27f28d26e2b861d5b4b11c9f6d353ad9027573306708d2401beec6822645a",
+    "scripts/verify_knowledge_qa_agents.py": "69532b4b16976211f3240cba93dfb47d18990561a7578a14b885677c7adb5d90",
+    "scripts/verify_native_knowledge_versions.py": "327ba9d2c95790bb296dd5344c7b3dfe266852a0f0d80a66d421a0a97c11a93b",
+    "scripts/verify_native_faults.py": "7f1f3986aa7562205c535d99e2a74fcff8001095feef70730b59d0c05945362d",
+    "scripts/verify_m1_native.py": "3b00123999873ecfeeb69ac65438295236dc9a41a28b2e71f29fda4d7d4ee179"
+  },
+  "validation": {
+    "integration": {
+      "evidence": "targeted-checks-final.xml",
+      "tests": 631,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "warnings": 3
+    },
+    "after_last_jev_copy_boundary_change": {
+      "evidence": "jev-checks-final.xml",
+      "tests": 158,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "unique_test_cases_across_these_runs": 632,
+    "integration_test_files": [
+      "tests/test_acceptance.py",
+      "tests/test_classification.py",
+      "tests/test_classification_json.py",
+      "tests/test_connection_output_contracts.py",
+      "tests/test_crossdoc_native_wiring.py",
+      "tests/test_deepseek_cloud.py",
+      "tests/test_deepseek_envelope.py",
+      "tests/test_first_cloud_native.py",
+      "tests/test_intake.py",
+      "tests/test_jev_gateway.py",
+      "tests/test_jev_translation.py",
+      "tests/test_json_receipt_equality.py",
+      "tests/test_native_workflow.py",
+      "tests/test_ontology_crossdoc_runner.py",
+      "tests/test_public_native_preview.py",
+      "tests/test_regional_native_preview.py",
+      "tests/test_strict_json_output.py",
+      "tests/test_successor_update.py",
+      "tests/test_workflow_connections.py"
+    ],
+    "native_replay": "native-replay-final.json",
+    "source_ast_files": 18,
+    "old_audit_attachments_unchanged": true,
+    "protected_native_inputs_unchanged": true
+  },
+  "limits": [
+    "Offline verification does not establish long-run real-model compliance.",
+    "Old successful live trials retain their original execution fingerprints.",
+    "Optional role-port schemas do not automatically apply to platform agents.",
+    "Current running-service code-loading state was not inspected.",
+    "Binary float precision remains an explicit representation boundary.",
+    "Frozen competition packages were not rebuilt."
+  ],
+  "artifacts_sha256": {
+    "deepseek-before.xml": "ab9db625e2e21bdf3604107fdeb41da6e3677a4e61fdbc13e86b66c238cf098d",
+    "deepseek-checks.xml": "fd2ea5d496c1df8a22144abfd2e00a27b444209e477af0bbd6dc745ff83358be",
+    "jev-checks-final.xml": "012283a21d5ac309a19e4190dedc12be05d9b7fe5a2947fec37708d27a59d06e",
+    "jev-checks.xml": "ecc54ef5f28ed0891989a8c2b9e698629393d3556f7d2a8b02123443be2d99e2",
+    "jev-copy-before.xml": "43aabc15e0d00beb754e4c2e00282ce35cffe8b895d0f343295a7ed8e022c6bd",
+    "native-checks.xml": "06948ecce04e53fb9625e72a7fef639adaa0511a442147be95106db4079b71ab",
+    "native-final-parsing-checks.xml": "69f7e7d877d0b1f069ad36f5f181e902cc8326dca203d158cc3baffd8e9f8a77",
+    "native-replay-final.json": "f16d471a192742d3b1ecc0b6f85e73eee641e7d6b67953009da65c7bacc930fa",
+    "native-replay-final.py": "88ab3f1f1435805b753620f3c3791746333c1a02bd235110f8d48cdc966fd0c1",
+    "native-replay.json": "0eeddc5c747df367dc6e741705d2ab2e537e6acda2007e5a2cf348d3c8774f75",
+    "native-replay.py": "88ab3f1f1435805b753620f3c3791746333c1a02bd235110f8d48cdc966fd0c1",
+    "targeted-checks-final.xml": "feef7bde950f6f1f44a60d96127153d0fe97d668ab369ce212a0e8379fcfa0be"
+  }
+}

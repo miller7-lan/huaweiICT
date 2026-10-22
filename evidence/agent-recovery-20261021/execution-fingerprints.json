@@ -1,0 +1,19 @@
+{
+  "source_sha256": {
+    "scripts/ensure_agent_workflow.ps1": "e0856c55eeed64f1e4f3dea06ae0d41a8b283a4b88b684d072d92235ef207d0e",
+    "scripts/inspect_agent_workflow.py": "b7bfe09900c89ef16168c039368748e0dbd52623c963ae07e8fbd736cd9a3132",
+    "scripts/verify_agent_recovery.ps1": "1fff64812d93bcf657eaf6d7302b58be26ae2740eb17a324fa9a74ca830ee9fc",
+    "scripts/watch_official_sources.py": "c4ca6d7674058332213306c6a4d0f52ca40d2399fccce386e28139d63737694c",
+    "scripts/check_project_heartbeat.py": "24a54635b0ddb484b420bba0b5f82490cd641025a49eb5f4342256bd68cb0d52",
+    "tests/test_agent_recovery.py": "71c330d5f3fabfa9141e6bfdae44b8c66d725b5bc7341f4af17556f5226db1eb",
+    "tests/test_official_source_watch.py": "3c5f52656c6c9db62aa055922ba04b8e18bda611749441c9be830039c34a364d"
+  },
+  "recovery_acceptance": "live-result-windows-powershell.json",
+  "read_only_guard_tests": 5,
+  "source_watch_tests": 5,
+  "passive_inspection_tests": 1,
+  "model_calls": 0,
+  "official_http_requests": 2,
+  "no_global_inference_enabled": true,
+  "not_full_regression": true
+}

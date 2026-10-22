@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 import httpx
 
 from gov_mcp.knowledge import KnowledgeStore, encode, fingerprint
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from gov_mcp.knowledge_answers import select_citations
 from gov_mcp.knowledge_backup import create_bundle, restore_bundle
 from gov_mcp.knowledge_fetch import schedule, worker_once
@@ -169,9 +170,9 @@ def main(presentation_only=False):
                     if time.monotonic()-start > 180:
                         raise TimeoutError("Synthetic version run exceeded total deadline")
                     if line.startswith("data:") and line[5:].strip():
-                        events.append(json.loads(line[5:].strip()))
+                        events.append(object_from_json(line[5:].strip()))
             finals = [event["content"] for event in events if event.get("type") == "final_answer" and not event.get("depth", 0)]
-            value = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else json.loads("".join(finals))
+            value = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else object_from_json("".join(finals))
             with audit_path.open("rb") as stream:
                 stream.seek(offset)
                 audit = [json.loads(line) for line in stream.read().decode("utf-8").splitlines() if line]
@@ -180,7 +181,7 @@ def main(presentation_only=False):
             checks = {"two_native_tools_in_order": [event.get("tool_name") for event in tool_events] == ["govkb_get_environment_status", "govkb_search_evidence"],
                 "exactly_two_actual_calls": [row["tool"] for row in audit] == ["get_environment_status", "search_evidence"],
                 "trusted_identity_and_role": bool(audit) and all(row["principal_sha256"] == principal for row in audit) and value.get("data", {}).get("role") == role,
-                "final_matches_actual_last_tool": bool(audit) and value == audit[-1]["result"],
+                "final_matches_actual_last_tool": bool(audit) and exact_json_equal(value, audit[-1]["result"]),
                 "expected_status_and_version": value.get("status") == expected_status and value.get("message_code") == expected_code and value.get("knowledge_version") == version,
                 "historical_flag_correct": value.get("data", {}).get("historical_snapshot") is historical,
                 "citations_and_dates_correct": (bool(value.get("citations")) and all(marker in citation["quote"] and citation["effective_from"] == "2020-01-01" and citation["knowledge_version"] == version for citation in value["citations"])) if marker else not value.get("citations"),
@@ -193,7 +194,7 @@ def main(presentation_only=False):
                     and citation["citation_id"] == item["citation_id"] and citation["quote"] == item["text"]
                     for citation, item in zip(bound, value["items"], strict=True))
                 checks["date_types_and_nonapproval_visible"] = "发布日期：" in presented and "生效日期：2020-01-01" in presented and "不构成审批决定" in presented
-        except (httpx.HTTPError, TimeoutError, ValueError, OSError, KeyError, TypeError) as error:
+        except (httpx.HTTPError, TimeoutError, ValueError, OSError, KeyError, TypeError, RecursionError) as error:
             failed = type(error).__name__
             checks = {"completed_without_technical_error": False}
             if conversation is not None:

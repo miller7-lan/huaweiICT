@@ -170,6 +170,17 @@ def test_actual_ordered_children_and_exact_persistence_pass():
     assert result["actual_tools"] == list(verify.STAGES)
 
 
+@pytest.mark.parametrize("original,replacement", [(False, 0), (1, True), (25, 25.0)])
+def test_native_final_rejects_equal_value_with_different_nested_json_type(original, replacement):
+    preview = FakePreview()
+    preview.answer["reasoning"]["typed_receipt_value"] = original
+    changed = deepcopy(preview.answer)
+    changed["reasoning"]["typed_receipt_value"] = replacement
+    result = verify.assess(native_events(changed), preview, preview.run)
+    assert result["passed"] is False
+    assert "PERSISTED_RESULT_MISMATCH" in result["stop_reasons"]
+
+
 @pytest.mark.parametrize("change", ["missing", "repeated", "order", "depth", "unexpected", "children", "error",
                                   "max_steps", "final_before_finalize", "different_answer", "duplicate_json", "wrong_run"])
 def test_native_assessment_rejects_invented_or_incomplete_execution(change):

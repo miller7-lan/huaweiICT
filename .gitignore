@@ -12,3 +12,12 @@ build/
 *.log
 .playwright-cli/
 /references/ict-topic3-2026-10-13/
+
+# Derived handoff packages are rebuilt from source; keep the original platform export.
+/artifacts/*
+!/artifacts/competition-20261021/
+/artifacts/competition-20261021/*
+!/artifacts/competition-20261021/nexent-ontology-crossdoc-native-export.zip
+
+# Browser diagnostics are temporary; accepted UI evidence has explicit tracked files.
+/output/playwright/git-push-failure.*

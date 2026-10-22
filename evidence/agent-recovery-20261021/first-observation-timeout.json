@@ -1,0 +1,9 @@
+{
+  "status": "OBSERVATION_TIMEOUT",
+  "subsequent_task_recovered": true,
+  "model_calls": 0,
+  "observed": "Check returned already_checking while Ensure held its mutex",
+  "fault": "process_exit",
+  "root_cause": "Read-only Check unnecessarily competed for the write mutex",
+  "fix": "Exclude Check from the write mutex"
+}

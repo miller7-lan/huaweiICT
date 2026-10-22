@@ -9,6 +9,7 @@ import pytest
 from starlette.testclient import TestClient
 
 from gov_mcp.classification import ClassificationError
+from gov_mcp.jev_translation import VERSION
 from gov_mcp.knowledge import KnowledgeStore
 from gov_mcp.knowledge_fetch import parse_html
 from gov_mcp.knowledge_landing import URLS
@@ -26,7 +27,7 @@ class FixtureVerifier:
         if self.error:
             raise ClassificationError(self.error)
         response = {'model': 'jev-1.13.0', 'answers': {key: {'type': 'noul', 'noul': .03 if key.startswith('unsupported_') else .7 if key == self.low else .95} for key in questions},
-                    'usage': {'input_tokens': 1, 'output_tokens': 1}, 'english_input': {'state': {'text': 'fixture'}, 'questions': questions}}
+                    'usage': {'input_tokens': 1, 'output_tokens': 1}, 'english_input': {'version': VERSION, 'state': {'text': 'fixture'}, 'questions': questions}}
         write(output, {'test_fixture': True, 'result': response, 'jev_receipts': [], 'translation_receipts': []})
         return response
 

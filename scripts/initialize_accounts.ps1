@@ -9,7 +9,7 @@ $DockerCandidates = @("$env:LOCALAPPDATA/Programs/DockerDesktop/resources/bin/do
 $Docker = $DockerCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 if (-not $Docker) { throw 'Docker executable not found.' }
 $env:PATH = "$(Split-Path -Parent $Docker);$env:PATH"
-& $Python scripts/check_native_ready.py
+& $Python scripts/check_native_ready.py --require-local-models
 if ($LASTEXITCODE -ne 0) { throw 'Native services are not ready; no account operation was attempted.' }
 Write-Output 'User-started account initialization: create the platform administrator, then register/login the isolated test accounts.'
 & $Bash scripts/initialize_super_admin.sh

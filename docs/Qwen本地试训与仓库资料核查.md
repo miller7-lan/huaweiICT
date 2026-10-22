@@ -1,5 +1,7 @@
 # Qwen 本地试训与仓库资料核查
 
+2026-10-21 归档说明：当前主线移除本页试训专用的脚本、配置、依赖清单与测试，停止维护这条未接入正式查询的实验路线。历史训练事实及 `evidence/qwen-training/` 证据继续保留；当前参赛主线不需要安装该训练环境。需复现历史实验时，从[保留提交 702c00a](https://github.com/miller7-lan/huaweiICT/tree/702c00a30d7991d5246e32e1198ed4d5683682c0)另建隔离副本，使用该提交中的原文件与说明。本页下方的设备、目录、文件和结果均按 2026-10-16 的历史基线理解，不代表当前部署状态。
+
 2026-10-16。本轮先训练本地 Qwen3-4B 识别咨询问题主题，用小规模实验验证训练链路。政策原文、现行适用关系和业务发布仍由知识库管理。
 
 ## 本轮实际结果
@@ -49,9 +51,9 @@
 
 主题来自 AI 草案，合并映射由本轮配置定义，尚未经过独立人工标注。照片等相近问题按问题族分组，训练与诊断之间不共享同一问题族。23 条训练、7 条诊断都来自已经参与项目开发的 30 题；七题只能用于观察本轮训练变化。费用和时长各仅一题，样本尤其少。
 
-这一步可以作为咨询入口分流的实验。它与 Jev 的“文档类型、业务领域、片段用途”三维分类承担不同任务，当前没有替换 Jev，也没有接入正式查询。
+这一步曾作为咨询入口分流的实验。它与 Jev 的“文档类型、业务领域、片段用途”三维分类承担不同任务，未替换 Jev，也未接入正式查询；现已冻结。
 
-## 训练环境和文件
+## 历史训练环境和文件
 
 本机实查为 RTX 5060 Laptop GPU，8151 MiB 显存，约 16 GiB 内存。训练依赖单独安装在 `.runtime/training/.venv`，保留现有 Nexent、Ollama 和资料解析环境。
 
@@ -59,48 +61,44 @@
 
 权重提供两种来源：
 
-- Hugging Face 官方 `Qwen/Qwen3-4B`，固定提交见配置。
-- 本轮实际下载使用 [Qwen 官方 ModelScope 仓库](https://modelscope.cn/models/Qwen/Qwen3-4B)。每个文件的修订、大小和 SHA-256 均固定在 `config/training/qwen3-4b.modelscope.json`。不声称两个平台的修订编号相同。
+- Hugging Face 官方 `Qwen/Qwen3-4B`，固定提交见历史配置。
+- 本轮实际下载使用 [Qwen 官方 ModelScope 仓库](https://modelscope.cn/models/Qwen/Qwen3-4B)。每个文件的修订、大小和 SHA-256 均固定在保留提交中的 `config/training/qwen3-4b.modelscope.json`。不声称两个平台的修订编号相同。
 
 Ollama 中已有的是推理用量化文件，训练使用另行下载的权重。生成的适配器单独保存，尚未转换、导入 Ollama 或发布到 Nexent。
 
-| 文件 | 作用 |
+以下试训代码与配置已从当前主线移除，路径仅供在上述保留提交中定位，不是当前可执行入口。旧本地 Qwen 推理、模型配置和基准测试基础不属于本次移除范围。
+
+| 历史文件 | 当时的作用 |
 | --- | --- |
 | `config/training/qwen-topic-smoke.json` | 分类映射、问题族、模型和训练参数 |
+| `config/training/qwen3-4b.modelscope.json` | 固定训练权重来源、修订、大小和指纹 |
+| `config/training/requirements.txt`、`config/training/requirements.windows.lock` | 独立训练环境的依赖清单与 Windows 快照 |
+| `scripts/setup_qwen_training.ps1` | 创建并准备独立训练环境 |
 | `scripts/prepare_qwen_training.py` | 按 Git 提交冻结共享资料，生成带指纹的数据集 |
 | `scripts/download_qwen_training_base.py` | 下载官方权重，逐个验证大小和 SHA-256，可继续未完成下载 |
 | `scripts/train_qwen_topic.py` | GPU 检查、训练前诊断、实际参数更新、保存适配器和训练后诊断 |
 | `scripts/verify_qwen_training.py` | 检查保存参数、文件指纹和真实更新 |
 | `scripts/predict_qwen_topic.py` | 重新加载保存的适配器，输入一条问题做本地分类 |
+| `tests/test_qwen_training.py` | 数据分组、目标隔离、模型清单与完整性定向检查 |
+
+当前仍保留的历史证据：
+
+| 文件 | 记录内容 |
+| --- | --- |
 | `evidence/qwen-training/preparation.json` | 仓库审计及数据划分记录 |
 | `evidence/qwen-training/run-*.json` | 每次尝试结果，包含阶段、步骤数、失败类型和真实指标 |
 
 原始下载、数据快照、训练集、诊断集和模型适配器均位于 Git 忽略的 `.runtime/training`。训练前后用同一组诊断题，不把诊断问题或答案送入梯度计算。
 
-## 复现操作
+## 历史复现边界
 
-在项目目录运行：
+原安装、下载、训练及分类命令仅保存在提交 `702c00a30d7991d5246e32e1198ed4d5683682c0` 的同名文档中。需要复现时先取得该提交的隔离副本，并另行确认设备、依赖与模型下载条件；不要在当前参赛环境按旧命令安装或恢复已移除文件。本次清理没有重新下载、训练、加载模型或删除 `.runtime/training` 内的私有产物。
 
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/setup_qwen_training.ps1
-.runtime/training/.venv/Scripts/python.exe scripts/train_qwen_topic.py --preflight
-.venv/Scripts/python.exe scripts/download_qwen_training_base.py --direct-network
-.runtime/training/.venv/Scripts/python.exe scripts/train_qwen_topic.py --local-base .runtime/training/base/Qwen3-4B-modelscope
-```
+历史实验每次新建独立结果目录，失败也保存记录；`training_completed=false`、`optimizer_steps=0` 不能解释为已训练。实际优化步数、有限损失、适配参数变化、适配器文件指纹及七题逐题输出仍是核查历史结果的依据，不能由损失或单次分类输出替代。
 
-使用已经完成的适配器进行一次分类：
+## 原后续训练设想（已冻结）
 
-```powershell
-.runtime/training/.venv/Scripts/python.exe scripts/predict_qwen_topic.py --run-id 20261016T141737129121Z --question "身份证换领需要交多少费用？"
-```
-
-本机代理超时时，安装入口可以加 `-DirectNetwork`。它只影响该进程及其子进程，不修改系统代理。下载入口的 `--direct-network` 同理。训练使用已经验证的本地权重，无需外部模型 API，也不上传项目样本。
-
-若选 Hugging Face 来源，训练命令改为 `scripts/train_qwen_topic.py --download`。不带下载选项且未指定本地权重时只读缓存。每次运行新建独立结果目录，失败也保存记录；`training_completed=false`、`optimizer_steps=0` 不能解释为已训练。
-
-训练完成须同时检查实际优化步数、有限损失、适配参数确实改变和适配器文件指纹。七题的逐题输出同时保存，结果可能没有改善；不自动替换当前模型。
-
-## 下一步怎样用真实政务资料训练
+以下为当时的研究设想，现不作为参赛交付待办；优先完成真实多模态业务执行、独立评测与干净环境复现。
 
 1. 从资料维护端导出带原文、网址、原件指纹、修订和定位的片段快照。当前共享目录不能独立还原完整原文。
 2. 修复引用选择接口：模型选择已有片段编号及原文区间，由程序提取引文；禁止凭空编编号或近似修补引用。

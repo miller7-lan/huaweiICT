@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from gov_mcp.successor_update import SuccessorEngine, SERVICE, SOURCE, implementation, load_documents
 from gov_mcp.knowledge.store import KBError, digest
 from gov_mcp.knowledge.worker import Worker
-from gov_mcp.json_output import object_from_json
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from nexent_api import NexentAPI, nonthinking_params
 from private_runtime import ensure_private_directory
 from provision_crossdoc_native_preview import protected_agent, original_signatures, fingerprint, write, read
@@ -290,7 +290,7 @@ class CloudDriver:
             if not receipt or len(final) != 1: raise KBError("NATIVE_PERSISTED_FINAL_MISSING")
             value = final[0]
             if isinstance(value, str): value = object_from_json(value)
-            if value != receipt: raise KBError("NATIVE_FINAL_DIFFERS_FROM_RECEIPT")
+            if not exact_json_equal(value, receipt): raise KBError("NATIVE_FINAL_DIFFERS_FROM_RECEIPT")
             if not native_trace_checks(events, self.saved): raise KBError("NATIVE_CHILD_OR_TOOL_TRACE_FAILED")
             if legacy_signatures(self.api) != self.saved["legacy_signatures"]: raise KBError("LEGACY_AGENT_CHANGED")
             check_drafts(self.api, self.saved)

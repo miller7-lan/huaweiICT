@@ -108,6 +108,36 @@ def test_invalid_gateway_answers_never_pass(mutation):
     assert p.receipts[0]["status"] == "error"
 
 
+@pytest.mark.parametrize("malformed", ["duplicate_noul", "duplicate_metadata", "unused_nan", "overflow", "array"])
+def test_gateway_raw_json_rejects_ambiguous_and_nonfinite_values_without_retry(malformed):
+    def opener(request, timeout):
+        value = reply(json.loads(request.data))
+        raw = json.dumps(value)
+        if malformed == "duplicate_noul":
+            raw = raw.replace('"noul": 0.99', '"noul": 0.01, "noul": 0.99')
+            assert '"noul": 0.01, "noul": 0.99' in raw
+        elif malformed == "duplicate_metadata":
+            raw = raw.replace('"cost": "0.00001"', '"cost": "0.10", "cost": "0.00001"')
+            assert '"cost": "0.10", "cost": "0.00001"' in raw
+        elif malformed == "unused_nan":
+            value["provider_metadata"]["unused"] = [float("nan")]
+            raw = json.dumps(value)
+        elif malformed == "overflow":
+            raw = raw.replace('"generationId": "gen-test"', '"generationId": "gen-test", "unused": [1e999]')
+        else:
+            raw = '[]'
+        return Response(raw.encode())
+    provider = VercelJevProvider("fixture-secret", opener=opener, max_calls=2)
+    for _ in range(2):
+        with pytest.raises(ClassificationError, match="^INVALID_RESPONSE$"):
+            provider.evaluate({}, QUESTIONS, MODEL)
+    assert provider.attempts == 1 and len(provider.receipts) == 1
+    assert provider.receipts[0]["error_code"] == "INVALID_RESPONSE"
+    assert provider.receipts[0]["status"] == "error"
+    assert provider.known_cost == 0
+    assert "fixture-secret" not in str(provider.receipts) and "noul" not in str(provider.receipts)
+
+
 def test_request_and_count_budgets_stop_before_network():
     p = VercelJevProvider("test", opener=fake_opener, max_calls=1)
     with pytest.raises(ClassificationError, match="MODEL_INPUT_TOO_LARGE"): p.evaluate({"text": "字"*6000}, QUESTIONS, MODEL)

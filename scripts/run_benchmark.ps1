@@ -19,7 +19,7 @@ foreach ($ModelName in @('gov-qwen3-4b:ctx8192-v1', 'gov-qwen3-8b:ctx8192-v1')) 
 }
 & $Python scripts/runtime_sandbox.py
 if ($LASTEXITCODE -ne 0) { throw 'Runtime sandbox recovery failed; no benchmark login was attempted.' }
-& $Python scripts/check_native_ready.py
+& $Python scripts/check_native_ready.py --require-local-models
 if ($LASTEXITCODE -ne 0) { throw 'Native services are not ready; no benchmark login was attempted.' }
 if ($WarmupOnly) {
     Write-Output 'Authorized native warmups: sign in with isolated test accounts, publish model versions, and run two warmups only. Pause web conversations until completion.'

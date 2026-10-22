@@ -11,6 +11,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from gov_mcp.public_preview import Preview, PreviewError, read, write, source_digest, fingerprint
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from nexent_api import NexentAPI
 from provision_public_native_preview import NAMES, FIRST, PROTOCOL, original_signatures, check_owned_draft
 
@@ -35,9 +36,11 @@ def assess(events, preview, run_id):
     try:
         if len(finals) != 1:
             raise ValueError()
-        answer = json.loads(finals[0]) if isinstance(finals[0], str) else finals[0]
+        answer = object_from_json(finals[0]) if isinstance(finals[0], str) else finals[0]
         task = preview.get_task(answer["task_id"])
-        if task["run_id"] != run_id or task["status"] != "complete" or task["answer"] != answer or preview.finalize(task["task_id"]) != answer:
+        if (task["run_id"] != run_id or task["status"] != "complete"
+                or not exact_json_equal(task["answer"], answer)
+                or not exact_json_equal(preview.finalize(task["task_id"]), answer)):
             errors.append("PERSISTED_RESULT_MISMATCH")
         if (answer["mode"] != "public_preview" or answer["published"] is not False or answer["formal_approval"] is not False
                 or not any(f["status"] == "source_supported" and f["citation"]["quote"] for f in answer["source_facts"])
@@ -51,7 +54,7 @@ def assess(events, preview, run_id):
                 or receipts[0].get("served_model") != "jev-1.13.0" or not record["result"].get("english_input")
                 or len(record["translation_receipts"]) != 1 or record["translation_receipts"][0].get("translation_calls") != 1):
             errors.append("ACTUAL_JEV_TRANSLATION_RECEIPT_MISSING")
-    except (ValueError, KeyError, TypeError, IndexError, OSError):
+    except (ValueError, KeyError, TypeError, IndexError, OSError, RecursionError):
         errors.append("STRUCTURED_PROGRAM_RESULT_MISSING")
     return {"passed": not errors, "stop_reasons": errors, "actual_tools": actual, "answer": answer if not errors else None}
 
@@ -96,7 +99,7 @@ def main():
                 if size > 2*1024**2 or time.perf_counter() - start > 120:
                     raise PreviewError("NATIVE_RUN_BOUND_EXCEEDED")
                 if line.startswith("data:") and line[5:].strip():
-                    event = json.loads(line[5:].strip())
+                    event = object_from_json(line[5:].strip())
                     if isinstance(event, dict):
                         events.append(event)
         report.update(assess(events, preview, run_id))
