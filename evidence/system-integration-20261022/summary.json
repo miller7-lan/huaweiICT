@@ -1,0 +1,751 @@
+{
+  "started_at": "2026-10-22T06:31:31.747548+00:00",
+  "status": "PASSED",
+  "before": {
+    "safe_to_recover": true,
+    "paused": true,
+    "heartbeat_at": 1792650665.0135705,
+    "heartbeat_age_seconds": 26.73397731781006,
+    "heartbeat_fresh": true,
+    "head": "3a9e25903f91f54ab95b504711ec6b05c8b8281a15be03d49637f1da28806bf8",
+    "version_count": 2,
+    "model_calls": 0
+  },
+  "protected_before_sha256": {
+    ".runtime/ontology-crossdoc-native-20261021/crossdoc.sqlite3": "23904fa7a222174a80ce815f203af7eff42a7302c9301a0ad11443bc36f9f10a",
+    ".runtime/ontology-crossdoc-native-20261021/access.json": "004532e8e2a8d103d9eca76327ade4b08672302b9efa7db668b4f067f30a528b",
+    ".runtime/ontology-crossdoc-native-20261021/native-drafts.json": "4313c76fd781737ca442845488b6a3ed88669172e49b7e600124fbb124d7fcb8",
+    ".runtime/ontology-crossdoc-native-20261021/ontology-binding.json": "bcd6d1910904d7428a52166a73c353012885775d52bed6b8ee98c52855aa1c53",
+    ".runtime/ontology-crossdoc-20261020/ontology/knowledge.sqlite3": "e12bfd84c8f66f5e8da01ab12d1ac23989f542ea9e9685ab839a78fa3b1b94af",
+    ".runtime/ontology-crossdoc-20261020/ontology/ontology-workspace.json": "3f5cfe58d0590eb513b4b73480908be73c6220eef830da229fb56a14db8ff1a6",
+    "config/decision/connections.json": "c08e4c4b3999fe6354f399cf5fc1f2643c629212f4352a24f11138b24536981e",
+    "evidence/json-stability-20261021/core-probes.json": "dd49371ed08083e5a952ba499a114d8cd8330a185c6df6d047270b920908e04c",
+    "evidence/json-stability-20261021/core-probes.py": "dbf87ddc0876507e240a71670b1812a92c1c668df9bc88cc28ac6b54342bb4c3",
+    "evidence/json-stability-20261021/native-probes.json": "613bb179a3653d69edf19224c6e3efd34546240bb1c6ae748767089e9e73f1e3",
+    "evidence/json-stability-20261021/native-probes.py": "9c0355e86360a48d3ddc56e8a319cfb3beefa17f0afd3bdb53731f36f8b81bdc",
+    "evidence/json-stability-20261021/summary.json": "387e6d2df2e155f82074f0f141ee0c6d45199d23ac482a7c6a80f129bd2c5f90",
+    "evidence/json-stability-20261021/targeted-checks.xml": "c3a7afa2d664523a800864c605b0d212592a30fdb72d00671d32d523a903cb29",
+    "evidence/json-stability-repair-20261021/deepseek-before.xml": "ab9db625e2e21bdf3604107fdeb41da6e3677a4e61fdbc13e86b66c238cf098d",
+    "evidence/json-stability-repair-20261021/deepseek-checks.xml": "fd2ea5d496c1df8a22144abfd2e00a27b444209e477af0bbd6dc745ff83358be",
+    "evidence/json-stability-repair-20261021/jev-checks-final.xml": "012283a21d5ac309a19e4190dedc12be05d9b7fe5a2947fec37708d27a59d06e",
+    "evidence/json-stability-repair-20261021/jev-checks.xml": "ecc54ef5f28ed0891989a8c2b9e698629393d3556f7d2a8b02123443be2d99e2",
+    "evidence/json-stability-repair-20261021/jev-copy-before.xml": "43aabc15e0d00beb754e4c2e00282ce35cffe8b895d0f343295a7ed8e022c6bd",
+    "evidence/json-stability-repair-20261021/native-checks.xml": "06948ecce04e53fb9625e72a7fef639adaa0511a442147be95106db4079b71ab",
+    "evidence/json-stability-repair-20261021/native-final-parsing-checks.xml": "69f7e7d877d0b1f069ad36f5f181e902cc8326dca203d158cc3baffd8e9f8a77",
+    "evidence/json-stability-repair-20261021/native-replay-final.json": "f16d471a192742d3b1ecc0b6f85e73eee641e7d6b67953009da65c7bacc930fa",
+    "evidence/json-stability-repair-20261021/native-replay-final.py": "88ab3f1f1435805b753620f3c3791746333c1a02bd235110f8d48cdc966fd0c1",
+    "evidence/json-stability-repair-20261021/native-replay.json": "0eeddc5c747df367dc6e741705d2ab2e537e6acda2007e5a2cf348d3c8774f75",
+    "evidence/json-stability-repair-20261021/native-replay.py": "88ab3f1f1435805b753620f3c3791746333c1a02bd235110f8d48cdc966fd0c1",
+    "evidence/json-stability-repair-20261021/summary.json": "b51aed0239fe3d1fa79e58632b155e2671926bb75664d427cb63e0c9c48cdc70",
+    "evidence/json-stability-repair-20261021/targeted-checks-final.xml": "feef7bde950f6f1f44a60d96127153d0fe97d668ab369ce212a0e8379fcfa0be"
+  },
+  "passed": true,
+  "new_native_runs_max": 1,
+  "old_budgets_reset": false,
+  "scope": "Read-only system checks, isolated synthetic lifecycle, and one real native Nanjing chain.",
+  "not_covered": [
+    "Pending new Henan multimodal structure activation",
+    "Independent business evaluation",
+    "Clean-machine import",
+    "Long-running real-model compliance"
+  ],
+  "global_inference_enabled": false,
+  "business_published": false,
+  "platform_ready": {
+    "config": true,
+    "runtime": true,
+    "mcp": true,
+    "ui": true,
+    "runtime_sandbox": true,
+    "runtime_error_overlay": true
+  },
+  "system_before": {
+    "checked_at": "2026-10-22T06:31:32.267509+00:00",
+    "inspection_only": true,
+    "model_requests": 0,
+    "tasks_changed": false,
+    "runtimes": {
+      "agent-workflow": {
+        "exists": true,
+        "wf_control": {
+          "heartbeat_at": 1792650665.0135705,
+          "interval": 3600,
+          "paused": true,
+          "age_seconds": 27.25
+        },
+        "source_count": 1,
+        "heartbeat_errors_last_hour": 0
+      },
+      "knowledge": {
+        "exists": true,
+        "heartbeat": {
+          "at": 1792650678.9377847,
+          "status": "waiting_sources",
+          "age_seconds": 13.33
+        },
+        "paused": false,
+        "config_enabled": true,
+        "heartbeat_seconds": 30,
+        "check_interval_seconds": 3600,
+        "demo_mode": false,
+        "configured_source_count": 0
+      },
+      "knowledge-demo": {
+        "exists": true,
+        "heartbeat": {
+          "at": 1792650678.9380555,
+          "status": "idle",
+          "age_seconds": 13.33
+        },
+        "paused": true,
+        "config_enabled": true,
+        "heartbeat_seconds": 30,
+        "check_interval_seconds": 3600,
+        "demo_mode": true,
+        "configured_source_count": 1
+      },
+      "official-source-watch": {
+        "exists": true,
+        "mode": "observation_only",
+        "sources": [
+          {
+            "id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "next_check": 1792657437.8159163,
+            "last_success": 1792579596.5174744,
+            "paused": true
+          }
+        ],
+        "counts": {
+          "documents": 1,
+          "revisions": 1,
+          "versions": 0,
+          "heads": 0
+        },
+        "heartbeat_age_seconds": 172.91,
+        "automatic_publication": false,
+        "model_dispatch_enabled": false
+      }
+    },
+    "ports": {
+      "8772": false,
+      "8773": false,
+      "8775": true,
+      "8778": true,
+      "8780": true,
+      "8781": false
+    },
+    "windows_recovery": {
+      "tasks": [
+        {
+          "enabled": true,
+          "name": "HuaweiICT-AgentWorkflow-D6F1A1FCF53B8781",
+          "state": "Ready"
+        }
+      ]
+    },
+    "docker_recovery": [
+      {
+        "name": "/govkb-maintenance",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "name": "/govkb-demo",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "health": null
+      }
+    ],
+    "demo_uses_synthetic_replay": true,
+    "public_preview": {
+      "timer_registered": false,
+      "native_runs": 1,
+      "jev_reserved": 1,
+      "campaign_passed_and_stopped": true
+    }
+  },
+  "synthetic_engineering": {
+    "run_id": "20261022T063136803566Z",
+    "mode": "synthetic_engineering_only",
+    "actual_remote_model_calls": 0,
+    "real_site_collection_verified": false,
+    "real_jev_accuracy_verified": false,
+    "new_nexent_workflow_verified": false,
+    "passed": 21,
+    "total": 21,
+    "checks": [
+      {
+        "name": "初始来源为空且 API 保持留空",
+        "passed": true
+      },
+      {
+        "name": "无正文变化不执行模型角色或创建版本",
+        "passed": true
+      },
+      {
+        "name": "未知电子资格不默认要求纸质表",
+        "passed": true
+      },
+      {
+        "name": "一次取齐已知依据后独立核验，不固定拆轮",
+        "passed": true
+      },
+      {
+        "name": "依据持续缺失时最多三轮，不产生确定要求",
+        "passed": true
+      },
+      {
+        "name": "Jev 合同回放与实际模型明确区分",
+        "passed": true
+      },
+      {
+        "name": "更新主控、整理、核验子角色均调用程序工具",
+        "passed": true
+      },
+      {
+        "name": "新原文及本地稀疏向量自动可检索",
+        "passed": true
+      },
+      {
+        "name": "未经复核业务知识没有生效",
+        "passed": true
+      },
+      {
+        "name": "变更发现即暂停关联要求，其余继续服务",
+        "passed": true
+      },
+      {
+        "name": "未经发布的新原文仅在候选依据区展示",
+        "passed": true
+      },
+      {
+        "name": "未指定截止时间不是逾期",
+        "passed": true
+      },
+      {
+        "name": "人工指定截止时间，逾期不解除暂停",
+        "passed": true
+      },
+      {
+        "name": "分组发布依赖完整项，保留其他冲突",
+        "passed": true
+      },
+      {
+        "name": "确认新要求后才恢复对应服务",
+        "passed": true
+      },
+      {
+        "name": "同义与本体建议需要确认且不扩大执行器权限",
+        "passed": true
+      },
+      {
+        "name": "历史答案不改写，叠加当前可用性",
+        "passed": true
+      },
+      {
+        "name": "回退保留历史与当前冲突控制",
+        "passed": true
+      },
+      {
+        "name": "来源失效明确失败且保留旧版本",
+        "passed": true
+      },
+      {
+        "name": "重启保留任务、版本、暂停和审计",
+        "passed": true
+      },
+      {
+        "name": "核对与发布分别留存记录",
+        "passed": true
+      }
+    ],
+    "elapsed_seconds": 0.335,
+    "source_sha256": {
+      "src/gov_mcp/decision/__init__.py": "ba3088be2648931059ab618aa11a53b9c38d01026898418bb3d5a3c3535431e9",
+      "src/gov_mcp/decision/adapters.py": "08dbf7d19bb4b5aadac6a29f8018a140382ad7f33ad93ff5b1cd7d206cc704fc",
+      "src/gov_mcp/decision/connections.py": "037ed10cd0f659951a889731a03299f11306edd8fda0e1cd0a04f8886fa98145",
+      "src/gov_mcp/decision/intake.py": "0336d95bf67ee55463d596a512bf90121cffb7113e7ddbd837298cb93c5b31b8",
+      "src/gov_mcp/decision/logic.py": "36f17d740c1e4b658927830c42a023a43424affbb60a50ffe3d967c14ced57ab",
+      "src/gov_mcp/decision/models.py": "39a6f1b7b2d4b3b32f2bd9db610bfaaeee68832fbed5a081d49cd961b9096024",
+      "src/gov_mcp/decision/output_contracts.py": "0f778aca484923be14070511ffd99d2055acf839310cc5a255a0e0f84a5652ab",
+      "src/gov_mcp/decision/server.py": "8a1459b94bf851ee8ac5bfa558e8aed7925b07f2e71e6e2599bf6e3be02fc1b9",
+      "src/gov_mcp/decision/service.py": "fcb8dd78314bfddf60dd1528b3891ee8048e3c4ea921753c375403238f258cf4",
+      "src/gov_mcp/decision/workflow.py": "187ddba655bd5e3a7e8bfffa09c87692d529e479cb835bde89ee1c54252e74f7",
+      "src/gov_mcp/decision/workbench.html": "61d6666f2ed5c69d37ff10dde5501d2132273e199b17e41e32bce99072ef31e8",
+      "config/decision/workflow-source.json": "34a0cf9dbf62fd4187766417c0e2d101f980be6ec77bfb64373d3e8344617c56",
+      "config/decision/providers.template.json": "d9747c289d2e098b4d82fce9614e4430997ae74264981f24633f6fb05375ab9c",
+      "scripts/verify_agent_workflow.py": "07770e60192555df27692771ddd4d41567cb5b965ab996ee386ea6bea714c94b"
+    }
+  },
+  "preparation": {
+    "prepared_at": "2026-10-22T06:31:37.730309+00:00",
+    "status": "PREPARED_ROLLED_BACK_AWAITING_NATIVE_AUTHORIZATION",
+    "port": 8785,
+    "service": "govkb_ontology_crossdoc_preview",
+    "campaign": {
+      "native_runs": 0,
+      "max_native_runs": 1,
+      "tasks": 0,
+      "run_status": null,
+      "jev_calls": 0,
+      "translation_calls": 0
+    },
+    "candidate_id": "bf7d3d08b1ac25e832a2902d4fa8dc60dd4f2456c7adca612992a014150c9640",
+    "baseline": "1ca18aa9d0a9e85032b633bb11e0b4dcfe4aef40518c46a1b4c238fe8a7b0933",
+    "reviewed_version": "48f05b634313aec6c18d781681c001b1dc2a08bfaf955055e938cbb667d63755",
+    "archive_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+    "current_ontology_head": "1ca18aa9d0a9e85032b633bb11e0b4dcfe4aef40518c46a1b4c238fe8a7b0933",
+    "ontology_activated": false,
+    "confirmation_record": "evidence/ontology-crossdoc-20261020/structural-confirmation-20261021.json",
+    "model_calls": 0,
+    "http_calls": 0,
+    "old_budget_reset": false,
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "formally_published": false,
+    "native_execution_complete": false
+  },
+  "official_model_binding_checked": true,
+  "native": {
+    "status": "PASSED",
+    "native_run_budget": 1,
+    "controller_max_steps": 6,
+    "child_max_steps_each": 3,
+    "protocol_format_repairs_per_step_max": 2,
+    "observed_model_start_stop_threshold": 14,
+    "max_output_tokens_per_step": 1024,
+    "whole_run_retries": 0,
+    "cost_amount": null,
+    "usage_note": "Native steps and observed starts are not a provider invoice or a hard monetary cap.",
+    "source_scope": "Two archived public Nanjing documents and fixed fictional facts only.",
+    "required": "Separate current human authorization for one paid native run; --live --confirmed --reviewer NAME.",
+    "model_calls": null,
+    "http_calls": null,
+    "formally_published": false,
+    "recorded_at": "20261022T063144440264Z",
+    "human_authorization": {
+      "actor": {
+        "kind": "human",
+        "name": "user-confirmed-single-system-invocation"
+      },
+      "scope": "one_native_run_activate_then_rollback"
+    },
+    "source_sha256": {
+      "ontology_crossdoc_preview.py": "a160411ef2cd9a449db1b469573007198c4d870ceaaa809e5f4ada3f1d20d47c",
+      "ontology_crossdoc_preview_server.py": "eb22662cc702ed16063d8e889e1d9038f063c2ca077fc29722d28ab7eccdac21",
+      "crossdoc_preview.py": "be2b5ab7b03e4e69d87787b477b957596685941bc8759a1189d58bc19a799ec3",
+      "crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+      "ontology_crossdoc.py": "0774556e6a4487105763867ca88121be27cb138a0b3a7705a5cf429d84334085",
+      "ontology_evolution.py": "60f9b2101407050cf32fcc288775c3333dbb9cfde0a808ca305c9231b83930b4",
+      "ontology_seed.py": "9568d474f983ee86c601c2ff246ae702d529fdc970344734d1432adc4c497d34",
+      "scripts/prepare_ontology_crossdoc_native.py": "05e283c0cb406e20aa820ce19f23f376dd48811ceb4055a4bbe10944e077985b",
+      "scripts/provision_ontology_crossdoc_native.py": "6f53be5b1a8d374da8d6acf4d1fbf19b75bc721eaedcc13814a7ea2620f3cb1c",
+      "scripts/verify_ontology_crossdoc_native.py": "54ff91eae67256ea445690f0fd256a2ee6bc0c6a143dff0fcb3381355357efeb",
+      "scripts/check_successor_autonomy_cloud.py": "07e06a2a71f829320b6216fc42314d56d900598f3761eae9ad1ffbdbeb710d34",
+      "scripts/verify_crossdoc_native_preview.py": "16a4cfdf740b397d62436e2d2194d41064f5c069b0b4e18bccaeb69320754248",
+      "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+      "scripts/nexent_api.py": "47de812ed193aac683790dd237c3fe99b5f7377a5293b10ea21ed14637e78d78",
+      "config/skills/govkb-ontology-crossdoc-preview/SKILL.md": "503e9e64d14903a211cc4b0c7e95449f429490ea9b6d09f2438c8bf319649851"
+    },
+    "passed": true,
+    "native_run_requests": 1,
+    "run_id": "3dd0f34696c04cfaa5af029c802276b7",
+    "ontology_context": {
+      "profile": "nanjing-archive-interval-plan-v1",
+      "version": "48f05b634313aec6c18d781681c001b1dc2a08bfaf955055e938cbb667d63755",
+      "candidate_id": "bf7d3d08b1ac25e832a2902d4fa8dc60dd4f2456c7adca612992a014150c9640",
+      "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+      "implementation": "abc4783c376b5de673312990778ee55604c09fc4983f8a42e3b1230b6320617e",
+      "binding": "fc422e75f958e8b63b82d0c7635ddacb3bd121a1b02aae8ca44b70daf984200f"
+    },
+    "request_sha256": "6f855cafc872721d5af41f9fa2e758b6a4d619c281eb83fe643ab251330dada5",
+    "checks": {
+      "exact_ordered_stages": true,
+      "no_extra_tools": true,
+      "one_call_per_stage": true,
+      "two_children": true,
+      "child_invocation_bindings": true,
+      "stage_depths": true,
+      "no_native_errors": true,
+      "observed_model_budget": true,
+      "persisted_answer": true,
+      "reviewed_plan_executed": true,
+      "typed_dependent_trace": true,
+      "paused_business": true,
+      "final_after_tool": true
+    },
+    "answer": {
+      "task_id": "eefec0f3350a4f5290187fa520e16bb3",
+      "mode": "reviewed_ontology_crossdoc_archived_preview",
+      "published": false,
+      "formal_approval": false,
+      "source_binding": "9170bd9225fed8c98aa64f94354991fef00212d2edeec248a378acb07809d3de",
+      "archive_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+      "ontology_context": {
+        "profile": "nanjing-archive-interval-plan-v1",
+        "version": "48f05b634313aec6c18d781681c001b1dc2a08bfaf955055e938cbb667d63755",
+        "candidate_id": "bf7d3d08b1ac25e832a2902d4fa8dc60dd4f2456c7adca612992a014150c9640",
+        "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+        "implementation": "abc4783c376b5de673312990778ee55604c09fc4983f8a42e3b1230b6320617e",
+        "binding": "fc422e75f958e8b63b82d0c7635ddacb3bd121a1b02aae8ca44b70daf984200f"
+      },
+      "verification_method": "reviewed_ontology_plan_execution",
+      "reasoning": {
+        "schema_version": 1,
+        "status": "derived",
+        "conclusion": "cannot_establish_full_cycle_coverage",
+        "reason": "REVIEWED_ONTOLOGY_PLAN_EXECUTED",
+        "facts": {
+          "region": "南京市",
+          "matter": "resident-id-renewal",
+          "household": "outside_province",
+          "remaining_validity_working_days": 22,
+          "normalized_same_start_and_unit": true,
+          "lost_or_reported": false,
+          "exam_expedited": false
+        },
+        "trace": [
+          {
+            "depends_on": [],
+            "id": "c1",
+            "operator": "household_waiting",
+            "output_type": "WorkingDayDuration",
+            "parameters": {
+              "base": 20,
+              "outside_increment": 5
+            },
+            "source_key": "cycle",
+            "inputs": {
+              "household": "outside_province",
+              "base": 20,
+              "outside_increment": 5
+            },
+            "output": 25,
+            "evidence": [
+              {
+                "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+                "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+                "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+                "region": "南京市",
+                "matter": "resident-id-renewal",
+                "locator": "正文段落1",
+                "quote": "问：身份证到期后换证，需要多长时间才能领取新证？",
+                "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+              },
+              {
+                "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+                "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+                "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+                "region": "南京市",
+                "matter": "resident-id-renewal",
+                "locator": "正文段落2",
+                "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+                "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+              },
+              {
+                "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+                "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+                "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+                "region": "南京市",
+                "matter": "resident-id-renewal",
+                "locator": "正文段落3",
+                "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+                "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+              }
+            ],
+            "ontology_context_binding": "fc422e75f958e8b63b82d0c7635ddacb3bd121a1b02aae8ca44b70daf984200f"
+          },
+          {
+            "depends_on": [
+              "c1"
+            ],
+            "id": "u1",
+            "operator": "intersect_unexpired",
+            "output_type": "WorkingDayDuration",
+            "parameters": {},
+            "source_key": "old_card",
+            "inputs": {
+              "waiting": 25,
+              "remaining_validity_working_days": 22
+            },
+            "output": 22,
+            "evidence": [
+              {
+                "source_id": "NJ-ID-OLD-CARD-2025",
+                "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+                "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+                "region": "南京市",
+                "matter": "resident-id-renewal-old-card-use",
+                "locator": "正文段落1",
+                "quote": "问：申请换领居民身份证期间，旧身份证还能用吗？",
+                "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+              },
+              {
+                "source_id": "NJ-ID-OLD-CARD-2025",
+                "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+                "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+                "region": "南京市",
+                "matter": "resident-id-renewal-old-card-use",
+                "locator": "正文段落2",
+                "quote": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+                "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+              }
+            ],
+            "ontology_context_binding": "fc422e75f958e8b63b82d0c7635ddacb3bd121a1b02aae8ca44b70daf984200f"
+          },
+          {
+            "depends_on": [
+              "c1",
+              "u1"
+            ],
+            "id": "j1",
+            "operator": "compare_coverage",
+            "output_type": "ThreeValueCoverage",
+            "parameters": {},
+            "source_key": "both",
+            "inputs": {
+              "waiting": 25,
+              "usable": 22
+            },
+            "output": "false",
+            "evidence": [
+              {
+                "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+                "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+                "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+                "region": "南京市",
+                "matter": "resident-id-renewal",
+                "locator": "正文段落1",
+                "quote": "问：身份证到期后换证，需要多长时间才能领取新证？",
+                "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+              },
+              {
+                "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+                "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+                "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+                "region": "南京市",
+                "matter": "resident-id-renewal",
+                "locator": "正文段落2",
+                "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+                "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+              },
+              {
+                "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+                "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+                "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+                "region": "南京市",
+                "matter": "resident-id-renewal",
+                "locator": "正文段落3",
+                "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+                "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+              },
+              {
+                "source_id": "NJ-ID-OLD-CARD-2025",
+                "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+                "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+                "region": "南京市",
+                "matter": "resident-id-renewal-old-card-use",
+                "locator": "正文段落1",
+                "quote": "问：申请换领居民身份证期间，旧身份证还能用吗？",
+                "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+              },
+              {
+                "source_id": "NJ-ID-OLD-CARD-2025",
+                "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+                "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+                "region": "南京市",
+                "matter": "resident-id-renewal-old-card-use",
+                "locator": "正文段落2",
+                "quote": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+                "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+              }
+            ],
+            "ontology_context_binding": "fc422e75f958e8b63b82d0c7635ddacb3bd121a1b02aae8ca44b70daf984200f"
+          }
+        ],
+        "scope_mapping": {
+          "region": "南京市",
+          "from_matter": "resident-id-renewal-old-card-use",
+          "to_matter": "resident-id-renewal",
+          "approved_for": "engineering_fixed_preview_only",
+          "formal_approval": false
+        },
+        "archive_mode": "frozen_historical_archive_not_current_policy",
+        "current_applicability": "unknown",
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "formally_published": false,
+        "formal_approval": false,
+        "actual_issuance_date": null,
+        "actual_gap_days": null,
+        "version": "48f05b634313aec6c18d781681c001b1dc2a08bfaf955055e938cbb667d63755",
+        "source_conditions_result": "false",
+        "usual_waiting_working_days": 25,
+        "old_card_interval_working_days": 22,
+        "ontology_context": {
+          "profile": "nanjing-archive-interval-plan-v1",
+          "version": "48f05b634313aec6c18d781681c001b1dc2a08bfaf955055e938cbb667d63755",
+          "candidate_id": "bf7d3d08b1ac25e832a2902d4fa8dc60dd4f2456c7adca612992a014150c9640",
+          "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+          "implementation": "abc4783c376b5de673312990778ee55604c09fc4983f8a42e3b1230b6320617e",
+          "binding": "fc422e75f958e8b63b82d0c7635ddacb3bd121a1b02aae8ca44b70daf984200f"
+        }
+      }
+    },
+    "actual_tools": [
+      "read_skill_md",
+      "govkb_ontology_crossdoc_open_query",
+      "govkb_ontology_crossdoc_retrieve",
+      "final_answer",
+      "govkb_ontology_crossdoc_verify",
+      "final_answer",
+      "govkb_ontology_crossdoc_state",
+      "govkb_ontology_crossdoc_finalize",
+      "final_answer"
+    ],
+    "observed_model_starts": 7,
+    "campaign": {
+      "native_runs": 1,
+      "max_native_runs": 1,
+      "tasks": 1,
+      "run_status": "passed",
+      "jev_calls": 0,
+      "translation_calls": 0
+    },
+    "ontology_head": "1ca18aa9d0a9e85032b633bb11e0b4dcfe4aef40518c46a1b4c238fe8a7b0933",
+    "rolled_back": true,
+    "duration_ms": 14578.0,
+    "event_types": {
+      "other": 1,
+      "agent_new_run": 4,
+      "step_count": 7,
+      "model_attempt_control": 14,
+      "model_output_thinking": 317,
+      "parse": 7,
+      "tool": 9,
+      "execution_logs": 7,
+      "token_count": 5,
+      "subagent_start": 2,
+      "agent_finish": 2,
+      "subagent_end": 2,
+      "final_answer": 1
+    },
+    "trace": {
+      "tools": [
+        {
+          "event_index": 62,
+          "name": "read_skill_md",
+          "depth": 0
+        },
+        {
+          "event_index": 63,
+          "name": "govkb_ontology_crossdoc_open_query",
+          "depth": 0
+        },
+        {
+          "event_index": 166,
+          "name": "govkb_ontology_crossdoc_retrieve",
+          "depth": 1
+        },
+        {
+          "event_index": 167,
+          "name": "final_answer",
+          "depth": 1
+        },
+        {
+          "event_index": 270,
+          "name": "govkb_ontology_crossdoc_verify",
+          "depth": 1
+        },
+        {
+          "event_index": 271,
+          "name": "final_answer",
+          "depth": 1
+        },
+        {
+          "event_index": 322,
+          "name": "govkb_ontology_crossdoc_state",
+          "depth": 0
+        },
+        {
+          "event_index": 373,
+          "name": "govkb_ontology_crossdoc_finalize",
+          "depth": 0
+        },
+        {
+          "event_index": 374,
+          "name": "final_answer",
+          "depth": 0
+        }
+      ],
+      "child_starts": 2,
+      "observed_usage_steps": [
+        {
+          "step_number": 1,
+          "step_input_tokens": 7205,
+          "step_output_tokens": 56,
+          "output_finish_reason": "stop",
+          "compression_calls": 0,
+          "depth": 0
+        },
+        {
+          "step_number": 2,
+          "step_input_tokens": 7503,
+          "step_output_tokens": 48,
+          "output_finish_reason": "stop",
+          "compression_calls": 0,
+          "depth": 0
+        },
+        {
+          "step_number": 3,
+          "step_input_tokens": 8319,
+          "step_output_tokens": 46,
+          "output_finish_reason": "stop",
+          "compression_calls": 0,
+          "depth": 0
+        },
+        {
+          "step_number": 4,
+          "step_input_tokens": 9113,
+          "step_output_tokens": 42,
+          "output_finish_reason": "stop",
+          "compression_calls": 0,
+          "depth": 0
+        },
+        {
+          "step_number": 5,
+          "step_input_tokens": 9308,
+          "step_output_tokens": 45,
+          "output_finish_reason": "stop",
+          "compression_calls": 0,
+          "depth": 0
+        }
+      ],
+      "usage_scope": "Observed native token_count events; child model usage may be missing, not total model cost"
+    },
+    "private_events_sha256": "9d99459ac337d31ee25c364c52b09de302a8cc7ecb23827bb55d1d2febf39ea5"
+  },
+  "owned_helper_stopped": true,
+  "final_campaign": {
+    "native_runs": 1,
+    "max_native_runs": 1,
+    "tasks": 1,
+    "run_status": "passed",
+    "jev_calls": 0,
+    "translation_calls": 0
+  },
+  "isolated_ontology_rolled_back": true,
+  "after": {
+    "safe_to_recover": true,
+    "paused": true,
+    "heartbeat_at": 1792650695.0161934,
+    "heartbeat_age_seconds": 24.01038885116577,
+    "heartbeat_fresh": true,
+    "head": "3a9e25903f91f54ab95b504711ec6b05c8b8281a15be03d49637f1da28806bf8",
+    "version_count": 2,
+    "model_calls": 0
+  },
+  "protected_inputs_unchanged": true,
+  "workflow_head_and_versions_unchanged": true,
+  "ended_at": "2026-10-22T06:31:59.029783+00:00",
+  "executed_wrapper_sha256": "87af603a8ce1579196326e9f7606066597318ba33e08231ddc5d124dd051364c"
+}

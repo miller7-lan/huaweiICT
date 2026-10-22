@@ -1,0 +1,1457 @@
+{
+  "mode": "synthetic_engineering_only",
+  "real_policy_advice": false,
+  "model_calls": 0,
+  "task_id": "339aabf2163d4e498cd6ff2ad1a32fbe",
+  "snapshot_sha256": "7b0dff53eda94b9d3037f1f15df699aa2b53f5c3bf3235b6a49132864fca1bf6",
+  "versions": {
+    "documents": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+    "knowledge": "knowledge-da5a813c17114de7b29e878364cd1ed5",
+    "ontology": "demo-ontology-v1"
+  },
+  "availability_epoch": 3,
+  "matter": {
+    "id": "matter-demo-pass",
+    "label": "模拟通行卡到期换领",
+    "region_id": "demo-city"
+  },
+  "branch_id": "branch-adult-self",
+  "status": "partial",
+  "next_branches": [],
+  "branch_result": "true",
+  "region_id": "demo-city",
+  "as_of": "2026-10-17",
+  "stages": [
+    {
+      "stage_id": "application",
+      "label": "申请",
+      "items": [
+        {
+          "requirement_id": "req-paper",
+          "material_id": "material-paper",
+          "material": "模拟纸质申请表",
+          "action": "提交",
+          "stage_id": "application",
+          "branch_id": "branch-adult-self",
+          "result": "true",
+          "reason": "STRUCTURED_RULE_EVALUATED",
+          "review_status": "confirmed",
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "result": "true",
+              "trace": {
+                "op": "eq",
+                "field": "reason",
+                "expected": "expiry",
+                "observed": "expiry",
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            },
+            {
+              "condition_id": "cond-adult",
+              "result": "true",
+              "trace": {
+                "op": "all",
+                "children": [
+                  {
+                    "op": "eq",
+                    "field": "age_group",
+                    "expected": "adult",
+                    "observed": "adult",
+                    "result": "true"
+                  },
+                  {
+                    "op": "eq",
+                    "field": "self_service",
+                    "expected": true,
+                    "observed": true,
+                    "result": "true"
+                  }
+                ],
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            },
+            {
+              "condition_id": "cond-paper",
+              "result": "true",
+              "trace": {
+                "op": "not",
+                "children": [
+                  {
+                    "op": "eq",
+                    "field": "electronic_verified",
+                    "expected": true,
+                    "observed": false,
+                    "result": "false"
+                  }
+                ],
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            }
+          ],
+          "applicability": {
+            "id": "scope-main",
+            "result": "true",
+            "reason": "CONFIRMED_APPLICABILITY",
+            "region_id": "demo-city",
+            "as_of": "2026-10-17"
+          },
+          "missing_fields": [],
+          "dependency_ids": [
+            "application",
+            "asset-core",
+            "asset-exception",
+            "branch-adult-self",
+            "branch-expiry",
+            "clause-main",
+            "cond-adult",
+            "cond-expiry",
+            "cond-paper",
+            "ev-adult",
+            "ev-paper",
+            "ev-reason",
+            "ev-scope",
+            "ev-substitution",
+            "ev-substitution-unknown",
+            "material-paper",
+            "matter-demo-pass",
+            "req-paper",
+            "scope-main"
+          ],
+          "evidence": [
+            {
+              "id": "ev-adult",
+              "asset_id": "asset-core",
+              "start": 41,
+              "end": 61,
+              "quote": "成年本人到期换领可进入成年本人演练分支。",
+              "locator": "模拟文本第3行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-paper",
+              "asset_id": "asset-core",
+              "start": 91,
+              "end": 113,
+              "quote": "成年本人演练分支内，申请时需提交模拟申请表。",
+              "locator": "模拟文本第5行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-reason",
+              "asset_id": "asset-core",
+              "start": 18,
+              "end": 40,
+              "quote": "模拟市通行卡到期换领分为申请和领取两个环节。",
+              "locator": "模拟文本第2行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-scope",
+              "asset_id": "asset-core",
+              "start": 205,
+              "end": 251,
+              "quote": "本模拟规则仅供模拟市演练，时间区间为2026-01-01至2027-01-01（不含后者）。",
+              "locator": "模拟文本第10行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-substitution",
+              "asset_id": "asset-exception",
+              "start": 18,
+              "end": 60,
+              "quote": "成年本人演练分支中，可验证的模拟电子申请表替代模拟纸质申请表；无法验证时仍需纸质表。",
+              "locator": "模拟文本第2行",
+              "source_url": "synthetic://gov-demo/exception",
+              "asset_sha256": "f8730073436dab4e02cb17d1cfd633793e2c007b36db55790e461e84eeca5ab1",
+              "asset_revision": "rev-exception-v1",
+              "asset_title": "模拟通行卡资料-exception",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-substitution-unknown",
+              "asset_id": "asset-exception",
+              "start": 61,
+              "end": 87,
+              "quote": "电子表是否可验证不清楚时，不得推定有或没有替代资格。",
+              "locator": "模拟文本第3行",
+              "source_url": "synthetic://gov-demo/exception",
+              "asset_sha256": "f8730073436dab4e02cb17d1cfd633793e2c007b36db55790e461e84eeca5ab1",
+              "asset_revision": "rev-exception-v1",
+              "asset_title": "模拟通行卡资料-exception",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            }
+          ],
+          "path": [
+            {
+              "from": "matter-demo-pass",
+              "relation": "has_branch",
+              "to": "branch-expiry",
+              "evidence_ids": [
+                "ev-reason"
+              ]
+            },
+            {
+              "from": "branch-expiry",
+              "relation": "has_branch",
+              "to": "branch-adult-self",
+              "evidence_ids": [
+                "ev-adult"
+              ]
+            },
+            {
+              "from": "branch-adult-self",
+              "relation": "has_requirement",
+              "to": "req-paper",
+              "evidence_ids": [
+                "ev-paper",
+                "ev-substitution"
+              ]
+            },
+            {
+              "from": "req-paper",
+              "relation": "uses_material",
+              "to": "material-paper",
+              "evidence_ids": [
+                "ev-paper",
+                "ev-substitution"
+              ]
+            },
+            {
+              "from": "req-paper",
+              "relation": "in_stage",
+              "to": "application",
+              "evidence_ids": [
+                "ev-paper",
+                "ev-substitution"
+              ]
+            },
+            {
+              "from": "req-paper",
+              "relation": "applies_when",
+              "to": "cond-paper",
+              "evidence_ids": [
+                "ev-paper",
+                "ev-substitution",
+                "ev-substitution-unknown"
+              ]
+            },
+            {
+              "from": "req-paper",
+              "relation": "has_applicability",
+              "to": "scope-main",
+              "evidence_ids": [
+                "ev-scope"
+              ]
+            },
+            {
+              "from": "scope-main",
+              "relation": "aligned_to",
+              "to": "clause-main",
+              "evidence_ids": [
+                "ev-scope"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage_id": "collection",
+      "label": "领取",
+      "items": [
+        {
+          "requirement_id": "req-card-collect",
+          "material_id": "material-old-card",
+          "material": "演练旧卡",
+          "action": "交回",
+          "stage_id": "collection",
+          "branch_id": "branch-adult-self",
+          "result": "true",
+          "reason": "STRUCTURED_RULE_EVALUATED",
+          "review_status": "confirmed",
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "result": "true",
+              "trace": {
+                "op": "eq",
+                "field": "reason",
+                "expected": "expiry",
+                "observed": "expiry",
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            },
+            {
+              "condition_id": "cond-adult",
+              "result": "true",
+              "trace": {
+                "op": "all",
+                "children": [
+                  {
+                    "op": "eq",
+                    "field": "age_group",
+                    "expected": "adult",
+                    "observed": "adult",
+                    "result": "true"
+                  },
+                  {
+                    "op": "eq",
+                    "field": "self_service",
+                    "expected": true,
+                    "observed": true,
+                    "result": "true"
+                  }
+                ],
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "result": "true",
+              "trace": {
+                "op": "const",
+                "expected": true,
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            }
+          ],
+          "applicability": {
+            "id": "scope-main",
+            "result": "true",
+            "reason": "CONFIRMED_APPLICABILITY",
+            "region_id": "demo-city",
+            "as_of": "2026-10-17"
+          },
+          "missing_fields": [],
+          "dependency_ids": [
+            "asset-core",
+            "branch-adult-self",
+            "branch-expiry",
+            "clause-main",
+            "collection",
+            "cond-adult",
+            "cond-expiry",
+            "cond-unconditional",
+            "ev-adult",
+            "ev-card-collect",
+            "ev-reason",
+            "ev-scope",
+            "material-old-card",
+            "matter-demo-pass",
+            "req-card-collect",
+            "scope-main"
+          ],
+          "evidence": [
+            {
+              "id": "ev-adult",
+              "asset_id": "asset-core",
+              "start": 41,
+              "end": 61,
+              "quote": "成年本人到期换领可进入成年本人演练分支。",
+              "locator": "模拟文本第3行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-card-collect",
+              "asset_id": "asset-core",
+              "start": 136,
+              "end": 158,
+              "quote": "成年本人演练分支内，领取新卡时交回演练旧卡。",
+              "locator": "模拟文本第7行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-reason",
+              "asset_id": "asset-core",
+              "start": 18,
+              "end": 40,
+              "quote": "模拟市通行卡到期换领分为申请和领取两个环节。",
+              "locator": "模拟文本第2行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-scope",
+              "asset_id": "asset-core",
+              "start": 205,
+              "end": 251,
+              "quote": "本模拟规则仅供模拟市演练，时间区间为2026-01-01至2027-01-01（不含后者）。",
+              "locator": "模拟文本第10行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            }
+          ],
+          "path": [
+            {
+              "from": "matter-demo-pass",
+              "relation": "has_branch",
+              "to": "branch-expiry",
+              "evidence_ids": [
+                "ev-reason"
+              ]
+            },
+            {
+              "from": "branch-expiry",
+              "relation": "has_branch",
+              "to": "branch-adult-self",
+              "evidence_ids": [
+                "ev-adult"
+              ]
+            },
+            {
+              "from": "branch-adult-self",
+              "relation": "has_requirement",
+              "to": "req-card-collect",
+              "evidence_ids": [
+                "ev-card-collect"
+              ]
+            },
+            {
+              "from": "req-card-collect",
+              "relation": "uses_material",
+              "to": "material-old-card",
+              "evidence_ids": [
+                "ev-card-collect"
+              ]
+            },
+            {
+              "from": "req-card-collect",
+              "relation": "in_stage",
+              "to": "collection",
+              "evidence_ids": [
+                "ev-card-collect"
+              ]
+            },
+            {
+              "from": "req-card-collect",
+              "relation": "applies_when",
+              "to": "cond-unconditional",
+              "evidence_ids": [
+                "ev-adult"
+              ]
+            },
+            {
+              "from": "req-card-collect",
+              "relation": "has_applicability",
+              "to": "scope-main",
+              "evidence_ids": [
+                "ev-scope"
+              ]
+            },
+            {
+              "from": "scope-main",
+              "relation": "aligned_to",
+              "to": "clause-main",
+              "evidence_ids": [
+                "ev-scope"
+              ]
+            }
+          ]
+        },
+        {
+          "requirement_id": "req-slip",
+          "material_id": "material-slip",
+          "material": "模拟领取凭条",
+          "action": "出示",
+          "stage_id": "collection",
+          "branch_id": "branch-adult-self",
+          "result": "true",
+          "reason": "STRUCTURED_RULE_EVALUATED",
+          "review_status": "confirmed",
+          "conditions": [
+            {
+              "condition_id": "cond-expiry",
+              "result": "true",
+              "trace": {
+                "op": "eq",
+                "field": "reason",
+                "expected": "expiry",
+                "observed": "expiry",
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            },
+            {
+              "condition_id": "cond-adult",
+              "result": "true",
+              "trace": {
+                "op": "all",
+                "children": [
+                  {
+                    "op": "eq",
+                    "field": "age_group",
+                    "expected": "adult",
+                    "observed": "adult",
+                    "result": "true"
+                  },
+                  {
+                    "op": "eq",
+                    "field": "self_service",
+                    "expected": true,
+                    "observed": true,
+                    "result": "true"
+                  }
+                ],
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            },
+            {
+              "condition_id": "cond-unconditional",
+              "result": "true",
+              "trace": {
+                "op": "const",
+                "expected": true,
+                "result": "true"
+              },
+              "missing_fields": [],
+              "issues": []
+            }
+          ],
+          "applicability": {
+            "id": "scope-main",
+            "result": "true",
+            "reason": "CONFIRMED_APPLICABILITY",
+            "region_id": "demo-city",
+            "as_of": "2026-10-17"
+          },
+          "missing_fields": [],
+          "dependency_ids": [
+            "asset-core",
+            "asset-update-9061d73e231b49d17c",
+            "branch-adult-self",
+            "branch-expiry",
+            "clause-main",
+            "collection",
+            "cond-adult",
+            "cond-expiry",
+            "cond-unconditional",
+            "ev-adult",
+            "ev-reason",
+            "ev-scope",
+            "ev-update-9061d73e231b49d17c",
+            "material-slip",
+            "matter-demo-pass",
+            "req-slip",
+            "scope-main"
+          ],
+          "evidence": [
+            {
+              "id": "ev-adult",
+              "asset_id": "asset-core",
+              "start": 41,
+              "end": 61,
+              "quote": "成年本人到期换领可进入成年本人演练分支。",
+              "locator": "模拟文本第3行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-reason",
+              "asset_id": "asset-core",
+              "start": 18,
+              "end": 40,
+              "quote": "模拟市通行卡到期换领分为申请和领取两个环节。",
+              "locator": "模拟文本第2行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-scope",
+              "asset_id": "asset-core",
+              "start": 205,
+              "end": 251,
+              "quote": "本模拟规则仅供模拟市演练，时间区间为2026-01-01至2027-01-01（不含后者）。",
+              "locator": "模拟文本第10行",
+              "source_url": "synthetic://gov-demo/core",
+              "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+              "asset_revision": "rev-core-v1",
+              "asset_title": "模拟通行卡资料-core",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            },
+            {
+              "id": "ev-update-9061d73e231b49d17c",
+              "asset_id": "asset-update-9061d73e231b49d17c",
+              "start": 18,
+              "end": 58,
+              "quote": "成年本人演练分支内，领取时需出示模拟领取凭条，请保持条码清晰；此为工程模拟补充。",
+              "locator": "模拟更新正文第2行",
+              "source_url": "synthetic://gov-demo/update",
+              "asset_sha256": "c540d221c95aa099aed2cfdf82a056782a7a393415bea8eb691f0caf82eb9c85",
+              "asset_revision": "rev-9061d73e231b49d17c",
+              "asset_title": "模拟更新-req-slip",
+              "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+              "range_unit": "unicode_codepoint",
+              "range_convention": "start_inclusive_end_exclusive"
+            }
+          ],
+          "path": [
+            {
+              "from": "matter-demo-pass",
+              "relation": "has_branch",
+              "to": "branch-expiry",
+              "evidence_ids": [
+                "ev-reason"
+              ]
+            },
+            {
+              "from": "branch-expiry",
+              "relation": "has_branch",
+              "to": "branch-adult-self",
+              "evidence_ids": [
+                "ev-adult"
+              ]
+            },
+            {
+              "from": "branch-adult-self",
+              "relation": "has_requirement",
+              "to": "req-slip",
+              "evidence_ids": [
+                "ev-update-9061d73e231b49d17c"
+              ]
+            },
+            {
+              "from": "req-slip",
+              "relation": "uses_material",
+              "to": "material-slip",
+              "evidence_ids": [
+                "ev-update-9061d73e231b49d17c"
+              ]
+            },
+            {
+              "from": "req-slip",
+              "relation": "in_stage",
+              "to": "collection",
+              "evidence_ids": [
+                "ev-update-9061d73e231b49d17c"
+              ]
+            },
+            {
+              "from": "req-slip",
+              "relation": "applies_when",
+              "to": "cond-unconditional",
+              "evidence_ids": [
+                "ev-adult"
+              ]
+            },
+            {
+              "from": "req-slip",
+              "relation": "has_applicability",
+              "to": "scope-main",
+              "evidence_ids": [
+                "ev-scope"
+              ]
+            },
+            {
+              "from": "scope-main",
+              "relation": "aligned_to",
+              "to": "clause-main",
+              "evidence_ids": [
+                "ev-scope"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pending": [
+    {
+      "requirement_id": "req-residence",
+      "material_id": "material-residence",
+      "material": "模拟居住证明",
+      "action": "出示",
+      "stage_id": "application",
+      "branch_id": "branch-adult-self",
+      "result": "unknown",
+      "reason": "REQUIREMENT_NOT_CONFIRMED",
+      "review_status": "candidate",
+      "conditions": [
+        {
+          "condition_id": "cond-expiry",
+          "result": "true",
+          "trace": {
+            "op": "eq",
+            "field": "reason",
+            "expected": "expiry",
+            "observed": "expiry",
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        },
+        {
+          "condition_id": "cond-adult",
+          "result": "true",
+          "trace": {
+            "op": "all",
+            "children": [
+              {
+                "op": "eq",
+                "field": "age_group",
+                "expected": "adult",
+                "observed": "adult",
+                "result": "true"
+              },
+              {
+                "op": "eq",
+                "field": "self_service",
+                "expected": true,
+                "observed": true,
+                "result": "true"
+              }
+            ],
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        },
+        {
+          "condition_id": "cond-unconditional",
+          "result": "true",
+          "trace": {
+            "op": "const",
+            "expected": true,
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        }
+      ],
+      "applicability": {
+        "id": "scope-residence",
+        "result": "unknown",
+        "reason": "APPLICABILITY_NOT_CONFIRMED",
+        "region_id": "demo-city",
+        "as_of": "2026-10-17"
+      },
+      "missing_fields": [],
+      "dependency_ids": [
+        "application",
+        "asset-core",
+        "asset-unconfirmed",
+        "branch-adult-self",
+        "branch-expiry",
+        "clause-residence",
+        "cond-adult",
+        "cond-expiry",
+        "cond-unconditional",
+        "ev-adult",
+        "ev-reason",
+        "ev-residence",
+        "material-residence",
+        "matter-demo-pass",
+        "req-residence",
+        "scope-residence"
+      ],
+      "evidence": [
+        {
+          "id": "ev-adult",
+          "asset_id": "asset-core",
+          "start": 41,
+          "end": 61,
+          "quote": "成年本人到期换领可进入成年本人演练分支。",
+          "locator": "模拟文本第3行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-reason",
+          "asset_id": "asset-core",
+          "start": 18,
+          "end": 40,
+          "quote": "模拟市通行卡到期换领分为申请和领取两个环节。",
+          "locator": "模拟文本第2行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-residence",
+          "asset_id": "asset-unconfirmed",
+          "start": 18,
+          "end": 54,
+          "quote": "某演练资料提到申请时可出示模拟居住证明，该说法是否适用于模拟市尚未确认。",
+          "locator": "模拟文本第2行",
+          "source_url": "synthetic://gov-demo/unconfirmed",
+          "asset_sha256": "c80e5bf6646e8b2add7d05b5336e3cdbdd699dd783a48b7cf3eedeb24c514df9",
+          "asset_revision": "rev-unconfirmed-v1",
+          "asset_title": "模拟通行卡资料-unconfirmed",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        }
+      ],
+      "path": [
+        {
+          "from": "matter-demo-pass",
+          "relation": "has_branch",
+          "to": "branch-expiry",
+          "evidence_ids": [
+            "ev-reason"
+          ]
+        },
+        {
+          "from": "branch-expiry",
+          "relation": "has_branch",
+          "to": "branch-adult-self",
+          "evidence_ids": [
+            "ev-adult"
+          ]
+        },
+        {
+          "from": "branch-adult-self",
+          "relation": "has_requirement",
+          "to": "req-residence",
+          "evidence_ids": [
+            "ev-residence"
+          ]
+        },
+        {
+          "from": "req-residence",
+          "relation": "uses_material",
+          "to": "material-residence",
+          "evidence_ids": [
+            "ev-residence"
+          ]
+        },
+        {
+          "from": "req-residence",
+          "relation": "in_stage",
+          "to": "application",
+          "evidence_ids": [
+            "ev-residence"
+          ]
+        },
+        {
+          "from": "req-residence",
+          "relation": "applies_when",
+          "to": "cond-unconditional",
+          "evidence_ids": [
+            "ev-adult"
+          ]
+        },
+        {
+          "from": "req-residence",
+          "relation": "has_applicability",
+          "to": "scope-residence",
+          "evidence_ids": [
+            "ev-residence"
+          ]
+        },
+        {
+          "from": "scope-residence",
+          "relation": "aligned_to",
+          "to": "clause-residence",
+          "evidence_ids": [
+            "ev-residence"
+          ]
+        }
+      ],
+      "applicability_note": "原文事实仅供核对，尚不能确定为本次办事要求。"
+    }
+  ],
+  "excluded": [
+    {
+      "requirement_id": "req-electronic",
+      "material_id": "material-electronic",
+      "material": "模拟电子申请表",
+      "action": "提交",
+      "stage_id": "application",
+      "branch_id": "branch-adult-self",
+      "result": "false",
+      "reason": "STRUCTURED_RULE_EVALUATED",
+      "review_status": "confirmed",
+      "conditions": [
+        {
+          "condition_id": "cond-expiry",
+          "result": "true",
+          "trace": {
+            "op": "eq",
+            "field": "reason",
+            "expected": "expiry",
+            "observed": "expiry",
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        },
+        {
+          "condition_id": "cond-adult",
+          "result": "true",
+          "trace": {
+            "op": "all",
+            "children": [
+              {
+                "op": "eq",
+                "field": "age_group",
+                "expected": "adult",
+                "observed": "adult",
+                "result": "true"
+              },
+              {
+                "op": "eq",
+                "field": "self_service",
+                "expected": true,
+                "observed": true,
+                "result": "true"
+              }
+            ],
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        },
+        {
+          "condition_id": "cond-electronic",
+          "result": "false",
+          "trace": {
+            "op": "eq",
+            "field": "electronic_verified",
+            "expected": true,
+            "observed": false,
+            "result": "false"
+          },
+          "missing_fields": [],
+          "issues": []
+        }
+      ],
+      "applicability": {
+        "id": "scope-main",
+        "result": "true",
+        "reason": "CONFIRMED_APPLICABILITY",
+        "region_id": "demo-city",
+        "as_of": "2026-10-17"
+      },
+      "missing_fields": [],
+      "dependency_ids": [
+        "application",
+        "asset-core",
+        "asset-exception",
+        "branch-adult-self",
+        "branch-expiry",
+        "clause-main",
+        "cond-adult",
+        "cond-electronic",
+        "cond-expiry",
+        "ev-adult",
+        "ev-reason",
+        "ev-scope",
+        "ev-substitution",
+        "ev-substitution-unknown",
+        "material-electronic",
+        "matter-demo-pass",
+        "req-electronic",
+        "scope-main"
+      ],
+      "evidence": [
+        {
+          "id": "ev-adult",
+          "asset_id": "asset-core",
+          "start": 41,
+          "end": 61,
+          "quote": "成年本人到期换领可进入成年本人演练分支。",
+          "locator": "模拟文本第3行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-reason",
+          "asset_id": "asset-core",
+          "start": 18,
+          "end": 40,
+          "quote": "模拟市通行卡到期换领分为申请和领取两个环节。",
+          "locator": "模拟文本第2行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-scope",
+          "asset_id": "asset-core",
+          "start": 205,
+          "end": 251,
+          "quote": "本模拟规则仅供模拟市演练，时间区间为2026-01-01至2027-01-01（不含后者）。",
+          "locator": "模拟文本第10行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-substitution",
+          "asset_id": "asset-exception",
+          "start": 18,
+          "end": 60,
+          "quote": "成年本人演练分支中，可验证的模拟电子申请表替代模拟纸质申请表；无法验证时仍需纸质表。",
+          "locator": "模拟文本第2行",
+          "source_url": "synthetic://gov-demo/exception",
+          "asset_sha256": "f8730073436dab4e02cb17d1cfd633793e2c007b36db55790e461e84eeca5ab1",
+          "asset_revision": "rev-exception-v1",
+          "asset_title": "模拟通行卡资料-exception",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-substitution-unknown",
+          "asset_id": "asset-exception",
+          "start": 61,
+          "end": 87,
+          "quote": "电子表是否可验证不清楚时，不得推定有或没有替代资格。",
+          "locator": "模拟文本第3行",
+          "source_url": "synthetic://gov-demo/exception",
+          "asset_sha256": "f8730073436dab4e02cb17d1cfd633793e2c007b36db55790e461e84eeca5ab1",
+          "asset_revision": "rev-exception-v1",
+          "asset_title": "模拟通行卡资料-exception",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        }
+      ],
+      "path": [
+        {
+          "from": "matter-demo-pass",
+          "relation": "has_branch",
+          "to": "branch-expiry",
+          "evidence_ids": [
+            "ev-reason"
+          ]
+        },
+        {
+          "from": "branch-expiry",
+          "relation": "has_branch",
+          "to": "branch-adult-self",
+          "evidence_ids": [
+            "ev-adult"
+          ]
+        },
+        {
+          "from": "branch-adult-self",
+          "relation": "has_requirement",
+          "to": "req-electronic",
+          "evidence_ids": [
+            "ev-substitution"
+          ]
+        },
+        {
+          "from": "req-electronic",
+          "relation": "uses_material",
+          "to": "material-electronic",
+          "evidence_ids": [
+            "ev-substitution"
+          ]
+        },
+        {
+          "from": "req-electronic",
+          "relation": "in_stage",
+          "to": "application",
+          "evidence_ids": [
+            "ev-substitution"
+          ]
+        },
+        {
+          "from": "req-electronic",
+          "relation": "applies_when",
+          "to": "cond-electronic",
+          "evidence_ids": [
+            "ev-substitution",
+            "ev-substitution-unknown"
+          ]
+        },
+        {
+          "from": "req-electronic",
+          "relation": "has_applicability",
+          "to": "scope-main",
+          "evidence_ids": [
+            "ev-scope"
+          ]
+        },
+        {
+          "from": "scope-main",
+          "relation": "aligned_to",
+          "to": "clause-main",
+          "evidence_ids": [
+            "ev-scope"
+          ]
+        }
+      ]
+    }
+  ],
+  "paused": [
+    {
+      "requirement_id": "req-card-apply",
+      "material_id": "material-old-card",
+      "material": "演练旧卡",
+      "action": "交验",
+      "stage_id": "application",
+      "branch_id": "branch-adult-self",
+      "result": "paused",
+      "reason": "STRUCTURED_RULE_EVALUATED",
+      "review_status": "confirmed",
+      "conditions": [
+        {
+          "condition_id": "cond-expiry",
+          "result": "true",
+          "trace": {
+            "op": "eq",
+            "field": "reason",
+            "expected": "expiry",
+            "observed": "expiry",
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        },
+        {
+          "condition_id": "cond-adult",
+          "result": "true",
+          "trace": {
+            "op": "all",
+            "children": [
+              {
+                "op": "eq",
+                "field": "age_group",
+                "expected": "adult",
+                "observed": "adult",
+                "result": "true"
+              },
+              {
+                "op": "eq",
+                "field": "self_service",
+                "expected": true,
+                "observed": true,
+                "result": "true"
+              }
+            ],
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        },
+        {
+          "condition_id": "cond-unconditional",
+          "result": "true",
+          "trace": {
+            "op": "const",
+            "expected": true,
+            "result": "true"
+          },
+          "missing_fields": [],
+          "issues": []
+        }
+      ],
+      "applicability": {
+        "id": "scope-main",
+        "result": "true",
+        "reason": "CONFIRMED_APPLICABILITY",
+        "region_id": "demo-city",
+        "as_of": "2026-10-17"
+      },
+      "missing_fields": [],
+      "dependency_ids": [
+        "application",
+        "asset-core",
+        "branch-adult-self",
+        "branch-expiry",
+        "clause-main",
+        "cond-adult",
+        "cond-expiry",
+        "cond-unconditional",
+        "ev-adult",
+        "ev-card-apply",
+        "ev-reason",
+        "ev-scope",
+        "material-old-card",
+        "matter-demo-pass",
+        "req-card-apply",
+        "scope-main"
+      ],
+      "evidence": [
+        {
+          "id": "ev-adult",
+          "asset_id": "asset-core",
+          "start": 41,
+          "end": 61,
+          "quote": "成年本人到期换领可进入成年本人演练分支。",
+          "locator": "模拟文本第3行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-card-apply",
+          "asset_id": "asset-core",
+          "start": 114,
+          "end": 135,
+          "quote": "成年本人演练分支内，申请时应交验演练旧卡。",
+          "locator": "模拟文本第6行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-reason",
+          "asset_id": "asset-core",
+          "start": 18,
+          "end": 40,
+          "quote": "模拟市通行卡到期换领分为申请和领取两个环节。",
+          "locator": "模拟文本第2行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        },
+        {
+          "id": "ev-scope",
+          "asset_id": "asset-core",
+          "start": 205,
+          "end": 251,
+          "quote": "本模拟规则仅供模拟市演练，时间区间为2026-01-01至2027-01-01（不含后者）。",
+          "locator": "模拟文本第10行",
+          "source_url": "synthetic://gov-demo/core",
+          "asset_sha256": "282d0bf70af2a9c490c2062a8f96868d8428018505d064c8c786314b8aad39aa",
+          "asset_revision": "rev-core-v1",
+          "asset_title": "模拟通行卡资料-core",
+          "documents_version": "documents-f1d1668dea4d46ee86d3d7d7bc8a8144",
+          "range_unit": "unicode_codepoint",
+          "range_convention": "start_inclusive_end_exclusive"
+        }
+      ],
+      "path": [
+        {
+          "from": "matter-demo-pass",
+          "relation": "has_branch",
+          "to": "branch-expiry",
+          "evidence_ids": [
+            "ev-reason"
+          ]
+        },
+        {
+          "from": "branch-expiry",
+          "relation": "has_branch",
+          "to": "branch-adult-self",
+          "evidence_ids": [
+            "ev-adult"
+          ]
+        },
+        {
+          "from": "branch-adult-self",
+          "relation": "has_requirement",
+          "to": "req-card-apply",
+          "evidence_ids": [
+            "ev-card-apply"
+          ]
+        },
+        {
+          "from": "req-card-apply",
+          "relation": "uses_material",
+          "to": "material-old-card",
+          "evidence_ids": [
+            "ev-card-apply"
+          ]
+        },
+        {
+          "from": "req-card-apply",
+          "relation": "in_stage",
+          "to": "application",
+          "evidence_ids": [
+            "ev-card-apply"
+          ]
+        },
+        {
+          "from": "req-card-apply",
+          "relation": "applies_when",
+          "to": "cond-unconditional",
+          "evidence_ids": [
+            "ev-adult"
+          ]
+        },
+        {
+          "from": "req-card-apply",
+          "relation": "has_applicability",
+          "to": "scope-main",
+          "evidence_ids": [
+            "ev-scope"
+          ]
+        },
+        {
+          "from": "scope-main",
+          "relation": "aligned_to",
+          "to": "clause-main",
+          "evidence_ids": [
+            "ev-scope"
+          ]
+        }
+      ],
+      "message": "工作人员正在更新相关政策，暂不提供服务",
+      "suspension": [
+        {
+          "object_id": "req-card-apply",
+          "change_id": "change-b526dfbaf1c55a442967e22c",
+          "reason": "来源要求发生变化，等待专业人员确认"
+        }
+      ]
+    }
+  ],
+  "confirmed_aliases": [
+    {
+      "material_id": "material-old-card",
+      "label": "旧演练卡",
+      "evidence_ids": [
+        "ev-alias"
+      ]
+    }
+  ],
+  "follow_up": {
+    "optional": true,
+    "enabled": false,
+    "label": "补充情况",
+    "fields": []
+  },
+  "counts": {
+    "confirmed": 3,
+    "pending": 1,
+    "excluded": 1,
+    "paused": 1
+  },
+  "version_id": "7b0dff53eda94b9d3037f1f15df699aa2b53f5c3bf3235b6a49132864fca1bf6",
+  "retrieval_rounds": 1,
+  "execution_mode": "offline_engineering_only",
+  "agent_model_calls": 0,
+  "question_used_as_instruction": false,
+  "documents_version": "41e08f597b1bf8af443b041eb9c394e06c0cba6f2021fb9995c01e1984d5953c",
+  "candidate_evidence": [
+    {
+      "package_id": "change-b526dfbaf1c55a442967e22c",
+      "evidence": {
+        "asset_id": "asset-update-5ba86c921a72a13c24",
+        "end": 54,
+        "id": "ev-update-5ba86c921a72a13c24",
+        "locator": "模拟更新正文第2行",
+        "quote": "成年本人演练分支内，申请时只需出示演练旧卡，不再交验；此为工程模拟变更。",
+        "start": 18
+      },
+      "asset": {
+        "data_class": "synthetic",
+        "id": "asset-update-5ba86c921a72a13c24",
+        "revision": "rev-5ba86c921a72a13c24",
+        "sha256": "75e4a11b3177d2d32274d1c93fb705ed5bd3753149d82c046c747ac6f8ccf2f9",
+        "source_url": "synthetic://gov-demo/update",
+        "text": "【工程模拟资料，不是真实政务政策】\n成年本人演练分支内，申请时只需出示演练旧卡，不再交验；此为工程模拟变更。\n",
+        "title": "模拟更新-req-card-apply"
+      },
+      "applicability": "待专业人员核实，不加入确定清单"
+    }
+  ]
+}

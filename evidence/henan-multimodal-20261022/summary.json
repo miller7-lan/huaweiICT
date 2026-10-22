@@ -1,0 +1,41 @@
+{
+  "recorded_at": "2026-10-22T05:01:28.350518+00:00",
+  "status": "PREPARED_PENDING_SPECIFIC_STRUCTURE_CONFIRMATION",
+  "candidate_id": "e6e797f213ec7a11f6f59b80bbb6b6b4c402d71a8203669b807c6886d2d556e8",
+  "expected_head": "d430fc5a7b80ca848bff9385a8c3392d961afd1c0eaaca1c32836e9d1d5ad384",
+  "source_binding": "501601e92235ab2251b49ed673f7b49272ae1992b864ee6edc2945bec7b2ae68",
+  "active_instances": 0,
+  "candidate_status": "pending_review",
+  "real_query_status": "UNSUPPORTED_RELATION",
+  "old_source_evidence_receipts_and_acquisition_db_unchanged": true,
+  "protected_input_files": 13,
+  "validation": [
+    {
+      "test_file": "tests/test_henan_multimodal.py",
+      "passed": 24,
+      "scope": "Synthetic temporary lifecycle workspaces with counterfactual source numbers; not real data activation."
+    },
+    {
+      "test_file": "tests/test_henan_multimodal_sources.py",
+      "passed": 15,
+      "scope": "Local private originals available; temporary copies and read-only collector state. Skips on machines without those originals."
+    }
+  ],
+  "validation_total_distinct": 39,
+  "source_files_sha256": {
+    "src/gov_mcp/henan_multimodal.py": "caa37898c59c63e439355d8560a3874487c78fca1fb9e43f878a5126f36c9f2a",
+    "src/gov_mcp/henan_multimodal_sources.py": "9d41ef78fda542f05593b965188ac16baf35fbe3b24bbf0e3a03901bd74c409e",
+    "scripts/run_henan_multimodal.py": "de935d700ab3148429a181faf711e97f1e3d3454b2dab751a947ea1fb899ae1d",
+    "tests/test_henan_multimodal.py": "4b3e0b67e24307a8d1bf5721ebbb8eac61db4757442cb79fea0ad12883a79bc0",
+    "tests/test_henan_multimodal_sources.py": "10b1b38fdf81890198fc9a49ab8d8111122a7bd2c2528fc0fa36cafe160c8e2d"
+  },
+  "new_http_calls": 0,
+  "model_calls": 0,
+  "native_runs": 0,
+  "real_ontology_activated": false,
+  "human_structure_confirmation_received": false,
+  "business_acceptance_complete": false,
+  "formal_publications": 0,
+  "git_pushes": 0,
+  "scope": "Actual three-original candidate preparation plus scoped contract checks. No real four-node execution, current-policy approval, independent business accuracy or low-resource efficiency result."
+}

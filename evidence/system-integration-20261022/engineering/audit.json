@@ -1,0 +1,107 @@
+[
+  {
+    "operation": "workflow_configure_synthetic_source",
+    "payload": {
+      "actor": "demo-professional"
+    }
+  },
+  {
+    "operation": "workflow_demo_profile",
+    "payload": {
+      "actor": "demo-professional",
+      "profile": "noise"
+    }
+  },
+  {
+    "operation": "workflow_demo_profile",
+    "payload": {
+      "actor": "demo-professional",
+      "profile": "changed"
+    }
+  },
+  {
+    "operation": "workflow_change_discovered",
+    "payload": {
+      "blocked": [
+        "req-card-apply",
+        "req-slip"
+      ],
+      "package_id": "change-b526dfbaf1c55a442967e22c"
+    }
+  },
+  {
+    "operation": "workflow_deadline_assigned",
+    "payload": {
+      "actor": "demo-professional",
+      "deadline": 946656000.0,
+      "package_id": "change-b526dfbaf1c55a442967e22c"
+    }
+  },
+  {
+    "operation": "workflow_professional_review",
+    "payload": {
+      "actor": "demo-professional",
+      "decision": "accepted",
+      "ids": [
+        "req-slip"
+      ],
+      "note": "仅为可复现工程模拟，不是实际业务审批。",
+      "package_id": "change-b526dfbaf1c55a442967e22c"
+    }
+  },
+  {
+    "operation": "workflow_professional_publish",
+    "payload": {
+      "actor": "demo-professional",
+      "base": "bad8d27e0deb7c9d4253ca6c9b8ffb97af5c0ecf7267587b3b24baf443391177",
+      "ids": [
+        "req-slip"
+      ],
+      "package_id": "change-b526dfbaf1c55a442967e22c",
+      "version": "7b0dff53eda94b9d3037f1f15df699aa2b53f5c3bf3235b6a49132864fca1bf6"
+    }
+  },
+  {
+    "operation": "workflow_professional_review",
+    "payload": {
+      "actor": "demo-professional",
+      "decision": "accepted",
+      "ids": [
+        "req-card-apply",
+        "alias-reviewed-short",
+        "ontology-example-note"
+      ],
+      "note": "仅为可复现工程模拟，不是实际业务审批。",
+      "package_id": "change-b526dfbaf1c55a442967e22c"
+    }
+  },
+  {
+    "operation": "workflow_professional_publish",
+    "payload": {
+      "actor": "demo-professional",
+      "base": "7b0dff53eda94b9d3037f1f15df699aa2b53f5c3bf3235b6a49132864fca1bf6",
+      "ids": [
+        "req-card-apply",
+        "alias-reviewed-short",
+        "ontology-example-note"
+      ],
+      "package_id": "change-b526dfbaf1c55a442967e22c",
+      "version": "d3822c44a0026465f7b1889e4f1f5ff8e63a3568ebc8c55f39d8d4e59e9569f8"
+    }
+  },
+  {
+    "operation": "workflow_professional_rollback",
+    "payload": {
+      "actor": "demo-professional",
+      "from": "d3822c44a0026465f7b1889e4f1f5ff8e63a3568ebc8c55f39d8d4e59e9569f8",
+      "to": "bad8d27e0deb7c9d4253ca6c9b8ffb97af5c0ecf7267587b3b24baf443391177"
+    }
+  },
+  {
+    "operation": "workflow_demo_profile",
+    "payload": {
+      "actor": "demo-professional",
+      "profile": "unavailable"
+    }
+  }
+]

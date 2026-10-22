@@ -75,6 +75,12 @@ FILE_ALLOWLIST = (
     "evidence/ontology-crossdoc-20261020/structural-confirmation-20261021.json",
 )
 OPTIONAL_FILE_ALLOWLIST = (
+    "scripts/run_henan_multimodal.py",
+    "tests/test_henan_multimodal.py",
+    "tests/test_henan_multimodal_sources.py",
+    "docs/赛题3资料/河南三模态归档候选-2026-10-22.md",
+    "evidence/henan-multimodal-20261022/candidate.json",
+    "evidence/henan-multimodal-20261022/summary.json",
     "tests/test_ontology_crossdoc_runner.py",
     "scripts/prepare_competition_multimodal.py",
     "evidence/competition-multimodal-20261021/preparation.json",
