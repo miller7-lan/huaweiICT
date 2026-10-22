@@ -1,3 +1,4 @@
+param([switch]$EnableIntegratedGpu)
 $ErrorActionPreference = 'Stop'
 $TaskRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $TaskRoot
@@ -12,6 +13,7 @@ $env:OLLAMA_NUM_PARALLEL = '1'
 $env:OLLAMA_MAX_LOADED_MODELS = '1'
 $env:OLLAMA_HOST = '127.0.0.1:11434'
 $env:OLLAMA_CONTEXT_LENGTH = '8192'
+if ($EnableIntegratedGpu) { $env:OLLAMA_IGPU_ENABLE = '1' }
 Start-Process -FilePath $Ollama -ArgumentList 'serve' -WindowStyle Hidden -RedirectStandardOutput .runtime/ollama-stdout.log -RedirectStandardError .runtime/ollama-stderr.log
 $Ready = $false
 for ($Attempt = 0; $Attempt -lt 30; $Attempt++) {

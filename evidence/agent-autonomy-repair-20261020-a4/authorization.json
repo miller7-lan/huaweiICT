@@ -1,0 +1,22 @@
+{
+  "user_instruction": "修复问题，直到完成目的，可以适度调用api",
+  "attempt": "repair-20261020-a4",
+  "per_attempt_native_runs": 1,
+  "prior_attempt": "repair-20261020-a3",
+  "reason_for_new_attempt": "Main agent returned unexecuted DSML after only two model starts. Replace natural-language control instructions with complete executable, source-gated controller action; retain semantic constraints.",
+  "budget_adjustment": "Initial allocation of three repair attempts extended to one additional diagnosed protocol-fix attempt under explicit user instruction to complete with moderate API use; no blind repeat.",
+  "controller_max_steps": 6,
+  "child_max_steps_each": 4,
+  "max_model_begin_events": 14,
+  "max_output_tokens_per_step": 1024,
+  "source_sha256": {
+    "src/gov_mcp/successor_update.py": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+    "src/gov_mcp/successor_update_server.py": "74e0d6856dcd11fc938a0b3abdc517415d5bd95bbcf50421993849c28f3b1101",
+    "scripts/check_successor_autonomy_cloud.py": "e34c53fbc5c0b2120e0788a221d38f889887d4d8b29e72a96037663e15357af7",
+    "tests/test_successor_update.py": "e32581a66510414c8d2e60d8f0cc5304bb796810d5b77cf6f2d40301ddc98cd5",
+    "config/skills/govkb-successor-update/SKILL.md": "7503e268bc37130a58f2aa75567f6fb2f5dc55fdaac28ed19a7a20180e879197"
+  },
+  "cost": "unknown",
+  "jev_calls": 0,
+  "translation_calls": 0
+}

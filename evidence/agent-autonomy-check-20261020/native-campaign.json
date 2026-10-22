@@ -1,0 +1,30 @@
+{
+  "run_id": "3dc726725d0f4b3ba5c688794fda2d7e",
+  "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+  "implementation": {
+    "successor_update.py": "659a8314a459678f066b31eb07b9bbcebfa7779c8197f769e64dbe68509c0aca",
+    "successor_update_server.py": "353586189b8ef19897c6ff34f974ad3eb837bcf45fd1121f02face10a29b7245",
+    "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+    "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2"
+  },
+  "reserved_at": "2026-10-20T14:02:40.909530+00:00",
+  "status": "failed",
+  "native_run_budget": 1,
+  "error_code": "PermissionError",
+  "duration_ms": 21031.0,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 7,
+    "model_attempt_control": 13,
+    "model_output_thinking": 1338,
+    "parse": 5,
+    "tool": 5,
+    "execution_logs": 4,
+    "token_count": 1,
+    "subagent_start": 2,
+    "max_steps_reached": 1,
+    "agent_finish": 1,
+    "subagent_end": 1
+  }
+}

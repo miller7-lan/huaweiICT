@@ -1,0 +1,22 @@
+{
+  "user_instruction": "修复问题，直到完成目的，可以适度调用api",
+  "attempt": "repair-20261020-a5",
+  "per_attempt_native_runs": 1,
+  "prior_attempt": "repair-20261020-a4",
+  "reason_for_new_attempt": "Actual Nexent MCP wrappers return strings; dict-based local gate test missed the wire boundary. Use fixed server-generated stage markers and string-safe executable control. Abort code-execution warnings immediately.",
+  "budget_adjustment": "One additional diagnosed transport-boundary repair under the user instruction to finish with moderate API use; no blind replay or reset of historical campaign counters.",
+  "controller_max_steps": 6,
+  "child_max_steps_each": 4,
+  "max_model_begin_events": 14,
+  "max_output_tokens_per_step": 1024,
+  "source_sha256": {
+    "src/gov_mcp/successor_update.py": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+    "src/gov_mcp/successor_update_server.py": "9f2eb4f5e20b3cc636b2c4344effdfa3219b335edb223d760a2333ca356b2246",
+    "scripts/check_successor_autonomy_cloud.py": "340acfeee4c7a39ed0fb0c483dbe0f3e142aa33be1056b30bf84ff18ccc36098",
+    "tests/test_successor_update.py": "62137824c3c22927ae9496f8879e4756c5e0f5dd13d623fa91f65cacf094e483",
+    "config/skills/govkb-successor-update/SKILL.md": "7503e268bc37130a58f2aa75567f6fb2f5dc55fdaac28ed19a7a20180e879197"
+  },
+  "cost": "unknown",
+  "jev_calls": 0,
+  "translation_calls": 0
+}

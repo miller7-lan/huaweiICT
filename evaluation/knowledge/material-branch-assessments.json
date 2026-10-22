@@ -1,0 +1,313 @@
+{
+  "schema": 1,
+  "kind": "ai_bounded_material_branch_comparison",
+  "assessed_at": "2026-10-16T11:46:12.963168+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "business_release_ready": false,
+  "pilot": {
+    "region": "郑州市二七区",
+    "household": "local",
+    "adult": true,
+    "application": "self",
+    "reason": "expiry_renewal"
+  },
+  "sources": {
+    "ID-GUIDE-01": {
+      "revision": "rev-ec7e7716b9519d20ee336e0b",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "original_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+      "body_sha256": "69fa13a2cc7e7f72d91d4a6acb3bf216b4630478e8c459054a29268bc9c0bcbd",
+      "state": "pending_review"
+    },
+    "MPS-NORM-01": {
+      "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+      "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202211/t20221116_2860246.html",
+      "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+      "body_sha256": "36cfa38429629ea79e43550c6af71f560d6122c469b8ace17d170ceed424ff30",
+      "state": "pending_review"
+    },
+    "HN-NORM-PUBLISHER": {
+      "revision": "rev-30d1bf98f40e9acb897b37c1",
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "body_sha256": "f94cfd69dc1fd8479ecd72a5a9e9a316c82fd624e921d51afc9ec48c72675367",
+      "state": "pending_review"
+    },
+    "HN-MATERIALS-REPLY-2023": {
+      "revision": "rev-44be95c37fe4b68b5ba6fea6",
+      "url": "https://www.henan.gov.cn/2023/02-04/2683999.html",
+      "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
+      "body_sha256": "c43ad8b9febca4d5c347f0797ac3b29bfedf8eaaac7147545c28153c1ba6a3ed",
+      "state": "pending_review"
+    }
+  },
+  "records": [
+    {
+      "id": "ERQI-LIST",
+      "summary": "二七区指南分列户口簿和原居民身份证；列表同时包含其他分支，单凭排列不能补造必要性或替代关系。",
+      "source_branch": "combined_local_guide",
+      "relationship": "listed_separately_operator_not_explicit",
+      "anchors": [
+        {
+          "source_id": "ID-GUIDE-01",
+          "revision": "rev-ec7e7716b9519d20ee336e0b",
+          "original_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+          "chunk_ordinal": 0,
+          "locator": "材料列表第1项（适用分支待复核）",
+          "start": 0,
+          "end": 8,
+          "span_sha256": "4388a257edcee2f536736ab26fac9e30b43051afe7f8cb9325abecbc628aa59c",
+          "parent_text_sha256": "4388a257edcee2f536736ab26fac9e30b43051afe7f8cb9325abecbc628aa59c",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        },
+        {
+          "source_id": "ID-GUIDE-01",
+          "revision": "rev-ec7e7716b9519d20ee336e0b",
+          "original_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+          "chunk_ordinal": 1,
+          "locator": "材料列表第2项（适用分支待复核）",
+          "start": 0,
+          "end": 9,
+          "span_sha256": "63c896e954b596d9cbb5b1da41590490243af478efe1bf8fe264874f3177bcb9",
+          "parent_text_sha256": "63c896e954b596d9cbb5b1da41590490243af478efe1bf8fe264874f3177bcb9",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        }
+      ],
+      "source_text_relationship": "established_from_archived_text",
+      "current_erqi_applicability": "not_established",
+      "business_approval": false,
+      "limits": [
+        "页面未建立明确更新或施行日期；仍需结合分支及后续规定。"
+      ]
+    },
+    {
+      "id": "NATIONAL-MATERIAL",
+      "summary": "国家第78条并列申领、换领和补领后规定交验户口簿。",
+      "source_branch": "initial_renewal_replacement",
+      "relationship": "combined_branches_one_material_statement",
+      "anchors": [
+        {
+          "source_id": "MPS-NORM-01",
+          "revision": "rev-38a4d28d3a5c34083c3a6aa4",
+          "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+          "chunk_ordinal": 5,
+          "locator": "第七十八条",
+          "start": 6,
+          "end": 47,
+          "span_sha256": "6c5d196fdc0e0189c7e4a6c540e49df03608830854496c68f3dfb2731983b79c",
+          "parent_text_sha256": "95c1ea6aece9c1156f053c4c4d4069c69d1cd0ae189f2e783f465de3fc2e9b33",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        }
+      ],
+      "source_text_relationship": "established_from_archived_text",
+      "current_erqi_applicability": "not_established",
+      "business_approval": false,
+      "limits": [
+        "不得缩写成仅首次申领的要求；与省级材料条款的执行衔接尚未确定。"
+      ]
+    },
+    {
+      "id": "HENAN-RENEWAL",
+      "summary": "省级第159条单列申请换领分支，交验居民身份证。",
+      "source_branch": "renewal",
+      "relationship": "branch_specific_identity_document",
+      "anchors": [
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
+          "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+          "chunk_ordinal": 5,
+          "locator": "第一百五十九条",
+          "start": 56,
+          "end": 69,
+          "span_sha256": "3a20b3ed08f78667c3e29d968b1e0bf8bdc3b3d484690d2738e156b83b275a59",
+          "parent_text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        }
+      ],
+      "source_text_relationship": "established_from_archived_text",
+      "current_erqi_applicability": "not_established",
+      "business_approval": false,
+      "limits": [
+        "该分支不能与紧邻的补领备选列表混写；本条没有明示裁定二七区指南或国家规范的效力。"
+      ]
+    },
+    {
+      "id": "HENAN-REPLACEMENT",
+      "summary": "省级第159条的有效证件备选列表位于申请补领分支。",
+      "source_branch": "replacement_after_loss",
+      "relationship": "one_of_under_named_branch",
+      "anchors": [
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
+          "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+          "chunk_ordinal": 5,
+          "locator": "第一百五十九条",
+          "start": 70,
+          "end": 113,
+          "span_sha256": "2b96e6e400937da43fd50a98e941f2daf315418fce23941aeaeee3c0d7146475",
+          "parent_text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        }
+      ],
+      "source_text_relationship": "established_from_archived_text",
+      "current_erqi_applicability": "not_established",
+      "business_approval": false,
+      "limits": [
+        "不转用为普通到期换领替代清单。"
+      ]
+    },
+    {
+      "id": "HENAN-SHARING",
+      "summary": "省级第7条在材料能够经数据共享或电子证照等方式确认时，免交纸质材料。",
+      "source_branch": "household_and_identity_card_services",
+      "relationship": "conditional_paper_waiver",
+      "anchors": [
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
+          "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+          "chunk_ordinal": 1,
+          "locator": "第七条",
+          "start": 59,
+          "end": 124,
+          "span_sha256": "53a1abd98071c47064d74fa7e932e528dac56c52b512a64533c946f764efae3b",
+          "parent_text_sha256": "030e659626dc607b2f38d06de176766ad7b7c2dcf7e9ad1f59c4e7ca03482717",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        }
+      ],
+      "source_text_relationship": "established_from_archived_text",
+      "current_erqi_applicability": "not_established",
+      "business_approval": false,
+      "limits": [
+        "不能概括为无条件免交、所有受理点都已完成共享，或免除身份核验。"
+      ]
+    },
+    {
+      "id": "HENAN-RELATION-PROOF",
+      "summary": "同条后半段的关系证明减免另限于户口业务及双方关系证明目的。",
+      "source_branch": "household_registration",
+      "relationship": "proof_purpose_and_business_limited",
+      "anchors": [
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "revision": "rev-30d1bf98f40e9acb897b37c1",
+          "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+          "chunk_ordinal": 1,
+          "locator": "第七条",
+          "start": 126,
+          "end": 147,
+          "span_sha256": "8d1ca436afb1b320d9f23946e50c3fb4de126052192a7a9d2673901d6cda2fd8",
+          "parent_text_sha256": "030e659626dc607b2f38d06de176766ad7b7c2dcf7e9ad1f59c4e7ca03482717",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        }
+      ],
+      "source_text_relationship": "established_from_archived_text",
+      "current_erqi_applicability": "not_established",
+      "business_approval": false,
+      "limits": [
+        "不作为身份证换领材料可任意替代的依据。"
+      ]
+    },
+    {
+      "id": "REPLY-PROVINCIAL-AWAY",
+      "summary": "2023年省公安厅答复的省内异地段落，列出有效身份证件备选，并对居民身份证注明换领限制。",
+      "source_branch": "province_internal_away_from_registered_location",
+      "relationship": "one_of_with_document_parenthetical_and_branch_context",
+      "anchors": [
+        {
+          "source_id": "HN-MATERIALS-REPLY-2023",
+          "revision": "rev-44be95c37fe4b68b5ba6fea6",
+          "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
+          "chunk_ordinal": 0,
+          "locator": "正文段落11",
+          "start": 0,
+          "end": 12,
+          "span_sha256": "357ad4ea5e1f4446eb30ac4763bba61c5767373118ca97bdd121a92f8d2c80eb",
+          "parent_text_sha256": "357ad4ea5e1f4446eb30ac4763bba61c5767373118ca97bdd121a92f8d2c80eb",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        },
+        {
+          "source_id": "HN-MATERIALS-REPLY-2023",
+          "revision": "rev-44be95c37fe4b68b5ba6fea6",
+          "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
+          "chunk_ordinal": 1,
+          "locator": "正文段落12",
+          "start": 0,
+          "end": 103,
+          "span_sha256": "8595bddbfbf1e854f041002096ff2972128a5bc1ad805013eca827ee15e8022c",
+          "parent_text_sha256": "8595bddbfbf1e854f041002096ff2972128a5bc1ad805013eca827ee15e8022c",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        },
+        {
+          "source_id": "HN-MATERIALS-REPLY-2023",
+          "revision": "rev-44be95c37fe4b68b5ba6fea6",
+          "original_sha256": "a3cd205c3e59d294110cf6b43a652b534b9b65ea93edc20b3fcab9889b0f5341",
+          "chunk_ordinal": 2,
+          "locator": "正文段落13",
+          "start": 0,
+          "end": 90,
+          "span_sha256": "b0638df543cfcffe51f3be975b84d1019bb901259b726ab52fdea0e1eb7a5849",
+          "parent_text_sha256": "b0638df543cfcffe51f3be975b84d1019bb901259b726ab52fdea0e1eb7a5849",
+          "offset_basis": "unicode_character_in_extracted_parent_chunk"
+        }
+      ],
+      "source_text_relationship": "established_from_archived_text",
+      "current_erqi_applicability": "not_established",
+      "business_approval": false,
+      "limits": [
+        "标题问题是异地补领，答复正文同时涉及补领与换领，不能仅按标题归成补领专用。",
+        "保留原句标点，身份证后的括注不能扩展到其他证件。",
+        "没有据此证明本地户籍地受理一律适用同样备选清单；没有取得废止或替代国家/省级条款的明示文件。"
+      ]
+    }
+  ],
+  "anchor_count": 10,
+  "approval_record_counts": {
+    "reviews": 0,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "decision": {
+    "different_source_branches_preserved": true,
+    "local_national_provincial_requirements_reconciled": false,
+    "unconditional_material_checklist_approved": false,
+    "new_reply_supersedes_existing_norms": false,
+    "next_evidence_needed": "较新且明确覆盖二七区成年本地本人到期换领的材料清单，或能够说明现有国家、省级及区级表述衔接的官方依据。"
+  },
+  "web_research_dispositions": [
+    {
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "use": "本地现存指南观察；未取得明确更新日或材料必要性字段。"
+    },
+    {
+      "url": "https://zzga.zhengzhou.gov.cn/xjsltj/7117218.jhtml",
+      "use": "2023年异地业务月报，不是本地到期换领材料表。未登记为新采集源。"
+    },
+    {
+      "url": "https://zzga.zhengzhou.gov.cn/jwzx/9863401.jhtml",
+      "use": "2026年就近办覆盖说明已在旧核查中单列；没有重试已暂停的采集入口。"
+    },
+    {
+      "url": "https://www.ly.gov.cn/2025/08-05/727594.html",
+      "use": "洛阳2025年服务信息，不能据此核定二七区材料、费用或期限。"
+    }
+  ],
+  "public_export": "Span locations and hashes only; full source paragraphs remain in the private original archive. This comparison does not mutate document metadata, review approval or frozen model standards.",
+  "preserved_development_files": {
+    "evaluation/knowledge/pilot-ai-reference-answers.json": "114720c36a13938fdb942d77fdfcab846022e82245321444ffe1e133f7490cf2",
+    "evaluation/knowledge/baselines/20261015T205246Z-69f8439f-reference.json": "1f3558e8e672c945acced675bc711973bce077febe700c97b9e2e8281aaa949d",
+    "evaluation/knowledge/baselines/20261016T024521Z-29459439-reference.json": "eb94b1afaa5142448340b19e172e8bae83de04f2827984fc7c820080f8dd4212",
+    "evaluation/knowledge/baselines/20261016T100533Z-3b77f854-reference.json": "5bc051bba2da95fef79f13302837b5290d061b0b1d60c264c4defac1a8256ff0",
+    "evaluation/knowledge/baselines/20261016T102656Z-708c0b41-reference.json": "5bc051bba2da95fef79f13302837b5290d061b0b1d60c264c4defac1a8256ff0",
+    "evidence/knowledge-update/model-prevalidation.json": "7a534b1545591a46239aa6c7c1616c13d1e0c00345e4bea2b536c2447a2b3db5",
+    "evidence/knowledge-update/model-prevalidation-ai-review.json": "ad6cf2890808e60c78b7d5eb9388bf86103fb749ec07c1beabb0a2d4b9f75e14"
+  },
+  "pre_intake_policy_sha256": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d",
+  "comparison_basis_commit": "5824c55f3ab9805c5adee50cec3ce07cd459dceb",
+  "assessment_sha256": "19cc2d4fa537f49ddee63b8eb51ee5e74816b7eeaba7857c5b455cc65ba13b08"
+}

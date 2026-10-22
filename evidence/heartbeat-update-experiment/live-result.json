@@ -1,0 +1,560 @@
+{
+  "status": "PASS_BOUNDED_UPDATE",
+  "checks": {
+    "three_real_clock_heartbeats": true,
+    "worker_heartbeat_advances": true,
+    "two_scheduled_official_checks": true,
+    "unchanged_source_no_duplicate_revision": true,
+    "official_original_and_quotes_match": true,
+    "candidate_only": true
+  },
+  "observations": [
+    {
+      "elapsed_seconds": 5.344,
+      "observed_at": 1792336847.1970053,
+      "worker": {
+        "heartbeat": 1792336847.1940057,
+        "progress": "idle"
+      },
+      "counts": {
+        "documents": 1,
+        "revisions": 1,
+        "chunks": 3,
+        "reviews": 0,
+        "versions": 0,
+        "heads": 0
+      },
+      "jobs": [
+        {
+          "id": 1,
+          "state": "done",
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "source": {
+        "last_success": 1792336841.8678951,
+        "next_check": 1792336901.8648953,
+        "paused_reason": null
+      }
+    },
+    {
+      "elapsed_seconds": 30.0,
+      "observed_at": 1792336871.859486,
+      "worker": {
+        "heartbeat": 1792336871.853454,
+        "progress": "polling"
+      },
+      "counts": {
+        "documents": 1,
+        "revisions": 1,
+        "chunks": 3,
+        "reviews": 0,
+        "versions": 0,
+        "heads": 0
+      },
+      "jobs": [
+        {
+          "id": 1,
+          "state": "done",
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "source": {
+        "last_success": 1792336841.8678951,
+        "next_check": 1792336901.8648953,
+        "paused_reason": null
+      }
+    },
+    {
+      "elapsed_seconds": 60.0,
+      "observed_at": 1792336901.859416,
+      "worker": {
+        "heartbeat": 1792336901.8534107,
+        "progress": "polling"
+      },
+      "counts": {
+        "documents": 1,
+        "revisions": 1,
+        "chunks": 3,
+        "reviews": 0,
+        "versions": 0,
+        "heads": 0
+      },
+      "jobs": [
+        {
+          "id": 1,
+          "state": "done",
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "source": {
+        "last_success": 1792336841.8678951,
+        "next_check": 1792336901.8648953,
+        "paused_reason": null
+      }
+    },
+    {
+      "elapsed_seconds": 115.368,
+      "observed_at": 1792336957.2209299,
+      "worker": {
+        "heartbeat": 1792336957.2179308,
+        "progress": "idle"
+      },
+      "counts": {
+        "documents": 1,
+        "revisions": 1,
+        "chunks": 3,
+        "reviews": 0,
+        "versions": 0,
+        "heads": 0
+      },
+      "jobs": [
+        {
+          "id": 1,
+          "state": "done",
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "source": {
+        "last_success": 1792336952.0151207,
+        "next_check": 1792337012.0060315,
+        "paused_reason": null
+      },
+      "timing_repair": true
+    }
+  ],
+  "existing_service_heartbeats": [
+    {
+      "checked_at": "2026-10-18T15:20:47.197005+00:00",
+      "inspection_only": true,
+      "model_requests": 0,
+      "tasks_changed": false,
+      "runtimes": {
+        "agent-workflow": {
+          "exists": true,
+          "wf_control": {
+            "heartbeat_at": 1792336821.685721,
+            "interval": 3600,
+            "paused": true,
+            "age_seconds": 25.51
+          },
+          "source_count": 1,
+          "heartbeat_errors_last_hour": 0
+        },
+        "knowledge": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336819.5594602,
+            "status": "waiting_sources",
+            "age_seconds": 27.64
+          },
+          "paused": false,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": false,
+          "configured_source_count": 0
+        },
+        "knowledge-demo": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336819.556781,
+            "status": "idle",
+            "age_seconds": 27.64
+          },
+          "paused": true,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": true,
+          "configured_source_count": 1
+        }
+      },
+      "ports": {
+        "8772": false,
+        "8773": false,
+        "8775": true,
+        "8778": true,
+        "8780": true,
+        "8781": true
+      },
+      "windows_recovery": {
+        "tasks": []
+      },
+      "docker_recovery": [
+        {
+          "name": "/govkb-maintenance",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": "healthy"
+        },
+        {
+          "name": "/govkb-demo",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": null
+        }
+      ],
+      "demo_uses_synthetic_replay": true,
+      "public_preview": {
+        "timer_registered": false,
+        "native_runs": 1,
+        "jev_reserved": 1,
+        "campaign_passed_and_stopped": true
+      }
+    },
+    {
+      "checked_at": "2026-10-18T15:21:11.859486+00:00",
+      "inspection_only": true,
+      "model_requests": 0,
+      "tasks_changed": false,
+      "runtimes": {
+        "agent-workflow": {
+          "exists": true,
+          "wf_control": {
+            "heartbeat_at": 1792336851.6942878,
+            "interval": 3600,
+            "paused": true,
+            "age_seconds": 20.17
+          },
+          "source_count": 1,
+          "heartbeat_errors_last_hour": 0
+        },
+        "knowledge": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336849.5856063,
+            "status": "waiting_sources",
+            "age_seconds": 22.27
+          },
+          "paused": false,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": false,
+          "configured_source_count": 0
+        },
+        "knowledge-demo": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336849.5858443,
+            "status": "idle",
+            "age_seconds": 22.28
+          },
+          "paused": true,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": true,
+          "configured_source_count": 1
+        }
+      },
+      "ports": {
+        "8772": false,
+        "8773": false,
+        "8775": true,
+        "8778": true,
+        "8780": true,
+        "8781": true
+      },
+      "windows_recovery": {
+        "tasks": []
+      },
+      "docker_recovery": [
+        {
+          "name": "/govkb-maintenance",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": "healthy"
+        },
+        {
+          "name": "/govkb-demo",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": null
+        }
+      ],
+      "demo_uses_synthetic_replay": true,
+      "public_preview": {
+        "timer_registered": false,
+        "native_runs": 1,
+        "jev_reserved": 1,
+        "campaign_passed_and_stopped": true
+      }
+    },
+    {
+      "checked_at": "2026-10-18T15:21:41.859416+00:00",
+      "inspection_only": true,
+      "model_requests": 0,
+      "tasks_changed": false,
+      "runtimes": {
+        "agent-workflow": {
+          "exists": true,
+          "wf_control": {
+            "heartbeat_at": 1792336881.6971755,
+            "interval": 3600,
+            "paused": true,
+            "age_seconds": 20.16
+          },
+          "source_count": 1,
+          "heartbeat_errors_last_hour": 0
+        },
+        "knowledge": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336879.628024,
+            "status": "waiting_sources",
+            "age_seconds": 22.23
+          },
+          "paused": false,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": false,
+          "configured_source_count": 0
+        },
+        "knowledge-demo": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336879.6275628,
+            "status": "idle",
+            "age_seconds": 22.23
+          },
+          "paused": true,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": true,
+          "configured_source_count": 1
+        }
+      },
+      "ports": {
+        "8772": false,
+        "8773": false,
+        "8775": true,
+        "8778": true,
+        "8780": true,
+        "8781": true
+      },
+      "windows_recovery": {
+        "tasks": []
+      },
+      "docker_recovery": [
+        {
+          "name": "/govkb-maintenance",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": "healthy"
+        },
+        {
+          "name": "/govkb-demo",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": null
+        }
+      ],
+      "demo_uses_synthetic_replay": true,
+      "public_preview": {
+        "timer_registered": false,
+        "native_runs": 1,
+        "jev_reserved": 1,
+        "campaign_passed_and_stopped": true
+      }
+    },
+    {
+      "checked_at": "2026-10-18T15:22:37.220929+00:00",
+      "inspection_only": true,
+      "model_requests": 0,
+      "tasks_changed": false,
+      "runtimes": {
+        "agent-workflow": {
+          "exists": true,
+          "wf_control": {
+            "heartbeat_at": 1792336941.7374542,
+            "interval": 3600,
+            "paused": true,
+            "age_seconds": 15.48
+          },
+          "source_count": 1,
+          "heartbeat_errors_last_hour": 0
+        },
+        "knowledge": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336939.6823003,
+            "status": "waiting_sources",
+            "age_seconds": 17.54
+          },
+          "paused": false,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": false,
+          "configured_source_count": 0
+        },
+        "knowledge-demo": {
+          "exists": true,
+          "heartbeat": {
+            "at": 1792336939.6824076,
+            "status": "idle",
+            "age_seconds": 17.54
+          },
+          "paused": true,
+          "config_enabled": true,
+          "heartbeat_seconds": 30,
+          "check_interval_seconds": 3600,
+          "demo_mode": true,
+          "configured_source_count": 1
+        }
+      },
+      "ports": {
+        "8772": false,
+        "8773": false,
+        "8775": true,
+        "8778": true,
+        "8780": true,
+        "8781": true
+      },
+      "windows_recovery": {
+        "tasks": []
+      },
+      "docker_recovery": [
+        {
+          "name": "/govkb-maintenance",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": "healthy"
+        },
+        {
+          "name": "/govkb-demo",
+          "restart_policy": "unless-stopped",
+          "state": "running",
+          "health": null
+        }
+      ],
+      "demo_uses_synthetic_replay": true,
+      "public_preview": {
+        "timer_registered": false,
+        "native_runs": 1,
+        "jev_reserved": 1,
+        "campaign_passed_and_stopped": true
+      }
+    }
+  ],
+  "requests": [
+    {
+      "at": "2026-10-18T15:20:41.874774+00:00",
+      "url": "https://www.nanjing.gov.cn/robots.txt",
+      "http_status": 200,
+      "bytes": 210,
+      "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36",
+      "conditional_request": false
+    },
+    {
+      "at": "2026-10-18T15:20:46.873728+00:00",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "http_status": 200,
+      "bytes": 29854,
+      "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "conditional_request": false
+    },
+    {
+      "at": "2026-10-18T15:22:32.021126+00:00",
+      "url": "https://www.nanjing.gov.cn/robots.txt",
+      "http_status": 200,
+      "bytes": 210,
+      "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36",
+      "conditional_request": false
+    },
+    {
+      "at": "2026-10-18T15:22:37.021055+00:00",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "http_status": 200,
+      "bytes": 29854,
+      "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "conditional_request": false
+    }
+  ],
+  "candidate_verification": {
+    "raw_matches_shared_catalog": true,
+    "all_quotes_match": true,
+    "revision_state": "pending_review"
+  },
+  "audit": [
+    {
+      "at": 1792336841.8628957,
+      "action": "source_registered",
+      "data": {
+        "enabled": true,
+        "id": "NJ-ID-RENEWAL-CYCLE-2026"
+      }
+    },
+    {
+      "at": 1792336847.0670314,
+      "action": "revision_ingested",
+      "data": {
+        "chunks": 3,
+        "revision": "rev-d585b0a4089dfc7a7f32de43",
+        "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+      }
+    },
+    {
+      "at": 1792336847.1884964,
+      "action": "classification_proposed",
+      "data": {
+        "business_review": false,
+        "revision": "rev-d585b0a4089dfc7a7f32de43",
+        "sha256": "a840fdf71bd87822fdb57ed9f90aa203fd7672f669e28afa4ca218cff84afa11",
+        "taxonomy_version": "source-unit-proposals-v3-86bb2642500b"
+      }
+    },
+    {
+      "at": 1792336847.191496,
+      "action": "check_succeeded",
+      "data": {
+        "site": "NJ-ID-RENEWAL-CYCLE-2026",
+        "status": 200
+      }
+    },
+    {
+      "at": 1792336905.1814096,
+      "action": "bounded_test_stopped",
+      "data": {
+        "http_attempts": 2,
+        "source": "NJ-ID-RENEWAL-CYCLE-2026"
+      }
+    },
+    {
+      "at": 1792336957.2049263,
+      "action": "unchanged_body",
+      "data": {
+        "observed_raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "revision": "rev-d585b0a4089dfc7a7f32de43"
+      }
+    },
+    {
+      "at": 1792336957.2149556,
+      "action": "check_succeeded",
+      "data": {
+        "site": "NJ-ID-RENEWAL-CYCLE-2026",
+        "status": 200
+      }
+    },
+    {
+      "at": 1792336960.6471035,
+      "action": "bounded_test_stopped",
+      "data": {
+        "http_attempts": 4,
+        "source": "NJ-ID-RENEWAL-CYCLE-2026"
+      }
+    }
+  ],
+  "model_calls": 0,
+  "permanent_schedule_created": false,
+  "test_source_paused_after_completion": true,
+  "limits": "About one minute of natural-clock candidate acquisition/recheck; no observed official policy change, no formal publication or long-term uptime claim"
+}

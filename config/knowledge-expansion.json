@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "authorized_on": "2026-10-18",
+  "objective": "扩大多地区、多事项官方资料库，每完成一部分提交并推送GitHub",
+  "strategy": "collect_independent_batches_then_review_each_scope",
+  "single_pilot_completion_required": false,
+  "blocked_source_blocks_other_sources": false,
+  "priority": ["现行公开办事指南", "具体事项官方问答", "规范原文及配套解释", "标明日期和限制的历史对照"],
+  "initial_topics": ["居民身份证", "普通护照", "居住证", "户籍业务", "驾驶证", "社保卡", "婚姻登记", "异地就医备案", "电子边境通行证", "住房公积金", "高龄津贴", "失业保险", "往来港澳通行证"],
+  "record_dimensions": ["region", "matter", "branch", "published_at", "effective_from", "source_url", "original_sha256", "review_state"],
+  "source_failure_action": "记录具体错误并停止该入口，继续其他独立地区或事项",
+  "unknown_current_validity_action": "保留为待核或历史背景，不扩大适用结论；继续其他批次",
+  "github_delivery": "共享批次清单、出处、定位哈希、实际入库核查和进度；私有原件及数据库留本机",
+  "pilot_scope_config": "config/knowledge-scope.json",
+  "pilot_scope_is_collection_limit": false,
+  "automatic_business_publication": false
+}

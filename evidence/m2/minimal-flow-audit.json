@@ -1,0 +1,68 @@
+{
+  "captured_at": "2026-10-13T15:34:22.141948+00:00",
+  "passed": true,
+  "checks": {
+    "citizen_real_native_child_route": true,
+    "citizen_result_matches_actual_mcp_and_ui_audit": true,
+    "citizen_no_native_error_or_max_steps": true,
+    "citizen_pending_review_visible": true,
+    "staff_real_native_child_route": true,
+    "staff_result_matches_actual_mcp_and_ui_audit": true,
+    "staff_no_native_error_or_max_steps": true,
+    "staff_pending_review_visible": true,
+    "same_task_and_version_across_ui_handoff_assessment": true,
+    "material_snapshot_is_explicit_simulation": true,
+    "actual_missing_draft_item_and_pending_rule": true,
+    "exact_preview_confirmation_recorded_not_business_approval": true,
+    "source_reviews_not_fabricated": true,
+    "original_and_m1_stores_still_empty": true,
+    "original_fingerprints_preserved": true,
+    "citizen_actual_ui_screenshot_saved": true,
+    "staff_actual_ui_screenshot_saved": true
+  },
+  "task_id": "task-5b19a3e8eda6",
+  "handoff_id": "handoff-41a0f3bf7edc",
+  "knowledge_version": "preview-c1a4bbc3e444094c",
+  "native_calls": {
+    "citizen": {
+      "conversation_id": 68,
+      "tool_event_count": 3
+    },
+    "staff": {
+      "conversation_id": 69,
+      "tool_event_count": 3
+    }
+  },
+  "small_data": {
+    "sources": 2,
+    "chunks": 8
+  },
+  "screenshots": {
+    "citizen": {
+      "path": "output/playwright/m2/citizen-handoff.png",
+      "sha256": "07c130e081850b8bca8c5a9b73d6f5fe364bf229012b100afe7282c7f37061da"
+    },
+    "staff": {
+      "path": "output/playwright/m2/staff-confirmed.png",
+      "sha256": "a7c795780da14d2cc798c7e89a7bf765855792e7179020ca3c143b403643c629"
+    }
+  },
+  "original_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0
+  },
+  "m1_counts": {
+    "evidence": 0,
+    "cases": 0,
+    "materials": 0,
+    "graph_nodes": 0,
+    "graph_edges": 0,
+    "candidates": 0,
+    "versions": 0
+  },
+  "confirmation_execution": "browser automation under authenticated staff test account",
+  "business_review_completed": false,
+  "formal_approval": false,
+  "scope": "One real engineering-preview flow, actual UI/native/MCP/persistence. Not a held-out accuracy result, genuine applicant case or human business review."
+}

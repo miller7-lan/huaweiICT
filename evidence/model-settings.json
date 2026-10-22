@@ -1,6 +1,6 @@
 {
   "gov-qwen3-4b:ctx8192-v1": {
-    "parameters": "top_p                          0.95\nnum_ctx                        8192\nnum_predict                    1024\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.1\ntop_k                          20",
+    "parameters": "repeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.1\ntop_k                          20\ntop_p                          0.95\nnum_ctx                        8192\nnum_predict                    1024",
     "details": {
       "parent_model": "qwen3:4b-q4_K_M",
       "format": "gguf",
@@ -9,7 +9,8 @@
         "qwen3"
       ],
       "parameter_size": "4.0B",
-      "quantization_level": "Q4_K_M"
+      "quantization_level": "Q4_K_M",
+      "runner": "llamacpp"
     },
     "model_info": {
       "general.architecture": "qwen3",
@@ -39,11 +40,11 @@
       "tokenizer.ggml.token_type": [],
       "tokenizer.ggml.tokens": []
     },
-    "duration_ms": 47378.3,
+    "duration_ms": 14744.29,
     "response": {
-      "id": "chatcmpl-777",
+      "id": "chatcmpl-532",
       "object": "chat.completion",
-      "created": 1791645710,
+      "created": 1791779360,
       "model": "gov-qwen3-4b:ctx8192-v1",
       "system_fingerprint": "fp_ollama",
       "choices": [
@@ -71,7 +72,7 @@
           "name": "gov-qwen3-4b:ctx8192-v1",
           "model": "gov-qwen3-4b:ctx8192-v1",
           "size": 3996867624,
-          "digest": "6cd67b06bb2fc5fe4c6dfb44b19c1f3255cdd44f5b5acb6c547bd166006a1902",
+          "digest": "fa7cabcd2217a202174f26a3415927c418c8b5f844ccc016f24c94b4a4b81192",
           "details": {
             "parent_model": "",
             "format": "gguf",
@@ -82,16 +83,17 @@
             "parameter_size": "4.0B",
             "quantization_level": "Q4_K_M"
           },
-          "expires_at": "2026-10-10T23:26:50.5138638+08:00",
+          "expires_at": "2026-10-12T12:34:20.3541373+08:00",
           "size_vram": 3996867624,
-          "context_length": 8192
+          "context_length": 8192,
+          "runner": "llamacpp"
         }
       ]
     },
     "scope": "model parameter and OpenAI endpoint check, not Agent acceptance"
   },
   "gov-qwen3-8b:ctx8192-v1": {
-    "parameters": "num_ctx                        8192\nnum_predict                    1024\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.1\ntop_k                          20\ntop_p                          0.95",
+    "parameters": "num_predict                    1024\nrepeat_penalty                 1\nstop                           \"<|im_start|>\"\nstop                           \"<|im_end|>\"\ntemperature                    0.1\ntop_k                          20\ntop_p                          0.95\nnum_ctx                        8192",
     "details": {
       "parent_model": "qwen3:8b-q4_K_M",
       "format": "gguf",
@@ -100,7 +102,8 @@
         "qwen3"
       ],
       "parameter_size": "8.2B",
-      "quantization_level": "Q4_K_M"
+      "quantization_level": "Q4_K_M",
+      "runner": "llamacpp"
     },
     "model_info": {
       "general.architecture": "qwen3",
@@ -131,11 +134,11 @@
       "tokenizer.ggml.token_type": [],
       "tokenizer.ggml.tokens": []
     },
-    "duration_ms": 3820.54,
+    "duration_ms": 7191.01,
     "response": {
-      "id": "chatcmpl-247",
+      "id": "chatcmpl-50",
       "object": "chat.completion",
-      "created": 1791645714,
+      "created": 1791779368,
       "model": "gov-qwen3-8b:ctx8192-v1",
       "system_fingerprint": "fp_ollama",
       "choices": [
@@ -162,8 +165,8 @@
         {
           "name": "gov-qwen3-8b:ctx8192-v1",
           "model": "gov-qwen3-8b:ctx8192-v1",
-          "size": 6186378198,
-          "digest": "7d3aebf7235771c1e2341bc4a0862c84f46c671b1c6a7948389cfdb7c1b3c85d",
+          "size": 6278663372,
+          "digest": "c61aacd44f64b309150a214860d6f87dbdc9e5b0a49f9887e8c44be60ce67dda",
           "details": {
             "parent_model": "",
             "format": "gguf",
@@ -174,9 +177,10 @@
             "parameter_size": "8.2B",
             "quantization_level": "Q4_K_M"
           },
-          "expires_at": "2026-10-10T23:26:54.4614+08:00",
-          "size_vram": 6186378198,
-          "context_length": 8192
+          "expires_at": "2026-10-12T12:34:28.2371492+08:00",
+          "size_vram": 6278663372,
+          "context_length": 8192,
+          "runner": "llamacpp"
         }
       ]
     },

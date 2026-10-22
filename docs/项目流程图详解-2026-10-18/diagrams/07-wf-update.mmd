@@ -1,0 +1,20 @@
+flowchart TD
+    nbeat["heartbeat记录存活"]
+    nresume["优先恢复processing阶段"]
+    ncompare["读取模拟来源并计算指纹"]
+    nchange["生成包并立即暂停受影响要求"]
+    nclassify["discovered → classified"]
+    nextract["classified → extracted → validated"]
+    ndocs["文档及本地稀疏索引更新"]
+    nwait["awaiting_review"]
+    nbeat -->|"获租约且允许"| nresume
+    nresume -->|"空余本轮额度"| ncompare
+    ncompare -->|"指纹改变"| nchange
+    nchange -->|"保存包"| nclassify
+    nclassify -->|"成功"| nextract
+    nextract -->|"核验完成"| ndocs
+    ndocs -->|"写候选"| nwait
+    nwait -->|"下一轮仅恢复未完成包"| nbeat
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class ncompare,nwait gate

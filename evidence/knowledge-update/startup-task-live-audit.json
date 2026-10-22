@@ -1,0 +1,110 @@
+{
+  "captured_at": "2026-10-16T12:19:42.381855+00:00",
+  "passed": true,
+  "checks": {
+    "existing_task_was_disabled": true,
+    "task_definition_unchanged_except_enablement": true,
+    "current_os_task_owned_enabled_and_configured": true,
+    "natural_periodic_execution_completed": true,
+    "maintenance_observation_and_live_health_fresh": true,
+    "manual_pause_not_active": true,
+    "canonical_counts_preserved": true,
+    "no_reviews_evaluations_or_releases_added": true,
+    "publication_policy_and_development_registry_preserved": true,
+    "model-prevalidation.json_preserved": true,
+    "model-prevalidation-ai-review.json_preserved": true,
+    "regression_492_passed": true,
+    "ui_screenshot_saved": true,
+    "background_observation_advanced_without_manual_refresh": true
+  },
+  "before": {
+    "captured_at": "2026-10-16T11:59:42.1440198+00:00",
+    "state": "Disabled",
+    "enabled": false,
+    "last_run": "2026-10-16T06:25:55.0000000Z",
+    "next_run": "2026-10-16T12:00:54.0000000Z",
+    "last_result": 0,
+    "missed_runs": 66,
+    "ownership_verified": true,
+    "manual_pause_present": false,
+    "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9"
+  },
+  "after": {
+    "status": "observed",
+    "task_name": "HuaweiICT-KnowledgeUpdate-CB2DE02CB0F077C9",
+    "enabled": true,
+    "task_state": "Ready",
+    "ownership_verified": true,
+    "configuration_matches": true,
+    "last_run": "2026-10-16T12:15:55.0000000Z",
+    "next_run": "2026-10-16T12:20:54.0000000Z",
+    "last_result": 0,
+    "missed_runs": 0,
+    "schema": 1,
+    "checked_at": 1792153151.6348815,
+    "read_only_observation": true
+  },
+  "recovery": {
+    "checked_at": 1792152962,
+    "action": "healthy",
+    "ready": true,
+    "recovery_count": 3,
+    "last_recovered_at": 1792131058,
+    "last_recovered_supervisor_pid": 18228,
+    "supervisor_pid": 51908,
+    "error": "",
+    "no_publication_performed": true,
+    "mode": "current_user_local_service_recovery"
+  },
+  "live_startup_health": {
+    "code": "healthy",
+    "message": "Windows恢复任务已启用，最近恢复检查正常。",
+    "level": "info"
+  },
+  "canonical_counts": {
+    "sites": 30,
+    "documents": 22,
+    "revisions": 64,
+    "chunks": 296,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 25,
+    "latest_chunks": 127
+  },
+  "approval_counts": {
+    "reviews": 0,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "new_scheduled_tasks_created": 0,
+  "automatic_task_reenable_implemented": false,
+  "manually_started_scheduled_action": false,
+  "disablement_cause_established": false,
+  "ui_observation": {
+    "method": "actual_in_app_browser_accessibility_and_screenshot",
+    "url": "http://127.0.0.1:8772/",
+    "visible_status": "Windows恢复任务已启用，最近恢复检查正常。",
+    "screenshot": "evidence/knowledge-update/startup-task-live-ui.jpg",
+    "screenshot_sha256": "7c977d90c01ca6dd2f5be7ed8dd8e8e69edf45959178c239d362166ddb0c3137",
+    "scope": "Local maintenance workbench only; not citizen/staff Nexent business UI acceptance.",
+    "image_format": "jpeg"
+  },
+  "scope": "Restore the one existing owned current-user task, observe natural periodic execution, deploy read-only task health inspection in existing maintenance and display it. No continuous-week, reboot/logon transition or business-policy approval claim.",
+  "background_observation_anchor": {
+    "manual_probe_started_at": 1792152731.6194842,
+    "later_background_observation_at": 1792152821.1474848
+  },
+  "observer_files_sha256": {
+    "src/gov_mcp/knowledge_startup.py": "8c48f2567974cf442233250938dd92af7f67e81522d105bc0fbcdd9a2ed7855b",
+    "src/gov_mcp/knowledge_startup_windows.ps1": "5f94eafb03a9a2245ba05fc0d80827a2365fa308caa30ba03d600bc1b453fde4",
+    "src/gov_mcp/knowledge_workbench.html": "57173e4c6685c76906b1f4e4e93fff4355a5dc119a641475f609f210ac1d4dd3"
+  },
+  "observer_hash_basis": "SHA-256 of deployed worktree bytes; Git newline normalization may produce different repository blob hashes.",
+  "final_affected_module_validation": {
+    "report": "evidence/knowledge-update/startup-task-tests.xml",
+    "cases": 6,
+    "passed": true,
+    "scope": "Final explicit Running/Queued success-code classification and other startup health cases; full 492-case report is preserved separately."
+  }
+}

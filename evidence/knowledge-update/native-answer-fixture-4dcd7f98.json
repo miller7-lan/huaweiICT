@@ -1,0 +1,202 @@
+{
+  "started_at": "2026-10-16T11:32:20.837777+00:00",
+  "run_id": "4dcd7f98301a42c4bacdd92fb324e365",
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "synthetic_only": true,
+  "real_network_source_requests": 0,
+  "business_review_completed": false,
+  "official_knowledge_published_by_this_test": 0,
+  "presentation_only": true,
+  "records": [
+    {
+      "role": "citizen",
+      "scenario": "first-version",
+      "conversation_id": 110,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true,
+        "complete_originals_and_ids_in_presentation": true,
+        "date_types_and_nonapproval_visible": true
+      },
+      "passed": true,
+      "duration_ms": 71117.27,
+      "failure_class": null,
+      "private_trace_sha256": "f37b4f7b4ca801b58cb4f568419fbabf9ca1531809c14571ae8c8d79025c992d",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900",
+            "citation_id": "kb-7a9b7aa4e602be5b2b8baaa5c4dbb16579d10eb55630925d01bf2cc3695b7462"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "effective_to": null,
+            "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+            "original_sha256": "2b1bbb52ccc968f1f1ca4df2e810949b9fcda1c04ce8a1b94f8973aa57daeea3",
+            "chunk_ordinal": 0,
+            "text_sha256": "5a1148f59015e1b4379c9c227512c65f540860d49403e02c132b0515580d0e0a",
+            "source_span": {
+              "basis": "extracted_parent_chunk",
+              "unit": "unicode_character",
+              "start": 0,
+              "end": 29
+            },
+            "citation_id": "kb-7a9b7aa4e602be5b2b8baaa5c4dbb16579d10eb55630925d01bf2cc3695b7462"
+          }
+        ],
+        "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "citizen",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "query_date": "2026-10-16",
+          "query_view": "current",
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792150340.8439279,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "failed_check": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false,
+          "answer": "办事咨询依据\n以下为检索命中的完整原文片段；材料组合及办理结论须结合各条适用条件核对。\n知识库版本：kb-0da2f23e4cba1b66a0840d51\n查询日期：2026-10-16\n\n引用：kb-7a9b7aa4e602be5b2b8baaa5c4dbb16579d10eb55630925d01bf2cc3695b7462\n文件：纯模拟文件，仅验证版本链路\n来源：https://fixtures.invalid/docs/guide\n定位：正文段落1\n发布日期：未确认\n生效日期：2020-01-01\n失效日期：未记录\n原文：\n身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。\n\n以上为依据检索结果，不构成审批决定。"
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "first-version",
+      "conversation_id": 111,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true,
+        "complete_originals_and_ids_in_presentation": true,
+        "date_types_and_nonapproval_visible": true
+      },
+      "passed": true,
+      "duration_ms": 20087.8,
+      "failure_class": null,
+      "private_trace_sha256": "e2f8af121b1c7ed30831dcce1d61aad1c31b19385491150882bf45bf742fb6d0",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900",
+            "citation_id": "kb-7a9b7aa4e602be5b2b8baaa5c4dbb16579d10eb55630925d01bf2cc3695b7462"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "effective_to": null,
+            "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+            "original_sha256": "2b1bbb52ccc968f1f1ca4df2e810949b9fcda1c04ce8a1b94f8973aa57daeea3",
+            "chunk_ordinal": 0,
+            "text_sha256": "5a1148f59015e1b4379c9c227512c65f540860d49403e02c132b0515580d0e0a",
+            "source_span": {
+              "basis": "extracted_parent_chunk",
+              "unit": "unicode_character",
+              "start": 0,
+              "end": 29
+            },
+            "citation_id": "kb-7a9b7aa4e602be5b2b8baaa5c4dbb16579d10eb55630925d01bf2cc3695b7462"
+          }
+        ],
+        "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "staff",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "query_date": "2026-10-16",
+          "query_view": "current",
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792150340.8439279,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "failed_check": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false,
+          "answer": "工作人员核对依据\n以下为检索命中的完整原文片段；材料组合及办理结论须结合各条适用条件核对。\n知识库版本：kb-0da2f23e4cba1b66a0840d51\n查询日期：2026-10-16\n\n引用：kb-7a9b7aa4e602be5b2b8baaa5c4dbb16579d10eb55630925d01bf2cc3695b7462\n文件：纯模拟文件，仅验证版本链路\n来源：https://fixtures.invalid/docs/guide\n定位：正文段落1\n发布日期：未确认\n生效日期：2020-01-01\n失效日期：未记录\n原文：\n身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。\n\n以上为依据检索结果，不构成审批决定。"
+        }
+      }
+    }
+  ],
+  "cleanup": {
+    "temporary_agent_removed_citizen": true,
+    "temporary_agent_removed_staff": true,
+    "temporary_mcp_removed": true,
+    "platform_inventory_verified": true,
+    "owned_fixture_server_stopped": true
+  },
+  "passed": true,
+  "temporary_agent_ids": {
+    "citizen": 18,
+    "staff": 19
+  },
+  "fixture_first_version": "kb-0da2f23e4cba1b66a0840d51",
+  "post_cleanup_platform_checks": {
+    "fixture_agents_absent": true,
+    "fixture_mcp_absent": true,
+    "original_qa_agents_present": true,
+    "real_knowledge_mcp_present": true
+  },
+  "real_candidate_business_counts_unchanged": true,
+  "real_candidate_counts": {
+    "documents": 21,
+    "revisions": 63,
+    "chunks": 293,
+    "latest_chunks": 124,
+    "versions": 0,
+    "heads": 0
+  },
+  "finished_at": "2026-10-16T11:33:56.195846+00:00",
+  "scope": "Two fixed-question native model/MCP calls on a synthetic published fixture, one per authenticated role; full original citations, stable IDs, date labels and exact last-tool copying. No dynamic visitor-question, business accuracy or UI acceptance claim."
+}

@@ -1,0 +1,26 @@
+digraph G {
+graph [rankdir=LR, bgcolor="white", pad="0.35", nodesep="0.5", ranksep="0.6", splines=polyline, fontname="Microsoft YaHei"];
+node [shape=box, style="rounded,filled", width=4.5, fontname="Microsoft YaHei", fontsize=12, margin="0.18,0.16"];
+edge [fontname="Microsoft YaHei", fontsize=10, color="#708299", arrowsize=0.75];
+workflow [id="05-workflow-data-workflow", label=<<B>Workflow读写层</B><BR/><FONT POINT-SIZE="10">所有业务记录按kind＋id存在wf_records；短事务与版<BR ALIGN="LEFT"/>本指纹由程序控制。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:82</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.put"];
+state [id="05-workflow-data-state", label=<<B>state(key PK, value JSON)</B><BR/><FONT POINT-SIZE="10">wf_head=业务快照ID；wf_documents=当前文档；wf_co<BR ALIGN="LEFT"/>ntrol=暂停/间隔；lease=单写租约。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">store.py:26</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/knowledge/store.py:Store.__init__"];
+records [id="05-workflow-data-records", label=<<B>wf_records(kind, id, payload)</B><BR/><FONT POINT-SIZE="10">PRIMARY KEY(kind,id)。query / source / package /<BR ALIGN="LEFT"/> block / trace / documents / ontology_version / <BR ALIGN="LEFT"/>audit_gate。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:50</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/decision/workflow.py:Workflow.__init__"];
+versions [id="05-workflow-data-versions", label=<<B>wf_versions(id PK, payload)</B><BR/><FONT POINT-SIZE="10">id=规范化snapshot的SHA256；payload包含base、acto<BR ALIGN="LEFT"/>r、created_at、snapshot。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:106</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/decision/workflow.py:Workflow._version"];
+query [id="05-workflow-data-query", label=<<B>query payload</B><BR/><FONT POINT-SIZE="10">version_id、facts、branch_id、draft、rounds、fou<BR ALIGN="LEFT"/>nd_ids、status、answer；staged查询分步骤推进。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:259</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.open_query"];
+package [id="05-workflow-data-package", label=<<B>package payload</B><BR/><FONT POINT-SIZE="10">source_id、fingerprint、base、stage、candidates<BR ALIGN="LEFT"/>、reviews、published；basis_hash绑定逐项复核。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:445</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow._check"];
+blocks [id="05-workflow-data-blocks", label=<<B>block payload</B><BR/><FONT POINT-SIZE="10">object_id、package_id、reason、accepted_hash；仅<BR ALIGN="LEFT"/>已接受新内容的哈希解除对应暂停。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:134</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow._service"];
+runs [id="05-workflow-data-runs", label=<<B>runs / jobs</B><BR/><FONT POINT-SIZE="10">Store的租约run使用owner＋fence＋deadline；工作台<BR ALIGN="LEFT"/>复用run，公开采集器另有自己的jobs表。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">store.py:128</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/knowledge/store.py:Store.claim"];
+audit [id="05-workflow-data-audit", label=<<B>audit(id, time, operation, payload)</B><BR/><FONT POINT-SIZE="10">记录人工复核、发布、回退、失败；wf_records的trac<BR ALIGN="LEFT"/>e另记录角色/工具及输入输出哈希。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:123</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/decision/workflow.py:Workflow._event"];
+workflow -> state [label="get / put", style="solid"];
+workflow -> records [label="get / put / rows", style="solid"];
+workflow -> versions [label="_version / version", style="solid"];
+workflow -> audit [label="audit / _event", style="solid"];
+workflow -> runs [label="claim / finish / abort", style="solid"];
+records -> query [label="kind=query", style="dashed"];
+records -> package [label="kind=package", style="dashed"];
+records -> blocks [label="kind=block", style="dashed"];
+query -> versions [label="version_id", style="dashed"];
+package -> versions [label="base", style="dashed"];
+state -> versions [label="wf_head", style="dashed"];
+blocks -> package [label="package_id", style="dashed"];
+}

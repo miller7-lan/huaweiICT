@@ -1,0 +1,15 @@
+# Overlay for the existing local Nexent stack. Values come from the operator's
+# current proxy configuration; no credentials or machine-specific ports here.
+services:
+  nexent-config:
+    environment:
+      HTTP_PROXY: ${ICT_CLOUD_HTTP_PROXY:?Set the existing proxy reachable from Docker}
+      HTTPS_PROXY: ${ICT_CLOUD_HTTPS_PROXY:?Set the existing proxy reachable from Docker}
+      NO_PROXY: localhost,127.0.0.1,::1,host.docker.internal,nexent-config,nexent-runtime,nexent-mcp,nexent-postgresql,nexent-redis,nexent-elasticsearch,nexent-minio,supabase-kong-mini,supabase-auth-mini,supabase-db-mini,gov-blank-mcp,govdocs-mcp,govkb-maintenance,govkb-demo
+      skip_proxy: "false"
+  nexent-runtime:
+    environment:
+      HTTP_PROXY: ${ICT_CLOUD_HTTP_PROXY:?Set the existing proxy reachable from Docker}
+      HTTPS_PROXY: ${ICT_CLOUD_HTTPS_PROXY:?Set the existing proxy reachable from Docker}
+      NO_PROXY: localhost,127.0.0.1,::1,host.docker.internal,nexent-config,nexent-runtime,nexent-mcp,nexent-postgresql,nexent-redis,nexent-elasticsearch,nexent-minio,supabase-kong-mini,supabase-auth-mini,supabase-db-mini,gov-blank-mcp,govdocs-mcp,govkb-maintenance,govkb-demo
+      skip_proxy: "false"

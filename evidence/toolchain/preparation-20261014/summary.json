@@ -1,0 +1,50 @@
+{
+  "captured_at": "2026-10-13T16:14:37.183517+00:00",
+  "client_timezone": "Asia/Shanghai",
+  "scope": "isolated input preparation, not Nexent knowledge ingestion or business acceptance",
+  "dataset_id": "ict-synthetic-preparation-v1",
+  "data_class": "synthetic",
+  "assets": [
+    {
+      "source_id": "demo-policy",
+      "asset_id": "asset-d1675dad35ca8ab616e9",
+      "sha256": "d1675dad35ca8ab616e961f01cf602be869f10252d4acd0b6942010e373b745a",
+      "bytes": 171,
+      "modality": "text",
+      "parser": "utf8-lines-v1",
+      "parsed": true,
+      "segment_count": 3
+    },
+    {
+      "source_id": "demo-materials",
+      "asset_id": "asset-d6990c6d070d537380b8",
+      "sha256": "d6990c6d070d537380b8198142de878bf5254180beecb687e17e422ddd4c4a31",
+      "bytes": 117,
+      "modality": "table",
+      "parser": "csv-records-v1",
+      "parsed": true,
+      "segment_count": 2
+    },
+    {
+      "source_id": "demo-notice",
+      "asset_id": "asset-84900b56a2f39c75077e",
+      "sha256": "84900b56a2f39c75077e0ef03f8d79b809102a1a455094746238cbe2e8e9511e",
+      "bytes": 35307,
+      "modality": "image",
+      "parser": "rapidocr-onnxruntime-1.4.4",
+      "parsed": true,
+      "segment_count": 4
+    }
+  ],
+  "errors": [],
+  "embedding_requested": true,
+  "business_rules_published": false,
+  "ontology_extraction_implemented": false,
+  "embedding": {
+    "model": "qwen3-embedding:0.6b",
+    "dimension": 1024,
+    "vector_count": 10,
+    "ranked_segment_count": 9
+  },
+  "input_preparation_passed": true
+}

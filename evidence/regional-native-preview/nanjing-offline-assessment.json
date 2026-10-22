@@ -1,0 +1,121 @@
+{
+  "passed": true,
+  "stop_reasons": [],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_regional_open_query",
+    "govkb_regional_retrieve",
+    "final_answer",
+    "govkb_regional_verify",
+    "final_answer",
+    "govkb_regional_state",
+    "govkb_regional_finalize",
+    "final_answer"
+  ],
+  "answer": {
+    "task_id": "2cc0f4197f8d45b49f029fc746ad0201",
+    "scenario_id": "nanjing",
+    "status": "partial_preview",
+    "mode": "regional_public_preview",
+    "data_class": "public",
+    "snapshot_binding": "5078a07b997ac20e5c85d8ed6e2c0f28b25f8cbdcf52ffd3c6343d61895480b4",
+    "source_facts": [
+      {
+        "id": "duration",
+        "value": {
+          "in_province_working_days": 20,
+          "outside_province_additional_working_days": 5
+        },
+        "statement": "The Nanjing answer states a 20-working-day replacement cycle for in-province household registrants. For outside-province registrants, review and issuance by their household-registration police authority adds 5 working days.",
+        "citations": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "locator": "正文段落2",
+            "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+            "start": 0,
+            "end": 58,
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+          }
+        ],
+        "status": "source_supported",
+        "support": 0.96
+      },
+      {
+        "id": "exam_service",
+        "value": "expedited service without a stated day count",
+        "statement": "For candidates urgently needing identity documents, the Nanjing answer describes expedited acceptance, review, production and issuance to shorten the cycle. It does not state a specific number of days.",
+        "citations": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "locator": "正文段落3",
+            "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+            "start": 0,
+            "end": 52,
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920"
+          }
+        ],
+        "status": "source_supported",
+        "support": 0.95
+      }
+    ],
+    "source_context": {
+      "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+      "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+      "revision_id": "rev-5f47d58d1eb3f91948672314",
+      "original_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+      "selected_clauses": [
+        {
+          "locator": "正文段落1",
+          "category": "identity",
+          "text": "问：身份证到期后换证，需要多长时间才能领取新证？"
+        },
+        {
+          "locator": "正文段落2",
+          "category": "identity",
+          "text": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。"
+        },
+        {
+          "locator": "正文段落3",
+          "category": "procedure",
+          "text": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。"
+        }
+      ],
+      "unselected_body_not_included": true
+    },
+    "unknown_fields": [
+      "exam_expedited_days",
+      "current_applicability"
+    ],
+    "pending_business_conclusions": [
+      {
+        "field": "duration",
+        "status": "paused",
+        "reason": "20工作日及省外增加5工作日为来源记载，现行执行未核定。"
+      },
+      {
+        "field": "exam_service",
+        "status": "paused",
+        "reason": "考生快速服务无明确天数，具体适用及办理承诺待核。"
+      }
+    ],
+    "unsupported_assertion": {
+      "id": "unsupported_exam_three_days",
+      "support": 0.02,
+      "status": "rejected",
+      "accepted_as_business_fact": false
+    },
+    "published": false,
+    "formal_approval": false,
+    "notice": "真实公开资料原文预览，现行业务适用性待核，未提交申请。"
+  },
+  "scenario_id": "nanjing",
+  "evidence_source": "20261018T150636212995Z.json",
+  "model_calls": 0,
+  "code_sha256": "0bfd327e35622c15f8cb941f4088d7ec16f5bb5827813ca5deb371e7d06915bc",
+  "campaign": {
+    "native_runs": 3,
+    "jev_reserved": 2
+  }
+}

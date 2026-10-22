@@ -1,0 +1,165 @@
+{
+  "recorded_at": "2026-10-21T13:46:52.826971+00:00",
+  "status": "PASS_BOUND_SOURCE_PREPARATION",
+  "source_count": 3,
+  "sources": [
+    {
+      "source_id": "HN-FEE-CATALOG-XLSX-2025",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+      "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+      "business_approval": false,
+      "current_applicability": "unknown",
+      "extraction_method": "exact_literal_xlsx_cells",
+      "cells": [
+        {
+          "locator": "Excel工作表行政事业性收费!A1",
+          "category": "fee",
+          "text": "全国性及中央部门和单位行政事业性收费目录清单"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D4",
+          "category": "fee",
+          "text": "项目名称"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E4",
+          "category": "fee",
+          "text": "资金管理方式"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F4",
+          "category": "fee",
+          "text": "设立依据"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G4",
+          "category": "fee",
+          "text": "收费标准"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!B17",
+          "category": "fee",
+          "text": "公安部门"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D36",
+          "category": "fee",
+          "text": "（4）居民身份证工本费"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E36",
+          "category": "fee",
+          "text": "缴入地方国库"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F36",
+          "category": "fee",
+          "text": "《中华人民共和国居民身份证法》，财综〔2007〕34号，财税〔2018〕37号，豫财综〔2004〕22号，豫财办行〔2006〕39号，豫财办综〔2007〕39号"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G36",
+          "category": "fee",
+          "text": "财综〔2007〕34号，财税〔2018〕37号"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-MEASURES-2021-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "business_approval": false,
+      "current_applicability": "unknown",
+      "extraction_method": "ai_visual_transcription_of_rendered_pdf",
+      "automated_ocr_state": "blocked_by_windows_execution_policy",
+      "execution_policy_changed": false,
+      "observation": {
+        "recorded_on": "2026-10-21",
+        "reviewer": {
+          "kind": "ai",
+          "name": "Codex",
+          "model": "GPT-6 family",
+          "exact_revision": null
+        },
+        "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+        "source_id": "HN-MEASURES-2021-PDF",
+        "method": "AI visual reading of Poppler renders of PDF pages 5 and 6, not automated OCR",
+        "rendered_pages": [
+          {
+            "pdf_page": 5,
+            "image_sha256": "c235b11699fa32b9bdf9a7b9d19dc0a58fa8b0e95a1a51f0765fa1943234d80b",
+            "renderer": "Poppler pdftoppm, PNG, scale-to 1600"
+          },
+          {
+            "pdf_page": 6,
+            "image_sha256": "b6adb0ea3e9d1cdd646e1071ede1288390768d28fd3dc7840ef12f7c5cc889d4",
+            "renderer": "Poppler pdftoppm, PNG, scale-to 1600"
+          }
+        ],
+        "observations": [
+          {
+            "locator": "PDF第5页右半页（印刷页码5），第二项",
+            "heading": "二、换领、补领居民身份证实行“省内通办”",
+            "transcription": "群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。"
+          },
+          {
+            "locator": "PDF第5页右半页第三项标题至PDF第6页左半页（印刷页码6）首段",
+            "heading": "三、压缩身份证办理周期",
+            "transcription": "将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。"
+          }
+        ],
+        "layout_note": "每个PDF页面包含左右两张印刷页。保留PDF页序及左右位置，不把印刷页码当成PDF页码。第二项在PDF第5页右侧；第三项跨至PDF第6页左侧。转录合并排版换行与字间空格，不冒称原始OCR字节。",
+        "automated_ocr_state": "Windows execution policy refused the existing OCR PowerShell script; no policy bypass or change",
+        "human_review_completed": false,
+        "business_approval": false,
+        "current_applicability": "unknown",
+        "formally_published": false
+      },
+      "requires_business_review": true
+    },
+    {
+      "source_id": "MOF-FEE-2007",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "business_approval": false,
+      "current_applicability": "unknown",
+      "extraction_method": "exact_catalog_clause_hash_match",
+      "clauses": [
+        {
+          "locator": "正文段落3",
+          "category": "identity",
+          "text": "为进一步规范申领、换领、补领居民身份证收费行为，纠正和制止一些地方在办理第二代居民身份证过程中，借办理快证、加急等业务违规收取快证费等费用的做法，现就有关收费政策重申如下：",
+          "text_sha256": "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+        },
+        {
+          "locator": "正文段落4",
+          "category": "identity",
+          "text": "一、公安机关向申领、换领、补领居民身份证的居民收取证件工本费，应当严格按照《中华人民共和国居民身份证法》，以及《财政部、国家发展改革委关于第二代居民身份证工本费减免政策的通知》(财综〔 2004〕8号)、《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》(发改价格〔2003〕2322号)的规定执行，即向首次申领、换领第二代居民身份证的居民收取工本费每证20元；向遗失补领、损坏换领第二代居民身份证的居民收取工本费每证40元；为居民办理临时居民身份证收取工本费每证10元。除上述收费外，各地不得自行规定收取或搭车收取其他任何费用，也无权自行制定和调整收费标准。",
+          "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+        },
+        {
+          "locator": "正文段落5",
+          "category": "identity",
+          "text": "二、各级公安机关应努力提高办证效率，尽量缩短居民身份证制作期限。对于申请加急办证的居民，可为其办理临时居民身份证或采取相应的便民措施解决其急需身份证的需求，但不得借此收取快证费、加急费等费用。",
+          "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+        },
+        {
+          "locator": "正文段落6",
+          "category": "identity",
+          "text": "三、各省、自治区、直辖市财政、价格主管部门要按照现行居民身份证收费管理制度规定，会同公安部门对本行政区域内涉及居民身份证的各项收费进行清理，立即停止并纠正收取快证费、加急费、照相费和邮寄费等违规收费行为，并于2007年6月底前将清理情况报财政部、国家发展改革委。",
+          "text_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+        },
+        {
+          "locator": "正文段落7",
+          "category": "identity",
+          "text": "四、各省、自治区、直辖市财政、价格主管部门和公安机关要严格执行财综〔2004〕8号文件、发改价格〔2003〕2322号文件及本通知规定，切实加强收费管理，规范收费行为，防止在办理居民身份证过程中再发生收取快证费、加急费等违规收费行为。在本通知印发后，若再发生批准或继续违规收费的行为，将按有关规定，追究相关部门负责人及直接责任人员的责任。",
+          "text_sha256": "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+        }
+      ]
+    }
+  ],
+  "new_http_calls": 0,
+  "model_calls": 0,
+  "formal_publications": 0,
+  "business_acceptance_complete": false,
+  "scope": "Exact cells, full normative clauses and attributed scan transcription; no joint decision or policy approval."
+}

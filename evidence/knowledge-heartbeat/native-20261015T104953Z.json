@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-10-15T10:49:26.804344+00:00",
+  "scope": "real Nexent model orchestration; synthetic website and replayed Jev responses",
+  "real_jev_inference": false,
+  "official_website_verified": false,
+  "agents": {
+    "extractor": 7,
+    "reviewer": 6,
+    "controller": 8
+  },
+  "versions": {
+    "extractor": 2,
+    "reviewer": 2,
+    "controller": 2
+  },
+  "passed": false,
+  "run": {
+    "conversation_id": 149,
+    "deadline": 1792061991.3521018,
+    "fence": 1,
+    "finished_at": 1792061392.0499763,
+    "id": "96de8890328c4019bca2169e46f3883c",
+    "jobs": [
+      "28f01cb255454fca8eb416d837d3abb1"
+    ],
+    "owner": "82d8d396965b4109b7e67eff6177bcfe",
+    "started_at": 1792061391.3521018,
+    "status": "NATIVE_EXECUTION_FAILED"
+  },
+  "active_documents": null,
+  "active_rules": null,
+  "candidate_count": 0,
+  "claims_count": 0,
+  "provider": "synthetic_contract_replay_not_jev",
+  "trace_sha256": "e089e780dc6e7f4ce31452d92879bf22885ad1f03683c953d1b96605aba366ed",
+  "tool_events": [],
+  "runtime_errors": [
+    "error"
+  ],
+  "actual_tools": []
+}

@@ -1,0 +1,90 @@
+{
+  "status": "PASS_SOURCE_LANDING",
+  "upstream": "origin/feat/m2-minimal-flow",
+  "upstream_commit": "3bf8588",
+  "merge_commit": "1e98ac3768348d898790a9adfc86455262ebf7d8",
+  "catalog_integrity": {
+    "old_documents_unchanged": 46,
+    "new_documents": 17,
+    "total_documents": 63,
+    "latest_selected_chunks": 491,
+    "all_17_batch_identities_and_locators_match": true
+  },
+  "local_counts": {
+    "sites": 2,
+    "documents": 2,
+    "revisions": 2,
+    "chunks": 18,
+    "reviews": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "real_http_requests": 4,
+  "http_statuses": [
+    200,
+    200,
+    200,
+    200
+  ],
+  "local_dns_stop_http_requests": 0,
+  "direct_attempt": {
+    "captured_at": "2026-10-18T14:42:31.233646+00:00",
+    "catalog_sha256": "847bcaf8965c84ea16e0469e5758468f521363b6cc36e81478c1dabd1fcc1dd2",
+    "bindings": [],
+    "acquisitions": [
+      {
+        "source_id": "BJ-ID-RENEWAL-2025",
+        "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+        "checked_at": "2026-10-18T14:42:31.248648+00:00",
+        "method": "normal_direct_public_http_checked_ip_tls_robots",
+        "requests": [],
+        "status": "stopped",
+        "error_type": "AccessStopped",
+        "access_failure": {
+          "phase": "robots",
+          "http_status": null
+        }
+      },
+      {
+        "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+        "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+        "checked_at": "2026-10-18T14:42:31.265833+00:00",
+        "method": "normal_direct_public_http_checked_ip_tls_robots",
+        "requests": [],
+        "status": "stopped",
+        "error_type": "AccessStopped",
+        "access_failure": {
+          "phase": "robots",
+          "http_status": null
+        }
+      }
+    ],
+    "cloud_calls": 0,
+    "formally_published": false
+  },
+  "actual_model_calls_this_experiment": 0,
+  "actual_new_native_runs": 0,
+  "tests": {
+    "passed": 18,
+    "scope": "18 new boundary checks; no full regression"
+  },
+  "checks": {
+    "two_sources_acquired": true,
+    "beijing_has_real_quotes": true,
+    "nanjing_has_real_quotes": true,
+    "region_isolation": true,
+    "erqi_blocked": true,
+    "other_matter_blocked": true,
+    "business_conclusions_paused": true,
+    "online_conditions_preserved": true,
+    "no_review_or_publication": true
+  },
+  "final_source_sha256": {
+    "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+    "scripts/run_new_knowledge_experiment.py": "0283b9f395c56a88651903fc04850bb87fd527df6046832d07c52145457b0475",
+    "tests/test_knowledge_landing.py": "bb44b327871b4ff7c9caed58512b40d48aada1f6d5acd0c9b8debe56de36012e",
+    "data/knowledge/candidate-catalog.json": "847bcaf8965c84ea16e0469e5758468f521363b6cc36e81478c1dabd1fcc1dd2"
+  },
+  "formal_business_publication": false,
+  "next_gap": "Fresh bounded Nexent/DeepSeek/Jev evidence for this new scope, then business review; previous Erqi campaign remains stopped"
+}

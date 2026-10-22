@@ -1,0 +1,26 @@
+{
+  "format": "crossdoc-source-gates-v1",
+  "archive_mode": "frozen_historical_archive_not_current_policy",
+  "business_conclusions_paused": true,
+  "scope_mapping": {
+    "region": "南京市",
+    "from_matter": "resident-id-renewal-old-card-use",
+    "to_matter": "resident-id-renewal",
+    "approved_for": "engineering_fixed_preview_only",
+    "formal_approval": false
+  },
+  "sources": {
+    "cycle": {
+      "enabled": true,
+      "paused_reason": null,
+      "failed": false,
+      "superseded": false
+    },
+    "old_card": {
+      "enabled": true,
+      "paused_reason": null,
+      "failed": false,
+      "superseded": false
+    }
+  }
+}

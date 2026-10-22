@@ -1,0 +1,329 @@
+{
+  "status": "PASS_BOUNDED_CLOUD_UPDATE_REPLAY",
+  "checks": {
+    "native_success": true,
+    "two_managed_child_starts": true,
+    "extract_and_review_children_executed": true,
+    "single_candidate": true,
+    "pending_human_review": true,
+    "no_formal_versions": true,
+    "no_tool_blocks": true,
+    "real_heartbeat_progressed": true,
+    "old_then_new_detected": true,
+    "source_guard_preserved": true,
+    "tool_whitelist": true,
+    "no_duplicate_submit_review": true,
+    "budget_closed": true
+  },
+  "campaign": {
+    "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+    "duration_ms": 16453.0,
+    "event_types": {
+      "agent_finish": 2,
+      "agent_new_run": 4,
+      "execution_logs": 9,
+      "final_answer": 1,
+      "model_attempt_control": 16,
+      "model_output_thinking": 1257,
+      "other": 1,
+      "parse": 8,
+      "step_count": 8,
+      "subagent_end": 2,
+      "subagent_start": 2,
+      "token_count": 2,
+      "tool": 14
+    },
+    "implementation": {
+      "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2",
+      "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+      "successor_update.py": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+      "successor_update_server.py": "9f2eb4f5e20b3cc636b2c4344effdfa3219b335edb223d760a2333ca356b2246"
+    },
+    "native_run_budget": 1,
+    "reserved_at": "2026-10-21T05:51:56.648625+00:00",
+    "run_id": "d1daefb0adbf44f7806da30ab2c9f1a3",
+    "status": "passed"
+  },
+  "receipt": {
+    "actual_effective_date": null,
+    "batch_id": "401e3756131f4da3b51abb5ffe3892e5",
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "candidate": {
+      "business_conclusion_status": "PAUSED_UNREVIEWED",
+      "difference": {
+        "can_subtract_days": false,
+        "effective_date": null,
+        "exception": {
+          "quote": "一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考特殊时期急需用证考生通过“绿色通道”申办居民身份证时限由15个自然日缩短至5个工作日。",
+          "source_id": "HN-MEASURES-2026",
+          "unit": "working_day",
+          "value": 5
+        },
+        "exception_scope": "中考、高考特殊时期急需用证考生通过“绿色通道”申办",
+        "interval": "从受理之日起到领证之日",
+        "new": {
+          "quote": "一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考特殊时期急需用证考生通过“绿色通道”申办居民身份证时限由15个自然日缩短至5个工作日。",
+          "source_id": "HN-MEASURES-2026",
+          "unit": "working_day",
+          "value": 15
+        },
+        "old": {
+          "quote": "一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。",
+          "source_id": "HN-MEASURES-2024-JY",
+          "unit": "calendar_day",
+          "value": 25
+        },
+        "population": "本省户籍居民",
+        "relationship": "cross_url_successor_candidate",
+        "whole_old_document_repealed": false
+      },
+      "formal_approval": false,
+      "formally_published": false,
+      "id": "daacf6951ce7a5b29349215b2c712b2f2b8f0dcde7f26375f8bd3ca15078966f",
+      "machine_review": {
+        "acceptable": true,
+        "conflicts": [],
+        "notes": [
+          "New document (HN-MEASURES-2026, https://hnga.henan.gov.cn/2026/05-11/3349863.html) is a distinct-URL successor to old HN-MEASURES-2024-JY (https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html); relationship cross_url_successor_candidate confirmed by both complete first-item clauses.",
+          "Ordinary population/interval: old 25 calendar days -> new 15 working days, both measured 从受理之日起到领证之日; population explicitly 本省户籍居民 in new clause.",
+          "Green-channel exception: 中考、高考特殊时期急需用证考生 via 绿色通道, old 15 calendar days -> new 5 working days; exam-person/period/green-channel restriction preserved.",
+          "Units differ (calendar_day vs working_day); no arithmetic across day units performed (can_subtract_days=false).",
+          "Exact effective date unknown (effective_from=null in both views); page publication date 2026-05-05 for new document.",
+          "No inherited formal approval (formal_approval=false in both views); this is a pending engineering candidate only.",
+          "whole_old_document_repealed=false: old document not entirely repealed; only the time-limit clause is superseded.",
+          "Applicability limit: new working-day limits cannot be directly compared numerically with old calendar-day limits."
+        ],
+        "omissions": []
+      },
+      "source_binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+      "status": "pending_review"
+    },
+    "formal_approval": false,
+    "published": false,
+    "run_id": "d1daefb0adbf44f7806da30ab2c9f1a3",
+    "source_binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+    "status": "candidate_awaiting_human_review"
+  },
+  "tools": [
+    {
+      "name": "read_skill_md",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_submit",
+      "depth": 1
+    },
+    {
+      "name": "final_answer",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_review",
+      "depth": 1
+    },
+    {
+      "name": "final_answer",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_finish",
+      "depth": 0
+    },
+    {
+      "name": "final_answer",
+      "depth": 0
+    }
+  ],
+  "heartbeat_samples": 16,
+  "cloud_model_steps": [
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "2975021d6f9149ceaf53098f3dc50777",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "2975021d6f9149ceaf53098f3dc50777",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 1, \"duration\": 0.85, \"step_input_tokens\": 6633, \"step_output_tokens\": 32, \"total_output_tokens\": 32, \"estimated_context_tokens\": 7379, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 46.0, \"uncompressed_est_tokens\": 13664, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 6633}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "8089778b0db84786acdacd6cfc0fc72c",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "8089778b0db84786acdacd6cfc0fc72c",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "df01f69ebb6e43f39a78d584e4a4878c",
+      "phase": "begin",
+      "attempt_id": "eb4841a474e34e739b411eae0f7cb9d3",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "df01f69ebb6e43f39a78d584e4a4878c",
+      "phase": "commit",
+      "attempt_id": "eb4841a474e34e739b411eae0f7cb9d3",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "df01f69ebb6e43f39a78d584e4a4878c",
+      "phase": "begin",
+      "attempt_id": "df9c95178fbf4c04874a3a26ec7b427a",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "df01f69ebb6e43f39a78d584e4a4878c",
+      "phase": "commit",
+      "attempt_id": "df9c95178fbf4c04874a3a26ec7b427a",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "df01f69ebb6e43f39a78d584e4a4878c",
+      "phase": "begin",
+      "attempt_id": "0182f13b6be7404b82f145b068ed6879",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "df01f69ebb6e43f39a78d584e4a4878c",
+      "phase": "commit",
+      "attempt_id": "0182f13b6be7404b82f145b068ed6879",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 30,
+      "depth": 1,
+      "invocation_id": "7906dac77f394aff921c7d248699e8ed",
+      "phase": "begin",
+      "attempt_id": "b7d8ad3e33fe4df482be37df85650712",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 30,
+      "depth": 1,
+      "invocation_id": "7906dac77f394aff921c7d248699e8ed",
+      "phase": "commit",
+      "attempt_id": "b7d8ad3e33fe4df482be37df85650712",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 30,
+      "depth": 1,
+      "invocation_id": "7906dac77f394aff921c7d248699e8ed",
+      "phase": "begin",
+      "attempt_id": "7aed3cc2df294ccfae4a6b3a02780e0d",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 30,
+      "depth": 1,
+      "invocation_id": "7906dac77f394aff921c7d248699e8ed",
+      "phase": "commit",
+      "attempt_id": "7aed3cc2df294ccfae4a6b3a02780e0d",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 30,
+      "depth": 1,
+      "invocation_id": "7906dac77f394aff921c7d248699e8ed",
+      "phase": "begin",
+      "attempt_id": "83bd380fdcf345c39a1efae60a6d3117",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 30,
+      "depth": 1,
+      "invocation_id": "7906dac77f394aff921c7d248699e8ed",
+      "phase": "commit",
+      "attempt_id": "83bd380fdcf345c39a1efae60a6d3117",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 2, \"duration\": 8.71, \"step_input_tokens\": 6969, \"step_output_tokens\": 240, \"total_output_tokens\": 272, \"estimated_context_tokens\": 7809, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 47.4, \"uncompressed_est_tokens\": 14839, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 6969}"
+    }
+  ],
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "real_remote_change": false,
+  "formal_business_approval": false,
+  "notes": "Actual native cloud agents under production Worker ticks; archive arrival is replayed. Long-term monitoring, live-site discovery and formal business publication are not validated."
+}

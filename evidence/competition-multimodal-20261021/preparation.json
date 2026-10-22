@@ -1,0 +1,123 @@
+{
+  "recorded_at": "2026-10-21T13:41:58.506097+00:00",
+  "sources": [
+    {
+      "source_id": "HN-FEE-CATALOG-XLSX-2025",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+      "expected_original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+      "kind": "xlsx",
+      "attempted_at": "2026-10-21T13:41:42.258859+00:00",
+      "state": "acquired",
+      "business_approval": false,
+      "http_status": 200,
+      "final_url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+      "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+      "original_bytes": 33251,
+      "matches_historical_original": true,
+      "extraction_state": "exact_literal_cells_read",
+      "cells": [
+        {
+          "locator": "Excel工作表行政事业性收费!A1",
+          "category": "fee",
+          "text": "全国性及中央部门和单位行政事业性收费目录清单",
+          "text_sha256": "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D4",
+          "category": "fee",
+          "text": "项目名称",
+          "text_sha256": "867698fb7b0c730c9c692a01b65a74500b5f44f3589e31703e2957f9ba5ce976"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E4",
+          "category": "fee",
+          "text": "资金管理方式",
+          "text_sha256": "aa3a4744db978914e3d78ff0d44f3e163ddd65c8eaa6795327a16fcb9d816047"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F4",
+          "category": "fee",
+          "text": "设立依据",
+          "text_sha256": "16615568b15068c3dfbe9accb7ff41137b3e68fd6eb544ec50a4ca15dca0d660"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G4",
+          "category": "fee",
+          "text": "收费标准",
+          "text_sha256": "05a643ca852e19da3509e7c6e90813b44970b7afe0f079e823b4975c3940b659"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!B17",
+          "category": "fee",
+          "text": "公安部门",
+          "text_sha256": "984f2209c71bdebc41a23c318e3b52986a4eb41cc53fbda08c5f0f2f00352031"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!D36",
+          "category": "fee",
+          "text": "（4）居民身份证工本费",
+          "text_sha256": "87632ef1001bce8e0fd07786845ea07be4f2a17ea0f2a94d8deb62f24793e029"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!E36",
+          "category": "fee",
+          "text": "缴入地方国库",
+          "text_sha256": "be899e2513ff0fa57789b1d2f167f47f380bcbd3a86a71d76fc1f54098c10b45"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!F36",
+          "category": "fee",
+          "text": "《中华人民共和国居民身份证法》，财综〔2007〕34号，财税〔2018〕37号，豫财综〔2004〕22号，豫财办行〔2006〕39号，豫财办综〔2007〕39号",
+          "text_sha256": "c706c34a9c25517fe10d8be4b57ade84371005db336079f5097bf3097350c505"
+        },
+        {
+          "locator": "Excel工作表行政事业性收费!G36",
+          "category": "fee",
+          "text": "财综〔2007〕34号，财税〔2018〕37号",
+          "text_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c"
+        }
+      ]
+    },
+    {
+      "source_id": "HN-MEASURES-2021-PDF",
+      "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+      "expected_original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "kind": "pdf",
+      "attempted_at": "2026-10-21T13:41:47.584766+00:00",
+      "state": "acquired",
+      "business_approval": false,
+      "http_status": 200,
+      "final_url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "original_bytes": 1533949,
+      "matches_historical_original": true,
+      "processing_stopped": true,
+      "error_type": "ValueError",
+      "access_diagnostic": {}
+    },
+    {
+      "source_id": "MOF-FEE-2007",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+      "expected_original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "kind": "html",
+      "attempted_at": "2026-10-21T13:41:53.290620+00:00",
+      "state": "acquired",
+      "business_approval": false,
+      "http_status": 200,
+      "final_url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "original_bytes": 20865,
+      "matches_historical_original": true,
+      "extraction_state": "selector_or_clause_review_required",
+      "matched_clauses": [],
+      "expected_clause_count": 5
+    }
+  ],
+  "http_reservations": 6,
+  "model_calls": 0,
+  "business_approval": false,
+  "ontology_activated": false,
+  "formal_publications": 0,
+  "source_originals_redistributed": false,
+  "scope": "Actual bounded acquisition and extraction only; not a multimodal business acceptance."
+}

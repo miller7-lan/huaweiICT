@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "mode": "public_preview",
+  "data_class": "public",
+  "case": {
+    "data_class": "public",
+    "applicant_kind": "fictional",
+    "age_group": "adult",
+    "self_service": true,
+    "household_scope": "local_erqi",
+    "reason": "expiry",
+    "window": "minggong",
+    "personal_data_collected": false
+  },
+  "sources": [
+    {
+      "source_id": "erqi",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3394639.jhtml",
+      "data_class": "public",
+      "raw_sha256": "74f67422645daef89da21ef759be397962aa541bb47e7c7cb5cd093b24a4d2ea",
+      "retrieved_at": "2026-10-18T08:20:04.180092+00:00",
+      "acquisition_method": "official_http_archive",
+      "published_at": null,
+      "effective_at": null,
+      "sections": {
+        "section-text_01": {
+          "title": "受理部门",
+          "text": "各办事处便民服务中心户籍窗口"
+        },
+        "section-text_02": {
+          "title": "办理条件",
+          "text": "居民身份证有效期满的，可申请换领新证。未满16周岁的，由其监护人持本人居民身份证陪同申领。"
+        },
+        "section-text_03": {
+          "title": "办理时限",
+          "text": "15个工作日"
+        },
+        "section-text_04": {
+          "title": "收费依据及标准",
+          "text": "20元/证。按照《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》（发改价格[2003]2322号）的规定。"
+        },
+        "section-text_05": {
+          "title": "办理地址",
+          "text": "各办事处便民服务中心户籍窗口"
+        },
+        "section-text_06": {
+          "title": "联系电话",
+          "text": "0371-68880556"
+        },
+        "section-text_07": {
+          "title": "工作时间",
+          "text": "周一至周五上午9：00-12：00 下午13：00-17：00 法定节假日除外"
+        },
+        "section-txt": {
+          "title": "办理流程",
+          "text": "到户籍所在地或居住地公安派出所（户政窗口）申领，由户籍地县级人民政府公安机关签发。"
+        },
+        "section-txt1": {
+          "title": "所需材料",
+          "text": "1、居民户口簿； 2、原居民身份证； 3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证； 4、跨户籍所在地市异地办证的， 申请人交验证明身份的证件之一后，经书面承诺，可免提交在当地就业、就学、居住的证明材料 。"
+        }
+      }
+    },
+    {
+      "source_id": "minggong",
+      "url": "https://eq.jiceng.zhengzhou.gov.cn/004008002/3404478.jhtml",
+      "data_class": "public",
+      "raw_sha256": "65a597f8a0cfa25a16fab85efccacf94e34c4d5d43cd87c21d46ca7da14a7b3d",
+      "retrieved_at": "2026-10-18T08:20:04.180092+00:00",
+      "acquisition_method": "official_http_archive",
+      "published_at": null,
+      "effective_at": null,
+      "sections": {
+        "section-text_01": {
+          "title": "受理部门",
+          "text": "铭功路派出所户籍室"
+        },
+        "section-text_02": {
+          "title": "办理条件",
+          "text": "居民身份证有效期满的，可申请换领新证。未满16周岁的，由其监护人持本人居民身份证陪同申领。"
+        },
+        "section-text_03": {
+          "title": "办理时限",
+          "text": "15个工作日"
+        },
+        "section-text_04": {
+          "title": "收费依据及标准",
+          "text": "20元/证。按照《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》（发改价格[2003]2322号）的规定。"
+        },
+        "section-text_05": {
+          "title": "办理地址",
+          "text": "郑州市二七区铭功路228号铭功路街道便民服务中心"
+        },
+        "section-text_06": {
+          "title": "联系电话",
+          "text": "0371—86191017"
+        },
+        "section-text_07": {
+          "title": "工作时间",
+          "text": "周一至周五：上午：9：00—12：00 下午：13：00—17；00"
+        },
+        "section-txt": {
+          "title": "办理流程",
+          "text": "到户籍所在地或居住地公安派出所（户政窗口）申领，由户籍地县级人民政府公安机关签发。"
+        },
+        "section-txt1": {
+          "title": "所需材料",
+          "text": "1、居民户口本； 2、原居民身份证； 3、未满十六周岁的居民由监护人代为申领，应提供监护人的居民身份证； 4、跨户籍所在地市异地办证的，交验证明身份的证件之一后，经书面承诺，可免提交在当地合法稳定就业、就学、居住的证明材料。"
+        }
+      }
+    }
+  ],
+  "portal": {
+    "url": "https://www.hnzwfw.gov.cn/portal/guide/9BA34BC110B96284D26CE82456A51500?region=410103000000",
+    "status": "http_shell",
+    "checked_at": "2026-10-18T14:11:41.355286+00:00",
+    "http_status": 200,
+    "raw_sha256": "6da53882860f1e469292f932ec3f4ddbeeba2c4df964581411c527d628192eb1",
+    "method": "normal_public_http_no_login"
+  }
+}

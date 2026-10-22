@@ -1,0 +1,189 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "checks": {
+    "native_success": false,
+    "two_managed_child_starts": false,
+    "extract_and_review_children_executed": false,
+    "single_candidate": false,
+    "pending_human_review": false,
+    "no_formal_versions": true,
+    "no_tool_blocks": true,
+    "real_heartbeat_progressed": true,
+    "old_then_new_detected": true,
+    "source_guard_preserved": true,
+    "tool_whitelist": true,
+    "no_duplicate_submit_review": false,
+    "budget_closed": true
+  },
+  "campaign": {
+    "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+    "duration_ms": 12829.0,
+    "error_code": "NATIVE_CHILD_OR_CONTROLLER_FAILED",
+    "event_types": {
+      "agent_new_run": 2,
+      "execution_logs": 4,
+      "max_steps_reached": 1,
+      "model_attempt_control": 12,
+      "model_output_thinking": 547,
+      "other": 1,
+      "parse": 6,
+      "step_count": 6,
+      "token_count": 6,
+      "tool": 6,
+      "warning": 2
+    },
+    "implementation": {
+      "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2",
+      "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+      "successor_update.py": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+      "successor_update_server.py": "74e0d6856dcd11fc938a0b3abdc517415d5bd95bbcf50421993849c28f3b1101"
+    },
+    "native_run_budget": 1,
+    "reserved_at": "2026-10-20T14:32:45.570708+00:00",
+    "run_id": "75179109f8f640e3abbd9cddb3699b51",
+    "status": "failed"
+  },
+  "receipt": null,
+  "tools": [
+    {
+      "name": "read_skill_md",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "read_skill_md",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    }
+  ],
+  "heartbeat_samples": 15,
+  "cloud_model_steps": [
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "736e5941ac9d4d0e983fc637c5cd7503",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "736e5941ac9d4d0e983fc637c5cd7503",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 1, \"duration\": 1.16, \"step_input_tokens\": 6460, \"step_output_tokens\": 226, \"total_output_tokens\": 226, \"estimated_context_tokens\": 7298, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 45.3, \"uncompressed_est_tokens\": 13346, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 6460}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "3e90d96ea18d4631b181b42ddd910b0c",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "3e90d96ea18d4631b181b42ddd910b0c",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 2, \"duration\": 1.09, \"step_input_tokens\": 6970, \"step_output_tokens\": 58, \"total_output_tokens\": 284, \"estimated_context_tokens\": 7773, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 46.7, \"uncompressed_est_tokens\": 14571, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 6970}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "f13aabeb19f44c739cae844bae1c81a0",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "f13aabeb19f44c739cae844bae1c81a0",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 3, \"duration\": 0.65, \"step_input_tokens\": 7258, \"step_output_tokens\": 44, \"total_output_tokens\": 328, \"estimated_context_tokens\": 8133, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 47.7, \"uncompressed_est_tokens\": 15559, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 7258}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "1720e86659784447a78f537527d43006",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "1720e86659784447a78f537527d43006",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 4, \"duration\": 0.97, \"step_input_tokens\": 7394, \"step_output_tokens\": 138, \"total_output_tokens\": 466, \"estimated_context_tokens\": 8259, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 48.1, \"uncompressed_est_tokens\": 15924, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 7394}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "b29332b026a847f58ff813ea3aa31cbb",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "b29332b026a847f58ff813ea3aa31cbb",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 5, \"duration\": 0.78, \"step_input_tokens\": 7658, \"step_output_tokens\": 44, \"total_output_tokens\": 510, \"estimated_context_tokens\": 8488, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 48.7, \"uncompressed_est_tokens\": 16559, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 7658}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "f9beb2dda1c0413ebe59646b326ecfa9",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "f9beb2dda1c0413ebe59646b326ecfa9",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 6, \"duration\": 0.89, \"step_input_tokens\": 7794, \"step_output_tokens\": 44, \"total_output_tokens\": 554, \"estimated_context_tokens\": 8615, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 49.1, \"uncompressed_est_tokens\": 16924, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 7794}"
+    }
+  ],
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "real_remote_change": false,
+  "formal_business_approval": false,
+  "notes": "Actual native cloud agents under production Worker ticks; archive arrival is replayed. Long-term monitoring, live-site discovery and formal business publication are not validated."
+}

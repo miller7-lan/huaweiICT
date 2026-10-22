@@ -1,0 +1,217 @@
+{
+  "run_id": "73504144076945b1b533e36f1d22acd6",
+  "captured_at": "2026-10-16T04:52:57.318288+00:00",
+  "records": [
+    {
+      "role": "citizen",
+      "scenario": "scope-collection",
+      "question": "本人已申请到期换领，委托家属代领新证需要什么？",
+      "conversation_id": 104,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 84903.5,
+      "private_trace_sha256": "d02601f02395aa63c1fede2312d1b4a4a54d371323a78200fa64840ffd06b88a",
+      "actual_final_result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "citizen",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "citizen",
+      "scenario": "scope-application",
+      "question": "本地成年本人不能到场，想委托他人申请换领，并代领新证。",
+      "conversation_id": 105,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 24885.52,
+      "private_trace_sha256": "4ad18a91d9e580eeb646eb710a52c022ccff73ecd7601013b6a35d11b60da6d2",
+      "actual_final_result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "OUT_OF_CONFIRMED_SCOPE",
+        "data": {
+          "included_branch": "成年人、本地户籍、本人居民身份证到期换领"
+        }
+      }
+    },
+    {
+      "role": "citizen",
+      "scenario": "scope-clarification",
+      "question": "本人到期换领，可以让家属代办吗？",
+      "conversation_id": 106,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 32685.48,
+      "private_trace_sha256": "3ac3252c930e6f7eb4b0ddfd7414261cd2c1a0fce45815f05588e6135d42029c",
+      "actual_final_result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "SCOPE_CLARIFICATION_REQUIRED",
+        "data": {
+          "included_branch": "成年人、本地户籍、本人居民身份证到期换领",
+          "clarification": "请说明他人参与的是申请办理、材料协助，还是本人办理申请后的新证领取环节；无需提供身份证号码。"
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "scope-collection",
+      "question": "本人已申请到期换领，委托家属代领新证需要什么？",
+      "conversation_id": 107,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 32496.11,
+      "private_trace_sha256": "0fd4d2c037a380eb0944f8d25e145d16492d0813f595b6c0bef702fed148be9e",
+      "actual_final_result": {
+        "status": "EMPTY",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "NO_PUBLISHED_KNOWLEDGE",
+        "data": {
+          "role": "staff",
+          "region": "郑州市二七区",
+          "matter_id": "demo-id-renewal",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "scope-application",
+      "question": "本地成年本人不能到场，想委托他人申请换领，并代领新证。",
+      "conversation_id": 108,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 32579.71,
+      "private_trace_sha256": "6edde7141033f546fc778332ea3b3b48a2f3fec97e5870ff089337c76a04db36",
+      "actual_final_result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "OUT_OF_CONFIRMED_SCOPE",
+        "data": {
+          "included_branch": "成年人、本地户籍、本人居民身份证到期换领"
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "scope-clarification",
+      "question": "本人到期换领，可以让家属代办吗？",
+      "conversation_id": 109,
+      "checks": {
+        "two_native_read_only_tools_in_order": true,
+        "two_actual_server_calls": true,
+        "exact_latest_question_reached_server": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_tool_result": true,
+        "correct_stop_without_candidate_leak": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "failure_class": null,
+      "duration_ms": 31387.94,
+      "private_trace_sha256": "1f8f1f99e882308f69fdabab34a6ab993a2f583a1b140641be46ffc5e8277044",
+      "actual_final_result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": null,
+        "message_code": "SCOPE_CLARIFICATION_REQUIRED",
+        "data": {
+          "included_branch": "成年人、本地户籍、本人居民身份证到期换领",
+          "clarification": "请说明他人参与的是申请办理、材料协助，还是本人办理申请后的新证领取环节；无需提供身份证号码。"
+        }
+      }
+    }
+  ],
+  "passed": true,
+  "verification_suite": "scope-stage-native",
+  "expected_case_count": 6,
+  "candidate_and_publication_counts_unchanged": true,
+  "counts": {
+    "documents": 21,
+    "revisions": 60,
+    "chunks": 264,
+    "latest_chunks": 124,
+    "versions": 0,
+    "heads": 0
+  },
+  "preview_agents": {
+    "govkb_consultation_preview_citizen": 16,
+    "govkb_consultation_preview_staff": 17
+  },
+  "existing_agents_changed": false,
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "runtime_base": "http://127.0.0.1:5022",
+  "question_binding": "govkb_original_question",
+  "business_answer_accuracy_tested": false,
+  "business_review_completed": false,
+  "scope": "Three stage questions through each of the two existing dynamic-question preview agents, with real authenticated role accounts. Checks actual original-question fingerprints, tool order, empty/blocked scope outcomes and exact final tool-result copying. No new agent definition, candidate exposure, policy publication, substantive policy accuracy or independent business acceptance claim."
+}

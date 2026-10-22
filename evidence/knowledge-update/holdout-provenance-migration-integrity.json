@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "captured_at": "2026-10-16T17:23:56.903752+00:00",
+  "passed": true,
+  "checks": {
+    "migration_reproduces_all_30_before_and_after_cases": true,
+    "eleven_cases_change_only_provenance": true,
+    "all_23_law_clauses_match": true,
+    "only_one_explicit_background_removal": true,
+    "all_eleven_rehashed_invalid_transitions_rejected": true,
+    "two_reviewed_and_eight_pending_bound_sources": true,
+    "duplicate_old_source_has_verified_exclusion": true,
+    "restored_review_and_exclusion_bindings_match": true,
+    "legacy_builder_stops_before_overwriting_v3": true,
+    "no_formal_evaluation_version_or_head": true,
+    "historical_migration_remains_verifiable_after_new_pending_body": true,
+    "new_pending_body_withholds_live_source_binding": true,
+    "static_semantic_review_is_not_live_approval": true,
+    "restored_fixture_does_not_start_services_or_request_models": true,
+    "all_30_semantic_judgments_preserved_without_new_independence_claim": true
+  },
+  "rejected_mutations": {
+    "oracle_change": true,
+    "question_change": true,
+    "date_change": true,
+    "role_change": true,
+    "unrelated_anchor_deletion": true,
+    "approved_first_measure_deletion": true,
+    "fake_review_digest": true,
+    "fake_approval_flag": true,
+    "unexpected_law_source": true,
+    "changed_literal_span": true,
+    "acceptance_claim": true
+  },
+  "reference_sha256": "5cf599951df3e6291c9b1e5c39b9a558ab54587d38c4cd423c12475912305885",
+  "migration_sha256": "1cf5083b61bb1ec90a6a101b4f932254df345e3602c6d3f6e8d97383711adcb3",
+  "counts": {
+    "sites": 41,
+    "documents": 37,
+    "revisions": 123,
+    "chunks": 832,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 303
+  },
+  "latest_states": {
+    "excluded": 22,
+    "pending_review": 13,
+    "reviewed": 2
+  },
+  "pending_without_effective_from": 11,
+  "formal_gates": {
+    "reviews": 4,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "new_model_runs": 0,
+  "reference_frozen": false,
+  "independence_certified": false,
+  "business_acceptance_completed": false,
+  "synthetic_later_body_is_not_a_new_policy": true,
+  "synthetic_replay_network_requests": 0
+}

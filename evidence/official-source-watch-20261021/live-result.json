@@ -1,0 +1,129 @@
+{
+  "status": "PASS_SOURCE_OBSERVER_DEPLOYMENT",
+  "checks": {
+    "actual_scheduled_observer_executed": true,
+    "not_due_did_not_fetch_again": true,
+    "candidate_counts_unchanged": true,
+    "no_formal_versions": true,
+    "official_raw_hash_matches_catalog": true,
+    "configured_proxy_used": true,
+    "no_force_tick": true,
+    "no_model_calls": true
+  },
+  "before": {
+    "mode": "observation_only",
+    "sources": [
+      {
+        "id": "NJ-ID-RENEWAL-CYCLE-2026",
+        "last_success": 1792579596.5174744,
+        "next_check": 1792601196.5094748,
+        "paused_reason": null
+      }
+    ],
+    "counts": {
+      "documents": 1,
+      "revisions": 1,
+      "chunks": 3,
+      "reviews": 0,
+      "versions": 0,
+      "heads": 0
+    },
+    "http_reservations": 2,
+    "requests": [
+      {
+        "bytes": 210,
+        "conditional": false,
+        "http_status": 200,
+        "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36",
+        "url": "https://www.nanjing.gov.cn/robots.txt",
+        "uses_configured_proxy": true
+      },
+      {
+        "bytes": 29854,
+        "conditional": false,
+        "http_status": 200,
+        "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+        "uses_configured_proxy": true
+      }
+    ],
+    "jobs": [
+      {
+        "id": 1,
+        "state": "done",
+        "attempts": 1,
+        "error": null
+      }
+    ],
+    "workers": [
+      {
+        "id": "official-source-watch",
+        "heartbeat": 1792579811.704704,
+        "progress": "polling"
+      }
+    ],
+    "model_calls": 0,
+    "automatic_publication": false
+  },
+  "after": {
+    "mode": "observation_only",
+    "sources": [
+      {
+        "id": "NJ-ID-RENEWAL-CYCLE-2026",
+        "last_success": 1792579596.5174744,
+        "next_check": 1792601196.5094748,
+        "paused_reason": null
+      }
+    ],
+    "counts": {
+      "documents": 1,
+      "revisions": 1,
+      "chunks": 3,
+      "reviews": 0,
+      "versions": 0,
+      "heads": 0
+    },
+    "http_reservations": 2,
+    "requests": [
+      {
+        "bytes": 210,
+        "conditional": false,
+        "http_status": 200,
+        "sha256": "2909b84f421bf5557ab62ef1d38a1da59ddb4def9c4eccd97c4cb96283ffdf36",
+        "url": "https://www.nanjing.gov.cn/robots.txt",
+        "uses_configured_proxy": true
+      },
+      {
+        "bytes": 29854,
+        "conditional": false,
+        "http_status": 200,
+        "sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+        "uses_configured_proxy": true
+      }
+    ],
+    "jobs": [
+      {
+        "id": 1,
+        "state": "done",
+        "attempts": 1,
+        "error": null
+      }
+    ],
+    "workers": [
+      {
+        "id": "official-source-watch",
+        "heartbeat": 1792579844.0937157,
+        "progress": "polling"
+      }
+    ],
+    "model_calls": 0,
+    "automatic_publication": false
+  },
+  "interval_seconds": 21600,
+  "daily_http_limit": 12,
+  "actual_6_hour_transition_tested": false,
+  "live_site_change_observed": false,
+  "paid_autonomous_dispatch_enabled": false,
+  "model_calls": 0
+}

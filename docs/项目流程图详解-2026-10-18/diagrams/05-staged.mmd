@@ -1,0 +1,19 @@
+flowchart TD
+    nopen["govkb_open_query"]
+    nretrieve["govkb_retrieve_query"]
+    nverify["govkb_verify_query"]
+    nstate["govkb_query_state"]
+    nmissing["needs_retrieval／can_finalize"]
+    nfinal["govkb_finalize_query"]
+    nhistory["历史追溯"]
+    nopen -->|"needs_retrieval"| nretrieve
+    nopen -->|"can_finalize"| nfinal
+    nretrieve -->|"needs_verification"| nverify
+    nverify -->|"核验结果"| nmissing
+    nmissing -->|"有缺口且<3轮"| nretrieve
+    nmissing -->|"can_finalize"| nfinal
+    nstate -->|"查询状态"| nmissing
+    nfinal -->|"complete"| nhistory
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nverify,nmissing gate

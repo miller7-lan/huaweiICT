@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>逐项填表 · 人工确认</title>
+  <link rel="stylesheet" href="/form-assets/intake.css">
+  <script src="/form-assets/intake.js" defer></script>
+</head>
+<body>
+<header><div><p class="eyebrow">GUIDED CONSULTATION / ENGINEERING ONLY</p><h1>把情况说清楚，再由你确认</h1><p>逐项问答 · 格式核查 · 人工检查</p></div><a href="/">返回原工作台</a></header>
+<main>
+  <aside class="warning"><strong>仅限虚构资料的工程演练，不是正式政务申请。</strong>不填姓名、证件号、手机号、地址或真实材料。自填答案只在本地匹配选项；无法明确匹配时会请你澄清，不猜测。AI 不验证真实身份，也不替你提交。</aside>
+  <div id="notice" role="status" aria-live="polite"></div>
+  <section id="welcome" class="card">
+    <p class="eyebrow">另一种填写方式</p><h2>一次只处理一个问题</h2>
+    <ol><li>选择预备答案，或用自己的话填写。</li><li>检查原回答与本地规范值，再明确同意 AI 核查。</li><li>DeepSeek 只接收选项代码，不接收原回答、会话或身份凭据。</li><li>你检查后再点击提交，生成本地咨询记录和带出处清单。</li></ol>
+    <p>提问由字段规范驱动，DeepSeek 只在末轮做只读格式核查，避免逐句外发对话。草稿仅在当前登录会话内，30 分钟后不可读取，再次访问时清除；退出或删除即不再可读，不写浏览器本地存储。</p>
+    <button id="enter" class="primary">进入模拟填表</button><button id="resume">恢复本会话草稿</button>
+  </section>
+  <section id="workspace" hidden>
+    <div class="toolbar"><p id="progress"></p><div><button id="restart">重新填写</button><button id="erase">删除草稿</button><button id="logout">退出并清除会话</button></div></div>
+    <div id="entryColumns" class="columns">
+      <section class="card"><p class="eyebrow">逐项引导</p><h2 id="questionTitle">请先开始</h2><div id="question"></div><div id="choices" class="choices"></div>
+        <form id="customForm" hidden><label for="customAnswer">也可以自己填写</label><input id="customAnswer" maxlength="120" autocomplete="off" placeholder="例如：到期了、我自己、不清楚"><button type="submit">发送本项回答</button><small>不填额外个人信息。无法可靠归类时，保留未知或重新选择。</small></form>
+        <p id="aiState" class="muted"></p>
+      </section>
+      <section class="card"><p class="eyebrow">你的回答</p><h2>原回答与规范值</h2><div id="answers"></div><div id="reviewControls" hidden>
+        <label class="check"><input id="consent" type="checkbox">我确认仅使用虚构资料，同意把此处展示的选项代码发送到 DeepSeek 核查；不发送原回答。</label>
+        <button id="verify" class="primary">请 DeepSeek 统一格式并核查</button>
+      </div></section>
+    </div>
+    <section id="humanReview" class="card" hidden><p class="eyebrow">提交前最后一关</p><h2>请逐项检查，AI 不能替你作决定</h2><p id="model"></p><div id="reviewTable"></div><p id="unknowns" class="warning"></p><label for="branch">本次咨询分支</label><select id="branch"></select>
+      <label class="check"><input id="ack" type="checkbox">我已逐项核对本页原回答、规范值和未知项，确认用于本次模拟咨询。</label>
+      <button id="submit" class="primary" disabled>确认后提交本地咨询</button><p class="muted">修改任一回答将使 AI 核查与此确认失效。没有已确认适用分支时，不套用别人的材料清单。不会调用正式政务提交接口。</p>
+    </section>
+    <section id="result" class="card" hidden><h2>已生成本地咨询记录</h2><p id="receipt"></p><div id="resultBody"></div><button id="refreshResult">重新核对当前可用性</button><p class="muted">原始自填回答已从草稿清除，仅保存规范选项到现有咨询记录；来源变化或冲突仍由原流程暂停门控制。</p></section>
+  </section>
+</main>
+</body>
+</html>

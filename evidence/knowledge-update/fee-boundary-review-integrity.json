@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "captured_at": "2026-10-16T17:42:29.229187+00:00",
+  "passed": true,
+  "checks": {
+    "review_and_original_are_bound": true,
+    "complete_first_clause_matches_canonical_parser": true,
+    "legal_start_comes_from_selected_clause": true,
+    "ambiguous_publication_is_not_fabricated": true,
+    "source_observation_is_immutable": true,
+    "scoped_ai_review_is_not_a_renewal_fee_waiver": true,
+    "new_original_was_normally_acquired": true,
+    "native_body_and_blank_second_page_are_exact": true,
+    "all_pages_visual_observation_is_hash_bound": true,
+    "ordinary_pdf_parser_was_not_weakened": true,
+    "hardship_current_applicability_is_still_pending": true,
+    "manual_pdf_source_is_not_automatically_collected": true,
+    "existing_source_configs_and_policy_preserved": true,
+    "one_new_review_without_formal_release": true,
+    "F18_staleness_is_visible_without_approval": true,
+    "readiness_exposes_scoped_fee_review": true,
+    "draft_verifier_withholds_current_integrity": true,
+    "prior_bound_v3_receipt_preserved": true,
+    "full_restore_preserves_review_and_pending_original": true
+  },
+  "first_issue_reviewed_revision": "rev-e41c61067fe70ce4ce221dbf",
+  "hardship_pending_revision": "rev-c2f18391171fad5835a6eafe",
+  "counts": {
+    "sites": 42,
+    "documents": 38,
+    "revisions": 125,
+    "chunks": 834,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 304
+  },
+  "latest_states": {
+    "excluded": 22,
+    "pending_review": 13,
+    "reviewed": 3
+  },
+  "pending_without_effective_from": 10,
+  "formal_gates": {
+    "reviews": 5,
+    "snapshot_evaluations": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "draft_stale_sources": [
+    "F18"
+  ],
+  "expected_draft_failed_checks": [
+    "actual_export_contains_both_drafts_and_preserves_empty_approvals",
+    "latest_originals_and_literal_anchor_spans_match"
+  ],
+  "new_model_runs": 0,
+  "reference_frozen": false,
+  "independence_certified": false,
+  "business_acceptance_completed": false
+}

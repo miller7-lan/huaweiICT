@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-21T14:09:22.890097+00:00",
+  "purpose": "Offline reproduction of JSON implementation boundaries and confirmed gaps.",
+  "limitations": [
+    "No real network, model generation, business acceptance, or model compliance rate measured.",
+    "Existing evidence, business sources, model settings, and budgets were not changed.",
+    "Findings indicate local parse/contract behavior, not proof of unauthorized publication."
+  ],
+  "runtime": {
+    "python": "3.12.14",
+    "pydantic": "2.14.0",
+    "httpx": "0.28.1"
+  },
+  "source_sha256": {
+    "src/gov_mcp/json_output.py": "5a13f60e7b435b4c0ec0bb2f1c2bc8b3e4e5c64cf284d328634109ef9aa5c74d",
+    "src/gov_mcp/deepseek.py": "735491ca35d442970726a8fdd8f83834f0f1947823a15c76e064f93652f9f010",
+    "src/gov_mcp/classification.py": "982d03dcff0398e240a336f1a2ee49f229c30c7ff1b2004fb88b420203cbfb05",
+    "src/gov_mcp/jev_translation.py": "59c8fed77f69b23f85508a818d1f259b3f33e37b8ce5d322df88b6d10cbeb4b6",
+    "src/gov_mcp/decision/connections.py": "919513b2567e148d27bb0740ff000468d2a8ec0dacccdf12c4d68bb8cfa011ed",
+    "src/gov_mcp/decision/intake.py": "0336d95bf67ee55463d596a512bf90121cffb7113e7ddbd837298cb93c5b31b8",
+    "scripts/compare_model_parameters.py": "a569aac1b99ef14fc1dca704c9504294b45b9ab03b0c008e5f51676d73a44f21"
+  },
+  "script_sha256": "dbf87ddc0876507e240a71670b1812a92c1c668df9bc88cc28ac6b54342bb4c3",
+  "execution": {
+    "real_network_allowed": false,
+    "real_network_requests": 0,
+    "mock_transport_requests": 4,
+    "mock_request_routes": [
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/chat/completions"
+      }
+    ],
+    "credentials": "injected fixture environment only; no credential files read"
+  },
+  "findings": [
+    {
+      "id": "jev_duplicate_key_overwritten",
+      "status": "reproduced_gap",
+      "source_locations": [
+        "src/gov_mcp/classification.py:93",
+        "src/gov_mcp/classification.py:255"
+      ],
+      "probe_kind": "pure_function_sequence_used_by_provider",
+      "first_noul": 0.1,
+      "last_noul": 0.9,
+      "accepted_noul": 0.9,
+      "duplicate_was_not_rejected": true,
+      "scope": "Jev's JSON parse precedes field validation; no Jev request was sent."
+    },
+    {
+      "id": "jev_extra_fields_and_unused_nonfinite_retained",
+      "status": "reproduced_gap",
+      "source_locations": [
+        "src/gov_mcp/classification.py:93",
+        "src/gov_mcp/classification.py:255"
+      ],
+      "probe_kind": "pure_function_sequence_used_by_provider",
+      "extra_top_level_field_retained": true,
+      "unused_nested_nan_retained": true,
+      "required_noul_valid": true,
+      "scope": "Used probabilities remain validated; this demonstrates unvalidated extra fields only."
+    },
+    {
+      "id": "deepseek_message_null_escapes_cloud_error",
+      "status": "reproduced_gap",
+      "source_locations": [
+        "src/gov_mcp/deepseek.py:96",
+        "src/gov_mcp/deepseek.py:131",
+        "src/gov_mcp/decision/connections.py:113"
+      ],
+      "probe_kind": "httpx.MockTransport_only",
+      "observed": {
+        "returned": false,
+        "exception_type": "AttributeError",
+        "error_code": null
+      },
+      "scope": "Malformed response raises AttributeError instead of sanitized CloudError; no valid candidate is returned."
+    },
+    {
+      "id": "deepseek_message_array_escapes_cloud_error",
+      "status": "reproduced_gap",
+      "source_locations": [
+        "src/gov_mcp/deepseek.py:96",
+        "src/gov_mcp/deepseek.py:131",
+        "src/gov_mcp/decision/connections.py:113"
+      ],
+      "probe_kind": "httpx.MockTransport_only",
+      "observed": {
+        "returned": false,
+        "exception_type": "AttributeError",
+        "error_code": null
+      },
+      "scope": "Malformed response raises AttributeError instead of sanitized CloudError; no valid candidate is returned."
+    }
+  ],
+  "strict_boundary_observations": {
+    "parser": [
+      {
+        "id": "duplicate_key",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValueError",
+          "error_code": "DUPLICATE_JSON_KEY"
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "nested_duplicate",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValueError",
+          "error_code": "DUPLICATE_JSON_KEY"
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "nested_nan",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValueError",
+          "error_code": "NONFINITE_JSON_NUMBER"
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "float_overflow",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValueError",
+          "error_code": "NONFINITE_JSON_NUMBER"
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "array_root",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValueError",
+          "error_code": "JSON_OBJECT_REQUIRED"
+        },
+        "expected_block_observed": true
+      }
+    ],
+    "schema": [
+      {
+        "id": "extra_field",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValidationError",
+          "error_code": null
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "missing_field",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValidationError",
+          "error_code": null
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "boolean_as_integer",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValidationError",
+          "error_code": null
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "integer_as_boolean",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValidationError",
+          "error_code": null
+        },
+        "expected_block_observed": true
+      },
+      {
+        "id": "float_as_integer",
+        "observed": {
+          "returned": false,
+          "exception_type": "ValidationError",
+          "error_code": null
+        },
+        "expected_block_observed": true
+      }
+    ],
+    "valid_object_returned_without_normalizing": true,
+    "arbitrary_translation_aliases_supported": true,
+    "without_response_model_wrong_shape_returned_as_untrusted_candidate": true,
+    "with_response_model_wrong_shape_blocked": {
+      "returned": false,
+      "exception_type": "CloudError",
+      "error_code": "DEEPSEEK_OUTPUT_CONTRACT_VIOLATION"
+    }
+  },
+  "numeric_representation_boundaries": {
+    "python_dict_equality_does_not_prove_json_types": true,
+    "integer_literal_type": "int",
+    "decimal_literal_type": "float",
+    "strict_float_field_accepts_integer_as_json_number": true,
+    "strict_validation_returns_original_object": true,
+    "small_nonzero_decimal_underflows_to_zero": true,
+    "large_integer_literal_remains_exact": true,
+    "large_decimal_literal_rounds_in_binary_float": true,
+    "scope": "Python float representation boundary; finite-value and Schema checks do not promise exact decimal preservation. JSON Schema number includes integer values."
+  }
+}

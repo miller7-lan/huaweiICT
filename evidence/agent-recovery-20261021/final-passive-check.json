@@ -1,0 +1,106 @@
+{
+  "checked_at": "2026-10-21T10:51:20.786038+00:00",
+  "inspection_only": true,
+  "model_requests": 0,
+  "tasks_changed": false,
+  "runtimes": {
+    "agent-workflow": {
+      "exists": true,
+      "wf_control": {
+        "heartbeat_at": 1792579870.321845,
+        "interval": 3600,
+        "paused": true,
+        "age_seconds": 10.47
+      },
+      "source_count": 1,
+      "heartbeat_errors_last_hour": 0
+    },
+    "knowledge": {
+      "exists": true,
+      "heartbeat": {
+        "at": 1792579867.894309,
+        "status": "waiting_sources",
+        "age_seconds": 12.89
+      },
+      "paused": false,
+      "config_enabled": true,
+      "heartbeat_seconds": 30,
+      "check_interval_seconds": 3600,
+      "demo_mode": false,
+      "configured_source_count": 0
+    },
+    "knowledge-demo": {
+      "exists": true,
+      "heartbeat": {
+        "at": 1792579867.8935664,
+        "status": "idle",
+        "age_seconds": 12.89
+      },
+      "paused": true,
+      "config_enabled": true,
+      "heartbeat_seconds": 30,
+      "check_interval_seconds": 3600,
+      "demo_mode": true,
+      "configured_source_count": 1
+    },
+    "official-source-watch": {
+      "exists": true,
+      "mode": "observation_only",
+      "sources": [
+        {
+          "id": "NJ-ID-RENEWAL-CYCLE-2026",
+          "next_check": 1792601196.5094748,
+          "last_success": 1792579596.5174744,
+          "paused": false
+        }
+      ],
+      "counts": {
+        "documents": 1,
+        "revisions": 1,
+        "versions": 0,
+        "heads": 0
+      },
+      "heartbeat_age_seconds": 36.71,
+      "automatic_publication": false,
+      "model_dispatch_enabled": false
+    }
+  },
+  "ports": {
+    "8772": false,
+    "8773": false,
+    "8775": true,
+    "8778": true,
+    "8780": true,
+    "8781": false
+  },
+  "windows_recovery": {
+    "tasks": [
+      {
+        "enabled": true,
+        "name": "HuaweiICT-AgentWorkflow-D6F1A1FCF53B8781",
+        "state": "Ready"
+      }
+    ]
+  },
+  "docker_recovery": [
+    {
+      "name": "/govkb-maintenance",
+      "restart_policy": "unless-stopped",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "/govkb-demo",
+      "restart_policy": "unless-stopped",
+      "state": "running",
+      "health": null
+    }
+  ],
+  "demo_uses_synthetic_replay": true,
+  "public_preview": {
+    "timer_registered": false,
+    "native_runs": 1,
+    "jev_reserved": 1,
+    "campaign_passed_and_stopped": true
+  }
+}

@@ -1,0 +1,21 @@
+flowchart TD
+    nexpr["校验JSON表达式"]
+    nvalue["校验事实的严格类型"]
+    ntruth["Kleene三值计算"]
+    nscope["复核状态、地区与生效窗口"]
+    ndeps["构建要求依赖和可溯源路径"]
+    npause["当前依赖暂停优先"]
+    nsplit["未暂停项按三值分流"]
+    nresult["合成状态与分环节输出"]
+    nexpr -->|"合法"| nvalue
+    nexpr -->|"无效规则返回unknown"| ntruth
+    nvalue -->|"事实"| ntruth
+    ntruth -->|"条件结果"| nscope
+    nscope -->|"范围结果"| ndeps
+    ndeps -->|"依赖集"| npause
+    npause -->|"其余条目"| nsplit
+    npause -->|"暂停条目"| nresult
+    nsplit -->|"聚合"| nresult
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nexpr,nvalue,nscope,npause gate

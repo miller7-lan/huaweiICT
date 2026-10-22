@@ -1,0 +1,100 @@
+{
+  "status": "PASS_BOUNDED_ONTOLOGY_EVOLUTION",
+  "date": "2026-10-19",
+  "completed_at": "2026-10-19T11:36:46.464881+00:00",
+  "scope": "one typed channel relation, archived public source, fictional scenarios, isolated workspace",
+  "candidate_id": "4a6acdb46cb9aab10e94466ae9d5de4ab4162be366f1c5acd3b33db4c06a572b",
+  "baseline_version": "4e5fa16200e512856e3028be49a82d323ae442777ba5fcd85777c872ee08e362",
+  "activated_version": "e4cc3cf582ebb0626b54681766cb432546824b3945b366d937b9c6cbb4fd2564",
+  "final_version": "4e5fa16200e512856e3028be49a82d323ae442777ba5fcd85777c872ee08e362",
+  "final_state": "rolled_back_to_seed",
+  "user_structural_confirmation": true,
+  "professional_business_approval": false,
+  "semi_automatic_method": "one manually authored bounded grammar family; thresholds captured from source; no LLM discovery",
+  "construction_metrics": {
+    "cloud_calls": 0,
+    "derived_conditions": 5,
+    "seed_examples": 1,
+    "source_clauses": 2,
+    "source_documents": 1,
+    "threshold_values_from_source": 4
+  },
+  "human_minutes": null,
+  "efficiency_comparison": null,
+  "tests": {
+    "tests": 92,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual_source_demonstration": {
+    "cases_passed": 6,
+    "cases_total": 6,
+    "input_is_fictional": true,
+    "report": "demonstration-20261019T113614729977Z.json"
+  },
+  "rollback_result": {
+    "status": "UNSUPPORTED_RELATION",
+    "source_conditions_result": "unknown",
+    "version": "4e5fa16200e512856e3028be49a82d323ae442777ba5fcd85777c872ee08e362",
+    "formally_published": false,
+    "formal_approval": false,
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "current_applicability": "unknown",
+    "trace": [],
+    "citations": []
+  },
+  "new_cloud_calls": 0,
+  "new_http_calls": 0,
+  "knowledge_published": false,
+  "original_source_database_sha256": "dddb884671592181d945cef5a7ad019d299694589b731db83184b682d7a38d90",
+  "original_source_database_unchanged": true,
+  "original_business_counts": {
+    "reviews": 0,
+    "versions": 0,
+    "heads": 0
+  },
+  "gates": {
+    "inference_enabled": false,
+    "form_verifier_enabled": false
+  },
+  "native_agents_modified": false,
+  "service_restarted": false,
+  "git_pushed": false,
+  "source_freshness_basis": "successful saved snapshot within24h, not a live official check",
+  "source_sha256": {
+    "src/gov_mcp/ontology_seed.py": "9568d474f983ee86c601c2ff246ae702d529fdc970344734d1432adc4c497d34",
+    "src/gov_mcp/ontology_evolution.py": "60f9b2101407050cf32fcc288775c3333dbb9cfde0a808ca305c9231b83930b4",
+    "scripts/run_ontology_evolution.py": "db36899666e5b51c0fdee55069dcbef88c65cddd42fb198d108e340a45bd7012",
+    "tests/test_ontology_seed.py": "4a70917e40e00b84cf13bdce2f7f0f54859415dcbd903656f8bbeeeb4d21cc42",
+    "tests/test_ontology_evolution.py": "93d4d3f528d4889ae23a40acac8077b2775cfe2a22dfff0a80ded720d5fb7154",
+    "tests/test_ontology_public_source.py": "4a918a29824e7e4d737785fa2d0b363d6d496becb860c3ced4e8bb8c164fd843",
+    "config/preparation/ontology.seed.json": "8749153fdd6831b8e9a706085e485b36a006c8b62017a54d2941e4112c2b0c7b",
+    "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+    "src/gov_mcp/knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2"
+  },
+  "limits": [
+    "No professional current-applicability approval.",
+    "Only one bounded grammar and executable relation.",
+    "No independent ontology efficiency baseline or standard-alignment result.",
+    "No true multi-document inference; not wired into Nexent or old business decision workbench.",
+    "Source checks span two databases and files; repeated validation does not provide cross-database atomicity.",
+    "Local human actor declaration is not account authentication."
+  ],
+  "execution_source_sha256": {
+    "src/gov_mcp/ontology_seed.py": "9568d474f983ee86c601c2ff246ae702d529fdc970344734d1432adc4c497d34",
+    "src/gov_mcp/ontology_evolution.py": "60f9b2101407050cf32fcc288775c3333dbb9cfde0a808ca305c9231b83930b4",
+    "scripts/run_ontology_evolution.py": "9d1044b4a1bf86dc2bc17b805183c34097f6b963bbc3ad92e2c44e250d411d81",
+    "tests/test_ontology_seed.py": "4a70917e40e00b84cf13bdce2f7f0f54859415dcbd903656f8bbeeeb4d21cc42",
+    "tests/test_ontology_evolution.py": "93d4d3f528d4889ae23a40acac8077b2775cfe2a22dfff0a80ded720d5fb7154",
+    "tests/test_ontology_public_source.py": "4a918a29824e7e4d737785fa2d0b363d6d496becb860c3ced4e8bb8c164fd843",
+    "config/preparation/ontology.seed.json": "8749153fdd6831b8e9a706085e485b36a006c8b62017a54d2941e4112c2b0c7b",
+    "src/gov_mcp/knowledge_landing.py": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+    "src/gov_mcp/knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2"
+  },
+  "post_demonstration_cli_change": {
+    "scope": "prepare returns already-confirmed status accurately after rollback",
+    "verified": "one offline prepare invocation; existing candidate retained; no auto activation",
+    "business_execution_unchanged": true
+  }
+}

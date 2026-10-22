@@ -1,0 +1,20 @@
+{
+  "status": "PASS_EXTENDED_PROTECTION_READBACK",
+  "initial_protected_agents": 13,
+  "current_protected_agents": 31,
+  "added_agents": 18,
+  "initial_checkpoint_sha256": "bd8f47a5895cbe2d15ce958fcdc98a989a641ba1851d206b3fa44f3ec2939e30",
+  "initial_evidence_unchanged": true,
+  "prior_uncovered_agents_not_claimed_retroactively_protected": true,
+  "drafts_disabled_unpublished": true,
+  "model_calls": 0,
+  "extensions": [
+    {
+      "recorded_at": "2026-10-21T13:34:18.830805+00:00",
+      "reason": "Nexent agent/list excludes disabled drafts; extend protection to project-recorded tenant IDs without rewriting initial evidence.",
+      "scope": "visible_tenant_agents_plus_project_native_draft_ids",
+      "prior_signatures_sha256": "bc421e48d1244add5a33bd142f7a5dee946ae32523337eb15515cd1d9d583ebc",
+      "newly_covered_agents_not_claimed_previously_protected": true
+    }
+  ]
+}

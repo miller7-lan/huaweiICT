@@ -1,0 +1,98 @@
+﻿file,kind,line,name,signature,code
+src/gov_mcp/asset_query_server.py,route,88,,,"Route('/health', health)"
+src/gov_mcp/asset_query_server.py,route,88,,,"Route('/', home)"
+src/gov_mcp/asset_query_server.py,route,88,,,"Route('/evidence/{version}/{segment_id}', evidence)"
+src/gov_mcp/asset_query_server.py,route,88,,,"Route('/original/{asset_id}', original)"
+src/gov_mcp/asset_query_server.py,tool,30,govdocs_search_evidence,"query: str, tenant_id: str, user_id: str, limit: int=4",
+src/gov_mcp/decision/server.py,route,385,,,"Route('/', home)"
+src/gov_mcp/decision/server.py,route,385,,,"Route('/guided-form', form_home)"
+src/gov_mcp/decision/server.py,route,385,,,"Route('/form-assets/{name}', form_asset)"
+src/gov_mcp/decision/server.py,route,386,,,"Route('/api/forms/{action}', form_api, methods=['GET', 'POST'])"
+src/gov_mcp/decision/server.py,route,387,,,"Route('/login', login, methods=['POST'])"
+src/gov_mcp/decision/server.py,route,387,,,"Route('/logout', logout, methods=['POST'])"
+src/gov_mcp/decision/server.py,route,388,,,"Route('/api/{action}', api, methods=['GET', 'POST'])"
+src/gov_mcp/decision/server.py,route,388,,,"Mount('/mcp', app=mcp.streamable_http_app())"
+src/gov_mcp/decision/server.py,tool,38,govkb_open_query,"facts: dict, branch_id: str, question: str=''",
+src/gov_mcp/decision/server.py,tool,43,govkb_retrieve_query,task_id: str,
+src/gov_mcp/decision/server.py,tool,48,govkb_verify_query,task_id: str,
+src/gov_mcp/decision/server.py,tool,53,govkb_finalize_query,task_id: str,
+src/gov_mcp/decision/server.py,tool,58,govkb_query_state,task_id: str,
+src/gov_mcp/decision/server.py,tool,65,govkb_query,"facts: dict, branch_id: str, question: str=''",
+src/gov_mcp/decision/server.py,tool,70,govkb_get_change_batch,run_id: str,
+src/gov_mcp/decision/server.py,tool,80,govkb_classify_changes,batch_id: str,
+src/gov_mcp/decision/server.py,tool,86,govkb_submit_candidates,"batch_id: str, candidates: list[dict]",
+src/gov_mcp/decision/server.py,tool,93,govkb_validate_candidates,candidate_id: str,
+src/gov_mcp/decision/server.py,tool,99,govkb_finish_run,"run_id: str, summary: str",
+src/gov_mcp/decision/server.py,tool,108,govkb_check_registered_sources,,
+src/gov_mcp/extension_server.py,route,61,,,"Route('/health', health)"
+src/gov_mcp/extension_server.py,tool,28,govx_get_environment_status,"tenant_id: str, user_id: str",
+src/gov_mcp/extension_server.py,tool,33,govx_search_evidence,"tenant_id: str, user_id: str",
+src/gov_mcp/extension_server.py,tool,38,govx_query_knowledge_graph,"tenant_id: str, user_id: str",
+src/gov_mcp/extension_server.py,tool,43,govx_check_case_prerequisites,"tenant_id: str, user_id: str",
+src/gov_mcp/extension_server.py,tool,48,govx_prepare_update,"tenant_id: str, user_id: str, inputs: list[str] | None=None",
+src/gov_mcp/extension_server.py,tool,53,govx_publish_update,"tenant_id: str, user_id: str, candidate_id: str | None=None, confirmed: bool=False",
+src/gov_mcp/knowledge/server.py,route,258,,,"Route('/', home)"
+src/gov_mcp/knowledge/server.py,route,258,,,"Route('/health', health)"
+src/gov_mcp/knowledge/server.py,route,258,,,"Route('/api/login', login, methods=['POST'])"
+src/gov_mcp/knowledge/server.py,route,259,,,"Route('/api/logout', logout, methods=['POST'])"
+src/gov_mcp/knowledge/server.py,route,259,,,"Route('/api/state', state)"
+src/gov_mcp/knowledge/server.py,route,259,,,"Route('/api/actions/{name}', operation, methods=['POST'])"
+src/gov_mcp/knowledge/server.py,route,260,,,"Route('/api/search', search)"
+src/gov_mcp/knowledge/server.py,route,260,,,"Route('/api/original/{version}/{sha}', original)"
+src/gov_mcp/knowledge/server.py,route,260,,,"Route('/fixture/policy', fixture)"
+src/gov_mcp/knowledge/server.py,tool,60,govkb_get_change_batch,"run_id: str, tenant_id: str, user_id: str, batch_id: str | None=None",
+src/gov_mcp/knowledge/server.py,tool,75,govkb_classify_changes,"run_id: str, batch_id: str, tenant_id: str, user_id: str",
+src/gov_mcp/knowledge/server.py,tool,84,govkb_submit_candidates,"run_id: str, batch_id: str, candidates: list[dict], tenant_id: str, user_id: str, ontology_proposals: list[dict] | None=None",
+src/gov_mcp/knowledge/server.py,tool,91,govkb_validate_candidates,"run_id: str, candidate_id: str, review: dict, tenant_id: str, user_id: str",
+src/gov_mcp/knowledge/server.py,tool,100,govkb_finish_run,"run_id: str, batch_id: str, summary: str, tenant_id: str, user_id: str",
+src/gov_mcp/knowledge/server.py,tool,105,govkb_search_evidence,"query: str, tenant_id: str, user_id: str, kind: str='documents', version: str | None=None",
+src/gov_mcp/knowledge_demo.py,route,207,,,"Route('/', home)"
+src/gov_mcp/knowledge_demo.py,route,207,,,"Route('/favicon.ico', favicon)"
+src/gov_mcp/knowledge_demo.py,route,207,,,"Route('/health', health)"
+src/gov_mcp/knowledge_demo.py,route,207,,,"Route('/api/query', search)"
+src/gov_mcp/knowledge_demo.py,route,207,,,"Route('/api/status', status)"
+src/gov_mcp/knowledge_server.py,route,47,,,"Route('/health', health)"
+src/gov_mcp/knowledge_server.py,tool,29,govkb_get_environment_status,"tenant_id: str, user_id: str",
+src/gov_mcp/knowledge_server.py,tool,34,govkb_search_evidence,"tenant_id: str, user_id: str, query: str, knowledge_version: str | None=None, as_of: str | None=None",
+src/gov_mcp/knowledge_web.py,route,45,,,"Route('/', home)"
+src/gov_mcp/knowledge_web.py,route,45,,,"Route('/favicon.ico', favicon)"
+src/gov_mcp/knowledge_web.py,route,45,,,"Route('/api/status', status)"
+src/gov_mcp/knowledge_web.py,route,45,,,"Route('/api/search', search)"
+src/gov_mcp/knowledge_web.py,route,45,,,"Route('/api/impact', impact)"
+src/gov_mcp/m2_server.py,route,71,,,"Route('/health', health)"
+src/gov_mcp/m2_server.py,tool,27,govm2_get_environment_status,"tenant_id: str, user_id: str",
+src/gov_mcp/m2_server.py,tool,32,govm2_create_task,"tenant_id: str, user_id: str, question: str",
+src/gov_mcp/m2_server.py,tool,37,govm2_search_evidence,"tenant_id: str, user_id: str, task_id: str | None=None, query: str | None=None",
+src/gov_mcp/m2_server.py,tool,42,govm2_declare_materials,"tenant_id: str, user_id: str, task_id: str, materials: dict[str, str]",
+src/gov_mcp/m2_server.py,tool,47,govm2_create_handoff,"tenant_id: str, user_id: str, task_id: str, idempotency_key: str",
+src/gov_mcp/m2_server.py,tool,52,govm2_list_handoffs,"tenant_id: str, user_id: str",
+src/gov_mcp/m2_server.py,tool,57,govm2_check_case_prerequisites,"tenant_id: str, user_id: str, handoff_id: str | None=None",
+src/gov_mcp/m2_server.py,tool,62,govm2_confirm_review,"tenant_id: str, user_id: str, handoff_id: str, assessment_sha256: str, confirmed: bool=False",
+src/gov_mcp/m2_workbench.py,route,183,,,"Route('/', home)"
+src/gov_mcp/m2_workbench.py,route,183,,,"Route('/api/login', login, methods=['POST'])"
+src/gov_mcp/m2_workbench.py,route,184,,,"Route('/api/logout', logout, methods=['POST'])"
+src/gov_mcp/m2_workbench.py,route,184,,,"Route('/api/state', state)"
+src/gov_mcp/m2_workbench.py,route,185,,,"Route('/api/tools/{name}', operation, methods=['POST'])"
+src/gov_mcp/m2_workbench.py,route,185,,,"Route('/api/agent', native, methods=['POST'])"
+src/gov_mcp/public_preview_server.py,route,61,,,"Route('/health', health)"
+src/gov_mcp/public_preview_server.py,tool,33,govkb_preview_open_query,"case: dict, question: str",
+src/gov_mcp/public_preview_server.py,tool,38,govkb_preview_retrieve,task_id: str,
+src/gov_mcp/public_preview_server.py,tool,43,govkb_preview_verify,task_id: str,
+src/gov_mcp/public_preview_server.py,tool,48,govkb_preview_state,task_id: str,
+src/gov_mcp/public_preview_server.py,tool,53,govkb_preview_finalize,task_id: str,
+src/gov_mcp/regional_preview_server.py,route,61,,,"Route('/health', health)"
+src/gov_mcp/regional_preview_server.py,tool,33,govkb_regional_open_query,scenario_id: str,
+src/gov_mcp/regional_preview_server.py,tool,38,govkb_regional_retrieve,task_id: str,
+src/gov_mcp/regional_preview_server.py,tool,43,govkb_regional_verify,task_id: str,
+src/gov_mcp/regional_preview_server.py,tool,48,govkb_regional_state,task_id: str,
+src/gov_mcp/regional_preview_server.py,tool,53,govkb_regional_finalize,task_id: str,
+src/gov_mcp/server.py,route,92,,,"Route('/health', health)"
+src/gov_mcp/server.py,tool,74,get_environment_status,"tenant_id: str, user_id: str",
+src/gov_mcp/server.py,tool,79,search_evidence,"tenant_id: str, user_id: str",
+src/gov_mcp/server.py,tool,84,check_case_prerequisites,"tenant_id: str, user_id: str",
+src/gov_mcp/workbench.py,route,136,,,"Route('/', home)"
+src/gov_mcp/workbench.py,route,136,,,"Route('/api/login', login, methods=['POST'])"
+src/gov_mcp/workbench.py,route,137,,,"Route('/api/logout', logout, methods=['POST'])"
+src/gov_mcp/workbench.py,route,137,,,"Route('/api/state', state)"
+src/gov_mcp/workbench.py,route,138,,,"Route('/api/workbench', workbench)"
+src/gov_mcp/workbench.py,route,138,,,"Route('/api/tools/{name}', operation, methods=['POST'])"

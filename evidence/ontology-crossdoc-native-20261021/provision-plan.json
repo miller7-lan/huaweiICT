@@ -1,0 +1,33 @@
+{
+  "mode": "reviewed_ontology_crossdoc_archived_preview",
+  "scenario_id": "nanjing_outside_old_card",
+  "service": "govkb_ontology_crossdoc_preview",
+  "port": 8785,
+  "agents": {
+    "controller": "govontologycrossdoc_controller",
+    "retriever": "govontologycrossdoc_retriever",
+    "verifier": "govontologycrossdoc_verifier"
+  },
+  "tools": [
+    "govkb_ontology_crossdoc_finalize",
+    "govkb_ontology_crossdoc_open_query",
+    "govkb_ontology_crossdoc_retrieve",
+    "govkb_ontology_crossdoc_state",
+    "govkb_ontology_crossdoc_verify"
+  ],
+  "drafts_disabled_unpublished": true,
+  "protect_all_other_tenant_agents": true,
+  "native_run_budget": 1,
+  "automatic_business_retry": false,
+  "protocol_repair_enabled": true,
+  "protocol_format_repairs_max": 2,
+  "controller_max_steps": 6,
+  "child_max_steps": 3,
+  "requested_output_tokens": 1024,
+  "temperature": 0,
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "api_requests_this_plan": 0,
+  "inference_calls_this_plan": 0,
+  "apply_requires": "--apply"
+}

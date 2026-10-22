@@ -53,7 +53,7 @@ def probe_platform():
         changes = "loopback-only ports, pinned MinIO source image, hash-guarded SDK connection error overlay; SQL unchanged"
     return {"version": "v2.7.0", "commit": COMMIT, "docker_cli_installed": docker is not None,
             "docker_engine": engine, "docker_server_version": version, "wsl_ready": wsl_ready,
-            "services": probe_services(),
+            "services": probe_services(require_local_models=True),
             "upstream_changes": changes, "minio_source_build": minio, "runtime_error_overlay": overlay}
 
 
@@ -71,7 +71,20 @@ def receipts_valid(report, roles, reference, root):
                 return False
             if hashlib.sha256(path.read_bytes()).hexdigest() != record.get(asset + "_sha256"):
                 return False
-        if not isinstance(record.get("conversation_id"), int) or record["conversation_id"] <= 0:
+        conversation_id = record.get("conversation_id")
+        if role == "developer" and conversation_id is None and record.get("run_mode") == "debug":
+            trace = read_json(root / record["trace"], {})
+            if trace.get("is_debug") is not True or trace.get("conversation_id") is not None or not record.get("debug_request_id"):
+                return False
+            try:
+                finals = [event["content"] for event in trace["events"]
+                          if event.get("type") == "final_answer" and not event.get("depth", 0)]
+                final = finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else json.loads("".join(finals))
+                if final["data"]["request_id"] != record["debug_request_id"]:
+                    return False
+            except (KeyError, TypeError, ValueError):
+                return False
+        elif not isinstance(conversation_id, int) or isinstance(conversation_id, bool) or conversation_id <= 0:
             return False
     return True
 

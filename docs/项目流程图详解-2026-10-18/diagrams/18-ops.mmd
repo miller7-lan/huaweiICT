@@ -1,0 +1,20 @@
+flowchart TD
+    nlaunch["启动脚本和独立运行目录"]
+    nsuper["knowledge_service supervisor"]
+    nwatch["进程／心跳过期恢复"]
+    nworker["公开采集worker自然周期"]
+    nmaintenance["维护锁、备份及恢复核验"]
+    nsignal["只记录有意义的变化"]
+    nrecovery["OS恢复与Docker分别登记"]
+    nstop["本轮心跳试验已结束"]
+    nlaunch -->|"公开采集器启动入口"| nsuper
+    nsuper -->|"持续监控"| nwatch
+    nwatch -->|"子进程退出／失活"| nsuper
+    nsuper -->|"采集子进程"| nworker
+    nsuper -->|"维护子进程"| nmaintenance
+    nmaintenance -->|"状态对比"| nsignal
+    nlaunch -->|"恢复另行配置"| nrecovery
+    nsignal -->|"最新历史试验范围"| nstop
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nstop stop

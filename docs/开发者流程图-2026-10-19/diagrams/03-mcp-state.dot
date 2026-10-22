@@ -1,0 +1,22 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.5", ranksep="0.6", splines=polyline, fontname="Microsoft YaHei"];
+node [shape=box, style="rounded,filled", width=4.5, fontname="Microsoft YaHei", fontsize=12, margin="0.18,0.16"];
+edge [fontname="Microsoft YaHei", fontsize=10, color="#708299", arrowsize=0.75];
+start [id="03-mcp-state-start", label=<<B>govkb_open_query → open_query</B><BR/><FONT POINT-SIZE="10">固定快照与事实，创建staged任务；没有证据需求可直<BR ALIGN="LEFT"/>接can_finalize。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:259</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.open_query"];
+retrieve [id="03-mcp-state-retrieve", label=<<B>needs_retrieval</B><BR/><FONT POINT-SIZE="10">retrieve_query只在此状态且rounds&lt;3取登记的所需证<BR ALIGN="LEFT"/>据。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:277</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.retrieve_query"];
+verify [id="03-mcp-state-verify", label=<<B>needs_verification</B><BR/><FONT POINT-SIZE="10">verify_query精确核对ID、span及quote；累计found_i<BR ALIGN="LEFT"/>ds与rounds。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:294</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.verify_query"];
+ready [id="03-mcp-state-ready", label=<<B>can_finalize</B><BR/><FONT POINT-SIZE="10">无缺口，或已到第3轮；剩余缺证据项仍unknown。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:191</FONT>>, fillcolor="#fff3d9", color="#b8852b", tooltip="src/gov_mcp/decision/workflow.py:Workflow._verify_retrieval"];
+complete [id="03-mcp-state-complete", label=<<B>complete</B><BR/><FONT POINT-SIZE="10">finalize_query每次重读live gate；首次持久化answe<BR ALIGN="LEFT"/>r，重试不重复创建任务。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:315</FONT>>, fillcolor="#edf4ff", color="#3d6fa6", tooltip="src/gov_mcp/decision/workflow.py:Workflow.finalize_query"];
+deny [id="03-mcp-state-deny", label=<<B>拒绝不合法调用</B><BR/><FONT POINT-SIZE="10">STAGED_QUERY_REQUIRED / RETRIEVAL_NOT_ALLOWED / <BR ALIGN="LEFT"/>VERIFICATION_NOT_ALLOWED / QUERY_NOT_VALIDATED。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">workflow.py:315</FONT>>, fillcolor="#fff0ef", color="#b9625c", tooltip="src/gov_mcp/decision/workflow.py:Workflow.finalize_query"];
+state [id="03-mcp-state-state", label=<<B>govkb_query_state</B><BR/><FONT POINT-SIZE="10">只读持久化status、轮数和version；主控不用子Agent<BR ALIGN="LEFT"/>自然语言冒充已执行。</FONT><BR/><FONT POINT-SIZE="9" COLOR="#65758b">server.py:58</FONT>>, fillcolor="#eaf6f1", color="#478570", tooltip="src/gov_mcp/decision/server.py:create_app.govkb_query_state"];
+start -> retrieve [label="需要证据", style="solid"];
+start -> ready [label="无证据需求", style="solid"];
+retrieve -> verify [label="retrieve_query", style="solid"];
+verify -> retrieve [label="有缺口且round<3", style="solid"];
+verify -> ready [label="齐备或第3轮", style="solid"];
+ready -> complete [label="finalize_query + 当前暂停检查", style="solid"];
+verify -> verify [label="重复retrieve：回同一retrieval", style="dashed"];
+complete -> complete [label="重复finalize：再检查当前暂停", style="dashed"];
+verify -> state [label="只读状态，不产生迁移", style="dashed"];
+start -> deny [label="非法任务/状态调用均拒绝", style="dashed"];
+}

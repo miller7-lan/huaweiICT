@@ -1,0 +1,107 @@
+{
+  "agent_id": 1,
+  "agent_info": {
+    "1": {
+      "agent_id": 1,
+      "name": "govm2_coordinator",
+      "display_name": "M2事项协作主Agent",
+      "author": "ICT 项目组",
+      "description": "M2工程预览，按真实角色运行并保留工具引用和待复核状态。",
+      "max_steps": 4,
+      "requested_output_tokens": 1024,
+      "is_main_agent": true,
+      "provide_run_summary": false,
+      "allow_chat_metadata": false,
+      "enable_protocol_repair_retry": false,
+      "enabled": true,
+      "duty_prompt": "Use exactly one complete action below. Keep the actual tool result; do not output a literal sample dictionary or a narrative.\n<code>\nimport json\nenvironment = govm2_get_environment_status()\nif isinstance(environment, str):\n    environment = json.loads(environment)\nif environment[\"status\"] != \"OK\":\n    answer = environment\nelif environment[\"data\"][\"role\"] == \"citizen\":\n    answer = govm2_citizen_assistant(task=\"只调用一次govm2_search_evidence()，原样返回真实结果。\")\nelif environment[\"data\"][\"role\"] == \"staff\":\n    answer = govm2_staff_assistant(task=\"只调用一次govm2_check_case_prerequisites()，原样返回真实结果。\")\nelse:\n    answer = environment\nfinal_answer(answer if isinstance(answer, str) else json.dumps(answer, ensure_ascii=False))\n</code>",
+      "constraint_prompt": "只运行M2工程预览的真实工具链。tenant_id、user_id由真实Nexent会话注入，禁止覆盖身份、角色、版本或工具结果。所有官方来源仍待业务复核，材料是模拟存在声明。保留引用、版本、待复核项、notice和formal_approval=false。EMPTY/BLOCKED/ERROR立即停止；禁止编造政策、申请人事实、材料或审批结论。执行一次完整Python动作，用实际返回值final_answer；禁止多次工具调用、循环或规划器。",
+      "tools": [
+        {
+          "class_name": "govm2_get_environment_status",
+          "name": "govm2_get_environment_status",
+          "source": "mcp",
+          "usage": "govm2_preview_mcp",
+          "params": {}
+        }
+      ],
+      "managed_agents": [
+        2,
+        3
+      ],
+      "model_names": [
+        "gov-qwen3-4b:ctx8192-v1"
+      ],
+      "skill_names": [],
+      "few_shots_prompt": "Use exactly one complete action below. Keep the actual tool result; do not output a literal sample dictionary or a narrative.\n<code>\nimport json\nenvironment = govm2_get_environment_status()\nif isinstance(environment, str):\n    environment = json.loads(environment)\nif environment[\"status\"] != \"OK\":\n    answer = environment\nelif environment[\"data\"][\"role\"] == \"citizen\":\n    answer = govm2_citizen_assistant(task=\"只调用一次govm2_search_evidence()，原样返回真实结果。\")\nelif environment[\"data\"][\"role\"] == \"staff\":\n    answer = govm2_staff_assistant(task=\"只调用一次govm2_check_case_prerequisites()，原样返回真实结果。\")\nelse:\n    answer = environment\nfinal_answer(answer if isinstance(answer, str) else json.dumps(answer, ensure_ascii=False))\n</code>"
+    },
+    "2": {
+      "agent_id": 2,
+      "name": "govm2_citizen_assistant",
+      "display_name": "M2群众引导Agent",
+      "author": "ICT 项目组",
+      "description": "M2工程预览，按真实角色运行并保留工具引用和待复核状态。",
+      "max_steps": 3,
+      "requested_output_tokens": 1024,
+      "is_main_agent": false,
+      "provide_run_summary": false,
+      "allow_chat_metadata": false,
+      "enable_protocol_repair_retry": false,
+      "enabled": true,
+      "duty_prompt": "Use exactly one complete action below. Keep the actual tool result; do not output a literal sample dictionary or a narrative.\n<code>\nimport json\nanswer = govm2_search_evidence()\nif isinstance(answer, str):\n    answer = json.loads(answer)\nfinal_answer(json.dumps(answer, ensure_ascii=False))\n</code>",
+      "constraint_prompt": "只运行M2工程预览的真实工具链。tenant_id、user_id由真实Nexent会话注入，禁止覆盖身份、角色、版本或工具结果。所有官方来源仍待业务复核，材料是模拟存在声明。保留引用、版本、待复核项、notice和formal_approval=false。EMPTY/BLOCKED/ERROR立即停止；禁止编造政策、申请人事实、材料或审批结论。执行一次完整Python动作，用实际返回值final_answer；禁止多次工具调用、循环或规划器。",
+      "tools": [
+        {
+          "class_name": "govm2_search_evidence",
+          "name": "govm2_search_evidence",
+          "source": "mcp",
+          "usage": "govm2_preview_mcp",
+          "params": {}
+        }
+      ],
+      "managed_agents": [],
+      "model_names": [
+        "gov-qwen3-4b:ctx8192-v1"
+      ],
+      "skill_names": [],
+      "few_shots_prompt": "Use exactly one complete action below. Keep the actual tool result; do not output a literal sample dictionary or a narrative.\n<code>\nimport json\nanswer = govm2_search_evidence()\nif isinstance(answer, str):\n    answer = json.loads(answer)\nfinal_answer(json.dumps(answer, ensure_ascii=False))\n</code>"
+    },
+    "3": {
+      "agent_id": 3,
+      "name": "govm2_staff_assistant",
+      "display_name": "M2工作人员核验Agent",
+      "author": "ICT 项目组",
+      "description": "M2工程预览，按真实角色运行并保留工具引用和待复核状态。",
+      "max_steps": 3,
+      "requested_output_tokens": 1024,
+      "is_main_agent": false,
+      "provide_run_summary": false,
+      "allow_chat_metadata": false,
+      "enable_protocol_repair_retry": false,
+      "enabled": true,
+      "duty_prompt": "Use exactly one complete action below. Keep the actual tool result; do not output a literal sample dictionary or a narrative.\n<code>\nimport json\nanswer = govm2_check_case_prerequisites()\nif isinstance(answer, str):\n    answer = json.loads(answer)\nfinal_answer(json.dumps(answer, ensure_ascii=False))\n</code>",
+      "constraint_prompt": "只运行M2工程预览的真实工具链。tenant_id、user_id由真实Nexent会话注入，禁止覆盖身份、角色、版本或工具结果。所有官方来源仍待业务复核，材料是模拟存在声明。保留引用、版本、待复核项、notice和formal_approval=false。EMPTY/BLOCKED/ERROR立即停止；禁止编造政策、申请人事实、材料或审批结论。执行一次完整Python动作，用实际返回值final_answer；禁止多次工具调用、循环或规划器。",
+      "tools": [
+        {
+          "class_name": "govm2_check_case_prerequisites",
+          "name": "govm2_check_case_prerequisites",
+          "source": "mcp",
+          "usage": "govm2_preview_mcp",
+          "params": {}
+        }
+      ],
+      "managed_agents": [],
+      "model_names": [
+        "gov-qwen3-4b:ctx8192-v1"
+      ],
+      "skill_names": [],
+      "few_shots_prompt": "Use exactly one complete action below. Keep the actual tool result; do not output a literal sample dictionary or a narrative.\n<code>\nimport json\nanswer = govm2_check_case_prerequisites()\nif isinstance(answer, str):\n    answer = json.loads(answer)\nfinal_answer(json.dumps(answer, ensure_ascii=False))\n</code>"
+    }
+  },
+  "mcp_info": [
+    {
+      "mcp_server_name": "govm2_preview_mcp",
+      "mcp_url": "http://govm2-mcp:8770/sse"
+    }
+  ]
+}

@@ -1,0 +1,452 @@
+{
+  "started_at": "2026-10-15T16:57:30.687576+00:00",
+  "run_id": "8b757def04b742259647cad68d2004f6",
+  "model": "gov-qwen3-4b:ctx8192-v1",
+  "synthetic_only": true,
+  "real_network_source_requests": 0,
+  "business_review_completed": false,
+  "official_knowledge_published_by_this_test": 0,
+  "records": [
+    {
+      "role": "citizen",
+      "scenario": "first-version",
+      "conversation_id": 77,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 61649.64,
+      "failure_class": null,
+      "private_trace_sha256": "5b9dafbddba54275ae2cd69e241bde69f7b7a05545d3e6272122ad96943cdff0",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "knowledge_version": "kb-0da2f23e4cba1b66a0840d51"
+          }
+        ],
+        "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "citizen",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792083450.6949174,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "first-version",
+      "conversation_id": 78,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 17929.4,
+      "failure_class": null,
+      "private_trace_sha256": "b43d9a2ada4cbca011ab68ba6620dab7a011afdd3c1730f49ba1a07380152b5a",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "knowledge_version": "kb-0da2f23e4cba1b66a0840d51"
+          }
+        ],
+        "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "staff",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792083450.6949174,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "citizen",
+      "scenario": "change-pending",
+      "conversation_id": 79,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 18283.65,
+      "failure_class": null,
+      "private_trace_sha256": "8983adc8afcf61784d06af32303c3596618752e5b72a27f14b365e2e06bf8b9e",
+      "actual_result": {
+        "status": "BLOCKED",
+        "items": [],
+        "citations": [],
+        "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+        "message_code": "UPDATE_PENDING_REVIEW",
+        "data": {
+          "role": "citizen",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792083532.8980987,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "citizen",
+      "scenario": "new-version",
+      "conversation_id": 80,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 17334.7,
+      "failure_class": null,
+      "private_trace_sha256": "79f7457ac14fbe5227d0a04156c0da8d0b5879854c5e275c9764043dc5092bdd",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-e87bd579fb3f715f91b3ef32"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-e87bd579fb3f715f91b3ef32",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "knowledge_version": "kb-f03569bd86008e47bd6065e6"
+          }
+        ],
+        "knowledge_version": "kb-f03569bd86008e47bd6065e6",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "citizen",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792083532.8980987,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "new-version",
+      "conversation_id": 81,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 18068.55,
+      "failure_class": null,
+      "private_trace_sha256": "2192474c48f44aa433bd73ea73e0a318178bf6e2091c13ea965e68ab74052809",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-e87bd579fb3f715f91b3ef32"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-e87bd579fb3f715f91b3ef32",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "knowledge_version": "kb-f03569bd86008e47bd6065e6"
+          }
+        ],
+        "knowledge_version": "kb-f03569bd86008e47bd6065e6",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "staff",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792083532.8980987,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "pinned-history",
+      "conversation_id": 82,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 54629.26,
+      "failure_class": null,
+      "private_trace_sha256": "4b96f56b11b5a6ee21e5790f40d088d616e1e9f4e56448faaf61aba23652204e",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-9b8abf589a82ea1ed5c8d900",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料甲。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "knowledge_version": "kb-0da2f23e4cba1b66a0840d51"
+          }
+        ],
+        "knowledge_version": "kb-0da2f23e4cba1b66a0840d51",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "staff",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": true,
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792083532.8980987,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": true
+        }
+      }
+    },
+    {
+      "role": "staff",
+      "scenario": "after-full-restore",
+      "conversation_id": 83,
+      "checks": {
+        "two_native_tools_in_order": true,
+        "exactly_two_actual_calls": true,
+        "trusted_identity_and_role": true,
+        "final_matches_actual_last_tool": true,
+        "expected_status_and_version": true,
+        "historical_flag_correct": true,
+        "citations_and_dates_correct": true,
+        "no_error_or_step_limit": true
+      },
+      "passed": true,
+      "duration_ms": 17513.8,
+      "failure_class": null,
+      "private_trace_sha256": "3153f1a440cf03528e79e493dfcc8b850e9ef2bba8b96d00b65e8d8f773a3ce8",
+      "actual_result": {
+        "status": "OK",
+        "items": [
+          {
+            "text": "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。",
+            "locator": "正文段落1",
+            "revision_id": "rev-e87bd579fb3f715f91b3ef32"
+          }
+        ],
+        "citations": [
+          {
+            "revision_id": "rev-e87bd579fb3f715f91b3ef32",
+            "title": "纯模拟文件，仅验证版本链路",
+            "url": "https://fixtures.invalid/docs/guide",
+            "locator": "正文段落1",
+            "category": "identity",
+            "quote": "身份证到期换领工程测试仅需模拟材料乙。这不是真实办理要求。",
+            "published_at": null,
+            "effective_from": "2020-01-01",
+            "knowledge_version": "kb-f03569bd86008e47bd6065e6"
+          }
+        ],
+        "knowledge_version": "kb-f03569bd86008e47bd6065e6",
+        "message_code": "EVIDENCE_FOUND",
+        "data": {
+          "role": "staff",
+          "region": "controlled-fixture",
+          "matter_id": "version-transition-only",
+          "formal_approval": false,
+          "historical_snapshot": false,
+          "source_freshness": [
+            {
+              "source_id": "synthetic-native-versions",
+              "last_successful_check": 1792083532.8980987,
+              "stale": false,
+              "enabled": true,
+              "paused": false,
+              "potential_impact_monitor": false
+            }
+          ],
+          "update_available": false
+        }
+      }
+    }
+  ],
+  "cleanup": {
+    "temporary_agent_removed_citizen": true,
+    "temporary_agent_removed_staff": true,
+    "temporary_mcp_removed": true,
+    "owned_fixture_server_stopped": true
+  },
+  "passed": true,
+  "temporary_agent_ids": {
+    "citizen": 14,
+    "staff": 15
+  },
+  "fixture_first_version": "kb-0da2f23e4cba1b66a0840d51",
+  "fixture_second_version": "kb-f03569bd86008e47bd6065e6",
+  "full_restore_verified_by_actual_model": true,
+  "real_candidate_business_counts_unchanged": true,
+  "real_candidate_counts": {
+    "documents": 4,
+    "revisions": 6,
+    "chunks": 62,
+    "latest_chunks": 35,
+    "versions": 0,
+    "heads": 0
+  },
+  "finished_at": "2026-10-15T17:01:01.365659+00:00",
+  "scope": "Intended coverage: seven model/MCP cases on synthetic data for first/new versions, pending stop, pinned history and restore. Only completed records establish actual coverage. No business-policy correctness or UI acceptance claim."
+}

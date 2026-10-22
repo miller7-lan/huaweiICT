@@ -1,0 +1,11 @@
+{
+  "data_class": "synthetic",
+  "chunks": [
+    {"object_id": "req-card-apply", "action": "出示", "quote": "成年本人演练分支内，申请时只需出示演练旧卡，不再交验；此为工程模拟变更。"},
+    {"object_id": "req-slip", "action": "出示", "quote": "成年本人演练分支内，领取时需出示模拟领取凭条，请保持条码清晰；此为工程模拟补充。"}
+  ],
+  "proposals": [
+    {"id": "alias-reviewed-short", "kind": "alias", "material_id": "material-old-card", "label": "旧证", "evidence_ids": ["ev-alias-candidate"]},
+    {"id": "ontology-example-note", "kind": "ontology", "label": "办理环节补充说明", "relation": "has_stage_note", "note": "先登记为已确认的本体建议；首版规则执行器尚不执行这个新关系。"}
+  ]
+}

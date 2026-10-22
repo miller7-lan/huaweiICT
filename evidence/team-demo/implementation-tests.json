@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-17T06:32:47.729065+00:00",
+  "phase": "team-demo-implementation",
+  "business_acceptance": false,
+  "clean_remote_clone_verified": false,
+  "real_browser_verified": false,
+  "heartbeat_enabled_by_this_change": false,
+  "suites": [
+    {
+      "command": "python -m pytest tests/test_knowledge_demo.py tests/test_knowledge_quality.py tests/test_knowledge_mcp.py -q --disable-warnings",
+      "tests": 92,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 20.053
+    },
+    {
+      "command": "python -m pytest -q --disable-warnings",
+      "tests": 596,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 114.102
+    }
+  ]
+}

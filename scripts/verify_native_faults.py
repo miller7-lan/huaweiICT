@@ -13,14 +13,15 @@ from check_native_ready import probe_services
 from container_storage_lock import container_storage_lock
 from runtime_sandbox import recover_sandbox
 from gov_mcp.core import BlankStore
+from gov_mcp.json_output import exact_json_equal, object_from_json
 from nexent_api import NexentAPI, ROOT, RUNTIME
 
 
 def root_final(events):
     finals = [e.get("content") for e in events if e.get("type") == "final_answer" and not e.get("depth", 0)]
     try:
-        return finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else json.loads("".join(finals))
-    except (ValueError, TypeError):
+        return finals[0] if len(finals) == 1 and isinstance(finals[0], dict) else object_from_json("".join(finals))
+    except (ValueError, TypeError, RecursionError):
         return None
 
 
@@ -43,7 +44,7 @@ def terminal_assessor(tool, status, code):
         terminal = audit[-1].get("result", {}) if audit else {}
         if not isinstance(value, dict) or value.get("status") != status or value.get("message_code") != code:
             errors.append("negative_test_terminal_mismatch")
-        elif any(value.get(key) != terminal.get(key) for key in
+        elif any(not exact_json_equal(value.get(key), terminal.get(key)) for key in
                  ("status", "items", "citations", "knowledge_version", "message_code", "data")):
             errors.append("negative_test_result_not_correlated")
         if isinstance(value, dict) and (value.get("items") != [] or value.get("citations") != [] or value.get("knowledge_version") is not None):
@@ -80,7 +81,7 @@ def main():
     if not summary.get("core_chain_accepted") or not model or state.get("active_model") != model:
         raise ValueError("Complete the benchmark and keep its selected model active before negative tests")
     recover_sandbox()
-    if not all(probe_services().values()):
+    if not all(probe_services(require_local_models=True).values()):
         raise RuntimeError("Native services or container-to-Ollama connection are not ready")
     api, records, failure = NexentAPI(), {}, None
     path = ROOT / "evidence/native-faults.json"

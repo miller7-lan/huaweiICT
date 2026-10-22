@@ -1,0 +1,46 @@
+{
+  "captured_at": "2026-10-16T13:55:00.164198+00:00",
+  "passed": true,
+  "checks": {
+    "candidate_state_source_configs_and_policy_unchanged": true,
+    "supervisor_and_all_components_restarted": true,
+    "deployed_status_has_diagnostic_field_and_preserves_unknown_legacy": true,
+    "deployed_workbench_has_phase_specific_and_unknown_labels": true,
+    "failure_lookup_index_prepared": true,
+    "worker_and_maintenance_heartbeats_fresh": true,
+    "mcp_stays_read_only": true,
+    "existing_windows_recovery_healthy": true,
+    "no_running_job_or_manual_pause": true
+  },
+  "business_binding": {
+    "counts": {
+      "sites": 37,
+      "documents": 33,
+      "revisions": 83,
+      "chunks": 505,
+      "reviews": 0,
+      "snapshot_evaluations": 0,
+      "versions": 0,
+      "heads": 0
+    },
+    "source_configs": "cf9770e6417e0a8ed4875f12d41fb234ee1e9fded5cb14e93c875007cb857593",
+    "policy": "db0ad59ae3b6b4379e90c98648236db284204735c1f29a62b18f42917c7e1e8d"
+  },
+  "source_count": 37,
+  "legacy_paused_sources_without_phase": [
+    "ERQI-NEARBY-2026",
+    "HN-NORM-XY-LEAD",
+    "ID-GUIDE-01",
+    "ID-LAW-01",
+    "ID-NORM-01",
+    "NDRC-EXEMPT-2004",
+    "NDRC-FEE-2003",
+    "NDRC-FEE-2005"
+  ],
+  "modules": {
+    "knowledge.py": "26244051a7c802abe1393d10f97874504c8da9304e82d3488a2542ba503f83d3",
+    "knowledge_fetch.py": "9d0f5de8d8f7a4d7c47300dcff7c70051664e4f0947221032b66b3162ad4f54c",
+    "knowledge_workbench.html": "8c6f598101648f0a44d6c588cf6d58ebda80fe5c13b37d983424920121b9e27f"
+  },
+  "scope": "Local deployed API/UI, supervisor replacement, fresh workers and read-only MCP. No new official source access, model test, business approval, reboot or full-week acceptance."
+}

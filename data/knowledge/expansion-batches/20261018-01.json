@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "purpose": "北京地区办事资料扩充；不以二七单事项验收为前置条件",
+  "collection_scope": "multiple_regions_and_matters",
+  "business_publication": false,
+  "sources": [
+    {
+      "source_id": "BJ-ID-RENEWAL-2025",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html",
+      "region": "北京市",
+      "matter": "resident-id-renewal",
+      "selector": {"class": "TRS_Editor"},
+      "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+      "parsed_paragraph_count": 26,
+      "selected_ordinals": [2, 4, 6, 8, 10, 12, 13, 14, 15, 17, 19, 21, 23, 24, 25],
+      "published_at": "2025-03-03",
+      "named_source": "北京市公安局网站",
+      "scope_limits": "京籍居民换领；未成年人要求保留。网办提示仅指损坏换领，须连同户籍、年龄、五年内办证/照片及指纹条件理解，不推为到期网办或河南材料标准。页面日期不是施行日。"
+    },
+    {
+      "source_id": "BJ-PASSPORT-FIRST-MATERIALS",
+      "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/cjybz/hz/blzn/201905/t20190522_1845633.html",
+      "region": "北京市",
+      "matter": "ordinary-passport-first-application",
+      "selector": {"class": "TRS_Editor"},
+      "original_sha256": "d05201c34e0ac2c80b06d49ce01dbf7f520b6f8637510dac16811bb505fc33de",
+      "parsed_paragraph_count": 22,
+      "selected_ordinals": [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 18, 20, 22],
+      "published_at": "2025-11-24",
+      "named_source": "移民局12367",
+      "scope_limits": "北京门户护照首次申领材料指南；保留未成年人、国家工作人员、军人、在京重复提交监护关系等条件；市内免费邮寄范围及户籍地/跨省时限分开。2019 URL路径不是2025页面发布日期或施行日。"
+    }
+  ]
+}

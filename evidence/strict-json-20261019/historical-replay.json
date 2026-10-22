@@ -1,0 +1,139 @@
+{
+  "mode": "offline_contract_validation_of_historical_outputs",
+  "new_model_calls": 0,
+  "schema_valid": 9,
+  "schema_rejected": 3,
+  "historical_evidence_unchanged": true,
+  "does_not_measure_new_prompt_compliance": true,
+  "rows": [
+    {
+      "historical_row_index": 0,
+      "case_id": "quotation_unknown_injection",
+      "temperature": 0.1,
+      "output_sha256": "53769138b6325e36b278e9100648fe1467a176c95404b4e4e0c404f620d4444c",
+      "contract_valid": false,
+      "historical_passed": false,
+      "errors": [
+        {
+          "location": [
+            "type"
+          ],
+          "type": "extra_forbidden"
+        }
+      ]
+    },
+    {
+      "historical_row_index": 1,
+      "case_id": "quotation_unknown_injection",
+      "temperature": 0.0,
+      "output_sha256": "53769138b6325e36b278e9100648fe1467a176c95404b4e4e0c404f620d4444c",
+      "contract_valid": false,
+      "historical_passed": false,
+      "errors": [
+        {
+          "location": [
+            "type"
+          ],
+          "type": "extra_forbidden"
+        }
+      ]
+    },
+    {
+      "historical_row_index": 2,
+      "case_id": "quotation_unknown_injection",
+      "temperature": 0.3,
+      "output_sha256": "53769138b6325e36b278e9100648fe1467a176c95404b4e4e0c404f620d4444c",
+      "contract_valid": false,
+      "historical_passed": false,
+      "errors": [
+        {
+          "location": [
+            "type"
+          ],
+          "type": "extra_forbidden"
+        }
+      ]
+    },
+    {
+      "historical_row_index": 3,
+      "case_id": "conflict_and_version",
+      "temperature": 0.0,
+      "output_sha256": "2c0de5b1a6ccb04457812f694fce32a267c08423e710f0a4131d59cfe6014e30",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 4,
+      "case_id": "conflict_and_version",
+      "temperature": 0.3,
+      "output_sha256": "2c0de5b1a6ccb04457812f694fce32a267c08423e710f0a4131d59cfe6014e30",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 5,
+      "case_id": "conflict_and_version",
+      "temperature": 0.1,
+      "output_sha256": "2c0de5b1a6ccb04457812f694fce32a267c08423e710f0a4131d59cfe6014e30",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 6,
+      "case_id": "unknown_conditions_scope",
+      "temperature": 0.3,
+      "output_sha256": "3d7515a78eab6d093d6ad25f62d2f96c8f05a75c5f3eb8481d5262157eac9879",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 7,
+      "case_id": "unknown_conditions_scope",
+      "temperature": 0.1,
+      "output_sha256": "3d7515a78eab6d093d6ad25f62d2f96c8f05a75c5f3eb8481d5262157eac9879",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 8,
+      "case_id": "unknown_conditions_scope",
+      "temperature": 0.0,
+      "output_sha256": "3d7515a78eab6d093d6ad25f62d2f96c8f05a75c5f3eb8481d5262157eac9879",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 9,
+      "case_id": "translation_constraints",
+      "temperature": 0.1,
+      "output_sha256": "9b438e8a34a9c46c64569878e7fcedb053369d572f5107b93e81fbbaf3009120",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 10,
+      "case_id": "translation_constraints",
+      "temperature": 0.0,
+      "output_sha256": "ef3a9a23f0f54658d89553e1d4eae7bea72ef5b98e1de89c601f90425de176c3",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    },
+    {
+      "historical_row_index": 11,
+      "case_id": "translation_constraints",
+      "temperature": 0.3,
+      "output_sha256": "ae499910328d81fbf55a6c413d8b659f6c1df64c4fabe19ce3f6dbf4b6df1282",
+      "contract_valid": true,
+      "historical_passed": true,
+      "errors": []
+    }
+  ]
+}

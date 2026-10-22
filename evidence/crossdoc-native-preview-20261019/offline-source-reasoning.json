@@ -1,0 +1,156 @@
+{
+  "binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "result": {
+    "schema_version": 1,
+    "status": "derived",
+    "conclusion": "cannot_establish_full_cycle_coverage",
+    "reason": "HISTORICAL_ARCHIVE_COMPARISON_ONLY",
+    "facts": {
+      "region": "南京市",
+      "matter": "resident-id-renewal",
+      "household": "outside_province",
+      "remaining_validity_working_days": 22,
+      "normalized_same_start_and_unit": true,
+      "lost_or_reported": false,
+      "exam_expedited": false
+    },
+    "trace": [
+      {
+        "id": "c1",
+        "depends_on": [],
+        "rule": "select_household_branch_and_add_increment",
+        "inputs": {
+          "household": "outside_province",
+          "base_working_days": 20,
+          "outside_increment_working_days": 5
+        },
+        "output": {
+          "usual_waiting_working_days": 25
+        },
+        "evidence": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "region": "南京市",
+            "matter": "resident-id-renewal",
+            "locator": "正文段落1",
+            "quote": "问：身份证到期后换证，需要多长时间才能领取新证？",
+            "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+          },
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "region": "南京市",
+            "matter": "resident-id-renewal",
+            "locator": "正文段落2",
+            "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+            "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+          },
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "region": "南京市",
+            "matter": "resident-id-renewal",
+            "locator": "正文段落3",
+            "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+            "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+          }
+        ]
+      },
+      {
+        "id": "u1",
+        "depends_on": [
+          "c1"
+        ],
+        "rule": "intersect_waiting_interval_with_unexpired_old_card_interval",
+        "inputs": {
+          "waiting_interval_from": "c1.output.usual_waiting_working_days",
+          "remaining_validity_working_days": 22,
+          "normalized_same_start_and_unit": true
+        },
+        "output": {
+          "old_card_interval_working_days": 22,
+          "old_card_usable_only_while_unexpired": true
+        },
+        "evidence": [
+          {
+            "source_id": "NJ-ID-OLD-CARD-2025",
+            "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+            "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+            "region": "南京市",
+            "matter": "resident-id-renewal-old-card-use",
+            "locator": "正文段落1",
+            "quote": "问：申请换领居民身份证期间，旧身份证还能用吗？",
+            "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+          },
+          {
+            "source_id": "NJ-ID-OLD-CARD-2025",
+            "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+            "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+            "region": "南京市",
+            "matter": "resident-id-renewal-old-card-use",
+            "locator": "正文段落2",
+            "quote": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+            "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+          }
+        ]
+      },
+      {
+        "id": "j1",
+        "depends_on": [
+          "c1",
+          "u1"
+        ],
+        "rule": "compare_derived_intervals",
+        "inputs": {
+          "waiting_from": "c1.output.usual_waiting_working_days",
+          "usable_from": "u1.output.old_card_interval_working_days"
+        },
+        "output": {
+          "full_cycle_coverage_established": false
+        },
+        "evidence": [
+          {
+            "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+            "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html",
+            "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+            "region": "南京市",
+            "matter": "resident-id-renewal",
+            "locator": "正文段落2",
+            "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+            "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+          },
+          {
+            "source_id": "NJ-ID-OLD-CARD-2025",
+            "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html",
+            "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+            "region": "南京市",
+            "matter": "resident-id-renewal-old-card-use",
+            "locator": "正文段落2",
+            "quote": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+            "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+          }
+        ]
+      }
+    ],
+    "scope_mapping": {
+      "region": "南京市",
+      "from_matter": "resident-id-renewal-old-card-use",
+      "to_matter": "resident-id-renewal",
+      "approved_for": "engineering_fixed_preview_only",
+      "formal_approval": false
+    },
+    "archive_mode": "frozen_historical_archive_not_current_policy",
+    "current_applicability": "unknown",
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "formally_published": false,
+    "formal_approval": false,
+    "actual_issuance_date": null,
+    "actual_gap_days": null,
+    "usual_waiting_working_days": 25,
+    "explanation": "假定同一起点与工作日口径，旧证剩余有效区间不足以覆盖来源描述的常规等待区间；不据此认定实际领证日期或实际缺证天数。"
+  }
+}

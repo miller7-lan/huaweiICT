@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-17T06:38:43.066159+00:00",
+  "change": "Return 204 for the demo favicon route after an actual browser 404.",
+  "command": "python -m pytest tests/test_knowledge_demo.py -q --disable-warnings",
+  "tests": 5,
+  "failures": 0,
+  "errors": 0,
+  "seconds": 3.182,
+  "actual_browser_recheck_pending": true,
+  "business_acceptance": false
+}

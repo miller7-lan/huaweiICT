@@ -1,0 +1,214 @@
+{
+  "prepared_at": "2026-10-20T04:40:47.488412+00:00",
+  "candidate_id": "bf7d3d08b1ac25e832a2902d4fa8dc60dd4f2456c7adca612992a014150c9640",
+  "expected_head": "1ca18aa9d0a9e85032b633bb11e0b4dcfe4aef40518c46a1b4c238fe8a7b0933",
+  "candidate": {
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "construction_metrics": {
+      "derived_numeric_parameters": 2,
+      "model_calls": 0,
+      "plan_nodes": 3,
+      "source_documents": 2,
+      "source_paragraphs": 5
+    },
+    "current_applicability": "unknown",
+    "data_class": "public",
+    "entity_type": {
+      "label": "同起点工作日区间比较",
+      "name": "IntervalComparison"
+    },
+    "extraction_method": "bounded_source_grammar_and_typed_plan_v1",
+    "fact_contract": {
+      "exam_expedited": false,
+      "household": [
+        "inside_province",
+        "outside_province"
+      ],
+      "lost_or_reported": false,
+      "matter": "resident-id-renewal",
+      "normalized_same_start_and_unit": true,
+      "region": "南京市",
+      "remaining_validity_working_days": {
+        "maximum": 3660,
+        "minimum": 1,
+        "type": "integer"
+      }
+    },
+    "fact_contract_note": "Registered fields; remaining interval is fictional and already normalized, not a policy value.",
+    "formal_approval": false,
+    "formally_published": false,
+    "profile": "nanjing-archive-interval-plan-v1",
+    "relation_type": {
+      "domain": "Matter",
+      "name": "compares_coverage",
+      "nodes": [
+        {
+          "depends_on": [],
+          "id": "c1",
+          "operator": "household_waiting",
+          "output_type": "WorkingDayDuration",
+          "parameters": {
+            "base": 20,
+            "outside_increment": 5
+          },
+          "source_key": "cycle"
+        },
+        {
+          "depends_on": [
+            "c1"
+          ],
+          "id": "u1",
+          "operator": "intersect_unexpired",
+          "output_type": "WorkingDayDuration",
+          "parameters": {},
+          "source_key": "old_card"
+        },
+        {
+          "depends_on": [
+            "c1",
+            "u1"
+          ],
+          "id": "j1",
+          "operator": "compare_coverage",
+          "output_type": "ThreeValueCoverage",
+          "parameters": {},
+          "source_key": "both"
+        }
+      ],
+      "operator": "bounded_typed_dag_v1",
+      "range": "IntervalComparison"
+    },
+    "schema_version": 1,
+    "scope": {
+      "matter": "resident-id-renewal",
+      "region": "南京市"
+    },
+    "scope_mapping": {
+      "approved_for": "engineering_fixed_preview_only",
+      "formal_approval": false,
+      "from_matter": "resident-id-renewal-old-card-use",
+      "region": "南京市",
+      "to_matter": "resident-id-renewal"
+    },
+    "source_documents": {
+      "cycle": {
+        "archive_mode": "frozen_historical_archive_not_current_policy",
+        "current_applicability": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "formal_approval": false,
+        "formally_published": false,
+        "matter": "resident-id-renewal",
+        "published_at": "2026-01-05",
+        "raw_sha256": "feb2b5afd628f4bef72ad36b24969a4c972c04adabae5afa4872f94d28c10920",
+        "region": "南京市",
+        "revision": "rev-6b0fb8bd7de1638a149dbaa9",
+        "scope_mapping": {
+          "approved_for": "engineering_fixed_preview_only",
+          "formal_approval": false,
+          "from_matter": "resident-id-renewal-old-card-use",
+          "region": "南京市",
+          "to_matter": "resident-id-renewal"
+        },
+        "segments": [
+          {
+            "locator": "正文段落1",
+            "quote": "问：身份证到期后换证，需要多长时间才能领取新证？",
+            "text_sha256": "6291e0a0543e14ef039e490690dc16354e0eb265ddc2e5d3282323ca160f903f"
+          },
+          {
+            "locator": "正文段落2",
+            "quote": "答：省内户籍居民身份证换发周期为20个工作日；省外户籍居民身份证需由户籍地公安机关审核签发，换发周期增加5个工作日。",
+            "text_sha256": "0fc662766f51eaeb74443ba95390415aa23c2cc2cbd837257d456bc286407b4c"
+          },
+          {
+            "locator": "正文段落3",
+            "quote": "对急需用证考生，实行制证信息快速受理、审签、制证、发放，最大限度缩短证件制发周期，确保考生顺利参加考试。",
+            "text_sha256": "20bf93e615319cec7a42da34bbad043832bbe576748516b32d68ffdede873a1f"
+          }
+        ],
+        "source_id": "NJ-ID-RENEWAL-CYCLE-2026",
+        "url": "https://www.nanjing.gov.cn/hdjl/hygq/202601/t20260105_5757179.html"
+      },
+      "old_card": {
+        "archive_mode": "frozen_historical_archive_not_current_policy",
+        "current_applicability": "unknown",
+        "effective_from": null,
+        "effective_to": null,
+        "formal_approval": false,
+        "formally_published": false,
+        "matter": "resident-id-renewal-old-card-use",
+        "published_at": "2025-12-09",
+        "raw_sha256": "9b668bfdb6c81d88692e1e3f684e327181ee0096b57b5d40b2252507d7a6d88c",
+        "region": "南京市",
+        "revision": "rev-b119c7ef339e64b5d2a51e2a",
+        "scope_mapping": {
+          "approved_for": "engineering_fixed_preview_only",
+          "formal_approval": false,
+          "from_matter": "resident-id-renewal-old-card-use",
+          "region": "南京市",
+          "to_matter": "resident-id-renewal"
+        },
+        "segments": [
+          {
+            "locator": "正文段落1",
+            "quote": "问：申请换领居民身份证期间，旧身份证还能用吗？",
+            "text_sha256": "33872b86c209119199b9a9fcc5981afa648c91850a6c2ee151563ea621200686"
+          },
+          {
+            "locator": "正文段落2",
+            "quote": "答：申请换领居民身份证期间，未超期的旧身份证可以继续使用。",
+            "text_sha256": "97bb40b0c5bac8f53a88ad8b43d6e63310b6e9b88977aa3827aaf114c7f12373"
+          }
+        ],
+        "source_id": "NJ-ID-OLD-CARD-2025",
+        "url": "https://www.nanjing.gov.cn/zgnjsjb/hdjl/rdwt/202512/t20251209_5709611.html"
+      }
+    },
+    "status": "pending_review"
+  },
+  "candidate_status": "pending_review",
+  "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "before_query": {
+    "schema_version": 1,
+    "status": "UNSUPPORTED_RELATION",
+    "conclusion": null,
+    "reason": "REVIEWED_ONTOLOGY_PLAN_REQUIRED",
+    "facts": {
+      "region": "南京市",
+      "matter": "resident-id-renewal",
+      "household": "outside_province",
+      "remaining_validity_working_days": 22,
+      "normalized_same_start_and_unit": true,
+      "lost_or_reported": false,
+      "exam_expedited": false
+    },
+    "trace": [],
+    "scope_mapping": {
+      "region": "南京市",
+      "from_matter": "resident-id-renewal-old-card-use",
+      "to_matter": "resident-id-renewal",
+      "approved_for": "engineering_fixed_preview_only",
+      "formal_approval": false
+    },
+    "archive_mode": "frozen_historical_archive_not_current_policy",
+    "current_applicability": "unknown",
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "formally_published": false,
+    "formal_approval": false,
+    "actual_issuance_date": null,
+    "actual_gap_days": null,
+    "version": "1ca18aa9d0a9e85032b633bb11e0b4dcfe4aef40518c46a1b4c238fe8a7b0933"
+  },
+  "original_pins": {
+    ".runtime/crossdoc-native-preview-20261019/manifest.json": "8361c283c3f3ae0ad73f694f62a725360452fec76ac9bdfd5bf1b87f342bb262",
+    ".runtime/crossdoc-native-preview-20261019/gates.json": "dd8e954d40ac69c84c2026ffdf4c744d9ab2107b5580b28b39935e76451907a2",
+    ".runtime/crossdoc-native-preview-20261019/crossdoc.sqlite3": "b6dfc57c01ff4a15a3cbefbdb7d669db67747ec2ca4d720b43d405687a805002",
+    ".runtime/new-knowledge-experiment-20261018/knowledge.sqlite3": "dddb884671592181d945cef5a7ad019d299694589b731db83184b682d7a38d90"
+  },
+  "model_calls": 0,
+  "http_calls": 0,
+  "native_runs": 0,
+  "business_approval": false,
+  "formally_published": false
+}

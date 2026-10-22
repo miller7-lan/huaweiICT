@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "kind": "official_web_observation_not_archived_candidate_or_current_business_approval",
+  "observed_at": "2026-10-18T09:03:19.954922+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "source": {
+    "title": "郑州市公安局关于调整户籍管理领域证明事项告知承诺制清单项目的公告",
+    "url": "https://zzga.zhengzhou.gov.cn/jfgg/6535137.jhtml",
+    "publisher": "郑州市公安局",
+    "observed_by": "web page text retrieval",
+    "page_displayed_at": "2022-07-01 09:33",
+    "body_signed_at": "2022-07-01",
+    "legal_effective_from": null,
+    "first_publication_verified": false,
+    "original_sha256": null,
+    "body_normally_acquired": false
+  },
+  "normal_fetch_attempt": {
+    "url": "https://zzga.zhengzhou.gov.cn/jfgg/6535137.jhtml",
+    "checked_at": "2026-10-18T09:01:40.781821+00:00",
+    "normal_fetcher": true,
+    "attempted_once": true,
+    "business_approval": false,
+    "status": 403,
+    "stop_detail": {
+      "phase": "robots",
+      "http_status": 403
+    },
+    "error": "Access denied; source paused",
+    "body_acquired": false
+  },
+  "attachment": {
+    "displayed_name": "郑州市公安局户政业务证明事项告知承诺制调整清单.xls",
+    "link_observed_on_parent": true,
+    "web_open_result": "Internal Error",
+    "file_obtained": false,
+    "attachment_url_verified": false,
+    "rows_read": false,
+    "format_or_macros_inspected": false
+  },
+  "observed_facts": [
+    {
+      "id": "municipal_adjustment_context",
+      "location": "正文导语",
+      "finding": "公告说明基于2021年以来市政府办公厅公布的清单重新梳理，并援引郑法政办〔2022〕4号。",
+      "inference_limit": "不推断清单与所有后续规范的完整效力衔接。"
+    },
+    {
+      "id": "away_condition_proof_cancelled",
+      "location": "正文第一项",
+      "finding": "依据公通字〔2021〕12号，异地受理不再提交在当地就读、居住、就业的相关证明，取消对应条件审核证明清单项目。",
+      "inference_limit": "对象是异地受理条件证明，不是宣布居民户口簿或原居民身份证在所有换领场景无条件取消。"
+    },
+    {
+      "id": "renewal_replacement_undertaking_retained",
+      "location": "正文第二项",
+      "finding": "保留六项清单项目，其中包含换领和补领居民身份证。",
+      "inference_limit": "正文没有展开附件具体证明名称、核查方式、承诺文本与二七窗口程序，不能据此补写附件单元格或保证当前受理。"
+    }
+  ],
+  "archived_2021_comparison": {
+    "source_id": "ZZ-CONSENT-2021-LIST-LEAD",
+    "revision": "rev-07ed2a518a11319079f32894",
+    "original_sha256": "8d5b49ab0a2ebe42bd9cc66e29c999beeed684d3cec15a65ba4b73e524590d6e",
+    "source_url": "https://www.zzsgsl.org/uploads/allimg/20211115/27-211115101102308.pdf",
+    "literal_anchors": [
+      {
+        "locator": "PDF第1页：文件身份与送达范围",
+        "text_sha256": "b3dbce2933ea2d0ee893b01726ea66d7c6b966d1c62999e232dd299d82759acf",
+        "characters": 163
+      },
+      {
+        "locator": "PDF第2页：清单表头",
+        "text_sha256": "bf0c3ca07f96d072a60237fac14cd0a324686ab540d8db5899e2051e5c1b452a",
+        "characters": 51
+      },
+      {
+        "locator": "PDF第2页：第10项户口簿告知承诺",
+        "text_sha256": "e4442387f4ae900d28d2f19e516d0f4ea2e85b32abd9034852031c89a377fea1",
+        "characters": 37
+      }
+    ],
+    "observed_2021_row": {
+      "item": 10,
+      "department": "郑州市公安局",
+      "matter": "换领、补领居民身份证",
+      "proof": "居民户口簿",
+      "verification": "现场核查"
+    },
+    "adjacent_row_11_is_distinct": true,
+    "relationship": "2022网页观察直接补上保留换补领项目的后续线索；附件未读，未认证2021第10项全部字段在2022或当前逐字保持。"
+  },
+  "conclusions": {
+    "new_local_evidence_signal": true,
+    "current_erqi_materials_resolved": false,
+    "current_validity_certified": false,
+    "all_materials_waived": false,
+    "business_approval": false,
+    "candidate_ingested": false,
+    "formal_evaluation_executed": false,
+    "published": false
+  },
+  "remaining_evidence": [
+    "取得调整公告及附件的允许归档原件，核对换补领对应证明名称和核查方式。",
+    "核对后续调整、二七窗口当前告知与承诺程序以及与国家78条、河南159条及共享核验条件的衔接。"
+  ],
+  "collection_limits": "本条只保存有出处的网页研究观察及实际采集停止结果；未将网页工具输出冒充正常HTTP原件，未恢复暂停来源或绕过robots。",
+  "content_sha256": "6c6b0215bfe881667f7d08b148f2c115d55880c49f5077d716ed1a4c0323de12"
+}

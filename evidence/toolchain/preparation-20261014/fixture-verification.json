@@ -1,0 +1,35 @@
+{
+  "captured_at": "2026-10-13T16:13:23.106552+00:00",
+  "client_timezone": "Asia/Shanghai",
+  "synthetic_fixture_verified": true,
+  "asset_hashes_match": true,
+  "ocr_expected_phrases_verified": true,
+  "ocr_boxes_within_image": true,
+  "segment_count": 9,
+  "vector_count_including_query": 10,
+  "dimension": 1024,
+  "embedding_model_digest": "ac6da0dfba84a81fdbfbaf330198c33cd77c4cdfc53e8bc50eb581914a15621d",
+  "embedding_model_bytes": 639150858,
+  "ocr_model_files": [
+    {
+      "file": "ch_PP-OCRv4_det_infer.onnx",
+      "sha256": "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+    },
+    {
+      "file": "ch_PP-OCRv4_rec_infer.onnx",
+      "sha256": "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b"
+    },
+    {
+      "file": "ch_ppocr_mobile_v2.0_cls_infer.onnx",
+      "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"
+    }
+  ],
+  "dependency_versions": {
+    "rapidocr-onnxruntime": "1.4.4",
+    "Pillow": "11.3.0",
+    "onnxruntime": "1.31.0",
+    "numpy": "2.5.4"
+  },
+  "business_accuracy_evaluated": false,
+  "nexent_knowledge_ingestion_verified": false
+}

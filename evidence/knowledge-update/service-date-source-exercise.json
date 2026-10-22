@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-16T16:43:04.757687+00:00",
+  "kind": "isolated_real_source_date_binding_exercise_not_business_review",
+  "passed": true,
+  "checks": {
+    "real_original_date_and_body_binding_accepted_in_isolation": true,
+    "normative_relabeling_does_not_bypass_commencement": true,
+    "other_pending_sources_still_block_candidate": true,
+    "full_business_policy_preserved": true,
+    "main_source_states_and_metadata_unchanged": true,
+    "restore_does_not_start_services": true,
+    "temporal_metadata_and_review_digest_survive_complete_restore": true,
+    "restored_source_date_binding_is_revalidated_without_service_start": true
+  },
+  "source_id": "HN-MEASURES-2026",
+  "base_revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+  "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+  "body_sha256": "ffb83cfa01bd61d09eddc6ef0e4a3d51db8aaa4b5995371884b2d3151e0cac10",
+  "date_basis": {
+    "kind": "reported_service_information",
+    "information_as_of": "2026-05-05",
+    "base_revision": "rev-7a4b5d8dbcbbcb5614caf1f8",
+    "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+    "body_sha256": "ffb83cfa01bd61d09eddc6ef0e4a3d51db8aaa4b5995371884b2d3151e0cac10",
+    "source_observation_sha256": "c0d4266f45c862eb42fb1283b5f1a205115a77fdd91eea6e9a932a19bacf0231",
+    "source_date_field": "meta:pubdate",
+    "source_date_value": "2026-05-05 09:18:04.0",
+    "legal_commencement_established": false
+  },
+  "scope_and_business_applicability_approved_in_main": false,
+  "scope_confirmed_flag_used_only_in_isolated_positive_fixture": true,
+  "main_runtime_mutations": 0,
+  "new_model_runs": 0,
+  "candidate_block_reason": "Unreviewed or changed content",
+  "main_counts": {
+    "sites": 41,
+    "documents": 37,
+    "revisions": 120,
+    "chunks": 807,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 36,
+    "latest_chunks": 304
+  },
+  "business_release_ready": false,
+  "note": "This checks date binding and existing gates against literal archived bytes. It does not establish current service applicability or approve the 2026 explanation for the pilot.",
+  "temporal_metadata_restore": {
+    "preserved": true,
+    "services_started": false,
+    "main_runtime_involved": false,
+    "reference_revision": "rev-7a4b5d8dbcbbcb5614caf1f8"
+  }
+}

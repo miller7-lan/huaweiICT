@@ -1,20 +1,20 @@
 {
-  "captured_at": "2026-10-11T12:02:41.482579+00:00",
-  "benchmark_reference": "native-20261011T115445853107Z",
+  "captured_at": "2026-10-12T05:10:59.258477+00:00",
+  "benchmark_reference": "native-20261012T042943808072Z",
   "records": {
     "metadata_rejected": {
       "passed": true,
       "http_status": 400,
       "error_code": "010105",
-      "conversation_id": 126,
+      "conversation_id": 45,
       "actual_tool_calls": 0
     },
     "unmapped_identity": {
       "model": "gov-qwen3-4b:ctx8192-v1",
       "scenario": "unmapped_identity",
       "repeat": 1,
-      "conversation_id": 127,
-      "duration_ms": 8932.93,
+      "conversation_id": 46,
+      "duration_ms": 48456.71,
       "events": [
         {
           "type": "other",
@@ -28,7 +28,7 @@
         },
         {
           "type": "agent_new_run",
-          "content": "[Current time: 2026-10-11 12:02:18]\n\n调用一次 get_environment_status，原样返回结果并结束。\n\nRun workspace: /mnt/nexent/workdir/efb71a73-c635-4e72-b940-d9696893fe7d/b27e58e96e2f4a679aa6f69950f09710\nWrite every generated file under: /mnt/nexent/workdir/efb71a73-c635-4e72-b940-d9696893fe7d/b27e58e96e2f4a679aa6f69950f09710/outputs\nThe code executor already runs in that outputs directory. Use bare relative paths such as 'report.pdf', not 'outputs/report.pdf', to avoid creating an outputs/outputs directory.\nException: run_skill_script(source='workspace') resolves script_path from the run workspace root. If code writes a generated script as bare 'build.js', call run_skill_script with script_path='outputs/build.js'. The generated script itself still writes output artifacts with bare filenames because its CWD is outputs.\nDirect subprocess, os.system, and shell calls for system commands are blocked by the code executor. Use run_skill_script with a skill-bundled wrapper, or use a shell-free Python/Node.js API instead. When sandbox networking is enabled, only a shell-free argv call to sys.executable -m pip install is permitted for dependency installation.\nFor skill-creator output packages, create the new skill under outputs/<new-skill> with normal code-executor file APIs; write_skill_file edits installed tenant skills and does not create files in this run workspace.\nFiles created there are uploaded to MinIO automatically when the run finishes.",
+          "content": "[Current time: 2026-10-12 05:08:59]\n\n调用一次 get_environment_status，原样返回结果并结束。\n\nRun workspace: /mnt/nexent/workdir/0bca3ad7-8bb0-4e40-85bb-36acfbb022b4/e6c40c1dfcf443e7b7c882cc36b42bef\nWrite every generated file under: /mnt/nexent/workdir/0bca3ad7-8bb0-4e40-85bb-36acfbb022b4/e6c40c1dfcf443e7b7c882cc36b42bef/outputs\nThe code executor already runs in that outputs directory. Use bare relative paths such as 'report.pdf', not 'outputs/report.pdf', to avoid creating an outputs/outputs directory.\nException: run_skill_script(source='workspace') resolves script_path from the run workspace root. If code writes a generated script as bare 'build.js', call run_skill_script with script_path='outputs/build.js'. The generated script itself still writes output artifacts with bare filenames because its CWD is outputs.\nDirect subprocess, os.system, and shell calls for system commands are blocked by the code executor. Use run_skill_script with a skill-bundled wrapper, or use a shell-free Python/Node.js API instead. When sandbox networking is enabled, only a shell-free argv call to sys.executable -m pip install is permitted for dependency installation.\nFor skill-creator output packages, create the new skill under outputs/<new-skill> with normal code-executor file APIs; write_skill_file edits installed tenant skills and does not create files in this run workspace.\nFiles created there are uploaded to MinIO automatically when the run finishes.",
           "unit_index": 2
         },
         {
@@ -40,285 +40,285 @@
           "type": "model_attempt_control",
           "content": "",
           "phase": "begin",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "attempt": 1,
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "<code",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ">\n",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "import",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\n",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " get",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_status",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "()\n",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "if",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " isinstance",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " str",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "):\n",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "   ",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ".loads",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ")\n",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "final",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_answer",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " if",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " isinstance",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " str",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ")",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " else",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ".dumps",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(environment",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " ensure",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_ascii",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "=False",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "))\n",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "</",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "code",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ">",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "unit_index": 4
         },
         {
           "type": "model_attempt_control",
           "content": "",
           "phase": "commit",
-          "attempt_id": "c8abc6bccd7c43e2bdd5c530ac8c74ab",
+          "attempt_id": "3cdf2f850712495490378ff0631b0014",
           "attempt": 1,
           "unit_index": 5
         },
@@ -332,34 +332,34 @@
           "content": "",
           "tool_name": "get_environment_status",
           "tool_arguments": {},
-          "tool_call_id": "a66eaadb-e0e5-4ca4-b547-5db4e3b3d35d",
+          "tool_call_id": "129ff0d2-0eb0-4625-b96c-c6e5853c50db",
           "unit_index": 6
         },
         {
           "type": "execution_logs",
-          "content": "Last output from code snippet:\n{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"ROLE_NOT_CONFIGURED\", \"data\": {\"request_id\": \"795f04f7259c5a81\"}}",
+          "content": "Last output from code snippet:\n{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"ROLE_NOT_CONFIGURED\", \"data\": {\"request_id\": \"2ae1dd17a061a5b8\"}}",
           "unit_index": 7
         },
         {
           "type": "token_count",
-          "content": "{\"step_number\": 1, \"duration\": 5.74, \"step_input_tokens\": 4936, \"step_output_tokens\": 47, \"total_output_tokens\": 47, \"estimated_context_tokens\": 5679, \"token_threshold\": 5734, \"context_window_tokens\": 8192, \"effective_input_limit_tokens\": 7168, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 46.9, \"uncompressed_est_tokens\": 10694, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4936}",
+          "content": "{\"step_number\": 1, \"duration\": 43.8, \"step_input_tokens\": 4924, \"step_output_tokens\": 47, \"total_output_tokens\": 47, \"estimated_context_tokens\": 5679, \"token_threshold\": 5734, \"context_window_tokens\": 8192, \"effective_input_limit_tokens\": 7168, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 46.9, \"uncompressed_est_tokens\": 10694, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4924}",
           "unit_index": 8
         },
         {
           "type": "final_answer",
-          "content": "{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"ROLE_NOT_CONFIGURED\", \"data\": {\"request_id\": \"795f04f7259c5a81\"}}",
+          "content": "{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"ROLE_NOT_CONFIGURED\", \"data\": {\"request_id\": \"2ae1dd17a061a5b8\"}}",
           "unit_index": 9
         }
       ],
       "audit": [
         {
-          "time": "2026-10-11T12:02:23.971653+00:00",
+          "time": "2026-10-12T05:09:43.060518+00:00",
           "tool": "get_environment_status",
-          "request_id": "795f04f7259c5a81",
+          "request_id": "2ae1dd17a061a5b8",
           "status": "BLOCKED",
           "message_code": "ROLE_NOT_CONFIGURED",
-          "duration_ms": 1.14,
-          "principal_sha256": "9d3fc357d4269a891fecf5517760fb5f82289e204e4b9656862653832e6c5d11",
+          "duration_ms": 4.6,
+          "principal_sha256": "b906842d367a1036d56476718f31102291d95e5f819d148234e28d20e6fe2524",
           "result": {
             "status": "BLOCKED",
             "items": [],
@@ -367,130 +367,569 @@
             "knowledge_version": null,
             "message_code": "ROLE_NOT_CONFIGURED",
             "data": {
-              "request_id": "795f04f7259c5a81"
+              "request_id": "2ae1dd17a061a5b8"
             }
           }
         }
       ],
       "resource_samples": [
         {
-          "time": "2026-10-11T12:02:16.120037+00:00",
-          "memory_used_bytes": 14331379712,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 7483,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:08:56.379716+00:00",
+          "memory_used_bytes": 28667465728,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:16.679008+00:00",
-          "memory_used_bytes": 14334160896,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 7482,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:08:56.902919+00:00",
+          "memory_used_bytes": 28651835392,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:17.222428+00:00",
-          "memory_used_bytes": 14338527232,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 7482,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:08:57.431873+00:00",
+          "memory_used_bytes": 28672135168,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:17.771333+00:00",
-          "memory_used_bytes": 14318006272,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 7482,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:08:57.947730+00:00",
+          "memory_used_bytes": 28674629632,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:18.312068+00:00",
-          "memory_used_bytes": 14280581120,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 7483,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:08:58.475569+00:00",
+          "memory_used_bytes": 28674736128,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:18.869729+00:00",
-          "memory_used_bytes": 12206370816,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 1427,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:08:59.000525+00:00",
+          "memory_used_bytes": 28680175616,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:19.410041+00:00",
-          "memory_used_bytes": 12254838784,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 1502,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:08:59.525779+00:00",
+          "memory_used_bytes": 27794526208,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:19.952633+00:00",
-          "memory_used_bytes": 12308189184,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 1520,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:00.039576+00:00",
+          "memory_used_bytes": 23978590208,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:20.496604+00:00",
-          "memory_used_bytes": 12711583744,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 4011,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:00.566837+00:00",
+          "memory_used_bytes": 20394557440,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:21.058090+00:00",
-          "memory_used_bytes": 12864905216,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 4011,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:01.080130+00:00",
+          "memory_used_bytes": 20400377856,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:21.620854+00:00",
-          "memory_used_bytes": 12855271424,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5503,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:01.607831+00:00",
+          "memory_used_bytes": 20450992128,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:22.167383+00:00",
-          "memory_used_bytes": 12829728768,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5559,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:02.120822+00:00",
+          "memory_used_bytes": 23501070336,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:22.727990+00:00",
-          "memory_used_bytes": 12826701824,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5544,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:02.651159+00:00",
+          "memory_used_bytes": 23660802048,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:23.270282+00:00",
-          "memory_used_bytes": 12850458624,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5544,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:03.177865+00:00",
+          "memory_used_bytes": 23587254272,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:23.824059+00:00",
-          "memory_used_bytes": 12848975872,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5559,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:03.703836+00:00",
+          "memory_used_bytes": 24920006656,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:24.377870+00:00",
-          "memory_used_bytes": 12846518272,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5559,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:04.219076+00:00",
+          "memory_used_bytes": 24982654976,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:24.923794+00:00",
-          "memory_used_bytes": 12885078016,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5559,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:04.735584+00:00",
+          "memory_used_bytes": 24972025856,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:05.251159+00:00",
+          "memory_used_bytes": 24972075008,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:05.768657+00:00",
+          "memory_used_bytes": 24969936896,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:06.296030+00:00",
+          "memory_used_bytes": 24978321408,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:06.809240+00:00",
+          "memory_used_bytes": 24971919360,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:07.333013+00:00",
+          "memory_used_bytes": 24997462016,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:07.863752+00:00",
+          "memory_used_bytes": 24988999680,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:08.392804+00:00",
+          "memory_used_bytes": 24998789120,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:08.906061+00:00",
+          "memory_used_bytes": 25002246144,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:09.429147+00:00",
+          "memory_used_bytes": 25006362624,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:09.942549+00:00",
+          "memory_used_bytes": 25002795008,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:10.467628+00:00",
+          "memory_used_bytes": 24982388736,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:11.011477+00:00",
+          "memory_used_bytes": 24987254784,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:11.541706+00:00",
+          "memory_used_bytes": 24994861056,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:12.078797+00:00",
+          "memory_used_bytes": 24992702464,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:12.629008+00:00",
+          "memory_used_bytes": 24995033088,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:13.161921+00:00",
+          "memory_used_bytes": 24991277056,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:13.684960+00:00",
+          "memory_used_bytes": 25002745856,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:14.215075+00:00",
+          "memory_used_bytes": 25002754048,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:14.743191+00:00",
+          "memory_used_bytes": 25009143808,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:15.268918+00:00",
+          "memory_used_bytes": 25009115136,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:15.810099+00:00",
+          "memory_used_bytes": 25011855360,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:16.337929+00:00",
+          "memory_used_bytes": 25012948992,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:16.851758+00:00",
+          "memory_used_bytes": 25014669312,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:17.362840+00:00",
+          "memory_used_bytes": 25029779456,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:17.876922+00:00",
+          "memory_used_bytes": 25024892928,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:18.393970+00:00",
+          "memory_used_bytes": 25030299648,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:18.919542+00:00",
+          "memory_used_bytes": 25038659584,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:19.438876+00:00",
+          "memory_used_bytes": 25026088960,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:19.970789+00:00",
+          "memory_used_bytes": 25013030912,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:20.485002+00:00",
+          "memory_used_bytes": 24998109184,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:21.011724+00:00",
+          "memory_used_bytes": 24998510592,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:21.539150+00:00",
+          "memory_used_bytes": 25035444224,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:22.067144+00:00",
+          "memory_used_bytes": 25012850688,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:22.593723+00:00",
+          "memory_used_bytes": 25021423616,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:23.140259+00:00",
+          "memory_used_bytes": 25006391296,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:23.666598+00:00",
+          "memory_used_bytes": 25006206976,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:24.193958+00:00",
+          "memory_used_bytes": 25003778048,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:24.720136+00:00",
+          "memory_used_bytes": 25012293632,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:25.236039+00:00",
+          "memory_used_bytes": 25008205824,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:25.756920+00:00",
+          "memory_used_bytes": 25011585024,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:26.274573+00:00",
+          "memory_used_bytes": 25010368512,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:26.790413+00:00",
+          "memory_used_bytes": 25008812032,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:27.313698+00:00",
+          "memory_used_bytes": 25026895872,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:27.828112+00:00",
+          "memory_used_bytes": 25025028096,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:28.356949+00:00",
+          "memory_used_bytes": 25023488000,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:28.871166+00:00",
+          "memory_used_bytes": 25026494464,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:29.397730+00:00",
+          "memory_used_bytes": 25017212928,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:29.926013+00:00",
+          "memory_used_bytes": 25024167936,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:30.452995+00:00",
+          "memory_used_bytes": 25006047232,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:30.996006+00:00",
+          "memory_used_bytes": 25005076480,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:31.526553+00:00",
+          "memory_used_bytes": 25003573248,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:32.053819+00:00",
+          "memory_used_bytes": 25005654016,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:32.582377+00:00",
+          "memory_used_bytes": 25007980544,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:33.113623+00:00",
+          "memory_used_bytes": 25008627712,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:33.657016+00:00",
+          "memory_used_bytes": 25011699712,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:34.170091+00:00",
+          "memory_used_bytes": 25015517184,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:34.684832+00:00",
+          "memory_used_bytes": 25017602048,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:35.204225+00:00",
+          "memory_used_bytes": 25021538304,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:35.731879+00:00",
+          "memory_used_bytes": 25032560640,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:36.245627+00:00",
+          "memory_used_bytes": 25085804544,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:36.773500+00:00",
+          "memory_used_bytes": 25152487424,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:37.299501+00:00",
+          "memory_used_bytes": 25241845760,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:37.813202+00:00",
+          "memory_used_bytes": 25236926464,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:38.327889+00:00",
+          "memory_used_bytes": 25265057792,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:38.854681+00:00",
+          "memory_used_bytes": 25204998144,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:39.367627+00:00",
+          "memory_used_bytes": 25171894272,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:39.882782+00:00",
+          "memory_used_bytes": 25175904256,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:40.407488+00:00",
+          "memory_used_bytes": 25135800320,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:40.935684+00:00",
+          "memory_used_bytes": 25147191296,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:41.464288+00:00",
+          "memory_used_bytes": 25133006848,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:42.006932+00:00",
+          "memory_used_bytes": 25133686784,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:42.532147+00:00",
+          "memory_used_bytes": 25145888768,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:43.058691+00:00",
+          "memory_used_bytes": 25144061952,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:43.581062+00:00",
+          "memory_used_bytes": 25141907456,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:44.098058+00:00",
+          "memory_used_bytes": 25137377280,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:44.625843+00:00",
+          "memory_used_bytes": 25137565696,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         }
       ],
       "business_counts_after": {
@@ -498,7 +937,7 @@
         "cases": 0,
         "materials": 0
       },
-      "principal_sha256": "9d3fc357d4269a891fecf5517760fb5f82289e204e4b9656862653832e6c5d11",
+      "principal_sha256": "b906842d367a1036d56476718f31102291d95e5f819d148234e28d20e6fe2524",
       "passed": true,
       "stop_reasons": [
         "ROLE_NOT_CONFIGURED"
@@ -510,7 +949,7 @@
         "knowledge_version": null,
         "message_code": "ROLE_NOT_CONFIGURED",
         "data": {
-          "request_id": "795f04f7259c5a81"
+          "request_id": "2ae1dd17a061a5b8"
         }
       }
     },
@@ -518,8 +957,8 @@
       "model": "gov-qwen3-4b:ctx8192-v1",
       "scenario": "citizen_forbidden",
       "repeat": 1,
-      "conversation_id": 128,
-      "duration_ms": 3442.18,
+      "conversation_id": 47,
+      "duration_ms": 36202.32,
       "events": [
         {
           "type": "other",
@@ -533,7 +972,7 @@
         },
         {
           "type": "agent_new_run",
-          "content": "[Current time: 2026-10-11 12:02:25]\n\n请调用一次 check_case_prerequisites，原样返回结果并结束。\n\nRun workspace: /mnt/nexent/workdir/15f75b53-3b99-41ea-a040-1f0b2a788267/ee0d79a642614911932e0b8d72e76e19\nWrite every generated file under: /mnt/nexent/workdir/15f75b53-3b99-41ea-a040-1f0b2a788267/ee0d79a642614911932e0b8d72e76e19/outputs\nThe code executor already runs in that outputs directory. Use bare relative paths such as 'report.pdf', not 'outputs/report.pdf', to avoid creating an outputs/outputs directory.\nException: run_skill_script(source='workspace') resolves script_path from the run workspace root. If code writes a generated script as bare 'build.js', call run_skill_script with script_path='outputs/build.js'. The generated script itself still writes output artifacts with bare filenames because its CWD is outputs.\nDirect subprocess, os.system, and shell calls for system commands are blocked by the code executor. Use run_skill_script with a skill-bundled wrapper, or use a shell-free Python/Node.js API instead. When sandbox networking is enabled, only a shell-free argv call to sys.executable -m pip install is permitted for dependency installation.\nFor skill-creator output packages, create the new skill under outputs/<new-skill> with normal code-executor file APIs; write_skill_file edits installed tenant skills and does not create files in this run workspace.\nFiles created there are uploaded to MinIO automatically when the run finishes.",
+          "content": "[Current time: 2026-10-12 05:09:45]\n\n请调用一次 check_case_prerequisites，原样返回结果并结束。\n\nRun workspace: /mnt/nexent/workdir/4d4ba482-e4d2-49d7-86ac-a05e603f70b8/560bee8c6e574d33adf43a7137ad75a1\nWrite every generated file under: /mnt/nexent/workdir/4d4ba482-e4d2-49d7-86ac-a05e603f70b8/560bee8c6e574d33adf43a7137ad75a1/outputs\nThe code executor already runs in that outputs directory. Use bare relative paths such as 'report.pdf', not 'outputs/report.pdf', to avoid creating an outputs/outputs directory.\nException: run_skill_script(source='workspace') resolves script_path from the run workspace root. If code writes a generated script as bare 'build.js', call run_skill_script with script_path='outputs/build.js'. The generated script itself still writes output artifacts with bare filenames because its CWD is outputs.\nDirect subprocess, os.system, and shell calls for system commands are blocked by the code executor. Use run_skill_script with a skill-bundled wrapper, or use a shell-free Python/Node.js API instead. When sandbox networking is enabled, only a shell-free argv call to sys.executable -m pip install is permitted for dependency installation.\nFor skill-creator output packages, create the new skill under outputs/<new-skill> with normal code-executor file APIs; write_skill_file edits installed tenant skills and does not create files in this run workspace.\nFiles created there are uploaded to MinIO automatically when the run finishes.",
           "unit_index": 2
         },
         {
@@ -545,243 +984,243 @@
           "type": "model_attempt_control",
           "content": "",
           "phase": "begin",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "attempt": 1,
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "<code",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ">\n",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "import",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\n",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "result",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " check",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_case",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_pr",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "erequisites",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "()\n",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "if",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " isinstance",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(result",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " str",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "):\n",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "   ",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " result",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ".loads",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(result",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ")\n",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "final",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_answer",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(json",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ".dumps",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(result",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " ensure",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_ascii",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "=False",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "))\n",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "</",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "code",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ">",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "unit_index": 4
         },
         {
           "type": "model_attempt_control",
           "content": "",
           "phase": "commit",
-          "attempt_id": "8747ddfe0645405a8e68d02d0cf4edb5",
+          "attempt_id": "893213e5ebb0405b93e9bbbe78f1b13d",
           "attempt": 1,
           "unit_index": 5
         },
@@ -795,34 +1234,34 @@
           "content": "",
           "tool_name": "check_case_prerequisites",
           "tool_arguments": {},
-          "tool_call_id": "2cbd68da-8c31-4c30-9e37-55fdd55c399b",
+          "tool_call_id": "a4089e70-de33-436a-8225-ef2ec9cc086d",
           "unit_index": 6
         },
         {
           "type": "execution_logs",
-          "content": "Last output from code snippet:\n{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"FORBIDDEN\", \"data\": {\"request_id\": \"4b509e78daaf1f44\"}}",
+          "content": "Last output from code snippet:\n{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"FORBIDDEN\", \"data\": {\"request_id\": \"ef781c4bc0e59f1f\"}}",
           "unit_index": 7
         },
         {
           "type": "token_count",
-          "content": "{\"step_number\": 1, \"duration\": 1.99, \"step_input_tokens\": 4232, \"step_output_tokens\": 40, \"total_output_tokens\": 40, \"estimated_context_tokens\": 4839, \"token_threshold\": 5734, \"context_window_tokens\": 8192, \"effective_input_limit_tokens\": 7168, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 48.4, \"uncompressed_est_tokens\": 9377, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4232}",
+          "content": "{\"step_number\": 1, \"duration\": 34.22, \"step_input_tokens\": 4220, \"step_output_tokens\": 40, \"total_output_tokens\": 40, \"estimated_context_tokens\": 4839, \"token_threshold\": 5734, \"context_window_tokens\": 8192, \"effective_input_limit_tokens\": 7168, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 48.4, \"uncompressed_est_tokens\": 9377, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4220}",
           "unit_index": 8
         },
         {
           "type": "final_answer",
-          "content": "{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"FORBIDDEN\", \"data\": {\"request_id\": \"4b509e78daaf1f44\"}}",
+          "content": "{\"status\": \"BLOCKED\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"FORBIDDEN\", \"data\": {\"request_id\": \"ef781c4bc0e59f1f\"}}",
           "unit_index": 9
         }
       ],
       "audit": [
         {
-          "time": "2026-10-11T12:02:27.974093+00:00",
+          "time": "2026-10-12T05:10:20.582190+00:00",
           "tool": "check_case_prerequisites",
-          "request_id": "4b509e78daaf1f44",
+          "request_id": "ef781c4bc0e59f1f",
           "status": "BLOCKED",
           "message_code": "FORBIDDEN",
-          "duration_ms": 8.35,
-          "principal_sha256": "191645db9b5b9a04c7507eb968454a6ca087505cef3056ee592b3eb3b56ecb71",
+          "duration_ms": 61.54,
+          "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
           "result": {
             "status": "BLOCKED",
             "items": [],
@@ -830,60 +1269,425 @@
             "knowledge_version": null,
             "message_code": "FORBIDDEN",
             "data": {
-              "request_id": "4b509e78daaf1f44"
+              "request_id": "ef781c4bc0e59f1f"
             }
           }
         }
       ],
       "resource_samples": [
         {
-          "time": "2026-10-11T12:02:25.174293+00:00",
-          "memory_used_bytes": 12857540608,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5559,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:44.957936+00:00",
+          "memory_used_bytes": 25141190656,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:25.724227+00:00",
-          "memory_used_bytes": 12834209792,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5555,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:45.480865+00:00",
+          "memory_used_bytes": 25137315840,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:26.262208+00:00",
-          "memory_used_bytes": 13326921728,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5555,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:46.007752+00:00",
+          "memory_used_bytes": 25137205248,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:26.808085+00:00",
-          "memory_used_bytes": 13602553856,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5549,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:46.535010+00:00",
+          "memory_used_bytes": 25218895872,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:27.354118+00:00",
-          "memory_used_bytes": 13593501696,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5560,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:47.063849+00:00",
+          "memory_used_bytes": 25903652864,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:27.905450+00:00",
-          "memory_used_bytes": 13592625152,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5559,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:47.592273+00:00",
+          "memory_used_bytes": 25894686720,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:28.462694+00:00",
-          "memory_used_bytes": 13462077440,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5561,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:09:48.109768+00:00",
+          "memory_used_bytes": 25892904960,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:48.634820+00:00",
+          "memory_used_bytes": 25902518272,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:49.149018+00:00",
+          "memory_used_bytes": 25884434432,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:49.677812+00:00",
+          "memory_used_bytes": 25871728640,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:50.192944+00:00",
+          "memory_used_bytes": 25898041344,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:50.719874+00:00",
+          "memory_used_bytes": 25875591168,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:51.235588+00:00",
+          "memory_used_bytes": 25836322816,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:51.749722+00:00",
+          "memory_used_bytes": 25863405568,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:52.277610+00:00",
+          "memory_used_bytes": 25843531776,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:52.803869+00:00",
+          "memory_used_bytes": 25858338816,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:53.332227+00:00",
+          "memory_used_bytes": 25828839424,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:53.865870+00:00",
+          "memory_used_bytes": 25824456704,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:54.393937+00:00",
+          "memory_used_bytes": 25825513472,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:54.911903+00:00",
+          "memory_used_bytes": 25827147776,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:55.451767+00:00",
+          "memory_used_bytes": 25818300416,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:55.968973+00:00",
+          "memory_used_bytes": 25821241344,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:56.495543+00:00",
+          "memory_used_bytes": 25824595968,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:57.037203+00:00",
+          "memory_used_bytes": 25828745216,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:57.561553+00:00",
+          "memory_used_bytes": 25828413440,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:58.074742+00:00",
+          "memory_used_bytes": 25827794944,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:58.599546+00:00",
+          "memory_used_bytes": 25817464832,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:59.130378+00:00",
+          "memory_used_bytes": 25821609984,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:09:59.657567+00:00",
+          "memory_used_bytes": 25801281536,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:00.171839+00:00",
+          "memory_used_bytes": 25823297536,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:00.686594+00:00",
+          "memory_used_bytes": 25831460864,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:01.200297+00:00",
+          "memory_used_bytes": 25812570112,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:01.739622+00:00",
+          "memory_used_bytes": 25816674304,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:02.266586+00:00",
+          "memory_used_bytes": 25820770304,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:02.793498+00:00",
+          "memory_used_bytes": 25819709440,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:03.308836+00:00",
+          "memory_used_bytes": 25814179840,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:03.837478+00:00",
+          "memory_used_bytes": 25811460096,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:04.381660+00:00",
+          "memory_used_bytes": 25821413376,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:04.915470+00:00",
+          "memory_used_bytes": 25823576064,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:05.445995+00:00",
+          "memory_used_bytes": 25819066368,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:05.987491+00:00",
+          "memory_used_bytes": 25821093888,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:06.515310+00:00",
+          "memory_used_bytes": 25821409280,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:07.041361+00:00",
+          "memory_used_bytes": 25832550400,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:07.570148+00:00",
+          "memory_used_bytes": 25804550144,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:08.085000+00:00",
+          "memory_used_bytes": 25789190144,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:08.613570+00:00",
+          "memory_used_bytes": 25802498048,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:09.127894+00:00",
+          "memory_used_bytes": 25807937536,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:09.655603+00:00",
+          "memory_used_bytes": 25805787136,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:10.181821+00:00",
+          "memory_used_bytes": 25807851520,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:10.700649+00:00",
+          "memory_used_bytes": 25789718528,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:11.214738+00:00",
+          "memory_used_bytes": 25789730816,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:11.744072+00:00",
+          "memory_used_bytes": 25786638336,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:12.258070+00:00",
+          "memory_used_bytes": 25784467456,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:12.773303+00:00",
+          "memory_used_bytes": 25783222272,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:13.299681+00:00",
+          "memory_used_bytes": 25782697984,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:13.814925+00:00",
+          "memory_used_bytes": 25791651840,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:14.344517+00:00",
+          "memory_used_bytes": 25802260480,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:14.867558+00:00",
+          "memory_used_bytes": 25797103616,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:15.394299+00:00",
+          "memory_used_bytes": 25799585792,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:15.926705+00:00",
+          "memory_used_bytes": 25794977792,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:16.459098+00:00",
+          "memory_used_bytes": 25796407296,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:16.977486+00:00",
+          "memory_used_bytes": 25773977600,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:17.501842+00:00",
+          "memory_used_bytes": 25808769024,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:18.029562+00:00",
+          "memory_used_bytes": 25837674496,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:18.553766+00:00",
+          "memory_used_bytes": 25842434048,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:19.080517+00:00",
+          "memory_used_bytes": 25835659264,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:19.605827+00:00",
+          "memory_used_bytes": 25825951744,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:20.131552+00:00",
+          "memory_used_bytes": 25824137216,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:20.670206+00:00",
+          "memory_used_bytes": 25813905408,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         }
       ],
       "business_counts_after": {
@@ -891,7 +1695,7 @@
         "cases": 0,
         "materials": 0
       },
-      "principal_sha256": "191645db9b5b9a04c7507eb968454a6ca087505cef3056ee592b3eb3b56ecb71",
+      "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
       "passed": true,
       "stop_reasons": [
         "FORBIDDEN"
@@ -903,7 +1707,7 @@
         "knowledge_version": null,
         "message_code": "FORBIDDEN",
         "data": {
-          "request_id": "4b509e78daaf1f44"
+          "request_id": "ef781c4bc0e59f1f"
         }
       }
     },
@@ -911,8 +1715,8 @@
       "model": "gov-qwen3-4b:ctx8192-v1",
       "scenario": "storage_timeout",
       "repeat": 1,
-      "conversation_id": 129,
-      "duration_ms": 9340.88,
+      "conversation_id": 48,
+      "duration_ms": 30530.77,
       "events": [
         {
           "type": "other",
@@ -926,7 +1730,7 @@
         },
         {
           "type": "agent_new_run",
-          "content": "[Current time: 2026-10-11 12:02:30]\n\n进行一次环境自检；技术错误时原样返回并立即结束。\n\nRun workspace: /mnt/nexent/workdir/15f75b53-3b99-41ea-a040-1f0b2a788267/d20218c3069e41ecbd1fecc4f5f88e5f\nWrite every generated file under: /mnt/nexent/workdir/15f75b53-3b99-41ea-a040-1f0b2a788267/d20218c3069e41ecbd1fecc4f5f88e5f/outputs\nThe code executor already runs in that outputs directory. Use bare relative paths such as 'report.pdf', not 'outputs/report.pdf', to avoid creating an outputs/outputs directory.\nException: run_skill_script(source='workspace') resolves script_path from the run workspace root. If code writes a generated script as bare 'build.js', call run_skill_script with script_path='outputs/build.js'. The generated script itself still writes output artifacts with bare filenames because its CWD is outputs.\nDirect subprocess, os.system, and shell calls for system commands are blocked by the code executor. Use run_skill_script with a skill-bundled wrapper, or use a shell-free Python/Node.js API instead. When sandbox networking is enabled, only a shell-free argv call to sys.executable -m pip install is permitted for dependency installation.\nFor skill-creator output packages, create the new skill under outputs/<new-skill> with normal code-executor file APIs; write_skill_file edits installed tenant skills and does not create files in this run workspace.\nFiles created there are uploaded to MinIO automatically when the run finishes.",
+          "content": "[Current time: 2026-10-12 05:10:23]\n\n进行一次环境自检；技术错误时原样返回并立即结束。\n\nRun workspace: /mnt/nexent/workdir/4d4ba482-e4d2-49d7-86ac-a05e603f70b8/d063995b0f2244ad8fd744c6f9b2bd0a\nWrite every generated file under: /mnt/nexent/workdir/4d4ba482-e4d2-49d7-86ac-a05e603f70b8/d063995b0f2244ad8fd744c6f9b2bd0a/outputs\nThe code executor already runs in that outputs directory. Use bare relative paths such as 'report.pdf', not 'outputs/report.pdf', to avoid creating an outputs/outputs directory.\nException: run_skill_script(source='workspace') resolves script_path from the run workspace root. If code writes a generated script as bare 'build.js', call run_skill_script with script_path='outputs/build.js'. The generated script itself still writes output artifacts with bare filenames because its CWD is outputs.\nDirect subprocess, os.system, and shell calls for system commands are blocked by the code executor. Use run_skill_script with a skill-bundled wrapper, or use a shell-free Python/Node.js API instead. When sandbox networking is enabled, only a shell-free argv call to sys.executable -m pip install is permitted for dependency installation.\nFor skill-creator output packages, create the new skill under outputs/<new-skill> with normal code-executor file APIs; write_skill_file edits installed tenant skills and does not create files in this run workspace.\nFiles created there are uploaded to MinIO automatically when the run finishes.",
           "unit_index": 2
         },
         {
@@ -938,855 +1742,855 @@
           "type": "model_attempt_control",
           "content": "",
           "phase": "begin",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "attempt": 1,
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "<code",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ">\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "import",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " get",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_status",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "()\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "if",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " isinstance",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " str",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "):\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "   ",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ".loads",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ")\n\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "if",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "[\"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "status",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\"]",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " !=",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " \"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "OK",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\":\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "   ",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " result",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "elif",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "[\"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "data",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\"][\"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "role",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\"]",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " ==",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " \"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "cit",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "izen",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\":\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "   ",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " result",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " citizen",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_ass",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "istant",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(task",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "=\"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "只",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "调",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "用",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "一次",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " search",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_e",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "vidence",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "，",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "保留",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "真实",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "完整",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "结果",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "并",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "立即",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "结束",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "。",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\")\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "elif",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "[\"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "data",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\"][\"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "role",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\"]",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " ==",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " \"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "staff",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\":\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "   ",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " result",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " staff",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_ass",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "istant",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(task",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "=\"",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "只",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "调",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "用",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "一次",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " check",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_case",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_pr",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "erequisites",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "，",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "保留",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "真实",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "完整",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "结果",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "并",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "立即",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "结束",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "。",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\")\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "else",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ":\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "   ",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " result",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " =",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " environment",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "final",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_answer",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(result",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " if",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " isinstance",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(result",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " str",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ")",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " else",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " json",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ".dumps",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "(result",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ",",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": " ensure",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "_ascii",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "=False",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "))\n",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "</",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": "code",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_output_thinking",
           "content": ">",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "unit_index": 4
         },
         {
           "type": "model_attempt_control",
           "content": "",
           "phase": "commit",
-          "attempt_id": "274e355589ce455eb868faeaaf7a69fe",
+          "attempt_id": "3ea91621fcc24faf979b194ab9c49029",
           "attempt": 1,
           "unit_index": 5
         },
@@ -1800,34 +2604,34 @@
           "content": "",
           "tool_name": "get_environment_status",
           "tool_arguments": {},
-          "tool_call_id": "1e752fa6-b293-46e0-b65a-b30934ad9f38",
+          "tool_call_id": "7c38f14f-b29c-4b68-bb42-dd23cf00c1f7",
           "unit_index": 6
         },
         {
           "type": "execution_logs",
-          "content": "Last output from code snippet:\n{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"TOOL_TIMEOUT\", \"data\": {\"attempts\": 2, \"request_id\": \"e145fa16f06c4e46\"}}",
+          "content": "Last output from code snippet:\n{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"TOOL_TIMEOUT\", \"data\": {\"attempts\": 2, \"request_id\": \"944c38e236496f4b\"}}",
           "unit_index": 7
         },
         {
           "type": "token_count",
-          "content": "{\"step_number\": 1, \"duration\": 6.83, \"step_input_tokens\": 4938, \"step_output_tokens\": 142, \"total_output_tokens\": 142, \"estimated_context_tokens\": 5682, \"token_threshold\": 5734, \"context_window_tokens\": 8192, \"effective_input_limit_tokens\": 7168, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 46.8, \"uncompressed_est_tokens\": 10685, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4938}",
+          "content": "{\"step_number\": 1, \"duration\": 27.07, \"step_input_tokens\": 4936, \"step_output_tokens\": 142, \"total_output_tokens\": 142, \"estimated_context_tokens\": 5682, \"token_threshold\": 5734, \"context_window_tokens\": 8192, \"effective_input_limit_tokens\": 7168, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 46.8, \"uncompressed_est_tokens\": 10685, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4936}",
           "unit_index": 8
         },
         {
           "type": "final_answer",
-          "content": "{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"TOOL_TIMEOUT\", \"data\": {\"attempts\": 2, \"request_id\": \"e145fa16f06c4e46\"}}",
+          "content": "{\"status\": \"ERROR\", \"items\": [], \"citations\": [], \"knowledge_version\": null, \"message_code\": \"TOOL_TIMEOUT\", \"data\": {\"attempts\": 2, \"request_id\": \"944c38e236496f4b\"}}",
           "unit_index": 9
         }
       ],
       "audit": [
         {
-          "time": "2026-10-11T12:02:37.676732+00:00",
+          "time": "2026-10-12T05:10:50.914731+00:00",
           "tool": "get_environment_status",
-          "request_id": "e145fa16f06c4e46",
+          "request_id": "944c38e236496f4b",
           "status": "ERROR",
           "message_code": "TOOL_TIMEOUT",
-          "duration_ms": 4267.59,
-          "principal_sha256": "191645db9b5b9a04c7507eb968454a6ca087505cef3056ee592b3eb3b56ecb71",
+          "duration_ms": 4297.04,
+          "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
           "result": {
             "status": "ERROR",
             "items": [],
@@ -1836,137 +2640,365 @@
             "message_code": "TOOL_TIMEOUT",
             "data": {
               "attempts": 2,
-              "request_id": "e145fa16f06c4e46"
+              "request_id": "944c38e236496f4b"
             }
           }
         }
       ],
       "resource_samples": [
         {
-          "time": "2026-10-11T12:02:29.278863+00:00",
-          "memory_used_bytes": 13473816576,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5561,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:21.897245+00:00",
+          "memory_used_bytes": 25830780928,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:29.815391+00:00",
-          "memory_used_bytes": 13474443264,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5547,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:22.417635+00:00",
+          "memory_used_bytes": 25823588352,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:30.373468+00:00",
-          "memory_used_bytes": 13471625216,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5542,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:22.947109+00:00",
+          "memory_used_bytes": 25839902720,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:30.914157+00:00",
-          "memory_used_bytes": 13468438528,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5542,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:23.460549+00:00",
+          "memory_used_bytes": 25826672640,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:31.459290+00:00",
-          "memory_used_bytes": 13389963264,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5557,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:23.989065+00:00",
+          "memory_used_bytes": 25828614144,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:31.996592+00:00",
-          "memory_used_bytes": 13391876096,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5556,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:24.514814+00:00",
+          "memory_used_bytes": 26460069888,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:32.546580+00:00",
-          "memory_used_bytes": 13384073216,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5556,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:25.029161+00:00",
+          "memory_used_bytes": 26460483584,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:33.101753+00:00",
-          "memory_used_bytes": 13380534272,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5556,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:25.542170+00:00",
+          "memory_used_bytes": 26462576640,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:33.643652+00:00",
-          "memory_used_bytes": 13413203968,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5546,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:26.059050+00:00",
+          "memory_used_bytes": 26468007936,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:34.185578+00:00",
-          "memory_used_bytes": 13381926912,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5546,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:26.573030+00:00",
+          "memory_used_bytes": 26479980544,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:34.730211+00:00",
-          "memory_used_bytes": 13407756288,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5546,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:27.101751+00:00",
+          "memory_used_bytes": 26473922560,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:35.275795+00:00",
-          "memory_used_bytes": 13400989696,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5546,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:27.627201+00:00",
+          "memory_used_bytes": 26491604992,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:35.819304+00:00",
-          "memory_used_bytes": 13400465408,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5557,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:28.142800+00:00",
+          "memory_used_bytes": 26487013376,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:36.361516+00:00",
-          "memory_used_bytes": 13420847104,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5556,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:28.670652+00:00",
+          "memory_used_bytes": 26500513792,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:36.904490+00:00",
-          "memory_used_bytes": 13426552832,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5556,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:29.201558+00:00",
+          "memory_used_bytes": 26499751936,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:37.449250+00:00",
-          "memory_used_bytes": 13424906240,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5555,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:29.724946+00:00",
+          "memory_used_bytes": 25772150784,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:37.990585+00:00",
-          "memory_used_bytes": 13399715840,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5546,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:30.254812+00:00",
+          "memory_used_bytes": 25766535168,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:38.532837+00:00",
-          "memory_used_bytes": 13384740864,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5546,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:30.769326+00:00",
+          "memory_used_bytes": 25767251968,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:31.297399+00:00",
+          "memory_used_bytes": 25814724608,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:31.823830+00:00",
+          "memory_used_bytes": 25788178432,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:32.352785+00:00",
+          "memory_used_bytes": 25779404800,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:32.882529+00:00",
+          "memory_used_bytes": 25782640640,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:33.408456+00:00",
+          "memory_used_bytes": 25772527616,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:33.952942+00:00",
+          "memory_used_bytes": 25779965952,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:34.478687+00:00",
+          "memory_used_bytes": 25771769856,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:35.007735+00:00",
+          "memory_used_bytes": 25776656384,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:35.521751+00:00",
+          "memory_used_bytes": 25777963008,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:36.036388+00:00",
+          "memory_used_bytes": 25774272512,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:36.562938+00:00",
+          "memory_used_bytes": 25763389440,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:37.087865+00:00",
+          "memory_used_bytes": 25777717248,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:37.625627+00:00",
+          "memory_used_bytes": 25770549248,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:38.152419+00:00",
+          "memory_used_bytes": 25776332800,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:38.678261+00:00",
+          "memory_used_bytes": 25804746752,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:39.207771+00:00",
+          "memory_used_bytes": 25800708096,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:39.737023+00:00",
+          "memory_used_bytes": 25941716992,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:40.250055+00:00",
+          "memory_used_bytes": 25925853184,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:40.775507+00:00",
+          "memory_used_bytes": 25958977536,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:41.300568+00:00",
+          "memory_used_bytes": 25951973376,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:41.826768+00:00",
+          "memory_used_bytes": 25950416896,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:42.351540+00:00",
+          "memory_used_bytes": 25976979456,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:42.876881+00:00",
+          "memory_used_bytes": 25957863424,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:43.400571+00:00",
+          "memory_used_bytes": 25950007296,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:43.923732+00:00",
+          "memory_used_bytes": 25941221376,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:44.462905+00:00",
+          "memory_used_bytes": 25935298560,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:44.985603+00:00",
+          "memory_used_bytes": 25941741568,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:45.529380+00:00",
+          "memory_used_bytes": 25947570176,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:46.041478+00:00",
+          "memory_used_bytes": 25941516288,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:46.566624+00:00",
+          "memory_used_bytes": 25954418688,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:47.080878+00:00",
+          "memory_used_bytes": 25959084032,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:47.604036+00:00",
+          "memory_used_bytes": 25963933696,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:48.118935+00:00",
+          "memory_used_bytes": 25964015616,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:48.644300+00:00",
+          "memory_used_bytes": 25972068352,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:49.169041+00:00",
+          "memory_used_bytes": 25974161408,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:49.696003+00:00",
+          "memory_used_bytes": 25993433088,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:50.237483+00:00",
+          "memory_used_bytes": 25989275648,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:50.769124+00:00",
+          "memory_used_bytes": 25980223488,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:51.298422+00:00",
+          "memory_used_bytes": 26015338496,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:51.824892+00:00",
+          "memory_used_bytes": 25968885760,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:52.354784+00:00",
+          "memory_used_bytes": 25959780352,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         }
       ],
       "business_counts_after": {
@@ -1974,7 +3006,7 @@
         "cases": 0,
         "materials": 0
       },
-      "principal_sha256": "191645db9b5b9a04c7507eb968454a6ca087505cef3056ee592b3eb3b56ecb71",
+      "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
       "passed": true,
       "stop_reasons": [
         "TOOL_TIMEOUT"
@@ -1987,7 +3019,7 @@
         "message_code": "TOOL_TIMEOUT",
         "data": {
           "attempts": 2,
-          "request_id": "e145fa16f06c4e46"
+          "request_id": "944c38e236496f4b"
         }
       }
     },
@@ -1995,8 +3027,8 @@
       "model": "gov-qwen3-4b:ctx8192-v1",
       "scenario": "connection_timeout",
       "repeat": 1,
-      "conversation_id": 130,
-      "duration_ms": 1643.49,
+      "conversation_id": 49,
+      "duration_ms": 5214.14,
       "events": [
         {
           "type": "other",
@@ -2017,32 +3049,64 @@
       "audit": [],
       "resource_samples": [
         {
-          "time": "2026-10-11T12:02:39.529141+00:00",
-          "memory_used_bytes": 13341446144,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5557,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:53.626352+00:00",
+          "memory_used_bytes": 26011967488,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:40.068190+00:00",
-          "memory_used_bytes": 13405691904,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5557,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:54.144565+00:00",
+          "memory_used_bytes": 26008203264,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:40.611410+00:00",
-          "memory_used_bytes": 13423333376,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5556,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:54.677696+00:00",
+          "memory_used_bytes": 26006310912,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         },
         {
-          "time": "2026-10-11T12:02:41.159299+00:00",
-          "memory_used_bytes": 13415145472,
-          "memory_total_bytes": 16890322944,
-          "vram_used_mib": 5556,
-          "vram_total_mib": 8151
+          "time": "2026-10-12T05:10:55.207845+00:00",
+          "memory_used_bytes": 26004971520,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:55.739464+00:00",
+          "memory_used_bytes": 26010124288,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:56.271453+00:00",
+          "memory_used_bytes": 26003730432,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:56.815664+00:00",
+          "memory_used_bytes": 26010636288,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:57.328256+00:00",
+          "memory_used_bytes": 26029109248,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:57.856331+00:00",
+          "memory_used_bytes": 26031669248,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
+        },
+        {
+          "time": "2026-10-12T05:10:58.396857+00:00",
+          "memory_used_bytes": 26028290048,
+          "memory_total_bytes": 33820106752,
+          "gpu_metrics": "UNAVAILABLE"
         }
       ],
       "business_counts_after": {
@@ -2050,7 +3114,7 @@
         "cases": 0,
         "materials": 0
       },
-      "principal_sha256": "191645db9b5b9a04c7507eb968454a6ca087505cef3056ee592b3eb3b56ecb71",
+      "principal_sha256": "32795b5ae9c1ce18375e0c400c07c184b6c24beeca6bc0a978634b0344e09c6b",
       "passed": true,
       "stop_reasons": [
         "CONNECTION_TIMEOUT"

@@ -1,0 +1,123 @@
+{
+  "status": "PARTIAL_HEARTBEAT_DISCOVERY_PASS_CLOUD_UPDATE_FAILED",
+  "scope": "Archived official Henan successor pair replay under real Worker ticks and one actual cloud native run; not observed remote website change.",
+  "repository_material_commit": "f3b2256fe33c9ce30166b892fe47968d21ea85e4",
+  "repository_code_merged": false,
+  "official_original_hashes_match": true,
+  "production_findings": {
+    "workflow_8780_listening": false,
+    "workflow_previous_heartbeat_stale": true,
+    "workflow_paused": true,
+    "maintenance_8775_healthy": true,
+    "maintenance_registered_sources": 0,
+    "windows_recovery_tasks": 0
+  },
+  "natural_source_check_spacing_seconds": 60.1815,
+  "archive_source_checks": [
+    {
+      "at": 1792504900.716039,
+      "binding": "b03fa2a18d636b3fa3e57228d739bf938c8afcb834ea576456a5403ca0150fea",
+      "changed": true,
+      "roles": [
+        "old"
+      ]
+    },
+    {
+      "at": 1792504960.8975072,
+      "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+      "changed": true,
+      "roles": [
+        "old",
+        "new"
+      ]
+    }
+  ],
+  "worker_runs": 2,
+  "worker_run_statuses": [
+    "no_model_work",
+    "PermissionError"
+  ],
+  "native_runs": 1,
+  "native_max_runs": 1,
+  "automatic_process_retry": false,
+  "native_duration_ms": 21031.0,
+  "native_outcome": "failed",
+  "failure_facts": {
+    "extractor_reads": 3,
+    "extractor_step_limit": 3,
+    "candidate_count": 0,
+    "formal_version_count": 0,
+    "child_starts": 2,
+    "terminal_error_type": "PermissionError",
+    "original_error_filename_captured": false,
+    "original_tool_observation_characters": 6259,
+    "installed_context_compaction_default_characters": 2000,
+    "original_tool_response_contains_both_complete_clauses": true,
+    "extractor_report": "New source was not visible after deterministic context compaction; model failed to extract and reread three times.",
+    "controller_failure_control": "Reviewer was started after extractor hit max steps; stop was not immediate in the executed driver."
+  },
+  "model_observations": {
+    "begin_events": 7,
+    "commit_events": 6,
+    "attempt_numbers": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "controller_begin_events": 2,
+    "extractor_begin_events": 4,
+    "reviewer_begin_events": 1,
+    "caveat": "Extractor had three configured action steps plus an additional model start associated with failure summary. Model-start observations are not provider HTTP audit or billing records.",
+    "visible_root_input_tokens": 6454,
+    "visible_root_output_tokens": 87,
+    "total_tokens": null,
+    "amount_billed": null
+  },
+  "post_failure_local_changes": [
+    "Separate old/new full-clause packets; no schema duplication; refuse over-budget packets instead of truncating.",
+    "Require each child to read both full views exactly once; reject duplicates and stale concurrent reads.",
+    "Gate reviewer dispatch on persisted extracted stage.",
+    "Issue native stop on streamed max-step/model/tool errors.",
+    "Append-only live event journal; retain local error filename/errno in future failures."
+  ],
+  "post_failure_tests": {
+    "passed": 14,
+    "pytest_seconds": 0.82,
+    "artifact": "final-post-failure-checks.xml",
+    "cloud_retest": false
+  },
+  "post_failure_code_deployed_to_native_drafts": false,
+  "executed_source_sha256": {
+    "src/gov_mcp/successor_update.py": "659a8314a459678f066b31eb07b9bbcebfa7779c8197f769e64dbe68509c0aca",
+    "src/gov_mcp/successor_update_server.py": "353586189b8ef19897c6ff34f974ad3eb837bcf45fd1121f02face10a29b7245",
+    "scripts/check_successor_autonomy_cloud.py": "1abe4fca839e883218b79d5c3224a14f19579298e4a6632ef6bee867ea2fe75f",
+    "tests/test_successor_update.py": "2bffbc542e6d2ce176c803bbbdcf6cafb4927b5cbb1375be8eeb8c453aecb00d",
+    "config/skills/govkb-successor-update/SKILL.md": "7503e268bc37130a58f2aa75567f6fb2f5dc55fdaac28ed19a7a20180e879197"
+  },
+  "final_source_sha256": {
+    "src/gov_mcp/successor_update.py": "52ebbe274d7e737546a0dda00a7065d31a86820533a9adc2a7ea7d280e4ccb73",
+    "src/gov_mcp/successor_update_server.py": "74e0d6856dcd11fc938a0b3abdc517415d5bd95bbcf50421993849c28f3b1101",
+    "scripts/check_successor_autonomy_cloud.py": "d30cf0618bc343da0d74ebf3ff55262d9a62747f6a21e830db9f9eb4fd3ca2cf",
+    "tests/test_successor_update.py": "72637697d03aff90e972872c09acc9029cfebdca93953aa31337ecebc35965cb",
+    "config/skills/govkb-successor-update/SKILL.md": "7503e268bc37130a58f2aa75567f6fb2f5dc55fdaac28ed19a7a20180e879197"
+  },
+  "budget_closed": true,
+  "heartbeat_distinct_samples": 17,
+  "task_helper_8784_stopped": true,
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "formal_business_approval": false,
+  "formally_published": false,
+  "git_pushed": false,
+  "business_conclusion_status": "PAUSED_UNREVIEWED",
+  "nanjing_ontology_confirmation": "not_granted; user redirected this task; prior candidate stays pending",
+  "limits": [
+    "Autonomous candidate creation, semantic change validation and answer switch were NOT completed.",
+    "Local patch tests do not prove repaired cloud/native success.",
+    "Production long-term monitoring remains unconfigured/inactive."
+  ]
+}

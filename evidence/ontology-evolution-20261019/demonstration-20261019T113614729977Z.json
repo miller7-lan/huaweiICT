@@ -1,0 +1,294 @@
+{
+  "mode": "reviewed_structure_not_business_approval",
+  "cases": [
+    {
+      "id": "all_source_conditions",
+      "input_is_fictional": true,
+      "result": {
+        "status": "SOURCE_CONDITIONS",
+        "source_conditions_result": "true",
+        "version": "e4cc3cf582ebb0626b54681766cb432546824b3945b366d937b9c6cbb4fd2564",
+        "formally_published": false,
+        "formal_approval": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "current_applicability": "unknown",
+        "trace": [
+          {
+            "field": "local_household",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "age_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "card_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "photo_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "fingerprint_count",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          }
+        ],
+        "citations": [
+          {
+            "locator": "正文段落24",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          },
+          {
+            "locator": "正文段落25",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          }
+        ],
+        "relation": "available_via",
+        "ontology_candidate_id": "4a6acdb46cb9aab10e94466ae9d5de4ab4162be366f1c5acd3b33db4c06a572b"
+      }
+    },
+    {
+      "id": "missing_fingerprint",
+      "input_is_fictional": true,
+      "result": {
+        "status": "SOURCE_CONDITIONS",
+        "source_conditions_result": "unknown",
+        "version": "e4cc3cf582ebb0626b54681766cb432546824b3945b366d937b9c6cbb4fd2564",
+        "formally_published": false,
+        "formal_approval": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "current_applicability": "unknown",
+        "trace": [
+          {
+            "field": "local_household",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "age_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "card_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "photo_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "fingerprint_count",
+            "result": "unknown",
+            "reason": "missing_fact"
+          }
+        ],
+        "citations": [
+          {
+            "locator": "正文段落24",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          },
+          {
+            "locator": "正文段落25",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          }
+        ],
+        "relation": "available_via",
+        "ontology_candidate_id": "4a6acdb46cb9aab10e94466ae9d5de4ab4162be366f1c5acd3b33db4c06a572b"
+      }
+    },
+    {
+      "id": "source_condition_false",
+      "input_is_fictional": true,
+      "result": {
+        "status": "SOURCE_CONDITIONS",
+        "source_conditions_result": "false",
+        "version": "e4cc3cf582ebb0626b54681766cb432546824b3945b366d937b9c6cbb4fd2564",
+        "formally_published": false,
+        "formal_approval": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "current_applicability": "unknown",
+        "trace": [
+          {
+            "field": "local_household",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "age_years",
+            "result": "false",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "card_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "photo_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "fingerprint_count",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          }
+        ],
+        "citations": [
+          {
+            "locator": "正文段落24",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          },
+          {
+            "locator": "正文段落25",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          }
+        ],
+        "relation": "available_via",
+        "ontology_candidate_id": "4a6acdb46cb9aab10e94466ae9d5de4ab4162be366f1c5acd3b33db4c06a572b"
+      }
+    },
+    {
+      "id": "unreviewed_boundary",
+      "input_is_fictional": true,
+      "result": {
+        "status": "SOURCE_CONDITIONS",
+        "source_conditions_result": "unknown",
+        "version": "e4cc3cf582ebb0626b54681766cb432546824b3945b366d937b9c6cbb4fd2564",
+        "formally_published": false,
+        "formal_approval": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "current_applicability": "unknown",
+        "trace": [
+          {
+            "field": "local_household",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "age_years",
+            "result": "unknown",
+            "reason": "literal_boundary_needs_semantic_review"
+          },
+          {
+            "field": "card_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "photo_years",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          },
+          {
+            "field": "fingerprint_count",
+            "result": "true",
+            "reason": "source_condition_comparison"
+          }
+        ],
+        "citations": [
+          {
+            "locator": "正文段落24",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "提示：本市户籍居民符合以下条件可在网上办理居民身份证损坏换领业务：",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d23189d9908b8f482b0a9216bf7d1c37c3e299cc82dad7d767818dbabee17867",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          },
+          {
+            "locator": "正文段落25",
+            "original_sha256": "78bbf800be6fd82212c137b697ac0d80b195cdf5da1e2e3ef7a6203b37201cda",
+            "quote": "本市户籍居民，16周岁以上，5年之内办理过居民身份证，5年之内采集过居民身份证照片，至少有一枚指纹注册成功。",
+            "revision_id": "rev-6c473588ae861c51c65bb11a",
+            "source_id": "BJ-ID-RENEWAL-2025",
+            "text_sha256": "d0c3d211e9615bbee21b77b0d384a99cbe4862894e95019171a69b641c77b172",
+            "url": "https://www.beijing.gov.cn/fuwu/bmfw/bmzt/sfz/blzn/201806/t20180622_1857526.html"
+          }
+        ],
+        "relation": "available_via",
+        "ontology_candidate_id": "4a6acdb46cb9aab10e94466ae9d5de4ab4162be366f1c5acd3b33db4c06a572b"
+      }
+    },
+    {
+      "id": "expiry_not_damaged",
+      "input_is_fictional": true,
+      "result": {
+        "status": "OUT_OF_SCOPE",
+        "source_conditions_result": "unknown",
+        "version": "e4cc3cf582ebb0626b54681766cb432546824b3945b366d937b9c6cbb4fd2564",
+        "formally_published": false,
+        "formal_approval": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "current_applicability": "unknown",
+        "trace": [],
+        "citations": []
+      }
+    },
+    {
+      "id": "other_region",
+      "input_is_fictional": true,
+      "result": {
+        "status": "OUT_OF_SCOPE",
+        "source_conditions_result": "unknown",
+        "version": "e4cc3cf582ebb0626b54681766cb432546824b3945b366d937b9c6cbb4fd2564",
+        "formally_published": false,
+        "formal_approval": false,
+        "business_conclusion_status": "PAUSED_UNREVIEWED",
+        "current_applicability": "unknown",
+        "trace": [],
+        "citations": []
+      }
+    }
+  ],
+  "checks": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "passed": true,
+  "new_model_calls": 0,
+  "formally_published": false
+}

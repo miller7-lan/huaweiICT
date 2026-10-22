@@ -1,0 +1,42 @@
+{
+  "recorded_on": "2026-10-21",
+  "reviewer": {
+    "kind": "ai",
+    "name": "Codex",
+    "model": "GPT-6 family",
+    "exact_revision": null
+  },
+  "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+  "source_id": "HN-MEASURES-2021-PDF",
+  "method": "AI visual reading of Poppler renders of PDF pages 5 and 6, not automated OCR",
+  "rendered_pages": [
+    {
+      "pdf_page": 5,
+      "image_sha256": "c235b11699fa32b9bdf9a7b9d19dc0a58fa8b0e95a1a51f0765fa1943234d80b",
+      "renderer": "Poppler pdftoppm, PNG, scale-to 1600"
+    },
+    {
+      "pdf_page": 6,
+      "image_sha256": "b6adb0ea3e9d1cdd646e1071ede1288390768d28fd3dc7840ef12f7c5cc889d4",
+      "renderer": "Poppler pdftoppm, PNG, scale-to 1600"
+    }
+  ],
+  "observations": [
+    {
+      "locator": "PDF第5页右半页（印刷页码5），第二项",
+      "heading": "二、换领、补领居民身份证实行“省内通办”",
+      "transcription": "群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。"
+    },
+    {
+      "locator": "PDF第5页右半页第三项标题至PDF第6页左半页（印刷页码6）首段",
+      "heading": "三、压缩身份证办理周期",
+      "transcription": "将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。"
+    }
+  ],
+  "layout_note": "每个PDF页面包含左右两张印刷页。保留PDF页序及左右位置，不把印刷页码当成PDF页码。第二项在PDF第5页右侧；第三项跨至PDF第6页左侧。转录合并排版换行与字间空格，不冒称原始OCR字节。",
+  "automated_ocr_state": "Windows execution policy refused the existing OCR PowerShell script; no policy bypass or change",
+  "human_review_completed": false,
+  "business_approval": false,
+  "current_applicability": "unknown",
+  "formally_published": false
+}

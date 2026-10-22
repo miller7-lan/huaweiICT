@@ -1,0 +1,20 @@
+flowchart TD
+    nport["角色工具白名单与推理开关"]
+    nclass["原始payload类别与输入预算"]
+    nready["先检查供应商就绪和调用预算"]
+    nenglish["提取中文语义槽并英译"]
+    nvalidate["核对译文及翻译后大小"]
+    njev["Jev分类／原文支持概率"]
+    nreview["不确定、近似类别及冲突待核"]
+    nnetwork["网络及外部失败边界"]
+    nport -->|"明确真实调用且已启用"| nclass
+    nclass -->|"标签通过"| nready
+    nready -->|"需要英译"| nenglish
+    nenglish -->|"译文"| nvalidate
+    nvalidate -->|"满足预算"| njev
+    nready -->|"无需英译"| njev
+    njev -->|"有效响应"| nreview
+    njev -->|"请求与错误处理"| nnetwork
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nport,nclass,nready,nvalidate gate

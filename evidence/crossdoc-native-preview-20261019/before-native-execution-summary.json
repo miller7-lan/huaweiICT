@@ -1,0 +1,73 @@
+{
+  "status": "PASS_CORE_AND_WIRING_NATIVE_AUTHORIZATION_PENDING",
+  "date": "2026-10-19",
+  "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "core_checks": {
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "wiring_checks": {
+    "tests": 39,
+    "failures": 0,
+    "errors": 0,
+    "source": "parallel agent completed targeted pytest; existing run reused without repetition",
+    "test_file": "tests/test_crossdoc_native_wiring.py",
+    "tested_source_sha256": {
+      "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+      "scripts/verify_crossdoc_native_preview.py": "0109be9b5fe8fffe9cf6651536bdeaa6f24453dbb36e8535e68f193a9bb021d7",
+      "config/skills/govkb-crossdoc-preview/SKILL.md": "d642fa6a921262aa862c98da23f62fdccd17bc69849905ad1d9fc1e7c4f37ed1",
+      "tests/test_crossdoc_native_wiring.py": "97f263a86f9fafc07df935e0ea40fd97804dffd606d1cb5056906ccbe9c01659"
+    }
+  },
+  "actual_document_ablation": "one derived with both; unknown after removing either",
+  "local_official_acquisition_http": 2,
+  "browser_page_reads": 2,
+  "browser_origin_http_attempts": "not exposed by browser tool",
+  "old_cycle_source_reused": true,
+  "native_campaign": {
+    "native_runs": 0,
+    "max_native_runs": 1,
+    "tasks": 0,
+    "run_status": null,
+    "jev_calls": 0,
+    "translation_calls": 0
+  },
+  "native_model_execution_proven": false,
+  "new_jev_calls": 0,
+  "new_translation_calls": 0,
+  "native_drafts": {
+    "controller": 28,
+    "retriever": 26,
+    "verifier": 27
+  },
+  "drafts_disabled_unpublished": true,
+  "old_twelve_agents_unchanged": true,
+  "local_docker_started_existing_configuration": true,
+  "docker_rebuilt": false,
+  "business_knowledge_published": false,
+  "git_pushed": false,
+  "gates": {
+    "inference_enabled": false,
+    "form_verifier_enabled": false
+  },
+  "source_sha256": {
+    "src/gov_mcp/crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+    "src/gov_mcp/crossdoc_preview.py": "be2b5ab7b03e4e69d87787b477b957596685941bc8759a1189d58bc19a799ec3",
+    "src/gov_mcp/crossdoc_preview_server.py": "b1f30f001317163aea452111e04053dabf5bc3b1278c3fdcfcbe61d0c98f4dd1",
+    "scripts/prepare_crossdoc_sources.py": "d606804c4090be3bd20ccb4025c267fe22ffdade71e2be3f5255ea1dc9d23218",
+    "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+    "scripts/verify_crossdoc_native_preview.py": "0109be9b5fe8fffe9cf6651536bdeaa6f24453dbb36e8535e68f193a9bb021d7",
+    "config/skills/govkb-crossdoc-preview/SKILL.md": "d642fa6a921262aa862c98da23f62fdccd17bc69849905ad1d9fc1e7c4f37ed1",
+    "tests/test_crossdoc_reasoning.py": "e9de55ac66e84a52a0c85f6ed7322175f0431e59d3b1d55fd0998bce8592bc99",
+    "tests/test_crossdoc_preview.py": "b0dffb3d39d7c888022362f6f2ad19d7d39ed505e8491b0aa62565c2b2cb7e55",
+    "tests/test_crossdoc_native_wiring.py": "97f263a86f9fafc07df935e0ea40fd97804dffd606d1cb5056906ccbe9c01659"
+  },
+  "limits": [
+    "Archived sources and fictional normalized working-day interval; not current business approval.",
+    "No actual native run until this campaign budget is explicitly accepted.",
+    "A native run contains multiple model calls; no cost estimate or zero-cost claim.",
+    "One bounded deterministic rule chain, no general graph planning or independent semantic accuracy score."
+  ]
+}

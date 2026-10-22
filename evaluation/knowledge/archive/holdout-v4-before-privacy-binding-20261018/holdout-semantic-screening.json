@@ -1,0 +1,1139 @@
+{
+  "schema": 1,
+  "kind": "ai_semantic_screening_not_acceptance",
+  "screening_revision": 4,
+  "assessed_at": "2026-10-16T19:34:29.361301+00:00",
+  "actor": {
+    "kind": "ai",
+    "name": "Codex AI",
+    "model": "Codex GPT-6 family; exact identifier unavailable",
+    "model_revision": null,
+    "run_id": "manual-provenance-semantic-rebind-20261017-v4"
+  },
+  "author_and_reviewer_same_ai": true,
+  "reviewer_has_seen_development_history": true,
+  "human_review_completed": false,
+  "inputs": "All 30 v2 questions, 40 located development questions, 30 previous drafts including 9 retired questions, and within-batch decision comparisons; source clauses support draft design. No new tested-agent output, embeddings, generation run or implementation tuning. v3 rebind: reviewed all 11 affected case references against the migrated clauses; questions, dates, oracles, semantic distinctions and all per-case screening judgments are unchanged. HB06 removes only unapproved explanatory background; the complete first service measure retains both branches. v4 rebind: verified the five affected case anchors against three actual scoped source reviews; all parent text, character spans, questions, dates, oracles, prerequisites and per-case screening judgments remain identical. The unreferenced national clause 76 retains its own pending watch.",
+  "rubric": [
+    "角色、措辞和故事包装不构成独立判断；单纯合并旧判断仍退出。",
+    "同主题可以有不同判断，但需新增影响结论的事实前提或环节，不能只凭哈希不重合。",
+    "同批同一核心判断保留一条，明确其余退出。",
+    "保留仅允许继续来源核对，不证明政策正确、业务准入或整批独立验收。"
+  ],
+  "question_set_sha256": "2c88104b022878caa09d0704f9d1c3afb9735c9d5c064baf14662a27465335e4",
+  "development_registry_sha256": "eae7b4bc11456bdafef0bcd39878e55f37b46554d291dcf8ad2a67c1503245cd",
+  "development_questions_compared": 40,
+  "previous_draft_questions_compared": 30,
+  "development_sources": [
+    {
+      "path": "evaluation/knowledge/pilot-business-questions.json",
+      "sha256": "c4a653cbf318eb443f0f13f938b9cf13564beea7692de212007a63fa47147c3e"
+    },
+    {
+      "path": "evaluation/knowledge/pilot-ai-reference-answers.json",
+      "sha256": "114720c36a13938fdb942d77fdfcab846022e82245321444ffe1e133f7490cf2"
+    },
+    {
+      "path": "evidence/knowledge-update/native-consultation.json",
+      "sha256": "f1367cc1f3d9e34644b8543640ec7f741cb7bd00d31e88156c0afcca8a8d3ff4"
+    },
+    {
+      "path": "evidence/knowledge-update/scope-stage-native.json",
+      "sha256": "2e653b2c1006b8a917d7feeaae3665acd29acc0e1ff2f764135012e82c5fa30f"
+    },
+    {
+      "path": "evidence/knowledge-update/shadow-retrieval.json",
+      "sha256": "865419f93dad3ab10cabf0868c6228be027c214ba908c43328d1d710f64d7acc"
+    },
+    {
+      "path": ".runtime/knowledge-update/model-prevalidation/20261015T205246Z-69f8439f/manifest.json",
+      "sha256": "22809e44bcc647ace754db24e3456c6fe1f27da89dcd7dbed1d8f39a0623de32"
+    },
+    {
+      "path": ".runtime/knowledge-update/model-prevalidation/20261016T024521Z-29459439/manifest.json",
+      "sha256": "bbbc9b9a52e745fd99a1973f52e3727357111bc518b085ec270b34b8fcf1338d"
+    }
+  ],
+  "history_artifacts": [
+    {
+      "path": "evaluation/knowledge/holdout-semantic-screening-v1.json",
+      "sha256": "08973fd466a8aa9bb7b0c4d34e830384161c8d3562c8e6e5a90bd7509a8640f3"
+    },
+    {
+      "path": "evaluation/knowledge/retired-holdout-draft-cases-20261016.json",
+      "sha256": "4ee9f2ef899899f7a94c35fd6d335618f53b4d4aa767fbbbd87ae1b91ebde7c1"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-business-reference-draft.json",
+      "sha256": "a4efa2b9cc0959e9036d5b889b72ad4c37ea6fa3386d6bed654dffd9878dda14"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-business-questions-draft.json",
+      "sha256": "0c31c4237a70f31bdc8cf44a44af4d1f55f52a9a3ddff052f519bbe6804ddc27"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v2-before-service-review-20261017/holdout-semantic-screening.json",
+      "sha256": "fec57195066c633f5c31fe5be17ea4d45f1f50b30bf63afe6a6d7764f6e2c21e"
+    },
+    {
+      "path": "evaluation/knowledge/holdout-provenance-migration-v3.json",
+      "sha256": "9ea8fb24583f5f9dfc43a0884ba7fde205353d9df9ba782976ff32c6131a8315"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-business-questions-draft.json",
+      "sha256": "6bf9f6155ef0bc566f3f3b7b90377966b12d9b4826cd51906318b7ba705fe1dc"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-business-reference-draft.json",
+      "sha256": "ccdd59d91025801fcaf3c1302b4f552542524509aac45da86d531eaf462e376a"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-draft-integrity.json",
+      "sha256": "d6f69a7c59cdc05f8c20c7fbaf46951f17e0a12e944d695b13fb2f401dc40266"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-semantic-screening.json",
+      "sha256": "a4575486c0d36bef6f171027530144226767a86915def64f134fd5926840ab48"
+    },
+    {
+      "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/manifest.json",
+      "sha256": "46391a413294d8be3ef4a8393b2c7c927e9e837cbd525f0a1944d69aef0b12f7"
+    },
+    {
+      "path": "evaluation/knowledge/holdout-provenance-migration-v4.json",
+      "sha256": "a9885a04cfbe150fe573a48f4daceca7b49516bb9e72237797a0ffde0c373b30"
+    }
+  ],
+  "cases": [
+    {
+      "id": "HB01",
+      "question_sha256": "49ad25a8b9b02f545be112da397fc4f51acbc32c7a4381c3ab570850857e2e0b",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ02",
+          "question_sha256": "04ae730d1e80d568d57caac58e102efff5c0af46aa43fa07f58152950eb00c83"
+        },
+        {
+          "id": "KQ08",
+          "question_sha256": "bac01bcc74b6e520d9d947506fbcd01597131cc55b6f0f8c19d64e443fc2c666"
+        },
+        {
+          "id": "KQ09",
+          "question_sha256": "64a0628da7e5bb53b9ed89de9508d22406d10745f38fe32ecfa613b919b3ae84"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB31",
+          "question_sha256": "a8bdbfb53b747602c287a519e6c8eaa7299353052e6a59d55838e5fac800a028"
+        },
+        {
+          "id": "HB32",
+          "question_sha256": "069f6de32e0d6b0e8b908b80ccfb5333fcbc259fd0b5b33d421c232d458d7766"
+        }
+      ],
+      "reason": "新增前提是共享查询成功后能否连身份核验一并取消，区别于缺户口簿求替代或原复印件数量；只保留这个判断点，不认证免材料结论。 本轮与新题复查：共享免纸质、签名时点和异常身份记录处理分别保留。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB31",
+      "question_sha256": "a8bdbfb53b747602c287a519e6c8eaa7299353052e6a59d55838e5fac800a028",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ01",
+          "question_sha256": "16fbbf5ec25832b20651dd9b1407272ec803d8039ff0ca7016cd23fbae892392"
+        },
+        {
+          "id": "KQ07",
+          "question_sha256": "1cf115db1ffd74b630c6465924c4a5e15a99b3c39e57a7df990459b6adb1a6c2"
+        },
+        {
+          "id": "KQ08",
+          "question_sha256": "bac01bcc74b6e520d9d947506fbcd01597131cc55b6f0f8c19d64e443fc2c666"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB01",
+          "question_sha256": "49ad25a8b9b02f545be112da397fc4f51acbc32c7a4381c3ab570850857e2e0b"
+        },
+        {
+          "id": "HB32",
+          "question_sha256": "069f6de32e0d6b0e8b908b80ccfb5333fcbc259fd0b5b33d421c232d458d7766"
+        }
+      ],
+      "reason": "空白表预签能否代替资料完成后的核对，新增程序先后和签名确认的对象；与免纸质、材料清单或个人号码冲突不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB02",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB03",
+      "question_sha256": "7db40b15bfcc2b1ee15387b927778919dc8391539528594b33e6aae0f9ca5dde",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ03",
+          "question_sha256": "9d0b181348cd9df27fa2ff886260d91125cf847a2f41b7518d1cb550566cb4b4"
+        },
+        {
+          "id": "KQ17",
+          "question_sha256": "0f5ee0ad210e929322171a6b523fd0369db0686cc97c23ae583512d1ec05d47c"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB33",
+          "question_sha256": "f075497e87c83c8427fbf0f9e514f071699f1ae1dfcc01dfaa576c7e3a5dedbd"
+        }
+      ],
+      "reason": "开发题问申请时交验及新证未领前旧证使用，本题新增领证后剪角旧证能否留存；保留环节与最后处置差别，尚缺处置依据。 本轮与新题复查：领证后旧证处置与申办前读卡失败的状态诊断不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB32",
+      "question_sha256": "069f6de32e0d6b0e8b908b80ccfb5333fcbc259fd0b5b33d421c232d458d7766",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ01",
+          "question_sha256": "16fbbf5ec25832b20651dd9b1407272ec803d8039ff0ca7016cd23fbae892392"
+        },
+        {
+          "id": "KQ19",
+          "question_sha256": "6100deeab8cfab5068ae2529998d04514107f1c5950640e54a93de5ef807a744"
+        },
+        {
+          "id": "KQ28",
+          "question_sha256": "cf7e021b77cfe8e9176a3e214c32c76c5f46fd3b9622e0be09db53edde0a5b5b"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB01",
+          "question_sha256": "49ad25a8b9b02f545be112da397fc4f51acbc32c7a4381c3ab570850857e2e0b"
+        },
+        {
+          "id": "HB31",
+          "question_sha256": "a8bdbfb53b747602c287a519e6c8eaa7299353052e6a59d55838e5fac800a028"
+        }
+      ],
+      "reason": "个人号码记录互相冲突时能否自动覆盖，区别于政策来源文字冲突及空白表预签；姓名照片相同不决定号码正确性。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB04",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB33",
+      "question_sha256": "f075497e87c83c8427fbf0f9e514f071699f1ae1dfcc01dfaa576c7e3a5dedbd",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ03",
+          "question_sha256": "9d0b181348cd9df27fa2ff886260d91125cf847a2f41b7518d1cb550566cb4b4"
+        },
+        {
+          "id": "KQ25",
+          "question_sha256": "1bec0d728aaa3638de2b98ce382999b7a6eba0315f202a82587b3a974615928a"
+        },
+        {
+          "id": "KQ28",
+          "question_sha256": "cf7e021b77cfe8e9176a3e214c32c76c5f46fd3b9622e0be09db53edde0a5b5b"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB03",
+          "question_sha256": "7db40b15bfcc2b1ee15387b927778919dc8391539528594b33e6aae0f9ca5dde"
+        },
+        {
+          "id": "HB16",
+          "question_sha256": "9f8a09d09c0a95b58b0af7bf71071dacd0a327998f9d7eee50922a935c1ddeb7"
+        }
+      ],
+      "reason": "一台设备失败能否诊断证件失效并决定原因，区别于已知丢失或明知到期借用损坏入口；未知的是故障归因，不是替代材料组合。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB05",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB06",
+      "question_sha256": "44bdb1680804aba387c17eed2131245e0cf4c6a24798ed03bf625829a5d7776c",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ13",
+          "question_sha256": "4d9694d527d75ce1b10a60022364dca72e81ed747806e6a6c6b92c66388dd4c4"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB34",
+          "question_sha256": "2db103e6d28d40c1f0bbd0a02954a5ccd1e6bcc828b6f20ff39423893d663a36"
+        }
+      ],
+      "reason": "新增把两个条件分支及旧时限拼成统一上下界的错误，判断对象是区间合并，区别于一般询问工作日自然日。 本轮与新题复查：条件时限拼接与按年龄分档的证件年限不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB34",
+      "question_sha256": "2db103e6d28d40c1f0bbd0a02954a5ccd1e6bcc828b6f20ff39423893d663a36",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ13",
+          "question_sha256": "4d9694d527d75ce1b10a60022364dca72e81ed747806e6a6c6b92c66388dd4c4"
+        },
+        {
+          "id": "KQ24",
+          "question_sha256": "1f108fd7b4365d9e8e67c9a4e682d6eca15c0cfe58de988c0c5a19762ff941b5"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB06",
+          "question_sha256": "44bdb1680804aba387c17eed2131245e0cf4c6a24798ed03bf625829a5d7776c"
+        },
+        {
+          "id": "HB09",
+          "question_sha256": "efb1bbe7ea19a15dc8f6bf342cbbec92a10729904ac5455c0b110809b69f2407"
+        },
+        {
+          "id": "HB10",
+          "question_sha256": "edef38b6cfe891fb4e5fab7571bc459087095d9c31e992d762e39b8e8bfa8f97"
+        }
+      ],
+      "reason": "证件自身有效期按年龄分档与办证等待时间不同，旧十年期限不能自动继承；不是绿色通道资格的改写。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB07",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB08",
+      "question_sha256": "473324080511dc45c149c57979023315aa2b6fa35f23edccbcc6662a4204aa7b",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ04",
+          "question_sha256": "7f6132dde17cead513247863571169d27337947dbfd19f58cf3bc2c5a26b2b78"
+        },
+        {
+          "id": "KQ19",
+          "question_sha256": "6100deeab8cfab5068ae2529998d04514107f1c5950640e54a93de5ef807a744"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB39",
+          "question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1"
+        }
+      ],
+      "reason": "新增已受理申请的撤销请求及依据不完整时的行政后果，区别于尚未申请时询问能否提前办理；不把保留判断点写成撤销结论。 本轮与新题复查：撤销既有受理与现役身份的专门办法不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB09",
+      "question_sha256": "efb1bbe7ea19a15dc8f6bf342cbbec92a10729904ac5455c0b110809b69f2407",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ13",
+          "question_sha256": "4d9694d527d75ce1b10a60022364dca72e81ed747806e6a6c6b92c66388dd4c4"
+        },
+        {
+          "id": "KQ14",
+          "question_sha256": "a0ad52adc7e91dd151808cb3e4e510f06b36f6107355edad2babe26157326be6"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB34",
+          "question_sha256": "2db103e6d28d40c1f0bbd0a02954a5ccd1e6bcc828b6f20ff39423893d663a36"
+        }
+      ],
+      "reason": "新增把受理至领证偷换为受理至寄出的起止事件变化，不只是是否邮寄或一般问天数；个案日期仍不保证。 本轮与新题复查：受理至领证的起止事件不是证件有效年限。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB10",
+      "question_sha256": "edef38b6cfe891fb4e5fab7571bc459087095d9c31e992d762e39b8e8bfa8f97",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ20",
+          "question_sha256": "c396495899f735b538749e6a92121d0f2f872cd73832fa40a2a8aca504c7f16f"
+        },
+        {
+          "id": "KQ21",
+          "question_sha256": "313292c41810e36af5c09867b34368627ad4ae2562647e52813f608ee084c715"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB34",
+          "question_sha256": "2db103e6d28d40c1f0bbd0a02954a5ccd1e6bcc828b6f20ff39423893d663a36"
+        }
+      ],
+      "reason": "新增为过去已受理业务追溯引用当前解读，区别于现在能否使用明年施行的文件；修正查询日期为2026-10-16，使去年明确为2025，避免时间表达矛盾。 本轮与新题复查：过去业务的政策追溯与年龄对应年限不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB11",
+      "question_sha256": "546b44ee8942d53a8d1bbb0942b6591de6dcf939ef668b100b4ecfaab243fb1f",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ12",
+          "question_sha256": "a96f55545a20aea3e9e05e11c262078fb6d1d53fd03b859fadd934a5c2c9d3ab"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB35",
+          "question_sha256": "ada28e1a06537a99ef68462a98e8a5c122011d23fa361430cc142b1f802ac2b5"
+        },
+        {
+          "id": "HB36",
+          "question_sha256": "b45b236f28b8582a42305ff2dfa79132e65e3f5a11e55c03ecd0c4bb21bdbf5a"
+        }
+      ],
+      "reason": "新增首次申领停征是否扩张至后续换领及40元归类，区别于泛问换领多少钱；保留政策对象这一判断。 本轮与新题复查：首次停征和分支金额、数额出处、交易事实分别保留。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB35",
+      "question_sha256": "ada28e1a06537a99ef68462a98e8a5c122011d23fa361430cc142b1f802ac2b5",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ12",
+          "question_sha256": "a96f55545a20aea3e9e05e11c262078fb6d1d53fd03b859fadd934a5c2c9d3ab"
+        },
+        {
+          "id": "KQ19",
+          "question_sha256": "6100deeab8cfab5068ae2529998d04514107f1c5950640e54a93de5ef807a744"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB11",
+          "question_sha256": "546b44ee8942d53a8d1bbb0942b6591de6dcf939ef668b100b4ecfaab243fb1f"
+        },
+        {
+          "id": "HB13",
+          "question_sha256": "5b2eb990327141856b8f7f67a5f19d56e9b06b17237805aeb51da59d933a83ab"
+        },
+        {
+          "id": "HB36",
+          "question_sha256": "b45b236f28b8582a42305ff2dfa79132e65e3f5a11e55c03ecd0c4bb21bdbf5a"
+        }
+      ],
+      "reason": "法律是否直接列金额及哪个主管部门文件提供数额出处，区别于首次停征范围、金额分支及项目收费性质。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB12",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB13",
+      "question_sha256": "5b2eb990327141856b8f7f67a5f19d56e9b06b17237805aeb51da59d933a83ab",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ12",
+          "question_sha256": "a96f55545a20aea3e9e05e11c262078fb6d1d53fd03b859fadd934a5c2c9d3ab"
+        },
+        {
+          "id": "KQ14",
+          "question_sha256": "a0ad52adc7e91dd151808cb3e4e510f06b36f6107355edad2babe26157326be6"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB35",
+          "question_sha256": "ada28e1a06537a99ef68462a98e8a5c122011d23fa361430cc142b1f802ac2b5"
+        },
+        {
+          "id": "HB36",
+          "question_sha256": "b45b236f28b8582a42305ff2dfa79132e65e3f5a11e55c03ecd0c4bb21bdbf5a"
+        }
+      ],
+      "reason": "新增法定工本费、可选邮寄和无依据加急项目的合并收费判断，区别于单问金额或领证方式。未给加急项目合法性批准。 本轮与新题复查：收费项目性质与金额出处、成功缴费次数不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB14",
+      "question_sha256": "dec058eecd4649ed07f59acfbd6ced3f2b8d46dba6b8d4ff1d63f38744759efc",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ12",
+          "question_sha256": "a96f55545a20aea3e9e05e11c262078fb6d1d53fd03b859fadd934a5c2c9d3ab"
+        },
+        {
+          "id": "KQ28",
+          "question_sha256": "cf7e021b77cfe8e9176a3e214c32c76c5f46fd3b9622e0be09db53edde0a5b5b"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB36",
+          "question_sha256": "b45b236f28b8582a42305ff2dfa79132e65e3f5a11e55c03ecd0c4bb21bdbf5a"
+        }
+      ],
+      "reason": "新增不明困难资格且拒绝核验证明时的自动减免，测试资格与证明缺口，区别于一般费用或保证受理。 本轮与新题复查：减免资格与重复缴费退款的事实凭证不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB36",
+      "question_sha256": "b45b236f28b8582a42305ff2dfa79132e65e3f5a11e55c03ecd0c4bb21bdbf5a",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ12",
+          "question_sha256": "a96f55545a20aea3e9e05e11c262078fb6d1d53fd03b859fadd934a5c2c9d3ab"
+        },
+        {
+          "id": "KQ28",
+          "question_sha256": "cf7e021b77cfe8e9176a3e214c32c76c5f46fd3b9622e0be09db53edde0a5b5b"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB11",
+          "question_sha256": "546b44ee8942d53a8d1bbb0942b6591de6dcf939ef668b100b4ecfaab243fb1f"
+        },
+        {
+          "id": "HB13",
+          "question_sha256": "5b2eb990327141856b8f7f67a5f19d56e9b06b17237805aeb51da59d933a83ab"
+        },
+        {
+          "id": "HB14",
+          "question_sha256": "dec058eecd4649ed07f59acfbd6ced3f2b8d46dba6b8d4ff1d63f38744759efc"
+        },
+        {
+          "id": "HB35",
+          "question_sha256": "ada28e1a06537a99ef68462a98e8a5c122011d23fa361430cc142b1f802ac2b5"
+        }
+      ],
+      "reason": "支付提示是否证明两笔成功扣款及能否决定退费，新增交易事实与处理权限，不能仅由一般标准金额推出。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB15",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB16",
+      "question_sha256": "9f8a09d09c0a95b58b0af7bf71071dacd0a327998f9d7eee50922a935c1ddeb7",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ11",
+          "question_sha256": "193f62edd950a7eabf27cbd26408a0810bb4053ee09064859a9c1d3b389d53a2"
+        },
+        {
+          "id": "KQ25",
+          "question_sha256": "1bec0d728aaa3638de2b98ce382999b7a6eba0315f202a82587b3a974615928a"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB33",
+          "question_sha256": "f075497e87c83c8427fbf0f9e514f071699f1ae1dfcc01dfaa576c7e3a5dedbd"
+        },
+        {
+          "id": "HB37",
+          "question_sha256": "63521224aceae878da6647e9b98228e73e1eb58ab9c867ea7ffb205a7c87e3fc"
+        }
+      ],
+      "reason": "保留一条网办年限符合但原因不符合的组合题，测试路由时不能忽略办证原因；HB04和HB19不再重复占名额。 本轮与新题复查：已知仅到期时原因不符，与故障归因未知、机构职能均不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB17",
+      "question_sha256": "f3ef4f1f656ed00af6cc5d23a2c39513b3bba9426dd9cb3d93fa10a163b3f2c0",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ05",
+          "question_sha256": "b978c738d62f6c3ec2add9fd33400c782c8b5d6b75d35d47b576872c6806ba8e"
+        },
+        {
+          "id": "KQ10",
+          "question_sha256": "f1f0954ae962131db37b675de24ea51fc38142191149d8054a93bcfcfff49596"
+        },
+        {
+          "id": "KQ11",
+          "question_sha256": "193f62edd950a7eabf27cbd26408a0810bb4053ee09064859a9c1d3b389d53a2"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB33",
+          "question_sha256": "f075497e87c83c8427fbf0f9e514f071699f1ae1dfcc01dfaa576c7e3a5dedbd"
+        },
+        {
+          "id": "HB37",
+          "question_sha256": "63521224aceae878da6647e9b98228e73e1eb58ab9c867ea7ffb205a7c87e3fc"
+        }
+      ],
+      "reason": "新增从服务覆盖宣传推导设备授权、具体星期和照片条件的多项越界，区别于直接问地点、预约或拍照方式；当地事实仍待核。 本轮与新题复查：服务授权及营业条件不等于读卡故障诊断或法定签发主体。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB18",
+      "question_sha256": "6e05f5e8be1930dc5685e268285347a32a15287b2ba7bf5d8ae8c04647c26ac2",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ10",
+          "question_sha256": "f1f0954ae962131db37b675de24ea51fc38142191149d8054a93bcfcfff49596"
+        },
+        {
+          "id": "KQ11",
+          "question_sha256": "193f62edd950a7eabf27cbd26408a0810bb4053ee09064859a9c1d3b389d53a2"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB37",
+          "question_sha256": "63521224aceae878da6647e9b98228e73e1eb58ab9c867ea7ffb205a7c87e3fc"
+        }
+      ],
+      "reason": "新增把直接办、代收代办、指导网办都统计为已受理的服务阶段等价错误；保留统计含义这一判断点。 本轮与新题复查：直接办/代办/指导的状态统计与签发主体不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB37",
+      "question_sha256": "63521224aceae878da6647e9b98228e73e1eb58ab9c867ea7ffb205a7c87e3fc",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ10",
+          "question_sha256": "f1f0954ae962131db37b675de24ea51fc38142191149d8054a93bcfcfff49596"
+        },
+        {
+          "id": "KQ28",
+          "question_sha256": "cf7e021b77cfe8e9176a3e214c32c76c5f46fd3b9622e0be09db53edde0a5b5b"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB17",
+          "question_sha256": "f3ef4f1f656ed00af6cc5d23a2c39513b3bba9426dd9cb3d93fa10a163b3f2c0"
+        },
+        {
+          "id": "HB18",
+          "question_sha256": "6e05f5e8be1930dc5685e268285347a32a15287b2ba7bf5d8ae8c04647c26ac2"
+        }
+      ],
+      "reason": "受理服务地点与法定签发主体不同，不能仅按机构名称不同断定证件伪造；不是办证原因或选择网办入口。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB19",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB20",
+      "question_sha256": "75bb35d607904bd99670e5a0fb8ce070801173993fb3b5db8edb4cecdd00cf50",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ13",
+          "question_sha256": "4d9694d527d75ce1b10a60022364dca72e81ed747806e6a6c6b92c66388dd4c4"
+        },
+        {
+          "id": "KQ16",
+          "question_sha256": "b81f1332b5bc7b7ab97a48c09784dae09828267937d93d60955ac685b30387a3"
+        },
+        {
+          "id": "KQ23",
+          "question_sha256": "7d6a9d66f77d0c49390347895d0bb4b6af2ce02e6b8c97b0596975844da38144"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB34",
+          "question_sha256": "2db103e6d28d40c1f0bbd0a02954a5ccd1e6bcc828b6f20ff39423893d663a36"
+        },
+        {
+          "id": "HB35",
+          "question_sha256": "ada28e1a06537a99ef68462a98e8a5c122011d23fa361430cc142b1f802ac2b5"
+        }
+      ],
+      "reason": "新增同一地点多业务模板共用，把另一业务的一日办结转成身份证规则；证据归属事项不同是明确的新前提。 本轮与新题复查：跨事项套模板、证件年限及金额出处不是同一判断。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB21",
+      "question_sha256": "eceda99dce2fe0266b99cfa70b5b3e680366b4814669a406a48917edc28e069d",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ18",
+          "question_sha256": "4432ac68607b0abd6eca9d874d36eb8d797d457cdc11abecf090f8f7f616a4e9"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB38",
+          "question_sha256": "c4da46765e6a9161ff1196c2041815d19483739f33d23c7330dcac3cfd1f51c0"
+        }
+      ],
+      "reason": "新增与本人咨询无关的家庭成员信息及未来复用用途，区别于仅问是否提供自己的证号；保留第三人和用途限制。 本轮与新题复查：收集家庭资料与导出含多主体信息的后台日志是不同操作。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB22",
+      "question_sha256": "369a9aa9d6b17eb445a829ae961fc9e6268b27a27d87edcb7af7278aa63d3a69",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ18",
+          "question_sha256": "4432ac68607b0abd6eca9d874d36eb8d797d457cdc11abecf090f8f7f616a4e9"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB38",
+          "question_sha256": "c4da46765e6a9161ff1196c2041815d19483739f33d23c7330dcac3cfd1f51c0"
+        }
+      ],
+      "reason": "新增已为办证收集的信息改作公开FAQ成功案例，区别于咨询是否收集；测试用途变更和公开披露，不批准案例发布。 本轮与新题复查：公开案例用途变更与全量日志访问范围不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB38",
+      "question_sha256": "c4da46765e6a9161ff1196c2041815d19483739f33d23c7330dcac3cfd1f51c0",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ18",
+          "question_sha256": "4432ac68607b0abd6eca9d874d36eb8d797d457cdc11abecf090f8f7f616a4e9"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB21",
+          "question_sha256": "eceda99dce2fe0266b99cfa70b5b3e680366b4814669a406a48917edc28e069d"
+        },
+        {
+          "id": "HB22",
+          "question_sha256": "369a9aa9d6b17eb445a829ae961fc9e6268b27a27d87edcb7af7278aa63d3a69"
+        },
+        {
+          "id": "HB24",
+          "question_sha256": "95febc359e34d03b12db3da2115cc5b48fe4add4457bf7ea2c81f7edf8e77dd2"
+        },
+        {
+          "id": "HB25",
+          "question_sha256": "1c17aee920c866371a12144b0feacf834fc75707524838e69aad5284ead55a66"
+        }
+      ],
+      "reason": "请求核查本人资料不直接授权导出含他人的全量日志；测试受控记录访问和多主体披露，区别于证号收集、照片用途或答复附带信息。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB23",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB24",
+      "question_sha256": "95febc359e34d03b12db3da2115cc5b48fe4add4457bf7ea2c81f7edf8e77dd2",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ13",
+          "question_sha256": "4d9694d527d75ce1b10a60022364dca72e81ed747806e6a6c6b92c66388dd4c4"
+        },
+        {
+          "id": "KQ18",
+          "question_sha256": "4432ac68607b0abd6eca9d874d36eb8d797d457cdc11abecf090f8f7f616a4e9"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB38",
+          "question_sha256": "c4da46765e6a9161ff1196c2041815d19483739f33d23c7330dcac3cfd1f51c0"
+        }
+      ],
+      "reason": "新增答复和引用阶段是否复述无关个人信息，区别于收集阶段；普通时限与考生差别本身不作为新的独立计分点。 本轮与新题复查：无关信息附入政策引用的最少披露，与私有日志访问和导出授权不同；一般隐私主题本身不另计新判断。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB25",
+      "question_sha256": "1c17aee920c866371a12144b0feacf834fc75707524838e69aad5284ead55a66",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ18",
+          "question_sha256": "4432ac68607b0abd6eca9d874d36eb8d797d457cdc11abecf090f8f7f616a4e9"
+        },
+        {
+          "id": "KQ28",
+          "question_sha256": "cf7e021b77cfe8e9176a3e214c32c76c5f46fd3b9622e0be09db53edde0a5b5b"
+        },
+        {
+          "id": "KQ30",
+          "question_sha256": "095f15b6a478933daaeee1fbf3fd4509aec5eee3147fee466904352b0c7c5cfb"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB38",
+          "question_sha256": "c4da46765e6a9161ff1196c2041815d19483739f33d23c7330dcac3cfd1f51c0"
+        }
+      ],
+      "reason": "新增账号密码和一次性验证码交给咨询端登录所谓加急渠道的凭证与执行边界，区别于证号收集或凭常识补齐业务事实。 本轮与新题复查：密码验证码代登录与后台日志访问权限不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB26",
+      "question_sha256": "52cdca78ddf8dd3481768ec888d57fea8ffcc4c02222abec81040d8395cd12a7",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ23",
+          "question_sha256": "7d6a9d66f77d0c49390347895d0bb4b6af2ce02e6b8c97b0596975844da38144"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB39",
+          "question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1"
+        }
+      ],
+      "reason": "新增国籍已变更但旧户籍显示尚在的资格冲突，区别于中国公民仅户籍在外省；需要独立国籍与登记依据，不能自动结案。 本轮与新题复查：国籍变化与现役身份分别核查不同资格依据。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB39",
+      "question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ23",
+          "question_sha256": "7d6a9d66f77d0c49390347895d0bb4b6af2ce02e6b8c97b0596975844da38144"
+        },
+        {
+          "id": "KQ24",
+          "question_sha256": "1f108fd7b4365d9e8e67c9a4e682d6eca15c0cfe58de988c0c5a19762ff941b5"
+        },
+        {
+          "id": "KQ26",
+          "question_sha256": "8f7dfa92d0258605011565d1ebe6c16d4dcb38d8a5e38e8e8ffbd8bba71f9342"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB26",
+          "question_sha256": "52cdca78ddf8dd3481768ec888d57fea8ffcc4c02222abec81040d8395cd12a7"
+        },
+        {
+          "id": "HB28",
+          "question_sha256": "f4ff7e9149d03ee37510b32b9aee03a0241df0eb902af85d15fb3dc8ff496fee"
+        },
+        {
+          "id": "HB29",
+          "question_sha256": "f2afd2d1c0f28a70879bd4f8ffab4518a9ab9f2e5c622668e520cf2ad9b9d1db"
+        },
+        {
+          "id": "HB30",
+          "question_sha256": "21d544a1983fd3c96f44cb1f50f879e7a3c18e9422c7104adda8e77fa8f68909"
+        }
+      ],
+      "reason": "现役身份引出法律另行规定的专门办法；不是居住不等于本地户籍，也不推定军人一定已注销户籍。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "replaces_retired_case_id": "HB27",
+      "carry_forward_from_v1": false
+    },
+    {
+      "id": "HB28",
+      "question_sha256": "f4ff7e9149d03ee37510b32b9aee03a0241df0eb902af85d15fb3dc8ff496fee",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ24",
+          "question_sha256": "1f108fd7b4365d9e8e67c9a4e682d6eca15c0cfe58de988c0c5a19762ff941b5"
+        },
+        {
+          "id": "KQ26",
+          "question_sha256": "8f7dfa92d0258605011565d1ebe6c16d4dcb38d8a5e38e8e8ffbd8bba71f9342"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB39",
+          "question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1"
+        }
+      ],
+      "reason": "新增成年人被认定无民事行为能力，年龄成年不能自动消除监护分支；与未成年人或普通家属代办的前提不同。 本轮与新题复查：监护行为能力分支与现役专门办法不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB29",
+      "question_sha256": "f2afd2d1c0f28a70879bd4f8ffab4518a9ab9f2e5c622668e520cf2ad9b9d1db",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ23",
+          "question_sha256": "7d6a9d66f77d0c49390347895d0bb4b6af2ce02e6b8c97b0596975844da38144"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB39",
+          "question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1"
+        }
+      ],
+      "reason": "新增所持证件为香港居民身份证的类型不匹配；HB26讨论国籍变更和旧内地证，本题不依赖变更记录，是不同排除依据。 本轮与新题复查：香港证件类型与内地现役人员制度不同。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    },
+    {
+      "id": "HB30",
+      "question_sha256": "21d544a1983fd3c96f44cb1f50f879e7a3c18e9422c7104adda8e77fa8f68909",
+      "query_date": "2026-10-16",
+      "decision": "retain_for_further_source_review",
+      "development_comparators": [
+        {
+          "id": "KQ17",
+          "question_sha256": "0f5ee0ad210e929322171a6b523fd0369db0686cc97c23ae583512d1ec05d47c"
+        },
+        {
+          "id": "KQ23",
+          "question_sha256": "7d6a9d66f77d0c49390347895d0bb4b6af2ce02e6b8c97b0596975844da38144"
+        }
+      ],
+      "within_batch_comparators": [
+        {
+          "id": "HB39",
+          "question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1"
+        }
+      ],
+      "reason": "新增户籍注销后想用换证恢复户籍并保号的并办请求，区别于旧证使用或外省户籍；保留证件状态与另一行政事项的区别。 本轮与新题复查：户籍注销恢复请求与现役身份不同；不因入伍推定注销。",
+      "policy_truth_approved": false,
+      "reference_frozen": false,
+      "carry_forward_from_v1": true
+    }
+  ],
+  "counts": {
+    "retain_for_further_source_review": 30
+  },
+  "retired_case_ids": [],
+  "historically_retired_case_ids": [
+    "HB02",
+    "HB04",
+    "HB05",
+    "HB07",
+    "HB12",
+    "HB15",
+    "HB19",
+    "HB23",
+    "HB27"
+  ],
+  "retained_case_ids": [
+    "HB01",
+    "HB31",
+    "HB03",
+    "HB32",
+    "HB33",
+    "HB06",
+    "HB34",
+    "HB08",
+    "HB09",
+    "HB10",
+    "HB11",
+    "HB35",
+    "HB13",
+    "HB14",
+    "HB36",
+    "HB16",
+    "HB17",
+    "HB18",
+    "HB37",
+    "HB20",
+    "HB21",
+    "HB22",
+    "HB38",
+    "HB24",
+    "HB25",
+    "HB26",
+    "HB39",
+    "HB28",
+    "HB29",
+    "HB30"
+  ],
+  "replacements": [
+    {
+      "retired_case_id": "HB02",
+      "current_case_id": "HB31",
+      "new_question_sha256": "a8bdbfb53b747602c287a519e6c8eaa7299353052e6a59d55838e5fac800a028"
+    },
+    {
+      "retired_case_id": "HB04",
+      "current_case_id": "HB32",
+      "new_question_sha256": "069f6de32e0d6b0e8b908b80ccfb5333fcbc259fd0b5b33d421c232d458d7766"
+    },
+    {
+      "retired_case_id": "HB05",
+      "current_case_id": "HB33",
+      "new_question_sha256": "f075497e87c83c8427fbf0f9e514f071699f1ae1dfcc01dfaa576c7e3a5dedbd"
+    },
+    {
+      "retired_case_id": "HB07",
+      "current_case_id": "HB34",
+      "new_question_sha256": "2db103e6d28d40c1f0bbd0a02954a5ccd1e6bcc828b6f20ff39423893d663a36"
+    },
+    {
+      "retired_case_id": "HB12",
+      "current_case_id": "HB35",
+      "new_question_sha256": "ada28e1a06537a99ef68462a98e8a5c122011d23fa361430cc142b1f802ac2b5"
+    },
+    {
+      "retired_case_id": "HB15",
+      "current_case_id": "HB36",
+      "new_question_sha256": "b45b236f28b8582a42305ff2dfa79132e65e3f5a11e55c03ecd0c4bb21bdbf5a"
+    },
+    {
+      "retired_case_id": "HB19",
+      "current_case_id": "HB37",
+      "new_question_sha256": "63521224aceae878da6647e9b98228e73e1eb58ab9c867ea7ffb205a7c87e3fc"
+    },
+    {
+      "retired_case_id": "HB23",
+      "current_case_id": "HB38",
+      "new_question_sha256": "c4da46765e6a9161ff1196c2041815d19483739f33d23c7330dcac3cfd1f51c0"
+    },
+    {
+      "retired_case_id": "HB27",
+      "current_case_id": "HB39",
+      "new_question_sha256": "2a17f60eb40ab05f3528cb08837d7603488321782c907ba9f09a857a44ac2ec1"
+    }
+  ],
+  "retained_design": {
+    "role": {
+      "citizen": 15,
+      "staff": 15
+    },
+    "category": {
+      "materials": 5,
+      "time": 5,
+      "fee": 5,
+      "channel": 5,
+      "privacy": 5,
+      "scope": 5
+    },
+    "proposed_outcome_after_qualified_publication": {
+      "answer": 15,
+      "stop": 15
+    }
+  },
+  "corrected_query_date": {
+    "id": "HB10",
+    "before": "2025-10-16",
+    "after": "2026-10-16",
+    "question_wording_unchanged": true,
+    "reason": "在2026年询问去年已受理业务，应追溯2025年；旧查询日会将去年错指2024年。"
+  },
+  "minimum_cases": 30,
+  "minimum_cases_met": true,
+  "minimum_cases_caution": "Only 30 provisional design cases; not 30 approved independent acceptance cases.",
+  "batch_ready_for_freeze": false,
+  "independence_certified": false,
+  "business_acceptance_executed": false,
+  "next_action": "Resolve source/currentness/material prerequisites and verify reference truth before an acceptance snapshot, reference freeze or actual run. Same-author review is disclosed and is not a blind independence certificate.",
+  "limits": "Same-author conservative AI design screening. Different decision points and hash disjointness do not establish policy truth or certified acceptance independence; no question was used to tune the tested agent.",
+  "content_sha256": "a7ed07dca7ef65b56458e39178b89edd424b9a10a1bf629139f7e079c1a53190",
+  "reference_contents_sha256": "677bb44280c6fdc28f9d48ede8ecafc7f38c0bd0731f1e76eaf28ff2958bb69f",
+  "reference_semantics_sha256": "bb4243b10e148c6c96099781ea499718e3603ef643f56e5adfa2462bd73a4743",
+  "provenance_migration_sha256": "63cefa1961cd3cbb472351f061b4f63f70d5a17830eb2279da7ab831e33afff7",
+  "provenance_review": {
+    "reviewer": "Codex AI",
+    "affected_case_ids": [
+      "HB01",
+      "HB31",
+      "HB08",
+      "HB11",
+      "HB35"
+    ],
+    "case_semantics_unchanged": true,
+    "per_case_screening_judgments_unchanged": true,
+    "literal_span_changes": 0,
+    "source_truth_or_batch_independence_approved_by_this_rebind": false
+  }
+}

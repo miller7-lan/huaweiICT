@@ -1,0 +1,61 @@
+{
+  "status": "PASS_BOUNDED_STRICT_JSON_LIVE",
+  "date": "2026-10-19",
+  "completed_at_shanghai": "2026-10-19T19:22:53.118281+08:00",
+  "http_attempts": 4,
+  "successful_model_responses": 4,
+  "contract_passed": 4,
+  "cases_passed": 4,
+  "checks_passed": 30,
+  "checks_total": 30,
+  "usage": {
+    "input_tokens": 2071,
+    "output_tokens": 234,
+    "input_cache_hit_tokens": 0,
+    "input_cache_miss_tokens": 2071
+  },
+  "amount_billed": null,
+  "jev_calls": 0,
+  "retries": 0,
+  "trial_budget_consumed": true,
+  "old_evidence_byte_hashes_unchanged": true,
+  "reused_offline_checks": {
+    "passed": 172,
+    "source_fingerprints_match": true,
+    "rerun": false
+  },
+  "translated_text_review": {
+    "reviewer": "development_assistant",
+    "independent_human_review": false,
+    "observations": [
+      "Under 16 guardian condition and 16-or-over exception preserved.",
+      "First-application fee exception and expiry-renewal 20 yuan preserved.",
+      "Working/calendar-day distinction and unknown advance window preserved."
+    ]
+  },
+  "gates": {
+    "inference_enabled": false,
+    "form_verifier_enabled": false
+  },
+  "service_restarted": false,
+  "native_drafts_modified": false,
+  "knowledge_published": false,
+  "git_pushed": false,
+  "limits": [
+    "One observation for each of four synthetic cases; no measured long-run compliance rate.",
+    "No independent real-business accuracy, native Agent flow or new ontology validation.",
+    "Different prompt and unpinned model alias; before/after is not an isolated causal experiment.",
+    "JSON Schema introduces input overhead; no token or cost reduction claim."
+  ],
+  "source_sha256": {
+    "scripts/compare_model_parameters.py": "a569aac1b99ef14fc1dca704c9504294b45b9ab03b0c008e5f51676d73a44f21",
+    "src/gov_mcp/deepseek.py": "735491ca35d442970726a8fdd8f83834f0f1947823a15c76e064f93652f9f010",
+    "src/gov_mcp/jev_translation.py": "59c8fed77f69b23f85508a818d1f259b3f33e37b8ce5d322df88b6d10cbeb4b6",
+    "src/gov_mcp/json_output.py": "5a13f60e7b435b4c0ec0bb2f1c2bc8b3e4e5c64cf284d328634109ef9aa5c74d"
+  },
+  "evidence_sha256": {
+    "plan.json": "24cc60153d6d5515565ffd5795a464055331824653f6aad3454ca87f049ef9b0",
+    "results.json": "1e09aad35fb3211f0f11a24e838ffce2c35ac741ef237e457daf9a5860582ee5",
+    "execution-fingerprints.json": "3d37a08c2fbbeeadca292da2c0d2fa7e5ff2e64f9a49c1ab13a9f89d30f61854"
+  }
+}

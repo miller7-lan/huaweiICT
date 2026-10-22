@@ -1,0 +1,23 @@
+flowchart TD
+    nreq["HTTP 请求"]
+    nkind["区分 MCP 与网页"]
+    nbad["拒绝请求"]
+    nsize["接收前限制真实字节"]
+    nsession["校验会话及专业角色"]
+    nown["任务归属／幂等请求"]
+    nclass["递归检查原始数据标签"]
+    ncall["调用获准程序工具"]
+    nreq -->|"进入"| nkind
+    nkind -->|"鉴权不通过"| nbad
+    nkind -->|"通过"| nsize
+    nsize -->|"超限／非法长度"| nbad
+    nsize -->|"通过"| nsession
+    nsession -->|"过期／角色不符"| nbad
+    nsession -->|"通过"| nown
+    nown -->|"需要模型外发时"| nclass
+    nclass -->|"不允许的数据类别"| nbad
+    nclass -->|"通过"| ncall
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nkind,nsize,nsession,nown,nclass gate
+    class nbad stop

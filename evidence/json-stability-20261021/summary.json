@@ -1,0 +1,56 @@
+{
+  "status": "CHECKED_WITH_CONFIRMED_GAPS",
+  "scope": "Local implementation audit, historical evidence replay, and targeted offline tests; no business implementation changes.",
+  "new_model_calls": 0,
+  "new_real_http_calls": 0,
+  "new_native_runs": 0,
+  "targeted_tests": {
+    "tests": 187,
+    "failures": 0,
+    "errors": 0,
+    "warnings": 2
+  },
+  "confirmed_gap_categories": [
+    "native_receipt_comparison_does_not_require_recursive_type_equality",
+    "external_json_parsing_not_uniformly_strict",
+    "malformed_deepseek_envelope_escapes_cloud_error",
+    "role_output_schema_coverage_incomplete"
+  ],
+  "numeric_representation_note": "Finite binary floats are not an arbitrary-precision decimal guarantee.",
+  "existing_successful_native_receipts_exact": true,
+  "protected_inputs_unchanged": true,
+  "historical_contracts": {
+    "historical": {
+      "stored_output_count": 12,
+      "contract_passed": 9,
+      "contract_rejected": 3,
+      "failure_categories": {
+        "extra_forbidden": 3
+      },
+      "new_model_calls": 0,
+      "scope": "Revalidation of stored parsed outputs; original API response bodies are not retained here."
+    },
+    "strict": {
+      "stored_output_count": 4,
+      "contract_passed": 4,
+      "contract_rejected": 0,
+      "failure_categories": {},
+      "new_model_calls": 0,
+      "scope": "Revalidation of stored parsed outputs; original API response bodies are not retained here."
+    }
+  },
+  "new_report_local_links_checked": 29,
+  "attachments_sha256": {
+    "core-probes.json": "dd49371ed08083e5a952ba499a114d8cd8330a185c6df6d047270b920908e04c",
+    "core-probes.py": "dbf87ddc0876507e240a71670b1812a92c1c668df9bc88cc28ac6b54342bb4c3",
+    "native-probes.json": "613bb179a3653d69edf19224c6e3efd34546240bb1c6ae748767089e9e73f1e3",
+    "native-probes.py": "9c0355e86360a48d3ddc56e8a319cfb3beefa17f0afd3bdb53731f36f8b81bdc",
+    "targeted-checks.xml": "c3a7afa2d664523a800864c605b0d212592a30fdb72d00671d32d523a903cb29"
+  },
+  "limits": [
+    "No long-run model compliance estimate.",
+    "Historical repair rounds have different implementations and are not independent repetitions of one current version.",
+    "No live server code-loading state was inspected.",
+    "Old frozen competition packages were not rebuilt."
+  ]
+}

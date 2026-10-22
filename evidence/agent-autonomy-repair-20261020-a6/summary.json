@@ -1,0 +1,201 @@
+{
+  "status": "PASS_BOUNDED_CLOUD_UPDATE_REPLAY",
+  "actual_run_date": "2026-10-21",
+  "native_reserved_at_utc": "2026-10-21T05:51:56.648625+00:00",
+  "scope": "Bounded official archived-source arrival replay through existing Worker and actual cloud native agents; pending human review only",
+  "checks": {
+    "native_success": true,
+    "two_managed_child_starts": true,
+    "extract_and_review_children_executed": true,
+    "single_candidate": true,
+    "pending_human_review": true,
+    "no_formal_versions": true,
+    "no_tool_blocks": true,
+    "real_heartbeat_progressed": true,
+    "old_then_new_detected": true,
+    "source_guard_preserved": true,
+    "tool_whitelist": true,
+    "no_duplicate_submit_review": true,
+    "budget_closed": true
+  },
+  "native_duration_ms": 16453.0,
+  "natural_source_check_spacing_seconds": 60.175,
+  "heartbeat_distinct_samples": 16,
+  "sources": {
+    "old": {
+      "role": "old",
+      "source_id": "HN-MEASURES-2024-JY",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-71014e82351747c52e933f86",
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "original_bytes": 36086,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5",
+      "page_publication_date": "2024-10-17",
+      "legal_effective_date_established": false,
+      "data_class": "public",
+      "business_approval": false,
+      "current_applicability": "unknown",
+      "effective_from": null,
+      "segments": [
+        {
+          "locator": "正文段落1",
+          "quote": "一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。",
+          "text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+        },
+        {
+          "locator": "正文段落2",
+          "quote": "政策解读：",
+          "text_sha256": "4650910b432d5c6d6cdb37d68bf0bd495ad777550ea41a3a3f6764e9442f6966"
+        },
+        {
+          "locator": "正文段落3",
+          "quote": "为节约群众申办居民身份证时间，2021年，河南公安户政部门通过优化工作流程，减少工作环节，将居民身份证办理时限从法定的60日缩减至30日。2024年，为进一步提升居民身份证办理服务效率，河南公安户政部门对居民身份证制证流程再次优化完善，承诺群众在派出所申领、补领、换领居民身份证后，公安机关在25日内完成居民身份证的审核、签发、制作，并发放至派出所（群众可选择自费邮寄服务，将证件直接邮寄至指定地址，无需到派出所领取），确保群众可在25日内领取证件。",
+          "text_sha256": "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+        }
+      ]
+    },
+    "new": {
+      "role": "new",
+      "source_id": "HN-MEASURES-2026",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "original_bytes": 17887,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e",
+      "page_publication_date": "2026-05-05",
+      "legal_effective_date_established": false,
+      "data_class": "public",
+      "business_approval": false,
+      "current_applicability": "unknown",
+      "effective_from": null,
+      "segments": [
+        {
+          "locator": "正文段落1",
+          "quote": "一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考特殊时期急需用证考生通过“绿色通道”申办居民身份证时限由15个自然日缩短至5个工作日。",
+          "text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+        },
+        {
+          "locator": "正文段落2",
+          "quote": "政策解读：",
+          "text_sha256": "4650910b432d5c6d6cdb37d68bf0bd495ad777550ea41a3a3f6764e9442f6966"
+        },
+        {
+          "locator": "正文段落3",
+          "quote": "《中华人民共和国居民身份证法》规定，居民身份证的法定办理时限为60个自然日。河南公安机关通过持续优化工作流程，已将身份证办理时限压缩至目前的25个自然日，其中，中考、高考特殊时期急需用证考生通过“绿色通道”办理身份证时限压缩至目前的15个自然日。近年来，随着我省人口流动加速，群众用证需求进一步提升，为更好回应群众期盼、提升办证便利度，省公安厅再次优化制证流程、精简工作环节，将身份证办理时限进一步压缩至15个工作日，其中，中考、高考特殊时期急需用证考生通过“绿色通道”办理身份证时限进一步压缩至5个工作日。",
+          "text_sha256": "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+        }
+      ]
+    }
+  },
+  "candidate_id": "daacf6951ce7a5b29349215b2c712b2f2b8f0dcde7f26375f8bd3ca15078966f",
+  "source_binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+  "model_starts_this_successful_run": 8,
+  "model_starts_by_role": {
+    "controller": 2,
+    "29": 3,
+    "30": 3
+  },
+  "all_attempts_one": true,
+  "native_strict_output_enabled": true,
+  "protocol_repair_observed_this_run": false,
+  "visible_controller_input_tokens": 13602,
+  "visible_controller_output_tokens": 272,
+  "complete_token_usage_available": false,
+  "cost": "unknown",
+  "repair_attempts": [
+    {
+      "attempt": 1,
+      "status": "failed",
+      "error_code": "TASK_TOOL_BLOCKED",
+      "duration_ms": 14937.0,
+      "observed_model_starts": 5,
+      "attempt_numbers": {
+        "1": 5
+      },
+      "candidate_count": 0,
+      "result_path": "evidence\\agent-autonomy-repair-20261020-a1\\result.json"
+    },
+    {
+      "attempt": 2,
+      "status": "failed",
+      "error_code": "NATIVE_CHILD_OR_CONTROLLER_FAILED",
+      "duration_ms": 14609.0,
+      "observed_model_starts": 5,
+      "attempt_numbers": {
+        "1": 5
+      },
+      "candidate_count": 1,
+      "result_path": "evidence\\agent-autonomy-repair-20261020-a2\\result.json"
+    },
+    {
+      "attempt": 3,
+      "status": "failed",
+      "error_code": "NATIVE_PERSISTED_FINAL_MISSING",
+      "duration_ms": 14015.0,
+      "observed_model_starts": 2,
+      "attempt_numbers": {
+        "1": 2
+      },
+      "candidate_count": 0,
+      "result_path": "evidence\\agent-autonomy-repair-20261020-a3\\result.json"
+    },
+    {
+      "attempt": 4,
+      "status": "failed",
+      "error_code": "NATIVE_CHILD_OR_CONTROLLER_FAILED",
+      "duration_ms": 12829.0,
+      "observed_model_starts": 6,
+      "attempt_numbers": {
+        "1": 6
+      },
+      "candidate_count": 0,
+      "result_path": "evidence\\agent-autonomy-repair-20261020-a4\\result.json"
+    },
+    {
+      "attempt": 5,
+      "status": "failed",
+      "error_code": "NATIVE_PERSISTED_FINAL_MISSING",
+      "duration_ms": 10766.0,
+      "observed_model_starts": 3,
+      "attempt_numbers": {
+        "1": 3
+      },
+      "candidate_count": 0,
+      "result_path": "evidence\\agent-autonomy-repair-20261020-a5\\result.json"
+    },
+    {
+      "attempt": 6,
+      "status": "passed",
+      "error_code": null,
+      "duration_ms": 16453.0,
+      "observed_model_starts": 8,
+      "attempt_numbers": {
+        "1": 8
+      },
+      "candidate_count": 1,
+      "result_path": "evidence\\agent-autonomy-repair-20261020-a6\\result.json"
+    }
+  ],
+  "repair_model_starts_total": 29,
+  "original_failed_experiment_model_starts": 7,
+  "total_observed_model_starts_including_original": 36,
+  "budget_closed": true,
+  "helper_8784_stopped": true,
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "formal_versions": 0,
+  "business_conclusion_status": "PAUSED_UNREVIEWED",
+  "published": false,
+  "git_pushed": false,
+  "real_remote_change": false,
+  "nanjing_structure_confirmation": "still_pending",
+  "machine_review_note_limit": "Raw notes retain model wording. The note that only the time-limit clause is superseded is not a verified legal effect. Distinct-URL relationship remains a candidate and requires human review.",
+  "limits": [
+    "No live-site discovery or long-term monitor acceptance",
+    "No formal business approval or official effective-date determination",
+    "No generic autonomous ontology or whole-project acceptance",
+    "No OS restart recovery acceptance"
+  ]
+}

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="11" time="0.755" timestamp="2026-10-20T22:00:37.633651+08:00" hostname="Dazzle的LEGION"><testcase classname="tests.test_successor_update" name="test_fresh_difference_must_preserve_source_boundaries[unit]" time="0.001"><failure message="gov_mcp.knowledge.store.KBError: DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH">change = 'unit'
+
+    @pytest.mark.parametrize("change",["unit","scope","date","quote","repeal","subtract","extra"])
+    def test_fresh_difference_must_preserve_source_boundaries(change):
+        value=difference()
+        if change=="unit": value["new"]["unit"]="calendar_day"
+        elif change=="scope": value["exception_scope"]="所有急需用证人"
+        elif change=="date": value["effective_date"]="2026-05-05"
+        elif change=="quote": value["new"]["quote"]="15个工作日"
+        elif change=="repeal": value["whole_old_document_repealed"]=True
+        elif change=="subtract": value["can_subtract_days"]=True
+        else: value["private_answer"]="not-allowed"
+&gt;       with pytest.raises(ValueError): update.validate_difference(value,docs())
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_successor_update.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'can_subtract_days': False, 'effective_date': None, 'exception': {'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之...日缩短至5个工作日。', 'source_id': 'new', 'unit': 'working_day', 'value': 5}, 'exception_scope': '中考、高考特殊时期急需用证考生通过“绿色通道”', ...}
+documents = {'new': {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考... {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。'}], 'source_id': 'old'}}
+
+    def validate_difference(value, documents):
+        validate_contract(value, Difference)
+        old, new = documents["old"], documents["new"]
+        old_text, new_text = old["segments"][0]["quote"], new["segments"][0]["quote"]
+        before = re.search(r"缩短至([0-9]+)个自然日", old_text)
+        after = re.search(r"由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        special = re.search(r"时限由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        if not before or not after or not special: raise KBError("UNRECOGNIZED_DURATION_SOURCE")
+        for key, doc, number, unit in (("old", old, int(before[1]), "calendar_day"),
+                                       ("new", new, int(after[2]), "working_day"),
+                                       ("exception", new, int(special[2]), "working_day")):
+            item = value[key]
+            if (item["value"] != number or item["unit"] != unit or item["source_id"] != doc["source_id"]
+                    or item["quote"] != doc["segments"][0]["quote"]):
+&gt;               raise KBError("DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH")
+E               gov_mcp.knowledge.store.KBError: DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH
+
+src\gov_mcp\successor_update.py:92: KBError</failure></testcase><testcase classname="tests.test_successor_update" name="test_fresh_difference_must_preserve_source_boundaries[scope]" time="0.000"><failure message="gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION">change = 'scope'
+
+    @pytest.mark.parametrize("change",["unit","scope","date","quote","repeal","subtract","extra"])
+    def test_fresh_difference_must_preserve_source_boundaries(change):
+        value=difference()
+        if change=="unit": value["new"]["unit"]="calendar_day"
+        elif change=="scope": value["exception_scope"]="所有急需用证人"
+        elif change=="date": value["effective_date"]="2026-05-05"
+        elif change=="quote": value["new"]["quote"]="15个工作日"
+        elif change=="repeal": value["whole_old_document_repealed"]=True
+        elif change=="subtract": value["can_subtract_days"]=True
+        else: value["private_answer"]="not-allowed"
+&gt;       with pytest.raises(ValueError): update.validate_difference(value,docs())
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_successor_update.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'can_subtract_days': False, 'effective_date': None, 'exception': {'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之...”申办居民身份证时限由15个自然日缩短至5个工作日。', 'source_id': 'new', 'unit': 'working_day', 'value': 5}, 'exception_scope': '所有急需用证人', ...}
+documents = {'new': {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考... {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。'}], 'source_id': 'old'}}
+
+    def validate_difference(value, documents):
+        validate_contract(value, Difference)
+        old, new = documents["old"], documents["new"]
+        old_text, new_text = old["segments"][0]["quote"], new["segments"][0]["quote"]
+        before = re.search(r"缩短至([0-9]+)个自然日", old_text)
+        after = re.search(r"由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        special = re.search(r"时限由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        if not before or not after or not special: raise KBError("UNRECOGNIZED_DURATION_SOURCE")
+        for key, doc, number, unit in (("old", old, int(before[1]), "calendar_day"),
+                                       ("new", new, int(after[2]), "working_day"),
+                                       ("exception", new, int(special[2]), "working_day")):
+            item = value[key]
+            if (item["value"] != number or item["unit"] != unit or item["source_id"] != doc["source_id"]
+                    or item["quote"] != doc["segments"][0]["quote"]):
+                raise KBError("DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH")
+        if (int(before[1]) != int(after[1]) or value["population"] != "本省户籍居民"
+                or value["interval"] != "从受理之日起到领证之日"
+                or value["exception_scope"] != "中考、高考特殊时期急需用证考生通过“绿色通道”"
+                or value["relationship"] != "cross_url_successor_candidate"
+                or value["effective_date"] is not None or value["can_subtract_days"] is not False
+                or value["whole_old_document_repealed"] is not False):
+&gt;           raise KBError("SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION")
+E           gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION
+
+src\gov_mcp\successor_update.py:99: KBError</failure></testcase><testcase classname="tests.test_successor_update" name="test_fresh_difference_must_preserve_source_boundaries[date]" time="0.000"><failure message="gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION">change = 'date'
+
+    @pytest.mark.parametrize("change",["unit","scope","date","quote","repeal","subtract","extra"])
+    def test_fresh_difference_must_preserve_source_boundaries(change):
+        value=difference()
+        if change=="unit": value["new"]["unit"]="calendar_day"
+        elif change=="scope": value["exception_scope"]="所有急需用证人"
+        elif change=="date": value["effective_date"]="2026-05-05"
+        elif change=="quote": value["new"]["quote"]="15个工作日"
+        elif change=="repeal": value["whole_old_document_repealed"]=True
+        elif change=="subtract": value["can_subtract_days"]=True
+        else: value["private_answer"]="not-allowed"
+&gt;       with pytest.raises(ValueError): update.validate_difference(value,docs())
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_successor_update.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'can_subtract_days': False, 'effective_date': '2026-05-05', 'exception': {'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受...日缩短至5个工作日。', 'source_id': 'new', 'unit': 'working_day', 'value': 5}, 'exception_scope': '中考、高考特殊时期急需用证考生通过“绿色通道”', ...}
+documents = {'new': {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考... {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。'}], 'source_id': 'old'}}
+
+    def validate_difference(value, documents):
+        validate_contract(value, Difference)
+        old, new = documents["old"], documents["new"]
+        old_text, new_text = old["segments"][0]["quote"], new["segments"][0]["quote"]
+        before = re.search(r"缩短至([0-9]+)个自然日", old_text)
+        after = re.search(r"由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        special = re.search(r"时限由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        if not before or not after or not special: raise KBError("UNRECOGNIZED_DURATION_SOURCE")
+        for key, doc, number, unit in (("old", old, int(before[1]), "calendar_day"),
+                                       ("new", new, int(after[2]), "working_day"),
+                                       ("exception", new, int(special[2]), "working_day")):
+            item = value[key]
+            if (item["value"] != number or item["unit"] != unit or item["source_id"] != doc["source_id"]
+                    or item["quote"] != doc["segments"][0]["quote"]):
+                raise KBError("DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH")
+        if (int(before[1]) != int(after[1]) or value["population"] != "本省户籍居民"
+                or value["interval"] != "从受理之日起到领证之日"
+                or value["exception_scope"] != "中考、高考特殊时期急需用证考生通过“绿色通道”"
+                or value["relationship"] != "cross_url_successor_candidate"
+                or value["effective_date"] is not None or value["can_subtract_days"] is not False
+                or value["whole_old_document_repealed"] is not False):
+&gt;           raise KBError("SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION")
+E           gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION
+
+src\gov_mcp\successor_update.py:99: KBError</failure></testcase><testcase classname="tests.test_successor_update" name="test_fresh_difference_must_preserve_source_boundaries[quote]" time="0.000"><failure message="gov_mcp.knowledge.store.KBError: DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH">change = 'quote'
+
+    @pytest.mark.parametrize("change",["unit","scope","date","quote","repeal","subtract","extra"])
+    def test_fresh_difference_must_preserve_source_boundaries(change):
+        value=difference()
+        if change=="unit": value["new"]["unit"]="calendar_day"
+        elif change=="scope": value["exception_scope"]="所有急需用证人"
+        elif change=="date": value["effective_date"]="2026-05-05"
+        elif change=="quote": value["new"]["quote"]="15个工作日"
+        elif change=="repeal": value["whole_old_document_repealed"]=True
+        elif change=="subtract": value["can_subtract_days"]=True
+        else: value["private_answer"]="not-allowed"
+&gt;       with pytest.raises(ValueError): update.validate_difference(value,docs())
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_successor_update.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'can_subtract_days': False, 'effective_date': None, 'exception': {'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之...日缩短至5个工作日。', 'source_id': 'new', 'unit': 'working_day', 'value': 5}, 'exception_scope': '中考、高考特殊时期急需用证考生通过“绿色通道”', ...}
+documents = {'new': {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考... {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。'}], 'source_id': 'old'}}
+
+    def validate_difference(value, documents):
+        validate_contract(value, Difference)
+        old, new = documents["old"], documents["new"]
+        old_text, new_text = old["segments"][0]["quote"], new["segments"][0]["quote"]
+        before = re.search(r"缩短至([0-9]+)个自然日", old_text)
+        after = re.search(r"由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        special = re.search(r"时限由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        if not before or not after or not special: raise KBError("UNRECOGNIZED_DURATION_SOURCE")
+        for key, doc, number, unit in (("old", old, int(before[1]), "calendar_day"),
+                                       ("new", new, int(after[2]), "working_day"),
+                                       ("exception", new, int(special[2]), "working_day")):
+            item = value[key]
+            if (item["value"] != number or item["unit"] != unit or item["source_id"] != doc["source_id"]
+                    or item["quote"] != doc["segments"][0]["quote"]):
+&gt;               raise KBError("DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH")
+E               gov_mcp.knowledge.store.KBError: DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH
+
+src\gov_mcp\successor_update.py:92: KBError</failure></testcase><testcase classname="tests.test_successor_update" name="test_fresh_difference_must_preserve_source_boundaries[repeal]" time="0.000"><failure message="gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION">change = 'repeal'
+
+    @pytest.mark.parametrize("change",["unit","scope","date","quote","repeal","subtract","extra"])
+    def test_fresh_difference_must_preserve_source_boundaries(change):
+        value=difference()
+        if change=="unit": value["new"]["unit"]="calendar_day"
+        elif change=="scope": value["exception_scope"]="所有急需用证人"
+        elif change=="date": value["effective_date"]="2026-05-05"
+        elif change=="quote": value["new"]["quote"]="15个工作日"
+        elif change=="repeal": value["whole_old_document_repealed"]=True
+        elif change=="subtract": value["can_subtract_days"]=True
+        else: value["private_answer"]="not-allowed"
+&gt;       with pytest.raises(ValueError): update.validate_difference(value,docs())
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_successor_update.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'can_subtract_days': False, 'effective_date': None, 'exception': {'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之...日缩短至5个工作日。', 'source_id': 'new', 'unit': 'working_day', 'value': 5}, 'exception_scope': '中考、高考特殊时期急需用证考生通过“绿色通道”', ...}
+documents = {'new': {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考... {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。'}], 'source_id': 'old'}}
+
+    def validate_difference(value, documents):
+        validate_contract(value, Difference)
+        old, new = documents["old"], documents["new"]
+        old_text, new_text = old["segments"][0]["quote"], new["segments"][0]["quote"]
+        before = re.search(r"缩短至([0-9]+)个自然日", old_text)
+        after = re.search(r"由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        special = re.search(r"时限由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        if not before or not after or not special: raise KBError("UNRECOGNIZED_DURATION_SOURCE")
+        for key, doc, number, unit in (("old", old, int(before[1]), "calendar_day"),
+                                       ("new", new, int(after[2]), "working_day"),
+                                       ("exception", new, int(special[2]), "working_day")):
+            item = value[key]
+            if (item["value"] != number or item["unit"] != unit or item["source_id"] != doc["source_id"]
+                    or item["quote"] != doc["segments"][0]["quote"]):
+                raise KBError("DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH")
+        if (int(before[1]) != int(after[1]) or value["population"] != "本省户籍居民"
+                or value["interval"] != "从受理之日起到领证之日"
+                or value["exception_scope"] != "中考、高考特殊时期急需用证考生通过“绿色通道”"
+                or value["relationship"] != "cross_url_successor_candidate"
+                or value["effective_date"] is not None or value["can_subtract_days"] is not False
+                or value["whole_old_document_repealed"] is not False):
+&gt;           raise KBError("SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION")
+E           gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION
+
+src\gov_mcp\successor_update.py:99: KBError</failure></testcase><testcase classname="tests.test_successor_update" name="test_fresh_difference_must_preserve_source_boundaries[subtract]" time="0.001"><failure message="gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION">change = 'subtract'
+
+    @pytest.mark.parametrize("change",["unit","scope","date","quote","repeal","subtract","extra"])
+    def test_fresh_difference_must_preserve_source_boundaries(change):
+        value=difference()
+        if change=="unit": value["new"]["unit"]="calendar_day"
+        elif change=="scope": value["exception_scope"]="所有急需用证人"
+        elif change=="date": value["effective_date"]="2026-05-05"
+        elif change=="quote": value["new"]["quote"]="15个工作日"
+        elif change=="repeal": value["whole_old_document_repealed"]=True
+        elif change=="subtract": value["can_subtract_days"]=True
+        else: value["private_answer"]="not-allowed"
+&gt;       with pytest.raises(ValueError): update.validate_difference(value,docs())
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_successor_update.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'can_subtract_days': True, 'effective_date': None, 'exception': {'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日...日缩短至5个工作日。', 'source_id': 'new', 'unit': 'working_day', 'value': 5}, 'exception_scope': '中考、高考特殊时期急需用证考生通过“绿色通道”', ...}
+documents = {'new': {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。本省户籍居民申办居民身份证的时限（从受理之日起到领证之日）由25个自然日缩短至15个工作日；中考、高考... {'segments': [{'locator': '正文段落1', 'quote': '一、压缩居民身份证办理时限。将居民身份证的办理时限（从受理之日起到领证之日）缩短至25个自然日。'}], 'source_id': 'old'}}
+
+    def validate_difference(value, documents):
+        validate_contract(value, Difference)
+        old, new = documents["old"], documents["new"]
+        old_text, new_text = old["segments"][0]["quote"], new["segments"][0]["quote"]
+        before = re.search(r"缩短至([0-9]+)个自然日", old_text)
+        after = re.search(r"由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        special = re.search(r"时限由([0-9]+)个自然日缩短至([0-9]+)个工作日", new_text)
+        if not before or not after or not special: raise KBError("UNRECOGNIZED_DURATION_SOURCE")
+        for key, doc, number, unit in (("old", old, int(before[1]), "calendar_day"),
+                                       ("new", new, int(after[2]), "working_day"),
+                                       ("exception", new, int(special[2]), "working_day")):
+            item = value[key]
+            if (item["value"] != number or item["unit"] != unit or item["source_id"] != doc["source_id"]
+                    or item["quote"] != doc["segments"][0]["quote"]):
+                raise KBError("DURATION_OR_EXACT_FULL_CLAUSE_MISMATCH")
+        if (int(before[1]) != int(after[1]) or value["population"] != "本省户籍居民"
+                or value["interval"] != "从受理之日起到领证之日"
+                or value["exception_scope"] != "中考、高考特殊时期急需用证考生通过“绿色通道”"
+                or value["relationship"] != "cross_url_successor_candidate"
+                or value["effective_date"] is not None or value["can_subtract_days"] is not False
+                or value["whole_old_document_repealed"] is not False):
+&gt;           raise KBError("SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION")
+E           gov_mcp.knowledge.store.KBError: SCOPE_DATE_UNIT_OR_SUCCESSION_LIMIT_VIOLATION
+
+src\gov_mcp\successor_update.py:99: KBError</failure></testcase><testcase classname="tests.test_successor_update" name="test_fresh_difference_must_preserve_source_boundaries[extra]" time="0.002" /><testcase classname="tests.test_successor_update" name="test_real_lifecycle_stops_at_pending_candidate_and_preserves_old_history" time="0.078" /><testcase classname="tests.test_successor_update" name="test_pause_and_code_or_source_binding_change_block_children" time="0.054" /><testcase classname="tests.test_successor_update" name="test_reviewer_cannot_approve_missing_scope_or_bypass_stage" time="0.055" /><testcase classname="tests.test_successor_update" name="test_cloud_trace_checks_require_real_children_depth_order_and_no_retries" time="0.354" /></testsuite></testsuites>

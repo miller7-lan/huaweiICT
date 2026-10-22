@@ -1,0 +1,35 @@
+{
+  "scope": "local synthetic fixture, not real-model or business accuracy",
+  "remote_calls": 0,
+  "timings": {
+    "query": {
+      "iterations": 20,
+      "median_ms": 17.803,
+      "p95_ms": 19.496
+    },
+    "branches": {
+      "iterations": 40,
+      "median_ms": 0.785,
+      "p95_ms": 1.014
+    },
+    "search": {
+      "iterations": 100,
+      "median_ms": 0.366,
+      "p95_ms": 0.486
+    }
+  },
+  "python": "3.12.14",
+  "warmup_per_operation": 1,
+  "source_sha256": {
+    "src/gov_mcp/decision/__init__.py": "ba3088be2648931059ab618aa11a53b9c38d01026898418bb3d5a3c3535431e9",
+    "src/gov_mcp/decision/adapters.py": "08dbf7d19bb4b5aadac6a29f8018a140382ad7f33ad93ff5b1cd7d206cc704fc",
+    "src/gov_mcp/decision/connections.py": "c345a63189032f73b0bb8f6db34339c8c035e20824c504dd9b24183c0983b05c",
+    "src/gov_mcp/decision/logic.py": "36f17d740c1e4b658927830c42a023a43424affbb60a50ffe3d967c14ced57ab",
+    "src/gov_mcp/decision/models.py": "39a6f1b7b2d4b3b32f2bd9db610bfaaeee68832fbed5a081d49cd961b9096024",
+    "src/gov_mcp/decision/server.py": "2da4714ca1f1cedcee17bc12890ee200f7976902d13fd42bd8fb75437ee10de6",
+    "src/gov_mcp/decision/service.py": "fcb8dd78314bfddf60dd1528b3891ee8048e3c4ea921753c375403238f258cf4",
+    "src/gov_mcp/decision/workflow.py": "0410474b9b18478f0e6f77136df2a047bcf50b81d056f218c6d4e0ef69e9bf40",
+    "config/decision/synthetic.snapshot.json": "178827d1822df884ecf591233e483a9ddbaeb795f74811152ed544fe9c8174a0",
+    "scripts/benchmark_agent_workflow.py": "69ba4a58966a42cb82132a0bd9e957c3bfe2e67f3a27fa73d3358bf6c21cd358"
+  }
+}

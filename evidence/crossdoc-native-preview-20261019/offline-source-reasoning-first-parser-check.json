@@ -1,0 +1,33 @@
+{
+  "binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "result": {
+    "schema_version": 1,
+    "status": "unknown",
+    "conclusion": null,
+    "reason": "UNRECOGNIZED_OR_CONFLICTING_SOURCE_CLAUSES",
+    "facts": {
+      "region": "南京市",
+      "matter": "resident-id-renewal",
+      "household": "outside_province",
+      "remaining_validity_working_days": 22,
+      "normalized_same_start_and_unit": true,
+      "lost_or_reported": false,
+      "exam_expedited": false
+    },
+    "trace": [],
+    "scope_mapping": {
+      "region": "南京市",
+      "from_matter": "resident-id-renewal-old-card-use",
+      "to_matter": "resident-id-renewal",
+      "approved_for": "engineering_fixed_preview_only",
+      "formal_approval": false
+    },
+    "archive_mode": "frozen_historical_archive_not_current_policy",
+    "current_applicability": "unknown",
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "formally_published": false,
+    "formal_approval": false,
+    "actual_issuance_date": null,
+    "actual_gap_days": null
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "kind": "attributed_ai_selected_identity_privacy_source_review",
+  "assessed_at": "2026-10-16T19:50:31.499440+00:00",
+  "source_id": "MPS-USE-01",
+  "url": "https://www.beijing.gov.cn/zhengce/zhengcefagui/201905/t20190522_59419.html",
+  "previous_revision": "rev-d22b05a6d353b71c8bc504ad",
+  "selected_base_revision": "rev-6d9e5f6ca83d440d313f85b7",
+  "revision": "rev-f48eee88ddb882b4933b37de",
+  "review_digest": "a31f5827840b3b53f5b05e83ddb791c0d0837a90b26f964d13654c5a01dfc2fe",
+  "assessment": {
+    "id": "selected-identity-privacy-official-registry-review-20261017",
+    "reviewer": "Codex AI",
+    "reviewer_kind": "ai",
+    "assessed_at": "2026-10-16T19:50:31.499440+00:00",
+    "human_review_completed": false,
+    "business_approval": true,
+    "current_applicability": "selected_national_identity_privacy_baseline_with_explicit_official_implementation_field",
+    "scope": {
+      "region": "national",
+      "matter": "demo-id-renewal",
+      "included_locators": [
+        "正文段落9",
+        "正文段落10",
+        "正文段落11",
+        "正文段落12",
+        "正文段落15"
+      ],
+      "not_approved": [
+        "credit_blacklisting_or_joint_sanctions",
+        "individual_liability_or_all_processing_legality",
+        "local_material_waiver",
+        "omitted_whole_announcement_clauses"
+      ]
+    },
+    "date_findings": {
+      "implementation_date": "2016-07-15",
+      "basis": "原件官方登记块明确标注实施日期；不是根据落款或转载页面日期推算。",
+      "source_field": "block:document_fields",
+      "start": 46,
+      "end": 56,
+      "field_text_sha256": "7d69b2c4f2ae9462c4cf5da51aef1acc18066309d006b940943501af52a2da95",
+      "official_page_publication_field": "2016-08-11",
+      "body_signed_date": "2016-07-15",
+      "first_publication_established": false,
+      "raw_combined_meta_pubdate_preserved": [
+        "2016-08-11 10:212019-05-22 11:03"
+      ],
+      "limits": "公告正文自发布实施规则、官方实施字段、页面发布日期、签署日期分别保留。不把2016-08-11认证为首次公开日，不用URL的2019迁移日期或拼接meta替代任何法律日期；不认证未选全文或任意历史个案。"
+    },
+    "source_status": {
+      "field": "block:document_fields",
+      "value": "是",
+      "meaning": "该官方登记页的有效性标注，作为本次有范围核对的来源信号；不是独立法效裁判或未来持续有效保证。"
+    },
+    "findings": {
+      "verification": "保留国家机关/有关单位的人证一致性核查义务和公民配合要求，不据此裁定个案责任。",
+      "recording": "第六项禁止擅自记录；第七项保留擅自复印扫描限定以及扣留抵押限制，不改写为所有合法办理记录或授权处理均被禁止。",
+      "confidentiality": "完整保留安全管理制度、保密、查询权限、知悉范围及技术防护要求，不推断某个系统已达到要求。",
+      "other_law": "这几项是所选公告的规则原文，不替代其他法律下对具体处理行为和法定职责的完整判断。"
+    },
+    "basis": {
+      "previous_full_revision": "rev-d22b05a6d353b71c8bc504ad",
+      "selected_base_revision": "rev-6d9e5f6ca83d440d313f85b7",
+      "original_sha256": "1f8a44173a95c974b31e2aab436245e7d7c8ff99b7591ae13928ff3c95633e3a",
+      "body_sha256": "279fbee2acdf7e3c8098dba677582b2ac11f418a8182ddec393a84f322f8d5c5",
+      "source_observation_sha256": "b409395faa63d38273feb39022e9257586b57a20c6911feb6044502291deff84"
+    },
+    "limits": [
+      "未选第九项黑名单及联合惩戒，不批准这些措施的当前实施。",
+      "不据此核准二七材料免交、授权范围、保存期限或具体违法责任。",
+      "当前公开页及归档原文相符，首次公开时间仍未知；未代签真人验收或批准正式版本。"
+    ]
+  },
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "new_model_runs": 0,
+  "formal_publication_performed": false,
+  "hardship_probe": {
+    "normal_fetcher": true,
+    "phase": "robots",
+    "http_status": 403,
+    "new_original_acquired": false
+  },
+  "hardship_pdf_parser_changed": false,
+  "previous_draft_integrity_receipt": {
+    "path": "evidence/knowledge-update/archive/holdout-v4-before-privacy-review-20261017.json",
+    "sha256": "62ea04420dfc5f011d639a8134d68f859db7e8b49704989f265399d2111aa706"
+  },
+  "content_sha256": "2c892f483fa9beecc99ec2f8135abb0e88432a1b08bb81db9b4dfd62bbf13530"
+}

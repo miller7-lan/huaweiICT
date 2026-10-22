@@ -1,0 +1,168 @@
+{
+  "status": "FAILED_OR_PARTIAL",
+  "checks": {
+    "native_success": false,
+    "two_managed_child_starts": false,
+    "extract_and_review_children_executed": false,
+    "single_candidate": false,
+    "pending_human_review": false,
+    "no_formal_versions": true,
+    "no_tool_blocks": false,
+    "real_heartbeat_progressed": true,
+    "old_then_new_detected": true,
+    "source_guard_preserved": true,
+    "tool_whitelist": true,
+    "no_duplicate_submit_review": false,
+    "budget_closed": true
+  },
+  "campaign": {
+    "binding": "3174ef9dc6890061d88e35a7da9d4cc65eb76e829fe39bad171c38d3b2b92d99",
+    "duration_ms": 14937.0,
+    "error_code": "TASK_TOOL_BLOCKED",
+    "event_types": {
+      "agent_new_run": 3,
+      "execution_logs": 4,
+      "model_attempt_control": 10,
+      "model_output_thinking": 800,
+      "other": 1,
+      "parse": 5,
+      "step_count": 5,
+      "subagent_start": 1,
+      "token_count": 1,
+      "tool": 5
+    },
+    "implementation": {
+      "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2",
+      "knowledge/worker.py": "0e639328c2c8308c9902a2c748679f0171d57af43dad1557c7025f64c22cb469",
+      "successor_update.py": "52ebbe274d7e737546a0dda00a7065d31a86820533a9adc2a7ea7d280e4ccb73",
+      "successor_update_server.py": "74e0d6856dcd11fc938a0b3abdc517415d5bd95bbcf50421993849c28f3b1101"
+    },
+    "native_run_budget": 1,
+    "reserved_at": "2026-10-20T14:20:31.725095+00:00",
+    "run_id": "a4a275faa1ea4c1f9f9002b59fd7f1cc",
+    "status": "failed"
+  },
+  "receipt": null,
+  "tools": [
+    {
+      "name": "read_skill_md",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_state",
+      "depth": 0
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_get",
+      "depth": 1
+    },
+    {
+      "name": "govkb_successor_submit",
+      "depth": 1
+    }
+  ],
+  "heartbeat_samples": 16,
+  "cloud_model_steps": [
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "4909132d9fc04e30bc79857aaa387fd5",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "4909132d9fc04e30bc79857aaa387fd5",
+      "attempt": 1
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 1, \"duration\": 1.24, \"step_input_tokens\": 6457, \"step_output_tokens\": 87, \"total_output_tokens\": 87, \"estimated_context_tokens\": 7316, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 45.4, \"uncompressed_est_tokens\": 13394, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 6457}"
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "begin",
+      "attempt_id": "a023b22206f24d27a670846d93b962ea",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "phase": "commit",
+      "attempt_id": "a023b22206f24d27a670846d93b962ea",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "e3ab12e588894edeb0c32f6b394ec333",
+      "phase": "begin",
+      "attempt_id": "554b733f143c47ec8d14c644f6b3d846",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "e3ab12e588894edeb0c32f6b394ec333",
+      "phase": "commit",
+      "attempt_id": "554b733f143c47ec8d14c644f6b3d846",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "e3ab12e588894edeb0c32f6b394ec333",
+      "phase": "begin",
+      "attempt_id": "1c550a17d56f4a4b9600dfe5fb3b4b02",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "e3ab12e588894edeb0c32f6b394ec333",
+      "phase": "commit",
+      "attempt_id": "1c550a17d56f4a4b9600dfe5fb3b4b02",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "e3ab12e588894edeb0c32f6b394ec333",
+      "phase": "begin",
+      "attempt_id": "7cfbdfea906143d2b2bf67d33ee9c359",
+      "attempt": 1
+    },
+    {
+      "type": "model_attempt_control",
+      "content": "",
+      "agent_id": 29,
+      "depth": 1,
+      "invocation_id": "e3ab12e588894edeb0c32f6b394ec333",
+      "phase": "commit",
+      "attempt_id": "7cfbdfea906143d2b2bf67d33ee9c359",
+      "attempt": 1
+    }
+  ],
+  "jev_calls": 0,
+  "translation_calls": 0,
+  "real_remote_change": false,
+  "formal_business_approval": false,
+  "notes": "Actual native cloud agents under production Worker ticks; archive arrival is replayed. Long-term monitoring, live-site discovery and formal business publication are not validated."
+}

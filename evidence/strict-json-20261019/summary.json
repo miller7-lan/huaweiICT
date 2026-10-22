@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-19",
+  "status": "PASS_OFFLINE_CONTRACT_GUARDS_LIVE_UNVERIFIED",
+  "new_model_calls": 0,
+  "new_jev_calls": 0,
+  "tests": {
+    "tests": 172,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "historical_replay": {
+    "accepted": 9,
+    "rejected_extra_type": 3,
+    "original_results_regraded": false
+  },
+  "prepared_trial": {
+    "path": "plan.json",
+    "max_http_attempts": 4,
+    "executed": false,
+    "automatic_retry": false
+  },
+  "gates": {
+    "inference_enabled": false,
+    "form_verifier_enabled": false
+  },
+  "service_restarted": false,
+  "native_drafts_modified": false,
+  "git_pushed": false,
+  "contract_scope": [
+    "shared JSON parser",
+    "opt-in chat response_model",
+    "default and regional translation",
+    "new four-case trial"
+  ],
+  "limits": [
+    "No observed improvement in real model schema compliance yet.",
+    "Callers without response_model get strict JSON syntax validation only.",
+    "Schema validity does not approve truth, eligibility or publication.",
+    "Existing running services have not loaded this code."
+  ],
+  "source_sha256": {
+    "src/gov_mcp/json_output.py": "5a13f60e7b435b4c0ec0bb2f1c2bc8b3e4e5c64cf284d328634109ef9aa5c74d",
+    "src/gov_mcp/deepseek.py": "735491ca35d442970726a8fdd8f83834f0f1947823a15c76e064f93652f9f010",
+    "src/gov_mcp/jev_translation.py": "59c8fed77f69b23f85508a818d1f259b3f33e37b8ce5d322df88b6d10cbeb4b6",
+    "src/gov_mcp/regional_preview.py": "8af5e3f6501156f4bbe59aad311f0e23ecd982dc99881c2606a7ebc921bb8271",
+    "scripts/compare_model_parameters.py": "a569aac1b99ef14fc1dca704c9504294b45b9ab03b0c008e5f51676d73a44f21",
+    "tests/test_strict_json_output.py": "51d56ce4abdcb05b93dafafdc4a411020a8398d8e6b4030e49c6e1688f3e7d2e"
+  },
+  "historical_evidence_sha256": {
+    "plan.json": "d22885cca930e93158f5a634ccdb0d7f418e8310266052b6711cfebdf066aba3",
+    "results.json": "d6f175d196d5467ddd22591fa7ee45c670c88ed056970e78abe8eb01d661311b",
+    "execution-fingerprints.json": "b481ac5d231ae1ec596c90d5df5ce741b3c46a0adb742bf6f8f004e9b9c40ae7"
+  }
+}

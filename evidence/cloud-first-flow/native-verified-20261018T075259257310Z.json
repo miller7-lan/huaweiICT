@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-18T07:52:59.257310+00:00",
+  "scope": "Single real Nexent draft debug query on synthetic knowledge; not policy acceptance or training",
+  "native_run_requests": 1,
+  "published": false,
+  "mode": "native_debug",
+  "passed": false,
+  "stop_reasons": [
+    "STRUCTURED_PROGRAM_RESULT_MISSING"
+  ],
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_open_query",
+    "govkb_retrieve_query",
+    "final_answer",
+    "govkb_verify_query",
+    "final_answer",
+    "govkb_query_state",
+    "govkb_retrieve_query",
+    "final_answer",
+    "govkb_verify_query",
+    "final_answer",
+    "govkb_query_state",
+    "govkb_retrieve_query",
+    "final_answer",
+    "govkb_verify_query",
+    "final_answer",
+    "govkb_query_state",
+    "govkb_finalize_query",
+    "final_answer"
+  ],
+  "answer": null,
+  "duration_ms": 22858.21,
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 8,
+    "step_count": 14,
+    "model_attempt_control": 28,
+    "model_output_thinking": 1288,
+    "parse": 14,
+    "token_count": 2,
+    "warning": 1,
+    "tool": 19,
+    "subagent_start": 6,
+    "execution_logs": 8,
+    "agent_finish": 6,
+    "subagent_end": 6,
+    "final_answer": 1
+  },
+  "source_sha256": {
+    "scripts/verify_first_cloud_native.py": "deda5724f42b54f7922e68102c3ea7b180acd093bd0496fde6b89c682d483142"
+  }
+}

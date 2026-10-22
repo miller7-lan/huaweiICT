@@ -1,0 +1,26 @@
+{
+  "counts": {
+    "sites": 15,
+    "documents": 4,
+    "revisions": 6,
+    "chunks": 62,
+    "versions": 0,
+    "heads": 0,
+    "jobs": 5,
+    "latest_chunks": 35
+  },
+  "captured_at": "2026-10-15T17:25:33.7883055Z",
+  "passed": true,
+  "scope": "Actual manual stop/pause, scheduled no-op and manual resume with a healthy scheduled check; the service was restored at the end.",
+  "checks": {
+    "manual_stop_sets_pause": true,
+    "owned_services_stopped": true,
+    "scheduled_check_respects_pause": true,
+    "no_automatic_relaunch_after_manual_stop": true,
+    "manual_start_clears_pause": true,
+    "scheduled_check_after_resume_is_healthy": true,
+    "healthy_resume_does_not_duplicate_supervisor": true,
+    "business_counts_unchanged": true,
+    "no_official_publication": true
+  }
+}

@@ -1,0 +1,23 @@
+flowchart TD
+    nq["接收 facts、branch_id、question"]
+    npin["锁定版本与准备草稿"]
+    nneed["计算未找到的证据ID"]
+    nret["检索角色取登记证据"]
+    nver["独立核验精确原文"]
+    nloop["仍有缺口且轮次小于3"]
+    nunk["未取到证据的项降为unknown"]
+    ngate["单写事务内返回前重验"]
+    nout["分环节清单＋待核＋排除＋暂停"]
+    nq -->|"合法输入"| npin
+    npin -->|"草稿"| nneed
+    nneed -->|"有缺口"| nret
+    nneed -->|"无所需证据"| ngate
+    nret -->|"候选span"| nver
+    nver -->|"尚有缺口"| nloop
+    nloop -->|"继续下一轮"| nret
+    nver -->|"齐备或第3轮结束"| nunk
+    nunk -->|"计算结果"| ngate
+    ngate -->|"检查并落库"| nout
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class nneed,nver,ngate gate

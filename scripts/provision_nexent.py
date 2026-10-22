@@ -65,9 +65,12 @@ def main():
                 raise RuntimeError("Native model name is missing or ambiguous")
             state["models"][model] = matches[0]["model_id"]
             save_state(state)
+            health = api.call("POST", "/model/healthcheck?display_name=" + quote(model, safe="") + "&model_type=llm")
+            if health.get("data", {}).get("connectivity") is not True:
+                raise RuntimeError("Native model healthcheck failed; published agents would be hidden from the UI")
         api.login(accounts["developer"])
         services = api.call("GET", "/mcp/list")["remote_mcp_server_list"]
-        if not any(m["mcp_name"] == "gov_blank_mcp" for m in services):
+        if not any(m.get("remote_mcp_server_name", m.get("mcp_name")) == "gov_blank_mcp" for m in services):
             token = (RUNTIME / "mcp-token.txt").read_text(encoding="utf-8").strip()
             api.call("POST", "/mcp/add", {"name": "gov_blank_mcp", "server_url": "http://gov-blank-mcp:8765/sse",
                 "authorization_token": "Bearer " + token, "enabled": True,
@@ -89,7 +92,7 @@ def main():
             state["agents"] = found
             save_state(state)
         for agent_id in state["agents"].values():
-            api.call("POST", "/agent/update", {"agent_id": agent_id, "group_ids": [state["group_id"]], "ingroup_permission": "READ_ONLY"})
+            api.call("POST", "/agent/update", {"agent_id": agent_id, "author": "ICT 项目组", "group_ids": [state["group_id"]], "ingroup_permission": "READ_ONLY"})
         roles = {state["tenant_id"]: {state["accounts"][r]["user_id"]: r for r in ("citizen", "staff")}}
         roles[state["tenant_id"]][state["accounts"]["developer"]["user_id"]] = "citizen"
         # Tenant administrator remains unmapped for the negative role test.

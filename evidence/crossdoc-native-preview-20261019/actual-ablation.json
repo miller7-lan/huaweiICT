@@ -1,0 +1,28 @@
+{
+  "source_binding": "3b07a4d23ca6032ea726d51f7780c228e00dc433e6cca41d58c6b7c82f9ea70f",
+  "cases": [
+    {
+      "case": "complete",
+      "status": "derived",
+      "conclusion": "cannot_establish_full_cycle_coverage",
+      "reason": "HISTORICAL_ARCHIVE_COMPARISON_ONLY",
+      "trace_length": 3
+    },
+    {
+      "case": "without_cycle",
+      "status": "unknown",
+      "conclusion": null,
+      "reason": "BOTH_DISTINCT_SOURCE_DOCUMENTS_REQUIRED",
+      "trace_length": 0
+    },
+    {
+      "case": "without_old_card",
+      "status": "unknown",
+      "conclusion": null,
+      "reason": "BOTH_DISTINCT_SOURCE_DOCUMENTS_REQUIRED",
+      "trace_length": 0
+    }
+  ],
+  "new_model_calls": 0,
+  "test_kind": "actual_saved_official_sources_with_document_omission"
+}

@@ -1,0 +1,20 @@
+flowchart TD
+    ncontext["校验两地区候选快照"]
+    nbudget["有界活动与场景顺序"]
+    nopen["按scenario_id建任务"]
+    nret["只取本场景完整原文条件"]
+    nverify["核验与专属负例"]
+    nreceipt["保存实际英文与Jev回执"]
+    nfinal["返回前重新验源、暂停和回执"]
+    nstop["external_block全轮停止"]
+    ncontext -->|"有效范围"| nbudget
+    nbudget -->|"活动场景"| nopen
+    nopen -->|"opened"| nret
+    nret -->|"retrieved"| nverify
+    nverify -->|"预留Jev额度"| nreceipt
+    nreceipt -->|"有效结果"| nfinal
+    nreceipt -->|"传输／鉴权／余额阻断"| nstop
+    classDef gate fill:#fff4d8,stroke:#a56b13
+    classDef stop fill:#ffeded,stroke:#b74343
+    class ncontext,nbudget,nfinal gate
+    class nstop stop

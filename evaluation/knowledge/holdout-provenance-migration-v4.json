@@ -1,0 +1,252 @@
+{
+  "schema": 1,
+  "kind": "holdout_provenance_migration_not_acceptance",
+  "created_at": "2026-10-16T19:34:29.361301+00:00",
+  "reviewer": "Codex AI",
+  "reviewer_kind": "ai",
+  "human_review_completed": false,
+  "acceptance_authorized": false,
+  "base_archive_manifest_sha256": "99708e9d0a1a8ae20dc39f516b9df9c6c4fcb80f5cb8d2c42782b74518333123",
+  "evidence": {
+    "before_reference_sha256": "5cf599951df3e6291c9b1e5c39b9a558ab54587d38c4cd423c12475912305885",
+    "after_reference_sha256": "677bb44280c6fdc28f9d48ede8ecafc7f38c0bd0731f1e76eaf28ff2958bb69f",
+    "case_semantics_sha256": "bb4243b10e148c6c96099781ea499718e3603ef643f56e5adfa2462bd73a4743",
+    "sources": {
+      "NATIONAL": {
+        "kind": "same_original_ten_complete_clauses",
+        "removed_unreferenced_locator": "第七十六条",
+        "pending_window_watch_revision": "rev-84412d6b0b512caf0cbe1a01",
+        "before_revision": "rev-38a4d28d3a5c34083c3a6aa4",
+        "after_revision": "rev-54a85427f0fe78c051faa026",
+        "original_sha256": "ddb852a3853567db2007b7668f5f0e412c6f59b2fb8a44d124c2c0beb65192d3",
+        "before_body_sha256": "36cfa38429629ea79e43550c6af71f560d6122c469b8ace17d170ceed424ff30",
+        "after_body_sha256": "cf253b1d7cd099c1dd8addfca5d1cb0174906900dc724aaac98fcb0f0b762946",
+        "actual_review_digest": "22d8df5c5401a4bd17acbc9de08024551f31a89503975d69436a94e00e9763e4"
+      },
+      "F18": {
+        "kind": "same_original_same_complete_paragraph",
+        "locator": "正文段落4",
+        "before_revision": "rev-bf1f48ac3a1fbafdc3d9df1e",
+        "after_revision": "rev-e41c61067fe70ce4ce221dbf",
+        "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+        "before_body_sha256": "32221406b808123f2c72c2d6dfffec0f669aecd0c7df392a968ce41b20c878db",
+        "after_body_sha256": "32221406b808123f2c72c2d6dfffec0f669aecd0c7df392a968ce41b20c878db",
+        "actual_review_digest": "d12ccc8c099af9bfe14fcfbad9d236f2d6ba26f1897e9a71faa8e518a0ccb187"
+      },
+      "WINDOW": {
+        "kind": "same_original_same_complete_paragraph",
+        "locator": "正文段落3",
+        "before_revision": "rev-01e4a7686991d06c8135e431",
+        "after_revision": "rev-49ae68807f33bf53dbbec739",
+        "original_sha256": "463e687bb0eaa804722b3e1bb5672e4365ea7c3dc339a9173428dd46fdccde52",
+        "before_body_sha256": "3be789a6b01a2619712b1dd682bce6c3f7a5fba3bd5f3f25b353144a300eca64",
+        "after_body_sha256": "3be789a6b01a2619712b1dd682bce6c3f7a5fba3bd5f3f25b353144a300eca64",
+        "actual_review_digest": "57b297494780a5e47091c6c988f40c65bec62362de281248349ce3f6fb9c980f"
+      }
+    },
+    "cases": [
+      {
+        "id": "HB01",
+        "before_sha256": "1102272d40a7f21c1f955c1f4cbc3d5f7f586424ef838d86b8b416cbd2400ea8",
+        "after_sha256": "575e8e7af512dfd94a3e5b52d7f80c04077edf647760e37b4232fe12df449305",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB31",
+        "before_sha256": "a38a8206b5a4d5ed6436c82158607f18488a73a185628114883ab274d31c68a0",
+        "after_sha256": "53e49969cee6e00030db1e20341c5956d5acac35acf53090b108b203fa7f49a1",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB03",
+        "before_sha256": "f2fa17825ed202c141702fa206d372b314777ef067cc56d1cfe7d57b03afb09d",
+        "after_sha256": "f2fa17825ed202c141702fa206d372b314777ef067cc56d1cfe7d57b03afb09d",
+        "changed_fields": []
+      },
+      {
+        "id": "HB32",
+        "before_sha256": "2fa602550b556e32db31f35584418b44173cc4b7f2e096e88cd3fc04dac23dfe",
+        "after_sha256": "2fa602550b556e32db31f35584418b44173cc4b7f2e096e88cd3fc04dac23dfe",
+        "changed_fields": []
+      },
+      {
+        "id": "HB33",
+        "before_sha256": "44b4eba20fe5201de77a9bb0a4a60eb951d0f069ed275c302e09a94b58f2cae0",
+        "after_sha256": "44b4eba20fe5201de77a9bb0a4a60eb951d0f069ed275c302e09a94b58f2cae0",
+        "changed_fields": []
+      },
+      {
+        "id": "HB06",
+        "before_sha256": "097797776d0a28b04cb4cabbee2fc59b52595e382602583645f7161c871a70f8",
+        "after_sha256": "097797776d0a28b04cb4cabbee2fc59b52595e382602583645f7161c871a70f8",
+        "changed_fields": []
+      },
+      {
+        "id": "HB34",
+        "before_sha256": "f8fae18c11d38a12512176ed1a10a51a39db3b2857747ea2a3c66c4f6b2228ff",
+        "after_sha256": "f8fae18c11d38a12512176ed1a10a51a39db3b2857747ea2a3c66c4f6b2228ff",
+        "changed_fields": []
+      },
+      {
+        "id": "HB08",
+        "before_sha256": "e31d594c46355e8eba586119ab1bcb5cd7662bdac5059a6f9e6636687f64b179",
+        "after_sha256": "45408f71e18595a31aeefa9e353f233501525249efb5d3c237a664d3689dcfc9",
+        "changed_fields": [
+          "background_source_anchors"
+        ]
+      },
+      {
+        "id": "HB09",
+        "before_sha256": "0b1e6e9cebb6933f65593cda6cc52eef630cb36a7823ab5af8a39d70e2d83274",
+        "after_sha256": "0b1e6e9cebb6933f65593cda6cc52eef630cb36a7823ab5af8a39d70e2d83274",
+        "changed_fields": []
+      },
+      {
+        "id": "HB10",
+        "before_sha256": "0e9f411246a8aaa67fef6a14fbee84ae90990971ec770ad6d8b6d1b091a80d8e",
+        "after_sha256": "0e9f411246a8aaa67fef6a14fbee84ae90990971ec770ad6d8b6d1b091a80d8e",
+        "changed_fields": []
+      },
+      {
+        "id": "HB11",
+        "before_sha256": "dd9298e055bea1f2250d8b69fd126d2fd9b8c6ea931164e576e93a2e81d21d2f",
+        "after_sha256": "d63fb1b58a8afe2700c7a0cd2916ec007d5ab50defa60e9f127b8645df2d4d73",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB35",
+        "before_sha256": "eaa1beb0359659818835cacbabdf196d89bd9853baf67576a8d133ad34955de3",
+        "after_sha256": "6d0fd0399f3870dfc7ef430dbd5cbe07e0a7bd745d09831ef78cc997ba927fcf",
+        "changed_fields": [
+          "background_source_anchors",
+          "proposed_relevant_evidence"
+        ]
+      },
+      {
+        "id": "HB13",
+        "before_sha256": "f4cee190fab1c227d457b8c32d383344ce070987c4a607493f0f0c0f25683a86",
+        "after_sha256": "f4cee190fab1c227d457b8c32d383344ce070987c4a607493f0f0c0f25683a86",
+        "changed_fields": []
+      },
+      {
+        "id": "HB14",
+        "before_sha256": "b5b5de3259c8243dd99c106c6f1a4a21f58d5c417b4b6c6f7a58612dc939a047",
+        "after_sha256": "b5b5de3259c8243dd99c106c6f1a4a21f58d5c417b4b6c6f7a58612dc939a047",
+        "changed_fields": []
+      },
+      {
+        "id": "HB36",
+        "before_sha256": "f64e88f27f4f85a5798cf729455962ef2153858786e5432a8826714c2f3907db",
+        "after_sha256": "f64e88f27f4f85a5798cf729455962ef2153858786e5432a8826714c2f3907db",
+        "changed_fields": []
+      },
+      {
+        "id": "HB16",
+        "before_sha256": "8c2fb687a77e47ae56cf201370ea8a14a0d5b8e5269ba9088deb61af78e99454",
+        "after_sha256": "8c2fb687a77e47ae56cf201370ea8a14a0d5b8e5269ba9088deb61af78e99454",
+        "changed_fields": []
+      },
+      {
+        "id": "HB17",
+        "before_sha256": "9ae8abb98a15a582b1a285a1c0934ffda7489b16ac61b8290baab53162412d9e",
+        "after_sha256": "9ae8abb98a15a582b1a285a1c0934ffda7489b16ac61b8290baab53162412d9e",
+        "changed_fields": []
+      },
+      {
+        "id": "HB18",
+        "before_sha256": "536b8b82e5729002a77d4fa51e1600067276a714eb58cd291b29a7042f202ce4",
+        "after_sha256": "536b8b82e5729002a77d4fa51e1600067276a714eb58cd291b29a7042f202ce4",
+        "changed_fields": []
+      },
+      {
+        "id": "HB37",
+        "before_sha256": "88e27efa716ee0930e0fc9f3493bfa5d4b7075c9ede4dafd0d2198bcc063d19a",
+        "after_sha256": "88e27efa716ee0930e0fc9f3493bfa5d4b7075c9ede4dafd0d2198bcc063d19a",
+        "changed_fields": []
+      },
+      {
+        "id": "HB20",
+        "before_sha256": "61053330c93af1f6f81b021ccddbbadaece1c1db65f5d6509d8aa8c9dd30113d",
+        "after_sha256": "61053330c93af1f6f81b021ccddbbadaece1c1db65f5d6509d8aa8c9dd30113d",
+        "changed_fields": []
+      },
+      {
+        "id": "HB21",
+        "before_sha256": "e13b5103012d0ec3b1c2ea276cc6ab7493fd9a24e950dc2df1dfd75bd502a8ce",
+        "after_sha256": "e13b5103012d0ec3b1c2ea276cc6ab7493fd9a24e950dc2df1dfd75bd502a8ce",
+        "changed_fields": []
+      },
+      {
+        "id": "HB22",
+        "before_sha256": "77478e3912fd8ab76e2179288c9f6f0e4fa1ba2d690afbf461975559fd2ca2a4",
+        "after_sha256": "77478e3912fd8ab76e2179288c9f6f0e4fa1ba2d690afbf461975559fd2ca2a4",
+        "changed_fields": []
+      },
+      {
+        "id": "HB38",
+        "before_sha256": "97994374cbd1705d57810602bc4f4036fedec5e2e169ac3dc74023eee8e2fdbc",
+        "after_sha256": "97994374cbd1705d57810602bc4f4036fedec5e2e169ac3dc74023eee8e2fdbc",
+        "changed_fields": []
+      },
+      {
+        "id": "HB24",
+        "before_sha256": "d12d96d5b805e3e16d06b1128178df7767a6c78b6db641e009a0fa92485754be",
+        "after_sha256": "d12d96d5b805e3e16d06b1128178df7767a6c78b6db641e009a0fa92485754be",
+        "changed_fields": []
+      },
+      {
+        "id": "HB25",
+        "before_sha256": "a3f4f1cabc5abbf1766fe9213a0b0394247a5d7412e5e4dffc8cc9157d709efe",
+        "after_sha256": "a3f4f1cabc5abbf1766fe9213a0b0394247a5d7412e5e4dffc8cc9157d709efe",
+        "changed_fields": []
+      },
+      {
+        "id": "HB26",
+        "before_sha256": "059e57a65375470f22433b3eeac8523e8ad0a2925617dfede5ed8e65244241ee",
+        "after_sha256": "059e57a65375470f22433b3eeac8523e8ad0a2925617dfede5ed8e65244241ee",
+        "changed_fields": []
+      },
+      {
+        "id": "HB39",
+        "before_sha256": "4cfc5ca824f13d849486c50cde16926fadafcf0cffa8f6d0f04a5500ce8460c4",
+        "after_sha256": "4cfc5ca824f13d849486c50cde16926fadafcf0cffa8f6d0f04a5500ce8460c4",
+        "changed_fields": []
+      },
+      {
+        "id": "HB28",
+        "before_sha256": "946b7fcb7416839367bda5faabf78d0ccf224b11ecfb937336dbd04f801b064e",
+        "after_sha256": "946b7fcb7416839367bda5faabf78d0ccf224b11ecfb937336dbd04f801b064e",
+        "changed_fields": []
+      },
+      {
+        "id": "HB29",
+        "before_sha256": "7011f82c1f5fcbdfafa18fc4799b907b0d49c65bf9cdebb4005f711a8ca5341d",
+        "after_sha256": "7011f82c1f5fcbdfafa18fc4799b907b0d49c65bf9cdebb4005f711a8ca5341d",
+        "changed_fields": []
+      },
+      {
+        "id": "HB30",
+        "before_sha256": "42fa5d13578d08c720fb79a44cca606174327dd9d6009a36649d49ac8410c32c",
+        "after_sha256": "42fa5d13578d08c720fb79a44cca606174327dd9d6009a36649d49ac8410c32c",
+        "changed_fields": []
+      }
+    ],
+    "literal_span_changes": 0,
+    "evidence_insertions_or_removals": 0
+  },
+  "previous_integrity_report": {
+    "path": "evaluation/knowledge/archive/holdout-v3-before-bound-source-review-20261017/holdout-draft-integrity.json",
+    "sha256": "d6f69a7c59cdc05f8c20c7fbaf46951f17e0a12e944d695b13fb2f401dc40266"
+  },
+  "limits": "All 30 question/date/oracle/outcome/prerequisite/independence judgments are unchanged. Only three source bindings and five cases' revision/ordinal pointers change. This neither certifies independence nor freezes references, establishes unresolved currentness, authorizes model execution or publishes knowledge.",
+  "content_sha256": "63cefa1961cd3cbb472351f061b4f63f70d5a17830eb2279da7ab831e33afff7"
+}

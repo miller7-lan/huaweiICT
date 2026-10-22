@@ -1,0 +1,33 @@
+{
+  "reviewed_on": "2026-10-18",
+  "timezone": "Asia/Shanghai",
+  "baseline_commit": "663c40de749cc2e0b4db722039d012e43455a672",
+  "mode": "offline_targeted_contract_tests_not_inference",
+  "actual_remote_model_calls": 0,
+  "business_quality_measured": false,
+  "provider": "jev",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "model": "jev-1.13.0",
+  "credential_reference": "env:TYPESAFE_API_KEY",
+  "key_file_created": false,
+  "legacy_evidence_preserved": true,
+  "tests": {
+    "tests": 200,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "warnings": 2,
+  "source_sha256": {
+    "src/gov_mcp/classification.py": "565f9a5be46987ca031ef1c98533846e682f1bfa678947f90e9afb759cb3fc15",
+    "scripts/test_jev_live.py": "6f9539cea5cfc9034f91acad6e37162704cbdad5de1bbc88258f443db71649bf",
+    "scripts/classify_topic3_data.py": "baef834be4ccc0e32e38d624b12622ee22f5b33014d3ec0791e148f99d194e18",
+    "tests/test_jev_gateway.py": "180c8b86f567c7fb13514129c65cb9c00148a7bafae41c45ae8ca615b88370d3",
+    "config/preparation/classification.json": "f1cb98d331e42f5ec47d1c1cf4561d6c5a5de63fc5939e9f78cb231147b6c39f",
+    "config/decision/connections.json": "c08e4c4b3999fe6354f399cf5fc1f2643c629212f4352a24f11138b24536981e"
+  },
+  "model_switches": {
+    "inference_enabled": false,
+    "form_verifier_enabled": false
+  }
+}
