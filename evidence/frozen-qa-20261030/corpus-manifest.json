@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "corpus": "henan-frozen-qa-20261030",
+  "built_at": "2026-10-30T04:40:51.431191+00:00",
+  "sources": [
+    {
+      "code": "A2",
+      "source_id": "HN-FEE-CATALOG-XLSX-2025",
+      "kind": "xlsx",
+      "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+      "revision": "rev-d806c2a1656f08b00fb5a180",
+      "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+      "units": 258,
+      "catalog_clauses_rechecked": 0,
+      "formula_cells_skipped": 0,
+      "units_sha256": "313ee19c5f04effa888ae1bc05ea158d3b0eb658ebb19f673a93fb6300341fac"
+    },
+    {
+      "code": "A3",
+      "source_id": "HN-MEASURES-2021-PDF",
+      "kind": "scan",
+      "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+      "revision": "rev-3e0ef686ca50ff8c594937f5",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "units": 2,
+      "catalog_clauses_rechecked": 0,
+      "formula_cells_skipped": 0,
+      "units_sha256": "610dc26faa738053a90280b7d56bf6831c4e91b76a5b68c41a9892f2afd157ba"
+    },
+    {
+      "code": "A4",
+      "source_id": "MOF-FEE-2007",
+      "kind": "html",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+      "revision": "rev-ddfaf873b73e03ab4202c18c",
+      "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+      "units": 8,
+      "catalog_clauses_rechecked": 5,
+      "formula_cells_skipped": 0,
+      "units_sha256": "81c1e6768dfed68b66695309bf0892a714770fe2ab21f45a0e9f2e11a353b06e"
+    },
+    {
+      "code": "A5",
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "kind": "html",
+      "url": "https://www.mof.gov.cn/gkml/caizhengwengao/wg2018/wg201805/201808/t20180820_2993673.htm",
+      "revision": "rev-e41c61067fe70ce4ce221dbf",
+      "original_sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+      "units": 9,
+      "catalog_clauses_rechecked": 1,
+      "formula_cells_skipped": 0,
+      "units_sha256": "3934b91eaa5efab06c1236e1e3a7249a26d55996215a19a57bb914b799cf07f8"
+    },
+    {
+      "code": "A6",
+      "source_id": "HN-MEASURES-2026",
+      "kind": "html",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "units": 12,
+      "catalog_clauses_rechecked": 1,
+      "formula_cells_skipped": 0,
+      "units_sha256": "d088c29bc43c9b58563c061b74e480541f60f9ef98603d9957b9a0e295c6bc51"
+    },
+    {
+      "code": "A7",
+      "source_id": "HN-NORM-PUBLISHER",
+      "kind": "html",
+      "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+      "revision": "rev-4b92705f0d8d799adef32b29",
+      "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+      "units": 269,
+      "catalog_clauses_rechecked": 14,
+      "formula_cells_skipped": 0,
+      "units_sha256": "a0655bfc9b69c31683d6b9b9bf6335d367035e65ff445150a65350a6a0161f58"
+    },
+    {
+      "code": "B1",
+      "source_id": "HN-MEASURES-2024-JY",
+      "kind": "html",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-71014e82351747c52e933f86",
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "units": 23,
+      "catalog_clauses_rechecked": 1,
+      "formula_cells_skipped": 0,
+      "units_sha256": "adfd845e78cafbd22bcd654a591c7491e4995028bc588a6b7d5dd10c227e9859"
+    }
+  ],
+  "unit_count": 581,
+  "acquisition": [
+    {
+      "source_id": "HN-FEE-CATALOG-XLSX-2025",
+      "origin": "private_copy",
+      "http_requests": 0
+    },
+    {
+      "source_id": "HN-MEASURES-2021-PDF",
+      "origin": "private_copy",
+      "http_requests": 0
+    },
+    {
+      "source_id": "MOF-FEE-2007",
+      "origin": "private_copy",
+      "http_requests": 0
+    },
+    {
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "origin": "private_copy",
+      "http_requests": 0
+    },
+    {
+      "source_id": "HN-MEASURES-2026",
+      "origin": "private_copy",
+      "http_requests": 0
+    },
+    {
+      "source_id": "HN-NORM-PUBLISHER",
+      "origin": "private_copy",
+      "http_requests": 0
+    },
+    {
+      "source_id": "HN-MEASURES-2024-JY",
+      "origin": "private_copy",
+      "http_requests": 0
+    }
+  ],
+  "model_calls": 0,
+  "corpus_sha256": "bb1c633716c93854329a0c73af9498ca16791150174e41df7fb0a888cb5a8c36",
+  "scope_note": "Frozen archived sources for evaluation; not current policy. Only the scan's two attributed AI transcriptions are included."
+}
