@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-10-22T08:13:22.374741+00:00",
+  "status": "PASS_REAL_HENAN_THREE_SOURCE_NATIVE_ARCHIVE",
+  "native_evidence": "20261022T081040850886Z.json",
+  "metadata_precheck_failures": [
+    {
+      "evidence": "20261022T080759965788Z.json",
+      "error_code": "ONTOLOGY_CROSSDOC_SERVICE_BINDING_CHANGED",
+      "native_run_requests": 0
+    }
+  ],
+  "real_native_runs": 1,
+  "native_run_requests": 1,
+  "whole_run_retries": 0,
+  "native_checks_passed": 15,
+  "observed_model_starts": 7,
+  "native_duration_ms": 13234.0,
+  "source_documents": 3,
+  "located_segments": 17,
+  "plan_nodes": 4,
+  "agents": {
+    "retriever": 35,
+    "verifier": 36,
+    "controller": 37
+  },
+  "prior_agents_protected": 34,
+  "prior_agents_unchanged": true,
+  "drafts_disabled_unpublished": true,
+  "campaign": {
+    "native_runs": 1,
+    "max_native_runs": 1,
+    "tasks": 1,
+    "run_status": "passed",
+    "jev_calls": 0,
+    "translation_calls": 0
+  },
+  "rolled_back": true,
+  "after_query": {
+    "status": "UNSUPPORTED_RELATION",
+    "version": "d430fc5a7b80ca848bff9385a8c3392d961afd1c0eaaca1c32836e9d1d5ad384",
+    "archive_result": null,
+    "trace": [],
+    "actual_fee_yuan": null,
+    "promised_duration": null,
+    "formal_approval": false,
+    "formally_published": false,
+    "current_applicability": "unknown",
+    "business_conclusion_status": "PAUSED_UNREVIEWED"
+  },
+  "owned_helper_stopped": true,
+  "protected_inputs_unchanged": true,
+  "protected_input_count": 26,
+  "workflow_head_versions_and_pause_unchanged": true,
+  "workflow_heartbeat_fresh": true,
+  "visible_controller_input_tokens": 43192,
+  "visible_controller_output_tokens": 274,
+  "total_model_tokens": null,
+  "total_model_cost": null,
+  "distinct_engineering_checks": 109,
+  "new_ocr_runs": 0,
+  "new_api_image_reads": 0,
+  "scan_evidence": "Previously attributed AI visual transcription, visually rechecked this session; no human review",
+  "formal_approval": false,
+  "formally_published": false,
+  "business_acceptance_complete": false,
+  "limits": [
+    "One bounded frozen-archive native sample, not independent business accuracy",
+    "No runtime image/OCR pipeline; existing attributed scan transcription",
+    "Current policy applicability, fee waivers, actual payable fee and promised duration remain unknown",
+    "No cross-tenant clean-machine import or low-resource effort comparison"
+  ]
+}

@@ -23,11 +23,12 @@ def create_app(preview, token, port=8785):
         allowed_hosts=["localhost:*", "127.0.0.1:*", f"host.docker.internal:{port}"],
         allowed_origins=["http://localhost:*", "http://127.0.0.1:*"])
     mcp = FastMCP(SERVICE, transport_security=security)
-    startup = code_fingerprints()
+    fingerprints = getattr(preview, "fingerprints", code_fingerprints)
+    startup = fingerprints()
 
     def execute(operation, *args):
         try:
-            if code_fingerprints() != startup:
+            if fingerprints() != startup:
                 raise ValueError("SERVICE_SOURCE_CHANGED_RESTART_REQUIRED")
             return operation(*args)
         except Exception as error:
@@ -36,17 +37,17 @@ def create_app(preview, token, port=8785):
 
     @mcp.tool()
     def govkb_ontology_crossdoc_open_query(scenario_id: str) -> dict:
-        """Open the one fixed fictional scenario during its reserved campaign."""
+        """Open the profile's fixed archive scenario during its reserved campaign."""
         return execute(preview.open_query, scenario_id)
 
     @mcp.tool()
     def govkb_ontology_crossdoc_retrieve(task_id: str) -> dict:
-        """Retrieve both full archived documents bound to the reviewed ontology."""
+        """Retrieve the complete source selections bound to the reviewed ontology."""
         return execute(preview.retrieve, task_id)
 
     @mcp.tool()
     def govkb_ontology_crossdoc_verify(task_id: str) -> dict:
-        """Execute the active reviewed ontology's typed three-node proof."""
+        """Execute the active reviewed ontology's source-bound dependency plan."""
         return execute(preview.verify, task_id)
 
     @mcp.tool()
@@ -69,6 +70,17 @@ def create_app(preview, token, port=8785):
 
 def open_preview(runtime):
     config = json.loads((runtime / "ontology-binding.json").read_text("utf-8"))
+    if config.get("profile") == "henan-archived-multimodal-v1":
+        from gov_mcp.henan_multimodal import HenanMultimodalWorkspace
+        from gov_mcp.henan_multimodal_preview import HenanMultimodalPreview
+        from gov_mcp.henan_multimodal_sources import ArchivedHenanMultimodalSource
+        paths = config["henan_source"]
+        source = ArchivedHenanMultimodalSource(*(Path(paths[key]) for key in
+            ("preparation_root", "observation_path", "extraction_path", "gates_path")))
+        workspace = HenanMultimodalWorkspace(Path(config["ontology_root"]), source)
+        return HenanMultimodalPreview(runtime, workspace, config["expected_version"])
+    if config.get("profile") not in (None, "nanjing-archive-interval-plan-v1"):
+        raise ValueError("UNRELATED_ONTOLOGY_EXECUTION_PROFILE")
     source = ArchivedCrossdocSource(runtime)
     workspace = CrossdocOntologyWorkspace(Path(config["ontology_root"]), source)
     return OntologyCrossdocPreview(runtime, workspace, config["expected_version"])

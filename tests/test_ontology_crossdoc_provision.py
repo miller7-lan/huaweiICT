@@ -147,6 +147,48 @@ def test_metadata_provision_preserves_every_other_agent_and_is_idempotent(enviro
         assert info["requested_output_tokens"] == 1024
 
 
+@pytest.mark.parametrize("field", ["remote_mcp_server_url", "server_url", "remote_mcp_server"])
+def test_mcp_list_address_alias_reuses_the_exact_existing_service(environment, field):
+    api = FakeAPI(environment)
+    api.services = [{"remote_mcp_server_name": provision.SERVICE,
+                     field: "http://host.docker.internal:8785/sse"}]
+    result = provision.provision(api, {"agents": {}}, "mock-bearer")
+    assert result["configured"] and result["inference_calls"] == 0
+    assert ("POST", "/mcp/add") not in api.calls
+
+
+def test_mcp_list_consistent_address_aliases_are_accepted(environment):
+    api = FakeAPI(environment)
+    api.services = [{"remote_mcp_server_name": provision.SERVICE,
+                     **{field: "http://host.docker.internal:8785/sse" for field in
+                        ("remote_mcp_server_url", "server_url", "remote_mcp_server")}}]
+    assert provision.provision(api, {"agents": {}}, "mock-bearer")["configured"]
+    assert ("POST", "/mcp/add") not in api.calls
+
+
+@pytest.mark.parametrize("addresses", [
+    {},
+    {"remote_mcp_server": None},
+    {"remote_mcp_server": False},
+    {"remote_mcp_server": {"url": "http://host.docker.internal:8785/sse"}},
+    {"remote_mcp_server": ""},
+    {"remote_mcp_server": "http://host.docker.internal:8783/sse"},
+    {"remote_mcp_server_url": "http://host.docker.internal:8785/sse", "remote_mcp_server": None},
+    {"remote_mcp_server_url": "http://host.docker.internal:8785/sse",
+     "remote_mcp_server": "http://host.docker.internal:8783/sse"},
+    {"remote_mcp_server_url": "http://host.docker.internal:8785/sse",
+     "server_url": "http://host.docker.internal:8783/sse",
+     "remote_mcp_server": "http://host.docker.internal:8785/sse"},
+])
+def test_mcp_list_missing_invalid_conflicting_or_retargeted_address_stops_before_mutation(environment, addresses):
+    api = FakeAPI(environment)
+    api.services = [{"remote_mcp_server_name": provision.SERVICE, **addresses}]
+    with pytest.raises(RuntimeError, match="ONTOLOGY_CROSSDOC_SERVICE_BINDING_CHANGED"):
+        provision.provision(api, {"agents": {}}, "mock-bearer")
+    assert not any(method == "POST" and path not in {"/agent/search_info", "/agent/check_name"}
+                   for method, path in api.calls)
+
+
 @pytest.mark.parametrize("collision", ["agent", "skill", "model", "service"])
 def test_preflight_rejects_collisions_before_any_mutation(environment, collision):
     api = FakeAPI(environment)

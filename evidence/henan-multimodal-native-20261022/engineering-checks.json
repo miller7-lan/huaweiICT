@@ -1,0 +1,42 @@
+{
+  "recorded_at": "2026-10-22T08:13:22.373750+00:00",
+  "distinct_final_tests": 109,
+  "validation": [
+    {
+      "test_files": [
+        "tests/test_henan_multimodal_preview.py",
+        "tests/test_ontology_crossdoc_preview.py"
+      ],
+      "passed": 31,
+      "scope": "Synthetic temporary bridge lifecycle and existing profile compatibility."
+    },
+    {
+      "test_files": [
+        "tests/test_ontology_crossdoc_provision.py",
+        "tests/test_henan_multimodal_provision.py"
+      ],
+      "passed": 49,
+      "scope": "Draft isolation and current MCP address schema; includes 13 added address regressions."
+    },
+    {
+      "test_files": [
+        "tests/test_henan_multimodal_runner.py",
+        "tests/test_ontology_crossdoc_runner.py"
+      ],
+      "passed": 29,
+      "scope": "Fabricated event acceptance contracts; source plan executed only in synthetic workspaces."
+    }
+  ],
+  "full_repository_regression": false,
+  "model_calls": 0,
+  "real_native_acceptance": false,
+  "test_files_sha256": {
+    "tests/test_henan_multimodal_preview.py": "cac4c86a896307467ffb31e8068f4ca3567977c54fdf335d6c5a162407a18c59",
+    "tests/test_henan_multimodal_provision.py": "cc5717b7388d0ff8d721d961067a34e778ca046ded8d04a82cebae15d38b1439",
+    "tests/test_henan_multimodal_runner.py": "6d90ef172b41a8301621045afbdb74c29cd2214a929ba42a1be4c461ac9487bf",
+    "tests/test_ontology_crossdoc_preview.py": "813d7e1adbe7e56261f6e2c40635a1de684d30cc27bddaf3c290782effb32ccf",
+    "tests/test_ontology_crossdoc_provision.py": "698747b02a72b82e2c123fd3b86de00bf71a4fb1b3bd752d519dc64779cca4b6",
+    "tests/test_ontology_crossdoc_runner.py": "30ec5e3e75e360d64878218ea61862b9a1a967bf6c50155f2e2f66f675a01fbb"
+  },
+  "note": "Final nonoverlapping test-file sets only. Earlier overlapping checks and the regression-first failure are not added to 109. Runner finally cleanup was corrected and independently reviewed after assessor checks; the new live run exercised its normal cleanup."
+}

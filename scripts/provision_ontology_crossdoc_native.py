@@ -25,6 +25,7 @@ PORT = 8785
 SCENARIO = "nanjing_outside_old_card"
 NAMES = {"controller": "govontologycrossdoc_controller", "retriever": "govontologycrossdoc_retriever",
          "verifier": "govontologycrossdoc_verifier"}
+DISPLAY_PREFIX = "已复核本体跨文档预览 "
 ROLE_TOOLS = {
     "controller": ["govkb_ontology_crossdoc_open_query", "govkb_ontology_crossdoc_state",
                    "govkb_ontology_crossdoc_finalize"],
@@ -83,7 +84,7 @@ def draft_body(role, saved, group_id):
         "parse, summarize, str(), or rewrite them. Import no modules; emit no DSML. No other tool "
         "or extra network. Stop on errors without repeating actions or business requests.")
     return {
-        "name": NAMES[role], "display_name": "已复核本体跨文档预览 " + role,
+        "name": NAMES[role], "display_name": DISPLAY_PREFIX + role,
         "description": "Isolated reviewed ontology archived-source preview; disabled unpublished draft.",
         "enabled": False, "model_ids": [saved["model_id"]], "is_main_agent": role == "controller",
         "duty_prompt": prompt, "few_shots_prompt": first_action() if role == "controller" else prompt,
@@ -206,7 +207,7 @@ def check_agent_names(api, saved, roles=None):
     roles = list(NAMES) if roles is None else list(roles)
     items = []
     for role in roles:
-        item = {"name": NAMES[role], "display_name": "已复核本体跨文档预览 " + role}
+        item = {"name": NAMES[role], "display_name": DISPLAY_PREFIX + role}
         if role in saved.get("agents", {}):
             item["agent_id"] = _agent_id(saved["agents"][role])
         items.append(item)
@@ -298,6 +299,18 @@ def _preflight_owned_and_collisions(api, saved):
         check_owned_draft(info, role, saved)
 
 
+def _service_url(service):
+    """Accept known Nexent address aliases only when all present values agree."""
+    if not isinstance(service, dict):
+        raise RuntimeError("ONTOLOGY_CROSSDOC_SERVICE_BINDING_CHANGED")
+    addresses = [service[field] for field in
+                 ("remote_mcp_server_url", "server_url", "remote_mcp_server") if field in service]
+    if (not addresses or any(type(value) is not str or not value for value in addresses)
+            or any(value != addresses[0] for value in addresses[1:])):
+        raise RuntimeError("ONTOLOGY_CROSSDOC_SERVICE_BINDING_CHANGED")
+    return addresses[0]
+
+
 def provision(api, saved, token):
     """Local configuration endpoints only; no connect, inference, or publication."""
     platform = read(ROOT / ".runtime/nexent-state.json")
@@ -331,7 +344,7 @@ def provision(api, saved, token):
     service_url = f"http://host.docker.internal:{PORT}/sse"
     if len(matches) > 1:
         raise RuntimeError("AMBIGUOUS_ONTOLOGY_CROSSDOC_SERVICE")
-    if matches and matches[0].get("remote_mcp_server_url", matches[0].get("server_url")) != service_url:
+    if matches and _service_url(matches[0]) != service_url:
         raise RuntimeError("ONTOLOGY_CROSSDOC_SERVICE_BINDING_CHANGED")
     if not matches:
         api.call("POST", "/mcp/add", {"name": SERVICE, "server_url": service_url,

@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-10-22T08:14:22.558846+00:00",
+  "status": "PASS_ACTUAL_DISABLED_TREE_EXPORT",
+  "agent_count": 3,
+  "actual_agent_ids": {
+    "retriever": 35,
+    "verifier": 36,
+    "controller": 37
+  },
+  "actual_skill_id": 10,
+  "export_sha256": "9bc19582710dd044921de2f72e8ef0ac56415d4369a39f304d9d9f58eab41808",
+  "agent_json_sha256": "1a0b1d588f95003ea20446d92a1a91eb2a0461aa4eccb846d1debce81f1d930a",
+  "skill_source_sha256": "c4866dd89a65a9df3e7575879afaa0cc9793a85d74ad6da2f49fc531043644a5",
+  "exported_skill_sha256": "cb473839a0ad35687bb214e5605eea37e1ea37e903a8b6e3a21836816d0c1134",
+  "skill_content_verified": true,
+  "credentials_scan_passed": true,
+  "credential_scan_scope": [
+    "agent.json",
+    "skills/govkb-henan-multimodal-preview.zip!govkb-henan-multimodal-preview/SKILL.md"
+  ],
+  "agent_common_configuration_fields_verified": [
+    "allow_chat_metadata",
+    "constraint_prompt",
+    "description",
+    "display_name",
+    "duty_prompt",
+    "enable_protocol_repair_retry",
+    "enabled",
+    "few_shots_prompt",
+    "is_main_agent",
+    "max_steps",
+    "model_ids",
+    "model_params_override",
+    "name",
+    "provide_run_summary",
+    "requested_output_tokens"
+  ],
+  "skill_comparison": "Exact full text after line-ending and outer-whitespace normalization",
+  "archive": "artifacts/competition-20261022/nexent-henan-multimodal-native-export.zip",
+  "agent_json": "config/exports/henan-multimodal-native-20261022/agent.json",
+  "actual_export_unmodified": true,
+  "legacy_nanjing_exports_unchanged": true,
+  "native_export_download_requests": 1,
+  "cross_tenant_import_tested": false,
+  "model_calls": 0,
+  "agent_or_skill_mutations": 0,
+  "published": false
+}

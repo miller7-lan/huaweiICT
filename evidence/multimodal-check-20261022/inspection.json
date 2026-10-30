@@ -1,0 +1,114 @@
+{
+  "recorded_at": "2026-10-22T15:55:36.157838+08:00",
+  "status": "PASS_LOCAL_INSPECTION_PENDING_ACTIVATION",
+  "candidate_id": "e6e797f213ec7a11f6f59b80bbb6b6b4c402d71a8203669b807c6886d2d556e8",
+  "head": "d430fc5a7b80ca848bff9385a8c3392d961afd1c0eaaca1c32836e9d1d5ad384",
+  "implementation": "1fb89e848e391c011a43778b123e5f8c6cf54e985e0c2960cb9ebebff005a739",
+  "source_binding": "501601e92235ab2251b49ed673f7b49272ae1992b864ee6edc2945bec7b2ae68",
+  "checks": {
+    "recorded_source_and_test_fingerprints_match": true,
+    "six_file_implementation_fingerprint_matches": true,
+    "originals_receipts_pages_and_current_source_gates_valid": true,
+    "current_binding_matches_prepared_candidate": true,
+    "candidate_rebuilt_exactly_from_archived_sources": true,
+    "candidate_id_matches_rebuilt_sources": true,
+    "sources_stable_across_inspection": true,
+    "original_thirteen_input_hashes_match_preparation": true,
+    "expected_baseline_active": true,
+    "candidate_pending_and_unactivated": true,
+    "query_stops_without_execution_trace": true,
+    "business_pause_and_unknowns_preserved": true,
+    "all_protected_files_unchanged_during_inspection": true
+  },
+  "source_count": 3,
+  "located_segments": {
+    "catalog": 10,
+    "norm": 5,
+    "scan": 2
+  },
+  "plan_nodes": 4,
+  "active_instances": 0,
+  "candidate_status": "pending_review",
+  "actual_query": {
+    "status": "UNSUPPORTED_RELATION",
+    "version": "d430fc5a7b80ca848bff9385a8c3392d961afd1c0eaaca1c32836e9d1d5ad384",
+    "archive_result": null,
+    "trace": [],
+    "actual_fee_yuan": null,
+    "promised_duration": null,
+    "formal_approval": false,
+    "formally_published": false,
+    "current_applicability": "unknown",
+    "business_conclusion_status": "PAUSED_UNREVIEWED"
+  },
+  "prior_engineering_checks": {
+    "distinct_passes_recorded": 39,
+    "reused_after_fingerprint_check": true,
+    "rerun_count": 0,
+    "scope": [
+      {
+        "test_file": "tests/test_henan_multimodal.py",
+        "passed": 24,
+        "scope": "Synthetic temporary lifecycle workspaces with counterfactual source numbers; not real data activation."
+      },
+      {
+        "test_file": "tests/test_henan_multimodal_sources.py",
+        "passed": 15,
+        "scope": "Local private originals available; temporary copies and read-only collector state. Skips on machines without those originals."
+      }
+    ]
+  },
+  "source_files_sha256": {
+    "src/gov_mcp/henan_multimodal.py": "caa37898c59c63e439355d8560a3874487c78fca1fb9e43f878a5126f36c9f2a",
+    "src/gov_mcp/henan_multimodal_sources.py": "9d41ef78fda542f05593b965188ac16baf35fbe3b24bbf0e3a03901bd74c409e",
+    "scripts/run_henan_multimodal.py": "de935d700ab3148429a181faf711e97f1e3d3454b2dab751a947ea1fb899ae1d",
+    "tests/test_henan_multimodal.py": "4b3e0b67e24307a8d1bf5721ebbb8eac61db4757442cb79fea0ad12883a79bc0",
+    "tests/test_henan_multimodal_sources.py": "10b1b38fdf81890198fc9a49ab8d8111122a7bd2c2528fc0fa36cafe160c8e2d"
+  },
+  "protected_file_count": 16,
+  "protected_file_hashes": {
+    "config/decision/connections.json": "c08e4c4b3999fe6354f399cf5fc1f2643c629212f4352a24f11138b24536981e",
+    "evidence/competition-multimodal-20261021/preparation.json": "48f0af25772180176449712ab9540efd532fc0c402d9bfb084347c8888aed973",
+    "evidence/competition-multimodal-20261021/local-extraction.json": "c1f7a18592b002133a3fd61a3ebac2f270c3cf18c8e4af210be1604ce57d12a5",
+    "evidence/competition-multimodal-20261021/scan-visual-observation.json": "2dc6e6207a30ee94c0c132c290ace71071e6df43d4c6a54c8c34a9e557ddbea5",
+    ".runtime/multimodal-preparation-20261021/HN-FEE-CATALOG-XLSX-2025.xlsx": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+    ".runtime/multimodal-preparation-20261021/MOF-FEE-2007.html": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+    ".runtime/multimodal-preparation-20261021/HN-MEASURES-2021-PDF.pdf": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+    ".runtime/multimodal-preparation-20261021/HN-FEE-CATALOG-XLSX-2025-attempt.json": "a673c395c4aaa4ad74783d5e8cd2d5c1d76ed9f8632d4c01487959cc567ea915",
+    ".runtime/multimodal-preparation-20261021/MOF-FEE-2007-attempt.json": "c514efc9b42e1731eb83b19e59689c3823d903e75238f948d5647a5a81284052",
+    ".runtime/multimodal-preparation-20261021/HN-MEASURES-2021-PDF-attempt.json": "7e36460700adc49d837502ccda797b7da32e8a0b89246a3e9090cd33fc800276",
+    ".runtime/multimodal-preparation-20261021/scan-5.png": "c235b11699fa32b9bdf9a7b9d19dc0a58fa8b0e95a1a51f0765fa1943234d80b",
+    ".runtime/multimodal-preparation-20261021/scan-6.png": "b6adb0ea3e9d1cdd646e1071ede1288390768d28fd3dc7840ef12f7c5cc889d4",
+    ".runtime/multimodal-preparation-20261021/acquisition/knowledge.sqlite3": "c4001cd98c6f456dbd5c4dbc017bd55efa8b79a09a043a4cd1a657e621b863f7",
+    ".runtime/henan-multimodal-20261022/gates.json": "157509a374c403f632c22245318042d3e1a6fede820fe7b7b79b92226fb83ad8",
+    ".runtime/henan-multimodal-20261022/ontology/knowledge.sqlite3": "9bfa2a74f0c89d80de0306937afc043fd7d29078ed29c3eee49dfbde07d45a98",
+    ".runtime/henan-multimodal-20261022/ontology/ontology-workspace.json": "55b4596dbabbfa6b8f4d9edbff928b4419c88f398c2c4989cfba63bc7f6452ed"
+  },
+  "ai_visual_recheck": {
+    "performed": true,
+    "method": "AI visual inspection of the two existing local PNGs by a collaborating agent",
+    "pdf_pages": [
+      5,
+      6
+    ],
+    "transcriptions_and_locators_match": true,
+    "bracketed_qualifier_preserved": true,
+    "duration_quote": "40日（自然日）压缩至30日",
+    "new_duration_day_type": "day_unspecified",
+    "human_review_completed": false,
+    "automated_ocr": false
+  },
+  "new_http_calls": 0,
+  "new_project_model_api_calls": 0,
+  "ocr_runs": 0,
+  "native_runs": 0,
+  "ontology_activations": 0,
+  "business_acceptance_complete": false,
+  "limits": [
+    "fixed archived sources; no live official-source freshness check",
+    "existing attributed AI scan transcription; no runtime OCR or visual-model input pipeline",
+    "no activation or real four-node execution",
+    "no Henan three-modality Nexent run or independent business accuracy evaluation"
+  ],
+  "scope": "Read-only current local archived-source and candidate inspection; prior engineering checks reused only after source, test and implementation fingerprints matched."
+}

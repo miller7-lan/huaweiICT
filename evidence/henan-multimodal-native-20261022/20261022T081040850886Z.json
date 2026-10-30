@@ -1,0 +1,823 @@
+{
+  "status": "PASSED",
+  "mode": "henan_three_source_reviewed_native_preview",
+  "scenario_id": "henan_expiry_renewal_archive",
+  "native_runs_max": 1,
+  "whole_run_retries": 0,
+  "observed_model_starts_max": 14,
+  "controller_steps": 6,
+  "child_steps_each": 3,
+  "max_output_tokens_per_step": 1024,
+  "new_disabled_drafts": 3,
+  "port": 8785,
+  "cost_amount": null,
+  "usage_note": "Observed starts and token events do not provide a hard monetary cap or a provider invoice.",
+  "model_scope": "Configured official DeepSeek language model; no new image recognition",
+  "business_publication": false,
+  "requires": "--live --confirmed --reviewer NAME",
+  "passed": true,
+  "started_at": "2026-10-22T08:10:40.850886+00:00",
+  "source_sha256": {
+    "ontology_crossdoc_preview.py": "a160411ef2cd9a449db1b469573007198c4d870ceaaa809e5f4ada3f1d20d47c",
+    "ontology_crossdoc_preview_server.py": "3e394bbf4e99c67eec6dfeffe5094b49cd16b2dda098de836fc78163545676c7",
+    "crossdoc_preview.py": "be2b5ab7b03e4e69d87787b477b957596685941bc8759a1189d58bc19a799ec3",
+    "crossdoc_reasoning.py": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+    "ontology_crossdoc.py": "0774556e6a4487105763867ca88121be27cb138a0b3a7705a5cf429d84334085",
+    "ontology_evolution.py": "60f9b2101407050cf32fcc288775c3333dbb9cfde0a808ca305c9231b83930b4",
+    "ontology_seed.py": "9568d474f983ee86c601c2ff246ae702d529fdc970344734d1432adc4c497d34",
+    "henan_multimodal_preview.py": "27e44427f8df0a0165a1755ba8dc205276221f9a5d747ea12ca37b0c0b126802",
+    "henan_multimodal.py": "caa37898c59c63e439355d8560a3874487c78fca1fb9e43f878a5126f36c9f2a",
+    "henan_multimodal_sources.py": "9d41ef78fda542f05593b965188ac16baf35fbe3b24bbf0e3a03901bd74c409e",
+    "json_output.py": "da372ca4f9015475790e11556ca65ad813d647cb042d89c0bcbe5cb8d0c6e745",
+    "knowledge/store.py": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2",
+    "knowledge_fetch.py": "a536aa892c1140d44a07f85bfaf5c662d248fc933eb87404c9dec52c9d29d04e",
+    "scripts/run_henan_multimodal_native.py": "9c1187f9460843c0972ecef0ad1ec87a69e38d2744f6363cd215eaee281f03c2",
+    "scripts/provision_henan_multimodal_native.py": "520307b8cf8e6da3eaba88e69ed7f5e90891d7af3efab1f34c884ae115243dcc",
+    "scripts/provision_ontology_crossdoc_native.py": "46c3d94e1a2a12ca94c0b0986be3b7bb4dc47c9ab944042e760dd758dc5dc9a9",
+    "scripts/nexent_api.py": "47de812ed193aac683790dd237c3fe99b5f7377a5293b10ea21ed14637e78d78",
+    "scripts/verify_ontology_crossdoc_native.py": "54ff91eae67256ea445690f0fd256a2ee6bc0c6a143dff0fcb3381355357efeb",
+    "scripts/verify_crossdoc_native_preview.py": "16a4cfdf740b397d62436e2d2194d41064f5c069b0b4e18bccaeb69320754248",
+    "scripts/check_successor_autonomy_cloud.py": "07e06a2a71f829320b6216fc42314d56d900598f3761eae9ad1ffbdbeb710d34",
+    "scripts/provision_crossdoc_native_preview.py": "c4ed7d9de74e5968f226928a82f3583e09576f767b01b82953b1ba25b51102aa",
+    "config/skills/govkb-henan-multimodal-preview/SKILL.md": "c4866dd89a65a9df3e7575879afaa0cc9793a85d74ad6da2f49fc531043644a5"
+  },
+  "human_authorization": {
+    "actor": {
+      "kind": "human",
+      "name": "项目维护者（当前用户）"
+    },
+    "scope": "Current user started the reviewed Henan demo and authorized API calls; one isolated native run then rollback"
+  },
+  "protected_before_sha256": {
+    "config/decision/connections.json": "c08e4c4b3999fe6354f399cf5fc1f2643c629212f4352a24f11138b24536981e",
+    "evidence/competition-multimodal-20261021/preparation.json": "48f0af25772180176449712ab9540efd532fc0c402d9bfb084347c8888aed973",
+    "evidence/competition-multimodal-20261021/local-extraction.json": "c1f7a18592b002133a3fd61a3ebac2f270c3cf18c8e4af210be1604ce57d12a5",
+    "evidence/competition-multimodal-20261021/scan-visual-observation.json": "2dc6e6207a30ee94c0c132c290ace71071e6df43d4c6a54c8c34a9e557ddbea5",
+    ".runtime/multimodal-preparation-20261021/HN-FEE-CATALOG-XLSX-2025.xlsx": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+    ".runtime/multimodal-preparation-20261021/MOF-FEE-2007.html": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+    ".runtime/multimodal-preparation-20261021/HN-MEASURES-2021-PDF.pdf": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+    ".runtime/multimodal-preparation-20261021/HN-FEE-CATALOG-XLSX-2025-attempt.json": "a673c395c4aaa4ad74783d5e8cd2d5c1d76ed9f8632d4c01487959cc567ea915",
+    ".runtime/multimodal-preparation-20261021/MOF-FEE-2007-attempt.json": "c514efc9b42e1731eb83b19e59689c3823d903e75238f948d5647a5a81284052",
+    ".runtime/multimodal-preparation-20261021/HN-MEASURES-2021-PDF-attempt.json": "7e36460700adc49d837502ccda797b7da32e8a0b89246a3e9090cd33fc800276",
+    ".runtime/multimodal-preparation-20261021/scan-5.png": "c235b11699fa32b9bdf9a7b9d19dc0a58fa8b0e95a1a51f0765fa1943234d80b",
+    ".runtime/multimodal-preparation-20261021/scan-6.png": "b6adb0ea3e9d1cdd646e1071ede1288390768d28fd3dc7840ef12f7c5cc889d4",
+    ".runtime/multimodal-preparation-20261021/acquisition/knowledge.sqlite3": "c4001cd98c6f456dbd5c4dbc017bd55efa8b79a09a043a4cd1a657e621b863f7",
+    ".runtime/henan-multimodal-20261022/ontology/knowledge.sqlite3": "495b220d4474566d3f8b51d66a23dc4874841ccbd85160f4e780a1135796d395",
+    ".runtime/henan-multimodal-20261022/ontology/ontology-workspace.json": "55b4596dbabbfa6b8f4d9edbff928b4419c88f398c2c4989cfba63bc7f6452ed",
+    ".runtime/henan-multimodal-20261022/gates.json": "157509a374c403f632c22245318042d3e1a6fede820fe7b7b79b92226fb83ad8",
+    ".runtime/ontology-crossdoc-native-20261021/crossdoc.sqlite3": "23904fa7a222174a80ce815f203af7eff42a7302c9301a0ad11443bc36f9f10a",
+    ".runtime/ontology-crossdoc-native-20261021/access.json": "004532e8e2a8d103d9eca76327ade4b08672302b9efa7db668b4f067f30a528b",
+    ".runtime/ontology-crossdoc-native-20261021/native-drafts.json": "4313c76fd781737ca442845488b6a3ed88669172e49b7e600124fbb124d7fcb8",
+    ".runtime/ontology-crossdoc-native-20261021/ontology-binding.json": "bcd6d1910904d7428a52166a73c353012885775d52bed6b8ee98c52855aa1c53",
+    ".runtime/system-integration-20261022/native/crossdoc.sqlite3": "467340be5198f1ba51c4318de60223f2c8821c96be2c419845e306dfcd8132fe",
+    ".runtime/system-integration-20261022/native/access.json": "004532e8e2a8d103d9eca76327ade4b08672302b9efa7db668b4f067f30a528b",
+    ".runtime/system-integration-20261022/native/native-drafts.json": "4313c76fd781737ca442845488b6a3ed88669172e49b7e600124fbb124d7fcb8",
+    ".runtime/system-integration-20261022/native/ontology-binding.json": "c60b8ffe4bf27f4e047eb7b15894e5ce84b3eb0206346fc7f04208d43f54ad25",
+    "evidence/henan-multimodal-20261022/candidate.json": "2868ab1b05e67642b960e479798d5cde61588a1d40a1acf6a98edb8867ce4baa",
+    "evidence/henan-multimodal-20261022/summary.json": "b9d3bae61561058ffd44ef8791961caf5b72badd4ffc4c96d7a5eeea89a9680f"
+  },
+  "native_run_requests": 1,
+  "old_budgets_reset": false,
+  "platform_ready": {
+    "config": true,
+    "runtime": true,
+    "mcp": true,
+    "ui": true,
+    "runtime_sandbox": true,
+    "runtime_error_overlay": true
+  },
+  "provisioning": {
+    "configured": true,
+    "agents": {
+      "retriever": 35,
+      "verifier": 36,
+      "controller": 37
+    },
+    "tool_count": 5,
+    "other_agents_protected": 34,
+    "other_agents_unchanged": true,
+    "drafts_disabled_unpublished": true,
+    "published": false,
+    "inference_calls": 0,
+    "skill_sha256": "c4866dd89a65a9df3e7575879afaa0cc9793a85d74ad6da2f49fc531043644a5"
+  },
+  "run_id": "723cb469d9d74809b1bfe60e00af1639",
+  "ontology_context": {
+    "profile": "henan-archived-multimodal-v1",
+    "version": "f221f5062c1eb2bb6c6e32716a7680605c0ef7e107eb8677c3fde6130d3a66ef",
+    "candidate_id": "e6e797f213ec7a11f6f59b80bbb6b6b4c402d71a8203669b807c6886d2d556e8",
+    "source_binding": "501601e92235ab2251b49ed673f7b49272ae1992b864ee6edc2945bec7b2ae68",
+    "implementation": "1fb89e848e391c011a43778b123e5f8c6cf54e985e0c2960cb9ebebff005a739",
+    "binding": "2aa8103c22a4ea0b1a1180053788ebfa9d16d5626d269358b5a8c00025c1ee76"
+  },
+  "request_sha256": "9f0da8d8f8c044b62e913c67f1b3934a4a6ccaf5968070aedfedc45fded03bbe",
+  "native_duration_ms": 13234.0,
+  "checks": {
+    "exact_ordered_stages": true,
+    "no_extra_tools": true,
+    "one_call_per_stage": true,
+    "two_children": true,
+    "child_invocation_bindings": true,
+    "stage_depths": true,
+    "no_native_errors": true,
+    "observed_model_budget": true,
+    "persisted_answer": true,
+    "reviewed_henan_plan_executed": true,
+    "four_typed_dependent_nodes": true,
+    "all_seventeen_quotes_bound": true,
+    "scope_and_scan_limits": true,
+    "paused_business": true,
+    "final_after_tool": true
+  },
+  "answer": {
+    "task_id": "cca29f9cc6ae4269b1eab8b80e647b8b",
+    "mode": "reviewed_henan_multimodal_archived_preview",
+    "profile": "henan-archived-multimodal-v1",
+    "scenario_id": "henan_expiry_renewal_archive",
+    "published": false,
+    "formal_approval": false,
+    "source_binding": "160c80e0d29fa08dc9ebddc20ecefd7d467d9c7befe6be675a1362980f147d73",
+    "archive_binding": "501601e92235ab2251b49ed673f7b49272ae1992b864ee6edc2945bec7b2ae68",
+    "ontology_context": {
+      "profile": "henan-archived-multimodal-v1",
+      "version": "f221f5062c1eb2bb6c6e32716a7680605c0ef7e107eb8677c3fde6130d3a66ef",
+      "candidate_id": "e6e797f213ec7a11f6f59b80bbb6b6b4c402d71a8203669b807c6886d2d556e8",
+      "source_binding": "501601e92235ab2251b49ed673f7b49272ae1992b864ee6edc2945bec7b2ae68",
+      "implementation": "1fb89e848e391c011a43778b123e5f8c6cf54e985e0c2960cb9ebebff005a739",
+      "binding": "2aa8103c22a4ea0b1a1180053788ebfa9d16d5626d269358b5a8c00025c1ee76"
+    },
+    "verification_method": "reviewed_ontology_plan_execution",
+    "reasoning": {
+      "status": "derived_archive",
+      "version": "f221f5062c1eb2bb6c6e32716a7680605c0ef7e107eb8677c3fde6130d3a66ef",
+      "archive_result": {
+        "fee_basis_code": "财综〔2007〕34号",
+        "ordinary_renewal_fee_yuan": 20,
+        "service_conditions_quote": "二、换领、补领居民身份证实行“省内通办”\n群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。",
+        "duration_quote": "三、压缩身份证办理周期\n将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。",
+        "historical_duration": {
+          "interval": "acceptance_to_collection",
+          "previous_natural_days": 40,
+          "quoted_days": 30,
+          "unit": "day_unspecified"
+        }
+      },
+      "trace": [
+        {
+          "depends_on": [],
+          "id": "catalog_basis",
+          "operator": "identify_normative_reference",
+          "parameters": {
+            "basis_code": "财综〔2007〕34号"
+          },
+          "source_keys": [
+            "catalog"
+          ],
+          "output": "财综〔2007〕34号",
+          "evidence": [
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "全国性及中央部门和单位行政事业性收费目录清单",
+              "locator": "Excel工作表行政事业性收费!A1",
+              "text_sha256": "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "项目名称",
+              "locator": "Excel工作表行政事业性收费!D4",
+              "text_sha256": "867698fb7b0c730c9c692a01b65a74500b5f44f3589e31703e2957f9ba5ce976",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "资金管理方式",
+              "locator": "Excel工作表行政事业性收费!E4",
+              "text_sha256": "aa3a4744db978914e3d78ff0d44f3e163ddd65c8eaa6795327a16fcb9d816047",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "设立依据",
+              "locator": "Excel工作表行政事业性收费!F4",
+              "text_sha256": "16615568b15068c3dfbe9accb7ff41137b3e68fd6eb544ec50a4ca15dca0d660",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "收费标准",
+              "locator": "Excel工作表行政事业性收费!G4",
+              "text_sha256": "05a643ca852e19da3509e7c6e90813b44970b7afe0f079e823b4975c3940b659",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "公安部门",
+              "locator": "Excel工作表行政事业性收费!B17",
+              "text_sha256": "984f2209c71bdebc41a23c318e3b52986a4eb41cc53fbda08c5f0f2f00352031",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "（4）居民身份证工本费",
+              "locator": "Excel工作表行政事业性收费!D36",
+              "text_sha256": "87632ef1001bce8e0fd07786845ea07be4f2a17ea0f2a94d8deb62f24793e029",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "缴入地方国库",
+              "locator": "Excel工作表行政事业性收费!E36",
+              "text_sha256": "be899e2513ff0fa57789b1d2f167f47f380bcbd3a86a71d76fc1f54098c10b45",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "《中华人民共和国居民身份证法》，财综〔2007〕34号，财税〔2018〕37号，豫财综〔2004〕22号，豫财办行〔2006〕39号，豫财办综〔2007〕39号",
+              "locator": "Excel工作表行政事业性收费!F36",
+              "text_sha256": "c706c34a9c25517fe10d8be4b57ade84371005db336079f5097bf3097350c505",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "财综〔2007〕34号，财税〔2018〕37号",
+              "locator": "Excel工作表行政事业性收费!G36",
+              "text_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c",
+              "evidence_kind": "literal_cell"
+            }
+          ],
+          "ontology_context_binding": "2aa8103c22a4ea0b1a1180053788ebfa9d16d5626d269358b5a8c00025c1ee76"
+        },
+        {
+          "depends_on": [
+            "catalog_basis"
+          ],
+          "id": "fee_branch",
+          "operator": "ordinary_renewal_archive_fee",
+          "parameters": {
+            "lost_or_damaged_fee_yuan": 40,
+            "ordinary_renewal_fee_yuan": 20,
+            "temporary_fee_yuan": 10
+          },
+          "source_keys": [
+            "norm"
+          ],
+          "output": 20,
+          "evidence": [
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "为进一步规范申领、换领、补领居民身份证收费行为，纠正和制止一些地方在办理第二代居民身份证过程中，借办理快证、加急等业务违规收取快证费等费用的做法，现就有关收费政策重申如下：",
+              "locator": "正文段落3",
+              "text_sha256": "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "一、公安机关向申领、换领、补领居民身份证的居民收取证件工本费，应当严格按照《中华人民共和国居民身份证法》，以及《财政部、国家发展改革委关于第二代居民身份证工本费减免政策的通知》(财综〔 2004〕8号)、《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》(发改价格〔2003〕2322号)的规定执行，即向首次申领、换领第二代居民身份证的居民收取工本费每证20元；向遗失补领、损坏换领第二代居民身份证的居民收取工本费每证40元；为居民办理临时居民身份证收取工本费每证10元。除上述收费外，各地不得自行规定收取或搭车收取其他任何费用，也无权自行制定和调整收费标准。",
+              "locator": "正文段落4",
+              "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "二、各级公安机关应努力提高办证效率，尽量缩短居民身份证制作期限。对于申请加急办证的居民，可为其办理临时居民身份证或采取相应的便民措施解决其急需身份证的需求，但不得借此收取快证费、加急费等费用。",
+              "locator": "正文段落5",
+              "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "三、各省、自治区、直辖市财政、价格主管部门要按照现行居民身份证收费管理制度规定，会同公安部门对本行政区域内涉及居民身份证的各项收费进行清理，立即停止并纠正收取快证费、加急费、照相费和邮寄费等违规收费行为，并于2007年6月底前将清理情况报财政部、国家发展改革委。",
+              "locator": "正文段落6",
+              "text_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "四、各省、自治区、直辖市财政、价格主管部门和公安机关要严格执行财综〔2004〕8号文件、发改价格〔2003〕2322号文件及本通知规定，切实加强收费管理，规范收费行为，防止在办理居民身份证过程中再发生收取快证费、加急费等违规收费行为。在本通知印发后，若再发生批准或继续违规收费的行为，将按有关规定，追究相关部门负责人及直接责任人员的责任。",
+              "locator": "正文段落7",
+              "text_sha256": "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6",
+              "evidence_kind": "exact_html_clause"
+            }
+          ],
+          "ontology_context_binding": "2aa8103c22a4ea0b1a1180053788ebfa9d16d5626d269358b5a8c00025c1ee76"
+        },
+        {
+          "depends_on": [],
+          "id": "service_archive",
+          "operator": "quoted_historical_service",
+          "parameters": {
+            "duration_quote": "三、压缩身份证办理周期\n将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。",
+            "historical_duration": {
+              "interval": "acceptance_to_collection",
+              "previous_natural_days": 40,
+              "quoted_days": 30,
+              "unit": "day_unspecified"
+            },
+            "service_conditions_quote": "二、换领、补领居民身份证实行“省内通办”\n群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。"
+          },
+          "source_keys": [
+            "scan"
+          ],
+          "output": {
+            "duration_quote": "三、压缩身份证办理周期\n将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。",
+            "historical_duration": {
+              "interval": "acceptance_to_collection",
+              "previous_natural_days": 40,
+              "quoted_days": 30,
+              "unit": "day_unspecified"
+            },
+            "service_conditions_quote": "二、换领、补领居民身份证实行“省内通办”\n群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。"
+          },
+          "evidence": [
+            {
+              "source_id": "HN-MEASURES-2021-PDF",
+              "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+              "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+              "revision": "archived-original-db257f4c918d95d6212c9226",
+              "kind": "pdf",
+              "region": "河南省",
+              "quote": "二、换领、补领居民身份证实行“省内通办”\n群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。",
+              "locator": "PDF第5页右半页（印刷页码5），第二项",
+              "text_sha256": "dd679b80bbaf96f36a231927e338f6e2dc2135b0f90119122feb698321a64dd9",
+              "evidence_kind": "ai_visual_transcription"
+            },
+            {
+              "source_id": "HN-MEASURES-2021-PDF",
+              "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+              "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+              "revision": "archived-original-db257f4c918d95d6212c9226",
+              "kind": "pdf",
+              "region": "河南省",
+              "quote": "三、压缩身份证办理周期\n将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。",
+              "locator": "PDF第5页右半页第三项标题至PDF第6页左半页（印刷页码6）首段",
+              "text_sha256": "961e2ad77d08022b9b9a2e1b2b5e757bb657e9ec6aed02ade8cf4a9bbf2fefcd",
+              "evidence_kind": "ai_visual_transcription"
+            }
+          ],
+          "ontology_context_binding": "2aa8103c22a4ea0b1a1180053788ebfa9d16d5626d269358b5a8c00025c1ee76"
+        },
+        {
+          "depends_on": [
+            "fee_branch",
+            "service_archive"
+          ],
+          "id": "archive_answer",
+          "operator": "assemble_archive_evidence",
+          "parameters": {},
+          "source_keys": [
+            "catalog",
+            "norm",
+            "scan"
+          ],
+          "output": {
+            "fee_basis_code": "财综〔2007〕34号",
+            "ordinary_renewal_fee_yuan": 20,
+            "service_conditions_quote": "二、换领、补领居民身份证实行“省内通办”\n群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。",
+            "duration_quote": "三、压缩身份证办理周期\n将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。",
+            "historical_duration": {
+              "interval": "acceptance_to_collection",
+              "previous_natural_days": 40,
+              "quoted_days": 30,
+              "unit": "day_unspecified"
+            }
+          },
+          "evidence": [
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "全国性及中央部门和单位行政事业性收费目录清单",
+              "locator": "Excel工作表行政事业性收费!A1",
+              "text_sha256": "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "项目名称",
+              "locator": "Excel工作表行政事业性收费!D4",
+              "text_sha256": "867698fb7b0c730c9c692a01b65a74500b5f44f3589e31703e2957f9ba5ce976",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "资金管理方式",
+              "locator": "Excel工作表行政事业性收费!E4",
+              "text_sha256": "aa3a4744db978914e3d78ff0d44f3e163ddd65c8eaa6795327a16fcb9d816047",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "设立依据",
+              "locator": "Excel工作表行政事业性收费!F4",
+              "text_sha256": "16615568b15068c3dfbe9accb7ff41137b3e68fd6eb544ec50a4ca15dca0d660",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "收费标准",
+              "locator": "Excel工作表行政事业性收费!G4",
+              "text_sha256": "05a643ca852e19da3509e7c6e90813b44970b7afe0f079e823b4975c3940b659",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "公安部门",
+              "locator": "Excel工作表行政事业性收费!B17",
+              "text_sha256": "984f2209c71bdebc41a23c318e3b52986a4eb41cc53fbda08c5f0f2f00352031",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "（4）居民身份证工本费",
+              "locator": "Excel工作表行政事业性收费!D36",
+              "text_sha256": "87632ef1001bce8e0fd07786845ea07be4f2a17ea0f2a94d8deb62f24793e029",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "缴入地方国库",
+              "locator": "Excel工作表行政事业性收费!E36",
+              "text_sha256": "be899e2513ff0fa57789b1d2f167f47f380bcbd3a86a71d76fc1f54098c10b45",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "《中华人民共和国居民身份证法》，财综〔2007〕34号，财税〔2018〕37号，豫财综〔2004〕22号，豫财办行〔2006〕39号，豫财办综〔2007〕39号",
+              "locator": "Excel工作表行政事业性收费!F36",
+              "text_sha256": "c706c34a9c25517fe10d8be4b57ade84371005db336079f5097bf3097350c505",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "HN-FEE-CATALOG-XLSX-2025",
+              "url": "https://xcoss.henan.gov.cn/typtfile/20250318/fdace0fca875409fa1338179dd218530.xlsx",
+              "original_sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+              "revision": "archived-original-4aaddf9c385df36a3c53bd96",
+              "kind": "xlsx",
+              "region": "河南省",
+              "quote": "财综〔2007〕34号，财税〔2018〕37号",
+              "locator": "Excel工作表行政事业性收费!G36",
+              "text_sha256": "52c06a8d6644aba4cf708a3237710d4da4ee7d9719e17fb98f26760197fe6a3c",
+              "evidence_kind": "literal_cell"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "为进一步规范申领、换领、补领居民身份证收费行为，纠正和制止一些地方在办理第二代居民身份证过程中，借办理快证、加急等业务违规收取快证费等费用的做法，现就有关收费政策重申如下：",
+              "locator": "正文段落3",
+              "text_sha256": "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "一、公安机关向申领、换领、补领居民身份证的居民收取证件工本费，应当严格按照《中华人民共和国居民身份证法》，以及《财政部、国家发展改革委关于第二代居民身份证工本费减免政策的通知》(财综〔 2004〕8号)、《国家发展改革委、财政部关于居民身份证收费标准及有关问题的通知》(发改价格〔2003〕2322号)的规定执行，即向首次申领、换领第二代居民身份证的居民收取工本费每证20元；向遗失补领、损坏换领第二代居民身份证的居民收取工本费每证40元；为居民办理临时居民身份证收取工本费每证10元。除上述收费外，各地不得自行规定收取或搭车收取其他任何费用，也无权自行制定和调整收费标准。",
+              "locator": "正文段落4",
+              "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "二、各级公安机关应努力提高办证效率，尽量缩短居民身份证制作期限。对于申请加急办证的居民，可为其办理临时居民身份证或采取相应的便民措施解决其急需身份证的需求，但不得借此收取快证费、加急费等费用。",
+              "locator": "正文段落5",
+              "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "三、各省、自治区、直辖市财政、价格主管部门要按照现行居民身份证收费管理制度规定，会同公安部门对本行政区域内涉及居民身份证的各项收费进行清理，立即停止并纠正收取快证费、加急费、照相费和邮寄费等违规收费行为，并于2007年6月底前将清理情况报财政部、国家发展改革委。",
+              "locator": "正文段落6",
+              "text_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "MOF-FEE-2007",
+              "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+              "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+              "revision": "archived-original-a77897e3863b5c61bbd0753d",
+              "kind": "html",
+              "region": "national",
+              "quote": "四、各省、自治区、直辖市财政、价格主管部门和公安机关要严格执行财综〔2004〕8号文件、发改价格〔2003〕2322号文件及本通知规定，切实加强收费管理，规范收费行为，防止在办理居民身份证过程中再发生收取快证费、加急费等违规收费行为。在本通知印发后，若再发生批准或继续违规收费的行为，将按有关规定，追究相关部门负责人及直接责任人员的责任。",
+              "locator": "正文段落7",
+              "text_sha256": "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6",
+              "evidence_kind": "exact_html_clause"
+            },
+            {
+              "source_id": "HN-MEASURES-2021-PDF",
+              "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+              "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+              "revision": "archived-original-db257f4c918d95d6212c9226",
+              "kind": "pdf",
+              "region": "河南省",
+              "quote": "二、换领、补领居民身份证实行“省内通办”\n群众换领、补领居民身份证无需到户籍地派出所，可携带公安机关签发的有效身份证件在任意就近派出所申请换领、补领（需挂失申报）。",
+              "locator": "PDF第5页右半页（印刷页码5），第二项",
+              "text_sha256": "dd679b80bbaf96f36a231927e338f6e2dc2135b0f90119122feb698321a64dd9",
+              "evidence_kind": "ai_visual_transcription"
+            },
+            {
+              "source_id": "HN-MEASURES-2021-PDF",
+              "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+              "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+              "revision": "archived-original-db257f4c918d95d6212c9226",
+              "kind": "pdf",
+              "region": "河南省",
+              "quote": "三、压缩身份证办理周期\n将居民身份证件的办理周期（从受理之日起到领证之日）由过去承诺的40日（自然日）压缩至30日，为群众办理居民身份证节省更多时间。",
+              "locator": "PDF第5页右半页第三项标题至PDF第6页左半页（印刷页码6）首段",
+              "text_sha256": "961e2ad77d08022b9b9a2e1b2b5e757bb657e9ec6aed02ade8cf4a9bbf2fefcd",
+              "evidence_kind": "ai_visual_transcription"
+            }
+          ],
+          "ontology_context_binding": "2aa8103c22a4ea0b1a1180053788ebfa9d16d5626d269358b5a8c00025c1ee76"
+        }
+      ],
+      "actual_fee_yuan": null,
+      "promised_duration": null,
+      "formal_approval": false,
+      "formally_published": false,
+      "current_applicability": "unknown",
+      "business_conclusion_status": "PAUSED_UNREVIEWED",
+      "ontology_context": {
+        "profile": "henan-archived-multimodal-v1",
+        "version": "f221f5062c1eb2bb6c6e32716a7680605c0ef7e107eb8677c3fde6130d3a66ef",
+        "candidate_id": "e6e797f213ec7a11f6f59b80bbb6b6b4c402d71a8203669b807c6886d2d556e8",
+        "source_binding": "501601e92235ab2251b49ed673f7b49272ae1992b864ee6edc2945bec7b2ae68",
+        "implementation": "1fb89e848e391c011a43778b123e5f8c6cf54e985e0c2960cb9ebebff005a739",
+        "binding": "2aa8103c22a4ea0b1a1180053788ebfa9d16d5626d269358b5a8c00025c1ee76"
+      }
+    }
+  },
+  "actual_tools": [
+    "read_skill_md",
+    "govkb_ontology_crossdoc_open_query",
+    "govkb_ontology_crossdoc_retrieve",
+    "final_answer",
+    "govkb_ontology_crossdoc_verify",
+    "final_answer",
+    "govkb_ontology_crossdoc_state",
+    "govkb_ontology_crossdoc_finalize",
+    "final_answer"
+  ],
+  "observed_model_starts": 7,
+  "other_agents_unchanged": true,
+  "campaign": {
+    "native_runs": 1,
+    "max_native_runs": 1,
+    "tasks": 1,
+    "run_status": "passed",
+    "jev_calls": 0,
+    "translation_calls": 0
+  },
+  "rolled_back": true,
+  "owned_helper_stopped": true,
+  "workflow_head_versions_and_pause_unchanged": true,
+  "workflow_heartbeat_fresh": true,
+  "workflow_safe_after": true,
+  "protected_inputs_unchanged": true,
+  "ended_at": "2026-10-22T08:11:06.402479+00:00",
+  "duration_ms": 25547.0,
+  "trace": {
+    "tools": [
+      {
+        "event_index": 67,
+        "name": "read_skill_md",
+        "depth": 0
+      },
+      {
+        "event_index": 68,
+        "name": "govkb_ontology_crossdoc_open_query",
+        "depth": 0
+      },
+      {
+        "event_index": 177,
+        "name": "govkb_ontology_crossdoc_retrieve",
+        "depth": 1
+      },
+      {
+        "event_index": 178,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 308,
+        "name": "govkb_ontology_crossdoc_verify",
+        "depth": 1
+      },
+      {
+        "event_index": 309,
+        "name": "final_answer",
+        "depth": 1
+      },
+      {
+        "event_index": 362,
+        "name": "govkb_ontology_crossdoc_state",
+        "depth": 0
+      },
+      {
+        "event_index": 415,
+        "name": "govkb_ontology_crossdoc_finalize",
+        "depth": 0
+      },
+      {
+        "event_index": 416,
+        "name": "final_answer",
+        "depth": 0
+      }
+    ],
+    "child_starts": 2,
+    "observed_usage_steps": [
+      {
+        "step_number": 1,
+        "step_input_tokens": 7499,
+        "step_output_tokens": 61,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 2,
+        "step_input_tokens": 7779,
+        "step_output_tokens": 52,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 3,
+        "step_input_tokens": 8645,
+        "step_output_tokens": 70,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 4,
+        "step_input_tokens": 9533,
+        "step_output_tokens": 44,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      },
+      {
+        "step_number": 5,
+        "step_input_tokens": 9736,
+        "step_output_tokens": 47,
+        "output_finish_reason": "stop",
+        "compression_calls": 0,
+        "depth": 0
+      }
+    ],
+    "usage_scope": "Observed native token_count events; child model usage may be missing, not total model cost"
+  },
+  "private_events_sha256": "a1c8a0c5af0b31f4f08b835135cca43349c960fb415652382bf5588102520386",
+  "event_types": {
+    "other": 1,
+    "agent_new_run": 4,
+    "step_count": 7,
+    "model_attempt_control": 14,
+    "model_output_thinking": 359,
+    "parse": 7,
+    "tool": 9,
+    "execution_logs": 7,
+    "token_count": 5,
+    "subagent_start": 2,
+    "agent_finish": 2,
+    "subagent_end": 2,
+    "final_answer": 1
+  }
+}
