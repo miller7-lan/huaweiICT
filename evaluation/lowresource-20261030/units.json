@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "status": "draft_pending_confirmation",
+  "prepared_by": "陈子炫（草案，待程千城、李嘉杰确认）",
+  "prepared_at": "2026-10-30",
+  "purpose": "低资源本体构建对照：方法A纯人工整理，方法B人工复核系统候选",
+  "assignment": {
+    "程千城": {
+      "method_a": [
+        "U1",
+        "U2",
+        "U3"
+      ],
+      "method_b": [
+        "U4",
+        "U5",
+        "U6"
+      ]
+    },
+    "李嘉杰": {
+      "method_a": [
+        "U4",
+        "U5",
+        "U6"
+      ],
+      "method_b": [
+        "U1",
+        "U2",
+        "U3"
+      ]
+    }
+  },
+  "method_b_candidate_source": "未生成。现有受限抽取器不覆盖 U1–U3，需陈子炫用模型生成候选或补写抽取规则，并单独记录规则编写成本；候选生成前不得把本文件当作已具备B方法条件。",
+  "reading_rule": "只读各 url 的公开原文；按 locator 找到条款后，核对网页仍与 original_sha256 对应的版本一致，网页改版时记录差异并停止该单元。text_sha256 用于事后核对所读文本，不是答案。",
+  "units": [
+    {
+      "id": "U1",
+      "kind": "condition",
+      "sources": [
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+          "revision": "rev-4b92705f0d8d799adef32b29",
+          "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+          "locators": [
+            {
+              "locator": "第一百五十五条",
+              "text_sha256": "9e5bcdac50cfdf0ce99eb5b5c8d076204c04e1534a4cf90801c96a8926c17fd6"
+            }
+          ]
+        }
+      ],
+      "target": "申领义务与条件：对象、期限、受理机关及例外情形；写成 Matter -applies_when-> Condition，条件结果只能取 true/false/unknown，不把首次申领条件套用到换领",
+      "seen_in_development": false
+    },
+    {
+      "id": "U2",
+      "kind": "material_branches",
+      "sources": [
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+          "revision": "rev-4b92705f0d8d799adef32b29",
+          "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+          "locators": [
+            {
+              "locator": "第一百五十九条",
+              "text_sha256": "24c911835a69cf33e5a55c2db381aa4ed03fd27b5f4c110a4d08c0244486f3d6"
+            }
+          ]
+        }
+      ],
+      "target": "申领、换领、补领各分支需要填写或交验的材料；写成 Matter -requires-> Material，按分支区分并保留可替代关系，另记采集与签名环节",
+      "seen_in_development": false
+    },
+    {
+      "id": "U3",
+      "kind": "effectiveness_multi_clause",
+      "sources": [
+        {
+          "source_id": "HN-NORM-PUBLISHER",
+          "url": "https://hnga.henan.gov.cn/2022/08-16/2561597.html",
+          "revision": "rev-4b92705f0d8d799adef32b29",
+          "original_sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+          "locators": [
+            {
+              "locator": "第二百三十四条",
+              "text_sha256": "a942f04eff1b2a31e2c351c5a56abfa03130a3969544699735fe789457c62c9d"
+            },
+            {
+              "locator": "第二百三十五条",
+              "text_sha256": "040a9a5be3ea449b882297f898e9195872ace64fd634cae117420e188d11aed1"
+            },
+            {
+              "locator": "第二百三十六条",
+              "text_sha256": "610ea80302fec85817b8934c221f809aa2e68855912472cded1ed5bf2e785f5f"
+            }
+          ]
+        }
+      ],
+      "target": "规范效力与版本：收费依据指向、调整条款、施行日期、被废止的旧规范和解释机关；写成 StandardClause 及版本/aligned_to 关系，三个条款各自保持边界",
+      "seen_in_development": false
+    },
+    {
+      "id": "U4",
+      "kind": "numeric_unit_exception",
+      "sources": [
+        {
+          "source_id": "MOF-FEE-2007",
+          "url": "https://www.mof.gov.cn/gkml/caizhengwengao/caizhengbuwengao2007/caizhengbuwengao20078/200805/t20080519_26881.htm",
+          "revision": "rev-ddfaf873b73e03ab4202c18c",
+          "original_sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+          "locators": [
+            {
+              "locator": "正文段落3",
+              "text_sha256": "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+            },
+            {
+              "locator": "正文段落4",
+              "text_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+            },
+            {
+              "locator": "正文段落5",
+              "text_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+            },
+            {
+              "locator": "正文段落6",
+              "text_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+            },
+            {
+              "locator": "正文段落7",
+              "text_sha256": "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+            }
+          ]
+        }
+      ],
+      "target": "收费分支：每个分支的金额、计量单位、适用证件类型/情形和减免例外；不推断现行应缴金额",
+      "seen_in_development": true,
+      "development_note": "河南三模态候选已使用该文的收费分支；方法B结果可能偏乐观，须在报告中披露"
+    },
+    {
+      "id": "U5",
+      "kind": "version_change",
+      "sources": [
+        {
+          "source_id": "HN-MEASURES-2024-JY",
+          "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+          "revision": "rev-71014e82351747c52e933f86",
+          "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+          "locators": [
+            {
+              "locator": "正文段落1",
+              "text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+            }
+          ]
+        },
+        {
+          "source_id": "HN-MEASURES-2026",
+          "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+          "revision": "rev-04f1121aa899004c29e55761",
+          "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+          "locators": [
+            {
+              "locator": "正文段落1",
+              "text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+            }
+          ]
+        }
+      ],
+      "target": "版本变化：新旧两份资料中受理至领证时限的取值、单位（自然日/工作日）、适用对象和例外通道；标出变化而不做异单位相减",
+      "seen_in_development": true,
+      "development_note": "河南新旧资料更新链已处理过同一对资料；方法B结果可能偏乐观，须在报告中披露"
+    },
+    {
+      "id": "U6",
+      "kind": "scan_cross_page",
+      "sources": [
+        {
+          "source_id": "HN-MEASURES-2021-PDF",
+          "url": "https://oss.henan.gov.cn/typtfile/20210601/c303a2a53f3f4396a25981f108532f9c.pdf",
+          "revision": "rev-3e0ef686ca50ff8c594937f5",
+          "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+          "locators": [
+            {
+              "locator": "PDF第5页至第6页（印刷页见原件）",
+              "text_sha256": null
+            }
+          ]
+        }
+      ],
+      "target": "扫描件跨页条款：历史服务措施的对象、期限（保留原文日数写法）、办理渠道；跨页断句必须完整，不靠猜测补字",
+      "seen_in_development": true,
+      "development_note": "河南三模态候选已使用这两页的 AI 转录；方法B结果可能偏乐观，须在报告中披露"
+    }
+  ],
+  "reading_check": {
+    "checked_at": "2026-10-30",
+    "source_id": "HN-NORM-PUBLISHER",
+    "public_page_sha256_matches_original": true,
+    "note": "陈子炫一次只读GET核对公开页面与原件SHA-256一致，并据原文校准U1–U3目标描述；未保存或提交原文。"
+  }
+}

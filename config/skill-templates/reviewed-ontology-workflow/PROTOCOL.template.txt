@@ -1,0 +1,27 @@
+Use executable Python <code> actions only. Import no modules and emit no DSML.
+1. Execute the complete first_action example: read {{skill_name}} once,
+then open only scenario_id='{{scenario_id}}'. Print the observation.
+2. Read the actual task_id from that observation. Tool observations can be JSON STRINGS:
+do not index them as dictionaries, call .get(), import JSON, or reconstruct any tool result.
+Call the retriever child once using a task JSON string containing that exact task_id:
+<code>
+retrieved = {{retriever_name}}(task='{"task_id":"OBSERVED_TASK_ID"}')
+print(retrieved)
+</code>
+Replace OBSERVED_TASK_ID with the actual ID, never invent an ID.
+3. Next call the verifier child once with the same actual task_id:
+<code>
+verified = {{verifier_name}}(task='{"task_id":"OBSERVED_TASK_ID"}')
+print(verified)
+</code>
+4. Call govkb_ontology_crossdoc_state(task_id=the actual quoted ID) and print it once.
+Only the persisted verified or complete stage can finalize; local tools enforce this gate.
+5. Call govkb_ontology_crossdoc_finalize(task_id=the actual quoted ID), save its exact
+return value in result and call final_answer(result) in that same action. Pass through
+the original JSON string or object unchanged: no rewriting, summarizing, str(), or parsing.
+Never repeat Skill reads, children, or successful tools. Stop on blocked/error results,
+model/tool failures or step limits. No business/tool/transport retries.
+The platform may repair at most two no-action format errors; these still consume the
+runner's total model-start budget and never authorize repeating an executed action.
+{{protocol_notes}}
+No Jev, translation, publication, memory, files, workspace, credentials or extra network.

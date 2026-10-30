@@ -28,6 +28,7 @@ TREE_ALLOWLIST = {
     "config/decision": {".json"},
     "config/preparation": {".json", ".txt", ".lock"},
     "config/knowledge": {".json"},
+    "config/skill-templates": {".md", ".txt", ".json"},
 }
 FILE_ALLOWLIST = (
     "AGENTS.md", "LICENSE", "pyproject.toml", "requirements.lock", "requirements-knowledge.lock",
@@ -42,7 +43,7 @@ FILE_ALLOWLIST = (
     "config/knowledge-expansion.json", "config/knowledge-scope.json", "config/m2-data-taxonomy.json",
     # Metadata-only pair (URLs, hashes, questions); source_requirements() reads it on rebuild.
     "data/knowledge/update-test-pairs/henan-id-time.json",
-    "scripts/build_competition_package.py", "scripts/setup.ps1", "scripts/deploy.ps1",
+    "scripts/build_competition_package.py", "scripts/workflow_template.py", "scripts/setup.ps1", "scripts/deploy.ps1",
     "scripts/private_runtime.py", "scripts/prepare_runtime.py", "scripts/prepare_deploy.py",
     "scripts/runtime_error_overlay.py", "scripts/runtime_sandbox.py", "scripts/check_docker.py",
     "scripts/check_native_ready.py", "scripts/build_minio.ps1", "scripts/record_minio_build.py",
@@ -86,6 +87,8 @@ OPTIONAL_FILE_ALLOWLIST = (
     "tests/test_henan_multimodal_preview.py",
     "tests/test_henan_multimodal_provision.py",
     "tests/test_henan_multimodal_runner.py",
+    "tests/test_workflow_template.py",
+    "docs/competition/Skill工作流模板说明-2026-10-30.md",
     "docs/赛题3资料/河南三模态归档候选-2026-10-22.md",
     "docs/赛题3资料/多模态检查-2026-10-22.md",
     "docs/赛题3资料/河南三模态原生验收-2026-10-22.md",
