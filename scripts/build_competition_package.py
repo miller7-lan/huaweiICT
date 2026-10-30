@@ -40,6 +40,8 @@ FILE_ALLOWLIST = (
     "docs/competition/真实资产与规范对齐表-2026-10-21.md",
     "docs/competition/独立评测执行方案-2026-10-21.md",
     "config/knowledge-expansion.json", "config/knowledge-scope.json", "config/m2-data-taxonomy.json",
+    # Metadata-only pair (URLs, hashes, questions); source_requirements() reads it on rebuild.
+    "data/knowledge/update-test-pairs/henan-id-time.json",
     "scripts/build_competition_package.py", "scripts/setup.ps1", "scripts/deploy.ps1",
     "scripts/private_runtime.py", "scripts/prepare_runtime.py", "scripts/prepare_deploy.py",
     "scripts/runtime_error_overlay.py", "scripts/runtime_sandbox.py", "scripts/check_docker.py",
