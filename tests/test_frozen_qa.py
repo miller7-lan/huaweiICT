@@ -187,10 +187,11 @@ def test_mcp_service_retrieves_gates_and_verifies_like_the_proposed_method():
     stop = service.retrieve("我的身份证号41010119900101123X能换吗")
     assert stop["status"] == "STOP" and stop["evidence"] == []
     good = answer("换领时交验居民身份证。", ("交验居民身份证", "DOC-A", "第一条", "申请换领的，交验居民身份证"))
-    assert service.verify("换领交验什么证件", json.dumps(good, ensure_ascii=False))["final"] == good
+    assert service.verify("换领交验什么证件", good)["final"] == good
     bad = answer("交验护照。", ("交验护照", "DOC-A", "第一条", "交验护照"))
-    checked = service.verify("换领交验什么证件", json.dumps(bad, ensure_ascii=False))
+    checked = service.verify("换领交验什么证件", bad)
     assert checked["final"]["stop_reason"] == "VERIFICATION_FAILED"
-    assert service.verify("换领", '{"outcome": "answer"}')["error"] == "ANSWER_JSON_CONTRACT_VIOLATION"
+    assert service.verify("换领", {"outcome": "answer"})["error"] == "ANSWER_CONTRACT_VIOLATION"
+    assert service.verify("换领", {**good, "outcome": "maybe"})["error"] == "ANSWER_CONTRACT_VIOLATION"
     with pytest.raises(ValueError, match="DEDICATED_TOKEN_REQUIRED"):
         create_app(service, "short")

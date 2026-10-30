@@ -19,7 +19,7 @@ from starlette.routing import Route
 import uvicorn
 
 from gov_mcp import frozen_qa
-from gov_mcp.json_output import object_from_json, validate_contract
+from gov_mcp.json_output import validate_contract
 from gov_mcp.server import BearerGate
 
 
@@ -49,13 +49,12 @@ class FrozenQAService:
                   "corpus_sha256": self.corpus_sha256, **frozen_qa.STATUS}
         return result
 
-    def verify(self, question, answer_json):
-        """Check an AnswerOutput JSON string against the same retrieval; failures become a stop."""
+    def verify(self, question, output):
+        """Check an AnswerOutput object against the same retrieval; failures become a stop."""
         try:
-            output = object_from_json(answer_json)
             validate_contract(output, frozen_qa.AnswerOutput)
         except (ValueError, TypeError, RecursionError):
-            return {"status": "BLOCKED", "error": "ANSWER_JSON_CONTRACT_VIOLATION"}
+            return {"status": "BLOCKED", "error": "ANSWER_CONTRACT_VIOLATION"}
         gate = frozen_qa.scope_gate(question)
         if gate:
             return {"status": "STOP", "gate": gate, "final": frozen_qa._stop(gate, frozen_qa.GATE_MESSAGES[gate]),
@@ -86,9 +85,13 @@ def create_app(service, token, port=PORT):
         return execute(service.retrieve, question)
 
     @mcp.tool()
-    def govkb_frozen_verify(question: str, answer_json: str) -> dict:
-        """Verify a JSON answer's quotes, numbers and day units against the same evidence."""
-        return execute(service.verify, question, answer_json)
+    def govkb_frozen_verify(question: str, outcome: str, answer: str, assertions: list[dict],
+                            stop_reason: str = "", unknowns: list[str] | None = None) -> dict:
+        """Verify an answer: outcome 'answer' or 'stop'; each assertion has claim, source_id,
+        locator and an exact quote. Quotes, numbers and day units are checked against the evidence."""
+        output = {"outcome": outcome, "answer": answer, "assertions": assertions,
+                  "stop_reason": stop_reason, "unknowns": [] if unknowns is None else unknowns}
+        return execute(service.verify, question, output)
 
     async def health(request):
         return JSONResponse({"service": SERVICE, "status": "UP", "publication_enabled": False,

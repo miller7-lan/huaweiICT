@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-10-30T04:54:49.982602+00:00",
+  "configured": true,
+  "service": "govkb_frozen_qa",
+  "service_url": "http://host.docker.internal:8786/sse",
+  "agent": {
+    "agent_id": 38,
+    "name": "govfrozenqa_assistant",
+    "enabled": false,
+    "tools": [
+      "govkb_frozen_retrieve",
+      "govkb_frozen_verify"
+    ],
+    "model_ids": [
+      4
+    ],
+    "max_steps": 6
+  },
+  "tool_count": 2,
+  "other_agents_protected": 37,
+  "other_agents_unchanged": true,
+  "published": false,
+  "inference_calls": 0,
+  "service_health": {
+    "corpus_sha256": "bb1c633716c93854329a0c73af9498ca16791150174e41df7fb0a888cb5a8c36",
+    "startup_source_sha256": {
+      "frozen_qa.py": "d3ce46c2c60f843a5f156ba11285026a08a4e5bdf4c3905f35ec491e81881ad4",
+      "frozen_qa_server.py": "a1ffec886769e275c239ebf1101381ae59340608f209c3f087ebf429d0f0f166",
+      "knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479"
+    }
+  }
+}
