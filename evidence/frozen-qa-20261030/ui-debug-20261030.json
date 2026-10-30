@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-10-30",
+  "surface": "Nexent v2.7.0 agent config page debug chat (/zh/agents/38)",
+  "agent": {
+    "agent_id": 38,
+    "name": "govfrozenqa_assistant",
+    "enabled": false,
+    "published": false,
+    "model": "deepseek-flash"
+  },
+  "operator": "陈子炫 logged in as the project developer account; Claude drove the browser and typed the questions",
+  "runs": [
+    {
+      "question": "首次申领居民身份证还收工本费吗？换领收多少？",
+      "observed_duration_s": 4.07,
+      "tool_order": [
+        "govkb_frozen_retrieve",
+        "govkb_frozen_verify",
+        "final_answer"
+      ],
+      "outcome": "answer",
+      "conclusion": "按归档资料，自2018年4月1日起停征首次申领居民身份证工本费；换领第二代居民身份证的工本费为每证20元。",
+      "citations": [
+        [
+          "MOF-FIRST-ISSUE-2018",
+          "正文段落4"
+        ],
+        [
+          "MOF-FEE-2007",
+          "正文段落4"
+        ]
+      ],
+      "cross_document": true,
+      "screenshots": [
+        "S04a-跨文档问答结论与引用-20261030.jpg",
+        "S04b-跨文档问答未知项与说明-20261030.jpg",
+        "S04c-问答调用过程-20261030.jpg"
+      ]
+    },
+    {
+      "question": "现在在河南换领身份证要交多少钱？",
+      "observed_duration_s": 5.56,
+      "tool_order": [
+        "govkb_frozen_retrieve",
+        "govkb_frozen_verify",
+        "final_answer"
+      ],
+      "outcome": "stop",
+      "stop_reason": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+      "related_archive_citations": [
+        [
+          "MOF-FEE-2007",
+          "正文段落4"
+        ],
+        [
+          "HN-MEASURES-2021-PDF",
+          "PDF第5页右半页（印刷页码5），第二项"
+        ]
+      ],
+      "deviation": "提示词要求检索返回STOP后直接作答，智能体仍调用了一次核验工具；服务端核验同样执行范围检查并返回停止，结论不受影响。",
+      "screenshots": [
+        "S05a-现行效力问题停止作答-20261030.jpg",
+        "S05b-停止作答未知项与说明-20261030.jpg"
+      ]
+    }
+  ],
+  "limits": "两个样本，只证明在Nexent界面中可运行并按规则引用或停止，不代表准确率；截图为800×500浏览器捕获，正式材料可重截高清版。"
+}

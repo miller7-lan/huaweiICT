@@ -1,0 +1,33 @@
+{
+  "question": "河南换领居民身份证要交验什么证件？",
+  "agent_id": 38,
+  "duration_ms": 8922.0,
+  "passed": true,
+  "tool_order": [
+    "govkb_frozen_retrieve",
+    "govkb_frozen_verify",
+    "final_answer"
+  ],
+  "model_starts": 3,
+  "final_answers": 1,
+  "final_answer": "结论：在河南申请换领居民身份证的，交验居民身份证；异地受理换领的，同样交验居民身份证。\n\n- 「申请换领的，交验居民身份证」—— HN-NORM-PUBLISHER 第一百五十九条\n- 「申请换领的，交验居民身份证」—— HN-NORM-PUBLISHER 第一百六十六条\n\n未知项：\n- 该规定当前是否仍然有效、是否已被修订\n- 各地受理窗口是否另有材料要求\n\n说明：以上为冻结的历史归档资料解释，未核定现行效力，需人工复核。",
+  "events": 423,
+  "usage_events": [
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 1, \"duration\": 1.06, \"step_input_tokens\": 4431, \"step_output_tokens\": 34, \"total_output_tokens\": 34, \"estimated_context_tokens\": 4947, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 51.3, \"uncompressed_est_tokens\": 10152, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4431}"
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 2, \"duration\": 1.75, \"step_input_tokens\": 5869, \"step_output_tokens\": 232, \"total_output_tokens\": 266, \"estimated_context_tokens\": 6672, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 45.2, \"uncompressed_est_tokens\": 12172, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 5869}"
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 3, \"duration\": 1.07, \"step_input_tokens\": 6050, \"step_output_tokens\": 135, \"total_output_tokens\": 401, \"estimated_context_tokens\": 6866, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 48.4, \"uncompressed_est_tokens\": 13300, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 6050}"
+    }
+  ],
+  "recorded_at": "2026-10-30T13:32:05.932319+00:00",
+  "conversation_id": 166,
+  "published": false,
+  "agent_enabled": false
+}
