@@ -30,7 +30,7 @@ TREE_ALLOWLIST = {
     "config/knowledge": {".json"},
 }
 FILE_ALLOWLIST = (
-    "AGENTS.md", "pyproject.toml", "requirements.lock", "requirements-knowledge.lock",
+    "AGENTS.md", "LICENSE", "pyproject.toml", "requirements.lock", "requirements-knowledge.lock",
     ".dockerignore", ".gitignore", ".gitattributes", "Dockerfile", "Dockerfile.knowledge",
     "compose.mcp.yml", "compose.knowledge.yml", "compose.cloud-proxy.yml",
     "compose.m1.yml", "compose.m2.yml", "compose.asset-query.yml",
@@ -246,7 +246,7 @@ def package_notice() -> bytes:
             "Read docs/competition/复现与交付说明-2026-10-21.md first. Other current materials may link historical evidence not included in this package; obtain the matching reviewed repository records separately. Source originals and exact preparation metadata require separate authorized acquisition. "
             "The actual three-agent reviewed-ontology tree JSON is included; the platform's Skill-bundled ZIP is a separate checked deliverable. A clean-environment native reproduction is outstanding. "
             "Synthetic engineering checks do not establish current policy validity or business quality.\n\n"
-            "No project-wide redistribution license is declared by this package. Confirm author permission before external release. "
+            "Project code and documentation are released under the MIT License in LICENSE. It does not cover government documents, quoted source text or third-party materials; confirm their use separately. "
             "Third-party dependencies and official Nexent sources must be obtained under their own licenses; none are vendored here.\n").encode("utf-8")
 
 
@@ -325,7 +325,7 @@ def build() -> dict:
             {"kind": "platform", "requirement": "Python 3.11+ (reference Windows 3.12), Git, Docker Desktop/WSL2, official Nexent v2.7.0 commit 519b9b17c7f4cbc623256ac318ea96a20f33772e, separately obtained dependencies/models."},
             {"kind": "acceptance", "requirement": "Another member must record clean-environment import and end-to-end native execution after obtaining the missing inputs; independent business evaluation remains separate."},
             {"kind": "document_evidence_links", "requirement": "The four current Markdown materials link to historical evidence/requirements outside this allowlist; obtain the matching reviewed repository records separately. No private runtime or raw logs are part of those attachments."},
-            {"kind": "redistribution", "requirement": "Confirm project author permission and third-party document/data licenses before external submission or public redistribution."},
+            {"kind": "redistribution", "requirement": "Project code and documentation are MIT licensed (LICENSE); confirm third-party document/data licenses before external submission or public redistribution."},
         ],
     }
     external = encoded(manifest)

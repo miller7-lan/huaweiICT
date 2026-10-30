@@ -25,7 +25,7 @@ powershell -ExecutionPolicy Bypass -File scripts\setup.ps1
 
 后续按[复现与交付说明](docs/competition/复现与交付说明-2026-10-21.md)准备平台、来源和权限。`deploy.ps1` 会启动Docker服务，默认进行平台检查；历史双Qwen对照需显式添加 `-RequireLocalModels`，`-ProvisionAccounts` 也保留双模型前提。账号初始化、来源取得、候选结构确认和云端原生运行各有前置条件，环境准备不执行这些步骤。带 `live`、`--live`、`confirm-demo` 或发布行为的命令按各自范围执行；旧预算与人工确认不能跨实例复用。
 
-公开工程包由 `scripts/build_competition_package.py` 按需生成并核验，生成 ZIP 与派生清单不作为重复源码提交。南京本体三 Agent 的[原始平台导出ZIP](artifacts/competition-20261021/nexent-ontology-crossdoc-native-export.zip)单独保留，配套[导出JSON](config/exports/ontology-crossdoc-native-20261021/agent.json)与[导出检查](evidence/ontology-crossdoc-native-20261021/actual-export.json)可核对。包完整性检查不代表干净环境原生复现通过。
+公开工程包由 `scripts/build_competition_package.py` 按需生成并核验，生成 ZIP 与派生清单不作为重复源码提交。南京本体三 Agent 的[原始平台导出ZIP](artifacts/competition-20261021/nexent-ontology-crossdoc-native-export.zip)单独保留，配套[导出JSON](config/exports/ontology-crossdoc-native-20261021/agent.json)与[导出检查](evidence/ontology-crossdoc-native-20261021/actual-export.json)可核对。包完整性检查不代表干净环境原生复现通过。项目源码与文档按 [MIT 许可证](LICENSE) 开源，不覆盖政府原件、引用原文及其他第三方材料。
 
 凭据、个人回答、原始日志和运行数据库保留在私有 `.runtime`，不提交仓库。云端沿用环境变量或系统代理与 HTTPS 证书校验，本机服务按 `NO_PROXY` 直连。权限、精确引用、未知项、版本、当前暂停与人工确认门持续生效；翻译不构成脱敏，来源撤权不能由历史批准绕过。操作约定见[AGENTS.md](AGENTS.md)及[填表隐私边界](docs/赛题3资料/问答填表入口与隐私边界.md)。
 
