@@ -1,22 +1,25 @@
-"""Build chapters 1-3 of the development design document as .docx.
+"""Build the development design document draft as .docx.
 
-Needs python-docx, which is not in the project lock; run it from a separate
-environment. Every number in the text comes from the dated evidence named in
-docs/2026-10-18对话决策与接续记录.md sections 25-45. Output:
-docs/competition/开发设计文档-第1-3章-20261031.docx
+Chapters 1-3 are written; chapters 4-8 are a framework of headings, prefilled
+facts and yellow placeholders. Needs python-docx, which is not in the project
+lock; run it from a separate environment. Every number comes from the dated
+evidence named in docs/2026-10-18对话决策与接续记录.md sections 25-46.
+Once teammates edit the .docx, do not regenerate over it without merging.
+Output: docs/competition/开发设计文档-20261031.docx
 """
 from pathlib import Path
 
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_COLOR_INDEX
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 ROOT = Path(__file__).resolve().parents[1]
 FIGURES = ROOT / "docs/competition/assets/design"
-OUTPUT = ROOT / "docs/competition/开发设计文档-第1-3章-20261031.docx"
+SCREENSHOTS = ROOT / "docs/competition/assets/screenshots"
+OUTPUT = ROOT / "docs/competition/开发设计文档-20261031.docx"
 BODY_FONT, HEAD_FONT, LATIN = "宋体", "黑体", "Times New Roman"
 
 
@@ -159,25 +162,39 @@ class Writer:
         spacer = self.para("", indent=False)
         spacer.paragraph_format.line_spacing = 1.0
 
-    def figure(self, filename, caption, width=15.5):
+    def figure(self, filename, caption, width=15.5, folder=FIGURES):
         paragraph = self.para("", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER)
         paragraph.paragraph_format.keep_with_next = True
         # Body line spacing would multiply the inline picture's height.
         paragraph.paragraph_format.line_spacing = 1.0
         paragraph.paragraph_format.space_before = Pt(6)
-        paragraph.runs[0].add_picture(str(FIGURES / filename), width=Cm(width))
+        paragraph.runs[0].add_picture(str(folder / filename), width=Cm(width))
         self.caption(caption)
+
+    def todo(self, owner, points, materials=None):
+        """Yellow-highlighted placeholder; deleted when the section is written."""
+        text = f"【待补｜负责人：{owner}】{points}"
+        if materials:
+            text += f"素材：{materials}"
+        paragraph = self.para(text, indent=False, size=10.5)
+        paragraph.paragraph_format.line_spacing = 1.25
+        paragraph.paragraph_format.space_after = Pt(4)
+        for run in paragraph.runs:
+            run.font.highlight_color = WD_COLOR_INDEX.YELLOW
+        return paragraph
 
 
 def title_block(w):
     title = w.para(("基于 Nexent 的政务资产认知与可进化决策智能体", True), indent=False,
                    align=WD_ALIGN_PARAGRAPH.CENTER, size=18, east=HEAD_FONT)
     title.paragraph_format.space_after = Pt(6)
-    w.para("开发设计文档（第一至三章）", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=14, east=HEAD_FONT)
+    w.para("开发设计文档（初稿）", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=14, east=HEAD_FONT)
     w.para("第十一届华为 ICT 大赛中国创新赛 · 赛题 3", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=10.5)
     w.para("基于华为 ModelEngine Nexent 打造可进化决策智能体", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=10.5)
-    note = w.para("稿件日期：2026 年 10 月 31 日。学校、队名、成员等信息按官方模板填写。", indent=False,
-                  align=WD_ALIGN_PARAGRAPH.CENTER, size=10.5)
+    w.para("稿件日期：2026 年 10 月 31 日。学校、队名、成员等信息按官方模板填写。", indent=False,
+           align=WD_ALIGN_PARAGRAPH.CENTER, size=10.5)
+    note = w.todo("全体", "黄色底纹段落为待补内容，写好对应小节后整段删除。第 1–3 章为初稿，第 4–8 章为章节框架；"
+                         "已有事实预填在表格中，“待测”“待补”处需按实际结果填写。")
     note.paragraph_format.space_after = Pt(12)
 
 
@@ -469,6 +486,185 @@ def chapter_three(w):
            "记录阅读、整理、复核的主动用时，以及直接采纳率、可用率和漏项数；抽取规则的编写成本单独记录。实验结果将在效果验证部分给出。")
 
 
+def chapter_four(w):
+    w.heading("4 智能体构建方案", 1)
+    w.heading("4.1 智能体总体设计", 2)
+    w.todo("李嘉杰", "说明三组智能体（本体推理、知识更新、自由提问）的定位、分工与协作关系，以及为什么采用“主控 + 子 Agent”结构；"
+                    "可直接引用表 2-2，不重复列表。", "docs/competition/当前Nexent配置与证据说明-2026-10-21.md 第一至三节。")
+    w.heading("4.2 本体推理智能体组", 2)
+    w.heading("4.2.1 角色与提示词设计", 3)
+    w.todo("李嘉杰", "主控、检索、核验三个角色的职责提示词、约束提示词和示例动作；说明为什么禁止导入模块、禁止改写工具结果。",
+           "scripts/provision_ontology_crossdoc_native.py 的 PROTOCOL 与 draft_body；config/skills/govkb-ontology-crossdoc-preview。")
+    w.heading("4.2.2 执行流程与完成门", 3)
+    w.todo("李嘉杰", "按实际工具顺序写出一次完整运行：读 Skill → open_query → 检索子 Agent → 核验子 Agent → state → finalize；"
+                    "说明“只有持久化的核验阶段通过才能交付”的完成门。",
+           "南京原生统一验收-2026-10-21.md、河南三模态原生验收-2026-10-22.md。")
+    w.heading("4.3 知识更新智能体组", 2)
+    w.todo("李嘉杰", "主控、整理、核验三个角色；新旧资料各读一次完整视图；差异候选的字段；为什么候选不继承旧批准。",
+           "config/skills/govkb-successor-update；主控心跳与自主更新修复验收-2026-10-21.md。")
+    w.heading("4.4 自由提问问答助手", 2)
+    w.todo("李嘉杰", "单智能体 + 检索、核验两个 MCP 工具的设计；答复格式（结论、逐条引用、未知项、状态说明）；停止规则。",
+           "自由提问入口与评测运行说明-2026-10-30.md；scripts/provision_frozen_qa_native.py 的 PROMPT。")
+    w.heading("4.5 Skill 设计与模板化", 2)
+    w.todo("陈子炫", "Skill 的结构与分层（引用表 2-4），模板渲染流程，河南 Skill 逐字复现的验证，新 profile 部署步骤与计时结果。",
+           "Skill工作流模板说明-2026-10-30.md；李嘉杰的模板试用计时记录。")
+    w.heading("4.6 MCP 工具实现与关键代码", 2)
+    w.todo("陈子炫", "选 2–3 段关键代码解读：工具的指纹检查与失败即停、核验函数（引文逐字、数字与单位）、依赖计划执行器。"
+                    "每段代码不超过 20 行，配一句说明。",
+           "src/gov_mcp/frozen_qa.py 的 verify；src/gov_mcp/ontology_crossdoc_preview_server.py 的 execute；crossdoc_reasoning.py。")
+    w.heading("4.7 输出契约与容错", 2)
+    w.todo("陈子炫", "严格 JSON 输出契约、工具结果原样交付、模型或工具出错即停、不重试业务请求、预算预留与调用上限。",
+           "JSON稳定性修复-2026-10-21.md；严格JSON输出修复-2026-10-19.md。")
+
+
+def chapter_five(w):
+    w.heading("5 原始数据说明", 1)
+    w.heading("5.1 数据来源与选取原则", 2)
+    w.todo("程千城", "说明只选用政府官网公开资料的原因；为什么以居民身份证业务为试点；为什么选河南作为主要评测范围，南京、北京作为补充；"
+                    "资料截至时间与冻结方式。", "evaluation/independent-20261030/scope.md；真实资产与规范对齐表-2026-10-21.md。")
+    w.heading("5.2 冻结资料清单", 2)
+    w.para("河南试点的评测与问答使用以下 7 份官方原件（表 5-1）；南京、北京试点资料见表 5-2。")
+    w.table("表 5-1 河南冻结资料清单", ["编号", "资料", "格式", "发布或转载机构", "主要用途"], [
+        ["A2", "河南省执行的全国性及中央部门和单位行政事业性收费目录清单", "Excel", "河南省财政厅", "收费项目与依据文号"],
+        ["A3", "河南公安 2021 年便民利企措施", "扫描 PDF", "河南省公安厅", "历史省内通办、办理周期"],
+        ["A4", "关于进一步规范居民身份证收费等有关问题的通知（财综〔2007〕34号）", "HTML", "财政部", "换领、补领、临时证收费分支"],
+        ["A5", "停征免征和调整部分行政事业性收费有关政策（财税〔2018〕37号）", "HTML", "财政部", "首次申领停征工本费"],
+        ["A6", "河南公安 2026 年便民利民措施政策解读", "HTML", "河南省公安厅", "办理时限新规定"],
+        ["A7", "河南省户口居民身份证管理工作规范（试行）（豫公通〔2022〕77号）", "HTML", "河南省公安厅", "申领、换领、补领的材料与程序"],
+        ["B1", "河南 2024 年便民措施（转载）", "HTML", "济源市公安局", "办理时限旧规定"],
+    ], [1.2, 5.6, 1.6, 2.6, 3.6])
+    w.table("表 5-2 其他试点资料", ["试点", "资料", "格式", "用途"], [
+        ["南京", "南京市政府问答：身份证到期换证周期（2026-01-05）", "HTML", "省内、省外户籍的换发周期"],
+        ["南京", "南京市政府问答：换领期间旧证能否使用（2025-12-09）", "HTML", "未超期旧证的使用条件"],
+        ["北京", "北京市居民身份证换领办事指南", "HTML", "网上办理条件"],
+    ], [1.6, 7.0, 1.6, 4.4])
+    w.todo("程千城", "核对表 5-1、5-2 的资料名称与机构；补充每份资料的发布日期（页面日期，不等于施行日期）和原件 SHA-256 前 16 位。")
+    w.heading("5.3 数据规模与分布", 2)
+    w.table("表 5-3 数据规模", ["口径", "规模", "说明"], [
+        ["资料目录（10 月 18 日快照）", "95 个站点、79 份文档、186 个修订、1476 个片段", "多地区资料登记，含待审与排除状态"],
+        ["河南冻结语料", "7 份原件、581 个检索单元", "Excel 行 258、规范条文 236、网页段落 85、扫描转录 2"],
+        ["河南三模态推理链", "3 份资料、17 处定位", "Excel 单元格 10、HTML 条款 5、扫描转录 2"],
+    ], [4.2, 5.0, 5.4])
+    w.todo("程千城", "补充各地区、各格式的文档数分布（可做一张柱状图）。", "data/knowledge/candidate-catalog.json；evidence/frozen-qa-20261030/corpus-manifest.json。")
+    w.heading("5.4 数据权利与使用边界", 2)
+    w.todo("程千城", "说明资料均为公开官方资料、只用于评测与演示；原件再分发许可尚未逐一核定，因此公开仓库只提供网址与散列；"
+                    "不采集个人信息，演示使用虚构情境。", "复现与交付说明-2026-10-21.md 第 2 节。")
+
+
+def chapter_six(w):
+    w.heading("6 数据处理说明", 1)
+    w.heading("6.1 处理流程总览", 2)
+    w.todo("程千城", "用一张流程图或一段话概括：采集 → 原件核验 → 解析与定位 → 检索单元 → 本体候选 → 人工复核 → 版本。"
+                    "可复用图 2-3 的风格，由陈子炫出图。")
+    w.heading("6.2 采集与原件核验", 2)
+    w.todo("程千城", "采集前检查 robots 规则；每份原件计算 SHA-256 并与登记值核对，不一致即停止；网站无法访问时使用历史保存的同一原件"
+                    "（如济源公安网站 TLS 握手失败，改用更新链保存的原件，散列一致）。", "scripts/build_frozen_corpus.py；evidence/frozen-qa-20261030/corpus-manifest.json。")
+    w.heading("6.3 多模态解析与定位", 2)
+    w.table("表 6-1 各格式的解析与定位方式", ["格式", "解析方式", "定位粒度", "注意事项"], [
+        ["HTML", "按页面正文选择器提取段落；规范文件按“第 X 条”合并续行", "正文段落 N / 第 X 条", "保留完整条款和续段，不截断"],
+        ["Excel", "只读字面值，不执行公式；按行组织", "工作表!第 N 行、单元格", "公式单元格跳过并计数"],
+        ["扫描 PDF", "按页渲染后人工或 AI 转录", "PDF 页码、左右半页", "转录与原件分开保存，需人工复核"],
+    ], [2.0, 5.0, 3.4, 4.2])
+    w.todo("程千城", "按表 6-1 逐项展开，各配一个真实例子（如第一百五十九条、收费目录第 36 行、扫描件第 5 页右半页）。")
+    w.heading("6.4 检索单元构建", 2)
+    w.todo("陈子炫", "检索单元的字段（来源、定位、原文、散列、证据类型）；字面二元组检索与前 5 条证据；与目录登记条款散列的复核（22 条一致）。",
+           "src/gov_mcp/frozen_qa.py；scripts/build_frozen_corpus.py。")
+    w.heading("6.5 质量控制与人工复核", 2)
+    w.todo("程千城", "扫描件真人复核结果（逐处一致或差异）；规范条款映射复核结果；被排除资料及原因。",
+           "docs/competition/扫描件真人复核-程千城-*.md；规范条款映射复核-*.md。")
+    w.heading("6.6 隐私与安全处理", 2)
+    w.todo("程千城", "不接收身份证号等个人信息（含 18 位号码的问题直接停止）；凭据与运行数据只放本机私有目录；公开证据只含数量与散列。")
+
+
+def chapter_seven(w):
+    w.heading("7 Nexent 智能体配置说明", 1)
+    w.heading("7.1 平台与模型信息", 2)
+    w.table("表 7-1 平台与模型配置", ["项目", "配置"], [
+        ["智能体平台", "Nexent v2.7.0，Docker 部署于本机"],
+        ["语言模型", "DeepSeek 官方 API，deepseek-flash；所有智能体使用同一模型"],
+        ["解码参数", "温度 0，关闭思考模式，每步输出上限 1024 tokens"],
+        ["步数上限", "主控与问答助手 6 步；检索、核验子 Agent 3 步；更新组整理、核验子 Agent 4 步"],
+        ["发布状态", "全部为禁用、未发布的草稿；通过受控接口或配置页调试对话运行"],
+    ], [3.2, 11.4])
+    w.heading("7.2 工具信息", 2)
+    w.para("各 MCP 服务的工具及作用见表 2-3。服务以 SSE 方式注册到 Nexent，使用专用 Bearer 令牌鉴权，容器通过 "
+           "host.docker.internal 访问本机服务。")
+    w.todo("李嘉杰", "补一张 Nexent“MCP 配置”页面截图，并列出每个服务的注册名、地址和工具数量。", "截图 S02。")
+    w.heading("7.3 知识库信息", 2)
+    w.para("当前知识载体是由 MCP 服务管理的冻结语料和来源绑定包：河南 7 份原件整理为 581 个检索单元，南京两份问答、"
+           "河南三模态资料分别绑定在对应的本体推理链中。")
+    w.todo("陈子炫", "确定嵌入模型后，把冻结语料导入 Nexent 原生知识库，补充知识库名称、文件列表、切片方式与截图；"
+                    "未导入前如实说明当前方式。", "scripts/export_frozen_knowledge.py（已导出 7 个 Markdown 文件）；截图 S08。")
+    w.heading("7.4 调用关系图", 2)
+    w.todo("李嘉杰", "画一张调用关系图：用户 → 主控 → 子 Agent → MCP 工具 → 本体/语料，标出每一步调用的工具名和顺序；"
+                    "放在 docs/competition/assets/design/ 下，图题为“图 7-1 智能体调用关系”。", "表 2-2、表 2-3；Nexent 调试页的调用过程截图 S04c。")
+    w.heading("7.5 调试迭代经验", 2)
+    w.para("开发过程中遇到的主要问题及处理见表 7-2，所有失败运行都保留了记录。")
+    w.table("表 7-2 主要调试问题与处理", ["问题", "原因", "处理"], [
+        ["子 Agent 读到的正文被截断", "长回执在平台观察中被压缩，中间正文丢失", "新旧资料拆成两份完整视图分别读取，超长即阻断"],
+        ["整理未提交即达步数上限，核验仍被启动", "缺少阶段门控", "主控按持久阶段调度，前一阶段未完成不启动下一阶段"],
+        ["子 Agent 未在同一动作中结束、把字符串当字典", "模型对工具返回值的处理不稳定", "要求工具调用与结束在同一动作，工具结果原样交付，固定状态标记"],
+        ["沙箱中导入模块失败", "Nexent 代码沙箱限制导入", "提示词禁止导入；核验工具改为接收结构化字段"],
+        ["验收脚本把 true 与 1、25 与 25.0 判为相等", "回执比较使用普通相等，不区分 JSON 类型", "改为递归按类型严格比较，并补变异回放检查"],
+        ["Docker 启动报缺少注册表键", "此前在其他应用环境中安装，数据与设置被重定向", "按原版本修复安装，复制原数据盘并恢复设置，17 个容器全部恢复"],
+    ], [4.4, 4.8, 5.4])
+    w.todo("李嘉杰", "核对表 7-2，并补充每个问题前后各一次运行的对比（例如河南更新链 A1–A6 六轮，A6 成功）。",
+           "当前Nexent配置与证据说明-2026-10-21.md 第四节；JSON稳定性核查-2026-10-21.md；接续记录第 42 节。")
+    w.heading("7.6 示例问答截图", 2)
+    w.para("图 7-2 为自由提问助手对跨文档收费问题的答复，图 7-3 为询问“现在的收费”时按规则停止作答。")
+    w.figure("S04a-跨文档问答结论与引用-20261030.jpg", "图 7-2 跨文档问答：结论与逐条引用", width=14, folder=SCREENSHOTS)
+    w.figure("S05a-现行效力问题停止作答-20261030.jpg", "图 7-3 询问现行收费时停止作答并列出归档原文", width=14, folder=SCREENSHOTS)
+    w.todo("陈子炫", "补充配置页截图（S01a/S01b）和调用过程截图（S04c）；南京、河南推理链截图（S06/S07）需要新运行或注明原运行日期；"
+                    "正式交稿前用 Win+Shift+S 重截高清版。", "docs/competition/assets/screenshots/README.md。")
+    w.heading("7.7 同步提交文件说明", 2)
+    w.table("表 7-3 同步提交文件", ["类别", "文件", "说明"], [
+        ["Agent JSON", "config/exports/ontology-crossdoc-native-20261021/agent.json；config/exports/henan-multimodal-native-20261022/agent.json",
+         "Nexent 平台导出的智能体配置，原始导出 ZIP 在 artifacts/ 下"],
+        ["Skill", "config/skills/ 下的在用 Skill；config/skill-templates/ 模板与规格", "含分层模板与渲染工具"],
+        ["MCP 文件", "src/gov_mcp/ontology_crossdoc_preview_server.py；src/gov_mcp/frozen_qa_server.py 及依赖模块", "附启动命令与端口说明"],
+        ["知识库", "export_frozen_knowledge.py 导出的 7 个 Markdown 文件", "原件再分发许可未核定，提交前须确认"],
+        ["工程包", "build_competition_package.py 生成的 ZIP 与散列清单", "MIT 许可；可在新目录自行重建"],
+    ], [2.4, 7.2, 5.0])
+    w.todo("陈子炫", "按官方上传要求确认文件格式与打包方式后定稿本表。")
+
+
+def chapter_eight(w):
+    w.heading("8 效果验证与总结", 1)
+    w.heading("8.1 验证方法", 2)
+    w.para("效果验证分两部分：一是业务效果，用 30 道独立编写的问题（20 道应答复、10 道应停止）对比普通检索与本方案；"
+           "二是低资源构建效率，用 6 个映射单元对比纯人工整理与“系统候选 + 人工复核”。两种方案使用同一批资料、同一模型和同一检索，"
+           "答复去掉方法名并随机排序后盲评。")
+    w.todo("陈子炫", "补充出题人、冻结时间、盲评人和独立性声明；说明 30 题是项目的评测设计，不是官方规定。",
+           "独立评测执行方案-2026-10-21.md；evaluation/independent-20261030/。")
+    w.heading("8.2 业务效果评测结果", 2)
+    w.table("表 8-1 业务效果对比（待测）", ["指标", "普通检索", "本方案", "说明"], [
+        ["严格整题正确率", "待测", "待测", "结果类型、关键断言、范围边界全部正确的题数占比"],
+        ["断言支持率", "待测", "待测", "有原文支持的关键断言占比"],
+        ["前 5 条证据召回率", "待测", "待测", "仅统计应答复题"],
+        ["正确停止率", "待测", "待测", "应停止题中实际停止的比例"],
+        ["误停止率", "待测", "待测", "应答复题中错误停止的比例"],
+        ["平均耗时", "待测", "待测", "从提问到答复的时间"],
+        ["平均输入 tokens", "待测", "待测", "每题模型输入用量"],
+    ], [3.6, 2.2, 2.2, 6.6])
+    w.todo("陈子炫", "先跑 8 题先导，再跑 30 题；填写表 8-1，并逐类分析错误（单位、分支、地区、版本）。")
+    w.heading("8.3 低资源构建效率结果", 2)
+    w.table("表 8-2 低资源构建对照（待测）", ["单元", "方法 A 主动用时", "方法 B 主动用时", "B 直接采纳率", "B 可用率", "漏项（A / B）"], [
+        ["U1 申领条件", "待测", "待测", "待测", "待测", "待测"],
+        ["U2 分支材料", "待测", "待测", "待测", "待测", "待测"],
+        ["U3 规范效力", "待测", "待测", "待测", "待测", "待测"],
+        ["U4 收费数值与例外", "待测", "待测", "待测", "待测", "待测"],
+        ["U5 版本变化", "待测", "待测", "待测", "待测", "待测"],
+        ["U6 扫描件跨页条款", "待测", "待测", "待测", "待测", "待测"],
+    ], [3.2, 2.4, 2.4, 2.2, 2.0, 2.4])
+    w.todo("程千城、李嘉杰", "按 evaluation/lowresource-20261030/ 的记录表交叉完成方法 A、B 并汇总；U4–U6 在开发中用过，需注明方法 B 可能偏乐观。")
+    w.heading("8.4 工程验收汇总", 2)
+    w.para("各能力的工程验收结果见表 1-1。这些结果证明系统在冻结资料上的实现与边界，不等同于业务准确率。")
+    w.heading("8.5 局限与后续工作", 2)
+    w.todo("陈子炫", "如实列出：结果基于历史归档资料；扫描件依赖转录；新事项的执行层仍需开发；多行业迁移（总决赛附加分方向）。")
+    w.heading("8.6 总结", 2)
+    w.todo("陈子炫", "用一段话回扣四个评分维度：编排与 MCP/Skill 集成、资产激活业务价值、低资源本体构建、交互体验与能力沉淀。")
+
+
 def main():
     doc = Document()
     configure(doc)
@@ -478,6 +674,8 @@ def main():
     # No forced chapter break: pagination is redone when pasted into the official template.
     chapter_two(writer)
     chapter_three(writer)
+    for chapter in (chapter_four, chapter_five, chapter_six, chapter_seven, chapter_eight):
+        chapter(writer)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(OUTPUT)
     print(OUTPUT)
