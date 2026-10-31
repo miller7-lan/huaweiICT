@@ -1,9 +1,9 @@
-"""Build chapters 1-2 of the development design document as .docx.
+"""Build chapters 1-3 of the development design document as .docx.
 
 Needs python-docx, which is not in the project lock; run it from a separate
 environment. Every number in the text comes from the dated evidence named in
-docs/2026-10-18对话决策与接续记录.md sections 30-44. Output:
-docs/competition/开发设计文档-第1-2章-20261031.docx
+docs/2026-10-18对话决策与接续记录.md sections 25-45. Output:
+docs/competition/开发设计文档-第1-3章-20261031.docx
 """
 from pathlib import Path
 
@@ -16,7 +16,7 @@ from docx.shared import Cm, Pt, RGBColor
 
 ROOT = Path(__file__).resolve().parents[1]
 FIGURES = ROOT / "docs/competition/assets/design"
-OUTPUT = ROOT / "docs/competition/开发设计文档-第1-2章-20261031.docx"
+OUTPUT = ROOT / "docs/competition/开发设计文档-第1-3章-20261031.docx"
 BODY_FONT, HEAD_FONT, LATIN = "宋体", "黑体", "Times New Roman"
 
 
@@ -135,8 +135,10 @@ class Writer:
         table._tbl.tblPr.append(layout)
         for r, values in enumerate([headers] + rows):
             row = table.rows[r]
+            properties = row._tr.get_or_add_trPr()
+            # Rows never split across pages; the header repeats and stays with the first row.
+            properties.append(OxmlElement("w:cantSplit"))
             if r == 0:
-                properties = row._tr.get_or_add_trPr()
                 repeat = OxmlElement("w:tblHeader")
                 repeat.set(qn("w:val"), "true")
                 properties.append(repeat)
@@ -146,6 +148,7 @@ class Writer:
                 paragraph = cell.paragraphs[0]
                 paragraph.paragraph_format.first_line_indent = Pt(0)
                 paragraph.paragraph_format.line_spacing = 1.2
+                paragraph.paragraph_format.keep_with_next = r == 0
                 set_fonts(paragraph.add_run(value), HEAD_FONT if r == 0 else BODY_FONT, 10.5, r == 0)
                 if r == 0:
                     paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -170,7 +173,7 @@ def title_block(w):
     title = w.para(("基于 Nexent 的政务资产认知与可进化决策智能体", True), indent=False,
                    align=WD_ALIGN_PARAGRAPH.CENTER, size=18, east=HEAD_FONT)
     title.paragraph_format.space_after = Pt(6)
-    w.para("开发设计文档（第一、二章）", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=14, east=HEAD_FONT)
+    w.para("开发设计文档（第一至三章）", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=14, east=HEAD_FONT)
     w.para("第十一届华为 ICT 大赛中国创新赛 · 赛题 3", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=10.5)
     w.para("基于华为 ModelEngine Nexent 打造可进化决策智能体", indent=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=10.5)
     note = w.para("稿件日期：2026 年 10 月 31 日。学校、队名、成员等信息按官方模板填写。", indent=False,
@@ -354,6 +357,118 @@ def chapter_two(w):
     ], [3.2, 11.4])
 
 
+def chapter_three(w):
+    w.heading("3 知识图谱构建方案", 1)
+    w.heading("3.1 构建思路", 2)
+    w.para("政务知识图谱既要回答“依据是什么”，也要执行“条件是否满足”“区间能否覆盖”这类推理。本项目不追求一次性抽取全量图谱，"
+           "而是在少量种子本体之上，围绕具体业务问题逐步扩展可执行的类型和关系。构建分为四步（图 3-1）：从官方原文的完整条款出发，"
+           "用有界原文语法抽取候选；把类型、关系、条件、依赖计划及来源引文整理成候选摘要；由人工只确认结构；确认后的结构成为不可变版本，"
+           "由执行器按版本执行。构建阶段不调用大模型，人工投入集中在一次结构确认上，适合标注稀缺的政务场景。")
+    w.figure("图5-半自动构建流程.png", "图 3-1 低资源半自动本体构建流程")
+
+    w.heading("3.2 本体模型设计", 2)
+    w.heading("3.2.1 种子本体", 3)
+    w.para("种子本体面向政务办理事项，定义 7 类实体（表 3-1）和 6 类关系（表 3-2），结构见图 3-2。"
+           "种子是项目自建的工程结构，不等同于官方行业标准。")
+    w.table("表 3-1 种子本体实体类型", ["实体", "中文名", "必填属性", "说明"], [
+        ["Matter", "事项", "编号、名称、地区", "办理事项，业务关系的起点"],
+        ["Condition", "适用条件", "编号、表达式、来源片段", "结果只取真、假、未知"],
+        ["Material", "材料", "编号、名称、来源片段", "需交验或提交的材料"],
+        ["Department", "部门", "编号、名称、地区", "受理或办理部门"],
+        ["Procedure", "办理步骤", "编号、名称、来源片段", "办理程序中的环节"],
+        ["StandardClause", "规范条款", "编号、引用、来源片段", "法规或规范性文件中的条款"],
+        ["Asset", "原始资产", "编号、SHA-256、来源", "官方原件及其哈希"],
+    ], [3.2, 2.4, 4.2, 4.8])
+    w.table("表 3-2 种子本体关系类型", ["关系", "起点 → 终点", "含义"], [
+        ["requires", "事项 → 材料", "办理需要的材料"],
+        ["applies_when", "事项 → 适用条件", "事项适用的前提条件"],
+        ["handled_by", "事项 → 部门", "受理或办理的部门"],
+        ["has_step", "事项 → 办理步骤", "办理程序的组成"],
+        ["aligned_to", "事项 → 规范条款", "事项与规范条款对齐"],
+        ["supported_by", "规范条款 → 原始资产", "条款由哪份原件支持"],
+    ], [3.4, 4.6, 6.6])
+    w.heading("3.2.2 约束规则", 3)
+    w.bullets([
+        "每条业务关系必须绑定来源片段，没有出处的关系不能进入版本。",
+        "跨地区合并必须显式复核，不同地区的参数不得互相套用。",
+        "条件结果只取“真、假、未知”三值，信息不足时返回未知。",
+        "候选分为待审、已接受、已拒绝三种状态；发布前必须经过人工审核。",
+        "历史版本不可变，新内容只能以新版本追加。",
+    ])
+    w.heading("3.2.3 扩展机制", 3)
+    w.para("新的业务问题常常需要种子中没有的类型或关系。扩展以“类型化依赖计划”表示：每个计划节点包含编号、算子、"
+           "取自原文的参数、依赖的前序节点和来源键，执行器按依赖顺序求值，并记录每一跳的依据。"
+           "目前已通过人工结构确认的扩展有三项，分别来自北京、南京和河南试点（图 3-2）。")
+    w.figure("图4-本体结构.png", "图 3-2 种子本体与已确认的扩展")
+
+    w.heading("3.3 低资源半自动构建方法", 2)
+    w.heading("3.3.1 有界原文语法抽取", 3)
+    w.para("抽取器针对一类资料的固定表述编写，例如北京办事指南中“符合以下条件可在网上办理”的标题及紧邻续段。"
+           "它识别结构，从原文中捕获数值，生成候选类型、关系和条件实例。数值不写死在代码里：用改动了数字的独立文本测试，"
+           "执行结果随原文数值变化，说明不是查表。抽取器只接受完整条款和续段；遇到额外条件、否定条件或结构变化即拒绝，交由人工处理。")
+    w.heading("3.3.2 候选摘要与人工结构确认", 3)
+    w.para("候选摘要包含新类型、新关系、条件或依赖计划，以及来源修订、原件哈希、逐段引文和预期的版本头。"
+           "维护者只需判断结构是否正确，确认记录写明“仅确认结构，不构成业务批准”。写入时比对版本头（CAS），防止并发修改相互覆盖。")
+    w.heading("3.3.3 版本化执行与回退", 3)
+    w.para("版本以内容哈希标识，执行器只读取已确认版本中的类型、关系和参数。回退时版本头指回原基线，"
+           "查询重新返回“不支持的关系”（UNSUPPORTED_RELATION），已确认的历史版本仍然保留，便于追溯。"
+           "来源修订、原件或实现指纹任一发生变化，依赖它的旧结果都会被阻断。")
+    w.heading("3.3.4 三地构建实例", 3)
+    w.para("三个试点分别覆盖条件判断、跨文档区间比较和多模态归档组装三类推理（表 3-3）。")
+    w.table("表 3-3 三地本体构建实例", ["试点", "来源与规模", "新增类型与关系", "构建与执行结果"], [
+        ["北京", "1 份办事指南、2 段条款；1 个示例种子", "办理渠道（ServiceChannel）；事项 → available_via → 办理渠道；"
+                                              "5 项合取条件，4 个阈值取自原文", "模型调用 0 次；人工确认后本地执行 6 个虚构场景，回退后返回“不支持的关系”"],
+        ["南京", "2 份官方问答、5 段正文", "工作日区间比较（IntervalComparison）；事项 → compares_coverage；"
+                                  "三节点依赖计划，2 个数值参数取自原文", "模型调用 0 次；本地 12 项检查通过，Nexent 原生运行 13 项验收通过"],
+        ["河南", "Excel、HTML、扫描 PDF 共 3 份资料，17 处定位", "换领归档依据包（ArchivedRenewalEvidence）；"
+                                                    "事项 → assembles_archival_basis；四节点依赖计划", "模型调用 0 次；Nexent 原生运行 15 项验收通过"],
+    ], [1.4, 3.4, 5.6, 4.2])
+    w.para("以北京为例，候选包含“本市户籍、年满 16 周岁、上次办证不超过 5 年、照片采集不超过 5 年、已采集指纹”5 项条件。"
+           "虚构输入满足全部条件时结果为真；缺少指纹信息时为未知；恰好处于 5 年边界时也保持未知。"
+           "结果为真只表示输入满足这份归档原文的结构条件，不表示本人可以办理。")
+    w.heading("3.3.5 河南四节点依赖计划", 3)
+    w.para("河南计划把三种格式的资料组织成一条可执行链（表 3-4）。表格只提供规范文号、不含金额，收费分支来自财政部通知正文；"
+           "扫描件提供独立的历史服务条件，不是收费结论的前提。")
+    w.table("表 3-4 河南四节点依赖计划", ["节点", "作用", "依赖", "来源", "输出"], [
+        ["catalog_basis", "识别规范依据", "—", "Excel 收费目录", "文号：财综〔2007〕34号"],
+        ["fee_branch", "历史换领收费分支", "catalog_basis", "财政部通知（HTML）", "换领 20 元；遗失补领、损坏换领 40 元；临时证 10 元（历史原文）"],
+        ["service_archive", "历史服务措施", "—", "扫描 PDF 第 5、6 页", "办理周期由 40 日（自然日）压缩至 30 日；30 日未注明日类型"],
+        ["archive_answer", "组装归档依据", "fee_branch、service_archive", "三类来源", "带 17 处定位的归档答复"],
+    ], [2.8, 2.6, 2.8, 2.6, 3.8])
+
+    w.heading("3.4 本体动态更新与演化", 2)
+    w.para("演化分为两类：结构演化，即新增或修改类型、关系、执行语义；内容演化，即同一事项的资料出现新修订或后继文件。"
+           "两类变化都先成为待审候选，流程见图 2-3。")
+    w.para("内容演化以河南办理时限为例：心跳在自然到期时发现 2026 年的新政策解读，整理子 Agent 分别读取 2024 年旧措施和 2026 年新解读的"
+           "完整视图并提出差异，核验子 Agent 独立复核后生成 1 条待审候选。候选保留“25 个自然日”“15 个工作日”以及中高考特殊时期"
+           "急需用证考生“绿色通道 5 个工作日”等原文的单位和适用对象，不做异单位相减；精确施行日期未知时如实标注。"
+           "旧依据继续保留，审核前正式版本不变。")
+    w.para("结构演化沿用 3.3 的确认与版本机制。来源被暂停、撤权或修订时，依赖它的结果自动阻断，等待重新确认后才能恢复。")
+
+    w.heading("3.5 与行业规范、标准体系对齐", 2)
+    w.para("本体通过“规范条款”实体以及“对齐”“证据支持”两类关系连接规范依据。每条映射按“规范条款 → 本体字段或关系 → "
+           "适用对象与地区 → 生效范围 → 例外 → 复核状态”记录，并绑定原件修订和定位，使任何一条业务结论都能回溯到具体条文。"
+           "表 3-5 列出部分映射。")
+    w.table("表 3-5 规范映射示例", ["规范依据", "映射的本体要素", "适用范围与例外", "复核状态"], [
+        ["财综〔2007〕34号 第一项", "收费分支 → 规范依据", "换领每证 20 元；遗失补领、损坏换领 40 元；临时证 10 元。属于历史原文分支，不是个案应缴金额",
+         "待人工复核"],
+        ["财税〔2018〕37号 第一条", "首次申领 → 停征规则", "2018 年 4 月 1 日起停征首次申领工本费；不扩大到换领、补领", "已做有范围的 AI 复核"],
+        ["豫公通〔2022〕77号 第一百五十九条", "申领/换领/补领 → 需要 → 材料", "申领交验户口簿；换领交验居民身份证；补领交验有效身份证件之一",
+         "待人工复核；已与另一份官方公开副本核对一致"],
+        ["豫公通〔2022〕77号 第二百三十六条", "规范 → 施行日期", "条文载明 2022 年 9 月 1 日起施行，与文件签发日期分开记录", "待人工复核"],
+        ["河南 2026 年便民措施 第一项", "服务时限 → 取值", "本省户籍一般 15 个工作日；5 个工作日只适用于中高考特殊时期急需用证考生",
+         "已做有范围的 AI 复核"],
+    ], [3.4, 3.4, 5.4, 2.4])
+    w.para("目前已完成 10 条映射的来源与定位核对，逐条人工复核正在由队员进行。本项目不声称已通过国家或行业标准（如 GB/T 系列）"
+           "的符合性认证。复核通过的映射将登记为“对齐”关系；规范发生变化时，据此提示受影响的查询路径。")
+
+    w.heading("3.6 低资源构建效率", 2)
+    w.para("三地构建均未使用标注数据，构建阶段模型调用均为 0 次。北京只用了 1 个示例种子，人工投入是对一份候选摘要做结构确认。")
+    w.para("为量化效率，项目设计了对照实验：选取 6 个预先封闭的映射单元，覆盖适用条件、分支材料、规范效力、收费数值与例外、"
+           "版本变化和扫描件跨页条款。方法 A 由人从原文手工整理，方法 B 先由系统生成候选、再由人复核；两位队员交叉分配单元，"
+           "记录阅读、整理、复核的主动用时，以及直接采纳率、可用率和漏项数；抽取规则的编写成本单独记录。实验结果将在效果验证部分给出。")
+
+
 def main():
     doc = Document()
     configure(doc)
@@ -362,6 +477,7 @@ def main():
     chapter_one(writer)
     # No forced chapter break: pagination is redone when pasted into the official template.
     chapter_two(writer)
+    chapter_three(writer)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(OUTPUT)
     print(OUTPUT)

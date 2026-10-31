@@ -125,10 +125,66 @@ def update_flow():
     return fig
 
 
+def label(ax, x, y, text, color=LINE, size=7.4):
+    ax.text(x, y, text, ha="center", va="center", fontsize=size * SCALE, color=color,
+            bbox={"facecolor": "white", "edgecolor": "none", "pad": 1.2})
+
+
+def ontology_structure():
+    fig, ax = canvas(7.5, 4.4)
+    cx, cy, cw, ch = 0.30, 0.50, 0.16, 0.12
+    box(ax, cx - cw / 2, cy - ch / 2, cw, ch, "事项\nMatter", face="#E0F2FE", size=9.5, bold=True)
+    seeds = [((0.095, 0.835), "材料\nMaterial", "requires\n需要"),
+             ((0.305, 0.875), "适用条件\nCondition", "applies_when\n适用于"),
+             ((0.515, 0.835), "部门\nDepartment", "handled_by\n办理部门"),
+             ((0.095, 0.175), "办理步骤\nProcedure", "has_step\n包含步骤"),
+             ((0.305, 0.135), "规范条款\nStandardClause", "aligned_to\n对齐")]
+    for (x, y), text, relation in seeds:
+        box(ax, x - 0.08, y - 0.055, 0.16, 0.11, text, size=8.6)
+        sx, sy = cx + (x - cx) * 0.30, cy + (y - cy) * 0.30
+        ex, ey = cx + (x - cx) * 0.80, cy + (y - cy) * 0.80
+        arrow(ax, (sx, sy), (ex, ey))
+        label(ax, cx + (x - cx) * 0.58, cy + (y - cy) * 0.58, relation)
+    box(ax, 0.44, 0.08, 0.16, 0.11, "原始资产\nAsset", size=8.6)
+    arrow(ax, (0.385, 0.135), (0.44, 0.135))
+    label(ax, 0.52, 0.245, "supported_by\n证据支持")
+    ax.add_patch(FancyBboxPatch((0.64, 0.05), 0.35, 0.80, boxstyle="round,pad=0,rounding_size=0.015",
+                                facecolor="#FFF7ED", edgecolor="#FDBA74", linewidth=1, linestyle="--"))
+    note(ax, 0.815, 0.80, "经人工结构确认的扩展", size=8.6)
+    extensions = [(0.62, "北京：办理渠道\nServiceChannel", "available_via"),
+                  (0.40, "南京：工作日区间比较\nIntervalComparison", "compares_coverage"),
+                  (0.18, "河南：换领归档依据包\nArchivedRenewalEvidence", "assembles_archival_basis")]
+    for y, text, relation in extensions:
+        box(ax, 0.70, y - 0.06, 0.27, 0.12, text, face="#FFFFFF", size=8.2)
+        start = (cx + cw / 2, cy)
+        ax.add_patch(FancyArrowPatch(start, (0.70, y), arrowstyle="-|>", mutation_scale=10,
+                                     color="#EA580C", linewidth=1, linestyle="--"))
+        label(ax, start[0] + (0.70 - start[0]) * 0.45, cy + (y - cy) * 0.45, relation, color="#C2410C")
+    note(ax, 0.32, 0.975, "种子本体：7 类实体、6 类关系；每条业务关系都必须绑定来源片段", size=8.6)
+    return fig
+
+
+def construction_flow():
+    fig, ax = canvas(7.5, 2.9)
+    y, h, w, step = 0.50, 0.30, 0.15, 0.168
+    steps = [("官方原文\n完整条款", "#F1F5F9"), ("有界语法抽取\n数值取自原文", "#DCFCE7"), ("候选摘要\n类型·关系·条件\n来源与引文", "#FEF3C7"),
+             ("人工结构确认\n只确认结构", "#EDE9FE"), ("不可变版本\n内容哈希·CAS", "#E0F2FE"), ("按版本执行\n三值·逐跳依据", "#DCFCE7")]
+    xs = [0.005 + i * step for i in range(len(steps))]
+    for x, (label, face) in zip(xs, steps):
+        box(ax, x, y, w, h, label, face=face, size=8.4)
+    for left, right in zip(xs, xs[1:]):
+        arrow(ax, (left + w, y + h / 2), (right, y + h / 2))
+    box(ax, 0.50, 0.04, 0.40, 0.20, "回退：版本头指回原基线，\n未登记结构返回 UNSUPPORTED_RELATION", face="#FFE4E6", size=8.4)
+    arrow(ax, (xs[4] + w / 2, y), (0.72, 0.24))
+    note(ax, 0.25, 0.14, "构建阶段模型调用 0 次；\n人工投入集中在一次结构确认", size=8.4)
+    return fig
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for name, figure in (("图1-系统总体架构.png", architecture), ("图2-检索推理双驱动查询流程.png", query_flow),
-                         ("图3-知识更新与本体演化流程.png", update_flow)):
+                         ("图3-知识更新与本体演化流程.png", update_flow), ("图4-本体结构.png", ontology_structure),
+                         ("图5-半自动构建流程.png", construction_flow)):
         fig = figure()
         fig.savefig(OUT / name, dpi=200, bbox_inches="tight", facecolor="white")
         plt.close(fig)
