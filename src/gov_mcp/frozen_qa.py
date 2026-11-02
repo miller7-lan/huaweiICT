@@ -27,7 +27,7 @@ OTHER_REGIONS = ("北京", "天津", "上海", "重庆", "河北", "山西", "�
                  "海南", "四川", "贵州", "云南", "西藏", "陕西", "甘肃", "青海", "宁夏", "新疆")
 CURRENT = ("现在", "目前", "如今", "现行", "今天", "当前", "最新", "今年")
 PERSONAL_ID = re.compile(r"\d{17}[\dXx]")
-NUMBER = re.compile(r"\d+(?:\.\d+)?")
+NUMBER = re.compile(r"[+\-−＋－]?(?:\d+(?:[,，]\d+)*(?:\.\d+)?|\.\d+)")
 DAY_UNITS = ("工作日", "自然日")
 QUESTION_KEYS = {"id", "question", "context"}
 STATUS = {"business_conclusion_status": "PAUSED_UNREVIEWED", "current_applicability": "unknown",

@@ -50,8 +50,18 @@ def test_verified_answer_passes_for_both_methods():
 @pytest.mark.parametrize("quoted, claimed, should_pass", [
     ("200", "20", False),
     ("25.5", "25", False),
+    ("20", "-20", False),
+    ("-20", "20", False),
+    ("20", "−20", False),
+    ("1,000", "1", False),
+    ("1,000", "1000", False),
+    ("0.5", ".5", False),
     ("20", "20", True),
     ("25.5", "25.5", True),
+    ("-20", "-20", True),
+    ("−20", "−20", True),
+    ("1,000", "1,000", True),
+    (".5", ".5", True),
 ])
 def test_numeric_citation_requires_complete_number_token(quoted, claimed, should_pass):
     units = [{"source_id": "SYNTHETIC", "locator": "P1", "text": f"测试费用为{quoted}元。"}]
