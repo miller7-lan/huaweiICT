@@ -16,6 +16,10 @@ parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("source", type=Path, help="Path to Nexent v2.8.2 backend/management/services/agent/transfer.py")
 SOURCE = parser.parse_args().source
 source = SOURCE.read_text(encoding="utf-8")
+expected_source_hash = "9329f1f194213b9605befc410a5bb29d4bffe5d3d5001e174287f900284cdaa6"
+actual_source_hash = hashlib.sha256(source.encode("utf-8")).hexdigest()
+if actual_source_hash != expected_source_hash:
+    raise SystemExit("Source differs from the tested v2.8.2 file; refusing to execute its code.")
 tree = ast.parse(source)
 fn = next(n for n in tree.body if isinstance(n, ast.AsyncFunctionDef) and n.name == "import_agent_by_agent_id")
 fn.returns = None
@@ -66,7 +70,7 @@ def run_case(order, expected):
 if __name__ == "__main__":
     first = run_case([(101, "nanjing_service"), (202, "henan_service")], 202)
     reversed_order = run_case([(202, "henan_service"), (101, "nanjing_service")], 101)
-    print("normalized_source_sha256=" + hashlib.sha256(source.encode("utf-8")).hexdigest())
+    print("normalized_source_sha256=" + actual_source_hash)
     print("input_usage=nanjing_service; catalog_order=nanjing,henan; selected_tool_id=" + str(first))
     print("input_usage=nanjing_service; catalog_order=henan,nanjing; selected_tool_id=" + str(reversed_order))
     print("scope=synthetic records; unchanged import function AST; stubbed external dependencies; no DB/network/model")
