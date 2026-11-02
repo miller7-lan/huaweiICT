@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "kind": "authentic_source_pair_with_derived_test_excerpts",
+  "logical_subject": "henan-resident-id-processing-time",
+  "same_real_url": false,
+  "main_database_changed": false,
+  "actual_model_runs": 0,
+  "real_remote_change_observed_in_this_task": false,
+  "sources": [
+    {
+      "role": "old",
+      "source_id": "HN-MEASURES-2024-JY",
+      "url": "https://gaj.jiyuan.gov.cn/14190/15132/15148/t961601.html",
+      "revision": "rev-71014e82351747c52e933f86",
+      "original_sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "original_bytes": 36086,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5",
+      "page_publication_date": "2024-10-17",
+      "legal_effective_date_established": false,
+      "original_file": "官方网页原件\\01_旧文件_2024年身份证办理时限.html",
+      "derived_pdf": "01_旧文件_2024年身份证办理时限.pdf",
+      "derived_text": "纯文本导入\\01_旧文件_2024年身份证办理时限.txt",
+      "artifact_kind": "derived_test_excerpt_not_official_original_pdf",
+      "pages": 1
+    },
+    {
+      "role": "new",
+      "source_id": "HN-MEASURES-2026",
+      "url": "https://hnga.henan.gov.cn/2026/05-11/3349863.html",
+      "revision": "rev-04f1121aa899004c29e55761",
+      "original_sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "original_bytes": 17887,
+      "selected_locator": "正文段落1",
+      "selected_text_sha256": "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e",
+      "page_publication_date": "2026-05-05",
+      "legal_effective_date_established": false,
+      "original_file": "官方网页原件\\02_新文件_2026年身份证办理时限.html",
+      "derived_pdf": "02_新文件_2026年身份证办理时限.pdf",
+      "derived_text": "纯文本导入\\02_新文件_2026年身份证办理时限.txt",
+      "artifact_kind": "derived_test_excerpt_not_official_original_pdf",
+      "pages": 1
+    }
+  ],
+  "files": [
+    {
+      "file": "01_旧文件_2024年身份证办理时限.pdf",
+      "sha256": "9e6af5a794f64810be620880f58b5fad63eca962f9161c62dec4965034def626",
+      "bytes": 30141
+    },
+    {
+      "file": "02_新文件_2026年身份证办理时限.pdf",
+      "sha256": "0105260b11ff1a0232c689158fc6c7ef491d1a0d2f2b2e3eb9a97b34702b5b1e",
+      "bytes": 31801
+    },
+    {
+      "file": "使用说明.md",
+      "sha256": "9e4944b110697f0fff3f80ef7f00cabb8835125560d10688efc33f76df3eff41",
+      "bytes": 2707
+    },
+    {
+      "file": "官方网页原件\\01_旧文件_2024年身份证办理时限.html",
+      "sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+      "bytes": 36086
+    },
+    {
+      "file": "官方网页原件\\02_新文件_2026年身份证办理时限.html",
+      "sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+      "bytes": 17887
+    },
+    {
+      "file": "测试问题与预期.json",
+      "sha256": "d4c6676d6888b1c451d12f1df6dedf58603da803f7b5fa0cffc42173ccb22b3f",
+      "bytes": 1924
+    },
+    {
+      "file": "纯文本导入\\01_旧文件_2024年身份证办理时限.txt",
+      "sha256": "0b6202d94a5cbc01bf1ae4edddfc1b3e2318737ed2a019d775e472539dcfa105",
+      "bytes": 439
+    },
+    {
+      "file": "纯文本导入\\02_新文件_2026年身份证办理时限.txt",
+      "sha256": "4ee93f45c00bb36e9e74adce471d144c3d3ec5dde5f66b69fa5629e482d9ec17",
+      "bytes": 602
+    }
+  ]
+}
