@@ -124,11 +124,14 @@ def verify(output, evidence):
         elif not compact(item["quote"]) or compact(item["quote"]) not in compact(unit["text"]):
             failures.append(f"A{index}_QUOTE_NOT_IN_SOURCE")
         else:
-            quotes.append(compact(item["quote"]))
-    quoted = "".join(quotes)
-    text = output["answer"] + "".join(item["claim"] for item in output["assertions"])
-    for number in sorted(set(NUMBER.findall(text))):
-        if number not in quoted:
+            quotes.append(item["quote"])
+    quoted = "".join(compact(quote) for quote in quotes)
+    texts = [output["answer"], *(item["claim"] for item in output["assertions"])]
+    text = "".join(texts)
+    quoted_numbers = {number for quote in quotes for number in NUMBER.findall(quote)}
+    answer_numbers = {number for part in texts for number in NUMBER.findall(part)}
+    for number in sorted(answer_numbers):
+        if number not in quoted_numbers:
             failures.append("NUMBER_NOT_QUOTED:" + number)
     for day_unit in DAY_UNITS:
         if day_unit in text and day_unit not in quoted:

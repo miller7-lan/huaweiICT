@@ -47,6 +47,50 @@ def test_verified_answer_passes_for_both_methods():
         assert record["status"]["business_conclusion_status"] == "PAUSED_UNREVIEWED"
 
 
+@pytest.mark.parametrize("quoted, claimed, should_pass", [
+    ("200", "20", False),
+    ("25.5", "25", False),
+    ("20", "20", True),
+    ("25.5", "25.5", True),
+])
+def test_numeric_citation_requires_complete_number_token(quoted, claimed, should_pass):
+    units = [{"source_id": "SYNTHETIC", "locator": "P1", "text": f"测试费用为{quoted}元。"}]
+    candidate = answer(f"测试费用为{claimed}元。",
+                       (f"费用{claimed}元", "SYNTHETIC", "P1", f"测试费用为{quoted}元。"))
+    result = frozen_qa.verify(candidate, units)
+    assert result["passed"] is should_pass
+    if not should_pass:
+        assert f"NUMBER_NOT_QUOTED:{claimed}" in result["failures"]
+
+
+def test_numeric_tokens_are_not_created_by_concatenating_distinct_quotes():
+    units = [{"source_id": "A", "locator": "P1", "text": "12"},
+             {"source_id": "B", "locator": "P2", "text": "34"}]
+    candidate = answer("数值为1234。", ("数值", "A", "P1", "12"), ("来源", "B", "P2", "34"))
+    result = frozen_qa.verify(candidate, units)
+    assert not result["passed"]
+    assert "NUMBER_NOT_QUOTED:1234" in result["failures"]
+
+
+def test_numeric_tokens_are_checked_separately_in_answer_and_claims():
+    units = [{"source_id": "A", "locator": "P1", "text": "12元和34元"}]
+    candidate = answer("12", ("34元", "A", "P1", "12元和34元"))
+    assert frozen_qa.verify(candidate, units)["passed"]
+
+
+def test_mcp_verifier_turns_numeric_substring_mismatch_into_stop():
+    from gov_mcp.frozen_qa_server import FrozenQAService
+
+    units = [{"source_id": "SYNTHETIC", "locator": "P1", "text": "测试费用为200元。"}]
+    candidate = answer("测试费用为20元。", ("测试费用20元", "SYNTHETIC", "P1", "测试费用为200元。"))
+    result = FrozenQAService(units, "0" * 64).verify("测试费用", candidate)
+    assert result["status"] == "OK"
+    assert "NUMBER_NOT_QUOTED:20" in result["checks"]["failures"]
+    assert result["final"]["outcome"] == "stop"
+    assert result["final"]["stop_reason"] == "VERIFICATION_FAILED"
+    assert result["business_conclusion_status"] == "PAUSED_UNREVIEWED"
+
+
 @pytest.mark.parametrize("bad, failure", [
     (answer("交验护照。", ("交验护照", "DOC-A", "第一条", "交验护照")), "A1_QUOTE_NOT_IN_SOURCE"),
     (answer("交验居民身份证。", ("x", "DOC-Z", "第九条", "交验居民身份证")), "A1_CITATION_NOT_RETRIEVED"),
