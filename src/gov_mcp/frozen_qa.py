@@ -27,7 +27,7 @@ OTHER_REGIONS = ("北京", "天津", "上海", "重庆", "河北", "山西", "�
                  "海南", "四川", "贵州", "云南", "西藏", "陕西", "甘肃", "青海", "宁夏", "新疆")
 CURRENT = ("现在", "目前", "如今", "现行", "今天", "当前", "最新", "今年")
 PERSONAL_ID = re.compile(r"\d{17}[\dXx]")
-NUMBER = re.compile(r"\d+(?:\.\d+)?")
+NUMBER = re.compile(r"[+\-−＋－]?(?:\d+(?:[,，]\d+)*(?:\.\d+)?|\.\d+)")
 DAY_UNITS = ("工作日", "自然日")
 QUESTION_KEYS = {"id", "question", "context"}
 STATUS = {"business_conclusion_status": "PAUSED_UNREVIEWED", "current_applicability": "unknown",
@@ -124,11 +124,14 @@ def verify(output, evidence):
         elif not compact(item["quote"]) or compact(item["quote"]) not in compact(unit["text"]):
             failures.append(f"A{index}_QUOTE_NOT_IN_SOURCE")
         else:
-            quotes.append(compact(item["quote"]))
-    quoted = "".join(quotes)
-    text = output["answer"] + "".join(item["claim"] for item in output["assertions"])
-    for number in sorted(set(NUMBER.findall(text))):
-        if number not in quoted:
+            quotes.append(item["quote"])
+    quoted = "".join(compact(quote) for quote in quotes)
+    texts = [output["answer"], *(item["claim"] for item in output["assertions"])]
+    text = "".join(texts)
+    quoted_numbers = {number for quote in quotes for number in NUMBER.findall(quote)}
+    answer_numbers = {number for part in texts for number in NUMBER.findall(part)}
+    for number in sorted(answer_numbers):
+        if number not in quoted_numbers:
             failures.append("NUMBER_NOT_QUOTED:" + number)
     for day_unit in DAY_UNITS:
         if day_unit in text and day_unit not in quoted:
