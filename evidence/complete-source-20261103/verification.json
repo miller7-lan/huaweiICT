@@ -1,0 +1,71 @@
+{
+  "archive_members": 511,
+  "archive_sha256": "23893e759c7126e7bf85abb853952e155ac1064f618d55621d0b0e1064f3cac1",
+  "business_acceptance": false,
+  "clean_environment_reproduction": false,
+  "directory_counts": {
+    ".dockerignore": 1,
+    ".gitattributes": 1,
+    ".gitignore": 1,
+    "AGENTS.md": 1,
+    "Dockerfile": 1,
+    "Dockerfile.knowledge": 1,
+    "LICENSE": 1,
+    "README.md": 1,
+    "compose.asset-query.yml": 1,
+    "compose.cloud-proxy.yml": 1,
+    "compose.knowledge.yml": 1,
+    "compose.m1.yml": 1,
+    "compose.m2.yml": 1,
+    "compose.mcp.yml": 1,
+    "config": 54,
+    "data": 1,
+    "deploy": 1,
+    "docs": 12,
+    "evidence": 5,
+    "models": 2,
+    "pyproject.toml": 1,
+    "requirements-knowledge.lock": 1,
+    "requirements.lock": 1,
+    "scripts": 232,
+    "src": 94,
+    "tests": 89
+  },
+  "model_calls": 0,
+  "negative_checks": {
+    "injected_private_path": "rejected",
+    "missing_source": "rejected",
+    "modified_payload": "rejected",
+    "nonempty_credential_field": "rejected",
+    "unsafe_extra_path": "rejected"
+  },
+  "network_calls": 0,
+  "official_submission": false,
+  "payload_files": 507,
+  "python_syntax_checked": 380,
+  "source_coverage_current_workspace": true,
+  "status": "PASS_SOURCE_ATTACHMENT_INTEGRITY_ONLY",
+  "word_update": {
+    "paragraphs_changed": 2,
+    "preserved_parts": 23,
+    "original_sha256": "accfb6f6fc9223a010b4573e45b2a40eb546ce866c0319a0ae70eaf653b9d783",
+    "output_sha256": "a79c427ae4bbceb0bfd9deca24f206e00ca1312b29d9c8a35a36b8d613b766e4",
+    "pages": 11,
+    "unchanged_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11
+    ],
+    "changed_pages": [
+      9
+    ],
+    "visual_check": "PASS_CHANGED_PAGE_9_AND_PREVIOUSLY_INSPECTED_IDENTICAL_PAGES"
+  }
+}

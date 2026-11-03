@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-11-03T03:09:01.002141+00:00",
+  "status": "BLOCKED_LOCAL_PLATFORM_OFFLINE",
+  "native_readiness": {
+    "config": false,
+    "runtime": false,
+    "mcp": false,
+    "ui": false,
+    "runtime_sandbox": false,
+    "runtime_error_overlay": false
+  },
+  "native_exports": [
+    {
+      "path": "artifacts/competition-20261021/nexent-ontology-crossdoc-native-export.zip",
+      "exists": true,
+      "sha256": "0a7377f1aeef2296338e77bc093466eb70c59cd4a1b73abf015b39816ae89122",
+      "matches_teammate_import_receipt": true
+    },
+    {
+      "path": "artifacts/competition-20261022/nexent-henan-multimodal-native-export.zip",
+      "exists": true,
+      "sha256": "9bc19582710dd044921de2f72e8ef0ac56415d4369a39f304d9d9f58eab41808",
+      "matches_teammate_import_receipt": true
+    }
+  ],
+  "historical_bindings_metadata_only": [
+    {
+      "chain": "ontology-crossdoc-native-20261021",
+      "binding_exists": true,
+      "profile": "legacy_nanjing_default",
+      "access_file_exists": true,
+      "persisted_task_db_exists": true,
+      "historical_budget_must_not_be_reset": true
+    },
+    {
+      "chain": "henan-multimodal-native-20261022",
+      "binding_exists": true,
+      "profile": "henan-archived-multimodal-v1",
+      "access_file_exists": true,
+      "persisted_task_db_exists": true,
+      "historical_budget_must_not_be_reset": true
+    }
+  ],
+  "platform_checkout": "519b9b17c7f4cbc623256ac318ea96a20f33772e",
+  "pinned_platform_matches": true,
+  "teammate_clean_environment_business_run_available": false,
+  "existing_teammate_import_only_uses_placeholder_dependencies": true,
+  "blockers": [
+    "Docker Linux engine unavailable",
+    "Nexent config/runtime/UI and MCP offline",
+    "No new bounded campaign prepared or authorized",
+    "Another operator/machine real business reproduction receipt not provided"
+  ],
+  "model_calls": 0,
+  "deployment_changes": 0,
+  "old_budget_reset": false,
+  "business_acceptance": false
+}
