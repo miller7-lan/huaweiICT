@@ -14,15 +14,15 @@ import zipfile
 from build_competition_package import checked_file, inspect_content, safe_name
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "artifacts/submission-review-20261102"
-ARCHIVE = OUTPUT / "ict-topic3-review-20261102.zip"
+OUTPUT = ROOT / "artifacts/submission-review-20261103"
+ARCHIVE = OUTPUT / "ict-topic3-review-20261103.zip"
 FILES = (
     "LICENSE",
-    "docs/competition/开发设计文档-20261102.docx",
+    "docs/competition/开发设计文档-20261103.docx",
     "docs/competition/chapters/README.md",
     *(f"docs/competition/chapters/第{n}章-陈子炫.md" for n in (4, 6, 7, 8)),
     "docs/competition/assets/screenshots/README.md",
-    *("docs/competition/assets/screenshots/" + name for name in (
+    *("docs/competition/assets/screenshots/redacted-20261102/" + name.replace('.jpg','-账号遮挡.png') for name in (
         "S01a-问答智能体基本设置-20261030.jpg", "S01b-问答智能体模型与提示词-20261030.jpg",
         "S02-MCP工具绑定-20261030.jpg", "S04a-跨文档问答结论与引用-20261030.jpg",
         "S04b-跨文档问答未知项与说明-20261030.jpg", "S04c-问答调用过程-20261030.jpg",
@@ -30,7 +30,26 @@ FILES = (
     "docs/competition/初赛提交与合稿框架-2026-10-30.md",
     "docs/competition/复现与交付说明-2026-10-21.md",
     "docs/competition/自由提问入口与评测运行说明-2026-10-30.md",
-    "evidence/design-document-20261102/verification.json",
+    "evidence/team-integration-20261103/verification.json",
+    "docs/competition/chapters/第4章-李嘉杰.md", "docs/competition/chapters/第7章-李嘉杰.md",
+    "docs/competition/chapters/第5章-程千城.md", "docs/competition/chapters/第6章-程千城.md",
+    "docs/competition/chapters/第3、8章协作-程千城.md",
+    "docs/competition/chapters/Nexent两版导入复现与兼容性-队友核对稿-20261102.md",
+    "docs/competition/chapters/历史截图演示讲稿与核对表-2026-11-02.md",
+    "docs/competition/扫描件AI复核-2026-11-03.md",
+    "docs/competition/规范条款映射复核-程千城-2026-11-03.md",
+    "docs/competition/新事项profile资料说明-2026-11-03.md",
+    "docs/competition/assets/nanjing-native-sequence-20261021.png",
+    "docs/competition/assets/screenshots/redacted-20261102/使用说明.md",
+    "docs/competition/assets/screenshots/redacted-20261102/遮挡校验清单.json",
+    "docs/competition/assets/screenshots/isolated-import-20261031/README.md",
+    "docs/competition/assets/screenshots/isolated-import-20261031/SHA256-manifest.json",
+    *("docs/competition/assets/screenshots/isolated-import-20261031/" + name for name in (
+        "v27-nanjing-controller-name.jpg", "v27-nanjing-skill.jpg", "v27-henan-controller-name.jpg",
+        "v27-henan-skill.jpg", "v28-henan-controller-name.jpg", "v28-henan-placeholder-model.jpg")),
+    "evidence/competition-review-20261103/HTML定位复核公开摘要.json",
+    "evidence/competition-review-20261103/原件核对回执.json",
+    "evidence/competition-review-20261103/官方转载条款与历史指纹对照.json",
     "config/exports/ontology-crossdoc-native-20261021/agent.json",
     "config/exports/henan-multimodal-native-20261022/agent.json",
     "artifacts/competition-20261021/nexent-ontology-crossdoc-native-export.zip",
@@ -43,8 +62,9 @@ FILES = (
 )
 NOTICE = """# 第三题团队审阅包
 
-这是2026年11月2日整理的团队审阅副本，不是正式提交或验收通过声明。
-Word修订版33页，负责人13个小节及8张既有截图已合入，队友黄色待补保留。
+这是2026年11月3日整理的团队审阅副本，不是正式提交或验收通过声明。
+Word合稿40页，三人章节、调用图与8张账号遮挡截图已合入。
+原件更新检查、AI复核和隔离占位依赖导入回执各按实际范围记录，真人签署仍待完成。
 工程ZIP为当前白名单源码，两个原生ZIP是各自日期的原始平台导出，互不替代。
 导入新租户后须重新绑定模型、工具、Skill及权限；旧账号与预算不得复制。
 冻结问答助手已有接线脚本和读回，尚无该助手独立的原始平台导出ZIP。
@@ -111,7 +131,7 @@ def build():
     payload = {name: checked_file(name).read_bytes() for name in FILES}
     for name, raw in payload.items():
         scan(name, raw)
-    manifest = {"date": "2026-11-02", "kind": "team_review_not_final_submission",
+    manifest = {"date": "2026-11-03", "kind": "team_review_not_final_submission",
                 "files": [{"path": name, "bytes": len(raw), "sha256": sha(raw)} for name, raw in payload.items()]}
     OUTPUT.mkdir(parents=True, exist_ok=True)
     for target in (OUTPUT, ARCHIVE, OUTPUT / "verification.json"):
