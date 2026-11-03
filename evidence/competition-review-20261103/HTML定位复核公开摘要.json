@@ -1,0 +1,71 @@
+{
+  "kind": "public_sanitized_summary",
+  "comparison_date": "2026-11-03",
+  "scope": "仅保留来源、定位、数量和散列结论；完整解析文本与原件保留在本地受控目录。",
+  "items": [
+    {
+      "code": "A4",
+      "source_id": "MOF-FEE-2007",
+      "count": 8,
+      "parsed_units_sha256": "81c1e6768dfed68b66695309bf0892a714770fe2ab21f45a0e9f2e11a353b06e",
+      "parsed_units_match": true,
+      "checks": [
+        {
+          "locator": "正文段落3",
+          "matched": true,
+          "expected_sha256": "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+        },
+        {
+          "locator": "正文段落4",
+          "matched": true,
+          "expected_sha256": "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+        },
+        {
+          "locator": "正文段落5",
+          "matched": true,
+          "expected_sha256": "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+        },
+        {
+          "locator": "正文段落6",
+          "matched": true,
+          "expected_sha256": "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+        },
+        {
+          "locator": "正文段落7",
+          "matched": true,
+          "expected_sha256": "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+        }
+      ]
+    },
+    {
+      "code": "A5",
+      "source_id": "MOF-FIRST-ISSUE-2018",
+      "count": 9,
+      "parsed_units_sha256": "3934b91eaa5efab06c1236e1e3a7249a26d55996215a19a57bb914b799cf07f8",
+      "parsed_units_match": true,
+      "checks": [
+        {
+          "locator": "正文段落4",
+          "matched": true,
+          "expected_sha256": "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+        }
+      ]
+    },
+    {
+      "code": "B1",
+      "source_id": "HN-MEASURES-2024-JY",
+      "count": 23,
+      "parsed_units_sha256": "adfd845e78cafbd22bcd654a591c7491e4995028bc588a6b7d5dd10c227e9859",
+      "parsed_units_match": true,
+      "original_sha256_match": false,
+      "note": "解析后的23个单元整体散列与历史一致，但本轮取得的整份HTML原件散列不同，原件身份门仍未通过。",
+      "checks": [
+        {
+          "locator": "正文段落1",
+          "matched": true,
+          "expected_sha256": "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+        }
+      ]
+    }
+  ]
+}
