@@ -28,6 +28,8 @@ OTHER_REGIONS = ("北京", "天津", "上海", "重庆", "河北", "山西", "�
 CURRENT = ("现在", "目前", "如今", "现行", "今天", "当前", "最新", "今年")
 PERSONAL_ID = re.compile(r"\d{17}[\dXx]")
 NUMBER = re.compile(r"[+\-−＋－]?(?:\d+(?:[,，]\d+)*(?:\.\d+)?|\.\d+)")
+# Positional references such as 第36行, 第5页 or 正文段落4 point at a source; they are not facts to quote.
+REFERENCE = re.compile(r"第\s*\d+\s*[行页条项款段]|段落\s*\d+")
 DAY_UNITS = ("工作日", "自然日")
 QUESTION_KEYS = {"id", "question", "context"}
 STATUS = {"business_conclusion_status": "PAUSED_UNREVIEWED", "current_applicability": "unknown",
@@ -116,7 +118,7 @@ def verify(output, evidence):
         return {"passed": not failures, "failures": failures}
     if not output["assertions"]:
         failures.append("ANSWER_WITHOUT_ASSERTIONS")
-    quotes = []
+    quotes, locators = [], []
     for index, item in enumerate(output["assertions"], 1):
         unit = units.get((item["source_id"], item["locator"]))
         if unit is None:
@@ -125,11 +127,19 @@ def verify(output, evidence):
             failures.append(f"A{index}_QUOTE_NOT_IN_SOURCE")
         else:
             quotes.append(item["quote"])
+            locators.append(item["locator"])
     quoted = "".join(compact(quote) for quote in quotes)
     texts = [output["answer"], *(item["claim"] for item in output["assertions"])]
     text = "".join(texts)
     quoted_numbers = {number for quote in quotes for number in NUMBER.findall(quote)}
-    answer_numbers = {number for part in texts for number in NUMBER.findall(part)}
+
+    def facts(part):
+        # Drop verified citation locators and positional references before reading numbers.
+        for locator in locators:
+            part = part.replace(locator, "")
+        return REFERENCE.sub("", part)
+
+    answer_numbers = {number for part in texts for number in NUMBER.findall(facts(part))}
     for number in sorted(answer_numbers):
         if number not in quoted_numbers:
             failures.append("NUMBER_NOT_QUOTED:" + number)

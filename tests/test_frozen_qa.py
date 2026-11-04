@@ -249,3 +249,15 @@ def test_mcp_service_retrieves_gates_and_verifies_like_the_proposed_method():
     assert service.verify("换领", {**good, "outcome": "maybe"})["error"] == "ANSWER_CONTRACT_VIOLATION"
     with pytest.raises(ValueError, match="DEDICATED_TOKEN_REQUIRED"):
         create_app(service, "short")
+
+
+def test_positional_references_are_not_treated_as_unquoted_facts():
+    row = {"source_id": "DOC-X", "locator": "Excel工作表收费!第36行", "text": "居民身份证工本费 | 财综〔2007〕34号"}
+    para = {"source_id": "DOC-Y", "locator": "正文段落4", "text": "办理时限为15个工作日。"}
+    cited = answer("目录第36行列明的依据为财综〔2007〕34号。", ("依据", "DOC-X", row["locator"], "财综〔2007〕34号"))
+    assert frozen_qa.verify(cited, [row, para])["passed"]
+    # A fact number must still be quoted even when it equals a digit inside the cited locator.
+    wrong = answer("办理时限为4个工作日。", ("时限", "DOC-Y", "正文段落4", "办理时限为15个工作日"))
+    assert "NUMBER_NOT_QUOTED:4" in frozen_qa.verify(wrong, [row, para])["failures"]
+    page = answer("扫描件第5页写明为15个工作日。", ("时限", "DOC-Y", "正文段落4", "办理时限为15个工作日"))
+    assert frozen_qa.verify(page, [row, para])["passed"]

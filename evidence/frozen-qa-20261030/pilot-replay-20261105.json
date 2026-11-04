@@ -1,0 +1,16 @@
+{
+  "pilot_summary": "evidence/frozen-qa-20261030/eval-20261104T235412Z-summary.json",
+  "replayed_model_outputs": 15,
+  "changed": [
+    {
+      "question_id": "DP2",
+      "method": "proposed",
+      "old_failures": [
+        "NUMBER_NOT_QUOTED:36"
+      ],
+      "new_failures": []
+    }
+  ],
+  "model_calls": 0,
+  "note": "修复定位编号误判后，用同一批已记录的模型输出离线重判；只有DP2本方案由误停止变为通过，其余判定不变。"
+}

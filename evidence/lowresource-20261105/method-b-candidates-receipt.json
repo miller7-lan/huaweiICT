@@ -1,0 +1,54 @@
+{
+  "recorded_on": "2026-11-05",
+  "status": "machine_candidates_unreviewed_private",
+  "private_file": ".runtime/frozen-qa-20261030/unit-candidates.json",
+  "private_file_sha256": "165614c05993f8a87de048ba4f8096238ab6d8994a0790928908c90322583438",
+  "units_definition_sha256": "199f31098b54ee88049e7dde68585c73888afb0bbdcd0db093c8e6182629a746",
+  "units": {
+    "U1": {
+      "candidates": 6,
+      "quotes_verified": 6,
+      "input_tokens": 468,
+      "output_tokens": 358,
+      "model": "deepseek-flash"
+    },
+    "U2": {
+      "candidates": 9,
+      "quotes_verified": 9,
+      "input_tokens": 516,
+      "output_tokens": 547,
+      "model": "deepseek-flash"
+    },
+    "U3": {
+      "candidates": 9,
+      "quotes_verified": 9,
+      "input_tokens": 563,
+      "output_tokens": 550,
+      "model": "deepseek-flash"
+    },
+    "U4": {
+      "candidates": 10,
+      "quotes_verified": 10,
+      "input_tokens": 905,
+      "output_tokens": 885,
+      "model": "deepseek-flash"
+    },
+    "U5": {
+      "candidates": 4,
+      "quotes_verified": 4,
+      "input_tokens": 530,
+      "output_tokens": 409,
+      "model": "deepseek-flash"
+    },
+    "U6": {
+      "candidates": 8,
+      "quotes_verified": 8,
+      "input_tokens": 560,
+      "output_tokens": 448,
+      "model": "deepseek-flash"
+    }
+  },
+  "model_calls": 6,
+  "release_rule": "按交叉分配发给方法B复核人；两人的方法A记录都提交后才公开候选内容。公开时须与本散列一致。",
+  "business_acceptance": false
+}
