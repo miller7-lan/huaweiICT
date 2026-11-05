@@ -55,7 +55,8 @@ def check_service(token):
             async with ClientSession(*streams) as session:
                 await session.initialize()
                 return {tool.name for tool in (await session.list_tools()).tools}
-    if asyncio.run(tools()) != TOOLS:
+    # The service may offer more tools (the knowledge-base verifier); this draft binds only its own two.
+    if not TOOLS <= asyncio.run(tools()):
         raise RuntimeError("FROZEN_QA_TOOLS_CHANGED")
     return health
 
@@ -93,7 +94,8 @@ def provision(api, saved, token):
                                       "enabled": True, "group_ids": str(platform["group_id"]),
                                       "ingroup_permission": "READ_ONLY"})
     api.call("GET", "/tool/scan_tool")
-    owned = [t for t in api.call("GET", "/tool/list") if t.get("source") == "mcp" and t.get("usage") == SERVICE]
+    owned = [t for t in api.call("GET", "/tool/list") if t.get("source") == "mcp" and t.get("usage") == SERVICE
+             and t.get("name") in TOOLS]
     if {t.get("name") for t in owned} != TOOLS or len(owned) != len(TOOLS) \
             or any(t.get("is_available") is not True for t in owned):
         raise RuntimeError("EXACT_FROZEN_QA_TOOL_BINDING_REQUIRED")

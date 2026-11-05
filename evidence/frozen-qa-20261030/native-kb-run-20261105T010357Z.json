@@ -1,0 +1,33 @@
+{
+  "question": "到期换领居民身份证要交验什么证件？",
+  "agent_id": 39,
+  "duration_ms": 11297.0,
+  "passed": true,
+  "tool_order": [
+    "knowledge_base_search",
+    "govkb_frozen_verify_corpus",
+    "final_answer"
+  ],
+  "model_starts": 3,
+  "final_answers": 1,
+  "final_answer": "结论：公民申请换领居民身份证的，应当填写《居民身份证申领登记表》，并交验居民身份证，当场完成资料审核和人像、指纹信息采集。\n\n依据：\n- 「公民申领、换领、补领居民身份证的，应当填写《居民身份证申领登记表》」—— HN-NORM-PUBLISHER 第一百五十九条\n- 「申请换领的，交验居民身份证」—— HN-NORM-PUBLISHER 第一百五十九条\n\n未知项：\n- 现行办理要求及是否需其他辅助材料未核定\n\n说明：以上为冻结的历史归档资料解释，未核定现行效力，需人工复核。",
+  "events": 493,
+  "usage_events": [
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 1, \"duration\": 0.94, \"step_input_tokens\": 4607, \"step_output_tokens\": 45, \"total_output_tokens\": 45, \"estimated_context_tokens\": 5188, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 51.6, \"uncompressed_est_tokens\": 10713, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 4607}"
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 2, \"duration\": 2.87, \"step_input_tokens\": 5255, \"step_output_tokens\": 273, \"total_output_tokens\": 318, \"estimated_context_tokens\": 5955, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 49.2, \"uncompressed_est_tokens\": 11723, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 5255}"
+    },
+    {
+      "type": "token_count",
+      "content": "{\"step_number\": 3, \"duration\": 1.94, \"step_input_tokens\": 5813, \"step_output_tokens\": 151, \"total_output_tokens\": 469, \"estimated_context_tokens\": 6583, \"token_threshold\": 12288, \"context_window_tokens\": 16384, \"effective_input_limit_tokens\": 15360, \"context_processing_mode\": \"adaptive_compact\", \"output_finish_reason\": \"stop\", \"compression_calls\": 0, \"compression_input_tokens\": 0, \"compression_output_tokens\": 0, \"compression_cache_hits\": 0, \"compression_cache_types\": [], \"compression_ratio\": 49.1, \"uncompressed_est_tokens\": 12928, \"provider_cache_status\": \"unsupported\", \"provider_cache_metrics_source\": \"capability_unknown\", \"provider_cache_hit\": false, \"provider_cached_input_tokens\": 0, \"provider_uncached_input_tokens\": 5813}"
+    }
+  ],
+  "recorded_at": "2026-11-05T01:04:09.061691+00:00",
+  "conversation_id": 167,
+  "published": false,
+  "agent_enabled": false
+}

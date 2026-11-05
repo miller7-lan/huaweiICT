@@ -39,8 +39,11 @@ def summarize(events):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("question")
+    parser.add_argument("--knowledge-base", action="store_true",
+                        help="Ask the knowledge-base draft (Nexent search + MCP corpus verify) instead")
     args = parser.parse_args()
-    saved = read(RUNTIME / "native-drafts.json")
+    saved = read(RUNTIME / ("kb/native-drafts.json" if args.knowledge_base else "native-drafts.json"))
+    prefix = "native-kb-run" if args.knowledge_base else "native-run"
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     api = NexentAPI()
     events, conversation, report = [], None, {"question": args.question, "agent_id": saved["agents"]["assistant"]}
@@ -80,7 +83,7 @@ def main():
     report.update(summarize(events), recorded_at=datetime.now(timezone.utc).isoformat(),
                   conversation_id=conversation, published=False, agent_enabled=False)
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    write(OUTPUT / f"native-run-{stamp}.json", report)
+    write(OUTPUT / f"{prefix}-{stamp}.json", report)
     print(json.dumps({k: report.get(k) for k in ("passed", "error", "tool_order", "model_starts", "duration_ms",
                                                   "final_answer")}, ensure_ascii=False, indent=1))
 

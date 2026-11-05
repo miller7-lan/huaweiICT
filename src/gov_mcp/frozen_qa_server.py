@@ -49,8 +49,14 @@ class FrozenQAService:
                   "corpus_sha256": self.corpus_sha256, **frozen_qa.STATUS}
         return result
 
-    def verify(self, question, output):
-        """Check an AnswerOutput object against the same retrieval; failures become a stop."""
+    def verify(self, question, output, whole_corpus=False):
+        """Check an AnswerOutput object; failures become a stop.
+
+        By default citations must come from the same literal top five. With
+        whole_corpus, an answer built from another retriever (the Nexent knowledge
+        base) may cite any frozen unit, but each quote must still be exact text of
+        the cited unit and numbers and day units must still be quoted.
+        """
         try:
             validate_contract(output, frozen_qa.AnswerOutput)
         except (ValueError, TypeError, RecursionError):
@@ -59,7 +65,8 @@ class FrozenQAService:
         if gate:
             return {"status": "STOP", "gate": gate, "final": frozen_qa._stop(gate, frozen_qa.GATE_MESSAGES[gate]),
                     **frozen_qa.STATUS}
-        checks = frozen_qa.verify(output, frozen_qa.retrieve(self.units, question))
+        evidence = self.units if whole_corpus else frozen_qa.retrieve(self.units, question)
+        checks = frozen_qa.verify(output, evidence)
         final = output if checks["passed"] else frozen_qa._stop(
             "VERIFICATION_FAILED", "回答未通过引用与数字核验，已改为停止作答。", checks["failures"])
         return {"status": "OK", "checks": checks, "final": final, **frozen_qa.STATUS}
@@ -92,6 +99,16 @@ def create_app(service, token, port=PORT):
         output = {"outcome": outcome, "answer": answer, "assertions": assertions,
                   "stop_reason": stop_reason, "unknowns": [] if unknowns is None else unknowns}
         return execute(service.verify, question, output)
+
+    @mcp.tool()
+    def govkb_frozen_verify_corpus(question: str, outcome: str, answer: str, assertions: list[dict],
+                                   stop_reason: str = "", unknowns: list[str] | None = None) -> dict:
+        """Verify an answer built from knowledge-base search: each assertion's source_id and locator
+        must name a frozen unit and its quote must be exact text of that unit; numbers and day units
+        must be quoted. Failures and out-of-scope questions become a stop."""
+        output = {"outcome": outcome, "answer": answer, "assertions": assertions,
+                  "stop_reason": stop_reason, "unknowns": [] if unknowns is None else unknowns}
+        return execute(service.verify, question, output, True)
 
     async def health(request):
         return JSONResponse({"service": SERVICE, "status": "UP", "publication_enabled": False,

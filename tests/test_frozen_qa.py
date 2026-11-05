@@ -261,3 +261,15 @@ def test_positional_references_are_not_treated_as_unquoted_facts():
     assert "NUMBER_NOT_QUOTED:4" in frozen_qa.verify(wrong, [row, para])["failures"]
     page = answer("扫描件第5页写明为15个工作日。", ("时限", "DOC-Y", "正文段落4", "办理时限为15个工作日"))
     assert frozen_qa.verify(page, [row, para])["passed"]
+
+
+def test_whole_corpus_verification_accepts_units_outside_the_literal_top_five():
+    from gov_mcp.frozen_qa_server import FrozenQAService
+    service = FrozenQAService(UNITS, "c" * 64)
+    # DOC-C does not rank for this question, so only whole-corpus verification may cite it.
+    cited = answer("说明文字如下。", ("说明", "DOC-C", "正文段落2", "与本问题无关的说明文字"))
+    assert service.verify("换领交验什么证件", cited)["final"]["stop_reason"] == "VERIFICATION_FAILED"
+    assert service.verify("换领交验什么证件", cited, whole_corpus=True)["final"] == cited
+    forged = answer("交验护照。", ("交验护照", "DOC-A", "第一条", "交验护照"))
+    assert service.verify("换领", forged, whole_corpus=True)["final"]["stop_reason"] == "VERIFICATION_FAILED"
+    assert service.verify("现在换领要多少钱", cited, whole_corpus=True)["status"] == "STOP"

@@ -1,23 +1,22 @@
-"""Export the frozen Henan corpus as per-source Markdown for a Nexent knowledge base.
+"""Export the frozen Henan corpus as the knowledge-base files submitted with the Nexent configuration.
 
-Each file keeps the source URL, original SHA-256, revision and one heading per
-locator, so Nexent retrieval results can be traced back to exact units. Files
-go to the private runtime and are uploaded through the Nexent UI. Automated
-upload is intentionally not implemented: creating the index needs an embedding
-model configured in Nexent, which is a separate paid-API decision.
+Each per-source Markdown keeps the source URL, original SHA-256, revision and one
+heading per locator, so retrieval results trace back to exact units. A chunk
+manifest lists the 581 chunk ids, titles, file names and text hashes that
+scripts/provision_frozen_knowledge.py writes into Nexent (this deployment has no
+file-parsing service, so chunks are written directly rather than uploaded).
+Output is local only: government source text is not committed.
 """
+import argparse
 import json
 from hashlib import sha256
 from pathlib import Path
+import zipfile
+
+from provision_frozen_knowledge import CORPUS, EMBEDDING_MODEL, KNOWLEDGE_NAME, chunk
 
 ROOT = Path(__file__).resolve().parents[1]
-CORPUS = ROOT / ".runtime/frozen-qa-20261030/corpus.json"
-OUTPUT = ROOT / ".runtime/frozen-qa-20261030/nexent-knowledge"
-INDEX = "govkb_henan_frozen_20261030"
-# Nexent v2.7.0 config-service routes (vendor/nexent/backend/apps), for a later automated step.
-ROUTES = {"create_index": "POST /indices/{index_name} (body: embedding_model_id)",
-          "upload_files": "POST /file/upload", "process_files": "POST /file/process",
-          "search": "POST /indices/search/hybrid (northbound)"}
+DEFAULT_OUTPUT = ROOT / "artifacts/knowledge-20261105"
 
 
 def render(source, units):
@@ -31,23 +30,38 @@ def render(source, units):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--out", type=Path, default=DEFAULT_OUTPUT)
+    args = parser.parse_args()
     corpus = json.loads(CORPUS.read_text("utf-8"))
-    OUTPUT.mkdir(parents=True, exist_ok=True)
-    files = []
+    folder = args.out / "knowledge"
+    folder.mkdir(parents=True, exist_ok=True)
+    files, chunks, counters = [], [], {}
+    urls = {source["source_id"]: source["url"] for source in corpus["manifest"]["sources"]}
     for source in corpus["manifest"]["sources"]:
         units = [unit for unit in corpus["units"] if unit["source_id"] == source["source_id"]]
         text = render(source, units)
         name = f"{source['code']}-{source['source_id']}.md"
-        (OUTPUT / name).write_text(text, "utf-8", newline="\n")
+        (folder / name).write_text(text, "utf-8", newline="\n")
         files.append({"file": name, "units": len(units), "sha256": sha256(text.encode()).hexdigest()})
-    plan = {"index_name": INDEX, "corpus_sha256": corpus["manifest"]["corpus_sha256"], "files": files,
-            "nexent_routes": ROUTES, "automated_upload": "not_implemented",
-            "next_steps": ["在 Nexent 模型管理中确认嵌入模型（会产生费用，需单独决定）",
-                           f"在知识库页面新建 {INDEX} 并上传 {OUTPUT.relative_to(ROOT)} 下的文件",
-                           "把该知识库绑定到检索子 Agent，推理与核验仍走 MCP 工具",
-                           "用 run_frozen_qa.py 的同一批问题对比知识库检索与字面检索的命中"]}
-    (OUTPUT / "plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=1), "utf-8")
-    print(json.dumps({"index_name": INDEX, "files": [(f["file"], f["units"]) for f in files]}, ensure_ascii=False))
+    for unit in corpus["units"]:
+        counters[unit["code"]] = counters.get(unit["code"], 0) + 1
+        item = chunk(unit, counters[unit["code"]], urls[unit["source_id"]])
+        chunks.append({key: item[key] for key in ("chunk_id", "title", "filename")} | item["metadata"])
+    manifest = {"knowledge_name": KNOWLEDGE_NAME, "embedding_model": EMBEDDING_MODEL,
+                "corpus_sha256": corpus["manifest"]["corpus_sha256"], "files": files,
+                "chunk_count": len(chunks), "chunks": chunks,
+                "rebuild": "scripts/provision_frozen_knowledge.py --apply (manual chunks; one per unit)"}
+    (args.out / "knowledge-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n",
+                                                       "utf-8", newline="\n")
+    archive = args.out / "frozen-knowledge-20261105.zip"
+    with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as bundle:
+        bundle.write(args.out / "knowledge-manifest.json", "knowledge-manifest.json")
+        for item in files:
+            bundle.write(folder / item["file"], "knowledge/" + item["file"])
+    print(json.dumps({"files": [(f["file"], f["units"]) for f in files], "chunks": len(chunks),
+                      "archive": str(archive), "archive_sha256": sha256(archive.read_bytes()).hexdigest()},
+                     ensure_ascii=False))
 
 
 if __name__ == "__main__":

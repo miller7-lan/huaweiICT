@@ -1,0 +1,68 @@
+{
+  "recorded_at": "2026-11-05T00:28:48.914835+00:00",
+  "configured": true,
+  "knowledge_name": "河南冻结资料逐单元-20261105",
+  "index_name": "2-3da6dfd6d9a744ccb0864e05712a9abf",
+  "agent": {
+    "agent_id": 39,
+    "name": "govfrozenkb_assistant",
+    "enabled": false,
+    "tools": [
+      "govkb_frozen_verify_corpus",
+      "knowledge_base_search"
+    ],
+    "max_steps": 6,
+    "search_params": [
+      {
+        "type": "integer",
+        "name": "top_k",
+        "description": "Maximum number of search results",
+        "description_zh": "返回搜索结果的最大数量。",
+        "default": 5,
+        "optional": true,
+        "constraints": {
+          "ge": 1,
+          "le": 100
+        }
+      },
+      {
+        "type": "array",
+        "name": "index_names",
+        "description": "The list of index names to search",
+        "description_zh": null,
+        "optional": false,
+        "default": [
+          "2-3da6dfd6d9a744ccb0864e05712a9abf"
+        ]
+      },
+      {
+        "type": "string",
+        "name": "search_mode",
+        "description": "the search mode, optional values: hybrid, accurate, semantic",
+        "description_zh": "搜索模式，可选：hybrid、accurate、semantic。",
+        "default": "hybrid",
+        "optional": true
+      },
+      {
+        "type": "boolean",
+        "name": "rerank",
+        "description": "Whether to enable reranking for search results",
+        "description_zh": null,
+        "default": false,
+        "optional": true
+      },
+      {
+        "type": "string",
+        "name": "rerank_model_name",
+        "description": "The name of the rerank model to use",
+        "description_zh": null,
+        "default": "",
+        "optional": true
+      }
+    ]
+  },
+  "other_agents_protected": 38,
+  "other_agents_unchanged": true,
+  "published": false,
+  "inference_calls": 0
+}
