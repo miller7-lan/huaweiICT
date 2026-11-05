@@ -1,0 +1,27 @@
+{
+  "run_id": "20261105T003300Z",
+  "questions_sha256": "33d0f49d4d741b3fe00a8ca8b80d9177321eeb7ff9396762eb9a7153fbec3654",
+  "corpus_sha256": "15ffde330d2344d5b2d77a686d297c4722ec290ecd7fe0c97bb1e52fce189529",
+  "frozen_qa_sha256": "d18ef3c63e5f9e80b74300f874c8958a94e52052a85e79967c7696a9a9aa8c14",
+  "seed": "20261105-holdout30",
+  "pilot": null,
+  "model_calls": 57,
+  "by_method": {
+    "baseline": {
+      "answers": 22,
+      "stops": 8,
+      "model_errors": 0,
+      "checks_passed": 24,
+      "input_tokens": 38155,
+      "output_tokens": 8405
+    },
+    "proposed": {
+      "answers": 11,
+      "stops": 19,
+      "model_errors": 0,
+      "checks_passed": 22,
+      "input_tokens": 37744,
+      "output_tokens": 7684
+    }
+  }
+}
