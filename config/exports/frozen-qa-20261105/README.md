@@ -8,9 +8,9 @@
 | --- | --- | --- |
 | `qa-agent.json` | 字面检索草稿，本机编号38 | `govkb_frozen_qa`服务、`govkb_frozen_retrieve`和`govkb_frozen_verify`、接收方模型 |
 | `kb-agent.json` | 原生知识库草稿，本机编号39 | `knowledge_base_search`、`govkb_frozen_verify_corpus`、接收方知识库索引与模型 |
-| 本地`artifacts/knowledge-20261105/frozen-knowledge-20261105.zip` | 7份按来源导出的Markdown、581个分块的定位与散列清单 | 匹配原件、合法使用范围、本地嵌入模型与存储绑定 |
+| `frozen-knowledge-20261105.zip`（本机位于`artifacts/knowledge-20261105/`，作品附件中位于“知识库”目录） | 7份按来源导出的Markdown、581个分块的定位与散列清单 | 匹配原件、合法使用范围、本地嵌入模型与存储绑定 |
 
-知识库包含政府归档文本，仅在本地审阅包内保管；正式再分发须先确认许可。公开代码ZIP不包含这些文本。JSON内的本机索引、模型和工具编号不能直接当成新机器编号；不携带账号、MCP Bearer或云端API密钥。
+知识库含7份公开政务资料的冻结文本，保留原网址、修订、散列与定位；政府原文权利归发布机关，随作品提交仅供评审复核，不在公开仓库和公开代码ZIP中再分发。JSON内的本机索引、模型和工具编号不能直接当成新机器编号；不携带账号、MCP Bearer或云端API密钥。
 
 ## 新机器操作顺序
 

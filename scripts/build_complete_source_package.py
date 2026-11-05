@@ -58,7 +58,7 @@ META = {"source-manifest.json", "SHA256SUMS.txt", "SOURCE-ATTACHMENT.md", "sourc
 NOTICE = """# 第三题完整自研代码附件
 
 学校：河南大学；队名：不拿国奖就旷课。
-范围是本次本地工作区主工程的全部自研源代码，不是整个 Git 仓库或正式赛事提交。
+范围是本次本地工作区主工程的全部自研源代码，不是整个 Git 仓库。
 先读 docs/competition/完整代码附件说明-2026-11-03.md。
 完整目录：src、scripts、tests、config、deploy、models文本配方，及仓库其他位置的自研代码。
 保留全部脚本，包括历史采集、实验、部署和模型运行入口；打包绝不执行这些脚本。

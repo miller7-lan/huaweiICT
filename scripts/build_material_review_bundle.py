@@ -38,15 +38,16 @@ DOCS = (
 TEXT_SUFFIXES = {".md", ".json", ".txt", ".py", ".yml", ".toml", ".lock"}
 
 
-def readme(stamp, code_stamp):
+def readme(stamp, code_stamp, official_pages=11):
     day = f"{int(stamp[4:6])}月{int(stamp[6:8])}日"
     return (f"# {day}材料审阅包\n\n"
             "学校：河南大学；队名：不拿国奖就旷课。\n"
-            "先读docs/competition/材料总清单与验收缺口-2026-11-04.md。\n"
-            f"01是保留队长最新填写内容的官方正文，其中代码附件文件名已同步为{code_stamp}版，共11页。\n"
-            f"02是历史详细技术附录；03是{code_stamp}版完整自研代码附件（数量见包内清单）；04是两份原始平台导出。\n"
+            "先读docs/competition/初赛提交清单与剩余事项-2026-11-05.md。\n"
+            f"01是保留队长最新填写内容的官方正文，其中代码附件文件名已同步为{code_stamp}版，共{official_pages}页。\n"
+            f"02是技术附录（含Nexent智能体配置说明）；03是{code_stamp}版完整自研代码附件（数量见包内清单）；04是两份原始平台导出。\n"
             "06含新增问答草稿JSON、知识库文件包和复现说明，07是本次脱敏截图。\n"
             "docs/competition/评测先导与方法B候选-2026-11-05.md记录8题开发先导与方法B候选存证，先导不是正式成绩。\n"
+            "docs/competition/低资源构建架构对照-2026-11-05.md是机器侧四种候选构建架构的隔离对照，不是人工计时。\n"
             "三位成员先通读正文，再按异机复现指南交回真实记录；已有材料不必重新写。\n"
             "本包含队长填写的联系方式，仅用于队内审阅和后续由队长决定的正式提交，不公开推送。\n"
             "06的知识库含政府归档文本，仅用于本地审阅；正式再分发须先确认许可。凭据、数据库、原始日志、独立参考答案和官方空白模板未装入。\n"
@@ -79,6 +80,10 @@ def revised_sources():
         "06-自由问答与知识库/kb-agent.json": ROOT / "config/exports/frozen-qa-20261105/kb-agent.json",
         "06-自由问答与知识库/frozen-knowledge-20261105.zip": ROOT / "artifacts/knowledge-20261105/frozen-knowledge-20261105.zip",
         "06-自由问答与知识库/接线与复现说明.md": ROOT / "config/exports/frozen-qa-20261105/README.md",
+        **{name: ROOT / name for name in (
+            "docs/competition/初赛提交清单与剩余事项-2026-11-05.md",
+            "docs/competition/低资源构建架构对照-2026-11-05.md",
+            "evidence/lowresource-20261105/architecture-comparison-20261105T074630Z.json")},
     }
     captures = ROOT / "docs/competition/assets/screenshots/current-20261105"
     mapping.update({"07-本次截图/" + path.name: path for path in sorted(captures.glob("*")) if path.is_file()})
@@ -98,7 +103,7 @@ def check(name, raw):
                     inspect_content(name + "!" + inner, nested.read(inner))
 
 
-def build(stamp, code_stamp):
+def build(stamp, code_stamp, official_pages=11):
     out, mapping = sources(stamp, code_stamp)
     if "-r" in stamp:
         mapping.update(revised_sources())
@@ -110,7 +115,7 @@ def build(stamp, code_stamp):
             raise ValueError("MISSING_MEMBER_SOURCE: " + name)
         payload[name] = path.read_bytes()
         check(name, payload[name])
-    payload["先读我.md"] = readme(stamp, code_stamp)
+    payload["先读我.md"] = readme(stamp, code_stamp, official_pages)
     manifest = {"date": f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:8]}", "package_tag": stamp, "scope": "local_team_material_review_not_official_submission",
                 "contains_team_contact_information": True,
                 "files": [{"path": name, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
@@ -144,8 +149,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stamp", default=date.today().strftime("%Y%m%d"))
     parser.add_argument("--code-stamp", help="Dated complete-source attachment to include; defaults to --stamp")
+    parser.add_argument("--official-pages", type=int, default=11, help="Page count of the official Word as exported for review")
     args = parser.parse_args()
-    print(json.dumps(build(args.stamp, args.code_stamp or args.stamp), ensure_ascii=False, indent=2))
+    print(json.dumps(build(args.stamp, args.code_stamp or args.stamp, args.official_pages), ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

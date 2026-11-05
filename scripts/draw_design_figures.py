@@ -180,11 +180,28 @@ def construction_flow():
     return fig
 
 
+def kb_call_flow():
+    fig, ax = canvas(7.5, 3.1)
+    y, h = 0.46, 0.36
+    box(ax, 0.005, y, 0.085, h, "用户\n提问", size=8.6)
+    box(ax, 0.115, y, 0.15, h, "问答智能体\n39 号草稿\ndeepseek-flash", face=LAYER["编排"], size=8.2)
+    box(ax, 0.29, y, 0.235, h, "① knowledge_base_search\n（Nexent 内置）\n混合检索前 5 条\n581 块 · 本地 1024 维向量", face=LAYER["知识"], size=7.2)
+    box(ax, 0.55, y, 0.235, h, "② govkb_frozen_verify_corpus\n（MCP 工具）\n按来源编号与定位核验\n引文逐字 · 数字 · 单位", face=LAYER["工具"], size=7.2)
+    box(ax, 0.81, y, 0.185, h, "③ 带引用答复\n未知项\n归档说明", face="#DCFCE7", size=8.2)
+    for left, right in ((0.09, 0.115), (0.265, 0.29), (0.525, 0.55), (0.785, 0.81)):
+        arrow(ax, (left, y + h / 2), (right, y + h / 2))
+    box(ax, 0.52, 0.04, 0.36, 0.17, "核验不通过或问现行效力：停止作答，\n业务状态 PAUSED_UNREVIEWED", face="#FFE4E6", size=8.2)
+    arrow(ax, (0.6675, y), (0.70, 0.21))
+    note(ax, 0.25, 0.14, "38 号草稿同构：govkb_frozen_retrieve 字面检索\n→ govkb_frozen_verify；两草稿均禁用、未发布", size=8.2)
+    note(ax, 0.50, 0.93, "一次 API 冒烟：3 次模型启动，约 11.3 秒；不计入 30 题正式成绩", size=8.6)
+    return fig
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for name, figure in (("图1-系统总体架构.png", architecture), ("图2-检索推理双驱动查询流程.png", query_flow),
                          ("图3-知识更新与本体演化流程.png", update_flow), ("图4-本体结构.png", ontology_structure),
-                         ("图5-半自动构建流程.png", construction_flow)):
+                         ("图5-半自动构建流程.png", construction_flow), ("图6-知识库问答调用关系.png", kb_call_flow)):
         fig = figure()
         fig.savefig(OUT / name, dpi=200, bbox_inches="tight", facecolor="white")
         plt.close(fig)

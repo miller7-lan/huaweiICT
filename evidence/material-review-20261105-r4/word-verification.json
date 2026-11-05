@@ -1,0 +1,104 @@
+{
+  "official": {
+    "source_sha256": "90cdc6b746ffc088db7b1d3164797e2db24b1962cef816e38fe04af9921a1557",
+    "output_sha256": "869cec9f5a66f854a9b678ab116184d7a111af19061edf0f863fdbbe86c22bd4",
+    "edited_paragraphs": [
+      12,
+      53,
+      63
+    ],
+    "inserted_paragraphs_after": [
+      43
+    ],
+    "changed_parts": [
+      "word/document.xml"
+    ],
+    "other_parts_unchanged": 24,
+    "unchanged_paragraph_xml_identical": true,
+    "all_tables_unchanged": true,
+    "edits": [
+      "12: appendix name 《开发设计文档-20261103》技术附录 -> 《技术附录-20261105-r4》 (matches paragraph 63)",
+      "44 (new, after 43): map the four preliminary scoring points to appendix sections, efficiency comparison still untested",
+      "53: code attachment name r3 -> r4 (519 files unchanged)",
+      "63: appendix name r3 -> r4"
+    ]
+  },
+  "appendix": {
+    "source_sha256": "57450c30a3119ad587a3fa14b23041bfaa71719403e9d2855ae413729c6b981f",
+    "output_sha256": "60d2cec8754fc7a14840d145aa8dfb7f15a14041328234525c9ad32b620256b5",
+    "edited_paragraphs": [
+      19,
+      27,
+      36,
+      245,
+      247,
+      259,
+      264,
+      285,
+      289
+    ],
+    "edited_table_cells": [
+      "表1-1 南京/自由提问/工程交付",
+      "表7-2 govkb_frozen_qa 工具数与用途",
+      "表7-4 Agent JSON/知识库/工程包"
+    ],
+    "changed_parts": [
+      "word/document.xml"
+    ],
+    "other_parts_unchanged": 32,
+    "unchanged_paragraph_xml_identical": true,
+    "edits": [
+      "19: drop 'new matters deploy by spec' overclaim; source adaptation and operators still needed",
+      "27 and 表1-1: as of Nov 5, add the native knowledge base draft; Nanjing row keeps the first 12/13 misjudgment before the read-only 13/13; delivery row adds the 519-file attachment",
+      "36: 30 questions frozen with one paired run, blind review pending; method B stored, method A timing pending",
+      "245/259/289: table numbers in chapter 7 renumbered 7-2, 7-3, 7-4 in document order",
+      "表7-2: govkb_frozen_qa lists 3 tools; draft 39 uses built-in knowledge_base_search",
+      "247/264/285: pending-screenshot notes scoped to the update service; history chains use dated receipt reading images; Nov 5 captures shipped separately in 07",
+      "表7-4: add frozen-qa JSON exports, the 581-chunk list and the r4 complete-source attachment"
+    ]
+  },
+  "rendering": {
+    "tool": "WPS read-only PDF export, PyMuPDF 1.26.5 pixel comparison at 110 dpi (scratch venv)",
+    "official": {
+      "pages_r3": 11,
+      "pages_r4": 12,
+      "identical_pages": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "changed_pages": [
+        4,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "changed_pages_reviewed": true,
+      "page_growth": "new paragraph fills page 8, so the closing 尚待补齐 section moves to page 9; chapters 2 and 3 keep their own pages"
+    },
+    "appendix": {
+      "pages_r3": 40,
+      "pages_r4": 41,
+      "reflow_from_page": 2,
+      "edited_pages_reviewed": [
+        2,
+        3,
+        4,
+        28,
+        29,
+        32,
+        36,
+        37,
+        41
+      ],
+      "page_growth": "longer 表1-1 reflows the rest; page 41 holds 8.6 only"
+    }
+  },
+  "captain_fields_unchanged": true,
+  "model_calls": 0
+}
