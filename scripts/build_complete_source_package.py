@@ -21,8 +21,15 @@ from build_competition_package import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "artifacts/complete-source-20261103"
-ARCHIVE = OUTPUT / "ict-topic3-complete-source-20261103.zip"
+# Each rebuild gets its own dated folder so an earlier attachment and its recorded hash stay intact.
+DEFAULT_STAMP = "20261103"
+
+
+def output_paths(stamp: str) -> tuple[Path, Path]:
+    if not (len(stamp) == 8 and stamp.isdigit()):
+        raise ValueError("STAMP_MUST_BE_YYYYMMDD")
+    output = ROOT / f"artifacts/complete-source-{stamp}"
+    return output, output / f"ict-topic3-complete-source-{stamp}.zip"
 SOURCE_ROOTS = {"src", "scripts", "tests", "config", "deploy", "models"}
 CODE_SUFFIXES = {".py", ".js", ".ts", ".tsx", ".jsx", ".ps1", ".sh", ".html", ".css"}
 ROOT_FILES = {
@@ -148,7 +155,8 @@ def verify_bytes(raw_zip: bytes) -> dict:
         }
 
 
-def build() -> dict:
+def build(stamp: str = DEFAULT_STAMP) -> dict:
+    OUTPUT, ARCHIVE = output_paths(stamp)
     names, third_party = select(inventory())
     payload = {name: checked_file(name).read_bytes() for name in names}
     for name, raw in payload.items():
@@ -156,7 +164,8 @@ def build() -> dict:
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
                           capture_output=True, text=True).stdout.strip()
     manifest = {
-        "schema_version": 1, "date": "2026-11-03", "kind": "complete_first_party_source_working_tree",
+        "schema_version": 1, "date": f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:]}",
+        "kind": "complete_first_party_source_working_tree",
         "school": "河南大学", "team": "不拿国奖就旷课", "base_git_head": head,
         "snapshot_kind": "working_tree_bytes_not_a_release_commit",
         "source_inventory": names, "excluded_third_party_source_files": third_party,
@@ -192,16 +201,18 @@ def build() -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--verify-only", action="store_true")
-    parser.add_argument("--archive", type=Path, default=ARCHIVE)
+    parser.add_argument("--stamp", default=DEFAULT_STAMP, help="YYYYMMDD; output goes to artifacts/complete-source-<stamp>")
+    parser.add_argument("--archive", type=Path, help="Archive to verify; defaults to the stamp's archive")
     args = parser.parse_args()
     if args.verify_only:
-        raw = args.archive.read_bytes()
-        checksum = args.archive.parent / "PACKAGE-SHA256.txt"
-        if checksum.exists() and checksum.read_text("ascii") != f"{sha(raw)}  {args.archive.name}\n":
+        archive = args.archive or output_paths(args.stamp)[1]
+        raw = archive.read_bytes()
+        checksum = archive.parent / "PACKAGE-SHA256.txt"
+        if checksum.exists() and checksum.read_text("ascii") != f"{sha(raw)}  {archive.name}\n":
             raise ValueError("ARCHIVE_CHECKSUM_MISMATCH")
         result = verify_bytes(raw)
     else:
-        result = build()
+        result = build(args.stamp)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
