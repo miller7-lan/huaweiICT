@@ -1,0 +1,42 @@
+{
+  "official": {
+    "source_sha256": "7c2cccafd0492137da060d1b12593f52d80f1ec0a043529988c040d318236329",
+    "output_sha256": "90cdc6b746ffc088db7b1d3164797e2db24b1962cef816e38fe04af9921a1557",
+    "edited_paragraphs": [
+      46,
+      53,
+      63
+    ],
+    "changed_parts": [
+      "word/document.xml"
+    ],
+    "other_parts_unchanged": 24,
+    "all_tables_unchanged": true,
+    "edits": [
+      "46: outdated 30-question status replaced by frozen + one paired run, team review and blind review pending",
+      "53: code attachment name r2 -> r3 (file count 519 unchanged)",
+      "63: appendix name r2 -> r3"
+    ]
+  },
+  "appendix": {
+    "source_sha256": "57450c30a3119ad587a3fa14b23041bfaa71719403e9d2855ae413729c6b981f",
+    "output_sha256": "57450c30a3119ad587a3fa14b23041bfaa71719403e9d2855ae413729c6b981f",
+    "byte_identical_copy": true
+  },
+  "rendering": {
+    "tool": "WPS read-only PDF export, PyMuPDF pixel comparison at 110 dpi",
+    "official": {
+      "pages_r2": 11,
+      "pages_r3": 11,
+      "changed_pages": [
+        8,
+        9,
+        11
+      ],
+      "unchanged_pages": 8,
+      "changed_pages_reviewed": true
+    }
+  },
+  "captain_fields_unchanged": true,
+  "model_calls": 0
+}
