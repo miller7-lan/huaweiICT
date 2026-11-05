@@ -11,6 +11,7 @@ import hashlib
 from io import BytesIO
 import json
 from pathlib import Path
+import re
 import zipfile
 
 from build_competition_package import inspect_content, safe_name
@@ -19,6 +20,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = (
     "docs/competition/材料总清单与验收缺口-2026-11-04.md",
     "docs/competition/评测先导与方法B候选-2026-11-05.md",
+    "docs/competition/30题人工盲评分工-2026-11-05.md",
+    "docs/competition/知识库与材料接续完成记录-2026-11-05.md",
     "docs/competition/其他电脑复现与同学后续任务-2026-11-03.md",
     "docs/competition/完整代码附件说明-2026-11-03.md",
     "docs/competition/复现与交付说明-2026-10-21.md",
@@ -36,22 +39,26 @@ TEXT_SUFFIXES = {".md", ".json", ".txt", ".py", ".yml", ".toml", ".lock"}
 
 
 def readme(stamp, code_stamp):
-    day = f"{int(stamp[4:6])}月{int(stamp[6:])}日"
+    day = f"{int(stamp[4:6])}月{int(stamp[6:8])}日"
     return (f"# {day}材料审阅包\n\n"
             "学校：河南大学；队名：不拿国奖就旷课。\n"
             "先读docs/competition/材料总清单与验收缺口-2026-11-04.md。\n"
             f"01是保留队长最新填写内容的官方正文，其中代码附件文件名已同步为{code_stamp}版，共11页。\n"
-            f"02是40页详细技术附录；03是{code_stamp}版507文件完整自研代码附件；04是两份原始平台导出。\n"
+            f"02是历史详细技术附录；03是{code_stamp}版完整自研代码附件（数量见包内清单）；04是两份原始平台导出。\n"
+            "06含新增问答草稿JSON、知识库文件包和复现说明，07是本次脱敏截图。\n"
             "docs/competition/评测先导与方法B候选-2026-11-05.md记录8题开发先导与方法B候选存证，先导不是正式成绩。\n"
             "三位成员先通读正文，再按异机复现指南交回真实记录；已有材料不必重新写。\n"
             "本包含队长填写的联系方式，仅用于队内审阅和后续由队长决定的正式提交，不公开推送。\n"
-            "政府原件、凭据、数据库、运行日志、独立参考答案和官方空白模板未装入本包。\n"
+            "06的知识库含政府归档文本，仅用于本地审阅；正式再分发须先确认许可。凭据、数据库、原始日志、独立参考答案和官方空白模板未装入。\n"
             "未取得的独立成绩、人工计时和真人复核不预填；未执行赛事上传。\n"
             "部分历史链接依赖完整仓库：https://github.com/miller7-lan/huaweiICT/tree/codex/sync-m1-m2\n"
             "文件散列见manifest.json和SHA256SUMS.txt；ZIP整体散列在同目录PACKAGE-SHA256.txt。\n").encode("utf-8")
 
 
 def sources(stamp, code_stamp):
+    for tag in (stamp, code_stamp):
+        if not re.fullmatch(r"[0-9]{8}(?:-r[1-9][0-9]*)?", tag):
+            raise ValueError("STAMP_MUST_BE_YYYYMMDD_WITH_OPTIONAL_REVISION")
     out = ROOT / f"artifacts/material-review-{stamp}"
     return out, {
         "01-官方正文.docx": out / f"开发设计文档-河南大学-不拿国奖就旷课-{stamp}.docx",
@@ -63,6 +70,19 @@ def sources(stamp, code_stamp):
         "05-来源取得要求.json": ROOT / "artifacts/competition-20261021/source-requirements.json",
         "LICENSE": ROOT / "LICENSE",
     }
+
+
+def revised_sources():
+    """Optional additions for the Nov 5 revision; legacy bundles retain their scope."""
+    mapping = {
+        "06-自由问答与知识库/qa-agent.json": ROOT / "config/exports/frozen-qa-20261105/qa-agent.json",
+        "06-自由问答与知识库/kb-agent.json": ROOT / "config/exports/frozen-qa-20261105/kb-agent.json",
+        "06-自由问答与知识库/frozen-knowledge-20261105.zip": ROOT / "artifacts/knowledge-20261105/frozen-knowledge-20261105.zip",
+        "06-自由问答与知识库/接线与复现说明.md": ROOT / "config/exports/frozen-qa-20261105/README.md",
+    }
+    captures = ROOT / "docs/competition/assets/screenshots/current-20261105"
+    mapping.update({"07-本次截图/" + path.name: path for path in sorted(captures.glob("*")) if path.is_file()})
+    return mapping
 
 
 def check(name, raw):
@@ -80,6 +100,9 @@ def check(name, raw):
 
 def build(stamp, code_stamp):
     out, mapping = sources(stamp, code_stamp)
+    if "-r" in stamp:
+        mapping.update(revised_sources())
+        mapping["02-技术附录.docx"] = out / f"技术附录-{stamp}.docx"
     payload = {}
     for name, path in mapping.items():
         safe_name(name)
@@ -88,7 +111,7 @@ def build(stamp, code_stamp):
         payload[name] = path.read_bytes()
         check(name, payload[name])
     payload["先读我.md"] = readme(stamp, code_stamp)
-    manifest = {"date": f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:]}", "scope": "local_team_material_review_not_official_submission",
+    manifest = {"date": f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:8]}", "package_tag": stamp, "scope": "local_team_material_review_not_official_submission",
                 "contains_team_contact_information": True,
                 "files": [{"path": name, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
                           for name, raw in payload.items()]}

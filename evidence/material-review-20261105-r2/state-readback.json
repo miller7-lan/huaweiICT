@@ -1,0 +1,29 @@
+{
+  "drafts": {
+    "38": {
+      "enabled": false,
+      "tools": [
+        "govkb_frozen_retrieve",
+        "govkb_frozen_verify"
+      ]
+    },
+    "39": {
+      "enabled": false,
+      "tools": [
+        "govkb_frozen_verify_corpus",
+        "knowledge_base_search"
+      ]
+    }
+  },
+  "embedding_model_id": 3,
+  "default_llm_id": 1,
+  "formal_evaluation_files_unchanged": {
+    "src/gov_mcp/frozen_qa.py": "d18ef3c63e5f9e80b74300f874c8958a94e52052a85e79967c7696a9a9aa8c14",
+    "src/gov_mcp/knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479",
+    "scripts/run_frozen_qa.py": "01ed8cb466a4969327e4e0ceb5e7fe1f5b9a85809c83daacb1f704b9e34de4b0"
+  },
+  "budget_reset": false,
+  "formal_evaluation_rerun": false,
+  "reference_answers_read": false,
+  "credentials_recorded": false
+}

@@ -1,0 +1,38 @@
+{
+  "question": "请只根据冻结的河南归档资料说明：到期换领居民身份证要交验什么证件？",
+  "agent_id": 39,
+  "visible_duration_seconds": 8.35,
+  "visible_tool_order": [
+    "knowledge_base_search",
+    "govkb_frozen_verify_corpus",
+    "final_answer"
+  ],
+  "verification": {
+    "status": "OK",
+    "checks": {
+      "passed": true,
+      "failures": []
+    },
+    "final": {
+      "outcome": "answer",
+      "answer": "到期换领居民身份证，应当填写《居民身份证申领登记表》，并交验居民身份证。",
+      "assertions": [
+        {
+          "claim": "换领居民身份证应交验居民身份证",
+          "source_id": "HN-NORM-PUBLISHER",
+          "locator": "第一百五十九条",
+          "quote": "公民申领、换领、补领居民身份证的，应当填写《居民身份证申领登记表》，申请领取的，交验居民户口簿；申请换领的，交验居民身份证；"
+        }
+      ],
+      "stop_reason": "",
+      "unknowns": []
+    },
+    "business_conclusion_status": "PAUSED_UNREVIEWED",
+    "current_applicability": "unknown",
+    "formal_approval": false,
+    "archive_explanation_only": true
+  },
+  "evaluation_score": false,
+  "published": false,
+  "raw_ui_state_private": true
+}

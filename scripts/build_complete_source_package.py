@@ -12,6 +12,7 @@ from collections import Counter
 from io import BytesIO
 import json
 from pathlib import Path
+import re
 import stat
 import subprocess
 import zipfile
@@ -26,8 +27,8 @@ DEFAULT_STAMP = "20261103"
 
 
 def output_paths(stamp: str) -> tuple[Path, Path]:
-    if not (len(stamp) == 8 and stamp.isdigit()):
-        raise ValueError("STAMP_MUST_BE_YYYYMMDD")
+    if not re.fullmatch(r"[0-9]{8}(?:-r[1-9][0-9]*)?", stamp):
+        raise ValueError("STAMP_MUST_BE_YYYYMMDD_WITH_OPTIONAL_REVISION")
     output = ROOT / f"artifacts/complete-source-{stamp}"
     return output, output / f"ict-topic3-complete-source-{stamp}.zip"
 SOURCE_ROOTS = {"src", "scripts", "tests", "config", "deploy", "models"}
@@ -164,7 +165,8 @@ def build(stamp: str = DEFAULT_STAMP) -> dict:
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
                           capture_output=True, text=True).stdout.strip()
     manifest = {
-        "schema_version": 1, "date": f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:]}",
+        "schema_version": 1, "date": f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:8]}",
+        "package_tag": stamp,
         "kind": "complete_first_party_source_working_tree",
         "school": "河南大学", "team": "不拿国奖就旷课", "base_git_head": head,
         "snapshot_kind": "working_tree_bytes_not_a_release_commit",
@@ -201,7 +203,7 @@ def build(stamp: str = DEFAULT_STAMP) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--verify-only", action="store_true")
-    parser.add_argument("--stamp", default=DEFAULT_STAMP, help="YYYYMMDD; output goes to artifacts/complete-source-<stamp>")
+    parser.add_argument("--stamp", default=DEFAULT_STAMP, help="YYYYMMDD or YYYYMMDD-rN; each revision has a separate output folder")
     parser.add_argument("--archive", type=Path, help="Archive to verify; defaults to the stamp's archive")
     args = parser.parse_args()
     if args.verify_only:
