@@ -44,7 +44,7 @@ def readme(stamp, code_stamp, official_pages=11):
             "学校：河南大学；队名：不拿国奖就旷课。\n"
             "先读docs/competition/初赛提交清单与剩余事项-2026-11-05.md。\n"
             f"01是保留队长最新填写内容的官方正文，其中代码附件文件名已同步为{code_stamp}版，共{official_pages}页。\n"
-            f"02是技术附录（含Nexent智能体配置说明）；03是{code_stamp}版完整自研代码附件（数量见包内清单）；04是两份原始平台导出。\n"
+            f"02是技术附录（含Nexent智能体配置说明）；03是{code_stamp}版完整自研代码附件（数量见包内清单）；04是原始平台导出（修订版含河南后继更新组）。\n"
             "06含新增问答草稿JSON、知识库文件包和复现说明，07是本次脱敏截图。\n"
             "docs/competition/评测先导与方法B候选-2026-11-05.md记录8题开发先导与方法B候选存证，先导不是正式成绩。\n"
             "docs/competition/低资源构建架构对照-2026-11-05.md是机器侧四种候选构建架构的隔离对照，不是人工计时。\n"
@@ -80,6 +80,8 @@ def revised_sources():
         "06-自由问答与知识库/kb-agent.json": ROOT / "config/exports/frozen-qa-20261105/kb-agent.json",
         "06-自由问答与知识库/frozen-knowledge-20261105.zip": ROOT / "artifacts/knowledge-20261105/frozen-knowledge-20261105.zip",
         "06-自由问答与知识库/接线与复现说明.md": ROOT / "config/exports/frozen-qa-20261105/README.md",
+        "04-原始平台导出/河南后继更新-Agent-Skill.zip": ROOT / "artifacts/competition-20261105/nexent-successor-update-native-export.zip",
+        "04-原始平台导出/河南后继更新-接线说明.md": ROOT / "config/exports/successor-update-native-20261105/README.md",
         **{name: ROOT / name for name in (
             "docs/competition/初赛提交清单与剩余事项-2026-11-05.md",
             "docs/competition/低资源构建架构对照-2026-11-05.md",

@@ -53,6 +53,8 @@ def members(stamp, code_stamp, official, base):
             ROOT / f"artifacts/complete-source-{code_stamp}/ict-topic3-complete-source-{code_stamp}.zip",
         "Nexent智能体配置/南京-本体跨文档推理-Agent-Skill导出.zip": ROOT / "artifacts/competition-20261021/nexent-ontology-crossdoc-native-export.zip",
         "Nexent智能体配置/河南-三模态归档推理-Agent-Skill导出.zip": ROOT / "artifacts/competition-20261022/nexent-henan-multimodal-native-export.zip",
+        "Nexent智能体配置/河南-后继资料更新-Agent-Skill导出.zip": ROOT / "artifacts/competition-20261105/nexent-successor-update-native-export.zip",
+        "Nexent智能体配置/更新智能体组接线说明.md": ROOT / "config/exports/successor-update-native-20261105/README.md",
         "Nexent智能体配置/38号-冻结资料问答-qa-agent.json": exports / "qa-agent.json",
         "Nexent智能体配置/39号-知识库问答-kb-agent.json": exports / "kb-agent.json",
         "Nexent智能体配置/接线与复现说明.md": exports / "README.md",

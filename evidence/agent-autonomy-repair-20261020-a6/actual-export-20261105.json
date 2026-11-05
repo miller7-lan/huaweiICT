@@ -1,0 +1,55 @@
+{
+  "status": "PASS_ACTUAL_DISABLED_TREE_EXPORT",
+  "run": "agent-autonomy-repair-20261020-a6",
+  "agents": {
+    "extractor": {
+      "agent_id": 29,
+      "name": "govsuccessor_extractor",
+      "max_steps": 4,
+      "tools": [
+        "govkb_successor_get",
+        "govkb_successor_submit"
+      ],
+      "skill_ids": [],
+      "children": []
+    },
+    "reviewer": {
+      "agent_id": 30,
+      "name": "govsuccessor_reviewer",
+      "max_steps": 4,
+      "tools": [
+        "govkb_successor_get",
+        "govkb_successor_review"
+      ],
+      "skill_ids": [],
+      "children": []
+    },
+    "controller": {
+      "agent_id": 31,
+      "name": "govsuccessor_controller",
+      "max_steps": 6,
+      "tools": [
+        "govkb_successor_finish",
+        "govkb_successor_state"
+      ],
+      "skill_ids": [
+        8
+      ],
+      "children": [
+        29,
+        30
+      ]
+    }
+  },
+  "skill_id": 8,
+  "skill_sha256": "f7898551710f39a2f0889e26ccdd2d714abe167983c09b18c74523ecdc69c8aa",
+  "live_drafts_match_a6_ledger": true,
+  "export_sha256": "02edfcc1a4c8eac23c749230c8a41d3db946f3d528eba6a35848ba637b2704f3",
+  "agent_json_sha256": "cfe0fa6fc7c1eaa4c129f96a3955bd56fb88299f9ca49648db02c9a8a3f701f3",
+  "public_json": "config/exports/successor-update-native-20261105/agent.json",
+  "archive": "artifacts/competition-20261105/nexent-successor-update-native-export.zip",
+  "credentials_scan_passed": true,
+  "mcp_service_started": false,
+  "model_calls": 0,
+  "published": false
+}
