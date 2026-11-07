@@ -1,0 +1,290 @@
+{
+  "run_id": "20261105T003300Z",
+  "scope": "counts only; no question, reference or output text",
+  "kappa": {
+    "结果可接受": 0.707,
+    "关键断言覆盖": 0.254,
+    "有事实错误": 0.25,
+    "引用支撑结论": 0.226,
+    "触犯禁止项": -0.081,
+    "总评": 0.515
+  },
+  "weighted_kappa_overall": 0.789,
+  "coverage_rule_deviation": {
+    "李嘉杰": {
+      "count": 3,
+      "outputs": [
+        "F23A",
+        "F28A",
+        "F30A"
+      ]
+    },
+    "程千城": {
+      "count": 31,
+      "outputs": [
+        "F09B",
+        "F10A",
+        "F11B",
+        "F12A",
+        "F13B",
+        "F15A",
+        "F16A",
+        "F17A",
+        "F17B",
+        "F18A",
+        "F18B",
+        "F21A",
+        "F21B",
+        "F22A",
+        "F22B",
+        "F23A",
+        "F23B",
+        "F24A",
+        "F24B",
+        "F25A",
+        "F25B",
+        "F26A",
+        "F26B",
+        "F27A",
+        "F27B",
+        "F28A",
+        "F28B",
+        "F29A",
+        "F29B",
+        "F30A",
+        "F30B"
+      ]
+    }
+  },
+  "coverage_on_answered_answer_questions": {
+    "baseline": {
+      "李嘉杰": {
+        "全部": 13,
+        "部分": 5,
+        "outputs": 18
+      },
+      "程千城": {
+        "全部": 15,
+        "部分": 3,
+        "outputs": 18
+      }
+    },
+    "proposed": {
+      "李嘉杰": {
+        "全部": 9,
+        "部分": 2,
+        "outputs": 11
+      },
+      "程千城": {
+        "全部": 10,
+        "部分": 1,
+        "outputs": 11
+      }
+    }
+  },
+  "by_category": {
+    "停止·版本、冲突或来源边界": {
+      "baseline": {
+        "ratings": 6,
+        "outcome_acceptable": 4,
+        "overall_mean": 0.833
+      },
+      "proposed": {
+        "ratings": 6,
+        "outcome_acceptable": 6,
+        "overall_mean": 1.667
+      }
+    },
+    "停止·范围或分支": {
+      "proposed": {
+        "ratings": 8,
+        "outcome_acceptable": 8,
+        "overall_mean": 1.75
+      },
+      "baseline": {
+        "ratings": 8,
+        "outcome_acceptable": 7,
+        "overall_mean": 1.5
+      }
+    },
+    "停止·证据不足": {
+      "baseline": {
+        "ratings": 6,
+        "outcome_acceptable": 5,
+        "overall_mean": 2.0
+      },
+      "proposed": {
+        "ratings": 6,
+        "outcome_acceptable": 6,
+        "overall_mean": 1.833
+      }
+    },
+    "答复·单文档": {
+      "baseline": {
+        "ratings": 16,
+        "outcome_acceptable": 16,
+        "overall_mean": 1.875
+      },
+      "proposed": {
+        "ratings": 16,
+        "outcome_acceptable": 16,
+        "overall_mean": 1.75
+      }
+    },
+    "答复·多模态": {
+      "baseline": {
+        "ratings": 8,
+        "outcome_acceptable": 4,
+        "overall_mean": 1.0
+      },
+      "proposed": {
+        "ratings": 8,
+        "outcome_acceptable": 4,
+        "overall_mean": 1.0
+      }
+    },
+    "答复·跨文档": {
+      "baseline": {
+        "ratings": 16,
+        "outcome_acceptable": 15,
+        "overall_mean": 1.438
+      },
+      "proposed": {
+        "ratings": 16,
+        "outcome_acceptable": 3,
+        "overall_mean": 0.25
+      }
+    }
+  },
+  "wrong_stops": {
+    "baseline": {
+      "count": 2,
+      "reasons": {
+        "evidence_judged_insufficient": 2
+      },
+      "by_category": {
+        "答复·多模态": 2
+      },
+      "questions": [
+        "F17",
+        "F18"
+      ]
+    },
+    "proposed": {
+      "count": 9,
+      "reasons": {
+        "VERIFICATION_FAILED": 5,
+        "evidence_judged_insufficient": 4
+      },
+      "by_category": {
+        "答复·跨文档": 7,
+        "答复·多模态": 2
+      },
+      "questions": [
+        "F09",
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F15",
+        "F16",
+        "F17",
+        "F18"
+      ]
+    }
+  },
+  "cheng_reference_list": {
+    "entries": 14,
+    "questions": [
+      "F05",
+      "F09",
+      "F10",
+      "F11",
+      "F12",
+      "F13",
+      "F14",
+      "F15",
+      "F16",
+      "F17",
+      "F18",
+      "F23",
+      "F28",
+      "F30"
+    ],
+    "status": "mostly comments on outputs; reference errors not yet confirmed, no exclusion applied"
+  },
+  "li_overlap_review": "not received",
+  "strict_whole_output": {
+    "definition": "结果可接受=是, 关键断言覆盖∈{全部,不适用}, 有事实错误=否, 引用支撑结论≠否, 触犯禁止项=否",
+    "baseline": {
+      "李嘉杰": 17,
+      "程千城": 23,
+      "both_reviewers": 17,
+      "outputs": 30
+    },
+    "proposed": {
+      "李嘉杰": 16,
+      "程千城": 20,
+      "both_reviewers": 16,
+      "outputs": 30
+    }
+  },
+  "citation_supported": {
+    "baseline": {
+      "李嘉杰": [
+        23,
+        27
+      ],
+      "程千城": [
+        28,
+        30
+      ]
+    },
+    "proposed": {
+      "李嘉杰": [
+        18,
+        18
+      ],
+      "程千城": [
+        23,
+        30
+      ]
+    },
+    "note": "[是, 非不适用的输出数]"
+  },
+  "outcome_rates": {
+    "baseline": {
+      "correct_stop": [
+        6,
+        10
+      ],
+      "wrong_stop": [
+        2,
+        20
+      ]
+    },
+    "proposed": {
+      "correct_stop": [
+        10,
+        10
+      ],
+      "wrong_stop": [
+        9,
+        20
+      ]
+    },
+    "source": "pre-filled 应有结果/实际结果 columns"
+  },
+  "usage": {
+    "baseline": {
+      "input_tokens": 38155,
+      "output_tokens": 8405
+    },
+    "proposed": {
+      "input_tokens": 37744,
+      "output_tokens": 7684
+    },
+    "model_calls_total": 57,
+    "wall_time": "not recorded"
+  }
+}

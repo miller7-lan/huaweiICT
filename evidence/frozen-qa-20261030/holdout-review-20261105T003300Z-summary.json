@@ -1,0 +1,260 @@
+{
+  "run_id": "20261105T003300Z",
+  "by_method": {
+    "baseline": {
+      "ratings": 60,
+      "outcome_acceptable": 51,
+      "coverage": {
+        "全部": 36,
+        "部分": 13,
+        "无": 2,
+        "不适用": 9
+      },
+      "factual_errors": 14,
+      "unsupported_citations": 6,
+      "must_not_violations": 5,
+      "overall": {
+        "2": 38,
+        "1": 14,
+        "0": 8
+      },
+      "overall_mean": 1.5,
+      "outputs_rated": 30
+    },
+    "proposed": {
+      "ratings": 60,
+      "outcome_acceptable": 43,
+      "coverage": {
+        "全部": 29,
+        "部分": 5,
+        "无": 7,
+        "不适用": 19
+      },
+      "factual_errors": 15,
+      "unsupported_citations": 7,
+      "must_not_violations": 7,
+      "overall": {
+        "2": 32,
+        "1": 11,
+        "0": 17
+      },
+      "overall_mean": 1.25,
+      "outputs_rated": 30
+    }
+  },
+  "by_method_expected": {
+    "baseline": {
+      "答复": {
+        "ratings": 40,
+        "outcome_acceptable": 35,
+        "coverage": {
+          "全部": 28,
+          "部分": 8,
+          "无": 2,
+          "不适用": 2
+        },
+        "factual_errors": 10,
+        "unsupported_citations": 3,
+        "must_not_violations": 2,
+        "overall": {
+          "2": 26,
+          "1": 9,
+          "0": 5
+        },
+        "overall_mean": 1.525
+      },
+      "停止": {
+        "ratings": 20,
+        "outcome_acceptable": 16,
+        "coverage": {
+          "全部": 8,
+          "部分": 5,
+          "无": 0,
+          "不适用": 7
+        },
+        "factual_errors": 4,
+        "unsupported_citations": 3,
+        "must_not_violations": 3,
+        "overall": {
+          "2": 12,
+          "1": 5,
+          "0": 3
+        },
+        "overall_mean": 1.45
+      }
+    },
+    "proposed": {
+      "答复": {
+        "ratings": 40,
+        "outcome_acceptable": 23,
+        "coverage": {
+          "全部": 19,
+          "部分": 5,
+          "无": 7,
+          "不适用": 9
+        },
+        "factual_errors": 13,
+        "unsupported_citations": 7,
+        "must_not_violations": 7,
+        "overall": {
+          "2": 17,
+          "1": 6,
+          "0": 17
+        },
+        "overall_mean": 1.0
+      },
+      "停止": {
+        "ratings": 20,
+        "outcome_acceptable": 20,
+        "coverage": {
+          "全部": 10,
+          "部分": 0,
+          "无": 0,
+          "不适用": 10
+        },
+        "factual_errors": 2,
+        "unsupported_citations": 0,
+        "must_not_violations": 0,
+        "overall": {
+          "2": 15,
+          "1": 5,
+          "0": 0
+        },
+        "overall_mean": 1.75
+      }
+    }
+  },
+  "by_method_reviewer": {
+    "baseline": {
+      "李嘉杰": {
+        "ratings": 30,
+        "outcome_acceptable": 24,
+        "coverage": {
+          "全部": 13,
+          "部分": 8,
+          "无": 0,
+          "不适用": 9
+        },
+        "factual_errors": 11,
+        "unsupported_citations": 4,
+        "must_not_violations": 3,
+        "overall": {
+          "2": 17,
+          "1": 7,
+          "0": 6
+        },
+        "overall_mean": 1.367
+      },
+      "程千城": {
+        "ratings": 30,
+        "outcome_acceptable": 27,
+        "coverage": {
+          "全部": 23,
+          "部分": 5,
+          "无": 2,
+          "不适用": 0
+        },
+        "factual_errors": 3,
+        "unsupported_citations": 2,
+        "must_not_violations": 2,
+        "overall": {
+          "2": 21,
+          "1": 7,
+          "0": 2
+        },
+        "overall_mean": 1.633
+      }
+    },
+    "proposed": {
+      "李嘉杰": {
+        "ratings": 30,
+        "outcome_acceptable": 21,
+        "coverage": {
+          "全部": 9,
+          "部分": 2,
+          "无": 0,
+          "不适用": 19
+        },
+        "factual_errors": 8,
+        "unsupported_citations": 0,
+        "must_not_violations": 0,
+        "overall": {
+          "2": 13,
+          "1": 7,
+          "0": 10
+        },
+        "overall_mean": 1.1
+      },
+      "程千城": {
+        "ratings": 30,
+        "outcome_acceptable": 22,
+        "coverage": {
+          "全部": 20,
+          "部分": 3,
+          "无": 7,
+          "不适用": 0
+        },
+        "factual_errors": 7,
+        "unsupported_citations": 7,
+        "must_not_violations": 7,
+        "overall": {
+          "2": 19,
+          "1": 4,
+          "0": 7
+        },
+        "overall_mean": 1.4
+      }
+    }
+  },
+  "outcome_counts": {
+    "baseline": {
+      "expected_答复_actual_答复": 18,
+      "expected_答复_actual_停止": 2,
+      "expected_停止_actual_答复": 4,
+      "expected_停止_actual_停止": 6
+    },
+    "proposed": {
+      "expected_答复_actual_答复": 11,
+      "expected_答复_actual_停止": 9,
+      "expected_停止_actual_答复": 0,
+      "expected_停止_actual_停止": 10
+    }
+  },
+  "agreement": {
+    "double_rated_outputs": 60,
+    "same_outcome_acceptable": 54,
+    "same_overall": 43,
+    "same_by_field": {
+      "结果可接受(是/否)": 54,
+      "关键断言覆盖(全部/部分/无/不适用)": 28,
+      "有事实错误(是/否)": 43,
+      "引用支撑结论(是/否/不适用)": 41,
+      "触犯禁止项(是/否)": 48,
+      "总评(2/1/0)": 43
+    },
+    "overall_disagreements": [
+      "F04B:proposed",
+      "F05A:proposed",
+      "F09A:baseline",
+      "F10B:baseline",
+      "F11B:proposed",
+      "F14A:baseline",
+      "F16A:proposed",
+      "F21A:proposed",
+      "F23A:baseline",
+      "F24A:baseline",
+      "F24B:proposed",
+      "F27B:proposed",
+      "F28A:baseline",
+      "F29A:baseline",
+      "F29B:proposed",
+      "F30A:baseline",
+      "F30B:proposed"
+    ]
+  },
+  "invalid_rows": [],
+  "reviewers": [
+    "李嘉杰",
+    "程千城"
+  ]
+}

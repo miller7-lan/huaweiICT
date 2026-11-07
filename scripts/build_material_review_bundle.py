@@ -85,6 +85,7 @@ def revised_sources():
         **{name: ROOT / name for name in (
             "docs/competition/初赛提交清单与剩余事项-2026-11-05.md",
             "docs/competition/低资源构建架构对照-2026-11-05.md",
+            "docs/competition/30题盲评结果-2026-11-07.md",
             "evidence/lowresource-20261105/architecture-comparison-20261105T074630Z.json")},
     }
     captures = ROOT / "docs/competition/assets/screenshots/current-20261105"

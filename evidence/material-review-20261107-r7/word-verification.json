@@ -1,0 +1,95 @@
+{
+  "official": {
+    "source_sha256": "bf74fd6eaffb5f21e9a2bd4447d7334f2d461e634e887211930f7fea26cd6bc0",
+    "output_sha256": "28a046943b4b1761fc668156f176e8590b88cbdaa9eef26bec4549e520af2e0b",
+    "changed_parts": [
+      "word/document.xml"
+    ],
+    "added_parts": [],
+    "removed_parts": [],
+    "other_parts_unchanged": 26,
+    "edits": [
+      "abstract: blind-review result",
+      "22: appendix r7",
+      "pending list",
+      "code attachment r7",
+      "Python count",
+      "references: appendix r7",
+      "references: results",
+      "new paragraph: blind-review result"
+    ],
+    "pages_r6": 13,
+    "pages_r7": 13,
+    "raster_changed_pages": [
+      3,
+      4,
+      8,
+      9,
+      10,
+      11,
+      13
+    ],
+    "visually_checked_pages": [
+      3,
+      8,
+      10,
+      14
+    ]
+  },
+  "appendix": {
+    "source_sha256": "eec98079e4313ac9e16c5672485a9ca6f01530b7deb06a3c49b056e0c891c76e",
+    "output_sha256": "ebc8665aba9773a781a6737144e51e2f494d57062defc8a0df7ed182273f5c21",
+    "changed_parts": [
+      "word/document.xml"
+    ],
+    "added_parts": [],
+    "removed_parts": [],
+    "other_parts_unchanged": 36,
+    "edits": [
+      "P4 date",
+      "1.4 date",
+      "表1-1 free-question row: blind results",
+      "表1-1 code counts r7",
+      "1.6 status",
+      "6.5 status",
+      "8.1 status",
+      "8.2 results paragraph",
+      "表8-1 caption",
+      "8.3 date",
+      "8.5 status",
+      "8.6 summary",
+      "表7-4 code attachment r7",
+      "表8-1 row 严格整题正确率",
+      "表8-1 row 断言支持率",
+      "表8-1 row 前5条证据召回率",
+      "表8-1 row 正确停止率",
+      "表8-1 row 误停止率",
+      "表8-1 row 耗时与模型用量",
+      "8.2 new paragraph: agreement and limits"
+    ],
+    "pages_r6": 43,
+    "pages_r7": 44,
+    "raster_changed_pages": [
+      1,
+      3,
+      4,
+      27,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "visually_checked_pages": [
+      40,
+      41,
+      44
+    ]
+  },
+  "layout_fixes": [
+    "shortened two chapter-1 paragraphs so the pending list no longer spills one line onto a near-empty page (official stays 13 pages)",
+    "table 8-1 values use space-separated count and rate so the narrow columns wrap cleanly; the table fits one page"
+  ],
+  "export": "WPS read-only ExportAsFixedFormat PDF; pages rendered with pypdfium2; no template regeneration"
+}
