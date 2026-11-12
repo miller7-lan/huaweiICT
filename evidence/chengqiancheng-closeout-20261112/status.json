@@ -37,8 +37,8 @@
     },
     {
       "id": "method_a",
-      "status": "private_record_reported_pending_full_validation",
-      "evidence": "Personal timing and process records remain local; no new accepted experiment or efficiency claim is made."
+      "status": "timing_report_published_original_pending",
+      "evidence": "Owner authorized publication of the reported timing and explicit gaps; complete independent records not accepted. See docs/competition/chengqiancheng-method-a-20261112/README.md."
     },
     {
       "id": "method_b",
@@ -70,5 +70,12 @@
     "included_in_human_efficiency_results": false
   },
   "private_input_search_rechecked": true,
-  "remaining_input_check_script_ready": true
+  "remaining_input_check_script_ready": true,
+  "github_push_field_scope": "The original closeout-package preparation snapshot; current method-A record publication is tracked separately.",
+  "method_a_record_publication": {
+    "owner_authorized": true,
+    "record_path": "docs/competition/chengqiancheng-method-a-20261112/README.md",
+    "complete_method_a_accepted": false,
+    "method_b_release_authorized": false
+  }
 }
