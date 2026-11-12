@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-11-12",
+  "repository_base_sha": "10f4abf839da42d01c660ac8758cbb0873f27102",
+  "release_prerequisite": "Both reviewers return complete method-A records; captain confirms release. A version check does not satisfy this prerequisite.",
+  "files": [
+    {
+      "id": "method_b",
+      "argument": "method_b",
+      "type": "method_b",
+      "sha256": "165614c05993f8a87de048ba4f8096238ab6d8994a0790928908c90322583438",
+      "unit_counts": {
+        "U1": 6,
+        "U2": 9,
+        "U3": 9,
+        "U4": 10,
+        "U5": 4,
+        "U6": 8
+      },
+      "assigned_units": [
+        "U4",
+        "U5",
+        "U6"
+      ],
+      "source_receipt": "evidence/lowresource-20261105/method-b-candidates-receipt.json",
+      "source_receipt_blob_sha": "5d4a9336fef8373743c71358a028c4b72eac70a5"
+    },
+    {
+      "id": "r11_body",
+      "argument": "r11_body",
+      "type": "docx",
+      "sha256": "abfe82ac13eeaa5c2a81d762546adba096e55eb10c780706b5d3065a5af1b2a1",
+      "source_receipt": "evidence/material-review-20261111-r11/word-verification.json",
+      "source_receipt_blob_sha": "1fd2a9dee49753f103608ff53a2ef948e6a62009"
+    },
+    {
+      "id": "r11_appendix",
+      "argument": "r11_appendix",
+      "type": "docx",
+      "sha256": "39894a5198db052978c4df7418c5c7f2d41cf6a7c67d54614fafbea23c270357",
+      "source_receipt": "evidence/material-review-20261111-r11/word-verification.json",
+      "source_receipt_blob_sha": "1fd2a9dee49753f103608ff53a2ef948e6a62009"
+    }
+  ]
+}

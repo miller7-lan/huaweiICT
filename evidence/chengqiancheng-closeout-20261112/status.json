@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-12",
+  "repository_base_sha": "10f4abf839da42d01c660ac8758cbb0873f27102",
+  "technical_artifacts_ready": true,
+  "project_closeout_complete": false,
+  "github_push_performed": false,
+  "official_submission_performed": false,
+  "raw_scores_modified": false,
+  "reference_modified": false,
+  "accepted_new_human_experiment_results": false,
+  "tasks": [
+    {
+      "id": "owner_adoption",
+      "status": "completed",
+      "evidence": "Owner confirmed adoption of the five source-review opinions; the return note has been supplemented. No new experiment or consensus result accepted."
+    },
+    {
+      "id": "reference_source_review",
+      "status": "technical_review_complete_owner_adopted",
+      "evidence": "30 references and 58 quoted assertions checked; original 14 concerns classified without changing scores."
+    },
+    {
+      "id": "A7_frozen_text",
+      "status": "received_and_verified",
+      "evidence": "Frozen Markdown from the registered review package; original publisher HTML bytes still not recovered."
+    },
+    {
+      "id": "scan_review",
+      "status": "opinion_adopted_missing_process_fields_documented",
+      "evidence": "Missing actual date, minutes and pauses explicitly documented. Separate 12-minute task estimate prepared; not an actual human review time."
+    },
+    {
+      "id": "mapping_review",
+      "status": "technical_review_complete_owner_adopted",
+      "evidence": "9 clause texts match frozen source sections after stated normalization; design extensions remain proposals."
+    },
+    {
+      "id": "method_a",
+      "status": "private_record_reported_pending_full_validation",
+      "evidence": "Personal timing and process records remain local; no new accepted experiment or efficiency claim is made."
+    },
+    {
+      "id": "method_b",
+      "status": "waiting_official_candidates",
+      "evidence": "Original stored candidate file not received; release prerequisite and actual reviewer processing/time remain outstanding."
+    },
+    {
+      "id": "joint_discussion",
+      "status": "pending_two_reviewers",
+      "evidence": "No actual joint decisions or signatures authored; original scores unchanged."
+    },
+    {
+      "id": "r11_readthrough",
+      "status": "waiting_private_documents",
+      "evidence": "Only existing package receipts available; no read-through of unavailable Word attachments claimed."
+    }
+  ],
+  "owner_adoption_complete": true,
+  "owner_adoption_date": "2026-11-12",
+  "scan_prediction": {
+    "minutes": 12,
+    "breakdown_minutes": [
+      2,
+      3,
+      4,
+      3
+    ],
+    "data_type": "task_estimate_not_measured",
+    "included_in_human_efficiency_results": false
+  },
+  "private_input_search_rechecked": true,
+  "remaining_input_check_script_ready": true
+}
