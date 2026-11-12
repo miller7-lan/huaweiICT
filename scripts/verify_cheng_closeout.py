@@ -59,7 +59,7 @@ def check_public(root):
     require(dates['F29']['pub_date']=='2026-05-05'and dates['F29']['last_modified_date']=='2026-05-11','F29_dates')
     require(dates['F29']['changes_reference_or_scores']is False,'F29_disposition')
     for name in ['reference-review-summary.json','quote-integrity.json','mapping-source-checks.json','comment-resolution.json','status.json','review-package-integrity.json','date-and-locator-corrections.json','remaining-input-search.json','expected-private-inputs.json']:
-        text=(directory/name).read_text()
+        text=(directory/name).read_text(encoding='utf-8')
         require('/Users/'not in text and 'C:/Users/'not in text,'absolute_personal_path')
         def inspect(value):
             if isinstance(value,dict):

@@ -40,7 +40,7 @@ def main():
     parser.add_argument('--r11-appendix',type=Path,help='Local r11 appendix Word.')
     args=parser.parse_args()
     try:
-        manifest=json.loads((args.root/MANIFEST).read_text())
+        manifest=json.loads((args.root/MANIFEST).read_text(encoding='utf-8'))
         if len(manifest['files'])!=3 or len({item['id']for item in manifest['files']})!=3:raise ValueError()
         results={item['id']:check(getattr(args,item['argument']),item)for item in manifest['files']}
     except (OSError,ValueError,KeyError,TypeError,AttributeError):
