@@ -1,0 +1,24 @@
+{
+  "corpus_sha256": "1e556dad8e703ada6c1680289415f6e74eeec772c856b0a542138874592c4fce",
+  "code_sha256": {
+    "frozen_qa.py": "15b674e7a632ec4e70967c72b8ca9722b77756c130571cf3979bde19ab38842c",
+    "frozen_qa_server.py": "f31e248464832dd07c546c4f07ddf390e8f4767faac38de9d07434232b84413b",
+    "frozen_retrieval.py": "0c73cded7646935423522b014ec385cdfb0cac490b2329c5613f62fe45883c58",
+    "knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479"
+  },
+  "postal_locator_retrieved": true,
+  "old_notice_heading_retrieved": true,
+  "replayed_v05_checks": {
+    "passed": false,
+    "failures": [
+      "FIRST_ISSUE_OLD_FEE_DOCUMENT_YEAR_REQUIRED"
+    ]
+  },
+  "stop_gates": [
+    "G01",
+    "G02",
+    "G03"
+  ],
+  "model_calls": 0,
+  "verification": "FrozenQAService using real frozen corpus and saved real V05 candidate"
+}

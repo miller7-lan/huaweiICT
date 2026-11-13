@@ -12,7 +12,7 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 import httpx  # noqa: E402
 
-from gov_mcp.knowledge_fetch import parse_html  # noqa: E402
+from gov_mcp.knowledge_fetch import observe_html, parse_html  # noqa: E402
 
 
 RUNTIME = ROOT / ".runtime/frozen-qa-20261030"
@@ -46,12 +46,14 @@ SOURCES = (
     {"code": "A4", "source_id": "MOF-FEE-2007", "kind": "html", "prepared": "MOF-FEE-2007.html",
      "selector": {"class": "my_doccontent"}},
     {"code": "A5", "source_id": "MOF-FIRST-ISSUE-2018", "kind": "html", "selector": {"class": "my_doccontent"}},
-    {"code": "A6", "source_id": "HN-MEASURES-2026", "kind": "html", "selector": {"id": "content"}},
+    {"code": "A6", "source_id": "HN-MEASURES-2026", "kind": "html", "selector": {"id": "content"},
+     "publication": "visible_and_meta"},
     {"code": "A7", "source_id": "HN-NORM-PUBLISHER", "kind": "html", "selector": {"id": "content"},
-     "excluded": [{"class": "operator"}], "min_text_length": 1, "articles": True},
+     "excluded": [{"class": "operator"}], "min_text_length": 1, "articles": True,
+     "publication": "visible_and_meta"},
     # The public site currently fails TLS handshakes; the update campaign kept the pinned bytes.
     {"code": "B1", "source_id": "HN-MEASURES-2024-JY", "kind": "html", "selector": {"class": "view"},
-     "private_copy": ".runtime/agent-autonomy-repair-20261020-a6/sources/old.html"},
+     "private_copy": ".runtime/agent-autonomy-repair-20261020-a6/sources/old.html", "publication": "meta"},
 )
 NS = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",
       "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships"}
@@ -136,6 +138,31 @@ def html_units(spec, raw):
                  else "html_paragraph", paragraph=item["paragraph"]) for item in grouped]
 
 
+def html_metadata_units(spec, raw):
+    """Expose only fields supported by the pinned HTML, each with its own locator."""
+    fields = observe_html(raw, {"publication": {"id": "pubDate"}})["fields"]
+    units = []
+    titles = fields.get("meta:articletitle", [])
+    if len(titles) == 1 and titles[0]:
+        units.append(unit(spec, "网页标题（meta:ArticleTitle）", titles[0], "source_title"))
+    for kind, key, label in (
+        ("page_publication_date", "meta:pubdate", "网页发布日期（meta:PubDate）"),
+        ("page_modified_date", "meta:lastmodifiedtime", "网页最后修改日期（meta:lastmodifiedtime）"),
+    ):
+        values = fields.get(key, [])
+        if len(values) != 1 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:[ T]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)?", values[0]):
+            continue
+        calendar_date = values[0][:10]
+        if kind == "page_publication_date":
+            # Some archives expose conflicting page and document dates. Admit only checked sources.
+            policy = spec.get("publication")
+            if policy != "meta" and (policy != "visible_and_meta" or fields["block:publication"] != [calendar_date]):
+                continue
+        date.fromisoformat(calendar_date)
+        units.append(unit(spec, label, values[0], kind, calendar_date=calendar_date))
+    return units
+
+
 def xlsx_units(spec, raw):
     """Literal cell values grouped by row; formulas are skipped and counted, never evaluated."""
     with ZipFile(BytesIO(raw)) as archive:
@@ -197,7 +224,9 @@ def check_catalog(units, document):
     return checked
 
 
-def build(offline=False):
+def build(offline=False, output=None):
+    if output is not None and (output.resolve() == RUNTIME.resolve() or (output / "corpus.json").exists()):
+        raise ValueError("USE_A_NEW_CORPUS_OUTPUT_RUNTIME")
     documents = catalog_documents()
     receipts, corpus, sources = [], [], []
     client = None if offline else httpx.Client(trust_env=True, timeout=30, follow_redirects=False,
@@ -214,6 +243,8 @@ def build(offline=False):
             else:
                 units = scan_units(spec)
             checked = check_catalog(units, document) if spec["kind"] == "html" else 0
+            if output is not None and spec["kind"] == "html":
+                units.extend(html_metadata_units(spec, raw))
             corpus.extend(units)
             sources.append({"code": spec["code"], "source_id": spec["source_id"], "kind": spec["kind"],
                             "url": document["url"], "revision": document["revision"],
@@ -223,25 +254,28 @@ def build(offline=False):
     finally:
         if client is not None:
             client.close()
-    manifest = {"schema_version": 1, "corpus": "henan-frozen-qa-20261030",
+    manifest = {"schema_version": 1, "corpus": output.name if output else "henan-frozen-qa-20261030",
                 "built_at": datetime.now(timezone.utc).isoformat(), "sources": sources,
                 "unit_count": len(corpus), "acquisition": receipts, "model_calls": 0,
                 "corpus_sha256": digest(json.dumps(corpus, ensure_ascii=False, sort_keys=True).encode()),
                 "scope_note": "Frozen archived sources for evaluation; not current policy. "
                               "Only the scan's two attributed AI transcriptions are included."}
-    RUNTIME.mkdir(parents=True, exist_ok=True)
-    (RUNTIME / "corpus.json").write_text(json.dumps({"manifest": manifest, "units": corpus},
-                                                    ensure_ascii=False, indent=1), "utf-8")
-    EVIDENCE.mkdir(parents=True, exist_ok=True)
-    (EVIDENCE / "corpus-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", "utf-8")
+    target = output or RUNTIME
+    target.mkdir(parents=True, exist_ok=True)
+    with (target / "corpus.json").open("x" if output is not None else "w", encoding="utf-8") as handle:
+        json.dump({"manifest": manifest, "units": corpus}, handle, ensure_ascii=False, indent=1)
+    if output is None:
+        EVIDENCE.mkdir(parents=True, exist_ok=True)
+        (EVIDENCE / "corpus-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", "utf-8")
     return manifest
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--offline", action="store_true", help="Use private copies only; never fetch")
+    parser.add_argument("--output-runtime", type=Path, help="New private runtime with additional HTML metadata")
     args = parser.parse_args()
-    manifest = build(offline=args.offline)
+    manifest = build(offline=args.offline, output=args.output_runtime)
     print(json.dumps({"unit_count": manifest["unit_count"], "corpus_sha256": manifest["corpus_sha256"],
                       "sources": [(s["code"], s["units"], s["catalog_clauses_rechecked"]) for s in manifest["sources"]]},
                      ensure_ascii=False))

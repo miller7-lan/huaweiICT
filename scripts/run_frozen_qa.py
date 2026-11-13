@@ -56,16 +56,20 @@ def offline_chat(messages):
 
 
 def ask(args):
-    units = load_units()
+    runtime = args.runtime
+    units = load_units(runtime / "corpus.json")
     if not args.live:
-        evidence = frozen_qa.retrieve(units, args.question + args.context)
-        print(json.dumps({"dry_run": True, "gate": frozen_qa.scope_gate(args.question + args.context),
+        query = args.question + args.context
+        gate = frozen_qa.scope_gate(query)
+        retrieve = frozen_qa.retrieve_evidence if args.method == "proposed" else frozen_qa.retrieve
+        evidence = [] if gate == "PRIVATE_FACT_NOT_ACCEPTED" else retrieve(units, query)
+        print(json.dumps({"dry_run": True, "gate": gate,
                           "evidence": [{k: item[k] for k in ("rank", "source_id", "locator", "score")}
                                        | {"text": item["text"][:200]} for item in evidence]},
                          ensure_ascii=False, indent=1))
         return
     record = frozen_qa.ask(args.question, units, args.method, live_chat(args.max_calls), context=args.context)
-    out = RUNTIME / "runs" / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ") + ".json")
+    out = runtime / "runs" / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ") + ".json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(record, ensure_ascii=False, indent=1), "utf-8")
     print(json.dumps({"record": str(out), **record["final"], "checks": record["checks"],
@@ -132,6 +136,7 @@ def main():
     one.add_argument("question")
     one.add_argument("--context", default="")
     one.add_argument("--method", choices=frozen_qa.METHODS, default="proposed")
+    one.add_argument("--runtime", type=Path, default=RUNTIME)
     many = sub.add_parser("eval")
     many.add_argument("--questions", required=True, help="questions-only JSON list: id, question, optional context")
     many.add_argument("--pilot", type=int, default=0, help="Run only the first N questions")

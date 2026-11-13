@@ -1,0 +1,24 @@
+{
+  "status": "PASS_TARGETED_CHECKS",
+  "tests": {
+    "command": "python -m pytest tests/test_frozen_qa.py tests/test_frozen_retrieval.py -q",
+    "passed": 62
+  },
+  "source_sha256": {
+    "src/gov_mcp/frozen_qa.py": "213bc24219e3636ff370b999e66efe0b422246d375e14bd16bfad9bfba3f2ed3",
+    "src/gov_mcp/frozen_qa_server.py": "f31e248464832dd07c546c4f07ddf390e8f4767faac38de9d07434232b84413b",
+    "src/gov_mcp/frozen_retrieval.py": "cf3c8d1730ca5a84b3c62bdc383e5406c7c1d8927ed73b285b728f83c2fe07bd",
+    "tests/test_frozen_retrieval.py": "2508213f8772ed157b8817c0e9baa8f2f394cba99685bcc43a11bc54f81b334c",
+    "scripts/compare_frozen_retrieval.py": "a3f843b449ed5c247046978d676a0aee80b85582094cb1c5062c23baff773ffd",
+    "scripts/compare_frozen_qa_refactor.py": "d11c741f43446c1f9fa4fa8c9c13b0741279513ca67884c4b2940f1c2891b9b3",
+    "scripts/replay_frozen_qa_verification.py": "f24b3163a7341b905b608d05bd7b0297952517d607ca686e674e8f9af9203b99"
+  },
+  "python_files_ast_checked": 7,
+  "report_local_links_valid": true,
+  "model_calls_total": 12,
+  "model_call_budget": 12,
+  "additional_replay_model_calls": 0,
+  "formal_30_question_results_modified": false,
+  "r15_repacked": false,
+  "git_pushed": false
+}
