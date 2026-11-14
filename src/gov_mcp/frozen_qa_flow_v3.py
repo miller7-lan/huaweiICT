@@ -7,10 +7,11 @@ This module keeps that retrieval (frozen_retrieval), that verifier
 changes only what happens after the first model output:
 
 0. titles     a claim that names a document by its year needs that document's
-              title as a citation, and models often omit it. The backend adds
-              the title unit of every cited source from the corpus as a marked
-              citation. The year rule itself is unchanged: a year that the
-              title does not contain still fails;
+              title, heading or page date as a citation, and models often omit
+              it. When a draft fails, the backend adds those corpus units of
+              the cited sources as marked citations, and keeps them only if
+              failures disappear. The year rule itself is unchanged: a year
+              those units do not contain still fails;
 1. follow up  a stop, or an answer that lists what is missing, triggers one
               more retrieval for the missing items; the model is asked again
               only if that retrieval adds evidence;
@@ -45,8 +46,10 @@ FOLLOW_UP_QUERIES = 3   # missing items searched in one follow-up
 FOLLOW_UP_PER_QUERY = 3
 FOLLOW_UP_ADDED = 6     # units one follow-up may add
 
-# "[1]" or "[E2]" points at evidence; it is not a quoted fact.
-MARKER = re.compile(r"[\[【［]\s*E?\d+\s*[\]】］]")
+# "[E2]" or a standalone "[1]" points at evidence; it is not a quoted fact.
+# A bracketed number inside a document number such as 财综[2007]34号 is left alone.
+MARKER = re.compile(r"[\[【［]\s*E\d+\s*[\]】］]"
+                    r"|(?<![0-9A-Za-z\u3400-\u9fff])[\[【［]\s*\d{1,2}\s*[\]】］](?!\s*\d)")
 # Unknowns about current validity or a person's own case are boundaries, not retrievable gaps.
 NOT_RETRIEVABLE = re.compile("|".join(CURRENT) + r"|现行|个人|本人|实际")
 TITLE_NOTE = "【系统补充的来源标题】"
@@ -66,8 +69,18 @@ def clean(output):
             "assertions": [{**item, "claim": MARKER.sub("", item["claim"])} for item in output["assertions"]]}
 
 
+def names_source(unit):
+    """Units that the verifier accepts as naming a document: title, heading, page publication date."""
+    return (unit.get("evidence_kind") in ("source_title", "page_publication_date")
+            or bool(DOCUMENT_HEADING.fullmatch(unit["text"])))
+
+
 def attach_source_titles(output, pool, units):
-    """Cite the corpus title unit of each cited source; the pool gains it if absent."""
+    """Cite the corpus units that name each cited source; the pool gains them if absent.
+
+    A title is repeated in the marked claim. A heading or page date is cited with a
+    label only, so its own digits are never presented as a policy fact.
+    """
     if output["outcome"] != "answer":
         return output
     by_identity = {identity(item): item for item in pool}
@@ -77,12 +90,13 @@ def attach_source_titles(output, pool, units):
     have = {(item["source_id"], item["locator"]) for item in output["assertions"]}
     added = []
     for unit in units:
-        if unit.get("evidence_kind") == "source_title" and source_key(unit) in sources and identity(unit) not in have:
+        if names_source(unit) and source_key(unit) in sources and identity(unit) not in have:
             if identity(unit) not in by_identity:
                 pool.append({**unit, "rank": len(pool) + 1, "score": 0})
                 by_identity[identity(unit)] = pool[-1]
             have.add(identity(unit))
-            added.append({"claim": TITLE_NOTE + unit["text"], "source_id": unit["source_id"],
+            label = unit["text"] if unit.get("evidence_kind") == "source_title" else "（文头或网页发布日期，见引文）"
+            added.append({"claim": TITLE_NOTE + label, "source_id": unit["source_id"],
                           "locator": unit["locator"], "quote": unit["text"]})
     return {**output, "assertions": output["assertions"] + added}
 
@@ -184,7 +198,12 @@ def ask(question, units, chat, *, context=""):
               "follow_ups_used": 0, "repairs_used": 0, "claims_dropped": 0, "status": dict(STATUS)}
 
     def finish(final, kind, origin=None):
+        # final_checks re-verifies what is displayed. An answer whose own unknowns still name a
+        # retrievable gap passed the citation checks but does not cover the whole question.
+        if kind == "answer" and missing_items(final):
+            kind = "answer_with_gaps"
         record.update(final=final, result_kind=kind, stop_origin=origin,
+                      final_checks=check(final, pool) if final["outcome"] == "answer" else None,
                       duration_ms=round((time.monotonic() - started) * 1000, 1),
                       retrieval={"version": RETRIEVAL_VERSION, "rounds": rounds, "evidence": [
                           {key: item.get(key) for key in ("rank", "source_id", "locator", "score", "text_sha256")}
@@ -210,12 +229,18 @@ def ask(question, units, chat, *, context=""):
                 return finish(verified, "answer")
             return finish(_stop("MODEL_ERROR", "模型调用或输出格式失败，本题未作答。"), "stop", "MODEL_OR_TOOL_ERROR")
         raw = response["output"]
-        output = attach_source_titles(normalize_citation_locators(clean(raw), pool), pool, units)
+        output = normalize_citation_locators(clean(raw), pool)
         checks = check(output, pool)
+        if output["outcome"] == "answer" and not checks["passed"]:
+            # Backend source citations are used only when they remove failures and add none.
+            supported = attach_source_titles(output, pool, units)
+            supported_checks = check(supported, pool)
+            if set(supported_checks["failures"]) < set(checks["failures"]):
+                output, checks = supported, supported_checks
         calls.append({"model": response.get("model"), "usage": response.get("usage"), "outcome": raw["outcome"],
                       "failures": checks["failures"], "pool_size": len(pool)})
         record["model"]["called"] = True
-        record.update(model_output=raw, checks=checks)
+        record.update(model_output=raw, checks=checks)  # checks: the latest draft, not the final
         good = output["outcome"] == "answer" and checks["passed"]
         if good or output["outcome"] == "stop":
             wanted = missing_items(output)
@@ -226,12 +251,14 @@ def ask(question, units, chat, *, context=""):
                 if added:
                     verified, extra = (render(output) if good else None), []
                     continue
-            if good:
+            if good and not (verified and len(output["assertions"]) < len(verified["assertions"])):
                 return finish(render(output), "answer")
             if verified:  # The follow-up did not improve on the answer that had passed.
                 return finish(verified, "answer")
             return finish(output, "stop", "INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP" if record["follow_ups_used"]
                           else "MODEL_STOP_WITHOUT_MISSING_ITEMS")
+        if verified:  # The answer that already passed beats repairing or trimming a worse draft.
+            return finish(verified, "answer")
         if record["repairs_used"] < MAX_REPAIRS and len(calls) < MAX_MODEL_CALLS:
             record["repairs_used"] += 1
             extra = _repair(raw, checks["failures"])
@@ -239,7 +266,5 @@ def ask(question, units, chat, *, context=""):
         partial, record["claims_dropped"] = salvage(output, pool)
         if partial:
             return finish(partial, "partial_answer")
-        if verified:
-            return finish(verified, "answer")
         return finish(_stop("VERIFICATION_FAILED", "回答经修复后仍没有可通过引用与数字核验的结论，已停止作答。",
                             checks["failures"]), "stop", "VERIFICATION_FAILED_AFTER_REPAIR")

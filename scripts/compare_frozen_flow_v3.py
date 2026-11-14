@@ -13,6 +13,7 @@ references and human review.
 """
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from hashlib import sha256
@@ -86,6 +87,12 @@ def main():
                 counts["model_calls"] += used["count"] - before
                 if record["final"]["outcome"] == "stop":
                     counts["stop:" + (record.get("stop_origin") or record.get("gate") or record["final"]["stop_reason"])] += 1
+                # Failure kinds of every draft, without claim numbers or values, show what to fix next.
+                drafts = record["model"].get("calls") or [{"failures": (record.get("checks") or {}).get("failures", [])}]
+                for code in (code for draft in drafts for code in draft.get("failures", [])):
+                    counts["draft_failure:" + re.sub(r"^A\d+_", "", code).split(":")[0]] += 1
+                if record.get("final_checks") and not record["final_checks"]["passed"]:
+                    counts["final_not_verified"] += 1
                 usages = [call.get("usage") for call in record["model"].get("calls", [record["model"]])]
                 counts["input_tokens"] += sum((usage or {}).get("input_tokens", 0) for usage in usages)
                 counts["output_tokens"] += sum((usage or {}).get("output_tokens", 0) for usage in usages)

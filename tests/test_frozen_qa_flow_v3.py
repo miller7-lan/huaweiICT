@@ -72,6 +72,8 @@ def test_salvage_keeps_verified_claims_and_never_shows_the_dropped_one():
     assert record["result_kind"] == "partial_answer" and record["claims_dropped"] == 1
     assert claims(record) == [TEMP[0]] and "60" not in json_text(record["final"])
     assert "部分答复" in record["final"]["answer"] and record["final"]["unknowns"]
+    # checks describes the last draft; final_checks describes what is displayed.
+    assert not record["checks"]["passed"] and record["final_checks"]["passed"]
     pool = [dict(u, rank=i) for i, u in enumerate(UNITS, 1)]
     assert frozen_qa.verify({**record["final"], "answer": TEMP[0]}, pool)["passed"]
 
@@ -110,8 +112,10 @@ def test_stop_triggers_one_follow_up_retrieval_then_answers():
 def test_a_passing_answer_is_never_replaced_by_a_worse_follow_up():
     first = answer("到期换领工本费20元。", RENEW, unknowns=["户口迁移准予迁入证明"])
     for second in (answer("到期换领工本费60元。", WRONG), answer("缺。", outcome="stop", reason="证据不足")):
-        record = flow.ask(QUESTION, UNITS, scripted(first, second, second))
-        assert record["result_kind"] == "answer" and claims(record) == [RENEW[0]]
+        record = flow.ask(QUESTION, UNITS, chat := scripted(first, second, second))
+        # The kept answer still names a gap, so it is not counted as a complete answer.
+        assert record["result_kind"] == "answer_with_gaps" and claims(record) == [RENEW[0]]
+        assert len(chat.calls) == 2 and record["final_checks"]["passed"]  # No repair of the worse draft.
 
 
 def test_boundary_unknowns_do_not_trigger_a_follow_up():
@@ -139,3 +143,23 @@ def test_model_calls_never_exceed_the_bound():
     bad = answer("到期换领工本费60元。", WRONG)
     record = flow.ask(QUESTION, UNITS, scripted(stop, bad, bad, bad))
     assert len(record["model"]["calls"]) == flow.MAX_MODEL_CALLS == 3
+
+
+def test_document_numbers_keep_their_bracketed_year():
+    text = "依据财综[2007]34号，见[E2]和 [1]。"
+    cleaned = flow.clean(answer(text, (text, "DOC-RENEW", "正文段落1", "工本费20元")))
+    assert cleaned["answer"] == cleaned["assertions"][0]["claim"] == "依据财综[2007]34号，见和 。"
+
+
+def test_backend_heading_supports_a_year_without_showing_its_digits_as_a_fact():
+    units = UNITS[1:] + [unit("DOC-RENEW", "正文段落0", "2019年3月5日 豫财综[2019]12号")]
+    named = ("2019年通知记载到期换领工本费20元", "DOC-RENEW", "正文段落1", "到期换领居民身份证的，工本费20元")
+    record = flow.ask(QUESTION, units, scripted(answer("2019年通知记载到期换领工本费20元。", named)))
+    assert record["result_kind"] == "answer" and record["final_checks"]["passed"]
+    note = next(item for item in record["final"]["assertions"] if item["claim"].startswith(flow.TITLE_NOTE))
+    assert "2019" not in note["claim"] and "2019" in note["quote"]
+
+
+def test_backend_citations_are_not_added_to_a_draft_that_already_passes():
+    record = flow.ask(QUESTION, UNITS, scripted(answer("到期换领工本费20元。", RENEW)))
+    assert claims(record) == [item["claim"] for item in record["final"]["assertions"]]
