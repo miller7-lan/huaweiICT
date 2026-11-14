@@ -1,0 +1,70 @@
+{
+  "source_commit": "ba99e5f",
+  "rules": "light",
+  "cli_rules": "strict (repository run_frozen_qa.py default)",
+  "agent_id": 41,
+  "agent_enabled": false,
+  "published": false,
+  "unauthenticated_http_status": 401,
+  "native_runs": [
+    {
+      "id": "N01",
+      "transport_passed": true,
+      "tool_order": [
+        "govkb_flow_open",
+        "govkb_flow_submit",
+        "govkb_flow_submit",
+        "final_answer"
+      ],
+      "model_starts": 8,
+      "tool_call_warnings": 2,
+      "duration_ms": 18468.0,
+      "result_kind": "partial_answer",
+      "final_checks_passed": true,
+      "answer_text_preserved": true,
+      "citations_preserved": true,
+      "cites_count": 6,
+      "revise_failed_checks_seen": true,
+      "cli_result_kind": "answer_with_gaps"
+    },
+    {
+      "id": "N08",
+      "transport_passed": true,
+      "tool_order": [
+        "govkb_flow_open",
+        "govkb_flow_submit",
+        "govkb_flow_submit",
+        "final_answer"
+      ],
+      "model_starts": 4,
+      "tool_call_warnings": 0,
+      "duration_ms": 10032.0,
+      "result_kind": "answer_with_gaps",
+      "final_checks_passed": true,
+      "answer_text_preserved": true,
+      "citations_preserved": true,
+      "cites_count": 2,
+      "revise_failed_checks_seen": true,
+      "cli_result_kind": null
+    },
+    {
+      "id": "N05",
+      "transport_passed": true,
+      "tool_order": [
+        "govkb_flow_open",
+        "final_answer"
+      ],
+      "model_starts": 2,
+      "tool_call_warnings": 0,
+      "duration_ms": 5328.0,
+      "result_kind": "stop",
+      "final_checks_passed": null,
+      "answer_text_preserved": null,
+      "citations_preserved": null,
+      "cites_count": 0,
+      "revise_failed_checks_seen": false,
+      "cli_result_kind": "stop"
+    }
+  ],
+  "credentials_scan_passed": true
+}
