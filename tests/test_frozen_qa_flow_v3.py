@@ -63,6 +63,7 @@ def test_failed_check_is_repaired_once():
     chat = scripted(answer("到期换领工本费60元。", WRONG), answer("到期换领工本费20元。", RENEW))
     record = flow.ask(QUESTION, UNITS, chat)
     assert record["result_kind"] == "answer" and record["repairs_used"] == 1 and claims(record) == [RENEW[0]]
+    assert [(call["assertions"], call["unknowns"]) for call in record["model"]["calls"]] == [(1, 0), (1, 0)]
     assert "QUANTITY_NOT_QUOTED" in chat.calls[1][-1]["content"]
 
 
@@ -114,7 +115,7 @@ def test_stop_triggers_one_follow_up_retrieval_then_answers():
 def test_a_passing_answer_is_never_replaced_by_a_worse_follow_up():
     first = answer("到期换领工本费20元。", RENEW, unknowns=["户口迁移准予迁入证明"])
     for second in (answer("到期换领工本费60元。", WRONG), answer("缺。", outcome="stop", reason="证据不足")):
-        record = flow.ask(QUESTION, UNITS, chat := scripted(first, second, second))
+        record = flow.ask(QUESTION, UNITS, chat := scripted(first, second, second), follow_up_after_answer=True)
         # The kept answer still names a gap, so it is not counted as a complete answer.
         assert record["result_kind"] == "answer_with_gaps" and claims(record) == [RENEW[0]]
         assert len(chat.calls) == 2 and record["final_checks"]["passed"]  # No repair of the worse draft.
@@ -184,3 +185,9 @@ def test_excerpt_is_the_whole_sentence_of_a_long_unit():
     text = "甲" * 150 + "。申请人有条件的，可以当天领取临时证，工本费10元。" + "乙" * 150 + "。"
     assert flow.sentence_around(text, "工本费10元") == "申请人有条件的，可以当天领取临时证，工本费10元。"
     assert flow.sentence_around("短句，工本费10元。", "工本费10元") == "短句，工本费10元。"
+
+
+def test_an_answer_with_gaps_is_returned_without_a_second_call_by_default():
+    first = answer("到期换领工本费20元。", RENEW, unknowns=["户口迁移准予迁入证明"])
+    record = flow.ask(QUESTION, UNITS, chat := scripted(first))
+    assert record["result_kind"] == "answer_with_gaps" and len(chat.calls) == 1 and record["follow_ups_used"] == 0

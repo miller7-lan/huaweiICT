@@ -38,6 +38,8 @@ def main():
     parser.add_argument("--output", type=Path, required=True, help="New directory inside .runtime")
     parser.add_argument("--seed", default="20261114")
     parser.add_argument("--live", action="store_true", help="Call the cloud model")
+    parser.add_argument("--follow-up-after-answer", action="store_true",
+                        help="Also re-ask after an answer that passed but lists gaps (one more call)")
     parser.add_argument("--max-calls", type=int, default=0)
     args = parser.parse_args()
     if not args.output.resolve().is_relative_to((ROOT / ".runtime").resolve()):
@@ -46,7 +48,7 @@ def main():
     questions = frozen_qa.validate_questions(loaded["cases"] if isinstance(loaded, dict) else loaded)
     ceiling = len(questions) * (1 + flow.MAX_MODEL_CALLS)
     plan = {"questions": len(questions), "model_calls_at_most": ceiling, "retries": 0, "seed": args.seed,
-            "questions_sha256": file_sha(args.questions),
+            "questions_sha256": file_sha(args.questions), "follow_up_after_answer": args.follow_up_after_answer,
             "source_sha256": {name: file_sha(ROOT / "src/gov_mcp" / name) for name in SOURCES}}
     if not args.live:
         print(json.dumps({"dry_run": True, "model_calls": 0, **plan}, ensure_ascii=False))
@@ -74,7 +76,8 @@ def main():
         for item in questions:
             context = item.get("context", "")
             runs = {"single_shot": lambda: frozen_qa.ask(item["question"], units, "proposed", bounded_chat, context=context),
-                    "flow_v3": lambda: flow.ask(item["question"], units, bounded_chat, context=context)}
+                    "flow_v3": lambda: flow.ask(item["question"], units, bounded_chat, context=context,
+                                                follow_up_after_answer=args.follow_up_after_answer)}
             # Seeded per-question order, so neither method always runs first.
             for name in sorted(runs, key=lambda n: sha256(f"{args.seed}:{item['id']}:{n}".encode()).hexdigest()):
                 before = used["count"]

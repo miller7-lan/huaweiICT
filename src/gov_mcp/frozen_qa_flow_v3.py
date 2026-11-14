@@ -12,9 +12,10 @@ changes only what happens after the first model output:
               the cited sources as marked citations, and keeps them only if
               failures disappear. The year rule itself is unchanged: a year
               those units do not contain still fails;
-1. follow up  a stop, or an answer that lists what is missing, triggers one
-              more retrieval for the missing items; the model is asked again
-              only if that retrieval adds evidence;
+1. follow up  a stop triggers one more retrieval for the missing items it
+              names; the model is asked again only if that retrieval adds
+              evidence. An answer that passed but lists gaps is returned as
+              answer_with_gaps unless follow_up_after_answer is set;
 2. repair     an answer that fails verification goes back once with the
               failure codes;
 3. salvage    if it still fails, each claim is verified on its own, together
@@ -228,8 +229,13 @@ def _repair(output, failures):
                 "原文为否定的不得写成可以。无法改正的结论请删除，并把对应缺项写入 unknowns。")}]
 
 
-def ask(question, units, chat, *, context=""):
-    """Answer one question. ``chat(messages)`` returns a deepseek.chat-style result."""
+def ask(question, units, chat, *, context="", follow_up_after_answer=False):
+    """Answer one question. ``chat(messages)`` returns a deepseek.chat-style result.
+
+    A stop always gets one follow-up retrieval. An answer that passed the checks but
+    lists gaps gets one only with ``follow_up_after_answer``: in the two recorded
+    eight-question runs that extra call never changed the kind of result.
+    """
     if type(question) is not str or not question.strip():
         raise ValueError("INVALID_QUESTION")
     started = time.monotonic()
@@ -281,13 +287,15 @@ def ask(question, units, chat, *, context=""):
             if set(supported_checks["failures"]) < set(checks["failures"]):
                 output, checks = supported, supported_checks
         calls.append({"model": response.get("model"), "usage": response.get("usage"), "outcome": raw["outcome"],
-                      "failures": checks["failures"], "pool_size": len(pool)})
+                      "failures": checks["failures"], "pool_size": len(pool),
+                      # Counts per draft show whether a follow-up or repair added or lost claims.
+                      "assertions": len(raw["assertions"]), "unknowns": len(raw["unknowns"])})
         record["model"]["called"] = True
         record.update(model_output=raw, checks=checks)  # checks: the latest draft, not the final
         good = output["outcome"] == "answer" and checks["passed"]
         if good or output["outcome"] == "stop":
             wanted = missing_items(output)
-            if record["follow_ups_used"] < MAX_FOLLOW_UPS and wanted:
+            if record["follow_ups_used"] < MAX_FOLLOW_UPS and wanted and (follow_up_after_answer or not good):
                 record["follow_ups_used"] += 1
                 added = extend_pool(pool, units, wanted)
                 rounds.append({"kind": "follow_up", "queries": wanted, "added": added})

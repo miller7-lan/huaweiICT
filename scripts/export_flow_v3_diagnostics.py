@@ -85,6 +85,7 @@ def main():
                    not record["checks"]["passed"] else None),
                "model_error": bool(record["model"].get("error")),
                "calls": [{"outcome": call.get("outcome"), "pool_size": call.get("pool_size"),
+                          "assertions": call.get("assertions"), "unknowns": call.get("unknowns"),
                           "failures": kinds(call.get("failures", []), args.with_values)} for call in calls],
                "follow_ups_used": record.get("follow_ups_used"), "repairs_used": record.get("repairs_used"),
                "claims_dropped": record.get("claims_dropped"), "claims_excerpted": record.get("claims_excerpted"),
