@@ -458,12 +458,11 @@ def build():
     links=re.findall(r'\]\(([^)]+)\)',markdown)
     missing=[target for target in links if not (OUT/target.split('#')[0]).resolve().exists()]
     assert not missing, missing
-    js_path=OUT/'页面脚本校验.js'
-    js_path.write_text(re.findall(r'<script>([\s\S]*?)</script>',template)[0],encoding='utf-8')
     node_binary=shutil.which('node')
     if node_binary:
-        checked=subprocess.run([node_binary,'--check',str(js_path)],capture_output=True,text=True,timeout=30)
-        assert checked.returncode==0, checked.stderr
+        script=re.findall(r'<script>([\s\S]*?)</script>',template)[0]
+        checked=subprocess.run([node_binary,'--check'],input=script.encode('utf-8'),capture_output=True,timeout=30)
+        assert checked.returncode==0, checked.stderr.decode('utf-8',errors='replace')
     fingerprints=all(sha((ROOT/m['path']).read_bytes())==m['sha256'] for m in data['modules'])
     assert fingerprints, 'Source changed during build; regenerate once against stable files.'
     validation={'summary':data['summary'],'parse_errors':data['parse_errors'],'diagram_references_valid':True,
