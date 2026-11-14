@@ -1,0 +1,330 @@
+{
+  "purpose": "development_comparison_not_independent_accuracy",
+  "model_calls": 12,
+  "aborted_on_first_model_error": false,
+  "business_accuracy_measured": false,
+  "rows": [
+    {
+      "id": "R01",
+      "method": "before",
+      "outcome": "answer",
+      "stop_reason": "",
+      "checks": {
+        "passed": true,
+        "failures": []
+      },
+      "usage": {
+        "input_tokens": 1297,
+        "output_tokens": 421,
+        "input_cache_hit_tokens": 0,
+        "input_cache_miss_tokens": 1297
+      },
+      "duration_ms": 2907.0
+    },
+    {
+      "id": "R01",
+      "method": "after",
+      "outcome": "answer",
+      "stop_reason": "",
+      "checks": {
+        "passed": true,
+        "failures": []
+      },
+      "usage": {
+        "input_tokens": 1867,
+        "output_tokens": 399,
+        "input_cache_hit_tokens": 640,
+        "input_cache_miss_tokens": 1227
+      },
+      "duration_ms": 3687.0
+    },
+    {
+      "id": "R02",
+      "method": "after",
+      "outcome": "answer",
+      "stop_reason": "",
+      "checks": {
+        "passed": true,
+        "failures": []
+      },
+      "usage": {
+        "input_tokens": 1887,
+        "output_tokens": 429,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1375
+      },
+      "duration_ms": 3172.0
+    },
+    {
+      "id": "R02",
+      "method": "before",
+      "outcome": "answer",
+      "stop_reason": "证据未涉及拍照环节能否另行收取照相费，缺少收费依据。",
+      "checks": {
+        "passed": true,
+        "failures": []
+      },
+      "usage": {
+        "input_tokens": 1690,
+        "output_tokens": 192,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1178
+      },
+      "duration_ms": 3391.0
+    },
+    {
+      "id": "R04",
+      "method": "before",
+      "outcome": "stop",
+      "stop_reason": "VERIFICATION_FAILED",
+      "checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_NOT_QUOTED:2026年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2024年",
+          "A3_QUANTITY_NOT_QUOTED:2026年",
+          "A4_QUANTITY_NOT_QUOTED:2026年",
+          "A5_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2026年",
+          "NUMBER_NOT_QUOTED:2024",
+          "NUMBER_NOT_QUOTED:2026"
+        ]
+      },
+      "usage": {
+        "input_tokens": 1876,
+        "output_tokens": 622,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1364
+      },
+      "duration_ms": 3296.0
+    },
+    {
+      "id": "R04",
+      "method": "after",
+      "outcome": "stop",
+      "stop_reason": "VERIFICATION_FAILED",
+      "checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_NOT_QUOTED:2026年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2024年",
+          "A4_QUANTITY_NOT_QUOTED:2026年",
+          "A5_QUANTITY_NOT_QUOTED:2026年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2026年",
+          "NUMBER_NOT_QUOTED:04.0",
+          "NUMBER_NOT_QUOTED:09",
+          "NUMBER_NOT_QUOTED:18",
+          "NUMBER_NOT_QUOTED:2024",
+          "NUMBER_NOT_QUOTED:2026"
+        ]
+      },
+      "usage": {
+        "input_tokens": 2152,
+        "output_tokens": 593,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1640
+      },
+      "duration_ms": 4250.0
+    },
+    {
+      "id": "R06",
+      "method": "after",
+      "outcome": "stop",
+      "stop_reason": "VERIFICATION_FAILED",
+      "checks": {
+        "passed": false,
+        "failures": [
+          "A1_CITATION_NOT_RETRIEVED",
+          "A2_CITATION_NOT_RETRIEVED",
+          "A3_CITATION_NOT_RETRIEVED",
+          "ANSWER_QUANTITY_NOT_QUOTED:2018年",
+          "A4_QUANTITY_NOT_QUOTED:2018年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2018年",
+          "NUMBER_NOT_QUOTED:2004",
+          "NUMBER_NOT_QUOTED:2006",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:22",
+          "NUMBER_NOT_QUOTED:34",
+          "NUMBER_NOT_QUOTED:37",
+          "NUMBER_NOT_QUOTED:39"
+        ]
+      },
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 942,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1660
+      },
+      "duration_ms": 9625.0
+    },
+    {
+      "id": "R06",
+      "method": "before",
+      "outcome": "stop",
+      "stop_reason": "VERIFICATION_FAILED",
+      "checks": {
+        "passed": false,
+        "failures": [
+          "A1_CITATION_NOT_RETRIEVED",
+          "A2_CITATION_NOT_RETRIEVED",
+          "A3_CITATION_NOT_RETRIEVED",
+          "DATE_NOT_QUOTED:page_publication_date:2018-04-12",
+          "ANSWER_QUANTITY_NOT_QUOTED:2018年",
+          "A4_QUANTITY_NOT_QUOTED:2018年",
+          "NUMBER_NOT_QUOTED:2004",
+          "NUMBER_NOT_QUOTED:2006",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:22",
+          "NUMBER_NOT_QUOTED:34",
+          "NUMBER_NOT_QUOTED:39"
+        ]
+      },
+      "usage": {
+        "input_tokens": 1723,
+        "output_tokens": 990,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1211
+      },
+      "duration_ms": 4235.0
+    },
+    {
+      "id": "R07",
+      "method": "before",
+      "outcome": "answer",
+      "stop_reason": "",
+      "checks": {
+        "passed": true,
+        "failures": []
+      },
+      "usage": {
+        "input_tokens": 1463,
+        "output_tokens": 344,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 951
+      },
+      "duration_ms": 2328.0
+    },
+    {
+      "id": "R07",
+      "method": "after",
+      "outcome": "answer",
+      "stop_reason": "",
+      "checks": {
+        "passed": true,
+        "failures": []
+      },
+      "usage": {
+        "input_tokens": 1968,
+        "output_tokens": 492,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1456
+      },
+      "duration_ms": 2719.0
+    },
+    {
+      "id": "R08",
+      "method": "after",
+      "outcome": "stop",
+      "stop_reason": "VERIFICATION_FAILED",
+      "checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2024年",
+          "A6_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "NUMBER_NOT_QUOTED:14",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:2024"
+        ]
+      },
+      "usage": {
+        "input_tokens": 2250,
+        "output_tokens": 653,
+        "input_cache_hit_tokens": 512,
+        "input_cache_miss_tokens": 1738
+      },
+      "duration_ms": 3234.0
+    },
+    {
+      "id": "R08",
+      "method": "before",
+      "outcome": "stop",
+      "stop_reason": "VERIFICATION_FAILED",
+      "checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2007年",
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2007年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2007年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:2024"
+        ]
+      },
+      "usage": {
+        "input_tokens": 1663,
+        "output_tokens": 322,
+        "input_cache_hit_tokens": 640,
+        "input_cache_miss_tokens": 1023
+      },
+      "duration_ms": 1734.0
+    }
+  ],
+  "totals": {
+    "before": {
+      "questions": 6,
+      "answers": 3,
+      "verified": 3,
+      "input_tokens": 9712,
+      "output_tokens": 2891,
+      "mean_duration_ms": 2981.8
+    },
+    "after": {
+      "questions": 6,
+      "answers": 3,
+      "verified": 3,
+      "input_tokens": 12296,
+      "output_tokens": 3508,
+      "mean_duration_ms": 4447.8
+    }
+  },
+  "models": [
+    "deepseek-flash"
+  ],
+  "records_sha256": "9ce96fbaa4fadf71a2bc4a4903ae742a620aca64cc42452fe89b366218aa7217",
+  "plan": {
+    "purpose": "development_comparison_not_independent_accuracy",
+    "questions": 6,
+    "ids": [
+      "R01",
+      "R02",
+      "R04",
+      "R06",
+      "R07",
+      "R08"
+    ],
+    "max_model_calls": 12,
+    "max_output_tokens_per_call": 1536,
+    "retries": 0,
+    "profile": "existing official DeepSeek; environment/system proxy; TLS verification",
+    "corpus_sha256": "1e556dad8e703ada6c1680289415f6e74eeec772c856b0a542138874592c4fce",
+    "before_sha256": "138b0f8f89778da2d196a2359da44e87c7de8cae8196d018f18b1feeb04d880b",
+    "cases_sha256": "c533efcf92502d2af33e2bfb31cac954d0435715d5bc3d69304ac7ab687090e6",
+    "after_sha256": {
+      "frozen_qa.py": "f1f70765702f4f941eef909fc747867d58f97a3837392721030ccc709b0b77d9",
+      "frozen_retrieval.py": "cf3c8d1730ca5a84b3c62bdc383e5406c7c1d8927ed73b285b728f83c2fe07bd",
+      "deepseek.py": "92f1c342fe491fa04ba0206895b1d1c457ce571946a190df2d673e46b1b4a7ac"
+    }
+  },
+  "r02_inspection": "Assistant review: before omits photo-fee evidence; after cites the separate fee source. Not an independent human rating."
+}

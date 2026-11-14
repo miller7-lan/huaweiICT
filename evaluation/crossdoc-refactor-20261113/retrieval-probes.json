@@ -1,0 +1,18 @@
+{
+  "purpose": "Developer retrieval probes on known frozen sources; not an independent holdout or business accuracy evaluation.",
+  "cases": [
+    {"id": "R01", "question": "只看归档规定，办身份证期间急着用证，临时证凭什么申领？工本费写多少？", "targets": [["HN-NORM-PUBLISHER", "第一百六十五条"], ["MOF-FEE-2007", "正文段落4"]]},
+    {"id": "R02", "question": "对证件照片不满意可以重拍几次？拍照环节是否能另外收照相费？仅解释历史材料。", "targets": [["HN-NORM-PUBLISHER", "第一百七十二条"], ["MOF-FEE-2007", "正文段落6"]]},
+    {"id": "R03", "question": "归档材料中，2007年文件对首次申领的费用怎么写，2018年通知对此作了什么调整？", "targets": [["MOF-FEE-2007", "正文段落4"], ["MOF-FIRST-ISSUE-2018", "正文段落4"]]},
+    {"id": "R04", "question": "把2024年和2026年普通居民身份证受理至领证时限分别列出来，并保留各自的天数单位。", "targets": [["HN-MEASURES-2024-JY", "正文段落1"], ["HN-MEASURES-2026", "正文段落1"]]},
+    {"id": "R05", "question": "归档的2024年和2026年措施中，中高考急需用证考生的绿色通道时限分别是多少？", "targets": [["HN-MEASURES-2024-JY", "正文段落3"], ["HN-MEASURES-2026", "正文段落1"]]},
+    {"id": "R06", "question": "居民身份证收费目录的设立依据和收费标准这两列有什么区别？2018年首次申领停征条款又怎么说？", "targets": [["HN-FEE-CATALOG-XLSX-2025", "Excel工作表行政事业性收费!第4行"], ["HN-FEE-CATALOG-XLSX-2025", "Excel工作表行政事业性收费!第36行"], ["MOF-FIRST-ISSUE-2018", "正文段落4"]]},
+    {"id": "R07", "question": "按历史资料，加急办居民身份证能收加急费吗？异地急需用证时申领临时身份证凭什么材料？", "targets": [["MOF-FEE-2007", "正文段落5"], ["HN-NORM-PUBLISHER", "第一百七十一条"]]},
+    {"id": "R08", "question": "归档2024年措施说身份证缴费支持哪些电子渠道？2007年收费通知里遗失补领的工本费是多少？", "targets": [["HN-MEASURES-2024-JY", "正文段落19"], ["MOF-FEE-2007", "正文段落4"]]},
+    {"id": "R09", "question": "2026年措施网页的发布日期和最后修改日期各是什么？", "targets": [["HN-MEASURES-2026", "网页发布日期（meta:PubDate）"], ["HN-MEASURES-2026", "网页最后修改日期（meta:lastmodifiedtime）"]]},
+    {"id": "R10", "question": "归档的2024年郑州焦作身份证网上补换试点，办理条件和适用情形分别是什么？", "targets": [["HN-MEASURES-2024-JY", "正文段落5"], ["HN-MEASURES-2024-JY", "正文段落7"], ["HN-MEASURES-2024-JY", "正文段落8"]]},
+    {"id": "G01", "question": "现在河南身份证办理时限和费用是什么？", "gate": "CURRENT_VALIDITY_NOT_ESTABLISHED"},
+    {"id": "G02", "question": "江苏户籍的临时身份证怎么办？", "gate": "OUTSIDE_HENAN_SCOPE"},
+    {"id": "G03", "question": "测试身份证号00000000000000000X能办理吗？", "gate": "PRIVATE_FACT_NOT_ACCEPTED"}
+  ]
+}

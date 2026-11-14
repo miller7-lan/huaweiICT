@@ -1,0 +1,94 @@
+{
+  "total_questions": 8,
+  "quality_scored_ids": [
+    "N01",
+    "N02",
+    "N03",
+    "N04",
+    "N05",
+    "N06",
+    "N07",
+    "N08"
+  ],
+  "excluded_execution_ids": [],
+  "excluded_judge_ids": [],
+  "by_arm": {
+    "original_canonical": {
+      "completed": 8,
+      "quality_score_100": 50.0,
+      "scored_questions": 8,
+      "answers": 1
+    },
+    "repair_without_jev": {
+      "completed": 8,
+      "quality_score_100": 56.25,
+      "scored_questions": 8,
+      "answers": 2
+    },
+    "repair_with_jev": {
+      "completed": 8,
+      "quality_score_100": 31.25,
+      "scored_questions": 8,
+      "answers": 0
+    }
+  },
+  "api_attempts": 41,
+  "api_failures": 2,
+  "jev_attempts": 12,
+  "jev_failures": 0,
+  "human_evaluation": false,
+  "independent_holdout": false,
+  "comparison_only": true,
+  "adopted_as_default": false,
+  "tests_passed": 78,
+  "successful_deepseek_usage": {
+    "input_tokens": 129264,
+    "output_tokens": 10737
+  },
+  "jev_successful_usage": {
+    "input_tokens": 43805,
+    "output_tokens": 1372
+  },
+  "paired_mean_scores_0_to_2": {
+    "N01": {
+      "original_canonical": 0.0,
+      "repair_with_jev": 0.0,
+      "repair_without_jev": 2.0
+    },
+    "N02": {
+      "repair_with_jev": 0.0,
+      "original_canonical": 1.0,
+      "repair_without_jev": 0.0
+    },
+    "N03": {
+      "repair_without_jev": 2.0,
+      "repair_with_jev": 0.0,
+      "original_canonical": 2.0
+    },
+    "N04": {
+      "repair_with_jev": 0.0,
+      "repair_without_jev": 0.0,
+      "original_canonical": 0.0
+    },
+    "N05": {
+      "original_canonical": 2.0,
+      "repair_without_jev": 2.0,
+      "repair_with_jev": 2.0
+    },
+    "N06": {
+      "repair_without_jev": 0.0,
+      "repair_with_jev": 0.0,
+      "original_canonical": 0.0
+    },
+    "N07": {
+      "repair_with_jev": 2.0,
+      "original_canonical": 2.0,
+      "repair_without_jev": 2.0
+    },
+    "N08": {
+      "original_canonical": 1.0,
+      "repair_without_jev": 1.0,
+      "repair_with_jev": 1.0
+    }
+  }
+}

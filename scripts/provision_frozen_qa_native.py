@@ -36,8 +36,9 @@ stop message and lists any evidence as source_id + locator. Do not answer the qu
 question=<same question>, outcome='answer' or 'stop', answer=<Chinese answer>, assertions=<list of
 dicts with keys claim, source_id, locator, quote>, stop_reason=<'' or reason>, unknowns=<list>.
 Each quote must be copied exactly from one evidence text, and source_id/locator copied from it.
-Every number and 工作日/自然日 in your answer must appear in a quote. If the evidence is not enough,
-use outcome='stop' with the missing basis as stop_reason. Print the verify result.
+Follow answer_rules from the evidence tool. Cite document titles or labelled dates for document years,
+and quote the applicable clause or table row for fees and durations. If evidence is insufficient, use
+outcome='stop' with the missing basis as stop_reason. Print the verify result.
 4. Call final_answer with Chinese text built only from the verify result's final object:
 结论, then each assertion as「quote」—— source_id locator, then 未知项, then the line
 说明：以上为冻结的历史归档资料解释，未核定现行效力，需人工复核。

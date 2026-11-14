@@ -273,3 +273,128 @@ def test_whole_corpus_verification_accepts_units_outside_the_literal_top_five():
     forged = answer("交验护照。", ("交验护照", "DOC-A", "第一条", "交验护照"))
     assert service.verify("换领", forged, whole_corpus=True)["final"]["stop_reason"] == "VERIFICATION_FAILED"
     assert service.verify("现在换领要多少钱", cited, whole_corpus=True)["status"] == "STOP"
+
+
+def test_source_metadata_is_cited_by_date_role_and_cannot_support_policy_numbers():
+    from gov_mcp.frozen_qa_server import FrozenQAService
+
+    spec = {"source_id": "DOC-A", "code": "A", "publication": "visible_and_meta"}
+    raw = ('<meta name="ArticleTitle" content="河南2026年便民服务措施">'
+           '<meta name="PubDate" content="2026-05-05 09:18:04">'
+           '<meta name="lastmodifiedtime" content="2026-05-11 09:23">'
+           '<i id="pubDate">2026-05-05</i>').encode()
+    metadata = corpus_builder.html_metadata_units(spec, raw)
+    assert [unit["evidence_kind"] for unit in metadata] == [
+        "source_title", "page_publication_date", "page_modified_date"]
+    mismatch = raw.replace(b'>2026-05-05<', b'>2026-05-11<')
+    assert "page_publication_date" not in {
+        unit["evidence_kind"] for unit in corpus_builder.html_metadata_units(spec, mismatch)
+    }
+    body = {**UNITS[1], "source_id": "DOC-A"}
+    service = FrozenQAService([body, *metadata], "c" * 64)
+    date_only = service.retrieve("河南2026年文件的网页发布日期是什么")["evidence"]
+    assert any(unit["locator"] == metadata[1]["locator"] for unit in date_only)
+    question = "比较2026年文件的网页发布日期、修改日期和办理时限"
+    citations = [
+        ("办理时限为15个工作日", "DOC-A", body["locator"], "15个工作日"),
+        *(("", "DOC-A", unit["locator"], unit["text"]) for unit in metadata),
+    ]
+    valid = "2026年文件的网页发布日期为2026年5月5日，网页最后修改日期为2026年5月11日。"
+    assert service.verify(question, answer(valid, *citations))["final"]["outcome"] == "answer"
+    for invalid in ("网页发布日期为2026年5月11日。", "2026年5月5日为施行日期。",
+                    "办理期限为2026年。", "办理时限为11个工作日。"):
+        assert service.verify(question, answer(invalid, *citations))["final"]["outcome"] == "stop"
+    heading = {**UNITS[0], "locator": "文头", "text": "2026年5月5日 财综〔2026〕11号"}
+    bad_fee = answer("办理费为11元。", ("文件文号", heading["source_id"], heading["locator"], heading["text"]))
+    assert not frozen_qa.verify(bad_fee, [heading])["passed"]
+    other = {**UNITS[0], "source_id": "DOC-B"}
+    swapped = answer(valid, *citations, ("发布于2026年5月5日", "DOC-B", other["locator"], other["text"]))
+    assert not frozen_qa.verify(swapped, [body, other, *metadata])["passed"]
+
+
+def test_retrieval_links_comparison_sources_and_only_the_matching_table_header():
+    from gov_mcp.frozen_qa_server import FrozenQAService
+
+    units = [
+        corpus_builder.unit({"source_id": "NEW", "code": "N"}, f"P{i}",
+                            "居民身份证办理时限和收费规定说明", "html_paragraph")
+        for i in range(5)
+    ]
+    for source, year in (("NEW", 2026), ("OLD", 2024)):
+        units.append(corpus_builder.unit({"source_id": source, "code": "T"}, "标题",
+                                        f"河南公安机关{year}年便民服务措施", "source_title"))
+    units.append(corpus_builder.unit({"source_id": "OLD", "code": "O"}, "P1", "办理时限为25个自然日",
+                                    "html_paragraph"))
+    table = {"source_id": "TABLE", "code": "T"}
+    header = corpus_builder.unit(table, "Excel工作表收费!第4行", "项目名称 | 设立依据 | 收费标准",
+                                 "xlsx_row", cells=["D4", "F4", "G4"])
+    wrong_header = {**header, "locator": "Excel工作表考试!第4行"}
+    row = corpus_builder.unit(table, "Excel工作表收费!第36行", "居民身份证收费标准 | 20元",
+                              "xlsx_row", cells=["D36", "G36"])
+    service = FrozenQAService([*units, header, wrong_header, row], "c" * 64)
+    compare = service.retrieve("比较2024年和2026年居民身份证办理时限和收费规定")["evidence"]
+    assert ("OLD", "P1") in {(unit["source_id"], unit["locator"]) for unit in compare}
+    table_question = "居民身份证收费标准"
+    results = {unit["locator"]: unit for unit in service.retrieve(table_question)["evidence"]}
+    assert results[header["locator"]]["cells"] == ["D4", "F4", "G4"]
+    assert wrong_header["locator"] not in results
+    cited = answer("表格列有收费标准，相关一行记载20元。",
+                   ("收费标准表头", "TABLE", header["locator"], "收费标准"),
+                   ("费用为20元", "TABLE", row["locator"], "20元"))
+    assert service.verify(table_question, cited)["final"] == cited
+
+
+def test_compound_question_retrieves_fee_and_retake_evidence():
+    question = "派出所给办身份证拍照，要不要另外交照相费？对拍出来的照片不满意，能不能重拍？"
+    units = [{"source_id": "PHOTO", "locator": f"P{i}",
+              "text": "派出所给办身份证拍照，对拍出来的照片不满意，可以重新拍照。"} for i in range(5)]
+    units.append({"source_id": "FEE", "locator": "P1", "text": "立即纠正收取照相费等违规收费行为。"})
+    assert {hit["source_id"] for hit in frozen_qa.retrieve(units, question)} == {"PHOTO"}
+    hits = frozen_qa.retrieve_evidence(units, question)
+    assert {hit["source_id"] for hit in hits} == {"PHOTO", "FEE"}
+    assert len(hits) == 6
+    assert len(list(frozen_qa.compound_queries("照相费是多少，照片不满意能不能重拍？"))) == 2
+
+
+def test_cross_document_quantities_need_the_same_value_and_unit_in_each_claims_quote():
+    units = [{"source_id": "OLD", "locator": "P1", "text": "普通办理为25个自然日。"},
+             {"source_id": "NEW", "locator": "P1", "text": "普通办理为15个工作日。"}]
+    old, new = units
+    good = answer("旧资料为25个自然日，新资料为15个工作日。",
+                  ("旧资料为25个自然日", "OLD", "P1", old["text"]),
+                  ("新资料为15个工作日", "NEW", "P1", new["text"]))
+    assert frozen_qa.verify(good, units)["passed"]
+    swapped = answer("旧资料为15个自然日，新资料为25个工作日。",
+                     ("旧资料为15个自然日", "OLD", "P1", old["text"]),
+                     ("新资料为25个工作日", "NEW", "P1", new["text"]))
+    assert "A1_QUANTITY_NOT_QUOTED:15自然日" in frozen_qa.verify(swapped, units)["failures"]
+    mixed = answer("旧资料为15个工作日，新资料为25个自然日。",
+                   ("旧资料为15个工作日", "OLD", "P1", old["text"]),
+                   ("新资料为25个自然日", "NEW", "P1", new["text"]))
+    assert "A1_QUANTITY_NOT_QUOTED:15工作日" in frozen_qa.verify(mixed, units)["failures"]
+    summary_only = {**good, "answer": swapped["answer"]}
+    assert "ANSWER_QUANTITY_NOT_QUOTED:15自然日" in frozen_qa.verify(summary_only, units)["failures"]
+
+
+def test_verified_cross_document_answer_is_built_from_claims_in_mcp_and_cli():
+    from gov_mcp.frozen_qa_server import FrozenQAService
+
+    units = [
+        {"source_id": "OLD", "locator": "P1", "text": "普通办理为25个自然日。", "text_sha256": "a"},
+        {"source_id": "NEW", "locator": "P1", "text": "普通办理为15个工作日。", "text_sha256": "b"},
+    ]
+    candidate = answer("旧资料为15个工作日，新资料为25个自然日。",
+                       ("旧资料为25个自然日", "OLD", "P1", units[0]["text"]),
+                       ("新资料为15个工作日", "NEW", "P1", units[1]["text"]))
+    candidate["unknowns"] = ["现行效力待核"]
+    question = "比较普通办理时限"
+    expected = {**candidate, "answer": "- 旧资料为25个自然日\n- 新资料为15个工作日"}
+    service = FrozenQAService(units, "0" * 64)
+    assert service.verify(question, candidate)["final"] == expected
+    assert service.verify(question, candidate, whole_corpus=True)["final"] == expected
+    assert frozen_qa.ask(question, units, "proposed", fake_chat(candidate))["final"] == expected
+    assert frozen_qa.ask(question, units, "baseline", fake_chat(candidate))["final"] == candidate
+    missing = {**candidate, "assertions": [candidate["assertions"][0], {**candidate["assertions"][1], "claim": ""}]}
+    result = service.verify(question, missing)
+    assert result["final"]["outcome"] == "stop"
+    assert "ANSWER_QUANTITY_WITHOUT_CLAIM:15工作日" in result["checks"]["failures"]
