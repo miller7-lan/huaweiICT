@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from gov_mcp import frozen_qa  # noqa: E402
+from gov_mcp import frozen_qa, frozen_qa_v2  # noqa: E402
 
 
 RUNTIME = ROOT / ".runtime/frozen-qa-20261030"
@@ -59,17 +59,24 @@ def ask(args):
     units = load_units()
     if not args.live:
         evidence = frozen_qa.retrieve(units, args.question + args.context)
+        if args.v2:  # Pooled per-facet retrieval of the cross-document chain; still no model call.
+            evidence = []
+            frozen_qa_v2.extend_pool(evidence, units, frozen_qa_v2.plan_queries(args.question, args.context))
         print(json.dumps({"dry_run": True, "gate": frozen_qa.scope_gate(args.question + args.context),
                           "evidence": [{k: item[k] for k in ("rank", "source_id", "locator", "score")}
                                        | {"text": item["text"][:200]} for item in evidence]},
                          ensure_ascii=False, indent=1))
         return
-    record = frozen_qa.ask(args.question, units, args.method, live_chat(args.max_calls), context=args.context)
+    if args.v2:
+        record = frozen_qa_v2.ask(args.question, units, live_chat(args.max_calls), context=args.context)
+    else:
+        record = frozen_qa.ask(args.question, units, args.method, live_chat(args.max_calls), context=args.context)
     out = RUNTIME / "runs" / (datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ") + ".json")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(record, ensure_ascii=False, indent=1), "utf-8")
     print(json.dumps({"record": str(out), **record["final"], "checks": record["checks"],
-                      "usage": record["model"].get("usage")}, ensure_ascii=False, indent=1))
+                      "stop_origin": record.get("stop_origin"),
+                      "usage": record["model"].get("usage", record["model"].get("calls"))}, ensure_ascii=False, indent=1))
 
 
 def evaluate(args):
@@ -132,6 +139,8 @@ def main():
     one.add_argument("question")
     one.add_argument("--context", default="")
     one.add_argument("--method", choices=frozen_qa.METHODS, default="proposed")
+    one.add_argument("--v2", action="store_true",
+                     help="Cross-document chain (frozen_qa_v2); with --live set --max-calls 3")
     many = sub.add_parser("eval")
     many.add_argument("--questions", required=True, help="questions-only JSON list: id, question, optional context")
     many.add_argument("--pilot", type=int, default=0, help="Run only the first N questions")
