@@ -1,0 +1,60 @@
+{
+ "scope": "counts and question ids only",
+ "questions": 8,
+ "rows_per_sheet": 16,
+ "ratings_per_method_and_column": 16,
+ "by_method": {
+  "single_shot": {
+   "conclusions_correct": {
+    "不适用": 16
+   },
+   "missing_points": {
+    "不适用": 16
+   },
+   "citations_support": {
+    "不适用": 16
+   },
+   "excerpt_relevant": {
+    "无摘录": 16
+   }
+  },
+  "flow_v3": {
+   "conclusions_correct": {
+    "不适用": 6,
+    "是": 9,
+    "部分": 1
+   },
+   "missing_points": {
+    "不适用": 6,
+    "否": 9,
+    "漏核心": 1
+   },
+   "citations_support": {
+    "不适用": 6,
+    "是": 10
+   },
+   "excerpt_relevant": {
+    "无摘录": 7,
+    "是": 9
+   }
+  }
+ },
+ "reviewer_agreement": {
+  "conclusions_correct": "15/16",
+  "missing_points": "15/16",
+  "citations_support": "16/16",
+  "excerpt_relevant": "15/16"
+ },
+ "disagreements": {
+  "conclusions_correct": [
+   "N02B"
+  ],
+  "missing_points": [
+   "N02B"
+  ],
+  "citations_support": [],
+  "excerpt_relevant": [
+   "N08A"
+  ]
+ }
+}

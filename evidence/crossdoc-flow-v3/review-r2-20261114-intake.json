@@ -1,13 +1,16 @@
 {
   "batch": "flow-v3-r2-20261114",
   "record_type": "review_intake",
-  "status": "awaiting_reviewer_corrections",
+  "status": "validated_after_rule_based_normalization",
   "questions_per_form": 8,
   "outputs_per_form": 16,
   "forms_received": 2,
-  "forms_passing_validation": 0,
-  "forms_requiring_correction": 2,
-  "total_output_rows_to_check": 11,
-  "total_fields_to_check": 19,
-  "score_summary_available": false
+  "original_forms_passing_validation": 0,
+  "normalized_forms_passing_validation": 2,
+  "forms_requiring_correction": 0,
+  "output_rows_normalized": 11,
+  "fields_normalized": 19,
+  "missing_no_excerpt_value_set_from_frozen_output": 1,
+  "score_summary_available": true,
+  "score_summary": "review-r2-20261114-summary.json"
 }
