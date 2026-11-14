@@ -294,8 +294,7 @@ def main():
     (OUT/'index.html').write_text(template.replace('__DATA__',payload),encoding='utf-8')
     (OUT/'源码与图数据.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
     code=re.findall(r'<script>([\s\S]*?)</script>',template)[0]
-    (OUT/'页面脚本校验.js').write_text(code,encoding='utf-8')
-    subprocess.run(['node','--check',str(OUT/'页面脚本校验.js')],check=True)
+    subprocess.run(['node','--check'],input=code.encode('utf-8'),check=True)
     md=['# 开发者流程图：核心调用与数据边界','',f'生成时间：{data["generated_at"]}。按当前工作区源码生成；没有执行业务、模型或采集。','',
         '[打开离线交互页面](index.html)。点节点查看对应函数源码；图上保留方法、关键参数、事务、状态、表名及失败出口。','',
         '阅读顺序：模块关系→HTTP调用→MCP状态→更新发布→两套数据库→模型预览→表单。蓝色=函数，黄色=校验/事务，绿色=存储，红色=异常；虚线逻辑引用不是DDL外键。','']
