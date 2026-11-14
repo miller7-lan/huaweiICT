@@ -10,8 +10,9 @@ hint at the method (for example a partial-answer note or an excerpt marker); the
 reviewers are told so and should not guess.
 
 Writes under a new directory in .runtime: review.md (reading material), one empty
-sheet per reviewer (sheet-<name>.csv) and key.json (label -> method, keep it away
-from the reviewers until both sheets are in). Questions, answers and source text
+sheet per reviewer (sheet-<name>.csv), rows.json (whether each output is an answer
+or a stop and whether it holds an excerpt; used to check a returned sheet) and
+key.json (label -> method, keep it away from the reviewers until both sheets are in). Questions, answers and source text
 are in these files; do not put them in Git.
 """
 import argparse
@@ -105,7 +106,7 @@ def render_reference(item):
 
 def build(records, corpus, output, seed, reviewers, reference=None):
     output.mkdir(parents=True)
-    key, parts = {}, ["# 评审材料（私有，含题目与原文，不入 Git）", "", RULES]
+    key, rows, parts = {}, {}, ["# 评审材料（私有，含题目与原文，不入 Git）", "", RULES]
     for question_id in sorted(records):
         pair = records[question_id]
         labels = sorted(pair)
@@ -115,9 +116,15 @@ def build(records, corpus, output, seed, reviewers, reference=None):
         if reference is not None:
             parts += render_reference(reference[question_id])
         for label, method in zip(LABELS, labels):
-            parts += render_output(label, pair[method]["final"], corpus)
+            final = pair[method]["final"]
+            parts += render_output(label, final, corpus)
+            # What each row must look like; holds no method name, so reviewers may have it.
+            rows.setdefault(question_id, {})[label] = {
+                "outcome": final["outcome"],
+                "has_excerpt": any(item["claim"].startswith("原文摘录：") for item in final["assertions"])}
     (output / "review.md").write_text("\n".join(parts) + "\n", "utf-8")
     (output / "key.json").write_text(json.dumps(key, ensure_ascii=False, indent=1), "utf-8")
+    (output / "rows.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), "utf-8")
     for name in reviewers:
         with (output / f"sheet-{name}.csv").open("w", encoding="utf-8-sig", newline="") as handle:
             writer = csv.writer(handle)

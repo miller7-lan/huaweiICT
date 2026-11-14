@@ -6,6 +6,9 @@ often the two reviewers agree, and the question ids where they differ. It
 holds no question, answer or remark text. When both sheets carry the PDF
 form's two extra judgements in the remark column, stop judgements and
 reference-answer flags are counted too; other remark text is never read.
+
+A sheet that breaks the filling rules is listed row by row and nothing is scored:
+it goes back to its reviewer. Use --check on a single sheet when it comes in.
 """
 import argparse
 import csv
@@ -57,16 +60,59 @@ def read_sheet(path, key):
     return result
 
 
+def row_problems(sheet, rows):
+    """Every place where a returned sheet breaks the filling rules, as "question+label column: reason".
+
+    A sheet with problems goes back to its reviewer. Nobody else changes a rating, so the
+    counts never rest on values that were filled in or corrected for the reviewer.
+    """
+    problems = []
+    for (question_id, label), row in sorted(sheet.items()):
+        facts, where = rows[question_id][label], f"{question_id}{label}"
+        stopped = facts["outcome"] == "stop"
+        for column in ("conclusions_correct", "missing_points", "citations_support"):
+            if (row[column] == "不适用") != stopped:
+                problems.append(f"{where} {column}: " + ("停止的输出应填“不适用”" if stopped else "答复的输出不能填“不适用”"))
+        if (row["excerpt_relevant"] == "无摘录") == facts["has_excerpt"]:
+            problems.append(f"{where} excerpt_relevant: " + ("该输出有“原文摘录：”条目，应填是或否" if facts["has_excerpt"]
+                                                             else "该输出没有“原文摘录：”条目，应填“无摘录”"))
+        if "stop_judgment" not in row or "reference_issue" not in row:
+            problems.append(f"{where} stop_judgment/reference_issue: 未填写")
+        elif (row["stop_judgment"] == "不适用") == stopped:
+            problems.append(f"{where} stop_judgment: " + ("停止的输出应判断合理、不合理或待确认" if stopped
+                                                           else "答复的输出应填“不适用”"))
+    for question_id in sorted({q for q, _ in sheet}):
+        flags = {row.get("reference_issue") for (q, _), row in sheet.items() if q == question_id}
+        if len(flags) > 1:
+            problems.append(f"{question_id} reference_issue: 同一题的各份输出应填相同的值")
+    return problems
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pack", type=Path, required=True)
-    parser.add_argument("--sheets", type=Path, nargs=2, required=True)
-    parser.add_argument("--output", type=Path, required=True, help="New JSON file under evidence/")
+    parser.add_argument("--sheets", type=Path, nargs="+", required=True)
+    parser.add_argument("--check", action="store_true",
+                        help="Only check the given sheet(s) against the filling rules; the key is not used for scoring")
+    parser.add_argument("--output", type=Path, help="New JSON file under evidence/ (not used with --check)")
     args = parser.parse_args()
+    key = json.loads((args.pack / "key.json").read_text("utf-8"))
+    rows_path = args.pack / "rows.json"
+    rows = json.loads(rows_path.read_text("utf-8")) if rows_path.is_file() else None
+    try:
+        sheets = [read_sheet(path, key) for path in args.sheets]
+    except ValueError as error:
+        parser.error(str(error))
+    problems = {str(path): row_problems(sheet, rows) for path, sheet in zip(args.sheets, sheets)} if rows else {}
+    if any(problems.values()) or args.check:
+        # Count-free: reviewers get this list back and correct their own sheet.
+        print(json.dumps({"checked": [str(path) for path in args.sheets], "rules_available": rows is not None,
+                          "problems": problems}, ensure_ascii=False, indent=1))
+        sys.exit(1 if any(problems.values()) else 0)
+    if len(sheets) != 2 or args.output is None:
+        parser.error("TWO_SHEETS_AND_OUTPUT_REQUIRED_FOR_SCORING")
     if not args.output.resolve().is_relative_to((ROOT / "evidence").resolve()) or args.output.exists():
         parser.error("NEW_FILE_UNDER_EVIDENCE_REQUIRED")
-    key = json.loads((args.pack / "key.json").read_text("utf-8"))
-    sheets = [read_sheet(path, key) for path in args.sheets]
     methods = sorted({method for pair in key.values() for method in pair.values()})
     by_method = {method: {c: Counter() for c in CHOICES} for method in methods}
     agree, differ = {c: 0 for c in CHOICES}, {c: [] for c in CHOICES}
@@ -80,6 +126,7 @@ def main():
                     agree[column] += 1
                 else:
                     differ[column].append(f"{question_id}{label}")
+    rows_checked = rows is not None  # False for packs built before rows.json existed
     rows = sum(len(pair) for pair in key.values())
     # Stop judgements are per output; a reference issue is per question, whoever raised it.
     stops = {m: Counter() for m in by_method}
@@ -97,7 +144,8 @@ def main():
                     stop_differ.append(f"{question_id}{label}")
                 for row in (first, second):
                     reference[row["reference_issue"]].add(question_id)
-    result = {"scope": "counts and question ids only", "questions": len(key), "rows_per_sheet": rows,
+    result = {"scope": "counts and question ids only", "sheets_passed_rule_check_unchanged": rows_checked,
+              "questions": len(key), "rows_per_sheet": rows,
               "methods": methods, "ratings_per_method_and_column": len(key) * 2,
               "by_method": {m: {c: dict(sorted(n.items())) for c, n in cols.items()} for m, cols in by_method.items()},
               "reviewer_agreement": {c: f"{agree[c]}/{rows}" for c in CHOICES},

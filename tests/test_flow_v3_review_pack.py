@@ -130,3 +130,36 @@ def test_verification_stops_look_the_same_for_every_method(tmp_path):
     flowed = {**single, "answer": "回答经修复后仍没有可通过引用与数字核验的结论，已停止作答。"}
     assert pack.render_output("A", single, CORPUS)[1:] == pack.render_output("A", flowed, CORPUS)[1:]
     assert "QUANTITY" not in "".join(pack.render_output("A", single, CORPUS))
+
+
+def test_a_sheet_that_breaks_the_filling_rules_is_listed_for_its_reviewer(tmp_path):
+    make(tmp_path)
+    key = json.loads((tmp_path / "pack/key.json").read_text("utf-8"))
+    rows = json.loads((tmp_path / "pack/rows.json").read_text("utf-8"))
+    assert "single_shot" not in json.dumps(rows) and rows["Q1"]["A"]["has_excerpt"] is False
+    sheet = tmp_path / "pack/sheet-r1.csv"
+    data = list(csv.DictReader(sheet.open(encoding="utf-8-sig")))
+    for row in data:
+        stopped = rows[row["question_id"]][row["label"]]["outcome"] == "stop"
+        row.update(conclusions_correct="不适用" if stopped else "是", missing_points="不适用" if stopped else "否",
+                   citations_support="不适用" if stopped else "是", excerpt_relevant="无摘录",
+                   stop_judgment="不合理" if stopped else "不适用", reference_issue="未发现")
+    with sheet.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=pack.COLUMNS)
+        writer.writeheader()
+        writer.writerows(data)
+    assert score.row_problems(score.read_sheet(sheet, key), rows) == []
+    answer_row = next(r for r in data if rows[r["question_id"]][r["label"]]["outcome"] == "answer")
+    stop_row = next(r for r in data if rows[r["question_id"]][r["label"]]["outcome"] == "stop")
+    answer_row.update(excerpt_relevant="是", stop_judgment="合理")  # the misreading seen in the first round
+    stop_row.update(conclusions_correct="是", reference_issue="有误")
+    with sheet.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=pack.COLUMNS)
+        writer.writeheader()
+        writer.writerows(data)
+    problems = score.row_problems(score.read_sheet(sheet, key), rows)
+    where = answer_row["question_id"] + answer_row["label"]
+    assert any(p.startswith(where + " excerpt_relevant") and "无摘录" in p for p in problems)
+    assert any(p.startswith(where + " stop_judgment") for p in problems)
+    assert any("conclusions_correct" in p and "不适用" in p for p in problems)
+    assert any("reference_issue: 同一题" in p for p in problems)
