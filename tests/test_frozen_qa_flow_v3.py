@@ -69,9 +69,11 @@ def test_failed_check_is_repaired_once():
 def test_salvage_keeps_verified_claims_and_never_shows_the_dropped_one():
     mixed = answer("临时证有效期限为三个月；到期换领工本费60元。", TEMP, WRONG)
     record = flow.ask("临时居民身份证有效期限和到期换领的工本费分别是什么？", UNITS, scripted(mixed, mixed))
-    assert record["result_kind"] == "partial_answer" and record["claims_dropped"] == 1
-    assert claims(record) == [TEMP[0]] and "60" not in json_text(record["final"])
-    assert "部分答复" in record["final"]["answer"] and record["final"]["unknowns"]
+    # The wrong paraphrase (60元) is replaced by the source sentence it quoted (20元).
+    assert record["result_kind"] == "partial_answer"
+    assert (record["claims_dropped"], record["claims_excerpted"]) == (0, 1)
+    assert claims(record) == [TEMP[0], flow.EXCERPT_NOTE + UNITS[1]["text"]] and "60元" not in json_text(record["final"])
+    assert "部分答复" in record["final"]["answer"] and "原文摘录" in record["final"]["answer"]
     # checks describes the last draft; final_checks describes what is displayed.
     assert not record["checks"]["passed"] and record["final_checks"]["passed"]
     pool = [dict(u, rank=i) for i, u in enumerate(UNITS, 1)]
@@ -163,3 +165,22 @@ def test_backend_heading_supports_a_year_without_showing_its_digits_as_a_fact():
 def test_backend_citations_are_not_added_to_a_draft_that_already_passes():
     record = flow.ask(QUESTION, UNITS, scripted(answer("到期换领工本费20元。", RENEW)))
     assert claims(record) == [item["claim"] for item in record["final"]["assertions"]]
+
+
+def test_a_claim_with_an_invalid_citation_is_dropped_not_excerpted():
+    invented = ("到期换领工本费60元", "DOC-RENEW", "正文段落1", "工本费60元")
+    mixed = answer("临时证有效期限为三个月；到期换领工本费60元。", TEMP, invented)
+    record = flow.ask("临时居民身份证有效期限和到期换领的工本费分别是什么？", UNITS, scripted(mixed, mixed))
+    assert record["result_kind"] == "partial_answer" and claims(record) == [TEMP[0]]
+    assert (record["claims_dropped"], record["claims_excerpted"]) == (1, 0) and record["final"]["unknowns"]
+
+
+def test_excerpts_alone_never_make_an_answer():
+    record = flow.ask(QUESTION, UNITS, scripted(*[answer("到期换领工本费60元。", WRONG)] * 2))
+    assert record["result_kind"] == "stop" and record["claims_excerpted"] == 0
+
+
+def test_excerpt_is_the_whole_sentence_of_a_long_unit():
+    text = "甲" * 150 + "。申请人有条件的，可以当天领取临时证，工本费10元。" + "乙" * 150 + "。"
+    assert flow.sentence_around(text, "工本费10元") == "申请人有条件的，可以当天领取临时证，工本费10元。"
+    assert flow.sentence_around("短句，工本费10元。", "工本费10元") == "短句，工本费10元。"

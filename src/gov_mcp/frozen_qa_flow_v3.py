@@ -19,8 +19,10 @@ changes only what happens after the first model output:
               failure codes;
 3. salvage    if it still fails, each claim is verified on its own, together
               with the title/date citations of its source. Claims that pass
-              are kept as a partial answer; the rest are dropped and counted
-              in unknowns. Nothing unverified is displayed.
+              are kept as a partial answer. A failed claim whose quote is
+              exact source text is replaced by that source sentence, marked
+              as an excerpt; other failed claims are dropped and counted in
+              unknowns. No unverified wording of the model is displayed.
 
 Every displayed answer passes frozen_qa.verify as a whole. Evidence only
 grows within a question and keeps its E-numbers. At most MAX_MODEL_CALLS model
@@ -32,7 +34,7 @@ import json
 import re
 import time
 
-from gov_mcp.frozen_qa import (CURRENT, GATE_MESSAGES, METADATA_KINDS, DOCUMENT_HEADING, STATUS, build_messages,
+from gov_mcp.frozen_qa import (CURRENT, compact, GATE_MESSAGES, METADATA_KINDS, DOCUMENT_HEADING, STATUS, build_messages,
                                has_cross_document_quantities, normalize_citation_locators, scope_gate, sha, verify,
                                _stop)
 from gov_mcp.frozen_retrieval import VERSION as RETRIEVAL_VERSION, identity, retrieve_with_plan, source_key
@@ -53,6 +55,8 @@ MARKER = re.compile(r"[\[【［]\s*E\d+\s*[\]】］]"
 # Unknowns about current validity or a person's own case are boundaries, not retrievable gaps.
 NOT_RETRIEVABLE = re.compile("|".join(CURRENT) + r"|现行|个人|本人|实际")
 TITLE_NOTE = "【系统补充的来源标题】"
+EXCERPT_NOTE = "原文摘录："
+EXCERPT_WHOLE_UNIT = 200  # a unit this short is excerpted whole
 FORBID = ("不得", "禁止", "不能", "不可", "不予", "严禁")
 PERMIT = ("可以", "允许", "准予")
 
@@ -143,8 +147,25 @@ def extend_pool(pool, units, queries):
     return added
 
 
+def sentence_around(text, quote):
+    """The whole sentence(s) of a unit that contain the quote, so subject and conditions stay."""
+    start = text.find(quote)
+    if len(text) <= EXCERPT_WHOLE_UNIT or start < 0:
+        return text.strip() if len(text) <= EXCERPT_WHOLE_UNIT else quote.strip()
+    ends = [m.end() for m in re.finditer(r"[。；;！？\n]", text)]
+    left = max((end for end in ends if end <= start), default=0)
+    right = min((end for end in ends if end >= start + len(quote)), default=len(text))
+    return text[left:right].strip()
+
+
 def salvage(output, pool):
-    """Keep the claims that pass on their own; return (partial answer or None, dropped count)."""
+    """Keep what verifies claim by claim; return (partial answer or None, dropped, excerpted).
+
+    A claim that fails although its quote is exact source text is replaced by that
+    source sentence, marked as an excerpt: the wording is then the source's own.
+    Excerpts only accompany at least one verified claim. A draft with no verified
+    claim still stops, so excerpts cannot turn a question that should stop into an answer.
+    """
     units = {identity(item): item for item in pool}
 
     def is_support(item):  # A cited title, page date or document heading that names its source.
@@ -158,16 +179,38 @@ def salvage(output, pool):
 
     assertions = normalize_citation_locators(output, pool)["assertions"]
     support = [item for item in assertions if is_support(item) and passes([item])]
-    kept = [item for item in assertions
-            if item in support or passes([item] + [s for s in support if s["source_id"] == item["source_id"]])]
-    body = [item for item in kept if item not in support]
-    dropped = len(assertions) - len(kept)
+
+    def with_support(item):
+        return [item] + [s for s in support if s["source_id"] == item["source_id"]]
+
+    body, excerpts, dropped = [], [], 0
+    for item in assertions:
+        if item in support:
+            continue
+        if passes(with_support(item)):
+            body.append(item)
+            continue
+        unit = units.get((item["source_id"], item["locator"]))
+        excerpt = None
+        if unit is not None and not is_support(item) and compact(item["quote"]) \
+                and compact(item["quote"]) in compact(unit["text"]):
+            text = sentence_around(unit["text"], item["quote"])
+            excerpt = {**item, "claim": EXCERPT_NOTE + text, "quote": text}
+        if excerpt and excerpt not in excerpts and passes(with_support(excerpt)):
+            excerpts.append(excerpt)
+        elif not excerpt or excerpt not in excerpts:
+            dropped += 1
+    kept = body + excerpts + support
     if not body or not passes(kept):
-        return None, dropped
-    answer = "\n".join(f"- {claim}" for claim in dict.fromkeys(item["claim"].strip() for item in body))
-    return {"outcome": "answer", "answer": answer + "\n（部分答复：另有结论未通过引用或数字核验，未予采用。）",
-            "assertions": kept, "stop_reason": "",
-            "unknowns": [*output["unknowns"], f"有{dropped}条结论未通过核验，未予采用；相关子问题请人工查阅原文。"]}, dropped
+        return None, dropped, 0
+    answer = "\n".join(f"- {claim}" for claim in dict.fromkeys(item["claim"].strip() for item in body + excerpts))
+    note = "（部分答复：" + ("标“原文摘录”的条目，其转述未通过核验，已改为直接摘录原文；" if excerpts else "") \
+        + ("另有结论未通过引用或数字核验，未予采用。" if dropped else "摘录内容请对照原文理解。") + "）"
+    unknowns = list(output["unknowns"])
+    if dropped:
+        unknowns.append(f"有{dropped}条结论未通过核验，未予采用；相关子问题请人工查阅原文。")
+    return {"outcome": "answer", "answer": answer + "\n" + note, "assertions": kept, "stop_reason": "",
+            "unknowns": unknowns}, dropped, len(excerpts)
 
 
 def _messages(question, pool, context, plan):
@@ -195,7 +238,7 @@ def ask(question, units, chat, *, context=""):
     record = {"schema_version": 3, "workflow_version": WORKFLOW, "method": WORKFLOW, "question": question,
               "question_sha256": sha(question), "gate": None, "model": {"called": False, "calls": calls},
               "model_output": None, "checks": None, "result_kind": None, "stop_origin": None,
-              "follow_ups_used": 0, "repairs_used": 0, "claims_dropped": 0, "status": dict(STATUS)}
+              "follow_ups_used": 0, "repairs_used": 0, "claims_dropped": 0, "claims_excerpted": 0, "status": dict(STATUS)}
 
     def finish(final, kind, origin=None):
         # final_checks re-verifies what is displayed. An answer whose own unknowns still name a
@@ -263,7 +306,7 @@ def ask(question, units, chat, *, context=""):
             record["repairs_used"] += 1
             extra = _repair(raw, checks["failures"])
             continue
-        partial, record["claims_dropped"] = salvage(output, pool)
+        partial, record["claims_dropped"], record["claims_excerpted"] = salvage(output, pool)
         if partial:
             return finish(partial, "partial_answer")
         return finish(_stop("VERIFICATION_FAILED", "回答经修复后仍没有可通过引用与数字核验的结论，已停止作答。",
