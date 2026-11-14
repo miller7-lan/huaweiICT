@@ -214,6 +214,35 @@ def salvage(output, pool):
             "unknowns": unknowns}, dropped, len(excerpts)
 
 
+def settle_draft(raw, pool, units):
+    """What one stored model draft becomes with no further model call.
+
+    The same steps ``ask`` applies after its last call: clean, backend source
+    citations when they remove failures, checks, then salvage. Used to replay
+    recorded drafts offline; a stop draft stays a stop.
+    """
+    pool = list(pool)
+    output = normalize_citation_locators(clean(raw), pool)
+    result = {"result_kind": "stop", "claims_dropped": 0, "claims_excerpted": 0, "final": output,
+              "source_citations_used": False}
+    if output["outcome"] != "answer":
+        return result
+    checks = check(output, pool)
+    if not checks["passed"]:
+        supported = attach_source_titles(output, pool, units)
+        supported_checks = check(supported, pool)
+        if set(supported_checks["failures"]) < set(checks["failures"]):
+            output, checks, result["source_citations_used"] = supported, supported_checks, True
+    if checks["passed"]:
+        final, kind = render(output), "answer_with_gaps" if missing_items(output) else "answer"
+    else:
+        final, result["claims_dropped"], result["claims_excerpted"] = salvage(output, pool)
+        kind = "partial_answer" if final else "stop"
+    final = final or _stop("VERIFICATION_FAILED", "没有可通过引用与数字核验的结论。", checks["failures"])
+    return {**result, "result_kind": kind, "final": final,
+            "final_checks_passed": check(final, pool)["passed"] if kind != "stop" else None}
+
+
 def _messages(question, pool, context, plan):
     messages = build_messages(question, pool, "proposed", context, plan)
     messages[0]["content"] += FLOW_RULES

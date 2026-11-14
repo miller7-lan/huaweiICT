@@ -191,3 +191,14 @@ def test_an_answer_with_gaps_is_returned_without_a_second_call_by_default():
     first = answer("到期换领工本费20元。", RENEW, unknowns=["户口迁移准予迁入证明"])
     record = flow.ask(QUESTION, UNITS, chat := scripted(first))
     assert record["result_kind"] == "answer_with_gaps" and len(chat.calls) == 1 and record["follow_ups_used"] == 0
+
+
+def test_settle_draft_replays_a_stored_draft_without_a_model():
+    pool = [dict(u, rank=i) for i, u in enumerate(UNITS, 1)]
+    mixed = answer("临时证有效期限为三个月；到期换领工本费60元。", TEMP, WRONG)
+    settled = flow.settle_draft(mixed, pool, UNITS)
+    assert (settled["result_kind"], settled["claims_excerpted"], settled["final_checks_passed"]) == ("partial_answer", 1, True)
+    assert flow.settle_draft(answer("到期换领工本费20元。", RENEW), pool, UNITS)["result_kind"] == "answer"
+    assert flow.settle_draft(answer("到期换领工本费60元。", WRONG), pool, UNITS)["result_kind"] == "stop"
+    assert flow.settle_draft(answer("缺。", outcome="stop", reason="证据不足"), pool, UNITS)["result_kind"] == "stop"
+    assert len(pool) == len(UNITS)  # The caller's evidence list is not changed.

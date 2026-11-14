@@ -6,7 +6,9 @@ the last model draft on its own. Nothing calls a model.
 
 The output holds question ids, result kinds, call counts, failure-code kinds
 and per-claim states (citation valid or not, lengths, kind of the cited unit).
-It holds no question, answer, claim, quote or evidence text. Failure codes
+It also replays each last draft through the current post-processing (backend
+source citations, checks, salvage, excerpts) to show what would be displayed
+with no further model call. It holds no question, answer, claim, quote or evidence text. Failure codes
 lose their values unless --with-values is given; values are numbers, units and
 dates taken from model drafts, so look at them before committing.
 """
@@ -33,13 +35,32 @@ def kinds(failures, with_values):
     return [code if with_values else re.sub(r"^A\d+_", "", code).split(":")[0] for code in failures]
 
 
+def rebuild_pool(record, corpus):
+    return [dict(corpus[key], rank=item["rank"]) for item in record["retrieval"]["evidence"]
+            if (key := (item["source_id"], item["locator"])) in corpus]
+
+
+def replay(record, corpus):
+    """What the current code would display from the recorded last draft, with no model call."""
+    draft = record.get("model_output")
+    if not draft:
+        return None
+    settled = flow.settle_draft(draft, rebuild_pool(record, corpus), list(corpus.values()))
+    final = settled["final"]
+    return {"result_kind": settled["result_kind"], "source_citations_used": settled["source_citations_used"],
+            "claims_dropped": settled["claims_dropped"], "claims_excerpted": settled["claims_excerpted"],
+            "final_checks_passed": settled.get("final_checks_passed"),
+            "final_assertions": len(final["assertions"]), "final_unknowns": len(final["unknowns"]),
+            "excerpt_chars": [len(item["quote"]) for item in final["assertions"]
+                              if item["claim"].startswith(flow.EXCERPT_NOTE)]}
+
+
 def claim_rows(record, corpus, with_values):
     """Re-check each claim of the last draft alone, with the backend source citations."""
     draft = record.get("model_output")
     if not draft or draft["outcome"] != "answer":
         return []
-    pool = [dict(corpus[key], rank=item["rank"]) for item in record["retrieval"]["evidence"]
-            if (key := (item["source_id"], item["locator"])) in corpus]
+    pool = rebuild_pool(record, corpus)
     by_key = {(u["source_id"], u["locator"]): u for u in pool}
     draft = normalize_citation_locators(flow.clean(draft), pool)
     rows = []
@@ -96,7 +117,7 @@ def main():
                "final_sources": len({a["source_id"] for a in final["assertions"]}),
                "final_unknowns": len(final["unknowns"]),
                "final_checks_passed": (record.get("final_checks") or {}).get("passed"),
-               "last_draft_claims": claims}
+               "last_draft_claims": claims, "last_draft_replayed": replay(record, corpus)}
         rows.append(row)
         counts = totals.setdefault(name, Counter())
         counts["result:" + row["result_kind"]] += 1
@@ -104,6 +125,10 @@ def main():
         for call in calls:
             for code in call.get("failures", []):
                 counts["draft_failure:" + re.sub(r"^A\d+_", "", code).split(":")[0]] += 1
+        if row["last_draft_replayed"]:
+            counts["replay:" + row["last_draft_replayed"]["result_kind"]] += 1
+            counts["replay_claims_excerpted"] += row["last_draft_replayed"]["claims_excerpted"]
+            counts["replay_claims_dropped"] += row["last_draft_replayed"]["claims_dropped"]
         for claim in claims:
             counts["claim_citation:" + claim["citation"]] += 1
             if claim["fails_alone"]:
