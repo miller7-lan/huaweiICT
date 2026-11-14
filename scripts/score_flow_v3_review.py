@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from build_flow_v3_review_pack import CHOICES  # noqa: E402
+from build_flow_v3_review_pack import CHOICES, EXTRA_CHOICES  # noqa: E402
 
 # Two extra judgements that the fillable PDF form stores in the remark column as
 # "停止判断=<value>；参考答案=<value>". Only these fixed values are read; free text is ignored.
@@ -45,8 +45,16 @@ def read_sheet(path, key):
         for column, allowed in CHOICES.items():
             if row[column].strip() not in allowed:
                 raise ValueError(f"INVALID_VALUE: {path} {row['question_id']}{row['label']} {column}")
-    return {(r["question_id"], r["label"]): {**{c: r[c].strip() for c in CHOICES}, **extras(r.get("remark"))}
-            for r in rows}
+    result = {}
+    for row in rows:
+        values = {**{c: row[c].strip() for c in CHOICES}, **extras(row.get("remark"))}
+        for column, allowed in EXTRA_CHOICES.items():  # a real column wins over the remark
+            if (row.get(column) or "").strip():
+                if row[column].strip() not in allowed:
+                    raise ValueError(f"INVALID_VALUE: {path} {row['question_id']}{row['label']} {column}")
+                values[column] = row[column].strip()
+        result[(row["question_id"], row["label"])] = values
+    return result
 
 
 def main():
@@ -59,7 +67,8 @@ def main():
         parser.error("NEW_FILE_UNDER_EVIDENCE_REQUIRED")
     key = json.loads((args.pack / "key.json").read_text("utf-8"))
     sheets = [read_sheet(path, key) for path in args.sheets]
-    by_method = {"single_shot": {c: Counter() for c in CHOICES}, "flow_v3": {c: Counter() for c in CHOICES}}
+    methods = sorted({method for pair in key.values() for method in pair.values()})
+    by_method = {method: {c: Counter() for c in CHOICES} for method in methods}
     agree, differ = {c: 0 for c in CHOICES}, {c: [] for c in CHOICES}
     for question_id, pair in sorted(key.items()):
         for label, method in pair.items():
@@ -71,7 +80,7 @@ def main():
                     agree[column] += 1
                 else:
                     differ[column].append(f"{question_id}{label}")
-    rows = len(key) * 2
+    rows = sum(len(pair) for pair in key.values())
     # Stop judgements are per output; a reference issue is per question, whoever raised it.
     stops = {m: Counter() for m in by_method}
     stop_agree, stop_differ, reference = 0, [], {value: set() for value in EXTRA["reference_issue"][1]}
@@ -89,7 +98,7 @@ def main():
                 for row in (first, second):
                     reference[row["reference_issue"]].add(question_id)
     result = {"scope": "counts and question ids only", "questions": len(key), "rows_per_sheet": rows,
-              "ratings_per_method_and_column": len(key) * 2,
+              "methods": methods, "ratings_per_method_and_column": len(key) * 2,
               "by_method": {m: {c: dict(sorted(n.items())) for c, n in cols.items()} for m, cols in by_method.items()},
               "reviewer_agreement": {c: f"{agree[c]}/{rows}" for c in CHOICES},
               "disagreements": {c: sorted(v) for c, v in differ.items()}}

@@ -256,6 +256,70 @@ def settle_draft(raw, pool, units):
             "final_checks_passed": check(final, pool)["passed"] if kind != "stop" else None}
 
 
+def new_state():
+    """Per-question state shared by ``ask`` and the MCP service; JSON-serializable."""
+    return {"pool": [], "rounds": [], "calls": 0, "follow_ups_used": 0, "repairs_used": 0, "verified": None,
+            "claims_dropped": 0, "claims_excerpted": 0}
+
+
+def advance(state, raw, units, *, follow_up_after_answer=False):
+    """Decide what one model draft leads to. The state is updated in place.
+
+    Returns ``checks`` of this draft and an ``action``:
+    - "final": ``final``, ``kind`` and ``origin`` say what is displayed;
+    - "repair": the draft failed the checks and may be rewritten once (``failures``);
+    - "more_evidence": a follow-up retrieval added ``added`` units; ask again over the larger pool.
+    """
+    pool = state["pool"]
+    state["calls"] += 1
+    output = normalize_citation_locators(clean(raw), pool)
+    checks = check(output, pool)
+    if output["outcome"] == "answer" and not checks["passed"]:
+        # Backend source citations are used only when they remove failures and add none.
+        supported = attach_source_titles(output, pool, units)
+        supported_checks = check(supported, pool)
+        if set(supported_checks["failures"]) < set(checks["failures"]):
+            output, checks = supported, supported_checks
+    verified = state["verified"]  # an answer that already passed, kept while a follow-up is tried
+
+    def final(value, kind, origin=None):
+        return {"action": "final", "final": value, "kind": kind, "origin": origin, "checks": checks}
+
+    good = output["outcome"] == "answer" and checks["passed"]
+    if good or output["outcome"] == "stop":
+        wanted = missing_items(output)
+        if state["follow_ups_used"] < MAX_FOLLOW_UPS and wanted and (follow_up_after_answer or not good) \
+                and state["calls"] < MAX_MODEL_CALLS:
+            state["follow_ups_used"] += 1
+            before = len(pool)
+            added = extend_pool(pool, units, wanted)
+            state["rounds"].append({"kind": "follow_up", "queries": wanted, "added": added})
+            if added:
+                state["verified"] = render(output) if good else None
+                return {"action": "more_evidence", "added": pool[before:], "checks": checks}
+        if good and not (verified and len(output["assertions"]) < len(verified["assertions"])):
+            return final(render(output), "answer")
+        if verified:  # The follow-up did not improve on the answer that had passed.
+            return final(verified, "answer")
+        return final(output, "stop", "INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP" if state["follow_ups_used"]
+                     else "MODEL_STOP_WITHOUT_MISSING_ITEMS")
+    if verified:  # The answer that already passed beats repairing or trimming a worse draft.
+        return final(verified, "answer")
+    if state["repairs_used"] < MAX_REPAIRS and state["calls"] < MAX_MODEL_CALLS:
+        state["repairs_used"] += 1
+        return {"action": "repair", "failures": checks["failures"], "checks": checks}
+    partial, state["claims_dropped"], state["claims_excerpted"] = salvage(output, pool)
+    if partial:
+        return final(partial, "partial_answer")
+    return final(_stop("VERIFICATION_FAILED", "回答经修复后仍没有可通过引用与数字核验的结论，已停止作答。",
+                       checks["failures"]), "stop", "VERIFICATION_FAILED_AFTER_REPAIR")
+
+
+def label_kind(final, kind):
+    """An answer whose own unknowns still name a retrievable gap is not counted as complete."""
+    return "answer_with_gaps" if kind == "answer" and missing_items(final) else kind
+
+
 def _messages(question, pool, context, plan, rules="strict"):
     if rules == "light":
         messages = build_messages(question, pool, "baseline", context)
@@ -301,9 +365,7 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
     def finish(final, kind, origin=None):
         # final_checks re-verifies what is displayed. An answer whose own unknowns still name a
         # retrievable gap passed the citation checks but does not cover the whole question.
-        if kind == "answer" and missing_items(final):
-            kind = "answer_with_gaps"
-        record.update(final=final, result_kind=kind, stop_origin=origin,
+        record.update(final=final, result_kind=label_kind(final, kind), stop_origin=origin,
                       final_checks=check(final, pool) if final["outcome"] == "answer" else None,
                       duration_ms=round((time.monotonic() - started) * 1000, 1),
                       retrieval={"version": RETRIEVAL_VERSION, "rounds": rounds, "evidence": [
@@ -318,7 +380,9 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
     packet = retrieve_with_plan(units, query)
     pool.extend(packet["evidence"])
     rounds.append({"kind": "initial", "added": len(pool)})
-    extra, verified = [], None  # verified: an answer that already passed, kept while a follow-up is tried
+    state = new_state()
+    state["pool"], state["rounds"] = pool, rounds
+    extra = []
     while True:
         messages = _messages(question, pool, context, packet["plan"], rules) + extra
         record["input_sha256"] = sha(json.dumps(messages, ensure_ascii=False, sort_keys=True))
@@ -326,48 +390,20 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
             response = chat(messages)
         except Exception as error:  # A model or contract failure is not "missing evidence".
             record["model"].update(called=True, error=str(error)[:200])
-            if verified:
-                return finish(verified, "answer")
+            if state["verified"]:
+                return finish(state["verified"], "answer")
             return finish(_stop("MODEL_ERROR", "模型调用或输出格式失败，本题未作答。"), "stop", "MODEL_OR_TOOL_ERROR")
         raw = response["output"]
-        output = normalize_citation_locators(clean(raw), pool)
-        checks = check(output, pool)
-        if output["outcome"] == "answer" and not checks["passed"]:
-            # Backend source citations are used only when they remove failures and add none.
-            supported = attach_source_titles(output, pool, units)
-            supported_checks = check(supported, pool)
-            if set(supported_checks["failures"]) < set(checks["failures"]):
-                output, checks = supported, supported_checks
+        size = len(pool)
+        step = advance(state, raw, units, follow_up_after_answer=follow_up_after_answer)
         calls.append({"model": response.get("model"), "usage": response.get("usage"), "outcome": raw["outcome"],
-                      "failures": checks["failures"], "pool_size": len(pool),
+                      "failures": step["checks"]["failures"], "pool_size": size,
                       # Counts per draft show whether a follow-up or repair added or lost claims.
                       "assertions": len(raw["assertions"]), "unknowns": len(raw["unknowns"])})
         record["model"]["called"] = True
-        record.update(model_output=raw, checks=checks)  # checks: the latest draft, not the final
-        good = output["outcome"] == "answer" and checks["passed"]
-        if good or output["outcome"] == "stop":
-            wanted = missing_items(output)
-            if record["follow_ups_used"] < MAX_FOLLOW_UPS and wanted and (follow_up_after_answer or not good):
-                record["follow_ups_used"] += 1
-                added = extend_pool(pool, units, wanted)
-                rounds.append({"kind": "follow_up", "queries": wanted, "added": added})
-                if added:
-                    verified, extra = (render(output) if good else None), []
-                    continue
-            if good and not (verified and len(output["assertions"]) < len(verified["assertions"])):
-                return finish(render(output), "answer")
-            if verified:  # The follow-up did not improve on the answer that had passed.
-                return finish(verified, "answer")
-            return finish(output, "stop", "INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP" if record["follow_ups_used"]
-                          else "MODEL_STOP_WITHOUT_MISSING_ITEMS")
-        if verified:  # The answer that already passed beats repairing or trimming a worse draft.
-            return finish(verified, "answer")
-        if record["repairs_used"] < MAX_REPAIRS and len(calls) < MAX_MODEL_CALLS:
-            record["repairs_used"] += 1
-            extra = _repair(raw, checks["failures"])
-            continue
-        partial, record["claims_dropped"], record["claims_excerpted"] = salvage(output, pool)
-        if partial:
-            return finish(partial, "partial_answer")
-        return finish(_stop("VERIFICATION_FAILED", "回答经修复后仍没有可通过引用与数字核验的结论，已停止作答。",
-                            checks["failures"]), "stop", "VERIFICATION_FAILED_AFTER_REPAIR")
+        record.update(model_output=raw, checks=step["checks"],  # checks: the latest draft, not the final
+                      follow_ups_used=state["follow_ups_used"], repairs_used=state["repairs_used"],
+                      claims_dropped=state["claims_dropped"], claims_excerpted=state["claims_excerpted"])
+        if step["action"] == "final":
+            return finish(step["final"], step["kind"], step["origin"])
+        extra = _repair(raw, step["failures"]) if step["action"] == "repair" else []

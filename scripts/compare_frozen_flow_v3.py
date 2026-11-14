@@ -4,7 +4,9 @@ Input is a questions-only JSON list (id, question, optional context) or an
 object with "cases". Without --live nothing calls a model: the plan and the
 call ceiling are printed. With --live each question runs both methods in a
 seeded order through the existing DeepSeek profile, with no retries and a hard
---max-calls budget (at most 4 per question: 1 single-shot + 3 flow).
+--max-calls budget (per question: baseline 1, single-shot 1, flow at most 3).
+--arms picks the methods; --reference validates a private reference file and
+freezes its hash in plan.json so the run can be shown to follow the frozen set.
 
 Records with questions and answers stay in a new directory under .runtime.
 The printed summary holds counts only. It measures engineering outcomes
@@ -25,6 +27,33 @@ sys.path.insert(0, str(ROOT / "src"))
 from gov_mcp import frozen_qa, frozen_qa_flow_v3 as flow  # noqa: E402
 
 SOURCES = ("frozen_qa.py", "frozen_retrieval.py", "frozen_qa_flow_v3.py")
+# Arm name -> most model calls one question can take.
+ARMS = {"baseline": 1, "single_shot": 1, "flow_v3": flow.MAX_MODEL_CALLS}
+CATEGORIES = ("comparison", "temporal", "inference", "should_stop")
+
+
+def check_reference(path, questions):
+    """Validate a private reference file against the questions; only its hash leaves this function.
+
+    Each entry: id, expected_outcome (answer or stop), category (one of CATEGORIES) and,
+    for an answer, at least one key point. Freezing the hash in plan.json before the run
+    shows afterwards that the reference was not changed.
+    """
+    reference = json.loads(Path(path).read_text("utf-8"))
+    by_id = {item["id"]: item for item in reference}
+    if len(by_id) != len(reference) or set(by_id) != {item["id"] for item in questions}:
+        raise ValueError("REFERENCE_IDS_DO_NOT_MATCH_QUESTIONS")
+    for item in reference:
+        if item.get("expected_outcome") not in ("answer", "stop") or item.get("category") not in CATEGORIES:
+            raise ValueError("REFERENCE_OUTCOME_OR_CATEGORY_INVALID: " + item["id"])
+        points = item.get("key_points", [])
+        if not isinstance(points, list) or any(type(p) is not str or not p.strip() for p in points) \
+                or (item["expected_outcome"] == "answer" and not points):
+            raise ValueError("REFERENCE_KEY_POINTS_REQUIRED: " + item["id"])
+    return {"reference_sha256": file_sha(path),
+            "expected": {o: sum(i["expected_outcome"] == o for i in reference) for o in ("answer", "stop")},
+            "categories": {c: sum(i["category"] == c for i in reference) for c in CATEGORIES}}
+
 
 
 def file_sha(path):
@@ -38,6 +67,10 @@ def main():
     parser.add_argument("--output", type=Path, required=True, help="New directory inside .runtime")
     parser.add_argument("--seed", default="20261114")
     parser.add_argument("--live", action="store_true", help="Call the cloud model")
+    parser.add_argument("--arms", nargs="+", choices=tuple(ARMS), default=["single_shot", "flow_v3"],
+                        help="Methods to run: baseline (no checks), single_shot (checks, stop on failure), flow_v3")
+    parser.add_argument("--reference", type=Path,
+                        help="Private reference file; validated and its hash frozen in the plan, never copied")
     parser.add_argument("--flow-rules", choices=flow.RULE_PROFILES, default="strict",
                         help="Generation prompt of the flow: strict (default) or light")
     parser.add_argument("--follow-up-after-answer", action="store_true",
@@ -48,10 +81,16 @@ def main():
         parser.error("PRIVATE_RUNTIME_OUTPUT_REQUIRED")
     loaded = json.loads(args.questions.read_text("utf-8"))
     questions = frozen_qa.validate_questions(loaded["cases"] if isinstance(loaded, dict) else loaded)
-    ceiling = len(questions) * (1 + flow.MAX_MODEL_CALLS)
-    plan = {"questions": len(questions), "model_calls_at_most": ceiling, "retries": 0, "seed": args.seed,
+    arms = list(dict.fromkeys(args.arms))
+    ceiling = len(questions) * sum(ARMS[arm] for arm in arms)
+    plan = {"questions": len(questions), "arms": arms, "model_calls_at_most": ceiling, "retries": 0, "seed": args.seed,
             "questions_sha256": file_sha(args.questions), "follow_up_after_answer": args.follow_up_after_answer, "flow_rules": args.flow_rules,
             "source_sha256": {name: file_sha(ROOT / "src/gov_mcp" / name) for name in SOURCES}}
+    if args.reference:
+        try:
+            plan["reference"] = check_reference(args.reference, questions)
+        except (ValueError, KeyError, TypeError) as error:
+            parser.error(str(error))
     if not args.live:
         print(json.dumps({"dry_run": True, "model_calls": 0, **plan}, ensure_ascii=False))
         return
@@ -73,16 +112,17 @@ def main():
 
     args.output.mkdir(parents=True)
     (args.output / "plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), "utf-8")
-    summary = {"single_shot": Counter(), "flow_v3": Counter()}
+    summary = {arm: Counter() for arm in arms}
     with (args.output / "records.jsonl").open("w", encoding="utf-8") as handle:
         for item in questions:
             context = item.get("context", "")
-            runs = {"single_shot": lambda: frozen_qa.ask(item["question"], units, "proposed", bounded_chat, context=context),
+            runs = {"baseline": lambda: frozen_qa.ask(item["question"], units, "baseline", bounded_chat, context=context),
+                    "single_shot": lambda: frozen_qa.ask(item["question"], units, "proposed", bounded_chat, context=context),
                     "flow_v3": lambda: flow.ask(item["question"], units, bounded_chat, context=context,
                                                 follow_up_after_answer=args.follow_up_after_answer,
                                                 rules=args.flow_rules)}
             # Seeded per-question order, so neither method always runs first.
-            for name in sorted(runs, key=lambda n: sha256(f"{args.seed}:{item['id']}:{n}".encode()).hexdigest()):
+            for name in sorted(arms, key=lambda n: sha256(f"{args.seed}:{item['id']}:{n}".encode()).hexdigest()):
                 before = used["count"]
                 record = runs[name]()
                 record.update(question_id=item["id"], compared_as=name)
