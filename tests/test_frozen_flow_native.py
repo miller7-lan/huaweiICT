@@ -20,6 +20,18 @@ def test_runner_uses_the_flow_runtime_only():
     module = native.runner()
     assert module.RUNTIME == native.RUNTIME and module.OUTPUT == native.OUTPUT
     assert original_run.RUNTIME != native.RUNTIME
+    # The flow gets more model starts; the earlier drafts keep their own limit.
+    assert module.MAX_MODEL_STARTS == native.MAX_MODEL_STARTS == 10 and original_run.MAX_MODEL_STARTS == 8
+
+
+def test_a_native_run_is_refused_when_the_service_uses_another_prompt_profile():
+    import pytest
+    health = {"service": "govkb_frozen_flow", "status": "UP", "rules": "light", "corpus_sha256": "c" * 64}
+    assert native.check_service_rules(health, "light")["rules"] == "light"
+    with pytest.raises(RuntimeError, match="SERVICE_RULES_MISMATCH"):
+        native.check_service_rules(health, "strict")
+    with pytest.raises(RuntimeError, match="FLOW_SERVICE_NOT_RUNNING"):
+        native.check_service_rules({"service": "govkb_frozen_qa", "status": "UP", "rules": "strict"}, "strict")
 
 
 def test_prompt_names_both_tools_and_the_plan_registers_nothing():

@@ -6,7 +6,8 @@ modules, the earlier drafts (38, 39) and their runtime are not touched.
 
   plan                      print what would be registered; nothing is called
   provision --apply         register the MCP service and one disabled draft; no model call
-  run "<question>"          one debug run of the draft (calls the model through Nexent)
+  run "<question>"          one debug run of the draft (calls the model through Nexent); refused
+                            unless the running service uses --rules (default strict)
   export                    export the draft's agent.json; no model call
 
 The flow service must already be running:
@@ -30,6 +31,9 @@ SERVICE, PORT = "govkb_frozen_flow", 8787
 TOOLS = {"govkb_flow_open", "govkb_flow_submit"}
 NAME, DISPLAY = "govfrozenflow_assistant", "河南冻结资料跨文档问答（草稿）"
 MAX_STEPS = 8  # open, up to three drafts, final answer, with slack for one protocol repair
+# One native run may start the model this many times before the runner stops reading. A run with
+# one revision and two tool-call warnings used eight, which was the earlier limit with no margin.
+MAX_MODEL_STARTS = 10
 PROMPT = """Use executable Python <code> actions only. Import no modules and emit no DSML.
 1. Call govkb_flow_open(question=<the user's question as a quoted string>) once and print it.
 2. If its status is STOP or BLOCKED, call final_answer with a short Chinese reply that gives the
@@ -79,8 +83,31 @@ def provisioner():
 
 def runner():
     module = private_copy("run_frozen_qa_native")
-    module.RUNTIME, module.OUTPUT = RUNTIME, OUTPUT
+    module.RUNTIME, module.OUTPUT, module.MAX_MODEL_STARTS = RUNTIME, OUTPUT, MAX_MODEL_STARTS
     return module
+
+
+def check_service_rules(health, expected):
+    """Refuse a native run when the running service does not use the expected prompt profile.
+
+    The formal comparison and the command line use one profile; native evidence produced
+    under another one cannot be compared with them.
+    """
+    if health.get("service") != SERVICE or health.get("status") != "UP":
+        raise RuntimeError("FLOW_SERVICE_NOT_RUNNING")
+    if health.get("rules") != expected:
+        raise RuntimeError(f"SERVICE_RULES_MISMATCH: service runs {health.get('rules')}, expected {expected}; "
+                           "restart the service with the matching --rules")
+    return {"rules": health["rules"], "follow_up_after_answer": health.get("follow_up_after_answer"),
+            "corpus_sha256": health.get("corpus_sha256")}
+
+
+def service_health():
+    import httpx
+    try:  # Local service: direct connection, never through a proxy.
+        return httpx.get(f"http://127.0.0.1:{PORT}/health", timeout=5, trust_env=False).json()
+    except (httpx.HTTPError, ValueError):
+        raise RuntimeError(f"FLOW_SERVICE_NOT_RUNNING: nothing answers on 127.0.0.1:{PORT}") from None
 
 
 def export_draft():
@@ -117,7 +144,10 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("plan")
     sub.add_parser("provision").add_argument("--apply", action="store_true")
-    sub.add_parser("run").add_argument("question")
+    run = sub.add_parser("run")
+    run.add_argument("question")
+    run.add_argument("--rules", choices=("strict", "light"), default="strict",
+                     help="Prompt profile the running service must use; the run is refused otherwise")
     sub.add_parser("export")
     args = parser.parse_args()
     if args.command == "plan" or (args.command == "provision" and not args.apply):
@@ -126,6 +156,11 @@ def main():
         sys.argv = [sys.argv[0], "--apply"]
         provisioner().main()
     elif args.command == "run":
+        try:
+            service = check_service_rules(service_health(), args.rules)
+        except RuntimeError as error:
+            parser.error(str(error))
+        print(json.dumps({"service": service, "max_model_starts": MAX_MODEL_STARTS}, ensure_ascii=False))
         sys.argv = [sys.argv[0], args.question]
         runner().main()
     else:
