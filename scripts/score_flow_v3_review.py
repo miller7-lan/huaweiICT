@@ -3,7 +3,9 @@
 Run after both sheets are complete. Reads key.json from the pack directory.
 The output holds, per method and column, how many rows took each value, how
 often the two reviewers agree, and the question ids where they differ. It
-holds no question, answer or remark text.
+holds no question, answer or remark text. When both sheets carry the PDF
+form's two extra judgements in the remark column, stop judgements and
+reference-answer flags are counted too; other remark text is never read.
 """
 import argparse
 import csv
@@ -17,6 +19,21 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from build_flow_v3_review_pack import CHOICES  # noqa: E402
 
+# Two extra judgements that the fillable PDF form stores in the remark column as
+# "停止判断=<value>；参考答案=<value>". Only these fixed values are read; free text is ignored.
+EXTRA = {"stop_judgment": ("停止判断", ("合理", "不合理", "待确认", "不适用")),
+         "reference_issue": ("参考答案", ("未发现", "有误", "待确认"))}
+
+
+def extras(remark):
+    found = {}
+    for part in (remark or "").split("；"):
+        name, _, value = part.partition("=")
+        for column, (label, allowed) in EXTRA.items():
+            if name.strip() == label and value.strip() in allowed:
+                found[column] = value.strip()
+    return found
+
 
 def read_sheet(path, key):
     with Path(path).open(encoding="utf-8-sig", newline="") as handle:
@@ -28,7 +45,8 @@ def read_sheet(path, key):
         for column, allowed in CHOICES.items():
             if row[column].strip() not in allowed:
                 raise ValueError(f"INVALID_VALUE: {path} {row['question_id']}{row['label']} {column}")
-    return {(r["question_id"], r["label"]): {c: r[c].strip() for c in CHOICES} for r in rows}
+    return {(r["question_id"], r["label"]): {**{c: r[c].strip() for c in CHOICES}, **extras(r.get("remark"))}
+            for r in rows}
 
 
 def main():
@@ -54,11 +72,32 @@ def main():
                 else:
                     differ[column].append(f"{question_id}{label}")
     rows = len(key) * 2
+    # Stop judgements are per output; a reference issue is per question, whoever raised it.
+    stops = {m: Counter() for m in by_method}
+    stop_agree, stop_differ, reference = 0, [], {value: set() for value in EXTRA["reference_issue"][1]}
+    has_extras = all("stop_judgment" in row and "reference_issue" in row for sheet in sheets for row in sheet.values())
+    if has_extras:
+        for question_id, pair in sorted(key.items()):
+            for label, method in pair.items():
+                first, second = (sheet[(question_id, label)] for sheet in sheets)
+                stops[method][first["stop_judgment"]] += 1
+                stops[method][second["stop_judgment"]] += 1
+                if first["stop_judgment"] == second["stop_judgment"]:
+                    stop_agree += 1
+                else:
+                    stop_differ.append(f"{question_id}{label}")
+                for row in (first, second):
+                    reference[row["reference_issue"]].add(question_id)
     result = {"scope": "counts and question ids only", "questions": len(key), "rows_per_sheet": rows,
               "ratings_per_method_and_column": len(key) * 2,
               "by_method": {m: {c: dict(sorted(n.items())) for c, n in cols.items()} for m, cols in by_method.items()},
               "reviewer_agreement": {c: f"{agree[c]}/{rows}" for c in CHOICES},
               "disagreements": {c: sorted(v) for c, v in differ.items()}}
+    if has_extras:
+        result["stop_judgment_by_method"] = {m: dict(sorted(n.items())) for m, n in stops.items()}
+        result["stop_judgment_agreement"] = f"{stop_agree}/{rows}"
+        result["stop_judgment_disagreements"] = sorted(stop_differ)
+        result["reference_issue_questions"] = {value: sorted(ids) for value, ids in reference.items()}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", "utf-8")
     print(json.dumps(result, ensure_ascii=False, indent=1))

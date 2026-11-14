@@ -64,3 +64,9 @@ def test_scoring_unblinds_and_checks_values(tmp_path, monkeypatch):
     fill(tmp_path / "pack/sheet-r1.csv", {**good, "missing_points": "也许"})
     with pytest.raises(ValueError, match="INVALID_VALUE"):
         score.read_sheet(tmp_path / "pack/sheet-r1.csv", key)
+
+
+def test_extra_judgements_are_read_from_the_fixed_remark_format_only():
+    assert score.extras("停止判断=不合理；参考答案=待确认") == {"stop_judgment": "不合理", "reference_issue": "待确认"}
+    assert score.extras("停止判断=看情况；这题我觉得参考写错了") == {}
+    assert score.extras("") == {} and score.extras(None) == {}
