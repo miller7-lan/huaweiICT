@@ -68,6 +68,19 @@ FLOW_RULES = (
     "7. 原文是“不得、禁止”等否定的，不得写成“可以”。不要在 answer 或 claim 中写证据编号。")
 
 
+# "light" asks like the unconstrained baseline, which answered far more cross-document
+# questions acceptably in the blind review, and leaves safety to the gates and to the
+# claim-by-claim checks afterwards. It carries no topic-specific instructions.
+LIGHT_RULES = (
+    "\n另外：1. 证据是历史归档，不代表现行政策；不判断今天是否有效、实际应缴金额或个人资格。"
+    "2. 每条 assertion 只对应一条证据；claim 中的金额、期限、日期及单位必须出现在它自己的 quote 中，"
+    "不同事项、不同分支的数字分开写。"
+    "3. 复合问题中能由证据支持的部分先作答；缺依据的部分不要编写结论，在 unknowns 中逐条写明缺什么。"
+    "只有全部子问题都没有依据时才 outcome=stop。"
+    "4. 原文是“不得、禁止”等否定的，不得写成“可以”。不要在 answer 或 claim 中写证据编号。")
+RULE_PROFILES = ("strict", "light")
+
+
 def clean(output):
     """Display copy without evidence markers; the raw model output stays in the record."""
     return {**output, "answer": MARKER.sub("", output["answer"]),
@@ -243,7 +256,11 @@ def settle_draft(raw, pool, units):
             "final_checks_passed": check(final, pool)["passed"] if kind != "stop" else None}
 
 
-def _messages(question, pool, context, plan):
+def _messages(question, pool, context, plan, rules="strict"):
+    if rules == "light":
+        messages = build_messages(question, pool, "baseline", context)
+        messages[0]["content"] += LIGHT_RULES
+        return messages
     messages = build_messages(question, pool, "proposed", context, plan)
     messages[0]["content"] += FLOW_RULES
     return messages
@@ -258,20 +275,26 @@ def _repair(output, failures):
                 "原文为否定的不得写成可以。无法改正的结论请删除，并把对应缺项写入 unknowns。")}]
 
 
-def ask(question, units, chat, *, context="", follow_up_after_answer=False):
+def ask(question, units, chat, *, context="", follow_up_after_answer=False, rules="strict"):
     """Answer one question. ``chat(messages)`` returns a deepseek.chat-style result.
 
     A stop always gets one follow-up retrieval. An answer that passed the checks but
     lists gaps gets one only with ``follow_up_after_answer``: in the two recorded
     eight-question runs that extra call never changed the kind of result.
+
+    ``rules`` picks the generation prompt: "strict" (the proposed chain's rules plus
+    the flow rules) or "light" (LIGHT_RULES). Retrieval, gates, checks, repair and
+    salvage are the same for both.
     """
+    if rules not in RULE_PROFILES:
+        raise ValueError("UNKNOWN_RULE_PROFILE")
     if type(question) is not str or not question.strip():
         raise ValueError("INVALID_QUESTION")
     started = time.monotonic()
     query = question + ("\n" + context if context else "")
     pool, rounds, calls = [], [], []
     record = {"schema_version": 3, "workflow_version": WORKFLOW, "method": WORKFLOW, "question": question,
-              "question_sha256": sha(question), "gate": None, "model": {"called": False, "calls": calls},
+              "question_sha256": sha(question), "rules": rules, "gate": None, "model": {"called": False, "calls": calls},
               "model_output": None, "checks": None, "result_kind": None, "stop_origin": None,
               "follow_ups_used": 0, "repairs_used": 0, "claims_dropped": 0, "claims_excerpted": 0, "status": dict(STATUS)}
 
@@ -297,7 +320,7 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False):
     rounds.append({"kind": "initial", "added": len(pool)})
     extra, verified = [], None  # verified: an answer that already passed, kept while a follow-up is tried
     while True:
-        messages = _messages(question, pool, context, packet["plan"]) + extra
+        messages = _messages(question, pool, context, packet["plan"], rules) + extra
         record["input_sha256"] = sha(json.dumps(messages, ensure_ascii=False, sort_keys=True))
         try:
             response = chat(messages)

@@ -24,11 +24,23 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from gov_mcp import frozen_qa_flow_v3 as flow  # noqa: E402
-from gov_mcp.frozen_qa import compact, normalize_citation_locators  # noqa: E402
+from gov_mcp.frozen_qa import compact, normalize_citation_locators, scope_gate  # noqa: E402
 
 
 def file_sha(path):
     return sha256(Path(path).read_bytes()).hexdigest()
+
+
+def load_expected(path):
+    """id -> "answer" or "stop" from a private reference file; nothing else is read from it."""
+    data = json.loads(Path(path).read_text("utf-8"))
+    if isinstance(data, dict) and all(isinstance(value, dict) for value in data.values()):
+        data = {key: value["expected_outcome"] for key, value in data.items()}  # id -> object
+    elif isinstance(data, dict) and not all(isinstance(value, str) for value in data.values()):
+        data = next(value for value in data.values() if isinstance(value, list))  # wrapper around a list
+    pairs = data.items() if isinstance(data, dict) else ((item["id"], item["expected_outcome"]) for item in data)
+    names = {"answer": "answer", "stop": "stop", "答复": "answer", "停止": "stop"}
+    return {question_id: names[outcome] for question_id, outcome in pairs}
 
 
 def kinds(failures, with_values):
@@ -41,13 +53,24 @@ def rebuild_pool(record, corpus):
 
 
 def replay(record, corpus):
-    """What the current code would display from the recorded last draft, with no model call."""
+    """What the current code would display from the recorded last draft, with no model call.
+
+    The scope gates are applied first, also to records of a method that ran without
+    them, so a draft from the unconstrained baseline shows what "that draft plus the
+    gates and the claim-by-claim checks" would display.
+    """
+    gate = scope_gate(record["question"] + ("\n" + record["context"] if record.get("context") else ""))
+    if gate:
+        return {"result_kind": "stop", "gate": gate, "source_citations_used": False, "claims_dropped": 0,
+                "claims_excerpted": 0, "final_checks_passed": None, "final_assertions": 0, "final_unknowns": 0,
+                "excerpt_chars": []}
     draft = record.get("model_output")
     if not draft:
         return None
     settled = flow.settle_draft(draft, rebuild_pool(record, corpus), list(corpus.values()))
     final = settled["final"]
-    return {"result_kind": settled["result_kind"], "source_citations_used": settled["source_citations_used"],
+    return {"result_kind": settled["result_kind"], "gate": None,
+            "source_citations_used": settled["source_citations_used"],
             "claims_dropped": settled["claims_dropped"], "claims_excerpted": settled["claims_excerpted"],
             "final_checks_passed": settled.get("final_checks_passed"),
             "final_assertions": len(final["assertions"]), "final_unknowns": len(final["unknowns"]),
@@ -86,11 +109,16 @@ def main():
     parser.add_argument("--corpus", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True, help="New JSON file under evidence/")
     parser.add_argument("--with-values", action="store_true")
+    parser.add_argument("--expected", type=Path,
+                        help="Private JSON giving each question's expected outcome (answer or stop): a mapping "
+                             "id -> outcome, or a list of objects with id and expected_outcome. Only counts "
+                             "of expected outcome against recorded and replayed result are written.")
     args = parser.parse_args()
     if not args.output.resolve().is_relative_to((ROOT / "evidence").resolve()) or args.output.exists():
         parser.error("NEW_FILE_UNDER_EVIDENCE_REQUIRED")
     corpus = {(u["source_id"], u["locator"]): u for u in json.loads(args.corpus.read_text("utf-8"))["units"]}
-    rows, totals = [], {}
+    expected = load_expected(args.expected) if args.expected else {}
+    rows, totals, crosstab = [], {}, {}
     for line in args.records.read_text("utf-8").splitlines():
         record = json.loads(line)
         name = record.get("compared_as") or record.get("method")
@@ -113,12 +141,22 @@ def main():
                "retrieval_rounds": [{"kind": r.get("kind"), "added": r.get("added")}
                                     for r in record["retrieval"].get("rounds", [])],
                "evidence_units": len(record["retrieval"]["evidence"]),
+               # Not zero means --corpus is not the corpus of this run, or lacks some of its units.
+               "evidence_units_missing_in_corpus": len(record["retrieval"]["evidence"]) - len(rebuild_pool(record, corpus)),
                "final_assertions": len(final["assertions"]),
                "final_sources": len({a["source_id"] for a in final["assertions"]}),
                "final_unknowns": len(final["unknowns"]),
                "final_checks_passed": (record.get("final_checks") or {}).get("passed"),
                "last_draft_claims": claims, "last_draft_replayed": replay(record, corpus)}
         rows.append(row)
+        if expected:
+            if row["question_id"] not in expected:
+                parser.error("EXPECTED_OUTCOME_MISSING: " + str(row["question_id"]))
+            want = expected[row["question_id"]]
+            table = crosstab.setdefault(name, {})
+            table.setdefault(f"expected_{want}", Counter())["recorded:" + row["result_kind"]] += 1
+            if row["last_draft_replayed"]:
+                table[f"expected_{want}"]["replayed:" + row["last_draft_replayed"]["result_kind"]] += 1
         counts = totals.setdefault(name, Counter())
         counts["result:" + row["result_kind"]] += 1
         counts["model_calls"] += len(calls)
@@ -139,9 +177,14 @@ def main():
               "corpus_sha256": file_sha(args.corpus),
               "flow_sha256": file_sha(ROOT / "src/gov_mcp/frozen_qa_flow_v3.py"),
               "totals": {name: dict(sorted(counts.items())) for name, counts in totals.items()}, "records": rows}
+    if expected:
+        result["expected_sha256"] = file_sha(args.expected)
+        result["by_expected_outcome"] = {name: {want: dict(sorted(counts.items())) for want, counts in table.items()}
+                                         for name, table in crosstab.items()}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", "utf-8")
-    print(json.dumps({"output": str(args.output), "records": len(rows), "totals": result["totals"]},
+    print(json.dumps({"output": str(args.output), "records": len(rows), "totals": result["totals"],
+                      "by_expected_outcome": result.get("by_expected_outcome")},
                      ensure_ascii=False, indent=1))
 
 

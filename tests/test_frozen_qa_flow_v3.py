@@ -202,3 +202,21 @@ def test_settle_draft_replays_a_stored_draft_without_a_model():
     assert flow.settle_draft(answer("到期换领工本费60元。", WRONG), pool, UNITS)["result_kind"] == "stop"
     assert flow.settle_draft(answer("缺。", outcome="stop", reason="证据不足"), pool, UNITS)["result_kind"] == "stop"
     assert len(pool) == len(UNITS)  # The caller's evidence list is not changed.
+
+
+def test_light_rules_change_only_the_prompt():
+    good = answer("到期换领工本费20元。", RENEW)
+    strict, light = scripted(good), scripted(good)
+    first = flow.ask(QUESTION, UNITS, strict)
+    second = flow.ask(QUESTION, UNITS, light, rules="light")
+    assert first["final"] == second["final"] and (first["rules"], second["rules"]) == ("strict", "light")
+    system = light.calls[0][0]["content"]
+    assert flow.LIGHT_RULES in system and frozen_qa.PROPOSED_RULES not in system and "2007" not in system
+    assert frozen_qa.PROPOSED_RULES in strict.calls[0][0]["content"]
+    # Gates and checks do not depend on the prompt.
+    assert flow.ask("南京换领工本费是多少", UNITS, scripted(), rules="light")["stop_origin"] == "SCOPE_GATE"
+    bad = flow.ask(QUESTION, UNITS, scripted(*[answer("到期换领工本费60元。", WRONG)] * 2), rules="light")
+    assert bad["result_kind"] == "stop"
+    import pytest
+    with pytest.raises(ValueError):
+        flow.ask(QUESTION, UNITS, scripted(), rules="other")
