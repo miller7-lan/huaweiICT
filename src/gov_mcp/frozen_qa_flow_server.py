@@ -38,7 +38,7 @@ SERVICE = "govkb_frozen_flow"
 PORT = 8787
 TASK_ID = re.compile(r"[A-Za-z0-9_-]{20,64}")
 SOURCES = ("frozen_qa.py", "frozen_qa_flow_v3.py", "frozen_qa_flow_server.py", "frozen_retrieval.py",
-           "knowledge_retrieval.py")
+           "knowledge_retrieval.py", "claim_binding.py", "scope_gate_v2.py")
 REVISE_FAILED = ("未通过确定性核验。请只依据同一任务的证据重写完整草稿后再次提交：source_id 与 locator 照抄证据标注；"
                  "quote 必须是该证据原文的连续片段；每条 claim 的金额、期限、日期及单位必须出现在它自己的 quote 中；"
                  "原文为否定的不得写成可以。无法改正的结论请删除，并把对应缺项写入 unknowns。")
@@ -48,6 +48,11 @@ REVISE_EVIDENCE = "已按缺项补充证据（见 evidence_added）。请结合�
 def code_fingerprints():
     base = Path(__file__).parent
     return {name: hashlib.sha256((base / name).read_bytes()).hexdigest() for name in SOURCES}
+
+
+def source_digest():
+    """One digest of every source file the decision depends on, stored with each task."""
+    return hashlib.sha256(json.dumps(code_fingerprints(), sort_keys=True).encode()).hexdigest()
 
 
 def shown(units):
@@ -62,6 +67,10 @@ class FlowService:
         self.index = EvidenceIndex(units)
         self.units, self.corpus_sha256, self.rules = list(self.index.units), corpus_sha256, rules
         self.follow_up_after_answer = follow_up_after_answer
+        # A task may only be continued by the same workflow, source and options that opened it;
+        # after an upgrade or option change an open task is refused, never silently resumed.
+        self.binding = {"workflow": flow.WORKFLOW, "source_sha256": source_digest(),
+                        "follow_up_after_answer": follow_up_after_answer}
         self.task_dir = Path(task_dir)
         self.task_dir.mkdir(parents=True, exist_ok=True)
         self.lock = threading.Lock()  # one draft at a time; the service is a single process
@@ -98,7 +107,7 @@ class FlowService:
         state["pool"] = packet["evidence"]
         state["rounds"].append({"kind": "initial", "added": len(state["pool"])})
         task = {"task_id": secrets.token_urlsafe(24), "question": question, "corpus_sha256": self.corpus_sha256,
-                "rules": self.rules, "state": state, "drafts": [], "final": None, "result_kind": None,
+                "rules": self.rules, **self.binding, "state": state, "drafts": [], "final": None, "result_kind": None,
                 "stop_origin": None, "final_checks": None}
         with self.lock:
             self._save(task)
@@ -125,6 +134,8 @@ class FlowService:
             task = json.loads(path.read_text("utf-8"))
             if task["corpus_sha256"] != self.corpus_sha256 or task["rules"] != self.rules:
                 return {"status": "BLOCKED", "error": "TASK_BELONGS_TO_ANOTHER_CORPUS_OR_PROFILE"}
+            if any(task.get(name) != value for name, value in self.binding.items()):
+                return {"status": "BLOCKED", "error": "TASK_BELONGS_TO_ANOTHER_WORKFLOW_SOURCE_OR_OPTIONS"}
             if task["final"] is not None:
                 return self._result(task, replayed=True)
             if len(task["drafts"]) >= flow.MAX_MODEL_CALLS:

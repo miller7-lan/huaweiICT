@@ -9,6 +9,12 @@ reference-answer flags are counted too; other remark text is never read.
 
 A sheet that breaks the filling rules is listed row by row and nothing is scored:
 it goes back to its reviewer. Use --check on a single sheet when it comes in.
+
+Each sheet must name exactly one reviewer, one of the pack's reviewers (pack.json); two
+sheets for scoring must be different files from two different reviewers. Two independent
+reviewers may still agree on every row. Without rows.json the filling rules cannot be
+checked: that is refused (exit 2) unless --legacy-pack is given, and then the result says
+so and --check exits 3, never 0.
 """
 import argparse
 import csv
@@ -60,6 +66,18 @@ def read_sheet(path, key):
     return result
 
 
+def sheet_reviewer(path, allowed=None):
+    """The one reviewer named in a sheet; refused when the column is empty, mixed or unexpected."""
+    with Path(path).open(encoding="utf-8-sig", newline="") as handle:
+        names = {(row.get("reviewer") or "").strip() for row in csv.DictReader(handle)}
+    if len(names) != 1 or "" in names:
+        raise ValueError(f"SHEET_REVIEWER_NOT_UNIQUE: {path}")
+    name = names.pop()
+    if allowed is not None and name not in allowed:
+        raise ValueError(f"SHEET_REVIEWER_NOT_IN_PACK: {path}")
+    return name
+
+
 def row_problems(sheet, rows):
     """Every place where a returned sheet breaks the filling rules, as "question+label column: reason".
 
@@ -95,20 +113,36 @@ def main():
     parser.add_argument("--check", action="store_true",
                         help="Only check the given sheet(s) against the filling rules; the key is not used for scoring")
     parser.add_argument("--output", type=Path, help="New JSON file under evidence/ (not used with --check)")
+    parser.add_argument("--legacy-pack", action="store_true",
+                        help="Accept a pack built before rows.json existed; the filling rules are then not checked")
     args = parser.parse_args()
     key = json.loads((args.pack / "key.json").read_text("utf-8"))
-    rows_path = args.pack / "rows.json"
+    rows_path, pack_path = args.pack / "rows.json", args.pack / "pack.json"
     rows = json.loads(rows_path.read_text("utf-8")) if rows_path.is_file() else None
+    allowed = json.loads(pack_path.read_text("utf-8"))["reviewers"] if pack_path.is_file() else None
+    if rows is None and not args.legacy_pack:
+        print(json.dumps({"checked": [str(path) for path in args.sheets], "rules_available": False,
+                          "error": "RULES_UNAVAILABLE: rows.json missing; use --legacy-pack for an old pack"},
+                         ensure_ascii=False, indent=1))
+        sys.exit(2)
+    if rows is not None and {(q, label) for q, pair in rows.items() for label in pair} != \
+            {(q, label) for q, pair in key.items() for label in pair}:
+        parser.error("RULES_INCOMPLETE: rows.json does not cover exactly the rows of key.json")
+    if len({path.resolve() for path in args.sheets}) != len(args.sheets):
+        parser.error("DUPLICATE_SHEET_PATH")
     try:
+        reviewers = [sheet_reviewer(path, allowed) for path in args.sheets]
         sheets = [read_sheet(path, key) for path in args.sheets]
     except ValueError as error:
         parser.error(str(error))
+    if len(set(reviewers)) != len(reviewers):
+        parser.error("SAME_REVIEWER_ON_TWO_SHEETS")
     problems = {str(path): row_problems(sheet, rows) for path, sheet in zip(args.sheets, sheets)} if rows else {}
     if any(problems.values()) or args.check:
         # Count-free: reviewers get this list back and correct their own sheet.
         print(json.dumps({"checked": [str(path) for path in args.sheets], "rules_available": rows is not None,
-                          "problems": problems}, ensure_ascii=False, indent=1))
-        sys.exit(1 if any(problems.values()) else 0)
+                          "rules_checked": rows is not None, "problems": problems}, ensure_ascii=False, indent=1))
+        sys.exit(1 if any(problems.values()) else (0 if rows is not None else 3))
     if len(sheets) != 2 or args.output is None:
         parser.error("TWO_SHEETS_AND_OUTPUT_REQUIRED_FOR_SCORING")
     if not args.output.resolve().is_relative_to((ROOT / "evidence").resolve()) or args.output.exists():
@@ -145,6 +179,7 @@ def main():
                 for row in (first, second):
                     reference[row["reference_issue"]].add(question_id)
     result = {"scope": "counts and question ids only", "sheets_passed_rule_check_unchanged": rows_checked,
+              "legacy_pack_rules_not_checked": not rows_checked, "reviewers_distinct": True,
               "questions": len(key), "rows_per_sheet": rows,
               "methods": methods, "ratings_per_method_and_column": len(key) * 2,
               "by_method": {m: {c: dict(sorted(n.items())) for c, n in cols.items()} for m, cols in by_method.items()},

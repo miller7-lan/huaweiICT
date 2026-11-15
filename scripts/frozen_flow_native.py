@@ -85,6 +85,7 @@ def provisioner():
 def runner():
     module = private_copy("run_frozen_qa_native")
     module.RUNTIME, module.OUTPUT, module.MAX_MODEL_STARTS = RUNTIME, OUTPUT, MAX_MODEL_STARTS
+    module.REQUIRED_TOOLS = ("govkb_flow_open", "govkb_flow_submit")  # a flow run must open, then submit
     return module
 
 

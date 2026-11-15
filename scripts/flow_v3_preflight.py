@@ -12,7 +12,9 @@ The result is one of:
                and the run must be called 开发对比 everywhere, with those discounts stated
 
 Declared facts come from the person organising the round. A fact that is missing or
-not exactly true counts as unmet, so an unknown never upgrades a run.
+not exactly true counts as unmet, so an unknown never upgrades a run. The question,
+reference and corpus files are always required: without them nothing is frozen, so the
+round is BLOCKED rather than formal. A round declared native also needs --native.
 """
 import argparse
 import json
@@ -92,6 +94,13 @@ def evaluate(declared, *, commit, dirty, questions=None, reference=None, corpus=
         observed["service_rules"] = health.get("rules")
         if health.get("rules") != rules:
             blocked.append(f"SERVICE_RULES_MISMATCH: service runs {health.get('rules')}, round froze {rules}")
+    # Declared facts alone never make a run formal: the frozen inputs themselves must be checked.
+    missing = [name for name, value in (("questions", questions), ("reference", reference), ("corpus", corpus))
+               if value is None]
+    if missing:
+        blocked.append("ARTIFACTS_REQUIRED: " + ", ".join(missing) + " must be given and checked before a run")
+    if declared.get("native") is True and health is None:
+        blocked.append("NATIVE_SERVICE_NOT_CHECKED: a native round needs --native so the running service is checked")
     for fact, consequence in INDEPENDENCE.items():
         if declared.get(fact) is not True:
             discounts.append(consequence)

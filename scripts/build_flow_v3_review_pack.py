@@ -35,14 +35,15 @@ CHOICES = {"conclusions_correct": ("是", "否", "部分", "不适用"),
 EXTRA_CHOICES = {"stop_judgment": ("合理", "不合理", "待确认", "不适用"),
                  "reference_issue": ("未发现", "有误", "待确认")}
 LABELS = "ABCDEF"
-RULES = """# 评审说明
+RULES_VERSION = "flow-v3-review-rules-2026-11-15"
+RULES = """# 评审说明（口径版本 """ + RULES_VERSION + """）
 
-每份输出一行，在你自己的表里填四列取值（备注列自己留，不上传）。**独立评，不与另一位评审讨论，评完前不要看 key.json。**
+每份输出一行，在你自己的表里填下表六列取值。remark 备注列：参考答案“有误”时必须写原因，其他情况可留空；备注随表一并私下交回队长，不进 Git。**独立评，不与另一位评审讨论，评完前不要看 key.json。**
 输出里偶尔会有提示它来自哪种方法的措辞（如“部分答复”“原文摘录”）。不要据此猜方法，也不要因此给分。
 
 | 列 | 取值 | 怎么填 |
 | --- | --- | --- |
-| conclusions_correct 保留的结论是否正确 | 是 / 否 / 部分 / 不适用 | 对照下方原文和你的参考答案。输出是停止时填“不适用”；该停止的题，停止是否合理写在备注里 |
+| conclusions_correct 保留的结论是否正确 | 是 / 否 / 部分 / 不适用 | 对照下方原文和你的参考答案。输出是停止时填“不适用”；停止是否合理填在 stop_judgment 列 |
 | missing_points 是否漏掉必答要点 | 否 / 漏次要 / 漏核心 / 不适用 | 对照参考答案的必答要点。漏核心 = 问题要问的主要内容没答到。停止时填“不适用” |
 | citations_support 引文是否支持结论中的条件和限定语 | 是 / 否 / 不适用 | 重点看“有条件”“仅限”“除外”这类限定语有没有被引文覆盖。停止时填“不适用” |
 | excerpt_relevant 以“原文摘录：”开头的条目是否与问题相关 | 是 / 否 / 无摘录 | **只看结论文字以“原文摘录：”开头的条目。输出里没有这样的条目就填“无摘录”，这是多数情况。** 它问的不是普通引文是否相关 |
@@ -52,10 +53,22 @@ RULES = """# 评审说明
 
 
 def read_records(path):
-    rows = [json.loads(line) for line in Path(path).read_text("utf-8").splitlines() if line.strip()]
-    by_question = {}
-    for record in rows:
+    """Records by question and method. A repeated (question, method) pair is refused with both line
+    numbers, never resolved by keeping the last one; every method must show the same question."""
+    by_question, lines = {}, {}
+    for number, line in enumerate(Path(path).read_text("utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        pair = (record["question_id"], record["compared_as"])
+        if pair in lines:
+            raise ValueError(f"DUPLICATE_RECORD: {pair[0]} {pair[1]} on lines {lines[pair]} and {number}")
+        lines[pair] = number
         by_question.setdefault(record["question_id"], {})[record["compared_as"]] = record
+    for question_id, pair in by_question.items():
+        asked = {(r.get("question"), r.get("context", "")) for r in pair.values()}
+        if len(asked) > 1:
+            raise ValueError("QUESTION_DIFFERS_BETWEEN_METHODS: " + question_id)
     methods = set(next(iter(by_question.values())))
     if not 2 <= len(methods) <= len(LABELS):
         raise ValueError("TWO_TO_SIX_METHODS_REQUIRED")
@@ -125,6 +138,9 @@ def build(records, corpus, output, seed, reviewers, reference=None):
     (output / "review.md").write_text("\n".join(parts) + "\n", "utf-8")
     (output / "key.json").write_text(json.dumps(key, ensure_ascii=False, indent=1), "utf-8")
     (output / "rows.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), "utf-8")
+    # Who may return a sheet and under which rules; holds no method name.
+    (output / "pack.json").write_text(json.dumps({"rules_version": RULES_VERSION, "reviewers": list(reviewers),
+                                                  "columns": COLUMNS}, ensure_ascii=False, indent=1), "utf-8")
     for name in reviewers:
         with (output / f"sheet-{name}.csv").open("w", encoding="utf-8-sig", newline="") as handle:
             writer = csv.writer(handle)
@@ -146,6 +162,8 @@ def main():
     parser.add_argument("--reviewers", nargs=2, required=True, metavar=("NAME1", "NAME2"),
                         help="Ascii names used in file names, for example reviewer1 reviewer2")
     args = parser.parse_args()
+    if len(set(args.reviewers)) != 2:
+        parser.error("TWO_DIFFERENT_REVIEWERS_REQUIRED")
     if not args.output.resolve().is_relative_to((ROOT / ".runtime").resolve()) or args.output.exists():
         parser.error("NEW_DIRECTORY_UNDER_RUNTIME_REQUIRED")
     corpus = {(u["source_id"], u["locator"]): u for u in json.loads(args.corpus.read_text("utf-8"))["units"]}

@@ -1,13 +1,21 @@
 """Ask the draft Nexent frozen-Q&A assistant one question through the runtime API.
 
 One debug run of the disabled, unpublished draft: bounded to 120 seconds, 2 MB
-of events and eight model starts. The raw SSE log stays private; a summary with
-the final answer, tool order and visible usage is written as evidence.
+of events and eight model starts. The raw SSE log and a full private report (question,
+final answer, usage events) stay in the private runtime directory. The evidence receipt
+holds only whitelisted counts, tool order, hashes and statuses, so it can be published.
+
+A run is judged in three steps, and ``passed`` means all three:
+  transport_completed  the event stream was read to its end without an error or a bound
+  protocol_valid       at least one model start and exactly one non-empty top-level final answer
+  workflow_verified    the required tools (REQUIRED_TOOLS) were called, in that order
+An empty or cut stream, a missing final answer or a missing tool is never a pass.
 """
 import argparse
 import json
 import sys
 import time
+from hashlib import sha256
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -24,6 +32,49 @@ from provision_crossdoc_native_preview import read, write  # noqa: E402
 RUNTIME = ROOT / ".runtime/frozen-qa-20261030"
 OUTPUT = ROOT / "evidence/frozen-qa-20261030"
 MAX_MODEL_STARTS = 8
+REQUIRED_TOOLS = ()  # tool names that must appear in this order; set by the flow's private copy
+# The only fields an evidence receipt may hold.
+PUBLIC_FIELDS = ("agent_id", "question_sha256", "final_answer_sha256", "final_answer_chars", "tool_order",
+                 "model_starts", "final_answers", "events", "duration_ms", "transport_completed",
+                 "protocol_valid", "workflow_verified", "passed", "failures", "error", "stop_unconfirmed",
+                 "recorded_at", "conversation_id", "published", "agent_enabled", "private_report")
+
+
+def in_order(seen, required):
+    position = 0
+    for name in seen:
+        if position < len(required) and name == required[position]:
+            position += 1
+    return position == len(required)
+
+
+def judge(report, required=None):
+    """The three-step verdict described in the module docstring; updates and returns ``report``."""
+    required = REQUIRED_TOOLS if required is None else required
+    transport = bool(report.get("transport_completed"))
+    final = report.get("final_answer")
+    protocol_failures = []
+    if report.get("model_starts", 0) < 1:
+        protocol_failures.append("NO_MODEL_START")
+    if report.get("final_answers") != 1 or not (isinstance(final, str) and final.strip()):
+        protocol_failures.append("FINAL_ANSWER_MISSING_OR_NOT_UNIQUE")
+    workflow_failures = [] if in_order(report.get("tool_order", []), list(required)) \
+        else ["REQUIRED_TOOLS_MISSING_OR_OUT_OF_ORDER"]
+    failures = ([] if transport else ["TRANSPORT_NOT_COMPLETED"]) + protocol_failures + workflow_failures
+    protocol = transport and not protocol_failures
+    report.update(protocol_valid=protocol, workflow_verified=protocol and not workflow_failures,
+                  passed=not failures, failures=failures)
+    return report
+
+
+def public_receipt(report):
+    """Whitelisted copy for evidence: no question, answer text or raw usage events."""
+    final = report.get("final_answer")
+    digest = {"question_sha256": sha256(report["question"].encode()).hexdigest() if report.get("question") else None,
+              "final_answer_sha256": sha256(final.encode()).hexdigest() if isinstance(final, str) else None,
+              "final_answer_chars": len(final) if isinstance(final, str) else 0}
+    merged = {**report, **digest}
+    return {name: merged[name] for name in PUBLIC_FIELDS if name in merged}
 
 
 def summarize(events):
@@ -70,9 +121,9 @@ def main():
                         if sum(e.get("type") == "model_attempt_control" and e.get("phase") == "begin"
                                for e in events) > MAX_MODEL_STARTS:
                             raise ValueError("MODEL_START_LIMIT_EXCEEDED")
-        report.update(duration_ms=round((time.monotonic() - started) * 1000, 1), passed=True)
+        report.update(duration_ms=round((time.monotonic() - started) * 1000, 1), transport_completed=True)
     except Exception as error:
-        report.update(passed=False, error=str(error)[:200])
+        report.update(transport_completed=False, error=str(error)[:200])
         if conversation is not None:
             try:
                 api.runtime_call("GET", "/agent/stop/" + str(conversation))
@@ -82,10 +133,14 @@ def main():
         api.close()
     report.update(summarize(events), recorded_at=datetime.now(timezone.utc).isoformat(),
                   conversation_id=conversation, published=False, agent_enabled=False)
+    judge(report)
+    private = RUNTIME / f"{prefix}-{stamp}-report.json"
+    write(private, report)  # full report with question and answer text: private runtime only
+    report["private_report"] = str(private.relative_to(ROOT))
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    write(OUTPUT / f"{prefix}-{stamp}.json", report)
-    print(json.dumps({k: report.get(k) for k in ("passed", "error", "tool_order", "model_starts", "duration_ms",
-                                                  "final_answer")}, ensure_ascii=False, indent=1))
+    write(OUTPUT / f"{prefix}-{stamp}.json", public_receipt(report))
+    print(json.dumps({k: report.get(k) for k in ("passed", "failures", "error", "tool_order", "model_starts",
+                                                  "duration_ms", "final_answer")}, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

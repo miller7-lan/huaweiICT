@@ -1,15 +1,41 @@
 """Preflight of an evaluation round: what blocks it and what it may be called (synthetic data)."""
 import json
+import tempfile
+from pathlib import Path
 
 import flow_v3_preflight as preflight
+from gov_mcp import frozen_qa
 
 FACTS = {fact: True for fact in preflight.INDEPENDENCE}
-BASE = {"round": "r", "commit": "abc1234", "rules": "strict", "arms": ["baseline", "single_shot", "flow_v3"], **FACTS}
+# A complete synthetic set of frozen inputs; every round needs all three files.
+FILES = Path(tempfile.mkdtemp(prefix="preflight-"))
+QUESTIONS = [{"id": f"X{i}", "question": f"题{i}"} for i in range(1, 5)]
+REFERENCE = [{"id": "X1", "expected_outcome": "answer", "category": "comparison", "key_points": ["甲"]},
+             {"id": "X2", "expected_outcome": "answer", "category": "temporal", "key_points": ["乙"]},
+             {"id": "X3", "expected_outcome": "answer", "category": "inference", "key_points": ["丙"]},
+             {"id": "X4", "expected_outcome": "stop", "category": "should_stop", "key_points": []}]
+UNITS = [{"source_id": "D", "locator": "段1", "text": "甲"}]
+for name, value in (("q.json", QUESTIONS), ("r.json", REFERENCE), ("corpus.json", {"units": UNITS})):
+    (FILES / name).write_text(json.dumps(value, ensure_ascii=False), "utf-8")
+UNIT_SHA = frozen_qa.sha(json.dumps(UNITS, ensure_ascii=False, sort_keys=True))
+BASE = {"round": "r", "commit": "abc1234", "rules": "strict", "arms": ["baseline", "single_shot", "flow_v3"],
+        "corpus_unit_sha256": UNIT_SHA, **FACTS}
 
 
 def run(declared, **observed):
+    for name, file in (("questions", "q.json"), ("reference", "r.json"), ("corpus", "corpus.json")):
+        observed.setdefault(name, FILES / file)
     return preflight.evaluate(declared, commit=observed.pop("commit", "abc1234"), dirty=observed.pop("dirty", []),
                               **observed)
+
+
+def test_missing_frozen_inputs_or_an_unchecked_native_service_block_a_formal_label():
+    for missing in ("questions", "reference", "corpus"):
+        result = run(BASE, **{missing: None})
+        assert result["label"] == "BLOCKED" and any(item.startswith("ARTIFACTS_REQUIRED") for item in result["blocked"])
+    native = run({**BASE, "native": True})
+    assert native["label"] == "BLOCKED" and "NATIVE_SERVICE_NOT_CHECKED" in native["blocked"][0]
+    assert run({**BASE, "native": True}, health={"rules": "strict", "corpus_sha256": UNIT_SHA})["label"] == "formal"
 
 
 def test_all_conditions_true_is_formal_and_any_unknown_downgrades():
@@ -41,7 +67,7 @@ def test_questions_need_a_valid_reference_with_enough_should_stop(tmp_path):
     good = run(BASE, questions=q, reference=r)
     assert good["label"] == "formal" and good["observed"]["reference"]["expected"] == {"answer": 3, "stop": 1}
     assert "甲" not in json.dumps(good, ensure_ascii=False)
-    assert "REFERENCE_REQUIRED" in run(BASE, questions=q)["blocked"][0]
+    assert "REFERENCE_REQUIRED" in run(BASE, questions=q, reference=None)["blocked"][0]
     reference[3] = {"id": "X4", "expected_outcome": "answer", "category": "comparison", "key_points": ["丁"]}
     r.write_text(json.dumps(reference, ensure_ascii=False), "utf-8")
     assert "TOO_FEW_SHOULD_STOP_QUESTIONS" in run(BASE, questions=q, reference=r)["blocked"]
@@ -59,4 +85,4 @@ def test_service_profile_and_corpus_must_match_the_round(tmp_path):
     assert mismatch["label"] == "BLOCKED" and "SERVICE_RULES_MISMATCH" in mismatch["blocked"][0]
     assert "SERVICE_CORPUS_MISMATCH" in run(declared, corpus=corpus,
                                             health={"rules": "strict", "corpus_sha256": "0" * 64})["blocked"][0]
-    assert "CORPUS_MISMATCH" in run(BASE, corpus=corpus)["blocked"][0]
+    assert "CORPUS_MISMATCH" in run({**BASE, "corpus_unit_sha256": "1" * 64}, corpus=corpus)["blocked"][0]
