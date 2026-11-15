@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "kind": "read-only attachment audit; public summary",
+  "frozen_technical_commit": "fedefb92bb39576468f61e0b781f172b6d6239d2",
+  "inputs": [
+    {
+      "name": "ICT-发给程千城-评分与规则核验-20261115-v1(1).zip",
+      "bytes": 400203,
+      "sha256": "46150921de7a1ca8d5fe97624bf66adc83f3874f68aebf2f068df27ec9ef4690"
+    },
+    {
+      "name": "ICT_程千城_回交材料_已按本人确认修订(1).zip",
+      "bytes": 4146223,
+      "sha256": "aa96a8ebe4459a0dcd6909d0d8002e2fe9ca649cf9fbef67bd8320f9c215585a"
+    }
+  ],
+  "checks": {
+    "return_manifest_files": 45,
+    "return_manifest_mismatches": 0,
+    "pdf_pages": 26,
+    "pdf_fields": 99,
+    "rating_fields": 96,
+    "blank_rating_fields": 0,
+    "changed_fields": 9,
+    "changes_match_confirmation_record": true,
+    "allowed_values_and_reference_consistency_issues": [],
+    "page_widgets": 339,
+    "widget_values_and_appearances_consistent": true
+  },
+  "historical_evidence_not_rerun": {
+    "test_functions": 17,
+    "passed_instances": 19,
+    "synthetic_identifier_probes": 4,
+    "probe_expectation_mismatches": 1,
+    "issue": "R4-01"
+  },
+  "current_status": {
+    "personal_handoff_materials_complete_in_confirmed_scope": true,
+    "organizer_import_and_acceptance": "not evidenced",
+    "two_reviewer_statistics_and_consensus": "not evidenced",
+    "R4-01": "known defect accepted by reviewer; no fix in this task"
+  },
+  "new_model_requests": 0,
+  "private_content_excluded": [
+    "ratings",
+    "personal answer originals",
+    "questions",
+    "reference answers",
+    "anonymous model outputs",
+    "method mapping",
+    "source corpus full text",
+    "private execution logs"
+  ],
+  "limitations": [
+    "No new business judgment or ratings",
+    "No CSV generated or organizer import executed",
+    "No historical tests rerun",
+    "No code fix or team acceptance claimed"
+  ]
+}
