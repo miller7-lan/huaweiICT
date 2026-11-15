@@ -417,3 +417,24 @@ def test_catalog_title_unit_marks_its_origin_and_supports_only_the_document_year
                                                "办理周期由40日压缩至30日"),
                    ("来源标题", "DOC-SCAN", title["locator"], title["text"]))
     assert not frozen_qa.verify(wrong, [scan, title])["passed"]  # the document number is not a policy number
+
+
+def test_a_clause_that_only_declines_a_current_judgement_does_not_trigger_the_gate():
+    archive_only = ("只读归档：2021年通知把办理周期压缩到多少天？不判断现行效力。",
+                    "按归档资料，表格里居民身份证工本费的设立依据是什么（不确认今天的效力）",
+                    "仅解释归档，不代表现行政策：换领与补领的收费有何不同？",
+                    "只比较归档文件，无需判断当前是否有效：首次申领和换领各收多少？")
+    for question in archive_only:
+        assert frozen_qa.scope_gate(question) is None, question
+    still_current = ("现在换领身份证要多少钱？",
+                     "不判断现行效力，现在去办换领要多少钱？",
+                     "只读归档：这个规定今天还有效吗？",
+                     "不确认今天还能不能用？",
+                     "不核实，今天是否还有效？",
+                     "目前的办理周期是多少天",
+                     "2021年通知的规定现行有效吗",
+                     "不判断现行效力。南京换领多少钱？")
+    expected = {"不判断现行效力。南京换领多少钱？": "OUTSIDE_HENAN_SCOPE"}
+    for question in still_current:
+        assert frozen_qa.scope_gate(question) == expected.get(question, "CURRENT_VALIDITY_NOT_ESTABLISHED"), question
+    assert frozen_qa.scope_gate("不判断现行效力，我的身份证号41010119900101123X能换吗") == "PRIVATE_FACT_NOT_ACCEPTED"

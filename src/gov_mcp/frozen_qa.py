@@ -90,12 +90,35 @@ def retrieve(units, question, k=TOP_K):
             for rank, (score, index) in enumerate(ranked[:k], 1) if score > 0]
 
 
+# A clause that only declines a current-validity judgement ("不判断现行效力") restricts the
+# question to the archive; it does not ask about today. Such a clause is set aside before the
+# current-validity check, and only when it carries no question of its own.
+CLAUSE = re.compile(r"[，,；;：:。？?！!（）()【】\[\]\n]")
+DISCLAIMER = re.compile(r"^(?:只读归档[：:]?|仅解释归档[：:]?)?\s*(?:请|并|也|且|但)?\s*"
+                        r"(?:不|无需|无须|不必|不要|不用|并不|勿)\s*"
+                        r"(?:判断|确认|认定|涉及|讨论|考虑|评价|核实|核定|推断|代表|说明|回答)")
+# "是否" is left out: inside a disclaimer it names what is not judged ("无需判断当前是否有效").
+CLAUSE_QUESTION = re.compile(r"吗|么|能否|可否|能不能|可不可以|还能|还可以|多少|几[天次个项元]|怎么|如何|哪")
+
+
+def current_validity_asked(question):
+    """True when some clause other than a pure disclaimer mentions the present."""
+    for clause in CLAUSE.split(question):
+        clause = clause.strip()
+        if not any(word in clause for word in CURRENT):
+            continue
+        if DISCLAIMER.match(clause) and not CLAUSE_QUESTION.search(clause):
+            continue
+        return True
+    return False
+
+
 def scope_gate(question):
     if PERSONAL_ID.search(question):
         return "PRIVATE_FACT_NOT_ACCEPTED"
     if any(region in question for region in OTHER_REGIONS):
         return "OUTSIDE_HENAN_SCOPE"
-    if any(word in question for word in CURRENT):
+    if current_validity_asked(question):
         return "CURRENT_VALIDITY_NOT_ESTABLISHED"
     return None
 
