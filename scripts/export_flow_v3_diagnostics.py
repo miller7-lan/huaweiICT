@@ -24,7 +24,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from gov_mcp import frozen_qa_flow_v3 as flow  # noqa: E402
-from gov_mcp.frozen_qa import compact, normalize_citation_locators, scope_gate  # noqa: E402
+from gov_mcp.frozen_qa import compact, normalize_citation_locators  # noqa: E402
+from gov_mcp.scope_gate_v2 import scope_gate  # noqa: E402
 
 
 def file_sha(path):

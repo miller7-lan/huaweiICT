@@ -89,7 +89,7 @@ class FlowService:
     def open(self, question):
         if type(question) is not str or not question.strip() or len(question) > 500:
             return {"status": "BLOCKED", "error": "QUESTION_REQUIRED_MAX_500_CHARS"}
-        gate = frozen_qa.scope_gate(question)
+        gate = flow.scope_gate(question)
         if gate:  # Before retrieval; no task is created, so nothing can be submitted for it.
             return {"status": "STOP", "gate": gate, "message": frozen_qa.GATE_MESSAGES[gate],
                     "final": frozen_qa._stop(gate, frozen_qa.GATE_MESSAGES[gate]), **frozen_qa.STATUS}

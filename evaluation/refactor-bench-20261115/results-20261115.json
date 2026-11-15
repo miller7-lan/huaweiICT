@@ -1,0 +1,5172 @@
+{
+ "P0": {
+  "summary": {
+   "bad_blocked_dev": "16/42",
+   "bad_blocked_audit": "7/19",
+   "bad_blocked_auto": "9/23",
+   "holdout_bad_blocked": "1/12",
+   "holdout_good_direct": "8/12",
+   "good_direct_dev": "23/34",
+   "gap_label": "1/2",
+   "gate": "14/23",
+   "failed_ids": [
+    "F01_branch_swap",
+    "F01_list_swap",
+    "F02_summary_permission",
+    "F02_same_amount_summary",
+    "F03_condition_dropped",
+    "F03_condition_dropped_plain",
+    "F04_count",
+    "F04_months",
+    "F04_control",
+    "F05_wrong_issuer",
+    "F06_page_year",
+    "F10_cn_to_arabic",
+    "F10_arabic_to_cn",
+    "F11_cell_address",
+    "F15_stop_amount",
+    "X_attribute_borrowed",
+    "P01_attribute_2",
+    "P01_rewrite_3",
+    "P02_branch_6",
+    "P02_branch_8",
+    "P02_rewrite_9",
+    "P03_attribute_12",
+    "P03_number_14",
+    "P03_attribute_15",
+    "P03_rewrite_16",
+    "P04_branch_20",
+    "P04_branch_22",
+    "P04_rewrite_23",
+    "P05_restriction_25",
+    "P05_generalize_26",
+    "P06_restriction_28",
+    "P06_generalize_29",
+    "P08_number_33",
+    "P08_rewrite_34",
+    "P09_attribute_37",
+    "P09_rewrite_38",
+    "P10_rewrite_42",
+    "H05_terms_arabic",
+    "H06_age",
+    "H08_temp_term",
+    "H11_stay",
+    "B01_list_swap",
+    "B02_extension_number",
+    "B03_mail_everyone",
+    "B04_terms_number",
+    "B05_age_number",
+    "B06_condition_outside_lexicon",
+    "B07_obligation_flipped",
+    "B08_post_fee_amount",
+    "B09_wrong_start",
+    "B11_waiver_flipped",
+    "B12_branch_swap_in_list",
+    "F13_short_gap",
+    "F07_spaced_id",
+    "F07_dashed_id_x",
+    "F08_outside_city",
+    "F08_outside_city2",
+    "F09_still_valid",
+    "F09_abolished",
+    "F09_still_follow",
+    "F14_negated_region_pass",
+    "F14_excluded_list_pass"
+   ],
+   "elapsed_s": 0.05,
+   "deterministic": true,
+   "existing_tests": "126 passed, 1 warning in 0.63s"
+  },
+  "rows": [
+   {
+    "id": "F01_branch_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F01_control",
+    "issue": "F01",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F01_list_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F02_summary_permission",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F02_same_amount_summary",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F02_control",
+    "issue": "F02",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F03_condition_dropped",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F03_condition_dropped_plain",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F03_control",
+    "issue": "F03",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F04_count",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F04_months",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F04_months_arabic",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_control",
+    "issue": "F04",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "F05_wrong_issuer",
+    "issue": "F05",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F05_control_brackets",
+    "issue": "F05",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F06_page_year",
+    "issue": "F06",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F06_control",
+    "issue": "F06",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_cn_to_arabic",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "F10_arabic_to_cn",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "F10_value_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F10_unit_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F11_cell_address",
+    "issue": "F11",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "F11_unknown_cell",
+    "issue": "F11",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F12_excerpt_condition",
+    "issue": "F12",
+    "kind": "bad",
+    "result_kind": "partial_answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F15_stop_amount",
+    "issue": "F15",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "X_attribute_borrowed",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "X_cross_source_borrow",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_generic_branch_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_subject_earlier_clause",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_no_subject_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_two_facts_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_cross_doc_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_invalid_quote",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_faithful_0",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P01_number_1",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_attribute_2",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P01_rewrite_3",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "P02_faithful_4",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_number_5",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_branch_6",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P02_faithful_7",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_branch_8",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P02_rewrite_9",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "P03_faithful_10",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_11",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_12",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P03_faithful_13",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_14",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_15",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P03_rewrite_16",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "P04_faithful_17",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_number_18",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_unit_19",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_branch_20",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P04_faithful_21",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_branch_22",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P04_rewrite_23",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "P05_faithful_24",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P05_restriction_25",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P05_generalize_26",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P06_faithful_27",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P06_restriction_28",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P06_generalize_29",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P07_faithful_30",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P07_negation_31",
+    "issue": "auto-negation",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_faithful_32",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P08_number_33",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P08_rewrite_34",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "P09_faithful_35",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P09_number_36",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_attribute_37",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P09_rewrite_38",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "P10_faithful_39",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P10_number_40",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_unit_41",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_rewrite_42",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "H01_reissue_fee",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H02_first_fee_in_list",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H03_issue_time",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H04_documents",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H05_terms_arabic",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "H06_age",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "H07_mail_condition",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H08_temp_term",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "H09_time_note",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H10_free_renew",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H11_stay",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "H12_post_fee_payer",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "B01_list_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B02_extension_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B03_mail_everyone",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B04_terms_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B05_age_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B06_condition_outside_lexicon",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B07_obligation_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B08_post_fee_amount",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B09_wrong_start",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B10_unit_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B11_waiver_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B12_branch_swap_in_list",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F13_short_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F13_long_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer_with_gaps",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_spaced_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F07_dashed_id_x",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F07_plain_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_doc_numbers_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_phone_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F08_province",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_county_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_valid",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F09_abolished",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F09_still_follow",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F09_now",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_disclaimer_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_history_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_validity_period_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_valid_document_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_negated_region_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F14_excluded_list_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F14_compare_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_nanjing_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   }
+  ]
+ },
+ "A": {
+  "summary": {
+   "bad_blocked_dev": "42/42",
+   "bad_blocked_audit": "19/19",
+   "bad_blocked_auto": "23/23",
+   "holdout_bad_blocked": "9/12",
+   "holdout_good_direct": "12/12",
+   "good_direct_dev": "34/34",
+   "gap_label": "2/2",
+   "gate": "23/23",
+   "failed_ids": [
+    "B02_extension_number",
+    "B06_condition_outside_lexicon",
+    "B09_wrong_start"
+   ],
+   "elapsed_s": 0.109,
+   "deterministic": true,
+   "existing_tests": "126 passed, 1 warning in 0.85s"
+  },
+  "rows": [
+   {
+    "id": "F01_branch_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "partial_answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F01_control",
+    "issue": "F01",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F01_list_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_summary_permission",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_same_amount_summary",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_control",
+    "issue": "F02",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F03_condition_dropped",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_condition_dropped_plain",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_control",
+    "issue": "F03",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F04_count",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months_arabic",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_control",
+    "issue": "F04",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F05_wrong_issuer",
+    "issue": "F05",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F05_control_brackets",
+    "issue": "F05",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F06_page_year",
+    "issue": "F06",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F06_control",
+    "issue": "F06",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_cn_to_arabic",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_arabic_to_cn",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_value_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F10_unit_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F11_cell_address",
+    "issue": "F11",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F11_unknown_cell",
+    "issue": "F11",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F12_excerpt_condition",
+    "issue": "F12",
+    "kind": "bad",
+    "result_kind": "partial_answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F15_stop_amount",
+    "issue": "F15",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_attribute_borrowed",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_cross_source_borrow",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_generic_branch_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_subject_earlier_clause",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_no_subject_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_two_facts_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_cross_doc_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_invalid_quote",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_faithful_0",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P01_number_1",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_attribute_2",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_rewrite_3",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_faithful_4",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_number_5",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_branch_6",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_faithful_7",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_branch_8",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_rewrite_9",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_faithful_10",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_11",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_12",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_faithful_13",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_14",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_15",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_rewrite_16",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_faithful_17",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_number_18",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_unit_19",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_branch_20",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_faithful_21",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_branch_22",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_rewrite_23",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P05_faithful_24",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P05_restriction_25",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P05_generalize_26",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_faithful_27",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P06_restriction_28",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_generalize_29",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P07_faithful_30",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P07_negation_31",
+    "issue": "auto-negation",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_faithful_32",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P08_number_33",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_rewrite_34",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P09_faithful_35",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P09_number_36",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_attribute_37",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_rewrite_38",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P10_faithful_39",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P10_number_40",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_unit_41",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_rewrite_42",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H01_reissue_fee",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H02_first_fee_in_list",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H03_issue_time",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H04_documents",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H05_terms_arabic",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H06_age",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H07_mail_condition",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H08_temp_term",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H09_time_note",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H10_free_renew",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H11_stay",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H12_post_fee_payer",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "B01_list_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B02_extension_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B03_mail_everyone",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B04_terms_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B05_age_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B06_condition_outside_lexicon",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B07_obligation_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B08_post_fee_amount",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B09_wrong_start",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B10_unit_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B11_waiver_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B12_branch_swap_in_list",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F13_short_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer_with_gaps",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F13_long_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer_with_gaps",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_spaced_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_dashed_id_x",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_plain_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_doc_numbers_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_phone_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_province",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_county_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_valid",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_abolished",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_follow",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_now",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_disclaimer_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_history_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_validity_period_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_valid_document_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_negated_region_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_excluded_list_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_compare_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_nanjing_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   }
+  ]
+ },
+ "C": {
+  "summary": {
+   "bad_blocked_dev": "41/42",
+   "bad_blocked_audit": "19/19",
+   "bad_blocked_auto": "22/23",
+   "holdout_bad_blocked": "8/12",
+   "holdout_good_direct": "12/12",
+   "good_direct_dev": "34/34",
+   "gap_label": "2/2",
+   "gate": "23/23",
+   "failed_ids": [
+    "P09_attribute_37",
+    "B02_extension_number",
+    "B06_condition_outside_lexicon",
+    "B08_post_fee_amount",
+    "B09_wrong_start"
+   ],
+   "elapsed_s": 0.243,
+   "deterministic": true,
+   "existing_tests": "126 passed, 1 warning in 0.62s"
+  },
+  "rows": [
+   {
+    "id": "F01_branch_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "partial_answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F01_control",
+    "issue": "F01",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F01_list_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_summary_permission",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_same_amount_summary",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_control",
+    "issue": "F02",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F03_condition_dropped",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_condition_dropped_plain",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_control",
+    "issue": "F03",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F04_count",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months_arabic",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_control",
+    "issue": "F04",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F05_wrong_issuer",
+    "issue": "F05",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F05_control_brackets",
+    "issue": "F05",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F06_page_year",
+    "issue": "F06",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F06_control",
+    "issue": "F06",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_cn_to_arabic",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_arabic_to_cn",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_value_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F10_unit_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F11_cell_address",
+    "issue": "F11",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F11_unknown_cell",
+    "issue": "F11",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F12_excerpt_condition",
+    "issue": "F12",
+    "kind": "bad",
+    "result_kind": "partial_answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F15_stop_amount",
+    "issue": "F15",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_attribute_borrowed",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_cross_source_borrow",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_generic_branch_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_subject_earlier_clause",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_no_subject_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_two_facts_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_cross_doc_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_invalid_quote",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_faithful_0",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P01_number_1",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_attribute_2",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_rewrite_3",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_faithful_4",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_number_5",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_branch_6",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_faithful_7",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_branch_8",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_rewrite_9",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_faithful_10",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_11",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_12",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_faithful_13",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_14",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_15",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_rewrite_16",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_faithful_17",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_number_18",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_unit_19",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_branch_20",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_faithful_21",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_branch_22",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_rewrite_23",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P05_faithful_24",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P05_restriction_25",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P05_generalize_26",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_faithful_27",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P06_restriction_28",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_generalize_29",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P07_faithful_30",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P07_negation_31",
+    "issue": "auto-negation",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_faithful_32",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P08_number_33",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_rewrite_34",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P09_faithful_35",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P09_number_36",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_attribute_37",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "P09_rewrite_38",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P10_faithful_39",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P10_number_40",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_unit_41",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_rewrite_42",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H01_reissue_fee",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H02_first_fee_in_list",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H03_issue_time",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H04_documents",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H05_terms_arabic",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H06_age",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H07_mail_condition",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H08_temp_term",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H09_time_note",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H10_free_renew",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H11_stay",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H12_post_fee_payer",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "B01_list_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B02_extension_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B03_mail_everyone",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B04_terms_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B05_age_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B06_condition_outside_lexicon",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B07_obligation_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B08_post_fee_amount",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B09_wrong_start",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B10_unit_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B11_waiver_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B12_branch_swap_in_list",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F13_short_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer_with_gaps",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F13_long_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer_with_gaps",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_spaced_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_dashed_id_x",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_plain_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_doc_numbers_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_phone_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_province",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_county_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_valid",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_abolished",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_follow",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_now",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_disclaimer_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_history_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_validity_period_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_valid_document_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_negated_region_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_excluded_list_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_compare_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_nanjing_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   }
+  ]
+ },
+ "E": {
+  "summary": {
+   "bad_blocked_dev": "42/42",
+   "bad_blocked_audit": "19/19",
+   "bad_blocked_auto": "23/23",
+   "holdout_bad_blocked": "12/12",
+   "holdout_good_direct": "7/12",
+   "good_direct_dev": "7/34",
+   "gap_label": "0/2",
+   "gate": "23/23",
+   "failed_ids": [
+    "F13_short_gap",
+    "F13_long_gap"
+   ],
+   "elapsed_s": 0.003,
+   "deterministic": true,
+   "existing_tests": "126 passed, 1 warning in 0.78s"
+  },
+  "rows": [
+   {
+    "id": "F01_branch_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F01_control",
+    "issue": "F01",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "F01_list_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_summary_permission",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_same_amount_summary",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_control",
+    "issue": "F02",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F03_condition_dropped",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_condition_dropped_plain",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_control",
+    "issue": "F03",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F04_count",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months_arabic",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_control",
+    "issue": "F04",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "F05_wrong_issuer",
+    "issue": "F05",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F05_control_brackets",
+    "issue": "F05",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "F06_page_year",
+    "issue": "F06",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F06_control",
+    "issue": "F06",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "F10_cn_to_arabic",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "F10_arabic_to_cn",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "F10_value_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F10_unit_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F11_cell_address",
+    "issue": "F11",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "F11_unknown_cell",
+    "issue": "F11",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F12_excerpt_condition",
+    "issue": "F12",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F15_stop_amount",
+    "issue": "F15",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_attribute_borrowed",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_cross_source_borrow",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_generic_branch_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "X_subject_earlier_clause",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "X_no_subject_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_two_facts_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_cross_doc_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_invalid_quote",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_faithful_0",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P01_number_1",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_attribute_2",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_rewrite_3",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P02_faithful_4",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P02_number_5",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_branch_6",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_faithful_7",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P02_branch_8",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_rewrite_9",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P03_faithful_10",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_11",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_12",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_faithful_13",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P03_number_14",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_15",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_rewrite_16",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P04_faithful_17",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P04_number_18",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_unit_19",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_branch_20",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_faithful_21",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P04_branch_22",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_rewrite_23",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P05_faithful_24",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P05_restriction_25",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P05_generalize_26",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_faithful_27",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P06_restriction_28",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_generalize_29",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P07_faithful_30",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P07_negation_31",
+    "issue": "auto-negation",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_faithful_32",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P08_number_33",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_rewrite_34",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P09_faithful_35",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P09_number_36",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_attribute_37",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_rewrite_38",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P10_faithful_39",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "P10_number_40",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_unit_41",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_rewrite_42",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "H01_reissue_fee",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H02_first_fee_in_list",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "H03_issue_time",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H04_documents",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H05_terms_arabic",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "H06_age",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "H07_mail_condition",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H08_temp_term",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "H09_time_note",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H10_free_renew",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H11_stay",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": false
+   },
+   {
+    "id": "H12_post_fee_payer",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "B01_list_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B02_extension_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B03_mail_everyone",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B04_terms_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B05_age_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B06_condition_outside_lexicon",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B07_obligation_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B08_post_fee_amount",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B09_wrong_start",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B10_unit_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B11_waiver_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B12_branch_swap_in_list",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F13_short_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F13_long_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "F07_spaced_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_dashed_id_x",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_plain_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_doc_numbers_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_phone_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_province",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_county_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_valid",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_abolished",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_follow",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_now",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_disclaimer_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_history_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_validity_period_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_valid_document_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_negated_region_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_excluded_list_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_compare_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_nanjing_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   }
+  ]
+ },
+ "F": {
+  "summary": {
+   "bad_blocked_dev": "42/42",
+   "bad_blocked_audit": "19/19",
+   "bad_blocked_auto": "23/23",
+   "holdout_bad_blocked": "10/12",
+   "holdout_good_direct": "11/12",
+   "good_direct_dev": "34/34",
+   "gap_label": "2/2",
+   "gate": "23/23",
+   "failed_ids": [
+    "H10_free_renew",
+    "B02_extension_number",
+    "B09_wrong_start"
+   ],
+   "elapsed_s": 0.128,
+   "deterministic": true,
+   "existing_tests": "126 passed, 1 warning in 0.57s"
+  },
+  "rows": [
+   {
+    "id": "F01_branch_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "partial_answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F01_control",
+    "issue": "F01",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F01_list_swap",
+    "issue": "F01",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_summary_permission",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_same_amount_summary",
+    "issue": "F02",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F02_control",
+    "issue": "F02",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F03_condition_dropped",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_condition_dropped_plain",
+    "issue": "F03",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F03_control",
+    "issue": "F03",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F04_count",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_months_arabic",
+    "issue": "F04",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F04_control",
+    "issue": "F04",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F05_wrong_issuer",
+    "issue": "F05",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F05_control_brackets",
+    "issue": "F05",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F06_page_year",
+    "issue": "F06",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F06_control",
+    "issue": "F06",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_cn_to_arabic",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_arabic_to_cn",
+    "issue": "F10",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F10_value_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F10_unit_changed",
+    "issue": "F10",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F11_cell_address",
+    "issue": "F11",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "F11_unknown_cell",
+    "issue": "F11",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F12_excerpt_condition",
+    "issue": "F12",
+    "kind": "bad",
+    "result_kind": "partial_answer",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F15_stop_amount",
+    "issue": "F15",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_attribute_borrowed",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_cross_source_borrow",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "X_generic_branch_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_subject_earlier_clause",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_no_subject_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_two_facts_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_cross_doc_control",
+    "issue": "X",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "X_invalid_quote",
+    "issue": "X",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_faithful_0",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P01_number_1",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_attribute_2",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P01_rewrite_3",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_faithful_4",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_number_5",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_branch_6",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_faithful_7",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P02_branch_8",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P02_rewrite_9",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_faithful_10",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_11",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_12",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_faithful_13",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P03_number_14",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_attribute_15",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P03_rewrite_16",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_faithful_17",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_number_18",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_unit_19",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_branch_20",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_faithful_21",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P04_branch_22",
+    "issue": "auto-branch",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P04_rewrite_23",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P05_faithful_24",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P05_restriction_25",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P05_generalize_26",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_faithful_27",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P06_restriction_28",
+    "issue": "auto-restriction",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P06_generalize_29",
+    "issue": "auto-generalize",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P07_faithful_30",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P07_negation_31",
+    "issue": "auto-negation",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_faithful_32",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P08_number_33",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P08_rewrite_34",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P09_faithful_35",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P09_number_36",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_attribute_37",
+    "issue": "auto-attribute",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P09_rewrite_38",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P10_faithful_39",
+    "issue": "auto-faithful",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "P10_number_40",
+    "issue": "auto-number",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_unit_41",
+    "issue": "auto-unit",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "P10_rewrite_42",
+    "issue": "auto-rewrite",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H01_reissue_fee",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H02_first_fee_in_list",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H03_issue_time",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H04_documents",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H05_terms_arabic",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H06_age",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H07_mail_condition",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H08_temp_term",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H09_time_note",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H10_free_renew",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "stop",
+    "ok": false,
+    "direct": false
+   },
+   {
+    "id": "H11_stay",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "H12_post_fee_payer",
+    "issue": "holdout",
+    "kind": "good",
+    "result_kind": "answer",
+    "ok": true,
+    "direct": true
+   },
+   {
+    "id": "B01_list_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B02_extension_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B03_mail_everyone",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B04_terms_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B05_age_number",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B06_condition_outside_lexicon",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B07_obligation_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B08_post_fee_amount",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B09_wrong_start",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "answer",
+    "ok": false,
+    "direct": null
+   },
+   {
+    "id": "B10_unit_swap",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B11_waiver_flipped",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "B12_branch_swap_in_list",
+    "issue": "holdout",
+    "kind": "bad",
+    "result_kind": "stop",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F13_short_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer_with_gaps",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F13_long_gap",
+    "issue": "F13",
+    "kind": "label",
+    "result_kind": "answer_with_gaps",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_spaced_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_dashed_id_x",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_plain_id",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": "PRIVATE_FACT_NOT_ACCEPTED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_doc_numbers_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F07_phone_pass",
+    "issue": "F07",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_outside_city2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_province",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_city_pass2",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F08_henan_county_pass",
+    "issue": "F08",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_valid",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_abolished",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_still_follow",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_now",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_disclaimer_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_history_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_validity_period_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F09_valid_document_pass",
+    "issue": "F09",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_negated_region_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_excluded_list_pass",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": null,
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_compare_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   },
+   {
+    "id": "F14_nanjing_stop",
+    "issue": "F14",
+    "kind": "gate",
+    "result_kind": "OUTSIDE_HENAN_SCOPE",
+    "ok": true,
+    "direct": null
+   }
+  ]
+ }
+}

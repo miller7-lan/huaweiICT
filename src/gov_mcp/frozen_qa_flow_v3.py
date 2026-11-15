@@ -35,14 +35,15 @@ import json
 import re
 import time
 
+from gov_mcp import claim_binding
 from gov_mcp.frozen_qa import (CURRENT, compact, GATE_MESSAGES, METADATA_KINDS, DOCUMENT_HEADING, STATUS, build_messages,
-                               has_cross_document_quantities, normalize_citation_locators, scope_gate, sha, verify,
-                               _stop)
+                               normalize_citation_locators, sha, verify, _stop)
+from gov_mcp.scope_gate_v2 import scope_gate
 from gov_mcp.frozen_retrieval import (TABLE_ROW, VERSION as RETRIEVAL_VERSION, EvidenceIndex, identity,
                                       retrieve_with_plan, source_key)
 
 
-WORKFLOW = "crossdoc-flow-v3"
+WORKFLOW = "crossdoc-flow-v3.1"
 MAX_FOLLOW_UPS = 1
 MAX_REPAIRS = 1
 MAX_MODEL_CALLS = 1 + MAX_FOLLOW_UPS + MAX_REPAIRS
@@ -121,12 +122,19 @@ def attach_source_titles(output, pool, units):
 
 
 def render(output):
-    """Numeric cross-document answers are displayed from their checked claims."""
-    if not has_cross_document_quantities(output):
+    """The displayed answer is built from the claims only; the model's own summary is never shown.
+
+    Every claim is checked against its own quote, so a summary cannot add a relation, a
+    permission or an amount that no checked claim states. The raw draft stays in the record.
+    """
+    if output["outcome"] != "answer":
         return output
     claims = dict.fromkeys(item["claim"].strip() for item in output["assertions"]
                            if item["claim"].strip() and not item["claim"].startswith(TITLE_NOTE))
-    return {**output, "answer": "\n".join(f"- {claim}" for claim in claims)}
+    note = next((line for line in output["answer"].split("\n") if line.startswith("（部分答复")), None)
+    unknowns, _ = claim_binding.displayable_unknowns(output["unknowns"])
+    return {**output, "answer": "\n".join([f"- {claim}" for claim in claims] + ([note] if note else [])),
+            "unknowns": unknowns}
 
 
 # A document number such as 豫公〔2021〕16号 or 财综[2007]34号 names a document; its digits are
@@ -162,12 +170,12 @@ def mask_quoted_document_numbers(output, pool):
         if unit is None or not compact(item["quote"]) or compact(item["quote"]) not in compact(unit["text"]):
             continue
         for match in DOCUMENT_NUMBER.finditer(item["quote"]):
-            quoted.setdefault(item["source_id"], set()).add(_document_number_key(match.group()))
+            quoted.setdefault(item["source_id"], set()).add(claim_binding.document_number_key(match.group()))
 
     def mask(text, sources):
         allowed = set().union(*(quoted.get(source, set()) for source in sources))
-        return DOCUMENT_NUMBER.sub(lambda m: NUMBER_MASK if _document_number_key(m.group()) in allowed else m.group(),
-                                   text)
+        return DOCUMENT_NUMBER.sub(
+            lambda m: NUMBER_MASK if claim_binding.document_number_key(m.group()) in allowed else m.group(), text)
 
     if not quoted:
         return output
@@ -175,25 +183,66 @@ def mask_quoted_document_numbers(output, pool):
             "assertions": [{**item, "claim": mask(item["claim"], {item["source_id"]})} for item in output["assertions"]]}
 
 
-def check(output, pool):
-    """frozen_qa.verify on quoted document numbers masked, plus one heuristic: a quoted
-    prohibition stated as permission."""
-    result = verify(mask_quoted_document_numbers(output, pool), pool)
+def comparable(output, pool):
+    """Copies for the number checks only: Chinese numerals before a unit as Arabic digits in
+    claims, quotes and unit texts alike, and the cell addresses of each cited table row masked
+    in its own claim (and in the answer). The displayed output is never changed by this."""
+    convert = claim_binding.arabic_quantities
+    units = {identity(unit): unit for unit in pool}
+
+    def cells(item):
+        unit = units.get((item["source_id"], item["locator"]))
+        return set(unit.get("cells") or []) if unit else set()
+
+    def mask_cells(text, known):
+        return claim_binding.POSITION.sub(lambda m: "〔单元格〕" if m.group() in known else m.group(), text)
+
+    every = set().union(*(cells(item) for item in output["assertions"])) if output["assertions"] else set()
+    output = {**output, "answer": mask_cells(convert(output["answer"]), every),
+              "assertions": [{**item, "claim": mask_cells(convert(item["claim"]), cells(item)),
+                              "quote": convert(item["quote"])} for item in output["assertions"]]}
+    return output, [{**unit, "text": convert(unit["text"])} for unit in pool]
+
+
+def is_note(item):
+    return item["claim"].startswith(TITLE_NOTE) or item["claim"].startswith(EXCERPT_NOTE)
+
+
+def binder(index, claim, quote, unit):
+    """Per-claim binding checks (see claim_binding); replaceable for offline comparisons."""
+    return claim_binding.binding_failures(index, claim, quote)
+
+
+def check(output, pool, units=None):
+    """frozen_qa.verify on comparable copies with quoted document numbers masked, plus the
+    claim_binding checks: branch, attribute and restriction of each claim against its own
+    quote, full document numbers, and document years against title years."""
+    same, same_pool = comparable(output, pool)
+    result = verify(mask_quoted_document_numbers(same, same_pool), same_pool)
     failures = list(result["failures"])
     if output["outcome"] == "answer":
+        by_id = {identity(unit): unit for unit in pool}
         for index, item in enumerate(output["assertions"], 1):
-            quote, claim = item["quote"], item["claim"]
-            if (any(word in quote for word in FORBID) and not any(word in quote for word in PERMIT)
-                    and any(word in claim for word in PERMIT) and not any(word in claim for word in FORBID)):
-                failures.append(f"A{index}_PROHIBITION_STATED_AS_PERMISSION")
-    return {"passed": not failures, "failures": failures}
+            unit = by_id.get((item["source_id"], item["locator"]))
+            if unit is None or is_note(item) or unit.get("evidence_kind") in METADATA_KINDS:
+                continue
+            failures.extend(binder(index, item["claim"], item["quote"], unit))
+        failures.extend(claim_binding.document_number_failures(output, by_id))
+        failures.extend(claim_binding.document_year_failures(output, list(pool) + list(units or [])))
+    return {"passed": not failures, "failures": list(dict.fromkeys(failures))}
 
 
 def missing_items(output):
-    """Retrievable gaps named by the model; a stop also offers its reason."""
+    """Retrievable gaps named by the model, as follow-up queries; a stop also offers its reason."""
     texts = list(output["unknowns"]) + ([output["stop_reason"]] if output["outcome"] == "stop" else [])
     wanted = [text.strip() for text in texts if len(text.strip()) >= 4 and not NOT_RETRIEVABLE.search(text)]
     return list(dict.fromkeys(wanted))[:FOLLOW_UP_QUERIES]
+
+
+def has_gaps(output):
+    """Whether the answer leaves a named item unanswered, however short ("邮费"); separate from
+    whether that item makes a useful follow-up query."""
+    return any(text.strip() and not NOT_RETRIEVABLE.search(text) for text in output["unknowns"])
 
 
 def extend_pool(pool, units, queries):
@@ -210,17 +259,23 @@ def extend_pool(pool, units, queries):
 
 
 def sentence_around(text, quote):
-    """The whole sentence(s) of a unit that contain the quote, so subject and conditions stay."""
-    start = text.find(quote)
-    if len(text) <= EXCERPT_WHOLE_UNIT or start < 0:
-        return text.strip() if len(text) <= EXCERPT_WHOLE_UNIT else quote.strip()
+    """The whole sentence(s) of a unit that contain the quote, so subject and conditions stay.
+
+    The quote is located with whitespace differences ignored and the sentence is cut from the
+    unit's own text. Returns None when the quote cannot be located, rather than a fragment.
+    """
+    if len(text) <= EXCERPT_WHOLE_UNIT:
+        return text.strip()
+    span = claim_binding.find_loose(text, quote)
+    if span is None:
+        return None
     ends = [m.end() for m in re.finditer(r"[。；;！？\n]", text)]
-    left = max((end for end in ends if end <= start), default=0)
-    right = min((end for end in ends if end >= start + len(quote)), default=len(text))
+    left = max((end for end in ends if end <= span[0]), default=0)
+    right = min((end for end in ends if end >= span[1]), default=len(text))
     return text[left:right].strip()
 
 
-def salvage(output, pool):
+def salvage(output, pool, corpus=None):
     """Keep what verifies claim by claim; return (partial answer or None, dropped, excerpted).
 
     A claim that fails although its quote is exact source text is replaced by that
@@ -237,7 +292,7 @@ def salvage(output, pool):
 
     def passes(items):
         answer = "\n".join(item["claim"] for item in items)
-        return check({**output, "answer": answer, "assertions": items}, pool)["passed"]
+        return check({**output, "answer": answer, "assertions": items}, pool, corpus)["passed"]
 
     assertions = normalize_citation_locators(output, pool)["assertions"]
     support = [item for item in assertions if is_support(item) and passes([item])]
@@ -257,7 +312,7 @@ def salvage(output, pool):
         if unit is not None and not is_support(item) and compact(item["quote"]) \
                 and compact(item["quote"]) in compact(unit["text"]):
             text = sentence_around(unit["text"], item["quote"])
-            excerpt = {**item, "claim": EXCERPT_NOTE + text, "quote": text}
+            excerpt = {**item, "claim": EXCERPT_NOTE + text, "quote": text} if text else None
         if excerpt and excerpt not in excerpts and passes(with_support(excerpt)):
             excerpts.append(excerpt)
         elif not excerpt or excerpt not in excerpts:
@@ -268,7 +323,7 @@ def salvage(output, pool):
     answer = "\n".join(f"- {claim}" for claim in dict.fromkeys(item["claim"].strip() for item in body + excerpts))
     note = "（部分答复：" + ("标“原文摘录”的条目，其转述未通过核验，已改为直接摘录原文；" if excerpts else "") \
         + ("另有结论未通过引用或数字核验，未予采用。" if dropped else "摘录内容请对照原文理解。") + "）"
-    unknowns = list(output["unknowns"])
+    unknowns, _ = claim_binding.displayable_unknowns(output["unknowns"])
     if dropped:
         unknowns.append(f"有{dropped}条结论未通过核验，未予采用；相关子问题请人工查阅原文。")
     return {"outcome": "answer", "answer": answer + "\n" + note, "assertions": kept, "stop_reason": "",
@@ -283,25 +338,39 @@ def settle_draft(raw, pool, units):
     recorded drafts offline; a stop draft stays a stop.
     """
     pool = list(pool)
-    output = normalize_citation_locators(clean(raw), pool)
-    result = {"result_kind": "stop", "claims_dropped": 0, "claims_excerpted": 0, "final": output,
-              "source_citations_used": False}
+    output = render(normalize_citation_locators(clean(raw), pool))
+    result = {"result_kind": "stop", "claims_dropped": 0, "claims_excerpted": 0,
+              "final": model_stop(output, "MODEL_STOP"), "source_citations_used": False}
     if output["outcome"] != "answer":
         return result
-    checks = check(output, pool)
+    checks = check(output, pool, units)
     if not checks["passed"]:
-        supported = attach_source_titles(output, pool, units)
-        supported_checks = check(supported, pool)
+        supported = render(attach_source_titles(output, pool, units))
+        supported_checks = check(supported, pool, units)
         if set(supported_checks["failures"]) < set(checks["failures"]):
             output, checks, result["source_citations_used"] = supported, supported_checks, True
     if checks["passed"]:
-        final, kind = render(output), "answer_with_gaps" if missing_items(output) else "answer"
+        final, kind = output, "answer_with_gaps" if has_gaps(output) else "answer"
     else:
-        final, result["claims_dropped"], result["claims_excerpted"] = salvage(output, pool)
+        final, result["claims_dropped"], result["claims_excerpted"] = salvage(output, pool, units)
         kind = "partial_answer" if final else "stop"
-    final = final or _stop("VERIFICATION_FAILED", "没有可通过引用与数字核验的结论。", checks["failures"])
+    final = final or _stop("VERIFICATION_FAILED", "没有可通过引用与数字核验的结论。")  # failures stay in checks
     return {**result, "result_kind": kind, "final": final,
-            "final_checks_passed": check(final, pool)["passed"] if kind != "stop" else None}
+            "final_checks_passed": check(final, pool, units)["passed"] if kind != "stop" else None}
+
+
+STOP_MESSAGES = {
+    "MODEL_STOP": "依据检索到的归档资料不能作答，本题停止。",
+    "INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP": "补查后仍没有能直接支持结论的归档原文，本题停止。",
+    "MODEL_STOP_WITHOUT_MISSING_ITEMS": "依据检索到的归档资料不能作答，本题停止。",
+}
+
+
+def model_stop(output, origin):
+    """A stop is displayed with a fixed backend message. The model's own explanation is kept in
+    the record but not shown: it is not checked and may state amounts or permissions."""
+    unknowns, _ = claim_binding.displayable_unknowns(output["unknowns"])
+    return _stop(origin, STOP_MESSAGES.get(origin, STOP_MESSAGES["MODEL_STOP"]), unknowns)
 
 
 def new_state():
@@ -320,12 +389,12 @@ def advance(state, raw, units, *, follow_up_after_answer=False):
     """
     pool = state["pool"]
     state["calls"] += 1
-    output = normalize_citation_locators(clean(raw), pool)
-    checks = check(output, pool)
+    output = render(normalize_citation_locators(clean(raw), pool))
+    checks = check(output, pool, units)
     if output["outcome"] == "answer" and not checks["passed"]:
         # Backend source citations are used only when they remove failures and add none.
-        supported = attach_source_titles(output, pool, units)
-        supported_checks = check(supported, pool)
+        supported = render(attach_source_titles(output, pool, units))
+        supported_checks = check(supported, pool, units)
         if set(supported_checks["failures"]) < set(checks["failures"]):
             output, checks = supported, supported_checks
     verified = state["verified"]  # an answer that already passed, kept while a follow-up is tried
@@ -343,29 +412,30 @@ def advance(state, raw, units, *, follow_up_after_answer=False):
             added = extend_pool(pool, units, wanted)
             state["rounds"].append({"kind": "follow_up", "queries": wanted, "added": added})
             if added:
-                state["verified"] = render(output) if good else None
+                state["verified"] = output if good else None
                 return {"action": "more_evidence", "added": pool[before:], "checks": checks}
         if good and not (verified and len(output["assertions"]) < len(verified["assertions"])):
-            return final(render(output), "answer")
+            return final(output, "answer")
         if verified:  # The follow-up did not improve on the answer that had passed.
             return final(verified, "answer")
-        return final(output, "stop", "INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP" if state["follow_ups_used"]
-                     else "MODEL_STOP_WITHOUT_MISSING_ITEMS")
+        origin = "INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP" if state["follow_ups_used"] else "MODEL_STOP_WITHOUT_MISSING_ITEMS"
+        return final(model_stop(output, origin), "stop", origin)
     if verified:  # The answer that already passed beats repairing or trimming a worse draft.
         return final(verified, "answer")
     if state["repairs_used"] < MAX_REPAIRS and state["calls"] < MAX_MODEL_CALLS:
         state["repairs_used"] += 1
         return {"action": "repair", "failures": checks["failures"], "checks": checks}
-    partial, state["claims_dropped"], state["claims_excerpted"] = salvage(output, pool)
+    partial, state["claims_dropped"], state["claims_excerpted"] = salvage(output, pool, units)
     if partial:
         return final(partial, "partial_answer")
-    return final(_stop("VERIFICATION_FAILED", "回答经修复后仍没有可通过引用与数字核验的结论，已停止作答。",
-                       checks["failures"]), "stop", "VERIFICATION_FAILED_AFTER_REPAIR")
+    # Failure codes quote the rejected values; they stay in ``checks`` and are not displayed.
+    return final(_stop("VERIFICATION_FAILED", "回答经修复后仍没有可通过引用与数字核验的结论，已停止作答。"),
+                 "stop", "VERIFICATION_FAILED_AFTER_REPAIR")
 
 
 def label_kind(final, kind):
     """An answer whose own unknowns still name a retrievable gap is not counted as complete."""
-    return "answer_with_gaps" if kind == "answer" and missing_items(final) else kind
+    return "answer_with_gaps" if kind == "answer" and has_gaps(final) else kind
 
 
 COLUMN_GUIDE = ("\n\n表格行的列对照（系统按同一工作表的表头生成，只帮助看清每个值属于哪一列；"
@@ -455,7 +525,7 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
     query = question + ("\n" + context if context else "")
     pool, rounds, calls = [], [], []
     record = {"schema_version": 3, "workflow_version": WORKFLOW, "method": WORKFLOW, "question": question,
-              "question_sha256": sha(question), "rules": rules, "gate": None, "model": {"called": False, "calls": calls},
+              "question_sha256": sha(question), "rules": rules, "gate": None, "model": {"called": False, "calls": calls, "attempts": []},
               "model_output": None, "checks": None, "result_kind": None, "stop_origin": None,
               "follow_ups_used": 0, "repairs_used": 0, "claims_dropped": 0, "claims_excerpted": 0, "status": dict(STATUS)}
 
@@ -463,7 +533,7 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
         # final_checks re-verifies what is displayed. An answer whose own unknowns still name a
         # retrievable gap passed the citation checks but does not cover the whole question.
         record.update(final=final, result_kind=label_kind(final, kind), stop_origin=origin,
-                      final_checks=check(final, pool) if final["outcome"] == "answer" else None,
+                      final_checks=check(final, pool, units) if final["outcome"] == "answer" else None,
                       duration_ms=round((time.monotonic() - started) * 1000, 1),
                       retrieval={"version": RETRIEVAL_VERSION, "rounds": rounds, "evidence": [
                           {key: item.get(key) for key in ("rank", "source_id", "locator", "score", "text_sha256")}
@@ -483,13 +553,20 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
     while True:
         messages = _messages(question, pool, context, packet["plan"], rules) + extra
         record["input_sha256"] = sha(json.dumps(messages, ensure_ascii=False, sort_keys=True))
+        # Every attempt is recorded before the request, so a failed call is still counted.
+        attempt = {"status": "started", "pool_size": len(pool)}
+        record["model"]["attempts"].append(attempt)
+        call_started = time.monotonic()
         try:
             response = chat(messages)
         except Exception as error:  # A model or contract failure is not "missing evidence".
+            attempt.update(status="failed", error=str(error)[:200],
+                           duration_ms=round((time.monotonic() - call_started) * 1000, 1))
             record["model"].update(called=True, error=str(error)[:200])
             if state["verified"]:
                 return finish(state["verified"], "answer")
             return finish(_stop("MODEL_ERROR", "模型调用或输出格式失败，本题未作答。"), "stop", "MODEL_OR_TOOL_ERROR")
+        attempt.update(status="succeeded", duration_ms=round((time.monotonic() - call_started) * 1000, 1))
         raw = response["output"]
         size = len(pool)
         step = advance(state, raw, units, follow_up_after_answer=follow_up_after_answer)
