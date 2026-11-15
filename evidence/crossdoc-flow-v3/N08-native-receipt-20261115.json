@@ -1,0 +1,29 @@
+{
+  "id": "N08",
+  "passed": true,
+  "result_kind": "partial_answer",
+  "model_starts": 4,
+  "mcp_tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit"
+  ],
+  "mcp_tool_calls": 3,
+  "runtime_tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+  ],
+  "final_claims_unknowns_preserved": true,
+  "final_citations_preserved": true,
+  "no_added_business_facts": "Agent compared displayed conclusion, citations and unknowns to server final; no added business facts found",
+  "final_checks": {
+    "passed": true,
+    "failures": []
+  },
+  "high_model_starts": false,
+  "screenshots": [],
+  "completion": "未完成：缺截图",
+  "receipt_sha256": "c90781dc1cefb8be7b74fd410faf35b27ccd938a237b5e06c46e5ab560662844"
+}
