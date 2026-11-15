@@ -1,0 +1,83 @@
+{
+  "review_kind": "开发者人工审核",
+  "completed": 4,
+  "pending": 0,
+  "counts": {
+    "正确": 2,
+    "部分正确": 2,
+    "错误": 0,
+    "无法判断": 0
+  },
+  "strict_correct_over_reviewed_outputs": 0.5,
+  "by_purpose": {
+    "text_recognition": {
+      "reviewed": 2,
+      "正确": 1,
+      "部分正确": 1,
+      "错误": 0,
+      "无法判断": 0
+    },
+    "rich_layout_recognition": {
+      "reviewed": 2,
+      "正确": 1,
+      "部分正确": 1,
+      "错误": 0,
+      "无法判断": 0
+    }
+  },
+  "recorded_at": "2026-11-15T21:31:41+08:00",
+  "timestamp_basis": "录入时间，未取得逐项作答时长",
+  "scope": "两页图的四份OCR输出页级抽取质量；不是字符金标准、问答正确率或正式业务批准",
+  "criteria_verbatim": {
+    "期限": "原文是“过去承诺的40日（自然日）压缩至30日”，两份OCR均正确；不能改写成“40个工作日”或“法定40日”。",
+    "起算范围": "两份OCR均保留“从受理之日起到领证之日”。",
+    "拼版顺序": "第6张图左侧印刷页码为6、右侧为3，OCR按左后右输出与图面一致；恢复整份文件阅读顺序时需另按印刷页码排列。"
+  },
+  "decisions": [
+    {
+      "item": "1",
+      "original_page": "5",
+      "purpose": "text_recognition",
+      "review_kind": "开发者人工审核",
+      "reviewer": "开发者本人",
+      "decision": "部分正确",
+      "reason": "标题、落款日期及“需挂失申报”等正文基本正确，但只保留了左侧页码4，遗漏右侧页码5，双页边界表达不完整。",
+      "recorded_at": "2026-11-15T21:31:41+08:00"
+    },
+    {
+      "item": "2",
+      "original_page": "5",
+      "purpose": "rich_layout_recognition",
+      "review_kind": "开发者人工审核",
+      "reviewer": "开发者本人",
+      "decision": "部分正确",
+      "reason": "正文、标题和双页布局基本正确，但印章区域仅标为图片，遗漏了可辨认的落款日期“2021年3月25日”。",
+      "recorded_at": "2026-11-15T21:31:41+08:00"
+    },
+    {
+      "item": "3",
+      "original_page": "6",
+      "purpose": "text_recognition",
+      "review_kind": "开发者人工审核",
+      "reviewer": "开发者本人",
+      "decision": "正确",
+      "reason": "—",
+      "recorded_at": "2026-11-15T21:31:41+08:00"
+    },
+    {
+      "item": "4",
+      "original_page": "6",
+      "purpose": "rich_layout_recognition",
+      "review_kind": "开发者人工审核",
+      "reviewer": "开发者本人",
+      "decision": "正确",
+      "reason": "—",
+      "recorded_at": "2026-11-15T21:31:41+08:00"
+    }
+  ],
+  "raw_ocr_evidence_unchanged": true,
+  "original_card_review_63_unchanged": true,
+  "new_api_calls": 0,
+  "formal_approval": false,
+  "ledger_sha256": "01f7c9db9833313e95ba52df2222c96f5c54e8b614ec55807fcca8ef957d908c"
+}

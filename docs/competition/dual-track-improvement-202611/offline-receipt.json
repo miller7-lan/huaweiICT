@@ -1,0 +1,151 @@
+{
+  "phase": "offline_stage_1",
+  "frozen_code": "fedefb92bb39576468f61e0b781f172b6d6239d2",
+  "reviewed_main": "37e318ca12b33f453f99ab68962ab370a297d3ff",
+  "branch": "codex/dual-track-improvement-202611",
+  "main_core_diff_from_frozen": "",
+  "changed_source_sha256": {
+    "src/gov_mcp/frozen_qa_flow_v3.py": "9ba7a570cab4c8b04e4513c1c8b8fcae1e3c7a6a5fc566625c805a18a677b50c",
+    "src/gov_mcp/frozen_qa_flow_server.py": "fdbfeb0bf41c6e90396b24c90ffe46f541cb94bbc4a8cdf346b70448ab8a30c2",
+    "scripts/dual_track_review.py": "59fe48b8f8f5660fd06f7cb4aa2c31a605265f57459c93e2490bfb2fe04dbc46",
+    "scripts/audit_dual_track.py": "22c48b4a30c1ed6afd022a7a79cc06a52593280ee742cd053d3138447a278168",
+    "tests/test_dual_track_repair.py": "be66cdb2d9981d625d0b17e935c3285166f2c5437f2075f35e883d83c350f418",
+    "tests/test_dual_track_review.py": "d1307079ce78b2e8f79e8b2bcfd1ff971236af96abebc93a9f3a67a7b3d333c9"
+  },
+  "tests": {
+    "tests": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "test_xml_sha256": "606a4144e916d057bcc699df0eb9cbb17bc4364bece3ed9fca9f7433e5a4b3ec",
+  "historical_24_summary_sha256": "8cd586aa03ff3b286b0af19a798b8863f0b6e1ba2e70d5bd0961e80db3b40347",
+  "historical_24_actual_requests": 79,
+  "historical_v3_failure_occurrences": {
+    "ANSWER_QUANTITY_NOT_QUOTED": 5,
+    "ANSWER_QUANTITY_WITHOUT_CLAIM": 1,
+    "DATE_NOT_QUOTED": 4,
+    "NUMBER_NOT_QUOTED": 23,
+    "QUANTITY_NOT_QUOTED": 9
+  },
+  "failure_kinds_with_specific_hints": {
+    "ANSWER_QUANTITY_NOT_QUOTED": true,
+    "ANSWER_QUANTITY_WITHOUT_CLAIM": true,
+    "DATE_NOT_QUOTED": true,
+    "NUMBER_NOT_QUOTED": true,
+    "QUANTITY_NOT_QUOTED": true
+  },
+  "developer_review": {
+    "review_kind": "开发者人工审核",
+    "total": 63,
+    "completed": 0,
+    "pending": 63,
+    "counts": {
+      "正确": 0,
+      "部分正确": 0,
+      "错误": 0,
+      "无法判断": 0
+    },
+    "strict_correct_over_completed": null,
+    "strict_correct_over_judged": null,
+    "by_type": {},
+    "by_batch": {},
+    "note": "分层卡片样本精确率；不能当作整体本体语义质量、召回率或最终问答正确率。"
+  },
+  "new_model_calls": 0,
+  "uploads": 0,
+  "formal_state_changes": 0,
+  "business_quality_measured": false,
+  "merge_recommendation": "NOT_YET_VALIDATED",
+  "note": "Tests use synthetic candidates; no real model improvement or human approval is inferred.",
+  "historical_crossdoc_review_batches": {
+    "bundle_sha256": "cd6399fbb4f650c892fbcf0385f876afe7329fc49f3e5964b23137561a67a53f",
+    "questions": 24,
+    "outputs": 72,
+    "batches": [
+      {
+        "batch": "batch-C01",
+        "questions": [
+          "X01",
+          "X02",
+          "X03"
+        ],
+        "outputs": 9,
+        "sha256": "36db3cd5bfdb6488e701953b76bc2909cfe5e9b62f7b49d0c8ef3801cc728ed9"
+      },
+      {
+        "batch": "batch-C02",
+        "questions": [
+          "X04",
+          "X05",
+          "X06"
+        ],
+        "outputs": 9,
+        "sha256": "b4e9bcbdc32d15907d5ca9591f5d5867292b9347a7c761a0a5dab2721e533ee6"
+      },
+      {
+        "batch": "batch-C03",
+        "questions": [
+          "X07",
+          "X08",
+          "X09"
+        ],
+        "outputs": 9,
+        "sha256": "017928b854483b71d926b5076cf493fcb7f54a2afb3768a32d285f62dea13489"
+      },
+      {
+        "batch": "batch-C04",
+        "questions": [
+          "X10",
+          "X11",
+          "X12"
+        ],
+        "outputs": 9,
+        "sha256": "60cf504f48ded6cab066bdb06cd820ead1f3e5767fd05c9af1ad934b618b92a1"
+      },
+      {
+        "batch": "batch-C05",
+        "questions": [
+          "X13",
+          "X14",
+          "X15"
+        ],
+        "outputs": 9,
+        "sha256": "a6dfc8f69c6cc5ad47c931ad57da5f8d564fcbc9ff2e76f69f689133b61e3c92"
+      },
+      {
+        "batch": "batch-C06",
+        "questions": [
+          "X16",
+          "X17",
+          "X18"
+        ],
+        "outputs": 9,
+        "sha256": "3f5e61d781de0723743b81f82f25a21998d13b40f2ac682804210844d1ba1df0"
+      },
+      {
+        "batch": "batch-C07",
+        "questions": [
+          "X19",
+          "X20",
+          "X21"
+        ],
+        "outputs": 9,
+        "sha256": "c1691e8d7e72b62b9a5517ea6c3cb78c73b8182e2783d9ba7570b45fb2f678a5"
+      },
+      {
+        "batch": "batch-C08",
+        "questions": [
+          "X22",
+          "X23",
+          "X24"
+        ],
+        "outputs": 9,
+        "sha256": "783bceb95265957bd13fec135a97afe42d4ded0bcf150239ac07506918743108"
+      }
+    ],
+    "ratings_completed": 0,
+    "review_kind": "开发者人工审核",
+    "method_key_included": false
+  }
+}

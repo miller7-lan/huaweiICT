@@ -1,0 +1,130 @@
+{
+  "review_kind": "开发者人工审核",
+  "recorded_on": "2026-11-15",
+  "groups": [
+    {
+      "group": "V1原始事实卡",
+      "total": 63,
+      "counts": {
+        "正确": 15,
+        "部分正确": 45,
+        "错误": 3
+      },
+      "ledger": "human-review.csv"
+    },
+    {
+      "group": "V3候选及过滤",
+      "total": 63,
+      "counts": {
+        "部分正确": 8,
+        "正确": 55
+      },
+      "ledger": "human-review-v3.csv"
+    },
+    {
+      "group": "V4受影响候选",
+      "total": 17,
+      "counts": {
+        "正确": 12,
+        "部分正确": 5
+      },
+      "ledger": "human-review-v4.csv"
+    },
+    {
+      "group": "V4.1修复",
+      "total": 2,
+      "counts": {
+        "正确": 2
+      },
+      "ledger": "human-review-v4_1.csv"
+    },
+    {
+      "group": "V4.2修复",
+      "total": 3,
+      "counts": {
+        "正确": 3
+      },
+      "ledger": "human-review-v4_2.csv"
+    },
+    {
+      "group": "OCR四份输出",
+      "total": 4,
+      "counts": {
+        "部分正确": 2,
+        "正确": 2
+      },
+      "ledger": "ocr-human-review.csv"
+    },
+    {
+      "group": "历史模型本体46条",
+      "total": 46,
+      "counts": {
+        "正确": 32,
+        "部分正确": 13,
+        "错误": 1
+      },
+      "ledger": "human-review-ontology46.csv"
+    },
+    {
+      "group": "历史24题三路输出",
+      "total": 72,
+      "counts": {
+        "错误": 14,
+        "部分正确": 22,
+        "正确": 36
+      },
+      "ledger": "human-review-crossdoc24.csv"
+    },
+    {
+      "group": "Skill结构质量",
+      "total": 1,
+      "counts": {
+        "正确": 1
+      },
+      "ledger": "human-review-skill-structure.csv"
+    },
+    {
+      "group": "四维度表述",
+      "total": 4,
+      "counts": {
+        "正确": 1,
+        "部分正确": 3
+      },
+      "ledger": "human-review-competition-claims.csv"
+    },
+    {
+      "group": "本体离线规范化V1新候选",
+      "total": 14,
+      "counts": {
+        "正确": 14
+      },
+      "ledger": "human-review-ontology-normalized.csv"
+    }
+  ],
+  "recorded_decisions": 289,
+  "historical_versions_not_unique_samples": true,
+  "pending_in_prepared_materials": 0,
+  "unified_round": {
+    "total": 124,
+    "counts": {
+      "正确": 71,
+      "部分正确": 38,
+      "错误": 15
+    },
+    "owner_confirmation": "本人逐项核对后确认（可含模型辅助）"
+  },
+  "not_yet_ready": [
+    "独立留出题与新方案真实对照",
+    "多模态新问答同条件对照与模糊失败",
+    "新方法本体新资料及人工耗时",
+    "具备摘要与digest/head的真实更新候选及人工审批/切换/回滚",
+    "Skill真实运行与配置计时",
+    "四维度修改后稿件与正式材料最终核对"
+  ],
+  "note": "289次跨版本本人判断，已备待审0；不代表289份独立资料，未运行的业务验收保持未完成。",
+  "pending_candidate_rechecks": {
+    "version": "ontology-candidate-normalizer-v1",
+    "count": 0,
+    "ledger": "human-review-ontology-normalized.csv"
+  }
+}

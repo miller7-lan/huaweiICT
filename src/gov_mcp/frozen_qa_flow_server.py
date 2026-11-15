@@ -51,7 +51,8 @@ def code_fingerprints():
 
 
 def shown(units):
-    return [{key: item[key] for key in ("rank", "source_id", "locator", "text", "cells") if key in item}
+    return [{key: item[key] for key in ("rank", "source_id", "locator", "text", "cells", "evidence_kind",
+                                      "revision_id", "original_sha256", "calendar_date") if key in item}
             for item in units]
 
 
@@ -62,14 +63,16 @@ class FlowService:
         self.index = EvidenceIndex(units)
         self.units, self.corpus_sha256, self.rules = list(self.index.units), corpus_sha256, rules
         self.follow_up_after_answer = follow_up_after_answer
+        self.implementation = frozen_qa.sha(json.dumps({"sources": code_fingerprints(),
+            "follow_up_after_answer": follow_up_after_answer}, sort_keys=True))
         self.task_dir = Path(task_dir)
         self.task_dir.mkdir(parents=True, exist_ok=True)
         self.lock = threading.Lock()  # one draft at a time; the service is a single process
 
     def answer_rules(self):
         if self.rules == "light":
-            return frozen_qa.COMMON_RULES + flow.LIGHT_RULES
-        return frozen_qa.COMMON_RULES + frozen_qa.PROPOSED_RULES + flow.FLOW_RULES
+            return frozen_qa.COMMON_RULES + flow.LIGHT_RULES + flow.FACT_CHECKLIST_RULES
+        return frozen_qa.COMMON_RULES + frozen_qa.PROPOSED_RULES + flow.FLOW_RULES + flow.FACT_CHECKLIST_RULES
 
     def _path(self, task_id):
         return self.task_dir / (task_id + ".json")
@@ -98,6 +101,7 @@ class FlowService:
         state["pool"] = packet["evidence"]
         state["rounds"].append({"kind": "initial", "added": len(state["pool"])})
         task = {"task_id": secrets.token_urlsafe(24), "question": question, "corpus_sha256": self.corpus_sha256,
+                "implementation": self.implementation,
                 "rules": self.rules, "state": state, "drafts": [], "final": None, "result_kind": None,
                 "stop_origin": None, "final_checks": None}
         with self.lock:
@@ -106,6 +110,7 @@ class FlowService:
                 # Same display aid as the command line: column names for table rows, not citable.
                 "table_column_guide": flow.column_guide(state["pool"]).strip() or None,
                 "answer_rules": self.answer_rules(), "max_drafts": flow.MAX_MODEL_CALLS,
+                "fact_requirements": flow.fact_requirements(question, packet["plan"]),
                 "retrieval_plan": {"version": packet["plan"]["version"], "semantic_coverage_verified": False,
                                    "queries": frozen_qa.query_hints(packet["plan"], state["pool"])},
                 "corpus_sha256": self.corpus_sha256, **frozen_qa.STATUS}
@@ -125,6 +130,8 @@ class FlowService:
             task = json.loads(path.read_text("utf-8"))
             if task["corpus_sha256"] != self.corpus_sha256 or task["rules"] != self.rules:
                 return {"status": "BLOCKED", "error": "TASK_BELONGS_TO_ANOTHER_CORPUS_OR_PROFILE"}
+            if task.get("implementation") != self.implementation:
+                return {"status": "BLOCKED", "error": "TASK_IMPLEMENTATION_CHANGED_OPEN_NEW_TASK"}
             if task["final"] is not None:
                 return self._result(task, replayed=True)
             if len(task["drafts"]) >= flow.MAX_MODEL_CALLS:
@@ -142,7 +149,9 @@ class FlowService:
             base = {"status": "OK", "action": "revise", "task_id": task_id, "drafts_used": state["calls"],
                     "drafts_left": flow.MAX_MODEL_CALLS - state["calls"], **frozen_qa.STATUS}
             if step["action"] == "repair":
-                return {**base, "reason": "FAILED_CHECKS", "failures": step["failures"], "instructions": REVISE_FAILED}
+                return {**base, "reason": "FAILED_CHECKS", "failures": step["failures"],
+                        "repair_feedback": flow.repair_feedback(output, step["failures"], state["pool"]),
+                        "instructions": REVISE_FAILED}
             return {**base, "reason": "MORE_EVIDENCE", "evidence_added": shown(step["added"]),
                     "table_column_guide": flow.column_guide(state["pool"]).strip() or None,
                     "instructions": REVISE_EVIDENCE}

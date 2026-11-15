@@ -70,6 +70,9 @@ def create_app(preview, token, port=8785):
 
 def open_preview(runtime):
     config = json.loads((runtime / "ontology-binding.json").read_text("utf-8"))
+    if config.get("profile") == "reviewed-archive-excerpt-plan-v1":
+        from gov_mcp.archive_skill_preview import ArchiveSkillPreview
+        return ArchiveSkillPreview(runtime, Path(config["plan_path"]))
     if config.get("profile") == "henan-archived-multimodal-v1":
         from gov_mcp.henan_multimodal import HenanMultimodalWorkspace
         from gov_mcp.henan_multimodal_preview import HenanMultimodalPreview

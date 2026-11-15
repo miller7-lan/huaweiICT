@@ -1,0 +1,66 @@
+{
+  "review_kind": "开发者人工审核",
+  "review_method": "本人逐项核对后确认（可含模型辅助）",
+  "outputs": 72,
+  "counts": {
+    "错误": 14,
+    "部分正确": 22,
+    "正确": 36
+  },
+  "anonymous_methods": {
+    "A": {
+      "total": 24,
+      "counts": {
+        "错误": 5,
+        "部分正确": 6,
+        "正确": 13
+      },
+      "expected_answer": 16,
+      "correct_on_expected_answer": 7,
+      "partial_on_expected_answer": 4,
+      "wrong_on_expected_answer": 5,
+      "displayed_stop_on_expected_answer": 5,
+      "expected_stop": 8,
+      "correct_on_expected_stop": 6,
+      "partial_on_expected_stop": 2,
+      "answered_on_expected_stop": 0
+    },
+    "B": {
+      "total": 24,
+      "counts": {
+        "部分正确": 8,
+        "错误": 6,
+        "正确": 10
+      },
+      "expected_answer": 16,
+      "correct_on_expected_answer": 3,
+      "partial_on_expected_answer": 7,
+      "wrong_on_expected_answer": 6,
+      "displayed_stop_on_expected_answer": 8,
+      "expected_stop": 8,
+      "correct_on_expected_stop": 7,
+      "partial_on_expected_stop": 1,
+      "answered_on_expected_stop": 0
+    },
+    "C": {
+      "total": 24,
+      "counts": {
+        "错误": 3,
+        "部分正确": 8,
+        "正确": 13
+      },
+      "expected_answer": 16,
+      "correct_on_expected_answer": 6,
+      "partial_on_expected_answer": 7,
+      "wrong_on_expected_answer": 3,
+      "displayed_stop_on_expected_answer": 5,
+      "expected_stop": 8,
+      "correct_on_expected_stop": 7,
+      "partial_on_expected_stop": 1,
+      "answered_on_expected_stop": 0
+    }
+  },
+  "key_fact_coverage": null,
+  "citation_support_rate": null,
+  "note": "覆盖/引文缺逐事实计数，保持null；展示停止数按冻结参考及输出标签机械统计，不等于错误判定数。A/B/C映射不公开，无新运行，不作为新方案或独立效果。"
+}

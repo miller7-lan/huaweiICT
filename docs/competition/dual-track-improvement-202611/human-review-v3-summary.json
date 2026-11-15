@@ -1,0 +1,33 @@
+{
+  "review_kind": "开发者人工审核",
+  "version": "fact-cards-v3-semantic-candidate",
+  "total_review_tasks": 63,
+  "completed": 63,
+  "pending": 0,
+  "retained_candidates": 62,
+  "filtered_decisions": 1,
+  "by_item_kind": {
+    "retained_candidate": {
+      "completed": 62,
+      "pending": 0,
+      "counts": {
+        "正确": 54,
+        "部分正确": 8,
+        "错误": 0,
+        "无法判断": 0
+      }
+    },
+    "filtered_candidate": {
+      "completed": 1,
+      "pending": 0,
+      "counts": {
+        "正确": 1,
+        "部分正确": 0,
+        "错误": 0,
+        "无法判断": 0
+      }
+    }
+  },
+  "strict_correct_over_reviewed_retained": 0.8709677419354839,
+  "note": "第14项单列过滤合理性，不并入新卡片精确率。不是独立留出、字符正确率或最终问答效果。"
+}

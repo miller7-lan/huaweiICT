@@ -48,7 +48,8 @@ def prepare(workspace):
             raise ValueError("SOURCE_OR_CANDIDATE_CHANGED_USE_NEW_REVIEW_ARTIFACT")
     else:
         write(path, snapshot)
-    state = "PENDING_HUMAN_STRUCTURAL_CONFIRMATION" if record["status"] == "pending_review" else "STRUCTURE_ALREADY_CONFIRMED_CHECK_CURRENT_VERSION"
+    state = {"pending_review": "PENDING_HUMAN_STRUCTURAL_CONFIRMATION", "rejected": "REJECTED_NO_ACTIVATION"}.get(
+        record["status"], "STRUCTURE_ALREADY_CONFIRMED_CHECK_CURRENT_VERSION")
     return {"status": state, "candidate_id": candidate_id,
             "expected_head": status["head"], "artifact": str(path), "new_cloud_calls": 0}
 
@@ -81,13 +82,24 @@ def demonstrate(workspace):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("prepare", "status", "confirm", "demonstrate", "rollback"), nargs="?", default="prepare")
+    parser.add_argument("action", choices=("prepare", "status", "confirm", "reject", "demonstrate", "rollback"), nargs="?", default="prepare")
     parser.add_argument("--candidate")
     parser.add_argument("--expected-head")
     parser.add_argument("--reviewer")
+    parser.add_argument("--reason", help="Reason for an explicit human rejection; never inferred")
     parser.add_argument("--confirmed", action="store_true")
     parser.add_argument("--target")
     args = parser.parse_args()
+    # Reject incomplete approval commands before opening or initializing a workspace.
+    if args.action in ("confirm", "reject", "rollback"):
+        if not args.expected_head or not args.reviewer or not args.confirmed:
+            raise ValueError("EXPLICIT_HEAD_AND_HUMAN_CONFIRMATION_REQUIRED")
+        if args.action in ("confirm", "reject") and not args.candidate:
+            raise ValueError("EXPLICIT_CANDIDATE_REQUIRED")
+        if args.action == "reject" and not args.reason:
+            raise ValueError("EXPLICIT_REJECTION_REASON_REQUIRED")
+        if args.action == "rollback" and not args.target:
+            raise ValueError("EXPLICIT_ROLLBACK_TARGET_REQUIRED")
     workspace = open_workspace()
     if args.action == "prepare": output = prepare(workspace)
     elif args.action == "status": output = workspace.status()
@@ -99,6 +111,11 @@ def main():
         output = {"status": "STRUCTURE_ACTIVATED_NOT_BUSINESS_APPROVAL", "version": version}
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
         write(OUTPUT / ("structural-confirmation-" + stamp + ".json"), output)
+    elif args.action == "reject":
+        if not args.candidate or not args.expected_head or not args.reviewer or not args.confirmed or not args.reason:
+            raise ValueError("EXPLICIT_CANDIDATE_HEAD_HUMAN_AND_REJECTION_REASON_REQUIRED")
+        output = workspace.reject(args.candidate, args.expected_head, args.candidate,
+                                  {"kind": "human", "name": args.reviewer}, args.reason, confirmed=True)
     elif args.action == "demonstrate": output = demonstrate(workspace)
     else:
         if not args.target or not args.expected_head or not args.reviewer or not args.confirmed:

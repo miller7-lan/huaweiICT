@@ -1,0 +1,51 @@
+{
+  "label": "offline_development_comparison",
+  "method": "source_bound_rule_postprocessing",
+  "before_candidates": 46,
+  "after_candidates": 46,
+  "changed_core_candidates": 14,
+  "changed_items": [
+    "O-U1-02",
+    "O-U1-05",
+    "O-U3-02",
+    "O-U3-03",
+    "O-U3-07",
+    "O-U3-08",
+    "O-U4-04",
+    "O-U4-05",
+    "O-U4-06",
+    "O-U4-07",
+    "O-U4-09",
+    "O-U4-10",
+    "O-U5-01",
+    "O-U6-02"
+  ],
+  "unchanged_core_candidates": 32,
+  "field_reference_errors": 0,
+  "new_human_scores": 0,
+  "formal_integration": false,
+  "extraction_seconds": 0.006094,
+  "before_same_condition_seconds": null,
+  "new_api_calls": 0,
+  "model_tokens": 0,
+  "model_cost_usd": 0,
+  "production_changes": 0,
+  "source_candidates_sha256": "165614c05993f8a87de048ba4f8096238ab6d8994a0790928908c90322583438",
+  "definitions_sha256": "199f31098b54ee88049e7dde68585c73888afb0bbdcd0db093c8e6182629a746",
+  "corpus_sha256": "15ffde330d2344d5b2d77a686d297c4722ec290ecd7fe0c97bb1e52fce189529",
+  "normalizer_sha256": "17ac8f49ca8f8a6297e3a96d4ea93ee6ccad309703772a8904cef8cb1bb668c8",
+  "new_candidates_sha256": "8c7d711dc7dca0fe16eca90a6ed8c25dce4073de7ce5e11eb552ac538ac8a876",
+  "review_material_sha256": "7356d90198b3a5972b9ec065b53e039eec5ad1636cca16e9cb339d6031c409a9",
+  "protected_files_unchanged": 14,
+  "review_batches": {
+    "N01": 7,
+    "N02": 7
+  },
+  "note": "14个开发缺陷的定向后处理，32原核心记录逐字不变；不说明新版正确率、泛化、模型抽取质量或人工效率。",
+  "tests": {
+    "passed": 12,
+    "junit_sha256": "190e9741f0f7af6ee30f83f882e39f2860a3a02f6c72414e64405f568f556926"
+  },
+  "corpus_units": 581,
+  "corpus_count_note": "Actual JSON count, correcting historical 591 shorthand; same input SHA and source-unit definitions."
+}

@@ -1,0 +1,109 @@
+{
+  "scope": "offline_implementation_complete_real_acceptance_pending",
+  "corpus_units": 593,
+  "candidate_cards": 2137,
+  "candidate_cards_file_sha256": "b592ce2d0d0095601d03b71d8a7dc84a2daf199cb09b1b738be6642034c2a1ad",
+  "field_reference_errors": 0,
+  "exact_span_errors": 0,
+  "semantic_gaps": {
+    "OBJECT_NOT_BOUND": 90,
+    "APPLICABILITY_NOT_ESTABLISHED": 57,
+    "DATE_ROLE_NOT_ESTABLISHED": 1
+  },
+  "review_sample_retained": 62,
+  "review_sample_filtered": [
+    14
+  ],
+  "sample_candidates_without_object": 1,
+  "previously_correct_values_preserved": 15,
+  "new_human_scores": 0,
+  "new_version_accuracy": null,
+  "model_calls": 0,
+  "upload_calls": 0,
+  "formal_state_changes": 0,
+  "candidate_extraction_seconds": 0.3427363000009791,
+  "tests_unique_latest": {
+    "passed": 162
+  },
+  "test_receipts_sha256": {
+    "dual-track-finish-tests.xml": "3ca5bf5720014274acec6a5dfbe4868d45fa5ec3275999545d9466ebc879838f",
+    "dual-track-finish-recheck.xml": "33e9c6ada5b38fec785cf072feb37b7a226ead22441b4d505e8b2cd515d50195",
+    "dual-track-final-integration.xml": "bd45885e735e1ed48033d4ac67d026a12794a0a7b0cc5d4646aa59cfe3fe38b3",
+    "dual-track-skill-final.xml": "9f42bee5c3b95e79daab3ed7c11d002b390feb589b534e2cc035ea4a37c97112",
+    "dual-track-semantic-delivery.xml": "40d2e6dc40c4ae68a9567d733d7297dfc9600630969297a106da194b7ca057c9",
+    "dual-track-rejection-cli-final.xml": "d2f82a6a8277a67bf7ea1e20f7b090e06ca49f8a7ca62d29f5e520455ae0f0d6"
+  },
+  "source_sha256": {
+    "scripts/extract_fact_cards_v3.py": "d40c79c7fdece22766c979a1763f6d219dca024e3e135f9d9b2d90b89026296b",
+    "scripts/finish_dual_track_offline.py": "d2bec5c01c3bd76f13030dc1c683e8df5f498bc82195fc9c062d207d125e6a23",
+    "scripts/run_ontology_evolution.py": "d982ff2d517f9bbce43997e38f4a2eeb7583b428970bb9fdf4a4373f5b3dc22b",
+    "src/gov_mcp/frozen_qa_flow_v3.py": "2dca9c53297cbb5505a53aa123fbf6076f19aa313c1dea1959f037a7627b3d0f",
+    "src/gov_mcp/frozen_qa_flow_server.py": "5e012cc152c77472795433441dabc7aac45c35e64cead7cf1f778e481ba16096",
+    "src/gov_mcp/ontology_evolution.py": "1e0e3ec06f94843b909f0541f495141d31f18e3cd6aa9502f4e76c9f0dd9c3b7",
+    "src/gov_mcp/ontology_crossdoc_preview_server.py": "aaecc95d325f9b30d749b10a3f1fab165f4dbf641d70900f722db3fa55b12882",
+    "src/gov_mcp/archive_skill_preview.py": "fcd476fae540991093f6370bbdefe4bea475f453216a342cc4725d586f2f3e98",
+    "src/gov_mcp/multimodal_evidence.py": "53a4abc7ee53c8a47f9d7b9279a9b47f96b00813507bfa19b278ff42a5680114",
+    "config/skill-templates/profiles/henan-residence-endorsement.json": "f5a2fbf242d32557eba1df646edf925dd12b84e140cde4eb549499370afd86c2"
+  },
+  "protected_evidence_sha256": {
+    ".runtime\\dual-track-improvement-202611\\cards.jsonl": "8c03282a50d96eec24afe4ec674e06af199c9d412d557390753606857b68bd1f",
+    ".runtime\\dual-track-improvement-202611\\sample.json": "27f02603ffa77429af28289d6bee1aae41e397d2225e6865c93cccc16a342f2e",
+    "docs\\competition\\dual-track-improvement-202611\\human-review.csv": "d465d6b6103d965613015e0d8cae49338bfe4d6cd5877ac8a172fea309f1824c",
+    "docs\\competition\\dual-track-improvement-202611\\human-review-summary.json": "303154f17a08f24b972bb736c665ae9308d370ffe8b79f266633ca10f175aa96",
+    "docs\\competition\\dual-track-improvement-202611\\review-manifest.json": "3685bfe912eae83e266d50a29aa469d1da4a8872b64a9fdd6265bc52a734278c",
+    "docs\\competition\\dual-track-improvement-202611\\fact-cards-v2-offline.json": "608e4e8b5c701bf5777d4159b3d6c026218a860150893931fec0a4d579e3b391"
+  },
+  "skill_migration": {
+    "preflight": {
+      "plan_sha256": "dce0cca66584af0f9a94794b50d0130e6b1c55a8aec547e2f862db7834d21986",
+      "scenario_id": "henan_residence_endorsement_archive",
+      "nodes": 2,
+      "status": "PENDING_HUMAN_STRUCTURE_REVIEW",
+      "execution_operator": "exact_excerpt",
+      "formally_published": false,
+      "formal_approval": false,
+      "current_applicability": "unknown",
+      "business_conclusion_status": "PAUSED_UNREVIEWED"
+    },
+    "shared_method_signatures": {
+      "open_query": [
+        "scenario_id"
+      ],
+      "retrieve": [
+        "task_id"
+      ],
+      "verify": [
+        "task_id"
+      ],
+      "state": [
+        "task_id"
+      ],
+      "finalize": [
+        "task_id"
+      ]
+    },
+    "tool_names": [
+      "govkb_ontology_crossdoc_finalize",
+      "govkb_ontology_crossdoc_open_query",
+      "govkb_ontology_crossdoc_retrieve",
+      "govkb_ontology_crossdoc_state",
+      "govkb_ontology_crossdoc_verify"
+    ],
+    "automated_prepare_seconds": 0.3377822999973432,
+    "human_config_minutes": null,
+    "human_operation_steps": [
+      "核对原件和两条完整条款",
+      "本人确认结构计划及其散列",
+      "另行批准后登记原生草稿并导入Skill",
+      "在界面执行并回交截图和计时"
+    ],
+    "agents_created": 0,
+    "live_deployment": false,
+    "real_human_approval": false,
+    "execution_operator": "exact_excerpt_not_general_ontology_inference"
+  },
+  "ocr_plan_status": "AWAITING_EXPLICIT_USER_UPLOAD_AND_COST_APPROVAL",
+  "independent_holdout_status": "NOT_ESTABLISHED",
+  "merge_recommendation": "WAIT_FOR_HUMAN_AND_REAL_HOLDOUT_ACCEPTANCE",
+  "protected_evidence_unchanged": true
+}

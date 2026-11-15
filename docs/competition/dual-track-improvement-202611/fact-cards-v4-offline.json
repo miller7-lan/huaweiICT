@@ -1,0 +1,68 @@
+{
+  "label": "offline_development_comparison",
+  "unit_count": 593,
+  "before_count": 2137,
+  "after_count": 2137,
+  "changed_semantic_cards": 17,
+  "changed_sample_numbers": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    8,
+    11,
+    13,
+    17,
+    20,
+    37
+  ],
+  "focus_numbers": [
+    1,
+    6,
+    8,
+    11,
+    13,
+    17,
+    20,
+    37
+  ],
+  "human_review_completed": 0,
+  "field_reference_errors": 0,
+  "same_card_ids_values_types_spans": true,
+  "extraction_elapsed_seconds": 0.436029,
+  "before_extraction_elapsed_seconds": null,
+  "new_api_calls": 0,
+  "model_tokens": 0,
+  "model_cost_usd": 0,
+  "business_state_changes": 0,
+  "corpus_sha256": "d5b5458c44a66ba0b3639959ded8be89d2579080d238444289f5f0243e3c5a89",
+  "before_cards_sha256": "8e71c8e3fc6cf3004c31b489390702e87d2fe924a7c4da5e94ffa35cfeb63163",
+  "after_cards_sha256": "5c633a12658f8fdf23db45ae9477643655cc1178346c330d4da73596de7d9215",
+  "extractor_sha256": "3fad2a738c4a587d64ebfed746c686eb4e79e46439f0217ff93057c3965ea2af",
+  "baseline_extractor_sha256": "f506ffde34d16b14b2800f6b32c39e4794c098453d533ebf3afb65f8f43f6c63",
+  "protected_evidence_sha256": {
+    "human-review.csv": "d465d6b6103d965613015e0d8cae49338bfe4d6cd5877ac8a172fea309f1824c",
+    "human-review-summary.json": "303154f17a08f24b972bb736c665ae9308d370ffe8b79f266633ca10f175aa96",
+    "human-review-v3.csv": "2622ac0e0643e21f24a322e90ac9dad7dcf01cfdebd4183c4e0e46f28c524a39",
+    "human-review-v3-summary.json": "4e605133bf9435374a34b7b9d41b800dc27f530b6dbd08846694f327b6c84234",
+    "ocr-human-review.csv": "01f7c9db9833313e95ba52df2222c96f5c54e8b614ec55807fcca8ef957d908c",
+    "ocr-human-review-summary.json": "9b8e2fc7afe5b3f54d110c850ae72c90edd6a39fdc8693bcfdc10c08324fd186"
+  },
+  "note": "同输入离线开发对比；规则检查和精确字符匹配不等于业务正确，未形成新版人工成绩或独立效果。",
+  "review_batches": {
+    "A": 8,
+    "B": 9
+  },
+  "review_material_sha256": {
+    "human-review-eight.csv": "cc6a2692303986df8bf642aa8c15ae1dba12fe747a8fb4e62989e634a1917a7e",
+    "human-review-eight.md": "47b4ff71386b37a9bbbdab7415e8b19852a88a313b641c4a4d7d49f97cc21aa9",
+    "human-review-remaining-nine.md": "c325f33afd41ece5e8ada84833f368914bfdf6f325d7082ee9dd10853bd77dbe"
+  },
+  "test_result": {
+    "passed": 21,
+    "failures": 0,
+    "scope": "V4针对性检查和既有语义保护检查"
+  },
+  "test_junit_sha256": "2b8fe4211e087614a3a74c3440a64605229b623ed8aa8423110577628aa12aad"
+}

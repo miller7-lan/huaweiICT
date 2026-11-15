@@ -205,6 +205,34 @@ class OntologyWorkspace:
             self.store.put("candidates", candidate_id, record, db)
             return version
 
+    def reject(self, candidate_id, expected_head, candidate_sha256, actor, reason, *, confirmed=False):
+        """Record explicit human rejection without publishing or activating any version.
+
+        Rejection may close a stale-source candidate. It never revives a source,
+        accepts an update, or substitutes machine review for a person's decision.
+        """
+        actor = self._actor(actor, confirmed)
+        if type(reason) is not str or not 1 <= len(reason.strip()) <= 1000:
+            raise ValueError("EXPLICIT_REJECTION_REASON_REQUIRED_MAX_1000")
+        with self.store.db(True) as db:
+            head = self.store.get("state", "active_rules", db)
+            if head != expected_head:
+                raise ValueError("BASE_VERSION_CHANGED")
+            self._version(head)
+            record = self.store.get("candidates", candidate_id, db)
+            if not record or record["status"] != "pending_review":
+                raise ValueError("CANDIDATE_NOT_PENDING")
+            actual = digest({"proposal": record["proposal"], "source_binding": record["source_binding"]})
+            if actual != candidate_id or candidate_sha256 != candidate_id:
+                raise ValueError("CANDIDATE_DIGEST_CHANGED")
+            decision = {"actor": actor, "reason": reason, "reviewed_at": self.store.clock(),
+                        "expected_head": head, "scope": "rejection_only_not_business_approval"}
+            record.update(status="rejected", rejection=decision)
+            self.store.put("candidates", candidate_id, record, db)
+            self.store.audit("ontology_candidate_rejected", {"candidate_id": candidate_id, **decision}, db)
+            return {"candidate_id": candidate_id, "status": "rejected", "head": head,
+                    "formally_published": False, "business_conclusion_status": "PAUSED_UNREVIEWED"}
+
     def _guard_version(self, version, current):
         for instance in version["data"]["instances"]:
             proposal = self._proposal(instance["proposal"])

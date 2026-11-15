@@ -1,0 +1,80 @@
+{
+  "experiment": "offline_known_case_development_replay",
+  "baseline_version": "fact-cards-v1",
+  "candidate_version": "fact-cards-v2-candidate",
+  "corpus_units": 593,
+  "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+  "baseline_cards_sha256": "855502bffe07af8de96defdf91bb1ecd128b53c983e2811d5b71c1508652c0ea",
+  "candidate_cards_sha256": "8b14552ddd7357a8367b835999cb727796db47bac1d24e08c124a35af23536dd",
+  "baseline_cards": 2139,
+  "candidate_cards": 2137,
+  "by_type_before": {
+    "table_cell": 888,
+    "document_number": 1119,
+    "year": 22,
+    "duration": 73,
+    "date": 14,
+    "amount": 3,
+    "count": 20
+  },
+  "by_type_after": {
+    "table_cell": 888,
+    "document_number": 1119,
+    "year": 22,
+    "duration": 53,
+    "date": 14,
+    "amount": 3,
+    "count": 38
+  },
+  "cell_span_binding_errors_before": 90,
+  "cell_span_binding_errors_after": 0,
+  "exact_span_mismatches_before": 0,
+  "exact_span_mismatches_after": 0,
+  "sample_changed_numbers": [
+    11,
+    13,
+    14,
+    55,
+    56
+  ],
+  "sample_unchanged": 58,
+  "baseline_duplicate_card_id_entries": 47,
+  "candidate_duplicate_card_id_entries": 0,
+  "retained_card_ids": 2027,
+  "removed_card_ids": 65,
+  "added_card_ids": 110,
+  "wall_seconds_single_local_run": {
+    "baseline": 0.13934380000137025,
+    "candidate": 0.1434637999991537
+  },
+  "tests": {
+    "tests": 19,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": {
+    "extract_fact_cards.py": "f5c31a96dbd8f3d21743a6d9184833113eac082930b153cd176baa966d24c7c2",
+    "extract_fact_cards_v2.py": "8353e48561bf816974d5d26feaa7080ab83803ee7bd5917a0eaa639bc4f79545",
+    "compare_fact_cards_v2.py": "4633e22f8c55ec3529c5a45ff47f10b580b774f44c8ee7c19ee1b6a8366913b6"
+  },
+  "new_model_calls": 0,
+  "token_cost": 0,
+  "new_human_scores": 0,
+  "business_quality_measured": false,
+  "old_evidence_sha256": {
+    "human-review.csv": "d465d6b6103d965613015e0d8cae49338bfe4d6cd5877ac8a172fea309f1824c",
+    "human-review-summary.json": "303154f17a08f24b972bb736c665ae9308d370ffe8b79f266633ca10f175aa96",
+    "sample.json": "27f02603ffa77429af28289d6bee1aae41e397d2225e6865c93cccc16a342f2e",
+    "cards.jsonl": "8c03282a50d96eec24afe4ec674e06af199c9d412d557390753606857b68bd1f",
+    "review-manifest.json": "3685bfe912eae83e266d50a29aa469d1da4a8872b64a9fdd6265bc52a734278c"
+  },
+  "candidate_private_file_sha256": "9f8845b992011664b4bf02cb2da2df2b21e718e6c3639752ee899bbe73450ff7",
+  "limitations": [
+    "已知样本开发对照，非独立留出",
+    "对象/条件/日期角色/完整文号仍有缺口",
+    "单次本地计时不用于性能推广",
+    "未装载问答或Nexent，未改正式状态"
+  ],
+  "old_evidence_unchanged": true
+}

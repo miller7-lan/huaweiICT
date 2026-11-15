@@ -1,0 +1,176 @@
+{
+  "experiment": "approved_real_ocr_two_images_two_purposes_development",
+  "approved_max_requests": 4,
+  "actual_requests": 4,
+  "responses_received": 4,
+  "http_200": 4,
+  "qa_requests": 0,
+  "automatic_retries": 0,
+  "human_reviews_completed": 0,
+  "provider_length_limit_hits": 0,
+  "provider_finished_is_not_semantic_completeness": true,
+  "elapsed_seconds": 14.81199999999808,
+  "by_purpose": {
+    "text_recognition": {
+      "requests": 2,
+      "elapsed_seconds": 8.0779999999977,
+      "input_tokens_reference": 1270,
+      "output_tokens_reference": 1013
+    },
+    "rich_layout_recognition": {
+      "requests": 2,
+      "elapsed_seconds": 6.703000000001339,
+      "input_tokens_reference": 1300,
+      "output_tokens_reference": 1472
+    }
+  },
+  "entries": [
+    {
+      "attempt": 1,
+      "original_page": 5,
+      "purpose": "text_recognition",
+      "recognition_id": "ocr-12ff688b-2e92-4527-a46f-a49c4c3d3379",
+      "http_status": 200,
+      "elapsed_seconds": 3.436999999998079,
+      "finish_reason": "stop",
+      "provider_finished_without_length_truncation": true,
+      "human_reviewed": false,
+      "fact_completeness_verified": false,
+      "ocr_model_version_returned": null,
+      "raw_text_characters_including_markup": 681,
+      "layout_block_types": {},
+      "posthoc_lexical_probes_not_quality_score": {
+        "title_year": true,
+        "document_date": true,
+        "loss_reporting_condition": true
+      },
+      "usage_reference_not_billing": {
+        "input_tokens": 635,
+        "output_tokens": 407,
+        "total_tokens": 1042
+      },
+      "source_id": "HN-MEASURES-2021-PDF",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "image_sha256": "c235b11699fa32b9bdf9a7b9d19dc0a58fa8b0e95a1a51f0765fa1943234d80b",
+      "raw_response_file_sha256": "9fe965c6d775b671a2a96324e97ebc8428081b7705670dacdc88a54aed515091",
+      "candidate_file_sha256": "d5193409c728e00041757a4f39423020b9b92122e7d46422ba760520aae07ca8"
+    },
+    {
+      "attempt": 2,
+      "original_page": 5,
+      "purpose": "rich_layout_recognition",
+      "recognition_id": "ocr-18744f4f-c3b8-43e0-aebd-1ef152a293de",
+      "http_status": 200,
+      "elapsed_seconds": 2.4840000000003783,
+      "finish_reason": "stop",
+      "provider_finished_without_length_truncation": true,
+      "human_reviewed": false,
+      "fact_completeness_verified": false,
+      "ocr_model_version_returned": null,
+      "raw_text_characters_including_markup": 1465,
+      "layout_block_types": {
+        "text": 8,
+        "image": 1,
+        "page_number": 2,
+        "title": 4
+      },
+      "posthoc_lexical_probes_not_quality_score": {
+        "title_year": true,
+        "document_date": false,
+        "loss_reporting_condition": true
+      },
+      "usage_reference_not_billing": {
+        "input_tokens": 650,
+        "output_tokens": 613,
+        "total_tokens": 1263
+      },
+      "source_id": "HN-MEASURES-2021-PDF",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "image_sha256": "c235b11699fa32b9bdf9a7b9d19dc0a58fa8b0e95a1a51f0765fa1943234d80b",
+      "raw_response_file_sha256": "21be90474a7a74ae7cfa7e16522e3b7cbaff8988c555509fd0413dae3e78ddcf",
+      "candidate_file_sha256": "51fdaa6ab280d732234d02a667a621a114940b07ee0650721655eee192d8f1b4"
+    },
+    {
+      "attempt": 3,
+      "original_page": 6,
+      "purpose": "text_recognition",
+      "recognition_id": "ocr-d71e8eab-a468-4d44-8866-97e649c73e14",
+      "http_status": 200,
+      "elapsed_seconds": 4.640999999999622,
+      "finish_reason": "stop",
+      "provider_finished_without_length_truncation": true,
+      "human_reviewed": false,
+      "fact_completeness_verified": false,
+      "ocr_model_version_returned": null,
+      "raw_text_characters_including_markup": 1105,
+      "layout_block_types": {},
+      "posthoc_lexical_probes_not_quality_score": {
+        "starting_event": true,
+        "old_new_days": true
+      },
+      "usage_reference_not_billing": {
+        "input_tokens": 635,
+        "output_tokens": 606,
+        "total_tokens": 1241
+      },
+      "source_id": "HN-MEASURES-2021-PDF",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "image_sha256": "b6adb0ea3e9d1cdd646e1071ede1288390768d28fd3dc7840ef12f7c5cc889d4",
+      "raw_response_file_sha256": "798cc8c7b55ad4812c1e286fdbcd498a3da65133d73ba97fc0d6aece0cb32ed7",
+      "candidate_file_sha256": "4a206e14f48a4097f2eb5cc74c0f984eb36a8803aa092c17ad3c782f3e29be55"
+    },
+    {
+      "attempt": 4,
+      "original_page": 6,
+      "purpose": "rich_layout_recognition",
+      "recognition_id": "ocr-e16f3f88-8472-4c53-bd62-8ed18049541b",
+      "http_status": 200,
+      "elapsed_seconds": 4.21900000000096,
+      "finish_reason": "stop",
+      "provider_finished_without_length_truncation": true,
+      "human_reviewed": false,
+      "fact_completeness_verified": false,
+      "ocr_model_version_returned": null,
+      "raw_text_characters_including_markup": 2011,
+      "layout_block_types": {
+        "text": 10,
+        "title": 5,
+        "page_number": 2
+      },
+      "posthoc_lexical_probes_not_quality_score": {
+        "starting_event": true,
+        "old_new_days": true
+      },
+      "usage_reference_not_billing": {
+        "input_tokens": 650,
+        "output_tokens": 859,
+        "total_tokens": 1509
+      },
+      "source_id": "HN-MEASURES-2021-PDF",
+      "original_sha256": "db257f4c918d95d6212c92262309ddd9a10ef33ec5354e0bbbf954df1ac52eff",
+      "image_sha256": "b6adb0ea3e9d1cdd646e1071ede1288390768d28fd3dc7840ef12f7c5cc889d4",
+      "raw_response_file_sha256": "ac861bf6ec8b6c6abeacbf445b45a2f1a7b38fbdae18a1a58bc22831a54a126c",
+      "candidate_file_sha256": "5227f89dbd1f90104a40abebd45e4838a9566f49d5caa9b70000f7ce2d5e42b9"
+    }
+  ],
+  "actual_account_charge_usd": null,
+  "estimated_page_charge_usd_at_checked_official_price": 0.0009,
+  "approved_max_usd": 1,
+  "price_usd_per_1000_pages": 0.225,
+  "price_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "usage_tokens_are_reference_not_ocr_billing_basis": true,
+  "source_and_upload_hashes_verified": true,
+  "https_certificate_verification": true,
+  "system_proxy_preserved": true,
+  "formal_state_changes": 0,
+  "original_human_review_63_unchanged": true,
+  "important_posthoc_observation": "Page5 rich_layout text omits the document date visible in the image; text_recognition contains it. Rich layout labels the stamp/date region as an image.",
+  "limits": [
+    "Only two clear archive page images, no OCR character gold standard",
+    "No final QA, Excel or HTML comparison in this run",
+    "Posthoc lexical probes are diagnostic only",
+    "No real human quality rating yet; OCR underlying model version not returned"
+  ],
+  "approval_file_sha256": "1358e2c7423223b945dc1cc56ba12015694cfe30798df8ae8071a75976d297b4",
+  "plan_file_sha256": "62c645e7e91012a0891417282589c4bbf4ce9ada71d1ac644f7175987cdfff45"
+}

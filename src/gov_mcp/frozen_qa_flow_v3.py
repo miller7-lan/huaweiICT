@@ -94,6 +94,10 @@ def names_source(unit):
             or bool(DOCUMENT_HEADING.fullmatch(unit["text"])))
 
 
+def evidence_version(unit):
+    return (*source_key(unit), unit.get("revision"))
+
+
 def attach_source_titles(output, pool, units):
     """Cite the corpus units that name each cited source; the pool gains them if absent.
 
@@ -105,11 +109,11 @@ def attach_source_titles(output, pool, units):
     by_identity = {identity(item): item for item in pool}
     cited = [by_identity[key] for item in output["assertions"]
              if (key := (item["source_id"], item["locator"])) in by_identity]
-    sources = {source_key(unit) for unit in cited}
+    sources = {evidence_version(unit) for unit in cited}
     have = {(item["source_id"], item["locator"]) for item in output["assertions"]}
     added = []
     for unit in units:
-        if names_source(unit) and source_key(unit) in sources and identity(unit) not in have:
+        if names_source(unit) and evidence_version(unit) in sources and identity(unit) not in have:
             if identity(unit) not in by_identity:
                 pool.append({**unit, "rank": len(pool) + 1, "score": 0})
                 by_identity[identity(unit)] = pool[-1]
@@ -181,7 +185,14 @@ def check(output, pool):
     result = verify(mask_quoted_document_numbers(output, pool), pool)
     failures = list(result["failures"])
     if output["outcome"] == "answer":
+        versions = {}
+        identities = {}
+        for unit in pool:
+            versions.setdefault(unit["source_id"], set()).add(evidence_version(unit))
+            identities.setdefault(identity(unit), set()).add((evidence_version(unit), unit["text"]))
         for index, item in enumerate(output["assertions"], 1):
+            if len(versions.get(item["source_id"], ())) > 1 or len(identities.get((item["source_id"], item["locator"]), ())) > 1:
+                failures.append(f"A{index}_SOURCE_VERSION_AMBIGUOUS")
             quote, claim = item["quote"], item["claim"]
             if (any(word in quote for word in FORBID) and not any(word in quote for word in PERMIT)
                     and any(word in claim for word in PERMIT) and not any(word in claim for word in FORBID)):
@@ -416,6 +427,20 @@ def column_guide(pool):
     return COLUMN_GUIDE + "\n".join(lines) if lines else ""
 
 
+FACT_CHECKLIST_RULES = ("\n逐项检查问题所需事实：事项/对象、适用条件、数值及单位、时间角色和来源版本。"
+                        "下列清单仅是阅读计划，不是证据或已完成的覆盖核验。每一项有依据才写结论；"
+                        "没有依据的项明确写入unknowns。保留不同文件的旧新关系、例外与未知项，不借其他结论的数字。")
+
+
+def fact_requirements(question, plan):
+    """Question-derived reading slots, never a claim of semantic coverage."""
+    parts = [lane["query"] for lane in plan.get("queries", []) if lane["id"].startswith("part-")]
+    wanted = list(dict.fromkeys(parts or [question]))[:4]
+    return [{"id": f"F{i}", "question_part": part,
+             "check": ["事项与对象", "适用条件和例外", "数值与计量单位", "日期角色与旧新关系", "来源与修订"],
+             "semantic_coverage_verified": False} for i, part in enumerate(wanted, 1)]
+
+
 def _messages(question, pool, context, plan, rules="strict"):
     if rules == "light":
         messages = build_messages(question, pool, "baseline", context)
@@ -423,14 +448,65 @@ def _messages(question, pool, context, plan, rules="strict"):
     else:
         messages = build_messages(question, pool, "proposed", context, plan)
         messages[0]["content"] += FLOW_RULES
-    messages[1]["content"] += column_guide(pool)
+    messages[0]["content"] += FACT_CHECKLIST_RULES
+    messages[1]["content"] += column_guide(pool) + "\n所需事实阅读清单（非证据）：\n" + json.dumps(
+        fact_requirements(question, plan), ensure_ascii=False)
     return messages
 
 
-def _repair(output, failures):
+REPAIR_HINTS = {
+    "SOURCE_VERSION_AMBIGUOUS": "同一来源混入不同修订或同定位不同正文；不能跨版本借证据。删除无法隔离版本的结论，并将冲突列为缺项。",
+    "CITATION_NOT_RETRIEVED": "改用本轮已检索的来源和定位；不能补造引用。",
+    "QUOTE_NOT_IN_SOURCE": "从对应定位复制连续原文，保留对象、条件和单位。",
+    "QUANTITY_NOT_QUOTED": "核对本条结论自己的引文，按对象、数值和单位修正；不能借用其他结论的数字。",
+    "ANSWER_QUANTITY_NOT_QUOTED": "修正摘要中的数值与单位，并保留它们各自的适用条件。",
+    "ANSWER_QUANTITY_WITHOUT_CLAIM": "摘要的每组数值必须对应已核验的结论；没有依据时删除并列入缺项。",
+    "NUMBER_NOT_QUOTED": "核对数字用途；文书年份需同来源标题或文头，业务数字需正文依据。",
+    "DATE_NOT_QUOTED": "区分文书日期、网页发布、网页修改和施行日期；不能互相替代。",
+    "DAY_UNIT_NOT_QUOTED": "照抄引文的日类型，不能把日补成工作日或自然日。",
+    "PROHIBITION_STATED_AS_PERMISSION": "保留原文的禁止、例外和适用条件，不得把否定转成允许。",
+    "FIRST_ISSUE_OLD_FEE_DOCUMENT_YEAR_REQUIRED": "旧首次申领收费与文件年份同时说明，不推断当前应缴金额。",
+    "FIRST_ISSUE_WAIVER_EFFECTIVE_DATE_REQUIRED": "停征结论须引用停征起始日期，不用网页日期替代。",
+    "ANSWER_WITHOUT_ASSERTIONS": "将有来源的结论逐条列入 assertions；没有依据的部分列入 unknowns。",
+}
+
+
+def repair_feedback(output, failures, pool=()):
+    """Address failed claims without changing what passes, or inventing a correction.
+
+    Global failures remain global: the verifier does not identify a responsible
+    assertion for every date/number failure. Source versions describe the cited
+    unit only and do not establish semantic support or current validity.
+    """
+    units = {identity(unit): unit for unit in pool}
+    result = []
+    for failure in dict.fromkeys(failures):
+        code, _, detail = failure.partition(":")
+        match = re.fullmatch(r"A(\d+)_(.+)", code)
+        index = int(match[1]) if match else None
+        kind = match[2] if match else code
+        item = {"code": failure, "scope": "assertion" if index else "output",
+                "instruction": REPAIR_HINTS.get(kind, "按原证据重新核对；无法修正则保留可靠部分并明确缺项。")}
+        if detail:
+            item["unsupported_value"] = detail
+        if index:
+            item["assertion_index"] = index
+            if index <= len(output["assertions"]):
+                assertion = output["assertions"][index - 1]
+                item["citation"] = {key: assertion[key] for key in ("source_id", "locator")}
+                unit = units.get((assertion["source_id"], assertion["locator"]))
+                if unit:
+                    item["source_version"] = {key: unit[key] for key in
+                                              ("revision_id", "original_sha256") if key in unit}
+        result.append(item)
+    return result
+
+
+def _repair(output, failures, pool=()):
     return [{"role": "assistant", "content": json.dumps(output, ensure_ascii=False)},
             {"role": "user", "content": (
-                "上一次输出未通过确定性核验，错误码：" + "、".join(failures) + "。\n"
+                "上一次输出未通过确定性核验，逐项反馈（仅为修复提示，不是新证据）：\n"
+                + json.dumps(repair_feedback(output, failures, pool), ensure_ascii=False) + "\n"
                 "请只依据同一组证据重新输出完整 JSON：source_id 与 locator 照抄证据标注；quote 必须是该证据原文的连续片段；"
                 "每条 claim 的金额、期限、日期及单位必须出现在它自己的 quote 中；用年份指称文件时另引该文件的标题或文头；"
                 "原文为否定的不得写成可以。无法改正的结论请删除，并把对应缺项写入 unknowns。")}]
@@ -503,4 +579,4 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
                       claims_dropped=state["claims_dropped"], claims_excerpted=state["claims_excerpted"])
         if step["action"] == "final":
             return finish(step["final"], step["kind"], step["origin"])
-        extra = _repair(raw, step["failures"]) if step["action"] == "repair" else []
+        extra = _repair(raw, step["failures"], pool) if step["action"] == "repair" else []
