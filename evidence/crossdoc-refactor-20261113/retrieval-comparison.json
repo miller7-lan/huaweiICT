@@ -1,0 +1,543 @@
+{
+  "status": "DEVELOPER_RETRIEVAL_COMPARISON_ONLY",
+  "model_calls": 0,
+  "business_accuracy_measured": false,
+  "independent_holdout": false,
+  "notes": "Known-source developer probes; target locators are not exhaustive semantic gold labels. Context lengths differ. No old formal scores changed.",
+  "corpus_sha256": "1e556dad8e703ada6c1680289415f6e74eeec772c856b0a542138874592c4fce",
+  "probes_sha256": "c533efcf92502d2af33e2bfb31cac954d0435715d5bc3d69304ac7ab687090e6",
+  "before_sha256": "138b0f8f89778da2d196a2359da44e87c7de8cae8196d018f18b1feeb04d880b",
+  "after_source_sha256": {
+    "frozen_qa.py": "e68271028e5d48b21c81744d315ed9debc6c2a130573ad2211c5007e2ed00aea",
+    "frozen_qa_server.py": "56bd37fd74aba39ea0a0d92da4aa95fcdb43953e76dec2aadf18a037b735eff8",
+    "frozen_retrieval.py": "c3a671cee8e66059bc4f98c470139fb92bca5e5d040e7b97a0f54e292e5bbd39"
+  },
+  "totals": {
+    "literal_top5": {
+      "found": 16,
+      "targets": 22,
+      "complete_questions": 5,
+      "questions": 10,
+      "mean_units": 5.0,
+      "mean_characters": 846.8,
+      "mean_prompt_characters": 1789.4
+    },
+    "before_linked": {
+      "found": 21,
+      "targets": 22,
+      "complete_questions": 9,
+      "questions": 10,
+      "mean_units": 9.4,
+      "mean_characters": 1057.9,
+      "mean_prompt_characters": 2313.3
+    },
+    "after_primary": {
+      "found": 19,
+      "targets": 22,
+      "complete_questions": 8,
+      "questions": 10,
+      "mean_units": 7.0,
+      "mean_characters": 951.4,
+      "mean_prompt_characters": 2022.2
+    },
+    "after_with_context": {
+      "found": 22,
+      "targets": 22,
+      "complete_questions": 10,
+      "questions": 10,
+      "mean_units": 15.3,
+      "mean_characters": 1372.2,
+      "mean_prompt_characters": 3915.1
+    }
+  },
+  "cases": [
+    {
+      "id": "R01",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 5,
+          "characters": 863,
+          "prompt_characters": 1754,
+          "retrieval_ms": 9.895
+        },
+        "before_linked": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 5,
+          "characters": 863,
+          "prompt_characters": 1754,
+          "retrieval_ms": 17.95
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 928,
+          "prompt_characters": 2016,
+          "retrieval_ms": 20.158
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 12,
+          "characters": 1243,
+          "prompt_characters": 3317,
+          "retrieval_ms": 19.356
+        }
+      }
+    },
+    {
+      "id": "R02",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 1,
+          "complete": false,
+          "missing": [
+            [
+              "MOF-FEE-2007",
+              "正文段落6"
+            ]
+          ],
+          "units": 5,
+          "characters": 1516,
+          "prompt_characters": 2411,
+          "retrieval_ms": 9.754
+        },
+        "before_linked": {
+          "found": 1,
+          "complete": false,
+          "missing": [
+            [
+              "MOF-FEE-2007",
+              "正文段落6"
+            ]
+          ],
+          "units": 5,
+          "characters": 1516,
+          "prompt_characters": 2411,
+          "retrieval_ms": 10.091
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 1108,
+          "prompt_characters": 2150,
+          "retrieval_ms": 20.929
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 10,
+          "characters": 1417,
+          "prompt_characters": 3341,
+          "retrieval_ms": 21.311
+        }
+      }
+    },
+    {
+      "id": "R03",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 5,
+          "characters": 779,
+          "prompt_characters": 1773,
+          "retrieval_ms": 11.206
+        },
+        "before_linked": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 10,
+          "characters": 936,
+          "prompt_characters": 2268,
+          "retrieval_ms": 20.494
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 950,
+          "prompt_characters": 2040,
+          "retrieval_ms": 23.072
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 16,
+          "characters": 1361,
+          "prompt_characters": 4124,
+          "retrieval_ms": 22.716
+        }
+      }
+    },
+    {
+      "id": "R04",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 1,
+          "complete": false,
+          "missing": [
+            [
+              "HN-MEASURES-2024-JY",
+              "正文段落1"
+            ]
+          ],
+          "units": 5,
+          "characters": 896,
+          "prompt_characters": 1799,
+          "retrieval_ms": 10.819
+        },
+        "before_linked": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 15,
+          "characters": 1401,
+          "prompt_characters": 2974,
+          "retrieval_ms": 22.504
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 1020,
+          "prompt_characters": 2086,
+          "retrieval_ms": 23.459
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 17,
+          "characters": 1389,
+          "prompt_characters": 4278,
+          "retrieval_ms": 23.529
+        }
+      }
+    },
+    {
+      "id": "R05",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 5,
+          "characters": 564,
+          "prompt_characters": 1479,
+          "retrieval_ms": 10.146
+        },
+        "before_linked": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 12,
+          "characters": 1103,
+          "prompt_characters": 2556,
+          "retrieval_ms": 21.145
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 1055,
+          "prompt_characters": 2109,
+          "retrieval_ms": 22.714
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 19,
+          "characters": 1521,
+          "prompt_characters": 4738,
+          "retrieval_ms": 22.853
+        }
+      }
+    },
+    {
+      "id": "R06",
+      "target_count": 3,
+      "methods": {
+        "literal_top5": {
+          "found": 2,
+          "complete": false,
+          "missing": [
+            [
+              "HN-FEE-CATALOG-XLSX-2025",
+              "Excel工作表行政事业性收费!第4行"
+            ]
+          ],
+          "units": 5,
+          "characters": 616,
+          "prompt_characters": 1559,
+          "retrieval_ms": 11.468
+        },
+        "before_linked": {
+          "found": 3,
+          "complete": true,
+          "missing": [],
+          "units": 14,
+          "characters": 1060,
+          "prompt_characters": 2611,
+          "retrieval_ms": 23.997
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": false,
+          "missing": [
+            [
+              "HN-FEE-CATALOG-XLSX-2025",
+              "Excel工作表行政事业性收费!第4行"
+            ]
+          ],
+          "units": 7,
+          "characters": 849,
+          "prompt_characters": 1929,
+          "retrieval_ms": 30.494
+        },
+        "after_with_context": {
+          "found": 3,
+          "complete": true,
+          "missing": [],
+          "units": 19,
+          "characters": 1302,
+          "prompt_characters": 4320,
+          "retrieval_ms": 31.029
+        }
+      }
+    },
+    {
+      "id": "R07",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 5,
+          "characters": 1142,
+          "prompt_characters": 2039,
+          "retrieval_ms": 9.97
+        },
+        "before_linked": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 5,
+          "characters": 1142,
+          "prompt_characters": 2039,
+          "retrieval_ms": 19.447
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 947,
+          "prompt_characters": 1941,
+          "retrieval_ms": 22.43
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 11,
+          "characters": 1621,
+          "prompt_characters": 3485,
+          "retrieval_ms": 21.917
+        }
+      }
+    },
+    {
+      "id": "R08",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 1,
+          "complete": false,
+          "missing": [
+            [
+              "HN-MEASURES-2024-JY",
+              "正文段落19"
+            ]
+          ],
+          "units": 5,
+          "characters": 849,
+          "prompt_characters": 1835,
+          "retrieval_ms": 12.126
+        },
+        "before_linked": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 11,
+          "characters": 1045,
+          "prompt_characters": 2437,
+          "retrieval_ms": 23.916
+        },
+        "after_primary": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 997,
+          "prompt_characters": 2091,
+          "retrieval_ms": 27.898
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 16,
+          "characters": 1528,
+          "prompt_characters": 4365,
+          "retrieval_ms": 27.717
+        }
+      }
+    },
+    {
+      "id": "R09",
+      "target_count": 2,
+      "methods": {
+        "literal_top5": {
+          "found": 0,
+          "complete": false,
+          "missing": [
+            [
+              "HN-MEASURES-2026",
+              "网页发布日期（meta:PubDate）"
+            ],
+            [
+              "HN-MEASURES-2026",
+              "网页最后修改日期（meta:lastmodifiedtime）"
+            ]
+          ],
+          "units": 5,
+          "characters": 691,
+          "prompt_characters": 1790,
+          "retrieval_ms": 6.511
+        },
+        "before_linked": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 10,
+          "characters": 928,
+          "prompt_characters": 2456,
+          "retrieval_ms": 6.627
+        },
+        "after_primary": {
+          "found": 0,
+          "complete": false,
+          "missing": [
+            [
+              "HN-MEASURES-2026",
+              "网页发布日期（meta:PubDate）"
+            ],
+            [
+              "HN-MEASURES-2026",
+              "网页最后修改日期（meta:lastmodifiedtime）"
+            ]
+          ],
+          "units": 7,
+          "characters": 863,
+          "prompt_characters": 2054,
+          "retrieval_ms": 8.402
+        },
+        "after_with_context": {
+          "found": 2,
+          "complete": true,
+          "missing": [],
+          "units": 17,
+          "characters": 1146,
+          "prompt_characters": 3320,
+          "retrieval_ms": 8.081
+        }
+      }
+    },
+    {
+      "id": "R10",
+      "target_count": 3,
+      "methods": {
+        "literal_top5": {
+          "found": 3,
+          "complete": true,
+          "missing": [],
+          "units": 5,
+          "characters": 552,
+          "prompt_characters": 1455,
+          "retrieval_ms": 9.344
+        },
+        "before_linked": {
+          "found": 3,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 585,
+          "prompt_characters": 1627,
+          "retrieval_ms": 18.702
+        },
+        "after_primary": {
+          "found": 3,
+          "complete": true,
+          "missing": [],
+          "units": 7,
+          "characters": 797,
+          "prompt_characters": 1806,
+          "retrieval_ms": 21.313
+        },
+        "after_with_context": {
+          "found": 3,
+          "complete": true,
+          "missing": [],
+          "units": 16,
+          "characters": 1194,
+          "prompt_characters": 3863,
+          "retrieval_ms": 21.248
+        }
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G01",
+      "expected": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+      "before": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+      "after": "CURRENT_VALIDITY_NOT_ESTABLISHED"
+    },
+    {
+      "id": "G02",
+      "expected": "OUTSIDE_HENAN_SCOPE",
+      "before": "OUTSIDE_HENAN_SCOPE",
+      "after": "OUTSIDE_HENAN_SCOPE"
+    },
+    {
+      "id": "G03",
+      "expected": "PRIVATE_FACT_NOT_ACCEPTED",
+      "before": "PRIVATE_FACT_NOT_ACCEPTED",
+      "after": "PRIVATE_FACT_NOT_ACCEPTED"
+    }
+  ]
+}

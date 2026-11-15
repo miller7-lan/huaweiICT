@@ -1,0 +1,58 @@
+{
+ "name": "开发对比",
+ "round": "T14-M02-development-20261115",
+ "commit": "fedefb92bb39576468f61e0b781f172b6d6239d2",
+ "rules": "strict",
+ "question_id": "M02",
+ "question_sha256": "ab956da6e0ef8c7ff9d2f479175ad9ad223346b462bc609f9bacd5ac66ff7c0d",
+ "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+ "corpus_file_sha256": "d5b5458c44a66ba0b3639959ded8be89d2579080d238444289f5f0243e3c5a89",
+ "source_record_sha256": "84b283c48132c15496d10823014b292753f8176c11d7eb5acb1d72d21ceb9ddd",
+ "record_sha256": "0b0a93f5f15dadf8900aff82e619b24971979031a859df0e9533d9a316d93e37",
+ "result_kind": "answer",
+ "stop_origin": null,
+ "model_calls": 1,
+ "model_call_limit": 3,
+ "model_failures": 0,
+ "retries": 0,
+ "checks": {
+  "passed": true,
+  "failures": []
+ },
+ "final_checks": {
+  "passed": true,
+  "failures": []
+ },
+ "claims": [
+  {
+   "claim": 1,
+   "source_id": "HN-MEASURES-2021-PDF",
+   "locator": "PDF第5页右半页（印刷页码5），第二项",
+   "evidence_kind": "attributed_ai_transcription",
+   "mentions_2021": true,
+   "mentions_document_number": false
+  },
+  {
+   "claim": 2,
+   "source_id": "HN-MEASURES-2021-PDF",
+   "locator": "资料目录登记标题（目录元数据，未经人工对照原件）",
+   "evidence_kind": "source_title",
+   "mentions_2021": true,
+   "mentions_document_number": true
+  }
+ ],
+ "unknowns": 2,
+ "cites_scan": true,
+ "cites_catalog_title": true,
+ "human_evaluation": false,
+ "verification_owner_confirmation": "pending",
+ "discounts": [
+  "出题方接触过被测代码或诊断结果",
+  "出题与执行评测在同一会话或同一环境完成",
+  "题意是否与旧题重合，尚未经人工复核",
+  "参考答案与必答要点尚未经人工对照原文复核",
+  "没有两位未参与出题的评审",
+  "组织者（保管密钥者）参与了评分"
+ ],
+ "preflight_mode": "Single frozen development probe: corpus/profile preflight, question and reference separately frozen in plan, matching T8 protocol adaptation."
+}

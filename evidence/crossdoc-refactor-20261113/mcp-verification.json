@@ -1,0 +1,23 @@
+{
+  "status": "PASS_AUTHENTICATED_MCP_TOOL_INTEGRATION",
+  "model_calls": 0,
+  "unit_count": 591,
+  "corpus_sha256": "1e556dad8e703ada6c1680289415f6e74eeec772c856b0a542138874592c4fce",
+  "startup_source_sha256": {
+    "frozen_qa.py": "e68271028e5d48b21c81744d315ed9debc6c2a130573ad2211c5007e2ed00aea",
+    "frozen_qa_server.py": "56bd37fd74aba39ea0a0d92da4aa95fcdb43953e76dec2aadf18a037b735eff8",
+    "frozen_retrieval.py": "c3a671cee8e66059bc4f98c470139fb92bca5e5d040e7b97a0f54e292e5bbd39",
+    "knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479"
+  },
+  "unauthenticated_rejected": true,
+  "cross_document_evidence": true,
+  "valid_citations_pass": true,
+  "fabricated_quote_stops": true,
+  "gates": {
+    "CURRENT_VALIDITY_NOT_ESTABLISHED": true,
+    "OUTSIDE_HENAN_SCOPE": true,
+    "PRIVATE_FACT_NOT_ACCEPTED": true
+  },
+  "nexent_model_run": false,
+  "business_acceptance": false
+}

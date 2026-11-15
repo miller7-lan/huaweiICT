@@ -1,0 +1,51 @@
+{
+  "questions": 8,
+  "arms": [
+    "single_shot",
+    "flow_v3"
+  ],
+  "model_calls_at_most": 32,
+  "retries": 0,
+  "seed": "20261114",
+  "questions_sha256": "b9ed31123a71dc2bfde0bbf691a4eed2d2f0cd3bdd1ac21ba16427394282fb75",
+  "follow_up_after_answer": false,
+  "flow_rules": "light",
+  "source_sha256": {
+    "frozen_qa.py": "000412a2cfe7b6ec6c49735e2fa495d35d3d5974da9ec9e7ea03710be8f3a9a0",
+    "frozen_retrieval.py": "4643f04d995b081199309de4a3ef62c8ff90ec6b2ce948e7cdbef20c4ba7c3ae",
+    "frozen_qa_flow_v3.py": "abc1596db2e801ccb17aedd2e47d77f6a488b669af9f832d012a8635e5a254e7"
+  },
+  "corpus_sha256": "7422c95e098cc0e7ce9c32ae578708e074c9be25e25d0747519b92a6295de715",
+  "model_calls": 15,
+  "by_method": {
+    "single_shot": {
+      "draft_failure:ANSWER_QUANTITY_NOT_QUOTED": 4,
+      "draft_failure:ANSWER_QUANTITY_WITHOUT_CLAIM": 2,
+      "draft_failure:NUMBER_NOT_QUOTED": 5,
+      "draft_failure:QUANTITY_NOT_QUOTED": 7,
+      "input_tokens": 13751,
+      "model_calls": 6,
+      "output_tokens": 3168,
+      "stop": 8,
+      "stop:CURRENT_VALIDITY_NOT_ESTABLISHED": 1,
+      "stop:OUTSIDE_HENAN_SCOPE": 1,
+      "stop:VERIFICATION_FAILED": 4,
+      "stop:MODEL_STOP_REASON_REDACTED": 2
+    },
+    "flow_v3": {
+      "answer": 1,
+      "answer_with_gaps": 4,
+      "draft_failure:ANSWER_QUANTITY_NOT_QUOTED": 3,
+      "draft_failure:ANSWER_QUANTITY_WITHOUT_CLAIM": 1,
+      "draft_failure:FIRST_ISSUE_OLD_FEE_DOCUMENT_YEAR_REQUIRED": 2,
+      "draft_failure:NUMBER_NOT_QUOTED": 3,
+      "draft_failure:QUANTITY_NOT_QUOTED": 6,
+      "input_tokens": 19309,
+      "model_calls": 9,
+      "output_tokens": 3357,
+      "partial_answer": 1,
+      "stop": 2,
+      "stop:SCOPE_GATE": 2
+    }
+  }
+}

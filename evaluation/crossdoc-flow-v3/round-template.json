@@ -1,0 +1,13 @@
+{
+  "round": "holdout-new-YYYYMMDD",
+  "commit": "（被测提交的短哈希，如 801227f）",
+  "rules": "strict",
+  "arms": ["baseline", "single_shot", "flow_v3"],
+  "corpus_unit_sha256": "（语料 manifest 里的 corpus_sha256）",
+  "questions_written_without_access_to_flow_code_or_diagnostics": false,
+  "questions_written_outside_the_session_that_runs_the_evaluation": false,
+  "topic_overlap_reviewed_by_a_person": false,
+  "reference_checked_against_sources_by_a_person": false,
+  "two_reviewers_who_did_not_write_the_questions": false,
+  "organizer_does_not_rate": false
+}

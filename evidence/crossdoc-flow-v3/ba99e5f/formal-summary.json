@@ -1,0 +1,72 @@
+{
+  "questions": 24,
+  "arms": [
+    "baseline",
+    "single_shot",
+    "flow_v3"
+  ],
+  "model_calls_at_most": 120,
+  "retries": 0,
+  "seed": "20261114",
+  "questions_sha256": "9ea19318362da0ab6d7282db7a78dfaa435a68ce80b6f878ef01195ce3c6c5a8",
+  "follow_up_after_answer": false,
+  "flow_rules": "strict",
+  "source_sha256": {
+    "frozen_qa.py": "000412a2cfe7b6ec6c49735e2fa495d35d3d5974da9ec9e7ea03710be8f3a9a0",
+    "frozen_retrieval.py": "4643f04d995b081199309de4a3ef62c8ff90ec6b2ce948e7cdbef20c4ba7c3ae",
+    "frozen_qa_flow_v3.py": "abc1596db2e801ccb17aedd2e47d77f6a488b669af9f832d012a8635e5a254e7"
+  },
+  "corpus_sha256": "7422c95e098cc0e7ce9c32ae578708e074c9be25e25d0747519b92a6295de715",
+  "model_calls": 79,
+  "by_method": {
+    "baseline": {
+      "answer": 10,
+      "draft_failure:ANSWER_QUANTITY_NOT_QUOTED": 3,
+      "draft_failure:ANSWER_QUANTITY_WITHOUT_CLAIM": 1,
+      "draft_failure:NUMBER_NOT_QUOTED": 5,
+      "draft_failure:QUANTITY_NOT_QUOTED": 3,
+      "input_tokens": 31349,
+      "model_calls": 24,
+      "output_tokens": 7475,
+      "stop": 14,
+      "stop:MODEL_STOP_REASON_REDACTED": 14
+    },
+    "single_shot": {
+      "answer": 5,
+      "draft_failure:ANSWER_QUANTITY_NOT_QUOTED": 4,
+      "draft_failure:ANSWER_QUANTITY_WITHOUT_CLAIM": 1,
+      "draft_failure:DATE_NOT_QUOTED": 2,
+      "draft_failure:NUMBER_NOT_QUOTED": 15,
+      "draft_failure:QUANTITY_NOT_QUOTED": 6,
+      "draft_failure:QUOTE_NOT_IN_SOURCE": 2,
+      "input_tokens": 45185,
+      "model_calls": 22,
+      "output_tokens": 9161,
+      "stop": 19,
+      "stop:CURRENT_VALIDITY_NOT_ESTABLISHED": 1,
+      "stop:OUTSIDE_HENAN_SCOPE": 1,
+      "stop:VERIFICATION_FAILED": 8,
+      "stop:MODEL_STOP_REASON_REDACTED": 9
+    },
+    "flow_v3": {
+      "answer": 3,
+      "answer_with_gaps": 10,
+      "draft_failure:ANSWER_QUANTITY_NOT_QUOTED": 5,
+      "draft_failure:ANSWER_QUANTITY_WITHOUT_CLAIM": 1,
+      "draft_failure:DATE_NOT_QUOTED": 4,
+      "draft_failure:NUMBER_NOT_QUOTED": 23,
+      "draft_failure:QUANTITY_NOT_QUOTED": 9,
+      "input_tokens": 77075,
+      "model_calls": 33,
+      "output_tokens": 12926,
+      "partial_answer": 2,
+      "stop": 9,
+      "stop:INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP": 6,
+      "stop:SCOPE_GATE": 2,
+      "stop:VERIFICATION_FAILED_AFTER_REPAIR": 1
+    }
+  },
+  "output_count": 72,
+  "model_errors": 0,
+  "human_ratings_received": 0
+}

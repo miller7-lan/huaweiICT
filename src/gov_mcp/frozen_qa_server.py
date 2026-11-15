@@ -19,6 +19,7 @@ from starlette.routing import Route
 import uvicorn
 
 from gov_mcp import frozen_qa
+from gov_mcp.frozen_retrieval import EvidenceIndex
 from gov_mcp.json_output import validate_contract
 from gov_mcp.server import BearerGate
 
@@ -30,33 +31,39 @@ PORT = 8786
 def code_fingerprints():
     base = Path(__file__).parent
     return {name: hashlib.sha256((base / name).read_bytes()).hexdigest()
-            for name in ("frozen_qa.py", "frozen_qa_server.py", "knowledge_retrieval.py")}
+            for name in ("frozen_qa.py", "frozen_qa_server.py", "frozen_retrieval.py", "knowledge_retrieval.py")}
 
 
 class FrozenQAService:
     def __init__(self, units, corpus_sha256):
-        self.units, self.corpus_sha256 = units, corpus_sha256
+        self.index = EvidenceIndex(units)
+        self.units, self.corpus_sha256 = self.index.units, corpus_sha256
 
     def retrieve(self, question):
         if type(question) is not str or not question.strip() or len(question) > 500:
             return {"status": "BLOCKED", "error": "QUESTION_REQUIRED_MAX_500_CHARS"}
         gate = frozen_qa.scope_gate(question)
-        evidence = [] if gate == "PRIVATE_FACT_NOT_ACCEPTED" else frozen_qa.retrieve(self.units, question)
+        packet = None if gate == "PRIVATE_FACT_NOT_ACCEPTED" else self.index.retrieve(question)
+        evidence = packet["evidence"] if packet else []
         result = {"status": "STOP" if gate else "OK", "gate": gate, "message": frozen_qa.GATE_MESSAGES.get(gate),
-                  "evidence": [{key: item[key] for key in ("rank", "source_id", "locator", "text")}
+                  "evidence": [{key: item[key] for key in ("rank", "source_id", "locator", "text", "cells") if key in item}
                                for item in evidence],
                   "answer_rules": frozen_qa.COMMON_RULES + frozen_qa.PROPOSED_RULES,
+                  "retrieval_plan": {"version": packet["plan"]["version"], "semantic_coverage_verified": False,
+                                     "queries": frozen_qa.query_hints(packet["plan"], evidence)} if packet else None,
                   "corpus_sha256": self.corpus_sha256, **frozen_qa.STATUS}
         return result
 
     def verify(self, question, output, whole_corpus=False):
         """Check an AnswerOutput object; failures become a stop.
 
-        By default citations must come from the same literal top five. With
+        By default citations must come from the same evidence returned by retrieve. With
         whole_corpus, an answer built from another retriever (the Nexent knowledge
         base) may cite any frozen unit, but each quote must still be exact text of
         the cited unit and numbers and day units must still be quoted.
         """
+        if type(question) is not str or not question.strip() or len(question) > 500:
+            return {"status": "BLOCKED", "error": "QUESTION_REQUIRED_MAX_500_CHARS"}
         try:
             validate_contract(output, frozen_qa.AnswerOutput)
         except (ValueError, TypeError, RecursionError):
@@ -65,9 +72,9 @@ class FrozenQAService:
         if gate:
             return {"status": "STOP", "gate": gate, "final": frozen_qa._stop(gate, frozen_qa.GATE_MESSAGES[gate]),
                     **frozen_qa.STATUS}
-        evidence = self.units if whole_corpus else frozen_qa.retrieve(self.units, question)
+        evidence = self.units if whole_corpus else self.index.retrieve(question)["evidence"]
         checks = frozen_qa.verify(output, evidence)
-        final = output if checks["passed"] else frozen_qa._stop(
+        final = frozen_qa.render_verified_answer(frozen_qa.normalize_citation_locators(output, evidence)) if checks["passed"] else frozen_qa._stop(
             "VERIFICATION_FAILED", "回答未通过引用与数字核验，已改为停止作答。", checks["failures"])
         return {"status": "OK", "checks": checks, "final": final, **frozen_qa.STATUS}
 
@@ -88,7 +95,7 @@ def create_app(service, token, port=PORT):
 
     @mcp.tool()
     def govkb_frozen_retrieve(question: str) -> dict:
-        """Return the top five frozen Henan evidence units and answer rules, or a scope stop."""
+        """Return frozen Henan evidence with linked context and answer rules, or a scope stop."""
         return execute(service.retrieve, question)
 
     @mcp.tool()
@@ -121,19 +128,24 @@ def create_app(service, token, port=PORT):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--runtime", type=Path, default=Path(".runtime/frozen-qa-20261030"))
+    parser.add_argument("--corpus", type=Path, help="Load a separate corpus while retaining the runtime's MCP binding")
     parser.add_argument("--port", type=int, default=PORT)
     args = parser.parse_args()
     with socket.socket() as probe:
         if probe.connect_ex(("127.0.0.1", args.port)) == 0:
             parser.error("PORT_OCCUPIED_EXISTING_SERVICE_PRESERVED")
-    corpus_path = args.runtime / "corpus.json"
+    corpus_path = args.corpus or args.runtime / "corpus.json"
     corpus = json.loads(corpus_path.read_text("utf-8"))
+    corpus_sha = corpus["manifest"]["corpus_sha256"]
+    actual_sha = frozen_qa.sha(json.dumps(corpus["units"], ensure_ascii=False, sort_keys=True))
+    if corpus_sha != actual_sha:
+        parser.error("CORPUS_HASH_MISMATCH")
     access = args.runtime / "access.json"
     if not access.exists():
         # Private bearer for the Nexent MCP binding; never printed or committed.
         access.write_text(json.dumps({"mcp_token": secrets.token_urlsafe(32)}), "utf-8")
     token = json.loads(access.read_text("utf-8"))["mcp_token"]
-    service = FrozenQAService(corpus["units"], corpus["manifest"]["corpus_sha256"])
+    service = FrozenQAService(corpus["units"], corpus_sha)
     uvicorn.run(create_app(service, token, args.port), host="127.0.0.1", port=args.port, log_level="warning")
 
 

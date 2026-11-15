@@ -1,0 +1,113 @@
+{
+  "name": "开发对比",
+  "rows": [
+    {
+      "id": "M01",
+      "kind": "table",
+      "result_kind": "answer_with_gaps",
+      "model_calls": 2,
+      "api_failures": 0,
+      "check_failure_types": [
+        "ANSWER_QUANTITY_NOT_QUOTED",
+        "NUMBER_NOT_QUOTED",
+        "QUANTITY_NOT_QUOTED"
+      ],
+      "checks": {
+        "passed": true,
+        "failures": []
+      },
+      "final_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "cited_unit_kinds": [
+        "xlsx_row"
+      ],
+      "cites_table": true,
+      "cites_scan": false,
+      "stop_origin": null,
+      "column_mapping_review": "pending",
+      "record_sha256": "f476d71e51f3a4cd03a64e8f4283d7bb99f0aa81e8881c827ea969f07eaf530b"
+    },
+    {
+      "id": "M02",
+      "kind": "scan_year",
+      "result_kind": "stop",
+      "model_calls": 2,
+      "api_failures": 0,
+      "check_failure_types": [
+        "NUMBER_NOT_QUOTED"
+      ],
+      "checks": {
+        "passed": false,
+        "failures": [
+          "NUMBER_NOT_QUOTED:16",
+          "NUMBER_NOT_QUOTED:2021"
+        ]
+      },
+      "final_checks": null,
+      "cited_unit_kinds": [],
+      "cites_table": false,
+      "cites_scan": false,
+      "stop_origin": "VERIFICATION_FAILED_AFTER_REPAIR",
+      "column_mapping_review": "pending",
+      "record_sha256": "84b283c48132c15496d10823014b292753f8176c11d7eb5acb1d72d21ceb9ddd",
+      "review": "Final stopped; model drafts cited both scan transcription and catalog title, but 2021/16 failed numeric checks; not a passed scan-year answer."
+    },
+    {
+      "id": "M03",
+      "kind": "table_and_html",
+      "result_kind": "partial_answer",
+      "model_calls": 2,
+      "api_failures": 0,
+      "check_failure_types": [
+        "ANSWER_QUANTITY_NOT_QUOTED",
+        "ANSWER_QUANTITY_WITHOUT_CLAIM",
+        "NUMBER_NOT_QUOTED",
+        "QUANTITY_NOT_QUOTED"
+      ],
+      "checks": {
+        "passed": false,
+        "failures": [
+          "NUMBER_NOT_QUOTED:14"
+        ]
+      },
+      "final_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "cited_unit_kinds": [
+        "html_paragraph",
+        "xlsx_row"
+      ],
+      "cites_table": true,
+      "cites_scan": false,
+      "stop_origin": null,
+      "column_mapping_review": "Agent checked G36 fee-standard references against original XML cell values; amount quoted from MOF-FEE-2007 paragraph4, not XLSX. Human review pending.",
+      "record_sha256": "ccf99f971661726f3bcd2083cc0f7faa993f10c140e138c1c79b60a7b234ade1"
+    }
+  ],
+  "model_calls": 6,
+  "call_limit": 6,
+  "retries": 0,
+  "api_failures": 0,
+  "discounts": [
+    "出题方接触过被测代码或诊断结果",
+    "出题与执行评测在同一会话或同一环境完成",
+    "题意是否与旧题重合，尚未经人工复核",
+    "参考答案与必答要点尚未经人工对照原文复核",
+    "没有两位未参与出题的评审",
+    "组织者（保管密钥者）参与了评分"
+  ],
+  "human_evaluation": false,
+  "independent_holdout": false,
+  "execution_deviation": {
+    "extra_question": "M01",
+    "extra_model_calls": 2,
+    "cause": "Wrapper question filter did not apply because its source had CRLF line endings; frozen intended ids were M02 and M03.",
+    "intended_question_calls": 4,
+    "total_calls": 6,
+    "appended_calls": 0
+  },
+  "scope_repair_human_confirmation": "pending"
+}

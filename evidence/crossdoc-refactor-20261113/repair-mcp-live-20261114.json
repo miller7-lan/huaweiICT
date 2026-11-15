@@ -1,0 +1,38 @@
+{
+  "health": {
+    "service": "govkb_frozen_qa",
+    "status": "UP",
+    "publication_enabled": false,
+    "corpus_sha256": "1e556dad8e703ada6c1680289415f6e74eeec772c856b0a542138874592c4fce",
+    "startup_source_sha256": {
+      "frozen_qa.py": "1b3e638ad43a04b00db0740ccc6f734f4dcbbab008080d632f06266c3e50453b",
+      "frozen_qa_server.py": "f31e248464832dd07c546c4f07ddf390e8f4767faac38de9d07434232b84413b",
+      "frozen_retrieval.py": "4643f04d995b081199309de4a3ef62c8ff90ec6b2ce948e7cdbef20c4ba7c3ae",
+      "knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479"
+    }
+  },
+  "fresh_cloud_calls_this_turn": 10,
+  "final_replay_model_calls": 0,
+  "cases": {
+    "V04": {
+      "live_outcome_before_last_patch": "answer",
+      "same_candidate_final_mcp_replay": "answer"
+    },
+    "V05": {
+      "live_outcome_before_last_patch": "stop",
+      "same_candidate_final_mcp_replay": "answer"
+    },
+    "N01": {
+      "live_outcome_before_last_patch": "stop",
+      "same_candidate_final_mcp_replay": "answer"
+    },
+    "N02": {
+      "live_outcome_before_last_patch": "stop",
+      "same_candidate_final_mcp_replay": "stop"
+    }
+  },
+  "scope_gates_passed": 3,
+  "unauthenticated_status": 401,
+  "nexent_debug": "blocked_docker_linux_engine_unavailable",
+  "candidate_file_sha256": "e01c6637752ed74369989e2a3e2cf164ddecbe4820f51a7fa1f4dc9d200123bd"
+}

@@ -1,0 +1,264 @@
+{
+  "status": "OBSERVED_MODEL_CANDIDATE_VERIFIER_REPLAY_ONLY",
+  "model_calls": 0,
+  "fresh_model_evaluation": false,
+  "business_accuracy_measured": false,
+  "records_sha256": "9ce96fbaa4fadf71a2bc4a4903ae742a620aca64cc42452fe89b366218aa7217",
+  "corpus_sha256": "1e556dad8e703ada6c1680289415f6e74eeec772c856b0a542138874592c4fce",
+  "verifier_sha256": "213bc24219e3636ff370b999e66efe0b422246d375e14bd16bfad9bfba3f2ed3",
+  "rows": [
+    {
+      "id": "R01",
+      "method": "before",
+      "original_final_outcome": "answer",
+      "original_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R01",
+      "method": "after",
+      "original_final_outcome": "answer",
+      "original_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R02",
+      "method": "after",
+      "original_final_outcome": "answer",
+      "original_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R02",
+      "method": "before",
+      "original_final_outcome": "answer",
+      "original_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R04",
+      "method": "before",
+      "original_final_outcome": "stop",
+      "original_checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_NOT_QUOTED:2026年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2024年",
+          "A3_QUANTITY_NOT_QUOTED:2026年",
+          "A4_QUANTITY_NOT_QUOTED:2026年",
+          "A5_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2026年",
+          "NUMBER_NOT_QUOTED:2024",
+          "NUMBER_NOT_QUOTED:2026"
+        ]
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R04",
+      "method": "after",
+      "original_final_outcome": "stop",
+      "original_checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_NOT_QUOTED:2026年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2024年",
+          "A4_QUANTITY_NOT_QUOTED:2026年",
+          "A5_QUANTITY_NOT_QUOTED:2026年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2026年",
+          "NUMBER_NOT_QUOTED:04.0",
+          "NUMBER_NOT_QUOTED:09",
+          "NUMBER_NOT_QUOTED:18",
+          "NUMBER_NOT_QUOTED:2024",
+          "NUMBER_NOT_QUOTED:2026"
+        ]
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R06",
+      "method": "after",
+      "original_final_outcome": "stop",
+      "original_checks": {
+        "passed": false,
+        "failures": [
+          "A1_CITATION_NOT_RETRIEVED",
+          "A2_CITATION_NOT_RETRIEVED",
+          "A3_CITATION_NOT_RETRIEVED",
+          "ANSWER_QUANTITY_NOT_QUOTED:2018年",
+          "A4_QUANTITY_NOT_QUOTED:2018年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2018年",
+          "NUMBER_NOT_QUOTED:2004",
+          "NUMBER_NOT_QUOTED:2006",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:22",
+          "NUMBER_NOT_QUOTED:34",
+          "NUMBER_NOT_QUOTED:37",
+          "NUMBER_NOT_QUOTED:39"
+        ]
+      },
+      "replay_checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2018年",
+          "A4_QUANTITY_NOT_QUOTED:2018年",
+          "A5_QUANTITY_NOT_QUOTED:2007年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2018年"
+        ]
+      },
+      "replay_final_outcome": "stop"
+    },
+    {
+      "id": "R06",
+      "method": "before",
+      "original_final_outcome": "stop",
+      "original_checks": {
+        "passed": false,
+        "failures": [
+          "A1_CITATION_NOT_RETRIEVED",
+          "A2_CITATION_NOT_RETRIEVED",
+          "A3_CITATION_NOT_RETRIEVED",
+          "DATE_NOT_QUOTED:page_publication_date:2018-04-12",
+          "ANSWER_QUANTITY_NOT_QUOTED:2018年",
+          "A4_QUANTITY_NOT_QUOTED:2018年",
+          "NUMBER_NOT_QUOTED:2004",
+          "NUMBER_NOT_QUOTED:2006",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:22",
+          "NUMBER_NOT_QUOTED:34",
+          "NUMBER_NOT_QUOTED:39"
+        ]
+      },
+      "replay_checks": {
+        "passed": false,
+        "failures": [
+          "DATE_NOT_QUOTED:page_publication_date:2018-04-12"
+        ]
+      },
+      "replay_final_outcome": "stop"
+    },
+    {
+      "id": "R07",
+      "method": "before",
+      "original_final_outcome": "answer",
+      "original_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R07",
+      "method": "after",
+      "original_final_outcome": "answer",
+      "original_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R08",
+      "method": "after",
+      "original_final_outcome": "stop",
+      "original_checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2024年",
+          "A6_QUANTITY_NOT_QUOTED:2024年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "NUMBER_NOT_QUOTED:14",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:2024"
+        ]
+      },
+      "replay_checks": {
+        "passed": true,
+        "failures": []
+      },
+      "replay_final_outcome": "answer"
+    },
+    {
+      "id": "R08",
+      "method": "before",
+      "original_final_outcome": "stop",
+      "original_checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2007年",
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2007年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2007年",
+          "ANSWER_QUANTITY_WITHOUT_CLAIM:2024年",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:2024"
+        ]
+      },
+      "replay_checks": {
+        "passed": false,
+        "failures": [
+          "ANSWER_QUANTITY_NOT_QUOTED:2007年",
+          "ANSWER_QUANTITY_NOT_QUOTED:2024年",
+          "A1_QUANTITY_NOT_QUOTED:2024年",
+          "A2_QUANTITY_NOT_QUOTED:2007年",
+          "NUMBER_NOT_QUOTED:2007",
+          "NUMBER_NOT_QUOTED:2024"
+        ]
+      },
+      "replay_final_outcome": "stop"
+    }
+  ]
+}

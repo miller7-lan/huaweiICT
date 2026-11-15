@@ -15,7 +15,7 @@
 ## 新机器操作顺序
 
 1. 按项目复现指南准备固定版本Nexent、已获准的来源副本和接收方自己的模型配置。核对来源散列，构建`.runtime/frozen-qa-20261030/corpus.json`。
-2. 启动冻结问答MCP服务：`python -m gov_mcp.frozen_qa_server`。令牌仅存接收方私有目录，不从旧机复制账号、预算或部署卷。
+2. 使用随附新版代码和散列匹配的原件，运行 `python scripts/build_frozen_corpus.py --offline --output-runtime .runtime/frozen-qa-20261113-linked`，生成 591 单元的自由问答语料。再运行 `python -m gov_mcp.frozen_qa_server --corpus .runtime/frozen-qa-20261113-linked/corpus.json`。38 号草稿通过原 MCP 工具取得新证据。新增的 10 个单元是网页标题和日期，39 号草稿沿用下述 581 块原生知识库。令牌只保存在接收方私有目录。
 3. 按`provision_topic3_embedding.py`的说明准备本地`qwen3-embedding:0.6b`，确认调用的是接收机器本地模型。
 4. 执行`python scripts/export_frozen_knowledge.py`和`python scripts/provision_frozen_knowledge.py --apply`。本部署缺文件解析服务，故采用逐单元手工分块；581块首次本地嵌入约50分钟，不反复重跑。
 5. 执行`python scripts/configure_frozen_kb_ui.py --apply`选择已存在的本地默认向量模型；遇到其他已选默认值会停止。执行`python scripts/bind_frozen_knowledge_files.py --apply`把7份Markdown上传至该知识库的本地存储并绑定分块。原来源URL保留在元数据，仅更新存储路径，不改原文、定位或向量，不绕过权限检查。
