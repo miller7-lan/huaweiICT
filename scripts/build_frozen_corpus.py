@@ -210,6 +210,22 @@ def scan_units(spec):
             for item in observation["observations"]]
 
 
+def catalog_title_unit(spec, document):
+    """Title and document number as registered in the catalogue, for sources without page metadata.
+
+    A table or a scan has no HTML title, so a claim naming "the 2021 notice" had nothing
+    to check its year against. The text comes from the catalogue entry bound to the
+    original's hash, not from reading the document, and the unit says so.
+    """
+    metadata = document.get("metadata") or {}
+    title = re.sub(r"\.(?:pdf|xlsx?)$", "", (metadata.get("title") or "").strip(), flags=re.I)
+    if not title:
+        return []
+    number = (metadata.get("document_number") or "").strip()
+    return [unit(spec, "资料目录登记标题（目录元数据，未经人工对照原件）", title + (f"（{number}）" if number else ""),
+                 "source_title", catalog_metadata=True, human_review_completed=False)]
+
+
 def check_catalog(units, document):
     """Each catalogued clause must exist with the same text hash, or segmentation drifted."""
     by_locator = {}
@@ -224,7 +240,7 @@ def check_catalog(units, document):
     return checked
 
 
-def build(offline=False, output=None):
+def build(offline=False, output=None, catalog_titles=False):
     if output is not None and (output.resolve() == RUNTIME.resolve() or (output / "corpus.json").exists()):
         raise ValueError("USE_A_NEW_CORPUS_OUTPUT_RUNTIME")
     documents = catalog_documents()
@@ -245,6 +261,8 @@ def build(offline=False, output=None):
             checked = check_catalog(units, document) if spec["kind"] == "html" else 0
             if output is not None and spec["kind"] == "html":
                 units.extend(html_metadata_units(spec, raw))
+            if output is not None and spec["kind"] != "html" and catalog_titles:
+                units.extend(catalog_title_unit(spec, document))
             corpus.extend(units)
             sources.append({"code": spec["code"], "source_id": spec["source_id"], "kind": spec["kind"],
                             "url": document["url"], "revision": document["revision"],
@@ -274,8 +292,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--offline", action="store_true", help="Use private copies only; never fetch")
     parser.add_argument("--output-runtime", type=Path, help="New private runtime with additional HTML metadata")
+    parser.add_argument("--catalog-titles", action="store_true",
+                        help="With --output-runtime: also add the catalogued title of the table and scan sources")
     args = parser.parse_args()
-    manifest = build(offline=args.offline, output=args.output_runtime)
+    if args.catalog_titles and args.output_runtime is None:
+        parser.error("CATALOG_TITLES_NEED_A_NEW_OUTPUT_RUNTIME")
+    manifest = build(offline=args.offline, output=args.output_runtime, catalog_titles=args.catalog_titles)
     print(json.dumps({"unit_count": manifest["unit_count"], "corpus_sha256": manifest["corpus_sha256"],
                       "sources": [(s["code"], s["units"], s["catalog_clauses_rechecked"]) for s in manifest["sources"]]},
                      ensure_ascii=False))

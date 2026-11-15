@@ -103,6 +103,8 @@ class FlowService:
         with self.lock:
             self._save(task)
         return {"status": "OK", "task_id": task["task_id"], "evidence": shown(state["pool"]),
+                # Same display aid as the command line: column names for table rows, not citable.
+                "table_column_guide": flow.column_guide(state["pool"]).strip() or None,
                 "answer_rules": self.answer_rules(), "max_drafts": flow.MAX_MODEL_CALLS,
                 "retrieval_plan": {"version": packet["plan"]["version"], "semantic_coverage_verified": False,
                                    "queries": frozen_qa.query_hints(packet["plan"], state["pool"])},
@@ -142,6 +144,7 @@ class FlowService:
             if step["action"] == "repair":
                 return {**base, "reason": "FAILED_CHECKS", "failures": step["failures"], "instructions": REVISE_FAILED}
             return {**base, "reason": "MORE_EVIDENCE", "evidence_added": shown(step["added"]),
+                    "table_column_guide": flow.column_guide(state["pool"]).strip() or None,
                     "instructions": REVISE_EVIDENCE}
 
     def _finish(self, task, final, kind, origin):

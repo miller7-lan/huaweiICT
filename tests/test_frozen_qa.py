@@ -398,3 +398,22 @@ def test_verified_cross_document_answer_is_built_from_claims_in_mcp_and_cli():
     result = service.verify(question, missing)
     assert result["final"]["outcome"] == "stop"
     assert "ANSWER_QUANTITY_WITHOUT_CLAIM:15工作日" in result["checks"]["failures"]
+
+
+def test_catalog_title_unit_marks_its_origin_and_supports_only_the_document_year():
+    spec = {"code": "A3", "source_id": "DOC-SCAN"}
+    document = {"metadata": {"title": "某厅关于印发2021年便民服务新举措的通知.pdf", "document_number": "豫公〔2021〕16号"}}
+    (title,) = corpus_builder.catalog_title_unit(spec, document)
+    assert title["evidence_kind"] == "source_title" and title["catalog_metadata"] is True
+    assert title["text"] == "某厅关于印发2021年便民服务新举措的通知（豫公〔2021〕16号）" and "未经人工对照原件" in title["locator"]
+    assert corpus_builder.catalog_title_unit(spec, {"metadata": {"title": ""}}) == []
+    scan = corpus_builder.unit(spec, "PDF第5页", "办理周期由40日压缩至30日。", "attributed_ai_transcription")
+    claim = ("2021年通知将办理周期压缩至30日", "DOC-SCAN", "PDF第5页", "办理周期由40日压缩至30日")
+    alone = answer("2021年通知将办理周期压缩至30日。", claim)
+    assert not frozen_qa.verify(alone, [scan])["passed"]
+    cited = answer("2021年通知将办理周期压缩至30日。", claim, ("来源标题", "DOC-SCAN", title["locator"], title["text"]))
+    assert frozen_qa.verify(cited, [scan, title])["passed"]
+    wrong = answer("2021年通知将办理周期压缩至16日。", ("2021年通知将办理周期压缩至16日", "DOC-SCAN", "PDF第5页",
+                                               "办理周期由40日压缩至30日"),
+                   ("来源标题", "DOC-SCAN", title["locator"], title["text"]))
+    assert not frozen_qa.verify(wrong, [scan, title])["passed"]  # the document number is not a policy number

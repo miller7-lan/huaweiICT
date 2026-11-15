@@ -38,7 +38,8 @@ import time
 from gov_mcp.frozen_qa import (CURRENT, compact, GATE_MESSAGES, METADATA_KINDS, DOCUMENT_HEADING, STATUS, build_messages,
                                has_cross_document_quantities, normalize_citation_locators, scope_gate, sha, verify,
                                _stop)
-from gov_mcp.frozen_retrieval import VERSION as RETRIEVAL_VERSION, identity, retrieve_with_plan, source_key
+from gov_mcp.frozen_retrieval import (TABLE_ROW, VERSION as RETRIEVAL_VERSION, EvidenceIndex, identity,
+                                      retrieve_with_plan, source_key)
 
 
 WORKFLOW = "crossdoc-flow-v3"
@@ -320,13 +321,52 @@ def label_kind(final, kind):
     return "answer_with_gaps" if kind == "answer" and missing_items(final) else kind
 
 
+COLUMN_GUIDE = ("\n\n表格行的列对照（系统按同一工作表的表头生成，只帮助看清每个值属于哪一列；"
+                "它不是证据，quote 仍须取自上面证据的原文）：\n")
+
+
+def column_guide(pool):
+    """For each table row in the pool whose header row is also there, pair values with column names.
+
+    A table row is stored as bare cell values, so a fee and its legal basis look alike
+    without the header. Cells are paired by column letter only; a row or header whose
+    text does not split into exactly its recorded cells is left out. Display aid only:
+    nothing here can be cited, and the checks still read the original unit text.
+    """
+    def columns(unit):
+        values, cells = unit["text"].split(" | "), unit.get("cells") or []
+        if len(values) != len(cells):
+            return None
+        return {re.sub(r"\d+", "", address): value for address, value in zip(cells, values)}
+
+    lines = []
+    for unit in pool:
+        row = TABLE_ROW.fullmatch(unit["locator"]) if unit.get("evidence_kind") == "xlsx_row" else None
+        if row is None or EvidenceIndex.is_header(unit):
+            continue
+        headers = [other for other in pool if source_key(other) == source_key(unit) and EvidenceIndex.is_header(other)
+                   and (match := TABLE_ROW.fullmatch(other["locator"])) and match[1] == row[1]
+                   and int(match[2]) < int(row[2])]
+        if not headers:
+            continue
+        header = max(headers, key=lambda other: int(TABLE_ROW.fullmatch(other["locator"])[2]))
+        names, values = columns(header), columns(unit)
+        if names is None or values is None:
+            continue
+        pairs = [f"{names[column]}＝{value}" for column, value in values.items() if column in names]
+        if pairs:
+            lines.append(f"[E{unit['rank']}] " + "；".join(pairs))
+    return COLUMN_GUIDE + "\n".join(lines) if lines else ""
+
+
 def _messages(question, pool, context, plan, rules="strict"):
     if rules == "light":
         messages = build_messages(question, pool, "baseline", context)
         messages[0]["content"] += LIGHT_RULES
-        return messages
-    messages = build_messages(question, pool, "proposed", context, plan)
-    messages[0]["content"] += FLOW_RULES
+    else:
+        messages = build_messages(question, pool, "proposed", context, plan)
+        messages[0]["content"] += FLOW_RULES
+    messages[1]["content"] += column_guide(pool)
     return messages
 
 

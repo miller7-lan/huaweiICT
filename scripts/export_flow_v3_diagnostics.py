@@ -147,6 +147,9 @@ def main():
                "final_sources": len({a["source_id"] for a in final["assertions"]}),
                "final_unknowns": len(final["unknowns"]),
                "final_checks_passed": (record.get("final_checks") or {}).get("passed"),
+               # Kinds of the units the displayed result cites: text, table row, scan transcription, metadata.
+               "final_unit_kinds": sorted({corpus[key].get("evidence_kind") or "unknown" for item in final["assertions"]
+                                           if (key := (item["source_id"], item["locator"])) in corpus}),
                "last_draft_claims": claims, "last_draft_replayed": replay(record, corpus)}
         rows.append(row)
         if expected:
@@ -167,7 +170,14 @@ def main():
             counts["replay:" + row["last_draft_replayed"]["result_kind"]] += 1
             counts["replay_claims_excerpted"] += row["last_draft_replayed"]["claims_excerpted"]
             counts["replay_claims_dropped"] += row["last_draft_replayed"]["claims_dropped"]
+        if final["outcome"] == "answer":
+            for kind in row["final_unit_kinds"]:
+                counts["final_cites:" + kind] += 1
+            counts["final_cites_table_or_scan"] += bool(
+                {"xlsx_row", "attributed_ai_transcription"} & set(row["final_unit_kinds"]))
         for claim in claims:
+            counts["claim_kind:" + str(claim["unit_kind"])] += 1
+            counts["claim_kind_fails:" + str(claim["unit_kind"])] += bool(claim["fails_alone"])
             counts["claim_citation:" + claim["citation"]] += 1
             if claim["fails_alone"]:
                 counts["claim_fails_alone"] += 1

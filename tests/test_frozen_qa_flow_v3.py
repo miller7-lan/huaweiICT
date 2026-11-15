@@ -220,3 +220,37 @@ def test_light_rules_change_only_the_prompt():
     import pytest
     with pytest.raises(ValueError):
         flow.ask(QUESTION, UNITS, scripted(), rules="other")
+
+
+def table_units():
+    header = {**unit("TABLE", "Excel工作表证件!第4行", "项目名称 | 设立依据 | 收费标准", "xlsx_row"), "cells": ["D4", "F4", "G4"]}
+    row = {**unit("TABLE", "Excel工作表证件!第36行", "居民身份证工本费 | 财综[2007]34号 | 20元", "xlsx_row"),
+           "cells": ["D36", "F36", "G36"]}
+    sparse = {**unit("TABLE", "Excel工作表证件!第37行", "临时居民身份证工本费 | 10元", "xlsx_row"), "cells": ["D37", "G37"]}
+    other_sheet = {**unit("TABLE", "Excel工作表考试!第9行", "报名费 | 文件 | 50元", "xlsx_row"), "cells": ["D9", "F9", "G9"]}
+    return header, row, sparse, other_sheet
+
+
+def test_table_rows_get_column_names_from_the_header_of_their_own_sheet():
+    header, row, sparse, other_sheet = table_units()
+    pool = [dict(u, rank=i) for i, u in enumerate([header, row, sparse, other_sheet, UNITS[1]], 1)]
+    guide = flow.column_guide(pool)
+    assert "[E2] 项目名称＝居民身份证工本费；设立依据＝财综[2007]34号；收费标准＝20元" in guide
+    assert "[E3] 项目名称＝临时居民身份证工本费；收费标准＝10元" in guide  # paired by column letter, not position
+    assert "[E4]" not in guide and "[E1]" not in guide and "[E5]" not in guide
+    assert flow.column_guide([pool[1]]) == ""  # no header in the pool, no guess
+    broken = [pool[0], {**pool[1], "cells": ["D36", "G36"]}]
+    assert flow.column_guide(broken) == ""  # text and recorded cells disagree
+
+
+def test_column_guide_is_shown_to_the_model_but_cannot_be_cited():
+    header, row, _, _ = table_units()
+    units = [header, row]
+    question = "居民身份证工本费的收费标准和设立依据"
+    good = answer("收费标准为20元。", ("居民身份证工本费20元", "TABLE", row["locator"], "居民身份证工本费 | 财综[2007]34号 | 20元"))
+    chat = scripted(good)
+    record = flow.ask(question, units, chat)
+    assert "收费标准＝20元" in chat.calls[0][1]["content"] and "它不是证据" in chat.calls[0][1]["content"]
+    assert record["result_kind"] == "answer"
+    from_guide = answer("收费标准为20元。", ("收费标准为20元", "TABLE", row["locator"], "收费标准＝20元"))
+    assert flow.ask(question, units, scripted(from_guide, from_guide))["result_kind"] == "stop"
