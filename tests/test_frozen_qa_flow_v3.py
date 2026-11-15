@@ -254,3 +254,44 @@ def test_column_guide_is_shown_to_the_model_but_cannot_be_cited():
     assert record["result_kind"] == "answer"
     from_guide = answer("收费标准为20元。", ("收费标准为20元", "TABLE", row["locator"], "收费标准＝20元"))
     assert flow.ask(question, units, scripted(from_guide, from_guide))["result_kind"] == "stop"
+
+
+def test_a_quoted_document_number_is_an_identifier_not_a_quantity():
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    import build_frozen_corpus as builder
+    spec = {"code": "A3", "source_id": "HN-MEASURES-2021-PDF"}
+    scan = builder.scan_units(spec)
+    title = builder.catalog_title_unit(spec, builder.catalog_documents()["HN-MEASURES-2021-PDF"])[0]
+    units = scan + [title]
+    pool = [dict(u, rank=i) for i, u in enumerate(units, 1)]
+    quote = "由过去承诺的40日（自然日）压缩至30日"
+    named = "豫公〔2021〕16号通知将办理周期由40日（自然日）压缩至30日"
+    body = (named, spec["source_id"], scan[1]["locator"], quote)
+    cited_title = ("来源标题", spec["source_id"], title["locator"], title["text"])
+    # The recorded M02 failure: the document number is checked as numbers.
+    plain = answer(named + "。", body, cited_title)
+    assert {"NUMBER_NOT_QUOTED:16", "NUMBER_NOT_QUOTED:2021"} <= set(frozen_qa.verify(plain, pool)["failures"])
+    assert flow.check(plain, pool)["passed"]
+    # Without the title, the number is not quoted anywhere; the backend title citation then supplies it.
+    alone = answer(named + "。", body)
+    assert not flow.check(alone, pool)["passed"]
+    assert flow.settle_draft(alone, pool, units)["result_kind"] == "answer"
+    # A different number, or a quantity next to it, still fails.
+    wrong = answer("豫公〔2021〕17号通知压缩至30日。", ("豫公〔2021〕17号通知压缩至30日", spec["source_id"], scan[1]["locator"], quote),
+                   cited_title)
+    assert not flow.check(wrong, pool)["passed"]
+    more = answer("豫公〔2021〕16号通知压缩至20日。", ("豫公〔2021〕16号通知压缩至20日", spec["source_id"], scan[1]["locator"], quote),
+                  cited_title)
+    assert not flow.check(more, pool)["passed"]
+    # Another source's quote does not license the number in this claim.
+    other = {**UNITS[1], "rank": len(pool) + 1}
+    borrowed = answer("到期换领工本费20元。", ("豫公〔2021〕16号规定到期换领工本费20元", "DOC-RENEW", "正文段落1",
+                                          "到期换领居民身份证的，工本费20元"), cited_title)
+    assert not flow.check(borrowed, pool + [other])["passed"]
+    # Brackets are compared unified, and the displayed text is never changed.
+    square = answer(named.replace("〔", "[").replace("〕", "]") + "。",
+                    (named.replace("〔", "[").replace("〕", "]"), spec["source_id"], scan[1]["locator"], quote), cited_title)
+    assert flow.check(square, pool)["passed"]
+    assert flow.mask_quoted_document_numbers(plain, pool)["answer"] != plain["answer"] and "16号" in plain["answer"]

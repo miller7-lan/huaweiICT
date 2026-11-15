@@ -129,9 +129,48 @@ def render(output):
     return {**output, "answer": "\n".join(f"- {claim}" for claim in claims)}
 
 
+# A document number such as 豫公〔2021〕16号 or 财综[2007]34号 names a document; its digits are
+# neither a quantity nor a year claim. Brackets vary between sources, so they are compared unified.
+DOCUMENT_NUMBER = re.compile(r"[\u4e00-\u9fff]{1,8}\s*[〔\[［(（]\s*\d{4}\s*[〕\]］)）]\s*\d+\s*号")
+NUMBER_MASK = "〔所引文号〕"
+
+
+def _document_number_key(text):
+    return re.sub(r"[\[［(（]", "〔", re.sub(r"[\]］)）]", "〕", compact(text)))
+
+
+def mask_quoted_document_numbers(output, pool):
+    """Hide, for the number checks only, document numbers that a valid quote of the same source contains.
+
+    A claim may name a document number only if one of the cited quotes of its own source
+    holds the same number (the answer may use any cited source). Everything else, including
+    a document number nobody quoted, is left for the checks as it is. The displayed output
+    is never changed by this.
+    """
+    units = {(unit["source_id"], unit["locator"]): unit for unit in pool}
+    quoted = {}
+    for item in output["assertions"]:
+        unit = units.get((item["source_id"], item["locator"]))
+        if unit is None or not compact(item["quote"]) or compact(item["quote"]) not in compact(unit["text"]):
+            continue
+        for match in DOCUMENT_NUMBER.finditer(item["quote"]):
+            quoted.setdefault(item["source_id"], set()).add(_document_number_key(match.group()))
+
+    def mask(text, sources):
+        allowed = set().union(*(quoted.get(source, set()) for source in sources))
+        return DOCUMENT_NUMBER.sub(lambda m: NUMBER_MASK if _document_number_key(m.group()) in allowed else m.group(),
+                                   text)
+
+    if not quoted:
+        return output
+    return {**output, "answer": mask(output["answer"], set(quoted)),
+            "assertions": [{**item, "claim": mask(item["claim"], {item["source_id"]})} for item in output["assertions"]]}
+
+
 def check(output, pool):
-    """frozen_qa.verify plus one heuristic: a quoted prohibition stated as permission."""
-    result = verify(output, pool)
+    """frozen_qa.verify on quoted document numbers masked, plus one heuristic: a quoted
+    prohibition stated as permission."""
+    result = verify(mask_quoted_document_numbers(output, pool), pool)
     failures = list(result["failures"])
     if output["outcome"] == "answer":
         for index, item in enumerate(output["assertions"], 1):
