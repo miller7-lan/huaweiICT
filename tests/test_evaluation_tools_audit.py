@@ -156,3 +156,25 @@ def test_f21_a_failed_model_call_is_still_an_attempt():
         raise RuntimeError("合成传输错误")
     record = flow.ask(QUESTION, UNITS, broken)
     assert record["model"]["calls"] == [] and [a["status"] for a in record["model"]["attempts"]] == ["failed"]
+
+
+def test_replay_comparison_applies_the_v31_decision_rule():
+    import compare_flow_replays as replays
+    base = {"records_sha256": "r", "corpus_sha256": "c", "expected_sha256": "e"}
+    old = {**base, "by_expected_outcome": {"flow_v3": {
+        "expected_stop": {"replayed:stop": 8}, "expected_answer": {"replayed:answer": 15, "replayed:stop": 1}}}}
+    same = replays.compare(old, old)
+    assert same["adopt_v31"] is True and same["methods"]["flow_v3"]["should_stop_all_stopped"] is True
+    leak = {**base, "by_expected_outcome": {"flow_v3": {
+        "expected_stop": {"replayed:stop": 7, "replayed:answer": 1},
+        "expected_answer": {"replayed:answer": 14, "replayed:stop": 2}}}}
+    result = replays.compare(old, leak)
+    assert result["adopt_v31"] is False and len(result["failures"]) == 2
+    assert replays.compare(old, {**leak, "records_sha256": "x"})["comparable"] is False
+
+
+def test_public_evidence_check_flags_text_fields_and_credentials_only():
+    import check_public_evidence as check
+    assert check.findings({"question_id": "Q1", "result_kind": "answer", "counts": {"stop": 2}}) == []
+    flagged = check.findings({"records": [{"question": "题面"}], "note": "Bearer abcdefghijklmnop1234"})
+    assert flagged == ["$.records[0].question: private text field", "$.note: looks like a credential"]

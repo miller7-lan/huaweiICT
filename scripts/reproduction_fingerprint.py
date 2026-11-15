@@ -24,7 +24,7 @@ from gov_mcp import frozen_qa, frozen_qa_flow_v3 as flow  # noqa: E402
 from gov_mcp.frozen_retrieval import retrieve_with_plan  # noqa: E402
 
 MODULES = ("frozen_qa.py", "frozen_retrieval.py", "frozen_qa_flow_v3.py", "frozen_qa_flow_server.py",
-           "knowledge_retrieval.py")
+           "knowledge_retrieval.py", "claim_binding.py", "scope_gate_v2.py")
 
 
 def digest(value):
@@ -35,7 +35,7 @@ def question_rows(units, questions):
     rows = []
     for item in questions:
         query = item["question"] + ("\n" + item["context"] if item.get("context") else "")
-        gate = frozen_qa.scope_gate(query)
+        gate = flow.scope_gate(query)  # the gate the flow itself uses
         evidence = [] if gate else retrieve_with_plan(units, query)["evidence"]
         rows.append({"id": item["id"], "gate": gate,
                      "evidence": [[unit["source_id"], unit["locator"], unit["text_sha256"]] for unit in evidence],
