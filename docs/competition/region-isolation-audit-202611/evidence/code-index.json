@@ -1,0 +1,526 @@
+{
+  "src/gov_mcp/frozen_qa.py": {
+    "sha256": "5b492ab885451a33b415fa08f2524d8f4aceda21e04c80662bda3de7956395df",
+    "symbols": {
+      "Assertion": 61,
+      "AnswerOutput": 68,
+      "sha": 76,
+      "compact": 80,
+      "retrieve": 84,
+      "current_validity_asked": 104,
+      "scope_gate": 116,
+      "build_messages": 154,
+      "quantity_pairs": 170,
+      "has_cross_document_quantities": 175,
+      "normalize_citation_locators": 183,
+      "first_issue_fee_failures": 196,
+      "verify": 225,
+      "typed_date": 358,
+      "render_verified_answer": 368,
+      "_stop": 376,
+      "ask": 380,
+      "validate_questions": 421,
+      "method_order": 436,
+      "blind": 443,
+      "facts": 282,
+      "check_date": 296
+    }
+  },
+  "src/gov_mcp/frozen_qa_flow_v3.py": {
+    "sha256": "21dfa11e0108a940a7fc5abfc3dc7bf5d88e3c4172d295832671ab1a3e16e0a5",
+    "symbols": {
+      "clean": 85,
+      "names_source": 91,
+      "attach_source_titles": 97,
+      "render": 123,
+      "_document_number_key": 138,
+      "mask_quoted_document_numbers": 150,
+      "check": 178,
+      "missing_items": 192,
+      "extend_pool": 199,
+      "sentence_around": 212,
+      "salvage": 223,
+      "settle_draft": 278,
+      "new_state": 307,
+      "advance": 313,
+      "label_kind": 366,
+      "table_columns": 375,
+      "column_guide": 410,
+      "_messages": 419,
+      "_repair": 430,
+      "ask": 439,
+      "mask": 167,
+      "is_support": 233,
+      "passes": 238,
+      "with_support": 245,
+      "final": 333,
+      "columns": 384,
+      "finish": 462
+    }
+  },
+  "src/gov_mcp/frozen_qa_flow_server.py": {
+    "sha256": "73586e7f8c12d3cb43a36f9367eb04fdbf41541dd8edadd7dbcc9c71d192c5cb",
+    "symbols": {
+      "code_fingerprints": 48,
+      "shown": 53,
+      "FlowService": 58,
+      "create_app": 158,
+      "main": 197,
+      "__init__": 59,
+      "answer_rules": 69,
+      "_path": 74,
+      "_save": 77,
+      "_result": 83,
+      "open": 89,
+      "submit": 113,
+      "_finish": 150,
+      "execute": 167,
+      "govkb_flow_open": 173,
+      "govkb_flow_submit": 178,
+      "health": 187
+    }
+  },
+  "src/gov_mcp/frozen_qa_server.py": {
+    "sha256": "f31e248464832dd07c546c4f07ddf390e8f4767faac38de9d07434232b84413b",
+    "symbols": {
+      "code_fingerprints": 31,
+      "FrozenQAService": 37,
+      "create_app": 82,
+      "main": 128,
+      "__init__": 38,
+      "retrieve": 42,
+      "verify": 57,
+      "execute": 91,
+      "govkb_frozen_retrieve": 97,
+      "govkb_frozen_verify": 102,
+      "govkb_frozen_verify_corpus": 111,
+      "health": 120
+    }
+  },
+  "src/gov_mcp/frozen_retrieval.py": {
+    "sha256": "4643f04d995b081199309de4a3ef62c8ff90ec6b2ce948e7cdbef20c4ba7c3ae",
+    "symbols": {
+      "identity": 37,
+      "source_key": 41,
+      "compound_queries": 46,
+      "terms": 69,
+      "EvidenceIndex": 79,
+      "retrieve_with_plan": 233,
+      "retrieve_evidence": 237,
+      "query_hints": 241,
+      "__init__": 82,
+      "is_header": 94,
+      "rank": 98,
+      "retrieve": 122,
+      "include": 156
+    }
+  },
+  "scripts/build_frozen_corpus.py": {
+    "sha256": "5423906005155477408835f310d0cd4d74a6ae91697421a5782ef85618af4278",
+    "symbols": {
+      "digest": 62,
+      "catalog_documents": 66,
+      "robots_allowed": 71,
+      "original": 83,
+      "unit": 114,
+      "html_units": 119,
+      "html_metadata_units": 141,
+      "xlsx_units": 166,
+      "scan_units": 204,
+      "catalog_title_unit": 213,
+      "check_catalog": 229,
+      "build": 243,
+      "main": 291
+    }
+  },
+  "src/gov_mcp/regional_preview.py": {
+    "sha256": "407be515ea08fdd090298a97748b2a29a2ba7619c93f185cecfbf9358ad0a21f",
+    "symbols": {
+      "scenario": 50,
+      "check_context": 56,
+      "source_facts": 105,
+      "OneRegionalTranslation": 132,
+      "RegionalLiveVerifier": 145,
+      "RegionalPreview": 181,
+      "fact": 106,
+      "translate": 133,
+      "__call__": 146,
+      "__init__": 182,
+      "_context": 188,
+      "begin_run": 194,
+      "finish_run": 221,
+      "open_query": 231,
+      "retrieve": 249,
+      "verify": 261,
+      "state": 312,
+      "finalize": 317,
+      "persist_before_http": 158
+    }
+  },
+  "src/gov_mcp/regional_preview_server.py": {
+    "sha256": "6ad2e800a5c58be19b72ca8d83ccf822273fa5880cdfcb2c90580dfdcd271c4e",
+    "symbols": {
+      "create_app": 16,
+      "main": 65,
+      "execute": 25,
+      "govkb_regional_open_query": 33,
+      "govkb_regional_retrieve": 38,
+      "govkb_regional_verify": 43,
+      "govkb_regional_state": 48,
+      "govkb_regional_finalize": 53,
+      "health": 57
+    }
+  },
+  "src/gov_mcp/knowledge_landing.py": {
+    "sha256": "740b33bb4f08c47780dd48a24dba896fda09f643ced3d16b0532f20c871e5d4d",
+    "symbols": {
+      "verified_chunks": 23,
+      "retrieve": 56
+    }
+  },
+  "src/gov_mcp/knowledge/registry.py": {
+    "sha256": "e01063c6b2ee4214e42d97fc7f9654e085c171f9ffb66def213000179cf47307",
+    "symbols": {
+      "encode": 13,
+      "fingerprint": 17,
+      "KnowledgeStore": 21,
+      "__init__": 24,
+      "initialize": 115,
+      "db": 130,
+      "log": 141,
+      "scope_regions": 144,
+      "resume": 149,
+      "register": 164,
+      "ingest": 182,
+      "_content": 236,
+      "_verify": 243,
+      "review": 255,
+      "exclude": 274,
+      "_verify_exclusion": 294,
+      "reopen": 300,
+      "amend": 321,
+      "_scope_members": 336,
+      "candidate": 365,
+      "publish": 382,
+      "evaluation_binding": 407,
+      "propose_classification": 412,
+      "record_evaluation": 428,
+      "publication_check": 443,
+      "rollback": 455,
+      "search": 468,
+      "status": 553,
+      "backup": 601,
+      "matches": 343
+    }
+  },
+  "src/gov_mcp/knowledge_tools.py": {
+    "sha256": "030da3e0b5d38eec2735a97d727b94dbdbf0bef2359f7dcb746576cbf16f1e41",
+    "symbols": {
+      "KnowledgeTools": 15,
+      "__init__": 16,
+      "execute": 22
+    }
+  },
+  "src/gov_mcp/knowledge_server.py": {
+    "sha256": "d34c620beafdee898ef49277d38cb2e82e7059a8eba49d16a39d4d3bda583605",
+    "symbols": {
+      "create_app": 17,
+      "main": 51,
+      "govkb_get_environment_status": 29,
+      "govkb_search_evidence": 34,
+      "health": 43
+    }
+  },
+  "src/gov_mcp/knowledge/engine.py": {
+    "sha256": "e4c847463dc2a5e750c2b11bb7c98e26ea87e1059a7cf3a1cd154f1bfb2588fc",
+    "symbols": {
+      "validate_settings": 21,
+      "Engine": 39,
+      "__init__": 40,
+      "ontology": 57,
+      "processing_hash": 62,
+      "embed": 66,
+      "poll": 86,
+      "select_jobs": 135,
+      "context": 155,
+      "classify": 169,
+      "submit": 189,
+      "validate": 223,
+      "finish_job": 259,
+      "publish_documents": 267,
+      "needs_publication": 310,
+      "source_is_authorized": 319,
+      "source_can_publish": 338,
+      "review_candidate": 343,
+      "requeue_candidate": 379,
+      "search": 390,
+      "_terms": 442
+    }
+  },
+  "src/gov_mcp/knowledge/server.py": {
+    "sha256": "0e74a5007021f4a8c732a8116a5d90e6da824f48aef690f7f75d078fc32d345d",
+    "symbols": {
+      "create_app": 31,
+      "main": 275,
+      "role": 40,
+      "scoped": 43,
+      "execute": 47,
+      "govkb_get_change_batch": 60,
+      "govkb_classify_changes": 75,
+      "govkb_submit_candidates": 84,
+      "govkb_validate_candidates": 91,
+      "govkb_finish_run": 100,
+      "govkb_search_evidence": 105,
+      "identity": 129,
+      "login": 141,
+      "logout": 168,
+      "state": 174,
+      "operation": 184,
+      "search": 220,
+      "original": 228,
+      "fixture": 239,
+      "home": 245,
+      "health": 248,
+      "lifespan": 253,
+      "gated": 262,
+      "action": 93
+    }
+  },
+  "src/gov_mcp/knowledge/store.py": {
+    "sha256": "78500d6e9fe2d6393a51024004b460a73cd2a632991885e607e507c929fc95b2",
+    "symbols": {
+      "encoded": 13,
+      "digest": 17,
+      "KBError": 21,
+      "Store": 25,
+      "__init__": 26,
+      "db": 43,
+      "get": 57,
+      "put": 68,
+      "rows": 77,
+      "audit": 83,
+      "object": 89,
+      "read_object": 107,
+      "enqueue": 115,
+      "claim": 128,
+      "assert_lease": 145,
+      "renew": 150,
+      "update_job": 157,
+      "finish": 162,
+      "abort": 173,
+      "version": 185,
+      "publish": 191,
+      "rollback": 214
+    }
+  },
+  "src/gov_mcp/ontology_evolution.py": {
+    "sha256": "60f9b2101407050cf32fcc288775c3333dbb9cfde0a808ca305c9231b83930b4",
+    "symbols": {
+      "PublicOntologySource": 19,
+      "OntologyWorkspace": 62,
+      "__init__": 68,
+      "_state": 25,
+      "__call__": 39,
+      "_implementation": 64,
+      "initialize": 76,
+      "_actor": 98,
+      "_proposal": 106,
+      "_current": 139,
+      "_version": 147,
+      "submit": 163,
+      "status": 175,
+      "review": 179,
+      "_guard_version": 208,
+      "_facts": 221,
+      "query": 233,
+      "rollback": 274
+    }
+  },
+  "src/gov_mcp/ontology_crossdoc.py": {
+    "sha256": "0774556e6a4487105763867ca88121be27cb138a0b3a7705a5cf429d84334085",
+    "symbols": {
+      "integration_seed": 26,
+      "build_candidate": 31,
+      "ArchivedCrossdocSource": 65,
+      "CrossdocOntologyWorkspace": 78,
+      "__init__": 66,
+      "__call__": 69,
+      "_implementation": 80,
+      "_version": 85,
+      "_proposal": 94,
+      "_execute": 100,
+      "query": 126
+    }
+  },
+  "src/gov_mcp/ontology_crossdoc_preview.py": {
+    "sha256": "a160411ef2cd9a449db1b469573007198c4d870ceaaa809e5f4ada3f1d20d47c",
+    "symbols": {
+      "code_fingerprints": 22,
+      "OntologyCrossdocPreview": 29,
+      "__init__": 30,
+      "_bundle": 36,
+      "preflight": 52,
+      "_stage_task": 59,
+      "retrieve": 69,
+      "verify": 82,
+      "state": 98,
+      "finalize": 108
+    }
+  },
+  "src/gov_mcp/ontology_crossdoc_preview_server.py": {
+    "sha256": "3e394bbf4e99c67eec6dfeffe5094b49cd16b2dda098de836fc78163545676c7",
+    "symbols": {
+      "create_app": 19,
+      "open_preview": 71,
+      "main": 89,
+      "execute": 29,
+      "govkb_ontology_crossdoc_open_query": 39,
+      "govkb_ontology_crossdoc_retrieve": 44,
+      "govkb_ontology_crossdoc_verify": 49,
+      "govkb_ontology_crossdoc_state": 54,
+      "govkb_ontology_crossdoc_finalize": 59,
+      "health": 63
+    }
+  },
+  "src/gov_mcp/henan_multimodal.py": {
+    "sha256": "caa37898c59c63e439355d8560a3874487c78fca1fb9e43f878a5126f36c9f2a",
+    "symbols": {
+      "integration_seed": 31,
+      "_compact": 35,
+      "_hash": 39,
+      "_documents": 43,
+      "build_candidate": 87,
+      "HenanMultimodalWorkspace": 148,
+      "_implementation": 150,
+      "_version": 156,
+      "_proposal": 163,
+      "_execute": 169,
+      "query": 197
+    }
+  },
+  "src/gov_mcp/henan_multimodal_preview.py": {
+    "sha256": "27e44427f8df0a0165a1755ba8dc205276221f9a5d747ea12ca37b0c0b126802",
+    "symbols": {
+      "code_fingerprints": 23,
+      "HenanMultimodalPreview": 32,
+      "__init__": 35,
+      "_load_archive": 38,
+      "_bundle": 43,
+      "preflight": 67,
+      "_context": 74,
+      "open_query": 87,
+      "finalize": 107
+    }
+  },
+  "src/gov_mcp/crossdoc_reasoning.py": {
+    "sha256": "8a39e53ac262ae7dffd748e5dea4507cf5ad352c815762bbb8326ee9d2c2c74e",
+    "symbols": {
+      "_sha": 45,
+      "_json": 49,
+      "checked_segments": 61,
+      "load_bundle": 85,
+      "_citation": 158,
+      "solve": 162,
+      "pairs": 50,
+      "stop": 174
+    }
+  },
+  "src/gov_mcp/successor_update.py": {
+    "sha256": "4be327d9e852d71341a078e0df8a9a3ff4467b7612f4dce5a87b31b4743469f4",
+    "symbols": {
+      "Duration": 22,
+      "Difference": 29,
+      "MachineReview": 42,
+      "implementation": 49,
+      "evidence_packet": 55,
+      "load_documents": 63,
+      "validate_difference": 86,
+      "SuccessorEngine": 112,
+      "__init__": 114,
+      "snapshot": 123,
+      "poll": 133,
+      "select_jobs": 151,
+      "needs_publication": 164,
+      "publish_documents": 166,
+      "context": 169,
+      "get_batch": 185,
+      "submit": 216,
+      "review": 232,
+      "state": 247,
+      "finish": 251
+    }
+  },
+  "src/gov_mcp/decision/service.py": {
+    "sha256": "fcb8dd78314bfddf60dd1528b3891ee8048e3c4ea921753c375403238f258cf4",
+    "symbols": {
+      "DecisionError": 21,
+      "AvailabilityGate": 25,
+      "DecisionService": 49,
+      "__init__": 50,
+      "suspend": 37,
+      "fork": 71,
+      "from_file": 84,
+      "_facts": 90,
+      "_record_dependencies": 101,
+      "_path": 109,
+      "branch_options": 118,
+      "_condition": 142,
+      "_scope": 153,
+      "_citations": 169,
+      "_requirement": 180,
+      "prepare": 226,
+      "finalize": 250,
+      "answer": 305
+    }
+  },
+  "scripts/provision_frozen_kb_native.py": {
+    "sha256": "dcb6864904c5dad1a12c05f536bf3c51c11e68f7470befc8db51f1a69e0532bc",
+    "symbols": {
+      "knowledge_index": 42,
+      "provision": 50,
+      "main": 108
+    }
+  },
+  "scripts/provision_regional_native_preview.py": {
+    "sha256": "662316e551e36c5d6066525a1ddf2b289e600a4681a7f88b3139916969365c33",
+    "symbols": {
+      "first_action": 24,
+      "original_signatures": 47,
+      "check_owned_draft": 57,
+      "handshake": 74,
+      "main": 92,
+      "client": 75
+    }
+  },
+  "scripts/provision_henan_multimodal_native.py": {
+    "sha256": "520307b8cf8e6da3eaba88e69ed7f5e90891d7af3efab1f34c884ae115243dcc",
+    "symbols": {
+      "profile_provisioner": 55,
+      "first_action": 79
+    }
+  },
+  "scripts/run_henan_multimodal_native.py": {
+    "sha256": "9c1187f9460843c0972ecef0ad1ec87a69e38d2744f6363cd215eaee281f03c2",
+    "symbols": {
+      "read": 49,
+      "write": 53,
+      "sha": 60,
+      "protected": 64,
+      "source_pins": 76,
+      "prepare": 85,
+      "assess": 139,
+      "plan": 199,
+      "live": 209,
+      "main": 373
+    }
+  },
+  "scripts/bind_frozen_knowledge_files.py": {
+    "sha256": "a24f780d3898ea9e2d8c273caceebc978906a4395ba880c68bb25eac1b55e4e8",
+    "symbols": {
+      "content_signature": 22,
+      "bind": 26,
+      "main": 95,
+      "update": 69
+    }
+  }
+}

@@ -1,0 +1,17 @@
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 97%]
+........                                                                 [100%]
+=============================== warnings summary ===============================
+tests/test_regional_native_preview.py:9
+  /home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/tests/test_regional_native_preview.py:9: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+tests/test_regional_native_preview.py::test_mcp_auth_origin_and_real_trace_required
+  /home/codexdev/.local/share/codex-vps/workspace/windows-dev/ict-crossdoc-review/.venv-review/lib/python3.12/site-packages/pydantic_settings/sources/utils.py:51: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+    warnings.warn(  # noqa: B028  (called from many sources at differing depths, so no stacklevel is correct)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/docs/competition/region-isolation-audit-202611/evidence/existing-tests.xml -
+296 passed, 2 warnings in 9.05s

@@ -1,0 +1,25 @@
+{
+  "audited_main": "37e318ca12b33f453f99ab68962ab370a297d3ff",
+  "frozen_code_baseline": "fedefb92bb39576468f61e0b781f172b6d6239d2",
+  "time_utc": "2026-11-15T10:00:39.410815+00:00",
+  "environment": "Linux VPS isolated checkout; NOT Windows or running Nexent",
+  "python": "3.12.3",
+  "dependencies": {
+    "pytest": "8.4.2",
+    "pydantic": "2.14.3",
+    "mcp": "1.26.0",
+    "httpx": "0.28.1",
+    "starlette": "1.7.0"
+  },
+  "external_model_calls": 0,
+  "live_nexent": "NOT_VERIFIED",
+  "production_writes": 0,
+  "runtime_database": "temporary pytest fixtures only",
+  "core_changes": [],
+  "frozen_file_comparison": {
+    "src/gov_mcp/frozen_qa.py": true,
+    "src/gov_mcp/frozen_qa_flow_v3.py": true,
+    "src/gov_mcp/frozen_qa_flow_server.py": true,
+    "src/gov_mcp/frozen_retrieval.py": true
+  }
+}

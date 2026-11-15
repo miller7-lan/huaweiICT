@@ -1,0 +1,157 @@
+[
+  {
+    "id": "M01",
+    "fixture": true,
+    "sources": [
+      "HN-AUDIT-FIXTURE"
+    ],
+    "checks": {
+      "passed": true,
+      "failures": []
+    },
+    "formal": false
+  },
+  {
+    "id": "M02_M05",
+    "fixture": true,
+    "normal": "derived",
+    "sources": [
+      "NJ-ID-OLD-CARD-2025",
+      "NJ-ID-RENEWAL-CYCLE-2026"
+    ],
+    "foreign_request": "out_of_scope",
+    "foreign_reason": "REGION_MATTER_OR_HOUSEHOLD_OUT_OF_SCOPE"
+  },
+  {
+    "id": "M03",
+    "fixture": true,
+    "normal": "true",
+    "foreign_request": "OUT_OF_SCOPE",
+    "sources": [
+      "BJ-ID-RENEWAL-2025"
+    ]
+  },
+  {
+    "id": "M04_M06_M09",
+    "fixture": true,
+    "query": "请按南京地方政策回答河南身份证换领收费。",
+    "gate": "OUTSIDE_HENAN_SCOPE",
+    "message": "问题涉及河南以外的地区，冻结资料只覆盖河南本省户籍事项。",
+    "retrieval_executed": false,
+    "interpretation": "keyword stop; no handling-location/household roles extracted"
+  },
+  {
+    "id": "M04_M06_M09",
+    "fixture": true,
+    "query": "江苏户籍，在郑州办理身份证。",
+    "gate": "OUTSIDE_HENAN_SCOPE",
+    "message": "问题涉及河南以外的地区，冻结资料只覆盖河南本省户籍事项。",
+    "retrieval_executed": false,
+    "interpretation": "keyword stop; no handling-location/household roles extracted"
+  },
+  {
+    "id": "M04_M06_M09",
+    "fixture": true,
+    "query": "河南本地户籍在郑州办理，请仅对比南京归档文件标题，不采用外地政策。",
+    "gate": "OUTSIDE_HENAN_SCOPE",
+    "message": "问题涉及河南以外的地区，冻结资料只覆盖河南本省户籍事项。",
+    "retrieval_executed": false,
+    "interpretation": "keyword stop; no handling-location/household roles extracted"
+  },
+  {
+    "id": "M04_M06_M09",
+    "fixture": true,
+    "query": "河南本地户籍，材料中引用“南京市”一词，仍按河南归档依据解释。",
+    "gate": "OUTSIDE_HENAN_SCOPE",
+    "message": "问题涉及河南以外的地区，冻结资料只覆盖河南本省户籍事项。",
+    "retrieval_executed": false,
+    "interpretation": "keyword stop; no handling-location/household roles extracted"
+  },
+  {
+    "id": "M07",
+    "fixture": true,
+    "status": "derived_archive",
+    "sources": [
+      "HN-FEE-CATALOG-XLSX-2025",
+      "HN-MEASURES-2021-PDF",
+      "MOF-FEE-2007"
+    ],
+    "source_regions": {
+      "catalog": "河南省",
+      "norm": "national",
+      "scan": "河南省"
+    },
+    "formal": false
+  },
+  {
+    "id": "M08",
+    "fixture": true,
+    "risk_reproduced": true,
+    "precondition": "operator supplied mixed corpus; not the actual seven-source corpus",
+    "retrieved_sources": [
+      "HN-AUDIT-FIXTURE",
+      "NJ-AUDIT-LOCAL-FIXTURE"
+    ],
+    "source_region": "南京市",
+    "question_region": "河南省",
+    "final": {
+      "outcome": "answer",
+      "answer": "河南到期换领工本费每证99元。",
+      "assertions": [
+        {
+          "claim": "河南到期换领工本费每证99元。",
+          "source_id": "NJ-AUDIT-LOCAL-FIXTURE",
+          "locator": "模拟条款1",
+          "quote": "到期换领工本费每证99元。"
+        }
+      ],
+      "stop_reason": "",
+      "unknowns": []
+    },
+    "final_checks": {
+      "passed": true,
+      "failures": []
+    },
+    "formal": false
+  },
+  {
+    "id": "M09_CANDIDATE",
+    "fixture": true,
+    "server_region": "北京市",
+    "sources": [
+      "BJ-ID-RENEWAL-2025",
+      "BJ-ID-RENEWAL-2025",
+      "BJ-ID-RENEWAL-2025",
+      "BJ-ID-RENEWAL-2025",
+      "BJ-ID-RENEWAL-2025"
+    ],
+    "formal": false
+  },
+  {
+    "id": "M09_CANDIDATE",
+    "fixture": true,
+    "server_region": "南京市",
+    "sources": [
+      "NJ-ID-RENEWAL-CYCLE-2026",
+      "NJ-ID-RENEWAL-CYCLE-2026",
+      "NJ-ID-RENEWAL-CYCLE-2026"
+    ],
+    "formal": false
+  },
+  {
+    "id": "M10",
+    "fixture": true,
+    "before": {
+      "hn": "kb-18bfada889517477d3ee203f",
+      "nj": "kb-fc08d7ebf7c03942d1161a49",
+      "bj": "kb-9a7f0aa01b7ea7bcf206d5c2"
+    },
+    "after": {
+      "hn": "kb-79bded3e6562b03c48eccf8d",
+      "nj": "kb-fc08d7ebf7c03942d1161a49",
+      "bj": "kb-9a7f0aa01b7ea7bcf206d5c2"
+    },
+    "production_write": false,
+    "notice": "temporary engineering_fixture publication only; not real human policy approval"
+  }
+]

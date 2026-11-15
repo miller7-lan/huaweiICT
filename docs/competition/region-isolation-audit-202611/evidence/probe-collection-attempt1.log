@@ -1,0 +1,17 @@
+
+==================================== ERRORS ====================================
+_ ERROR collecting docs/competition/region-isolation-audit-202611/test_region_isolation.py _
+ImportError while importing test module '/home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/docs/competition/region-isolation-audit-202611/test_region_isolation.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+docs/competition/region-isolation-audit-202611/test_region_isolation.py:12: in <module>
+    from test_crossdoc_reasoning import documents as nj_docs,SCENARIO_FACTS
+E   ImportError: cannot import name 'SCENARIO_FACTS' from 'test_crossdoc_reasoning' (/home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/tests/test_crossdoc_reasoning.py)
+- generated xml file: /home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/docs/competition/region-isolation-audit-202611/evidence/probe-tests.xml -
+=========================== short test summary info ============================
+ERROR docs/competition/region-isolation-audit-202611/test_region_isolation.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.70s

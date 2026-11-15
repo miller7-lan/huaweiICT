@@ -1,0 +1,240 @@
+[
+  {
+    "file": "config/exports/frozen-flow-20261114/flow-agent.json",
+    "sha256": "2bbe1851e2d60d6dca09d06fef87d9ed3ac21c3004aa0a9f4182f724b31dda9a",
+    "agents": [
+      {
+        "id": 41,
+        "name": "govfrozenflow_assistant",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_flow_open",
+            "service": "govkb_frozen_flow",
+            "params": {}
+          },
+          {
+            "name": "govkb_flow_submit",
+            "service": "govkb_frozen_flow",
+            "params": {}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "config/exports/frozen-qa-20261105/qa-agent.json",
+    "sha256": "f4ca8ed39eed168907e7508e33fe825cee8871ea4fb4a266221070140ccd1cae",
+    "agents": [
+      {
+        "id": 38,
+        "name": "govfrozenqa_assistant",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_frozen_retrieve",
+            "service": "govkb_frozen_qa",
+            "params": {}
+          },
+          {
+            "name": "govkb_frozen_verify",
+            "service": "govkb_frozen_qa",
+            "params": {}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "config/exports/frozen-qa-20261105/kb-agent.json",
+    "sha256": "2b296d7a990aa564cd0d28dc2f3b26dd8d2cfc3b43a59cc3737d2b80bf604d47",
+    "agents": [
+      {
+        "id": 39,
+        "name": "govfrozenkb_assistant",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_frozen_verify_corpus",
+            "service": "govkb_frozen_qa",
+            "params": {}
+          },
+          {
+            "name": "knowledge_base_search",
+            "service": null,
+            "params": {
+              "top_k": 5,
+              "index_names": [
+                "2-3da6dfd6d9a744ccb0864e05712a9abf"
+              ],
+              "search_mode": "hybrid",
+              "rerank": false,
+              "rerank_model_name": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "config/exports/successor-update-native-20261105/agent.json",
+    "sha256": "cfe0fa6fc7c1eaa4c129f96a3955bd56fb88299f9ca49648db02c9a8a3f701f3",
+    "agents": [
+      {
+        "id": 31,
+        "name": "govsuccessor_controller",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_successor_state",
+            "service": "govkb_successor_update",
+            "params": {}
+          },
+          {
+            "name": "govkb_successor_finish",
+            "service": "govkb_successor_update",
+            "params": {}
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "name": "govsuccessor_extractor",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_successor_get",
+            "service": "govkb_successor_update",
+            "params": {}
+          },
+          {
+            "name": "govkb_successor_submit",
+            "service": "govkb_successor_update",
+            "params": {}
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "name": "govsuccessor_reviewer",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_successor_review",
+            "service": "govkb_successor_update",
+            "params": {}
+          },
+          {
+            "name": "govkb_successor_get",
+            "service": "govkb_successor_update",
+            "params": {}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "config/exports/ontology-crossdoc-native-20261021/agent.json",
+    "sha256": "3fabcd33c23329f11892c96e33eda019a618bea88d55719e60ba7ab3f9a3dc61",
+    "agents": [
+      {
+        "id": 34,
+        "name": "govontologycrossdoc_controller",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_ontology_crossdoc_open_query",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          },
+          {
+            "name": "govkb_ontology_crossdoc_state",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          },
+          {
+            "name": "govkb_ontology_crossdoc_finalize",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "name": "govontologycrossdoc_retriever",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_ontology_crossdoc_retrieve",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "name": "govontologycrossdoc_verifier",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_ontology_crossdoc_verify",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "config/exports/henan-multimodal-native-20261022/agent.json",
+    "sha256": "1a0b1d588f95003ea20446d92a1a91eb2a0461aa4eccb846d1debce81f1d930a",
+    "agents": [
+      {
+        "id": 37,
+        "name": "govhenanmultimodal_controller",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_ontology_crossdoc_open_query",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          },
+          {
+            "name": "govkb_ontology_crossdoc_state",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          },
+          {
+            "name": "govkb_ontology_crossdoc_finalize",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "name": "govhenanmultimodal_retriever",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_ontology_crossdoc_retrieve",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "name": "govhenanmultimodal_verifier",
+        "enabled": false,
+        "tools": [
+          {
+            "name": "govkb_ontology_crossdoc_verify",
+            "service": "govkb_ontology_crossdoc_preview",
+            "params": {}
+          }
+        ]
+      }
+    ]
+  }
+]

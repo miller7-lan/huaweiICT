@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/../ict-crossdoc-review/.venv-review/bin/python",
+    "-m",
+    "pytest",
+    "tests/test_knowledge_landing.py",
+    "tests/test_regional_native_preview.py",
+    "tests/test_ontology_evolution.py",
+    "tests/test_ontology_crossdoc.py",
+    "tests/test_henan_multimodal.py",
+    "tests/test_successor_update.py",
+    "tests/test_decision_foundation.py",
+    "tests/test_frozen_qa_flow_server.py",
+    "tests/test_frozen_retrieval.py",
+    "tests/test_knowledge_scope_stages.py",
+    "-q",
+    "--tb=short",
+    "--junitxml=/home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/docs/competition/region-isolation-audit-202611/evidence/existing-tests.xml"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 9.836,
+  "suite": "targeted existing tests; fixtures/mocks, not live model deployment",
+  "model_calls": 0
+}

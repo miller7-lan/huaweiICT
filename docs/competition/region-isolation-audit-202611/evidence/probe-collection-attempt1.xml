@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.703" timestamp="2026-11-15T09:53:20.907488+00:00" hostname="QQGVxoOF0VGPE6C"><testcase classname="" name="docs.competition.region-isolation-audit-202611.test_region_isolation" time="0.000"><error message="collection failure">ImportError while importing test module '/home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/docs/competition/region-isolation-audit-202611/test_region_isolation.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+docs/competition/region-isolation-audit-202611/test_region_isolation.py:12: in &lt;module&gt;
+    from test_crossdoc_reasoning import documents as nj_docs,SCENARIO_FACTS
+E   ImportError: cannot import name 'SCENARIO_FACTS' from 'test_crossdoc_reasoning' (/home/codexdev/.local/share/codex-vps/workspace/windows-dev/region-isolation-audit-work/tests/test_crossdoc_reasoning.py)</error></testcase></testsuite></testsuites>
