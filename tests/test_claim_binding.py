@@ -51,3 +51,12 @@ def test_gate_keeps_the_first_gate_outcomes():
     from gov_mcp import frozen_qa
     for question in ("南京换领身份证多少钱？", "今天换领要多少钱？", "123456200001010012能办吗", "郑州换领工本费是多少？"):
         assert scope_gate_v2.scope_gate(question) == frozen_qa.scope_gate(question)
+
+
+def test_every_displayed_claim_carries_its_source_sentence():
+    result = run_bench.run(Path(__file__).resolve().parents[1] / "src", "G")
+    sourced = [r["sourced"] for r in result["rows"] if r.get("sourced") is not None]
+    assert sourced and all(sourced)
+    # The residual semantic misses are shown next to the source sentence that contradicts them.
+    shown = {r["id"]: r["shown"] for r in result["rows"] if r["id"] in KNOWN_MISSES}
+    assert "签发之日" in shown["B09_wrong_start"] and "因公安机关原因" in shown["B06_condition_outside_lexicon"]

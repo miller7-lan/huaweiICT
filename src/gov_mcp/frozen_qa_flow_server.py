@@ -149,7 +149,7 @@ class FlowService:
 
     def _finish(self, task, final, kind, origin):
         pool = task["state"]["pool"]
-        task.update(final=final, result_kind=flow.label_kind(final, kind), stop_origin=origin,
+        task.update(final=flow.with_sources(final, pool), result_kind=flow.label_kind(final, kind), stop_origin=origin,
                     final_checks=flow.check(final, pool) if final["outcome"] == "answer" else None)
         self._save(task)
         return self._result(task)

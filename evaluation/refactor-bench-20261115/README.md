@@ -5,7 +5,7 @@
 - `cases.py`：审计 F01–F15 的复现与对照、缺项标注、范围门问题
 - `perturb.py`：从 10 个合成句自动生成忠实转述与单点扰动
 - `holdout.py`：候选 A 写成之后才编写的留出案例
-- `run_bench.py`：P0（fedefb9）、A、C、E、F 五种候选的统一评分，含两次运行一致性和既有测试
+- `run_bench.py`：P0（fedefb9）、A、C、E、F、G 六种候选的统一评分（G 为选定方案），含两次运行一致性和既有测试
 - `results-20261115.json`：本次结果
 
     python run_bench.py --all --baseline-src <fedefb9 检出>/src --out results.json

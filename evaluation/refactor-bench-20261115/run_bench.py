@@ -112,7 +112,9 @@ def settle_extract_only(flow, frozen_qa, raw, pool):
                                                "assertions": [], "stop_reason": "", "unknowns": []}}
 
 
-def displayed(final, flow):
+def displayed(final, flow, candidate="A"):
+    if candidate == "G" and final.get("display"):
+        return re.sub(r"\s+", "", "\n".join([final["display"], *final.get("unknowns", [])]))
     parts = [final.get("answer", ""), final.get("stop_reason", ""), *final.get("unknowns", [])]
     parts += [item["claim"] for item in final.get("assertions", []) if not item["claim"].startswith(flow.TITLE_NOTE)]
     return re.sub(r"\s+", "", "\n".join(parts))
@@ -133,7 +135,14 @@ def run(src, candidate):
             settled = settle_extract_only(flow, frozen_qa, case["draft"], pool)
         else:
             settled = flow.settle_draft(case["draft"], pool, corpus)
-        kind, text = settled["result_kind"], displayed(settled["final"], flow)
+        kind, text = settled["result_kind"], displayed(settled["final"], flow, candidate)
+        final = settled["final"]
+        sourced = None
+        if candidate == "G" and final["outcome"] == "answer":
+            # Every displayed claim must carry a source sentence that contains its quote.
+            quotes = {item["claim"].strip(): item["quote"] for item in final["assertions"]}
+            sourced = all(src["sentence"] and re.sub(r"\s+", "", quotes.get(src["claim"], ""))
+                          in re.sub(r"\s+", "", src["sentence"]) for src in final.get("sources", []))
         if case["kind"] == "bad":
             ok = not any(re.sub(r"\s+", "", s) in text for s in case["must_not_show"])
             direct = None
@@ -141,7 +150,8 @@ def run(src, candidate):
             ok = kind != "stop"
             direct = ok and all(re.sub(r"\s+", "", s) in text for s in case["must_show"])
         rows.append({"id": case["id"], "issue": case["issue"], "kind": case["kind"], "result_kind": kind,
-                     "ok": ok, "direct": direct})
+                     "ok": ok, "direct": direct, "chars": len(text) if kind != "stop" else None,
+                     "sourced": sourced, "shown": text if case["id"].startswith("B") else None})
     for case in GAP_CASES:
         settled = (settle_extract_only(flow, frozen_qa, case["draft"], pool) if candidate == "E"
                    else flow.settle_draft(case["draft"], pool, corpus))
@@ -175,6 +185,10 @@ def summarize(result):
                            f"{sum(r['issue'] != 'holdout' for r in good)}",
         "gap_label": rate([r for r in rows if r["kind"] == "label"]),
         "gate": rate([r for r in rows if r["kind"] == "gate"]),
+        "mean_chars_answered": round(sum(r["chars"] for r in rows if r.get("chars")) /
+                                     max(1, sum(1 for r in rows if r.get("chars"))), 1),
+        "sourced": (f"{sum(bool(r['sourced']) for r in rows if r.get('sourced') is not None)}/"
+                    f"{sum(1 for r in rows if r.get('sourced') is not None)}"),
         "failed_ids": [r["id"] for r in rows if not r["ok"]],
         "elapsed_s": result["elapsed_s"],
     }
@@ -200,7 +214,7 @@ def run_tests(src, candidate):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--src", type=Path, default=ROOT / "src")
-    parser.add_argument("--candidate", choices=("P0", "A", "C", "E", "F"))
+    parser.add_argument("--candidate", choices=("P0", "A", "C", "E", "F", "G"))
     parser.add_argument("--all", action="store_true")
     parser.add_argument("--baseline-src", type=Path, help="src/ of a fedefb9 checkout, for P0")
     parser.add_argument("--out", type=Path)
@@ -209,7 +223,7 @@ def main():
         print(json.dumps(run(args.src, args.candidate), ensure_ascii=False))
         return
     report = {}
-    for candidate in ("P0", "A", "C", "E", "F"):
+    for candidate in ("P0", "A", "C", "E", "F", "G"):
         src = args.baseline_src if candidate == "P0" else args.src
         runs = []
         for _ in range(2):  # determinism: two runs in fresh processes must give the same rows

@@ -330,6 +330,38 @@ def salvage(output, pool, corpus=None):
             "unknowns": unknowns}, dropped, len(excerpts)
 
 
+def with_sources(final, pool):
+    """Put the whole source sentence under every displayed claim (claims plus source text).
+
+    ``answer`` stays the checked claims, so the checks and earlier readers are unchanged.
+    ``sources`` lists, per claim, the sentence cut from the unit's own text around the quote;
+    ``display`` is the text to show: each claim followed by its source sentence and location.
+    The source sentence is corpus text, not a model statement, so it is shown as it stands,
+    and a reader can compare every claim with what the source says.
+    """
+    if final["outcome"] != "answer":
+        return final
+    units = {identity(unit): unit for unit in pool}
+    sources, lines, shown = [], [], {}
+    for item in final["assertions"]:
+        claim = item["claim"].strip()
+        if not claim or claim.startswith(TITLE_NOTE):
+            continue
+        unit = units.get((item["source_id"], item["locator"]))
+        sentence = sentence_around(unit["text"], item["quote"]) if unit else None
+        sources.append({"claim": claim, "source_id": item["source_id"], "locator": item["locator"],
+                        "sentence": sentence})
+        lines.append(f"- {claim}")
+        if claim.startswith(EXCERPT_NOTE) or not sentence:
+            continue  # an excerpt already is the source sentence
+        key = (item["source_id"], item["locator"], sentence)
+        where = f"{item['source_id']} {item['locator']}"
+        lines.append(f"  原文（{where}）：" + ("同上" if key in shown else sentence))
+        shown[key] = True
+    note = [line for line in final["answer"].split("\n") if line.startswith("（部分答复")]
+    return {**final, "sources": sources, "display": "\n".join(lines + note)}
+
+
 def settle_draft(raw, pool, units):
     """What one stored model draft becomes with no further model call.
 
@@ -355,7 +387,7 @@ def settle_draft(raw, pool, units):
         final, result["claims_dropped"], result["claims_excerpted"] = salvage(output, pool, units)
         kind = "partial_answer" if final else "stop"
     final = final or _stop("VERIFICATION_FAILED", "没有可通过引用与数字核验的结论。")  # failures stay in checks
-    return {**result, "result_kind": kind, "final": final,
+    return {**result, "result_kind": kind, "final": with_sources(final, pool),
             "final_checks_passed": check(final, pool, units)["passed"] if kind != "stop" else None}
 
 
@@ -532,7 +564,7 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
     def finish(final, kind, origin=None):
         # final_checks re-verifies what is displayed. An answer whose own unknowns still name a
         # retrievable gap passed the citation checks but does not cover the whole question.
-        record.update(final=final, result_kind=label_kind(final, kind), stop_origin=origin,
+        record.update(final=with_sources(final, pool), result_kind=label_kind(final, kind), stop_origin=origin,
                       final_checks=check(final, pool, units) if final["outcome"] == "answer" else None,
                       duration_ms=round((time.monotonic() - started) * 1000, 1),
                       retrieval={"version": RETRIEVAL_VERSION, "rounds": rounds, "evidence": [
