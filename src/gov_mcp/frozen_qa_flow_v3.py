@@ -136,7 +136,15 @@ NUMBER_MASK = "〔所引文号〕"
 
 
 def _document_number_key(text):
-    return re.sub(r"[\[［(（]", "〔", re.sub(r"[\]］)）]", "〕", compact(text)))
+    """Issuer tail, year and number, so "依据财综[2007]34号" and "财综〔2007〕34号" agree.
+
+    The pattern cannot tell where an issuer abbreviation starts ("依据财综"), so only its
+    last two characters are compared, together with the full year and number.
+    """
+    match = re.fullmatch(r"(?P<issuer>[\u4e00-\u9fff]+)[〔\[［(（](?P<year>\d{4})[〕\]］)）](?P<number>\d+)号", compact(text))
+    if match is None:
+        return compact(text)
+    return f"{match['issuer'][-2:]}〔{match['year']}〕{match['number']}号"
 
 
 def mask_quoted_document_numbers(output, pool):
@@ -364,37 +372,47 @@ COLUMN_GUIDE = ("\n\n表格行的列对照（系统按同一工作表的表头�
                 "它不是证据，quote 仍须取自上面证据的原文）：\n")
 
 
-def column_guide(pool):
-    """For each table row in the pool whose header row is also there, pair values with column names.
+def table_columns(units):
+    """Column name and value of every table row whose header row is among ``units``.
 
-    A table row is stored as bare cell values, so a fee and its legal basis look alike
-    without the header. Cells are paired by column letter only; a row or header whose
-    text does not split into exactly its recorded cells is left out. Display aid only:
-    nothing here can be cited, and the checks still read the original unit text.
+    Returns {(source_id, locator): [(column name, value, cell address), ...]}. A table row
+    is stored as bare cell values, so a fee and its legal basis look alike without the
+    header. Cells are paired by column letter only, with the nearest header above the row
+    in the same sheet of the same source; a row or header whose text does not split into
+    exactly its recorded cells is left out rather than guessed.
     """
     def columns(unit):
         values, cells = unit["text"].split(" | "), unit.get("cells") or []
         if len(values) != len(cells):
             return None
-        return {re.sub(r"\d+", "", address): value for address, value in zip(cells, values)}
+        return {re.sub(r"\d+", "", address): (value, address) for address, value in zip(cells, values)}
 
-    lines = []
-    for unit in pool:
+    headers = [unit for unit in units if EvidenceIndex.is_header(unit) and TABLE_ROW.fullmatch(unit["locator"])]
+    result = {}
+    for unit in units:
         row = TABLE_ROW.fullmatch(unit["locator"]) if unit.get("evidence_kind") == "xlsx_row" else None
         if row is None or EvidenceIndex.is_header(unit):
             continue
-        headers = [other for other in pool if source_key(other) == source_key(unit) and EvidenceIndex.is_header(other)
-                   and (match := TABLE_ROW.fullmatch(other["locator"])) and match[1] == row[1]
-                   and int(match[2]) < int(row[2])]
-        if not headers:
+        above = [other for other in headers if source_key(other) == source_key(unit)
+                 and (match := TABLE_ROW.fullmatch(other["locator"]))[1] == row[1] and int(match[2]) < int(row[2])]
+        if not above:
             continue
-        header = max(headers, key=lambda other: int(TABLE_ROW.fullmatch(other["locator"])[2]))
+        header = max(above, key=lambda other: int(TABLE_ROW.fullmatch(other["locator"])[2]))
         names, values = columns(header), columns(unit)
         if names is None or values is None:
             continue
-        pairs = [f"{names[column]}＝{value}" for column, value in values.items() if column in names]
+        pairs = [(names[column][0], value, address) for column, (value, address) in values.items() if column in names]
         if pairs:
-            lines.append(f"[E{unit['rank']}] " + "；".join(pairs))
+            result[identity(unit)] = pairs
+    return result
+
+
+def column_guide(pool):
+    """Display aid for the table rows in the pool (see ``table_columns``); nothing here can be cited,
+    and the checks still read the original unit text."""
+    columns = table_columns(pool)
+    lines = [f"[E{unit['rank']}] " + "；".join(f"{name}＝{value}" for name, value, _ in columns[identity(unit)])
+             for unit in pool if identity(unit) in columns]
     return COLUMN_GUIDE + "\n".join(lines) if lines else ""
 
 
