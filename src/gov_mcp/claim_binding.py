@@ -280,6 +280,23 @@ def title_years(units):
 
 
 ROLE_AFTER_YEAR = re.compile(rf"\s*(?:的)?\s*(?:{DATE_ROLE})")
+EVENT_ACTOR = re.compile(
+    r"\s*[,，]?\s*(?P<actor>[\u4e00-\u9fff]{2,14}(?:部门|机关|政府|机构|单位|委员会|公安|法院|学校))"
+    r"\s*(?:将|通过|已|曾|开始|开展|实施|完成|把)"
+)
+
+
+def quoted_event_year(item, match, year):
+    """An explicitly quoted year + actor + action dates an event, not the source document.
+
+    The actor and year must both occur in this claim's own quote; a bare matching year
+    elsewhere in the source does not excuse a wrong document title year.
+    """
+    event = EVENT_ACTOR.match(item["claim"], match.end())
+    if event is None:
+        return False
+    quoted = rf"{year}\s*年\s*[,，]?\s*{re.escape(event['actor'])}\s*(?:将|通过|已|曾|开始|开展|实施|完成|把)"
+    return bool(re.search(quoted, item["quote"]))
 
 
 def document_year_failures(output, units):
@@ -295,7 +312,8 @@ def document_year_failures(output, units):
             continue
         for match in DOCUMENT_YEAR.finditer(item["claim"]):
             year = YEAR.search(match.group()).group()
-            if year not in known and not ROLE_AFTER_YEAR.match(item["claim"], match.end()):
+            if (year not in known and not ROLE_AFTER_YEAR.match(item["claim"], match.end())
+                    and not quoted_event_year(item, match, year)):
                 failures.append(f"A{index}_DOCUMENT_YEAR_NOT_TITLE_YEAR:{year}")
     return failures
 

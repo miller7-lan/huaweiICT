@@ -23,6 +23,29 @@ def test_distinct_subquestions_retain_low_frequency_fee_evidence():
     assert result["plan"]["semantic_coverage_verified"] is False
 
 
+def test_named_table_comparison_keeps_both_subjects_with_a_small_packet():
+    units = [unit("T", f"Excel工作表证件!第{i}行", "乙证工本费 | 比较目录项目收费标准", "xlsx_row")
+             for i in range(5, 17)]
+    other = unit("T", "Excel工作表证件!第30行", "甲证工本费 | 少见登记事项", "xlsx_row")
+    units.append(other)
+    packet = EvidenceIndex(units).retrieve("比较目录中的甲证工本费与乙证工本费是否属于同一个项目行？", k=1)
+    assert any(u["text"].startswith("乙证工本费") for u in packet["evidence"])
+    assert any(u["locator"] == other["locator"] for u in packet["evidence"])
+    assert packet["plan"]["primary_count"] <= 3
+
+
+def test_named_year_carries_into_an_ordinary_subquestion():
+    units = [unit("OLD", "网页标题", "2023年服务措施", "source_title"),
+             unit("OLD", "正文段落1", "普通业务办理期限为25日。"),
+             unit("OLD", "正文段落8", "考试特殊时期急需证件的考生，绿色通道办理期限为15日。"),
+             unit("NEW", "网页标题", "2028年服务措施", "source_title")]
+    units += [unit("NEW", f"正文段落{i}", "普通业务办理期限是多少？普通证件办理期限为10日。") for i in range(1, 12)]
+    packet = EvidenceIndex(units).retrieve("2023年考试特殊时期考生绿色通道办理期限，与普通业务办理期限分别是多少？", k=2)
+    keys = {(u["source_id"], u["locator"]) for u in packet["evidence"]}
+    assert ("OLD", "正文段落1") in keys and ("OLD", "正文段落8") in keys
+    assert packet["plan"]["primary_count"] <= 4
+
+
 def test_context_preserves_exact_originals_and_no_input_mutation():
     units = [unit("RULE", "正文段落1", "特殊办理适用以下条件。"),
              unit("RULE", "正文段落2", "仅限测试范围；例外情况仍需人工核对。"),

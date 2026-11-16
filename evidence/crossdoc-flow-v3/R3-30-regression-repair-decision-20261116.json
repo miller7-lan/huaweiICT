@@ -1,0 +1,70 @@
+{
+ "comparable": true,
+ "scope": "replay of stored drafts, counts only; not a new result",
+ "old_flow_sha256": "244477098895106525019aab44b32ced96e5fbd5612ecd6f655442a5c6cedc32",
+ "new_flow_sha256": "707913650714199dafc5d77d6d340cdc6994a97b8e8308d35ef660f14d290e1a",
+ "methods": {
+  "baseline": {
+   "expected_stop": {
+    "total": 10,
+    "old": {
+     "answer_with_gaps": 1,
+     "stop": 9
+    },
+    "new": {
+     "answer_with_gaps": 1,
+     "stop": 9
+    }
+   },
+   "expected_answer": {
+    "total": 20,
+    "old": {
+     "answer": 4,
+     "answer_with_gaps": 9,
+     "partial_answer": 5,
+     "stop": 2
+    },
+    "new": {
+     "answer": 6,
+     "answer_with_gaps": 8,
+     "partial_answer": 4,
+     "stop": 2
+    }
+   },
+   "should_stop_kept": true,
+   "no_new_false_stops": true,
+   "should_stop_all_stopped": false
+  },
+  "proposed": {
+   "expected_stop": {
+    "total": 10,
+    "old": {
+     "stop": 10
+    },
+    "new": {
+     "stop": 10
+    }
+   },
+   "expected_answer": {
+    "total": 20,
+    "old": {
+     "answer": 6,
+     "answer_with_gaps": 7,
+     "partial_answer": 2,
+     "stop": 5
+    },
+    "new": {
+     "answer": 7,
+     "answer_with_gaps": 6,
+     "partial_answer": 2,
+     "stop": 5
+    }
+   },
+   "should_stop_kept": true,
+   "no_new_false_stops": true,
+   "should_stop_all_stopped": true
+  }
+ },
+ "failures": [],
+ "adopt_v31": true
+}

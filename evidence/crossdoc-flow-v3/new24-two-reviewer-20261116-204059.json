@@ -1,0 +1,217 @@
+{
+  "pack_id": "N24-two-reviewers-20261116-192744",
+  "scope": "历史运行开发题双人复核；不是独立留出集，也不是修复后新模型运行或V3.1全量业务验收",
+  "user_attested_reviewers_confirmed": true,
+  "rules_checked": true,
+  "questions": 24,
+  "rows_per_sheet": 72,
+  "agreement_counts": {
+    "conclusions_correct": 71,
+    "missing_points": 71,
+    "citations_support": 70,
+    "excerpt_relevant": 72,
+    "stop_judgment": 72,
+    "reference_issue": 66
+  },
+  "disagreements": [
+    {
+      "question_id": "N01",
+      "label": "B",
+      "dimension": "citations_support"
+    },
+    {
+      "question_id": "N07",
+      "label": "A",
+      "dimension": "reference_issue"
+    },
+    {
+      "question_id": "N07",
+      "label": "B",
+      "dimension": "reference_issue"
+    },
+    {
+      "question_id": "N07",
+      "label": "C",
+      "dimension": "reference_issue"
+    },
+    {
+      "question_id": "N13",
+      "label": "A",
+      "dimension": "missing_points"
+    },
+    {
+      "question_id": "N13",
+      "label": "A",
+      "dimension": "reference_issue"
+    },
+    {
+      "question_id": "N13",
+      "label": "B",
+      "dimension": "reference_issue"
+    },
+    {
+      "question_id": "N13",
+      "label": "C",
+      "dimension": "reference_issue"
+    },
+    {
+      "question_id": "N18",
+      "label": "A",
+      "dimension": "conclusions_correct"
+    },
+    {
+      "question_id": "N18",
+      "label": "A",
+      "dimension": "citations_support"
+    }
+  ],
+  "reference_supplements_both_no_issue": true,
+  "counts": {
+    "scope": "counts and question ids only",
+    "sheets_passed_rule_check_unchanged": true,
+    "legacy_pack_rules_not_checked": false,
+    "reviewers_distinct": true,
+    "questions": 24,
+    "rows_per_sheet": 72,
+    "methods": [
+      "baseline",
+      "flow_v3",
+      "single_shot"
+    ],
+    "ratings_per_method_and_column": 48,
+    "by_method": {
+      "baseline": {
+        "conclusions_correct": {
+          "不适用": 16,
+          "是": 29,
+          "部分": 3
+        },
+        "missing_points": {
+          "不适用": 16,
+          "否": 20,
+          "漏核心": 12
+        },
+        "citations_support": {
+          "不适用": 16,
+          "否": 3,
+          "是": 29
+        },
+        "excerpt_relevant": {
+          "无摘录": 48
+        }
+      },
+      "flow_v3": {
+        "conclusions_correct": {
+          "不适用": 12,
+          "是": 36
+        },
+        "missing_points": {
+          "不适用": 12,
+          "否": 21,
+          "漏核心": 13,
+          "漏次要": 2
+        },
+        "citations_support": {
+          "不适用": 12,
+          "否": 1,
+          "是": 35
+        },
+        "excerpt_relevant": {
+          "无摘录": 32,
+          "是": 16
+        }
+      },
+      "single_shot": {
+        "conclusions_correct": {
+          "不适用": 42,
+          "是": 4,
+          "部分": 2
+        },
+        "missing_points": {
+          "不适用": 42,
+          "否": 4,
+          "漏核心": 2
+        },
+        "citations_support": {
+          "不适用": 42,
+          "否": 2,
+          "是": 4
+        },
+        "excerpt_relevant": {
+          "无摘录": 48
+        }
+      }
+    },
+    "reviewer_agreement": {
+      "conclusions_correct": "71/72",
+      "missing_points": "71/72",
+      "citations_support": "70/72",
+      "excerpt_relevant": "72/72"
+    },
+    "disagreements": {
+      "conclusions_correct": [
+        "N18A"
+      ],
+      "missing_points": [
+        "N13A"
+      ],
+      "citations_support": [
+        "N01B",
+        "N18A"
+      ],
+      "excerpt_relevant": []
+    },
+    "stop_judgment_by_method": {
+      "baseline": {
+        "不合理": 4,
+        "不适用": 32,
+        "合理": 12
+      },
+      "flow_v3": {
+        "不适用": 36,
+        "合理": 12
+      },
+      "single_shot": {
+        "不合理": 30,
+        "不适用": 6,
+        "合理": 12
+      }
+    },
+    "stop_judgment_agreement": "72/72",
+    "stop_judgment_disagreements": [],
+    "reference_issue_questions": {
+      "未发现": [
+        "N01",
+        "N02",
+        "N03",
+        "N04",
+        "N05",
+        "N06",
+        "N07",
+        "N08",
+        "N09",
+        "N10",
+        "N11",
+        "N12",
+        "N13",
+        "N14",
+        "N15",
+        "N16",
+        "N17",
+        "N18",
+        "N19",
+        "N20",
+        "N21",
+        "N22",
+        "N23",
+        "N24"
+      ],
+      "有误": [
+        "N07",
+        "N13"
+      ],
+      "待确认": []
+    }
+  },
+  "no_adjudication": true
+}

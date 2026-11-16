@@ -58,7 +58,8 @@ EXCLUDED = re.compile(
 
 ONGOING = re.compile(r"还有效|仍有效|仍然有效|继续有效|是否有效|是不是有效|有效吗|有没有效|还适用|仍适用|仍然适用"
                      r"|还能照|还能按|还可以按|还可以照|还在执行|仍在执行|还执行|还算数|还作数")
-STATUS = re.compile(r"废止|失效|作废|废除|停止执行")
+# A certificate-loss declaration is a document, not a question about a rule's validity.
+STATUS = re.compile(r"废止|失效|作废(?!声明|公告|申报)|废除|停止执行")
 STATUS_QUESTION = re.compile(r"吗|么|是否|是不是|有没有|[？?]")
 
 

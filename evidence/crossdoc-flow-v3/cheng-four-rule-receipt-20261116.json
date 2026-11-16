@@ -1,0 +1,132 @@
+{
+  "status": "four_conditionally_accepted_not_unconditional",
+  "submitted_by_user_as": "cheng-review",
+  "baseline_commit": "fedefb92bb39576468f61e0b781f172b6d6239d2",
+  "rule_opinions": {
+    "1": "conditional",
+    "2": "conditional",
+    "3": "conditional",
+    "4": "conditional"
+  },
+  "fixed_flow_matches_T13": true,
+  "T7_scope_module_unchanged_at_baseline": true,
+  "followup_by": "organizer-not-reviewer",
+  "scope": "five-synthetic-check-settle-cases-per-version-not-model-or-nexent",
+  "model_calls": 0,
+  "source_modified": false,
+  "baseline_issuer_defect_open": true,
+  "current_same_case_rejected": true,
+  "versions": {
+    "fedefb9": {
+      "files_sha256": {
+        "frozen_qa_flow_v3.py": "21dfa11e0108a940a7fc5abfc3dc7bf5d88e3c4172d295832671ab1a3e16e0a5",
+        "frozen_qa.py": "5b492ab885451a33b415fa08f2524d8f4aceda21e04c80662bda3de7956395df"
+      },
+      "cases": [
+        {
+          "case_id": "correct",
+          "passed": true,
+          "failures": [],
+          "settled_kind": "answer",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "wrong_issuer",
+          "passed": true,
+          "failures": [],
+          "settled_kind": "answer",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "wrong_year",
+          "passed": false,
+          "failures": [
+            "NUMBER_NOT_QUOTED:2008"
+          ],
+          "settled_kind": "stop",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "wrong_serial",
+          "passed": false,
+          "failures": [
+            "NUMBER_NOT_QUOTED:35"
+          ],
+          "settled_kind": "stop",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "nearby_quantity",
+          "passed": false,
+          "failures": [
+            "ANSWER_QUANTITY_NOT_QUOTED:20日",
+            "A1_QUANTITY_NOT_QUOTED:20日",
+            "NUMBER_NOT_QUOTED:20"
+          ],
+          "settled_kind": "stop",
+          "display_input_not_mutated": true
+        }
+      ]
+    },
+    "current_worktree": {
+      "files_sha256": {
+        "frozen_qa_flow_v3.py": "e4b250a2333b6e2d9cf7f06d088d91229fc22508f03917776fb3e29f971991c9",
+        "frozen_qa.py": "226c4242a3bb19112695a48f66de698b282fbdf22c86dbfa53ae8b3596606719",
+        "claim_binding.py": "b6da96abafdde143f00aa001a8a9b92b1b8762dda687760bf47da5bd8bdd1a41"
+      },
+      "cases": [
+        {
+          "case_id": "correct",
+          "passed": true,
+          "failures": [],
+          "settled_kind": "answer",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "wrong_issuer",
+          "passed": false,
+          "failures": [
+            "A1_DOCUMENT_NUMBER_NOT_QUOTED:京财综〔2007〕34号",
+            "ANSWER_DOCUMENT_NUMBER_NOT_QUOTED:京财综〔2007〕34号"
+          ],
+          "settled_kind": "stop",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "wrong_year",
+          "passed": false,
+          "failures": [
+            "NUMBER_NOT_QUOTED:2008",
+            "A1_DOCUMENT_NUMBER_NOT_QUOTED:豫财综〔2008〕34号",
+            "ANSWER_DOCUMENT_NUMBER_NOT_QUOTED:豫财综〔2008〕34号"
+          ],
+          "settled_kind": "stop",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "wrong_serial",
+          "passed": false,
+          "failures": [
+            "NUMBER_NOT_QUOTED:35",
+            "A1_DOCUMENT_NUMBER_NOT_QUOTED:豫财综〔2007〕35号",
+            "ANSWER_DOCUMENT_NUMBER_NOT_QUOTED:豫财综〔2007〕35号"
+          ],
+          "settled_kind": "stop",
+          "display_input_not_mutated": true
+        },
+        {
+          "case_id": "nearby_quantity",
+          "passed": false,
+          "failures": [
+            "ANSWER_QUANTITY_NOT_QUOTED:20日",
+            "A1_QUANTITY_NOT_QUOTED:20日",
+            "NUMBER_NOT_QUOTED:20",
+            "A1_QUANTITY_NOT_IN_OWN_QUOTE:20日"
+          ],
+          "settled_kind": "stop",
+          "display_input_not_mutated": true
+        }
+      ]
+    }
+  }
+}

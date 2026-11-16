@@ -1,0 +1,297 @@
+{
+  "scope": "offline engineering acceptance and replay of existing drafts, not new model scores",
+  "base_commit": "8c49bbc935dcd26e10bb399fc5b1c29f9206caaf",
+  "working_tree_modified": true,
+  "source_sha256": {
+    "frozen_qa.py": "226c4242a3bb19112695a48f66de698b282fbdf22c86dbfa53ae8b3596606719",
+    "frozen_qa_flow_v3.py": "e4b250a2333b6e2d9cf7f06d088d91229fc22508f03917776fb3e29f971991c9",
+    "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+    "claim_binding.py": "b6da96abafdde143f00aa001a8a9b92b1b8762dda687760bf47da5bd8bdd1a41",
+    "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+    "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+  },
+  "tests": {
+    "primary": {
+      "tests": 242,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "secondary": {
+      "tests": 86,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "new-regressions": {
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0
+    }
+  },
+  "bench_G": {
+    "bad_blocked_dev": "42/42",
+    "good_direct_dev": "34/34",
+    "holdout_bad_blocked": "9/12",
+    "holdout_good_direct": "12/12",
+    "gate": "23/23",
+    "sourced": "53/53"
+  },
+  "regional_check": {
+    "profile": "henan-frozen",
+    "sources": 7,
+    "units": 593
+  },
+  "replays": {
+    "R2-new24": {
+      "compare_exit_code": 0,
+      "failures": [],
+      "changes": [
+        {
+          "question_id": "N11",
+          "method": "flow_v3",
+          "before": "answer",
+          "after": "answer_with_gaps"
+        },
+        {
+          "question_id": "N14",
+          "method": "flow_v3",
+          "before": "answer",
+          "after": "answer_with_gaps"
+        },
+        {
+          "question_id": "N14",
+          "method": "single_shot",
+          "before": "answer",
+          "after": "answer_with_gaps"
+        }
+      ],
+      "expected_stop_but_answered": [],
+      "evidence_units_missing": 0,
+      "by_expected_outcome": {
+        "baseline": {
+          "expected_stop": {
+            "total": 6,
+            "old": {
+              "stop": 6
+            },
+            "new": {
+              "stop": 6
+            }
+          },
+          "expected_answer": {
+            "total": 18,
+            "old": {
+              "answer": 5,
+              "answer_with_gaps": 7,
+              "partial_answer": 3,
+              "stop": 3
+            },
+            "new": {
+              "answer": 5,
+              "answer_with_gaps": 7,
+              "partial_answer": 3,
+              "stop": 3
+            }
+          },
+          "should_stop_kept": true,
+          "no_new_false_stops": true,
+          "should_stop_all_stopped": true
+        },
+        "flow_v3": {
+          "expected_stop": {
+            "total": 6,
+            "old": {
+              "stop": 6
+            },
+            "new": {
+              "stop": 6
+            }
+          },
+          "expected_answer": {
+            "total": 18,
+            "old": {
+              "answer": 3,
+              "answer_with_gaps": 7,
+              "partial_answer": 8
+            },
+            "new": {
+              "answer": 1,
+              "answer_with_gaps": 9,
+              "partial_answer": 8
+            }
+          },
+          "should_stop_kept": true,
+          "no_new_false_stops": true,
+          "should_stop_all_stopped": true
+        },
+        "single_shot": {
+          "expected_stop": {
+            "total": 6,
+            "old": {
+              "stop": 6
+            },
+            "new": {
+              "stop": 6
+            }
+          },
+          "expected_answer": {
+            "total": 18,
+            "old": {
+              "answer": 3,
+              "answer_with_gaps": 8,
+              "partial_answer": 5,
+              "stop": 2
+            },
+            "new": {
+              "answer": 2,
+              "answer_with_gaps": 9,
+              "partial_answer": 5,
+              "stop": 2
+            }
+          },
+          "should_stop_kept": true,
+          "no_new_false_stops": true,
+          "should_stop_all_stopped": true
+        }
+      },
+      "diagnostic_file": "C:\\Users\\18133\\Desktop\\ICT执行计划-20261116\\V31-integration\\evidence\\crossdoc-flow-v3\\R2-new24-after-fixes-20261116-185251.json",
+      "decision_file": "C:\\Users\\18133\\Desktop\\ICT执行计划-20261116\\V31-integration\\evidence\\crossdoc-flow-v3\\R2-new24-after-fixes-20261116-185251-decision.json",
+      "records_sha256": "64e839f3b94202d901952b64b393fccfccd3f9d544e51afa9e566fd47e3fc726",
+      "reference_sha256": "b1cfea3a7d48c832707750a4e9757cd7ed02bd34f7c364a38389c88aa25d7134"
+    },
+    "R3-original30": {
+      "compare_exit_code": 0,
+      "failures": [],
+      "changes": [
+        {
+          "question_id": "F01",
+          "method": "baseline",
+          "before": "partial_answer",
+          "after": "answer_with_gaps"
+        },
+        {
+          "question_id": "F09",
+          "method": "proposed",
+          "before": "answer",
+          "after": "answer_with_gaps"
+        },
+        {
+          "question_id": "F09",
+          "method": "baseline",
+          "before": "answer_with_gaps",
+          "after": "answer"
+        },
+        {
+          "question_id": "F13",
+          "method": "baseline",
+          "before": "answer_with_gaps",
+          "after": "answer"
+        },
+        {
+          "question_id": "F13",
+          "method": "proposed",
+          "before": "answer_with_gaps",
+          "after": "answer"
+        }
+      ],
+      "expected_stop_but_answered": [
+        {
+          "question_id": "F23",
+          "method": "baseline",
+          "result_kind": "answer_with_gaps"
+        }
+      ],
+      "evidence_units_missing": 0,
+      "by_expected_outcome": {
+        "baseline": {
+          "expected_stop": {
+            "total": 10,
+            "old": {
+              "answer_with_gaps": 1,
+              "stop": 9
+            },
+            "new": {
+              "answer_with_gaps": 1,
+              "stop": 9
+            }
+          },
+          "expected_answer": {
+            "total": 20,
+            "old": {
+              "answer": 4,
+              "answer_with_gaps": 9,
+              "partial_answer": 5,
+              "stop": 2
+            },
+            "new": {
+              "answer": 6,
+              "answer_with_gaps": 8,
+              "partial_answer": 4,
+              "stop": 2
+            }
+          },
+          "should_stop_kept": true,
+          "no_new_false_stops": true,
+          "should_stop_all_stopped": false
+        },
+        "proposed": {
+          "expected_stop": {
+            "total": 10,
+            "old": {
+              "stop": 10
+            },
+            "new": {
+              "stop": 10
+            }
+          },
+          "expected_answer": {
+            "total": 20,
+            "old": {
+              "answer": 6,
+              "answer_with_gaps": 7,
+              "partial_answer": 2,
+              "stop": 5
+            },
+            "new": {
+              "answer": 6,
+              "answer_with_gaps": 7,
+              "partial_answer": 2,
+              "stop": 5
+            }
+          },
+          "should_stop_kept": true,
+          "no_new_false_stops": true,
+          "should_stop_all_stopped": true
+        }
+      },
+      "diagnostic_file": "C:\\Users\\18133\\Desktop\\ICT执行计划-20261116\\V31-integration\\evidence\\crossdoc-flow-v3\\R3-original30-after-fixes-20261116-185251.json",
+      "decision_file": "C:\\Users\\18133\\Desktop\\ICT执行计划-20261116\\V31-integration\\evidence\\crossdoc-flow-v3\\R3-original30-after-fixes-20261116-185251-decision.json",
+      "records_sha256": "357567be79bbe92b1f2dbf347a9d3fb710d1e8b17b62a206bc4d753ae2bfc5ef",
+      "reference_sha256": "0133ea3a7d3cc40379a8a40948ba5cb3d444935ac89742721a8fd935fe16aaf3"
+    }
+  },
+  "retrieval_coverage_development_checks": {
+    "N03": {
+      "required": 2,
+      "retrieved": 2,
+      "all_present": true,
+      "primary_count": 7,
+      "linked_count": 9
+    },
+    "N11": {
+      "required": 3,
+      "retrieved": 3,
+      "all_present": true,
+      "primary_count": 7,
+      "linked_count": 12
+    }
+  },
+  "new_model_calls": 0,
+  "production_adoption": "USER_DECISION_PENDING",
+  "original_missing_24_replay": "NOT_COMPLETED_SUPERSEDED"
+}

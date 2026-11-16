@@ -1,0 +1,51 @@
+{
+  "round": "new24-development-20261116-171800",
+  "label": "development",
+  "commit": "8c49bbc935dcd26e10bb399fc5b1c29f9206caaf",
+  "questions": 24,
+  "records": 72,
+  "model_calls": 83,
+  "limit": 120,
+  "usage": {
+    "input_tokens": 177994,
+    "output_tokens": 34440,
+    "model_calls": 83
+  },
+  "transport_error_records": 0,
+  "ratings_completed": 0,
+  "discounts": [
+    "出题方接触过被测代码或诊断结果",
+    "出题与执行评测在同一会话或同一环境完成",
+    "题意是否与旧题重合，尚未经人工复核",
+    "参考答案与必答要点尚未经人工对照原文复核",
+    "没有两位未参与出题的评审",
+    "组织者（保管密钥者）参与了评分",
+    "应停止题未能区分方法：三方法的6道应停止题均停止，本轮不用于说明停止能力提升。"
+  ],
+  "records_sha256": "64e839f3b94202d901952b64b393fccfccd3f9d544e51afa9e566fd47e3fc726",
+  "D_backup_same": true,
+  "by_method_counts": {
+    "flow_v3": {
+      "records": 24,
+      "display_answer": 18,
+      "display_stop": 6,
+      "expected_stop_total": 6,
+      "expected_stop_stopped": 6
+    },
+    "baseline": {
+      "records": 24,
+      "display_answer": 16,
+      "display_stop": 8,
+      "expected_stop_total": 6,
+      "expected_stop_stopped": 6
+    },
+    "single_shot": {
+      "records": 24,
+      "display_stop": 21,
+      "display_answer": 3,
+      "expected_stop_total": 6,
+      "expected_stop_stopped": 6
+    }
+  },
+  "business_accuracy": "not yet rated"
+}

@@ -125,7 +125,7 @@ def scope_gate(question):
 
 GATE_MESSAGES = {
     "PRIVATE_FACT_NOT_ACCEPTED": "问题含有疑似身份证号等个人信息，本系统不接收个人事实。",
-    "OUTSIDE_HENAN_SCOPE": "问题涉及河南以外的地区，冻结资料只覆盖河南本省户籍事项。",
+    "OUTSIDE_HENAN_SCOPE": "问题涉及当前河南任务配置以外的地区，这批冻结资料不能确认所问地区的具体办理规则。",
     "CURRENT_VALIDITY_NOT_ESTABLISHED": "冻结资料是历史归档，尚未核定现行效力，不能判断现在或今天的规定；下列相关归档原文可供人工核对。",
 }
 

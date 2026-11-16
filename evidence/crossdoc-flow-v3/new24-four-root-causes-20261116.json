@@ -1,0 +1,33 @@
+{
+  "label": "development_diagnostic",
+  "records_sha256": "64e839f3b94202d901952b64b393fccfccd3f9d544e51afa9e566fd47e3fc726",
+  "new_api_calls": 0,
+  "checked_records": 4,
+  "findings": [
+    {
+      "question_id": "N03",
+      "failure_type": "REQUIRED_SOURCE_UNIT_NOT_RETRIEVED",
+      "required_source_id": "HN-FEE-CATALOG-XLSX-2025",
+      "required_locator": "Excel工作表行政事业性收费!第36行",
+      "claims_dropped": 0
+    },
+    {
+      "question_id": "N11",
+      "failure_type": "REQUIRED_SOURCE_UNIT_NOT_RETRIEVED",
+      "required_source_id": "HN-MEASURES-2024-JY",
+      "required_locator": "正文段落1",
+      "claims_dropped": 0
+    },
+    {
+      "question_id": "N12",
+      "failure_type": "INFERENCE_CLAIM_REPLACED_BY_EXCERPT",
+      "claims_excerpted": 1
+    },
+    {
+      "question_id": "N14",
+      "failure_type": "ANSWER_LEVEL_INFERENCE_NOT_IN_ASSERTIONS",
+      "claims_dropped": 0
+    }
+  ],
+  "fix_status": "LOCATED_NOT_YET_FIXED"
+}

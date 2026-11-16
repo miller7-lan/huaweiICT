@@ -1,0 +1,106 @@
+{
+  "package_sha256": "081a9753d29a2b50978c70dbcfa127f1b0840159889ee7deccb5178d5e3e1eb9",
+  "member_hashes_matched": 20,
+  "nested_zip_checks": [
+    {
+      "name": "李嘉杰-异机复现L1回交包-20261115.zip",
+      "entries": 11,
+      "crc_valid": true
+    },
+    {
+      "name": "李嘉杰-异机复现L2回交包-20261115.zip",
+      "entries": 5,
+      "crc_valid": true
+    },
+    {
+      "name": "L3-V01追加运行失败回交包-20261116.zip",
+      "entries": 43,
+      "crc_valid": true
+    },
+    {
+      "name": "L3-模型容量修复与离线验证-20261116.zip",
+      "entries": 8,
+      "crc_valid": true
+    },
+    {
+      "name": "L3-运行前技术准备-r3-20261116.zip",
+      "entries": 13,
+      "crc_valid": true
+    }
+  ],
+  "fixed_project_commit": "fedefb92bb39576468f61e0b781f172b6d6239d2",
+  "nexent_version": "v2.7.0",
+  "L1": {
+    "status": "TECHNICAL_EVIDENCE_VERIFIED",
+    "tests": [
+      51,
+      76
+    ],
+    "modules_matched": 5,
+    "fingerprint_questions_matched": 27,
+    "operator_confirmation": "included conversation-confirmation record; original signature blank"
+  },
+  "L2": {
+    "status": "SINGLE_QUESTION_TECHNICAL_EVIDENCE_VERIFIED",
+    "model_requests_reported": 1,
+    "result_kind": "answer_with_gaps",
+    "final_checks_passed": true
+  },
+  "L3": {
+    "status": "ACCEPTED_FROZEN_FALLBACK_SINGLE_QUESTION_WITH_DISCLOSED_PREFIX_DIFFERENCE",
+    "result_kind": "answer",
+    "final_checks_passed": true,
+    "native_model_requests_reported": 3,
+    "cumulative_requests_reported": 7,
+    "request_limit": 10,
+    "provider_independent_logs_available": false,
+    "gateway_armed_after_run_reported": false,
+    "question_exactly_identical": false,
+    "prefix_removed": "只读归档：",
+    "offline_prefix_evidence_equivalent": true,
+    "current_V31_acceptance": false,
+    "six_question_acceptance": false,
+    "owner_acceptance": {
+      "accepted": true,
+      "confirmed_at": "2026-11-16T19:10:29.607682+08:00",
+      "source": "explicit_user_reply_in_this_chat",
+      "accepted_scope": "fedefb9 V01 single-question native chain with disclosed prefix difference"
+    }
+  },
+  "local_independent_checks": {
+    "offline_only": true,
+    "model_calls": 0,
+    "fixed_code_commit": "fedefb92bb39576468f61e0b781f172b6d6239d2",
+    "module_fingerprints_match": true,
+    "question_set_fingerprints_match": {
+      "fresh-questions": true,
+      "retrieval-probes": true,
+      "dev-pilot-questions": true
+    },
+    "question_count": 27,
+    "corpus_units": 593,
+    "unit_sha_matches": true,
+    "actual_matches_after_prefix_removal": true,
+    "both_scope_gates_open": true,
+    "evidence_order_and_hashes_same": true,
+    "evidence_count": 10,
+    "full_question_retrieval_matches_L1_saved_V01": true,
+    "server_final_check_full": {
+      "passed": true,
+      "failures": []
+    },
+    "server_final_check_without_prefix": {
+      "passed": true,
+      "failures": []
+    },
+    "final_file_sha_matches_comparison": true,
+    "receipt_task_hash_matches_server_summary": true,
+    "limits": [
+      "original server task bytes not supplied for independent task hash recomputation",
+      "screenshots show open call and final answer; full native event trace not included",
+      "prefix equivalence is deterministic for this corpus, not proof of identical model behavior"
+    ]
+  },
+  "new_model_calls": 0,
+  "previous_receipt_sha256": "2ef758a9e76fc2ef182baa226cf95e5dfbc8ae5393d84c62269c68f698d1b6be"
+}

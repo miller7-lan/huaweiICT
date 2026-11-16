@@ -1,0 +1,43 @@
+{
+  "round": "new24-development-20261116-171800",
+  "label": "development",
+  "name_to_use": "开发对比",
+  "blocked": [],
+  "discounts": [
+    "出题方接触过被测代码或诊断结果",
+    "出题与执行评测在同一会话或同一环境完成",
+    "题意是否与旧题重合，尚未经人工复核",
+    "参考答案与必答要点尚未经人工对照原文复核",
+    "没有两位未参与出题的评审",
+    "组织者（保管密钥者）参与了评分"
+  ],
+  "frozen": {
+    "rules": "strict",
+    "arms": [
+      "baseline",
+      "single_shot",
+      "flow_v3"
+    ]
+  },
+  "observed": {
+    "commit": "8c49bbc",
+    "dirty_files": [],
+    "questions": 24,
+    "questions_sha256": "cf1344820fbc51a66c8144ba397a0c1aa4e5c816cc6b23d968a9779a0e241432",
+    "reference": {
+      "reference_sha256": "b1cfea3a7d48c832707750a4e9757cd7ed02bd34f7c364a38389c88aa25d7134",
+      "expected": {
+        "answer": 18,
+        "stop": 6
+      },
+      "categories": {
+        "comparison": 6,
+        "temporal": 6,
+        "inference": 6,
+        "should_stop": 6
+      }
+    },
+    "corpus_units": 593,
+    "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05"
+  }
+}

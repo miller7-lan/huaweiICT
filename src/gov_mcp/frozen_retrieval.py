@@ -11,7 +11,7 @@ import re
 from gov_mcp.knowledge_retrieval import query_grams, score_literal
 
 
-VERSION = "frozen-bm25-rrf-context-v2"
+VERSION = "frozen-bm25-rrf-context-v3"
 METADATA_KINDS = {"source_title", "page_publication_date", "page_modified_date"}
 YEAR = re.compile(r"(?<!\d)\d{4}(?=\s*年)")
 HEADING = re.compile(r"\d{4}年\d{1,2}月\d{1,2}日\s*\S+[〔\[]\d{4}[〕\]]\d+号")
@@ -25,6 +25,7 @@ TABLE_ROW = re.compile(r"Excel工作表(.+)!第(\d+)行")
 PARAGRAPH = re.compile(r"正文段落(\d+)")
 DATE_QUESTION = re.compile(r"发布|公布|修改|更新|生效|施行|实施")
 TABLE_QUESTION = re.compile(r"表格|目录|设立依据|这[两几]列|哪一列|表头")
+TABLE_FEE = re.compile(r"[\u4e00-\u9fff]{2,18}(?:工本费|注册费|考务费|考试费)")
 MAX_QUERIES = 4
 MAX_LINKS = 12
 POSTAL_COLLECTION = re.compile(r"邮费|邮寄|寄到|寄送")
@@ -74,6 +75,14 @@ def terms(text):
         else:
             result.extend(run[i:i + 2] for i in range(len(run) - 1))
     return result
+
+
+def table_subjects(question):
+    """Literal fee subjects named in a table comparison, without assigning row identities."""
+    if not TABLE_QUESTION.search(question):
+        return []
+    pieces = re.split(r"[，,；;。？！?、]|以及|中的|目录中(?:的)?|表格中(?:的)?|是否|分别|属于|对照|比较|与|和", question)
+    return list(dict.fromkeys(match.group() for part in pieces for match in TABLE_FEE.finditer(part)))[:MAX_QUERIES]
 
 
 class EvidenceIndex:
@@ -147,9 +156,22 @@ class EvidenceIndex:
         if comparison:
             lanes.extend((f"year-{year}", question, self.rank(question, year_sources[year]))
                          for year in years if year_sources.get(year))
+            # A subquestion may omit the year stated in its preceding clause. Reserve
+            # evidence within each named source year instead of mixing ordinary and
+            # special-case facts from different versions.
+            for year in years:
+                if year_sources.get(year):
+                    lanes.extend((f"year-{year}-part-{i}", query, self.rank(query, year_sources[year]))
+                                 for i, query in enumerate(queries, 1))
         table_query = next((q for q in queries if TABLE_QUESTION.search(q)), question)
         if TABLE_QUESTION.search(table_query):
             lanes.append(("table", table_query, self.rank(table_query, kind="xlsx_row")))
+        table_lanes = []
+        for i, subject in enumerate(table_subjects(question), 1):
+            ranking = [(unit, score) for unit, score in self.rank(subject, kind="xlsx_row")
+                       if subject in unit["text"]]
+            table_lanes.append((f"table-part-{i}", subject, ranking))
+        lanes.extend(table_lanes)
         body_limit = k + 2
         evidence, seen, reasons = [], set(), {}
 
@@ -165,7 +187,7 @@ class EvidenceIndex:
             return True
 
         # Reserve a result for each intent/year before one verbose source can fill the packet.
-        priority = [lane for lane in lanes
+        priority = table_lanes + [lane for lane in lanes
                     if lane[0].startswith("year-") or lane[0] in {"table", "postal-collection"}]
         priority += lanes[1:1 + len(queries)]
         for name, _, ranking in priority:

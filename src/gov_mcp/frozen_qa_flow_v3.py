@@ -60,6 +60,8 @@ NOT_RETRIEVABLE = re.compile("|".join(CURRENT) + r"|现行|个人|本人|实际"
 TITLE_NOTE = "【系统补充的来源标题】"
 EXCERPT_NOTE = "原文摘录："
 EXCERPT_WHOLE_UNIT = 200  # a unit this short is excerpted whole
+INFERENCE_CUE = re.compile(r"不能推出|不能推断|不能据|不能由|不能等同|不意味着|不代表|并非同一|不是同一")
+INFERENCE_GAP = "草稿中的推理结论尚未形成可核验的独立结论，请对照原文人工确认；以上仅列已核验的归档事实。"
 FORBID = ("不得", "禁止", "不能", "不可", "不予", "严禁")
 PERMIT = ("可以", "允许", "准予")
 
@@ -135,6 +137,21 @@ def render(output):
     unknowns, _ = claim_binding.displayable_unknowns(output["unknowns"])
     return {**output, "answer": "\n".join([f"- {claim}" for claim in claims] + ([note] if note else [])),
             "unknowns": unknowns}
+
+
+def note_inference_gap(raw, final):
+    """Flag a lost inference without publishing the unverified model summary.
+
+    This is a conservative lexical gap marker, not an inference validator. Checked
+    claims remain the only displayed conclusions and a stopped draft stays stopped.
+    """
+    if final["outcome"] != "answer":
+        return final
+    proposed = [raw["answer"]] + [a["claim"] for a in raw["assertions"]]
+    retained = final["answer"] + "\n" + "\n".join(a["claim"] for a in final["assertions"])
+    if any(INFERENCE_CUE.search(text) for text in proposed) and not INFERENCE_CUE.search(retained):
+        return {**final, "unknowns": list(dict.fromkeys(final["unknowns"] + [INFERENCE_GAP]))}
+    return final
 
 
 # A document number such as 豫公〔2021〕16号 or 财综[2007]34号 names a document; its digits are
@@ -387,7 +404,8 @@ def settle_draft(raw, pool, units):
         final, result["claims_dropped"], result["claims_excerpted"] = salvage(output, pool, units)
         kind = "partial_answer" if final else "stop"
     final = final or _stop("VERIFICATION_FAILED", "没有可通过引用与数字核验的结论。")  # failures stay in checks
-    return {**result, "result_kind": kind, "final": with_sources(final, pool),
+    final = note_inference_gap(raw, final)
+    return {**result, "result_kind": label_kind(final, kind), "final": with_sources(final, pool),
             "final_checks_passed": check(final, pool, units)["passed"] if kind != "stop" else None}
 
 
@@ -432,7 +450,8 @@ def advance(state, raw, units, *, follow_up_after_answer=False):
     verified = state["verified"]  # an answer that already passed, kept while a follow-up is tried
 
     def final(value, kind, origin=None):
-        return {"action": "final", "final": value, "kind": kind, "origin": origin, "checks": checks}
+        value = note_inference_gap(raw, value)
+        return {"action": "final", "final": value, "kind": label_kind(value, kind), "origin": origin, "checks": checks}
 
     good = output["outcome"] == "answer" and checks["passed"]
     if good or output["outcome"] == "stop":
