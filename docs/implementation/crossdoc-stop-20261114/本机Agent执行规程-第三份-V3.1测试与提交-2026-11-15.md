@@ -66,7 +66,7 @@ cd ..\..
 
 **完成标准**（全部满足）：
 
-- 第一条测试命令 `242 passed`，第二条 `84 passed`。数目不同时，把失败的测试名和第一行报错原样交回，然后停下。
+- 第一条测试命令 `243 passed`，第二条 `84 passed`。数目不同时，把失败的测试名和第一行报错原样交回，然后停下。
 - 对比台 G 的结果：开发集错误拦截 42/42，开发集正常结论直接答出 34/34，留出集错误拦截 9/12，留出集正常结论直接答出 12/12，范围门 23/23，结论附原文 53/53。查看方法：
 
   ```powershell
@@ -100,6 +100,19 @@ cd ..\..
   evidence/crossdoc-flow-v3/V2-30-v31-<日期>.json --output evidence/crossdoc-flow-v3/V2-30-decision-<日期>.json
 ```
 
+再生成逐题差异，供 Claude 做逐题分析（`--expected` 只读取参考里每题“应答复 / 应停止”）：
+
+```powershell
+.\.venv\Scripts\python.exe scripts/diff_flow_replays.py evidence/crossdoc-flow-v3/T2-24-titles-20261115.json `
+  evidence/crossdoc-flow-v3/V2-24-v31-<日期>.json --expected <24题参考> `
+  --output evidence/crossdoc-flow-v3/V2-24-diff-<日期>.json
+.\.venv\Scripts\python.exe scripts/diff_flow_replays.py evidence/crossdoc-flow-v3/T2-30-titles-20261115.json `
+  evidence/crossdoc-flow-v3/V2-30-v31-<日期>.json --expected <30题参考> `
+  --output evidence/crossdoc-flow-v3/V2-30-diff-<日期>.json
+```
+
+差异文件把每处变化分为五类：`LEAK`（应停止题被答复，必须修）、`NEW_FALSE_STOP`（应答复题新出现停止，必须说明原因）、`DOWNGRADED`（答复降级或结论变少）、`RECOVERED`（原来误停、现在答出）、`RULES_ONLY`（结果类型不变，但出现了新规则的失败码）。`rule_kinds_new_only` 统计新规则各类失败码出现的次数，是查找新规则误伤正确结论的第一入口。退出码 1 表示有 `LEAK`。
+
 不加 `--with-values`。
 
 `compare_flow_replays.py` 的退出码含义：
@@ -117,7 +130,7 @@ cd ..\..
 - 报告有一张表，表头写明“回放，不是新成绩”：每个方法一行，列出应停止题“旧停止 → 新停止 / 总数”、应答复题“旧停止 → 新停止”，以及 `should_stop_all_stopped`；
 - 只要有任何一道应停止题在新版回放里给出答复或部分答复，就在报告里点名题号。
 
-**交回**：四份 JSON、那张表、两个退出码。
+**交回**：四份回放 JSON、两份比对结论、两份逐题差异 JSON、那张表、四个退出码。全部用 `check_public_evidence.py` 检查通过后提交，推送前先得到陈同意。
 
 ## V3 决定（不调用模型，由用户决定）
 

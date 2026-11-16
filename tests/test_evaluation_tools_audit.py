@@ -178,3 +178,22 @@ def test_public_evidence_check_flags_text_fields_and_credentials_only():
     assert check.findings({"question_id": "Q1", "result_kind": "answer", "counts": {"stop": 2}}) == []
     flagged = check.findings({"records": [{"question": "题面"}], "note": "Bearer abcdefghijklmnop1234"})
     assert flagged == ["$.records[0].question: private text field", "$.note: looks like a credential"]
+
+
+def test_question_diff_classifies_leaks_new_false_stops_and_new_rule_kinds():
+    import diff_flow_replays as d
+
+    def rec(qid, kind, fails=(), n=1):
+        return {"question_id": qid, "compared_as": "flow_v3",
+                "last_draft_replayed": {"result_kind": kind, "gate": None, "final_assertions": n},
+                "last_draft_claims": [{"fails_alone": list(fails)}]}
+    base = {"records_sha256": "r", "corpus_sha256": "c"}
+    old = {**base, "records": [rec("S1", "stop"), rec("A1", "answer"), rec("A2", "stop"), rec("A3", "answer", n=2)]}
+    new = {**base, "records": [rec("S1", "partial_answer"), rec("A1", "stop", ["A1_BRANCH_MISMATCH:20元"]),
+                               rec("A2", "answer"), rec("A3", "answer", ["A1_RESTRICTION_DROPPED"], n=1)]}
+    result = d.diff(old, new, {"S1": "stop", "A1": "answer", "A2": "answer", "A3": "answer"})
+    classes = {row["question_id"]: row["class"] for row in result["changes"]}
+    assert classes == {"S1": "LEAK", "A1": "NEW_FALSE_STOP", "A2": "RECOVERED", "A3": "DOWNGRADED"}
+    assert result["must_fix"] == ["S1 flow_v3"] and result["must_explain"] == ["A1 flow_v3"]
+    assert result["rule_kinds_new_only"] == {"BRANCH_MISMATCH": 1, "RESTRICTION_DROPPED": 1}
+    assert d.diff(old, {**new, "corpus_sha256": "x"}, None)["comparable"] is False
