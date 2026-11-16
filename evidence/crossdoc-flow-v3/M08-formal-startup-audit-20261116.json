@@ -1,0 +1,33 @@
+{
+  "scope": "synthetic-offline-engineering-probes-not-model-or-business-acceptance",
+  "base_commit": "812ad8f013a96c1b9b0ddc13e34099f74ba52a70",
+  "source_branch": "origin/codex/region-isolation-audit-20261115",
+  "test_counts": {
+    "tests": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "documented_expected_tests": 12,
+  "actual_collected_tests": 11,
+  "count_difference_disclosed": true,
+  "network_disabled": true,
+  "M08": {
+    "id": "M08",
+    "fixture": true,
+    "startup_refused": true,
+    "profile": "henan-frozen",
+    "error_kind": "REGION_PROFILE_SOURCE_NOT_APPROVED",
+    "retrieval_executed": false,
+    "model_calls": 0,
+    "task_files_created": 0
+  },
+  "raw_observations_kept_private": true,
+  "source_hashes": {
+    "docs\\competition\\region-isolation-audit-202611\\test_region_isolation.py": "2bdd27cbc81e8dac25d31ebf2676e6efddb11ae707e50174a081361e1bedd1d2",
+    "src\\gov_mcp\\frozen_qa_flow_server.py": "f0bb8bd46db4b6adcbd1b6b1936d7923b81d32fe0d46d8c6ad6290c352dd130b",
+    "src\\gov_mcp\\regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca",
+    "config\\region-profiles\\henan-frozen.json": "201318ea202fa8b6c61c057acfbd0e194d7d3caa860f7b44a509295fe5aae188"
+  },
+  "model_calls": 0
+}

@@ -1,0 +1,48 @@
+{
+  "D1": {
+    "decision": "accept_retrieval_v3_bounded_nonrequired_replacements_with_disclosure",
+    "by": "user_explicit_reply"
+  },
+  "D2": {
+    "decision": "flow_v3_12_questions_real_followup",
+    "question_ids": [
+      "N01",
+      "N02",
+      "N03",
+      "N11",
+      "N12",
+      "N14",
+      "N19",
+      "N20",
+      "N21",
+      "N22",
+      "N23",
+      "N24"
+    ],
+    "max_requests": 36,
+    "max_output_tokens_per_request": 1024,
+    "transport_retries": 0,
+    "by": "user_explicit_reply"
+  },
+  "D3": {
+    "decision": "DEFERRED_PUBLISH_RECORDS_FIRST",
+    "by": "user_explicit_reply",
+    "new_output_human_review_pending": false,
+    "new_output_owner_completeness_stop_review_completed": true,
+    "full_six_dimension_two_reviewer_review_completed": false,
+    "production_version_selected": false
+  },
+  "D4": {
+    "decision": "reviewers_discuss_and_return_own_revisions",
+    "original_ratings_preserved": true,
+    "discussion_complete": true,
+    "by": "user_explicit_reply",
+    "both_confirmed_via_user_attestation": true,
+    "resolution_items": 10,
+    "pending_items": 0
+  },
+  "D5": {
+    "decision": "keep_fedefb9_unchanged_disclose_issuer_defect",
+    "by": "user_explicit_reply"
+  }
+}
