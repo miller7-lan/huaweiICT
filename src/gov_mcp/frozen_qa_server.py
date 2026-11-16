@@ -140,6 +140,12 @@ def main():
     actual_sha = frozen_qa.sha(json.dumps(corpus["units"], ensure_ascii=False, sort_keys=True))
     if corpus_sha != actual_sha:
         parser.error("CORPUS_HASH_MISMATCH")
+    # Same region profile as the flow service; whole-corpus verification reads these units too.
+    from gov_mcp import regional_scope
+    try:
+        regional_scope.check_corpus(corpus["units"], corpus_sha, regional_scope.load_profile())
+    except (OSError, ValueError) as error:
+        parser.error(str(error))
     access = args.runtime / "access.json"
     if not access.exists():
         # Private bearer for the Nexent MCP binding; never printed or committed.

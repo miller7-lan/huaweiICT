@@ -28,7 +28,7 @@ from starlette.responses import JSONResponse
 from starlette.routing import Route
 import uvicorn
 
-from gov_mcp import frozen_qa, frozen_qa_flow_v3 as flow
+from gov_mcp import frozen_qa, frozen_qa_flow_v3 as flow, regional_scope
 from gov_mcp.frozen_retrieval import EvidenceIndex
 from gov_mcp.json_output import validate_contract
 from gov_mcp.server import BearerGate
@@ -38,7 +38,7 @@ SERVICE = "govkb_frozen_flow"
 PORT = 8787
 TASK_ID = re.compile(r"[A-Za-z0-9_-]{20,64}")
 SOURCES = ("frozen_qa.py", "frozen_qa_flow_v3.py", "frozen_qa_flow_server.py", "frozen_retrieval.py",
-           "knowledge_retrieval.py", "claim_binding.py", "scope_gate_v2.py")
+           "knowledge_retrieval.py", "claim_binding.py", "scope_gate_v2.py", "regional_scope.py")
 REVISE_FAILED = ("未通过确定性核验。请只依据同一任务的证据重写完整草稿后再次提交：source_id 与 locator 照抄证据标注；"
                  "quote 必须是该证据原文的连续片段；每条 claim 的金额、期限、日期及单位必须出现在它自己的 quote 中；"
                  "原文为否定的不得写成可以。无法改正的结论请删除，并把对应缺项写入 unknowns。")
@@ -61,16 +61,22 @@ def shown(units):
 
 
 class FlowService:
-    def __init__(self, units, corpus_sha256, task_dir, rules="strict", follow_up_after_answer=False):
+    def __init__(self, units, corpus_sha256, task_dir, rules="strict", follow_up_after_answer=False,
+                 region_profile=None):
         if rules not in flow.RULE_PROFILES:
             raise ValueError("UNKNOWN_RULE_PROFILE")
+        # A corpus with a source outside the region profile is refused, never trimmed and served.
+        self.region_profile = region_profile
+        if region_profile is not None:
+            regional_scope.check_corpus(units, corpus_sha256, region_profile)
         self.index = EvidenceIndex(units)
         self.units, self.corpus_sha256, self.rules = list(self.index.units), corpus_sha256, rules
         self.follow_up_after_answer = follow_up_after_answer
         # A task may only be continued by the same workflow, source and options that opened it;
         # after an upgrade or option change an open task is refused, never silently resumed.
         self.binding = {"workflow": flow.WORKFLOW, "source_sha256": source_digest(),
-                        "follow_up_after_answer": follow_up_after_answer}
+                        "follow_up_after_answer": follow_up_after_answer,
+                        "region_profile": region_profile["profile"] if region_profile else None}
         self.task_dir = Path(task_dir)
         self.task_dir.mkdir(parents=True, exist_ok=True)
         self.lock = threading.Lock()  # one draft at a time; the service is a single process
@@ -160,6 +166,9 @@ class FlowService:
 
     def _finish(self, task, final, kind, origin):
         pool = task["state"]["pool"]
+        if self.region_profile is not None and regional_scope.unapproved_citations(final, self.region_profile):
+            final, kind, origin = (frozen_qa._stop("REGION_SOURCE_NOT_APPROVED", "答复引用了本地区未批准的来源，已停止作答。"),
+                                   "stop", "REGION_SOURCE_NOT_APPROVED")
         task.update(final=flow.with_sources(final, pool), result_kind=flow.label_kind(final, kind), stop_origin=origin,
                     final_checks=flow.check(final, pool) if final["outcome"] == "answer" else None)
         self._save(task)
@@ -199,6 +208,7 @@ def create_app(service, token, port=PORT):
         return JSONResponse({"service": SERVICE, "status": "UP", "publication_enabled": False, "rules": service.rules,
                              "follow_up_after_answer": service.follow_up_after_answer,
                              "max_drafts": flow.MAX_MODEL_CALLS, "corpus_sha256": service.corpus_sha256,
+                             "region_profile": service.binding["region_profile"],
                              "startup_source_sha256": startup})
     app = mcp.sse_app()
     app.router.routes.insert(0, Route("/health", health))
@@ -213,6 +223,8 @@ def main():
     parser.add_argument("--rules", choices=flow.RULE_PROFILES, default="strict")
     parser.add_argument("--follow-up-after-answer", action="store_true")
     parser.add_argument("--port", type=int, default=PORT)
+    parser.add_argument("--region-profile", type=Path, default=regional_scope.DEFAULT_PROFILE,
+                        help="Sources and corpora this regional service may serve")
     args = parser.parse_args()
     with socket.socket() as probe:
         if probe.connect_ex(("127.0.0.1", args.port)) == 0:
@@ -221,6 +233,11 @@ def main():
     corpus_sha = corpus["manifest"]["corpus_sha256"]
     if corpus_sha != frozen_qa.sha(json.dumps(corpus["units"], ensure_ascii=False, sort_keys=True)):
         parser.error("CORPUS_HASH_MISMATCH")
+    try:
+        profile = regional_scope.load_profile(args.region_profile)
+        regional_scope.check_corpus(corpus["units"], corpus_sha, profile)
+    except (OSError, ValueError) as error:
+        parser.error(str(error))
     args.runtime.mkdir(parents=True, exist_ok=True)
     access = args.runtime / "access.json"
     if not access.exists():
@@ -228,7 +245,7 @@ def main():
         access.write_text(json.dumps({"mcp_token": secrets.token_urlsafe(32)}), "utf-8")
     token = json.loads(access.read_text("utf-8"))["mcp_token"]
     service = FlowService(corpus["units"], corpus_sha, args.runtime / "flow-tasks", args.rules,
-                          args.follow_up_after_answer)
+                          args.follow_up_after_answer, region_profile=profile)
     uvicorn.run(create_app(service, token, args.port), host="127.0.0.1", port=args.port, log_level="warning")
 
 

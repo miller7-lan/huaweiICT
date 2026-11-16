@@ -24,7 +24,8 @@ from gov_mcp import frozen_qa, frozen_qa_flow_v3 as flow  # noqa: E402
 from gov_mcp.frozen_retrieval import retrieve_with_plan  # noqa: E402
 
 MODULES = ("frozen_qa.py", "frozen_retrieval.py", "frozen_qa_flow_v3.py", "frozen_qa_flow_server.py",
-           "knowledge_retrieval.py", "claim_binding.py", "scope_gate_v2.py")
+           "knowledge_retrieval.py", "claim_binding.py", "scope_gate_v2.py",
+           "regional_scope.py")
 
 
 def digest(value):

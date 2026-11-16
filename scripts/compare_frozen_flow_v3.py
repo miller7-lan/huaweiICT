@@ -26,7 +26,8 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from gov_mcp import frozen_qa, frozen_qa_flow_v3 as flow  # noqa: E402
 
-SOURCES = ("frozen_qa.py", "frozen_retrieval.py", "frozen_qa_flow_v3.py", "claim_binding.py", "scope_gate_v2.py")
+SOURCES = ("frozen_qa.py", "frozen_retrieval.py", "frozen_qa_flow_v3.py", "claim_binding.py", "scope_gate_v2.py",
+           "regional_scope.py")
 # Arm name -> most model calls one question can take.
 ARMS = {"baseline": 1, "single_shot": 1, "flow_v3": flow.MAX_MODEL_CALLS}
 CATEGORIES = ("comparison", "temporal", "inference", "should_stop")

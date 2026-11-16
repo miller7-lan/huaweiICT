@@ -55,7 +55,7 @@ $env:PYTHONUTF8 = "1"
 git fetch origin; git switch claude/blissful-knuth-5d407o; git pull
 git log -1 --oneline
 .\.venv\Scripts\python.exe -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py `
-  tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py `
+  tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py `
   tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py
 .\.venv\Scripts\python.exe -m pytest -q tests/test_frozen_qa.py tests/test_frozen_retrieval.py `
   tests/test_frozen_qa_flow_v2_comparison.py tests/test_extract_fact_cards.py
@@ -66,14 +66,22 @@ cd ..\..
 
 **完成标准**（全部满足）：
 
-- 第一条测试命令 `237 passed`，第二条 `84 passed`。数目不同时，把失败的测试名和第一行报错原样交回，然后停下。
+- 第一条测试命令 `242 passed`，第二条 `84 passed`。数目不同时，把失败的测试名和第一行报错原样交回，然后停下。
 - 对比台 G 的结果：开发集错误拦截 42/42，开发集正常结论直接答出 34/34，留出集错误拦截 9/12，留出集正常结论直接答出 12/12，范围门 23/23，结论附原文 53/53。查看方法：
 
   ```powershell
   .\.venv\Scripts\python.exe -c "import sys,json; sys.path.insert(0,'evaluation/refactor-bench-20261115'); import run_bench; s=run_bench.summarize(json.load(open('.runtime/V1-bench-G.json',encoding='utf-8'))); print({k:s[k] for k in ('bad_blocked_dev','good_direct_dev','holdout_bad_blocked','holdout_good_direct','gate','sourced')})"
   ```
 
-**交回**：提交号、两行测试结果、对比台六个数字。
+- 地区范围核对（F1，陈 11-16 批准）：本机 593 单元语料必须只含 `config/region-profiles/henan-frozen.json` 里的七个来源，且单元散列在批准清单内：
+
+  ```powershell
+  .\.venv\Scripts\python.exe -c "import json,sys; sys.path.insert(0,'src'); from gov_mcp import regional_scope as r; c=json.load(open('.runtime/frozen-qa-v3-titles-20261115/corpus.json',encoding='utf-8')); print(r.check_corpus(c['units'], c['manifest']['corpus_sha256'], r.load_profile()))"
+  ```
+
+  输出 `{'profile': 'henan-frozen', 'sources': 7, 'units': 593}` 即通过。报错 `REGION_PROFILE_SOURCE_NOT_APPROVED` 或 `REGION_PROFILE_CORPUS_NOT_APPROVED` 时，把报错原样交回并停下，不要改清单去迁就语料。
+
+**交回**：提交号、两行测试结果、对比台六个数字、地区范围核对的输出。
 
 ## V2 零调用回放（不调用模型）
 
@@ -151,7 +159,7 @@ cd ..\..
    .\.venv\Scripts\python.exe -m gov_mcp.frozen_qa_flow_server --corpus .runtime/frozen-qa-v3-titles-20261115/corpus.json
    ```
 
-   重启后，旧版服务留下的未完成任务会被拒绝接续（`TASK_BELONGS_TO_ANOTHER_WORKFLOW_SOURCE_OR_OPTIONS`），这是预期行为。
+   重启后，旧版服务留下的未完成任务会被拒绝接续（`TASK_BELONGS_TO_ANOTHER_WORKFLOW_SOURCE_OR_OPTIONS`），这是预期行为。服务启动时按地区配置核对语料，核对不过就拒绝启动；`/health` 里的 `region_profile` 应为 `henan-frozen`。
 2. 重新登记草稿助手，让 Nexent 使用新的展示规则（显示 `final.display`）。先不加 `--apply` 看计划，把计划交给用户确认，确认后再执行：
 
    ```powershell
