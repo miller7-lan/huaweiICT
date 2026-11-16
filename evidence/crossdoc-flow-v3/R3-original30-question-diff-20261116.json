@@ -1,0 +1,119 @@
+{
+ "comparable": true,
+ "scope": "replay of stored drafts; ids, kinds and counts only; not a new result",
+ "pairs_compared": 60,
+ "pairs_changed": 8,
+ "classes": {
+  "OTHER": 5,
+  "RULES_ONLY": 3
+ },
+ "rule_kinds_new_only": {
+  "QUANTITY_NOT_IN_OWN_QUOTE": 2,
+  "DOCUMENT_YEAR_NOT_TITLE_YEAR": 1
+ },
+ "must_fix": [],
+ "must_explain": [],
+ "changes": [
+  {
+   "question_id": "F01",
+   "method": "baseline",
+   "expected": "answer",
+   "old": "partial_answer",
+   "new": "answer_with_gaps",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  },
+  {
+   "question_id": "F09",
+   "method": "baseline",
+   "expected": "answer",
+   "old": "answer_with_gaps",
+   "new": "answer",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  },
+  {
+   "question_id": "F09",
+   "method": "proposed",
+   "expected": "answer",
+   "old": "answer",
+   "new": "answer_with_gaps",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  },
+  {
+   "question_id": "F13",
+   "method": "baseline",
+   "expected": "answer",
+   "old": "answer_with_gaps",
+   "new": "answer",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  },
+  {
+   "question_id": "F13",
+   "method": "proposed",
+   "expected": "answer",
+   "old": "answer_with_gaps",
+   "new": "answer",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  },
+  {
+   "question_id": "F15",
+   "method": "baseline",
+   "expected": "answer",
+   "old": "partial_answer",
+   "new": "partial_answer",
+   "gate_new": null,
+   "claims_new_failures": [
+    {
+     "claim": 3,
+     "new_kinds": [
+      "QUANTITY_NOT_IN_OWN_QUOTE"
+     ]
+    }
+   ],
+   "class": "RULES_ONLY"
+  },
+  {
+   "question_id": "F20",
+   "method": "baseline",
+   "expected": "answer",
+   "old": "partial_answer",
+   "new": "partial_answer",
+   "gate_new": null,
+   "claims_new_failures": [
+    {
+     "claim": 3,
+     "new_kinds": [
+      "DOCUMENT_YEAR_NOT_TITLE_YEAR"
+     ]
+    }
+   ],
+   "class": "RULES_ONLY"
+  },
+  {
+   "question_id": "F20",
+   "method": "proposed",
+   "expected": "answer",
+   "old": "partial_answer",
+   "new": "partial_answer",
+   "gate_new": null,
+   "claims_new_failures": [
+    {
+     "claim": 2,
+     "new_kinds": [
+      "QUANTITY_NOT_IN_OWN_QUOTE"
+     ]
+    }
+   ],
+   "class": "RULES_ONLY"
+  }
+ ]
+}

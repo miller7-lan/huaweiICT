@@ -1,0 +1,44 @@
+{
+ "comparable": true,
+ "scope": "replay of stored drafts; ids, kinds and counts only; not a new result",
+ "pairs_compared": 72,
+ "pairs_changed": 3,
+ "classes": {
+  "OTHER": 3
+ },
+ "rule_kinds_new_only": {},
+ "must_fix": [],
+ "must_explain": [],
+ "changes": [
+  {
+   "question_id": "N11",
+   "method": "flow_v3",
+   "expected": "answer",
+   "old": "answer",
+   "new": "answer_with_gaps",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  },
+  {
+   "question_id": "N14",
+   "method": "flow_v3",
+   "expected": "answer",
+   "old": "answer",
+   "new": "answer_with_gaps",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  },
+  {
+   "question_id": "N14",
+   "method": "single_shot",
+   "expected": "answer",
+   "old": "answer",
+   "new": "answer_with_gaps",
+   "gate_new": null,
+   "claims_new_failures": [],
+   "class": "OTHER"
+  }
+ ]
+}
