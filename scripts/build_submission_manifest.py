@@ -59,7 +59,7 @@ CORE_TESTS = ("tests/test_claim_binding.py", "tests/test_evaluation_tools_audit.
               "tests/test_crossdoc_native_wiring.py", "tests/test_frozen_qa.py", "tests/test_frozen_retrieval.py",
               "tests/test_extract_fact_cards.py")
 # Team planning and task lists are internal; they are listed as excluded, never packaged.
-INTERNAL = ("*任务清单*", "*执行顺序*", "*下一批任务*", "*接续记录*", "*分工*")
+INTERNAL = ("*任务清单*", "*执行顺序*", "*下一批任务*", "*接续记录*", "*分工*", "*人工回交待办*")
 LINK = re.compile(r"\]\(([^)#\s]+)(?:#[^)]*)?\)")
 
 

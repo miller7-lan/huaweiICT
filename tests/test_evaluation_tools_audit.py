@@ -211,5 +211,5 @@ def test_submission_manifest_keeps_internal_planning_and_private_names_out():
     # Works both in the repository and inside an unpacked package, where planning files are absent.
     chosen, internal = m.select(m.ROOT / "docs/competition/materials-v31-20261117", [], m.tracked())
     assert not any("任务清单" in name for name in chosen)
-    assert all("任务清单" in name or "执行顺序" in name or "接续记录" in name or "分工" in name or "下一批任务" in name
+    assert all("任务清单" in name or "执行顺序" in name or "接续记录" in name or "分工" in name or "下一批任务" in name or "人工回交待办" in name
                for name in internal)

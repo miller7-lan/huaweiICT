@@ -1,0 +1,78 @@
+{
+  "scope": "M11 r21b package verification; offline/synthetic core tests only, no new business acceptance",
+  "date": "2026-11-18",
+  "built_from_commit": "511f84db7b72767cef23dd69dd8ec32b693e6e07",
+  "workspace_updates_included": [
+    "scripts/build_submission_manifest.py: exclude internal human handoff",
+    "tests/test_evaluation_tools_audit.py: matching internal filename assertion",
+    "docs/competition/materials-r21/README.md: core test instructions"
+  ],
+  "passed": true,
+  "files": 662,
+  "all_payload_hashes_matched": true,
+  "core_modules_matched": 8,
+  "included_evidence_json_passed": 84,
+  "test_support_files_under_excluded_directories": [
+    "data/knowledge/candidate-catalog.json",
+    "evaluation/refactor-bench-20261115/README.md",
+    "evaluation/refactor-bench-20261115/cases.py",
+    "evaluation/refactor-bench-20261115/holdout.py",
+    "evaluation/refactor-bench-20261115/perturb.py",
+    "evaluation/refactor-bench-20261115/results-20261115.json",
+    "evaluation/refactor-bench-20261115/run_bench.py"
+  ],
+  "excluded_code_dirs": [
+    "data",
+    "evaluation"
+  ],
+  "excluded_internal_planning": [
+    "docs/competition/materials-v31-20261117/人工回交待办.md",
+    "docs/competition/全部任务清单-V3.1与初赛交付.md"
+  ],
+  "zip_check": {
+    "zip": "ICT-V31-r21b提交候选包-20261117.zip",
+    "zip_sha256": "43081c66ae1e2e08141a407224f0096df868a47774289f347476bcb390b8bd2b",
+    "members": 662,
+    "members_mismatched": [],
+    "members_missing": [],
+    "self_test": {
+      "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
+      "exit_code": 0,
+      "summary": "320 passed, 1 warning in 2.46s",
+      "failed": [],
+      "passed": true
+    }
+  },
+  "four_reviewed_documents_unchanged": true,
+  "reviewed_document_files": [
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21技术附录.docx",
+      "bytes": 4181579,
+      "sha256": "d671c63e4e591132abe7751ab971ca3c967d4fef0fade3678ae647af82ba4a0b"
+    },
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21技术附录.pdf",
+      "bytes": 2869768,
+      "sha256": "de32f1e0c2b2e76cf8ac083b8a3ca1547da92c5e071ba56423df3668a1142d90"
+    },
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21正文.docx",
+      "bytes": 906734,
+      "sha256": "ea2c9505a369348806d1caa1b9588e936db962f356e1de7d5313bb490b727fb4"
+    },
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21正文.pdf",
+      "bytes": 1230457,
+      "sha256": "e579745881be2352b584c46436dacb8c329af17fe1e181fa1908906a8a2fbb67"
+    }
+  ],
+  "prior_candidate_preserved": true,
+  "prior_candidate_sha256": "94727f7dc12b606ad959071185ba782847cf78647f5132566467e8b7685951f3",
+  "M10_confirmation_unchanged": true,
+  "M10_confirmation_record": "evidence/material-review-20261117-r21/readthrough-owner-confirmed-20261117.json",
+  "extra_evidence_selection": "all public evidence JSON already in r21 plus current M10 confirmation; explains file count above remote minimal trial",
+  "new_model_calls": 0,
+  "src_changed": false,
+  "full_suite_rerun": false,
+  "official_submission_completed": false
+}
