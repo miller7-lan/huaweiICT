@@ -197,3 +197,16 @@ def test_question_diff_classifies_leaks_new_false_stops_and_new_rule_kinds():
     assert result["must_fix"] == ["S1 flow_v3"] and result["must_explain"] == ["A1 flow_v3"]
     assert result["rule_kinds_new_only"] == {"BRANCH_MISMATCH": 1, "RESTRICTION_DROPPED": 1}
     assert d.diff(old, {**new, "corpus_sha256": "x"}, None)["comparable"] is False
+
+
+def test_submission_manifest_keeps_internal_planning_and_private_names_out():
+    import json as _json
+    import build_submission_manifest as m
+    git_files = {"src/gov_mcp/frozen_qa.py", "docs/competition/全部任务清单-x.md", "evidence/x/records.jsonl"}
+    freeze = _json.loads((m.ROOT / "evidence/crossdoc-flow-v3/V31-freeze-receipt-20261116.json").read_text("utf-8"))
+    assert [p for p in m.check({"src/gov_mcp/frozen_qa.py": "code"}, git_files, freeze) if p.startswith("MODULE")] == []
+    problems = m.check({"evidence/x/records.jsonl": "linked", "docs/untracked.md": "linked"}, git_files, freeze)
+    assert any(p.startswith("PRIVATE_NAME_SELECTED: evidence/x/records.jsonl") for p in problems)
+    assert any(p.startswith("NOT_TRACKED_BY_GIT: docs/untracked.md") for p in problems)
+    chosen, internal = m.select(m.ROOT / "docs/competition/materials-v31-20261117", [], m.tracked())
+    assert not any("任务清单" in name for name in chosen) and internal
