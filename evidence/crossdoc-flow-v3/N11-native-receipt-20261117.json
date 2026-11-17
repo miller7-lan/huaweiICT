@@ -1,0 +1,60 @@
+{
+  "id": "N11",
+  "round": "V31-native-new24-N01-N11-N23-20261116",
+  "passed": true,
+  "transport_completed": true,
+  "protocol_valid": true,
+  "workflow_verified": true,
+  "failures": [],
+  "result_kind": "partial_answer",
+  "model_starts": 5,
+  "high_model_starts": false,
+  "mcp_tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit"
+  ],
+  "mcp_tool_calls": 3,
+  "runtime_tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+  ],
+  "open_only": false,
+  "module_sha256": {
+    "frozen_qa.py": "226c4242a3bb19112695a48f66de698b282fbdf22c86dbfa53ae8b3596606719",
+    "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+    "frozen_qa_flow_v3.py": "e4b250a2333b6e2d9cf7f06d088d91229fc22508f03917776fb3e29f971991c9",
+    "frozen_qa_flow_server.py": "f0bb8bd46db4b6adcbd1b6b1936d7923b81d32fe0d46d8c6ad6290c352dd130b",
+    "knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479",
+    "claim_binding.py": "b6da96abafdde143f00aa001a8a9b92b1b8762dda687760bf47da5bd8bdd1a41",
+    "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+    "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+  },
+  "frozen_commit": "b75409e3ff7d0d7a32db7f2ac14a4e1b52ba2f12",
+  "src_freeze_commit": "459e459ea8b4401d21d8a230ef2ca6f0f4be175c",
+  "fingerprint": "3c79a2bb3835fb3ae8c5534aa87a74d46e4a67777896203f804f4cdb8830c22b",
+  "private_report_sha256": "21f5b37c950c9efc9487451bb540b6af66d9e4d8cc8b54cc82c83cf7fc99443f",
+  "native_report_file": "native-run-20261116T160417Z-report.json",
+  "duration_ms": 15391.0,
+  "recorded_at": "2026-11-16T16:04:33.558250+00:00",
+  "screenshots": [],
+  "completion": "未完成：缺界面截图；调试会话不进入历史",
+  "server_display_compare": {
+    "byte_identical": false,
+    "display_contained_in_answer": true,
+    "no_extra_business_facts": true,
+    "citation_marker_ok": true,
+    "status": "compared",
+    "task_id": "KtFWg3IwjLLAVYooKJi2EgQ7BvDPHBVY",
+    "unknowns_count": 2,
+    "unknowns_matched_in_answer": 2,
+    "answer_only_line_count": 4
+  },
+  "final_checks": {
+    "passed": true,
+    "failures": []
+  },
+  "receipt_sha256": "c591127f5197eb441c688539e031377699c4bee9a1925819cac3271f5a3b62a0"
+}

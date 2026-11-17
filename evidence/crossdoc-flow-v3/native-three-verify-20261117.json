@@ -1,0 +1,90 @@
+{
+  "round": "V31-native-new24-N01-N11-N23-20261116",
+  "authorized_question_ids": [
+    "N01",
+    "N11",
+    "N23"
+  ],
+  "t3_all_pass": true,
+  "t4_byte_identical_all": false,
+  "t4_no_extra_business_facts_n01_n11": true,
+  "t4_n23_status": "no_task_file",
+  "stop_before_materials": true,
+  "rows": [
+    {
+      "id": "N01",
+      "passed": true,
+      "transport_completed": true,
+      "protocol_valid": true,
+      "workflow_verified": true,
+      "failures_empty": true,
+      "starts_with_open": true,
+      "open_only_stop_case": false,
+      "module_hashes_match_freeze": true,
+      "model_starts": 4,
+      "high_model_starts": false,
+      "t3_pass": true,
+      "t4": {
+        "byte_identical": false,
+        "display_contained_in_answer": true,
+        "no_extra_business_facts": true,
+        "citation_marker_ok": true,
+        "status": "compared",
+        "task_id": "SpgX9boQ4z2gnlzrT1ea10SnYxQ46Yni",
+        "unknowns_count": 0,
+        "unknowns_matched_in_answer": 0,
+        "answer_only_line_count": 2
+      }
+    },
+    {
+      "id": "N11",
+      "passed": true,
+      "transport_completed": true,
+      "protocol_valid": true,
+      "workflow_verified": true,
+      "failures_empty": true,
+      "starts_with_open": true,
+      "open_only_stop_case": false,
+      "module_hashes_match_freeze": true,
+      "model_starts": 5,
+      "high_model_starts": false,
+      "t3_pass": true,
+      "t4": {
+        "byte_identical": false,
+        "display_contained_in_answer": true,
+        "no_extra_business_facts": true,
+        "citation_marker_ok": true,
+        "status": "compared",
+        "task_id": "KtFWg3IwjLLAVYooKJi2EgQ7BvDPHBVY",
+        "unknowns_count": 2,
+        "unknowns_matched_in_answer": 2,
+        "answer_only_line_count": 4
+      }
+    },
+    {
+      "id": "N23",
+      "passed": true,
+      "transport_completed": true,
+      "protocol_valid": true,
+      "workflow_verified": true,
+      "failures_empty": true,
+      "starts_with_open": true,
+      "open_only_stop_case": true,
+      "module_hashes_match_freeze": true,
+      "model_starts": 2,
+      "high_model_starts": false,
+      "t3_pass": true,
+      "t4": {
+        "byte_identical": null,
+        "display_contained_in_answer": null,
+        "no_extra_business_facts": null,
+        "citation_marker_ok": null,
+        "status": "no_task_file",
+        "open_only": true,
+        "detail_code": "scope_gate_stop_no_task_id_in_sse"
+      }
+    }
+  ],
+  "stop_before_materials_reason_code": "T4_BYTE_IDENTITY_OR_MISSING_TASK",
+  "id_correction": "authorized_N01_N11_N23_not_N01_N08_N05"
+}

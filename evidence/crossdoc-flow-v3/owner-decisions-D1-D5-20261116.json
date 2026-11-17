@@ -25,12 +25,22 @@
     "by": "user_explicit_reply"
   },
   "D3": {
-    "decision": "DEFERRED_PUBLISH_RECORDS_FIRST",
+    "decision": "adopt_V3.1",
     "by": "user_explicit_reply",
-    "new_output_human_review_pending": false,
+    "production_version_selected": true,
+    "formal_version": "V3.1",
+    "src_freeze_commit": "459e459ea8b4401d21d8a230ef2ca6f0f4be175c",
+    "freeze_checkout_commit": "b75409e3ff7d0d7a32db7f2ac14a4e1b52ba2f12",
+    "fingerprint": "3c79a2bb3835fb3ae8c5534aa87a74d46e4a67777896203f804f4cdb8830c22b",
+    "basis": [
+      "adoption_conditions_met_on_R2_and_R3_replays",
+      "two_real_runs_including_8c49bbc_and_followup12",
+      "two_reviewer_development_review_completed",
+      "N01_not_retrieval_v3_regression"
+    ],
     "new_output_owner_completeness_stop_review_completed": true,
     "full_six_dimension_two_reviewer_review_completed": false,
-    "production_version_selected": false
+    "recorded_on": "2026-11-17"
   },
   "D4": {
     "decision": "reviewers_discuss_and_return_own_revisions",
