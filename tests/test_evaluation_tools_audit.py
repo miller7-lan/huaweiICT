@@ -208,5 +208,8 @@ def test_submission_manifest_keeps_internal_planning_and_private_names_out():
     problems = m.check({"evidence/x/records.jsonl": "linked", "docs/untracked.md": "linked"}, git_files, freeze)
     assert any(p.startswith("PRIVATE_NAME_SELECTED: evidence/x/records.jsonl") for p in problems)
     assert any(p.startswith("NOT_TRACKED_BY_GIT: docs/untracked.md") for p in problems)
+    # Works both in the repository and inside an unpacked package, where planning files are absent.
     chosen, internal = m.select(m.ROOT / "docs/competition/materials-v31-20261117", [], m.tracked())
-    assert not any("任务清单" in name for name in chosen) and internal
+    assert not any("任务清单" in name for name in chosen)
+    assert all("任务清单" in name or "执行顺序" in name or "接续记录" in name or "分工" in name or "下一批任务" in name
+               for name in internal)
