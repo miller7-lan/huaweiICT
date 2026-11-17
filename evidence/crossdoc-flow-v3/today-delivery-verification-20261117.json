@@ -1,0 +1,51 @@
+{
+  "scope": "documentation_existing_public_evidence_and_package_checks_only",
+  "remote_integration_commit": "2727eff",
+  "module_sha256_matches_freeze": {
+    "frozen_qa.py": true,
+    "frozen_retrieval.py": true,
+    "frozen_qa_flow_v3.py": true,
+    "frozen_qa_flow_server.py": true,
+    "knowledge_retrieval.py": true,
+    "claim_binding.py": true,
+    "scope_gate_v2.py": true,
+    "regional_scope.py": true
+  },
+  "native_receipt_checks": [
+    {
+      "id": "N01",
+      "receipt_fields_match": true,
+      "module_hashes_match": true,
+      "model_start_events": 4
+    },
+    {
+      "id": "N11",
+      "receipt_fields_match": true,
+      "module_hashes_match": true,
+      "model_start_events": 5
+    },
+    {
+      "id": "N23",
+      "receipt_fields_match": true,
+      "module_hashes_match": true,
+      "model_start_events": 2
+    }
+  ],
+  "T4_original_strict_failure_preserved": true,
+  "owner_accepted_disclosed_limits_and_plan_A": true,
+  "l1_zip_crc_and_registered_sha256_match": true,
+  "l1_comparison_same": true,
+  "l1_personal_confirmation_still_pending": false,
+  "l1_confirmation_source": "owner_explicit_attestation_20261117",
+  "reference_supplement_owner_decision_pending": true,
+  "word_pdf_merged_and_rendered": false,
+  "full_program_regression_run": false,
+  "new_model_calls": 0,
+  "git_committed": false,
+  "pushed": false,
+  "local_markdown_links_checked": 78,
+  "missing_local_links": 0,
+  "public_json_files_checked": 14,
+  "public_json_check_passed": true,
+  "git_diff_check_passed": true
+}
