@@ -8,7 +8,7 @@
 - [负责人本轮接收决定](../../../evidence/crossdoc-flow-v3/today-owner-acceptance-20261117.json)。
 - [本轮文件与证据检查](../../../evidence/crossdoc-flow-v3/today-delivery-verification-20261117.json)。
 
-本包是 Markdown 合稿源稿与证据包，旧 r20 二进制文档仍为原历史版本。未声称已把更新合入 Word/PDF，也不是正式赛事上传包。当前环境的依赖包不含用于文档版式验收的 LibreOffice，不能交付未经渲染检查的改写 Word。原 r20 包原样留存在仓库，后续完成二进制合稿时需重新检查所有页及目录。
+本目录保留Markdown合稿源稿；[r21正文与附录Word/PDF](../materials-r21/README.md)已在r20副本上逐处更新并导出核验，原r20不覆盖。环境没有LibreOffice，本轮使用本机WPS提供的Word COM接口导出PDF并渲染检查。当前为待三人通读的提交候选材料，未正式上传。
 
 公开更新包保留相对目录及所引证据；`SHA256SUMS.json` 登记文件字节散列。私有题面、参考、答复、评分原表、方法密钥、原日志和新截图不加入本包。零新增模型调用，未合并 main、未推送、未发布。
 

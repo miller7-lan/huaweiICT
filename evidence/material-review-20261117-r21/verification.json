@@ -1,0 +1,167 @@
+{
+  "scope": "r21 document merge, native export and visual QA; not business acceptance or human team signoff",
+  "date": "2026-11-17",
+  "src_freeze_commit": "459e459ea8b4401d21d8a230ef2ca6f0f4be175c",
+  "fingerprint_checkout": "b75409e3ff7d0d7a32db7f2ac14a4e1b52ba2f12",
+  "renderer": "WPS Office 12.1.0.29690 via Word COM; PDFium rasterization at 110 DPI through render_docx.rasterize",
+  "document_checks": [
+    {
+      "document": "ICT-V31-r21技术附录.docx",
+      "pages": 65,
+      "toc_links_and_printed_pages_verified": 59,
+      "public_phone_email_matches": 0,
+      "tracked_edits_or_comment_markers": 0
+    },
+    {
+      "document": "ICT-V31-r21正文.docx",
+      "pages": 21,
+      "toc_links_and_printed_pages_verified": 0,
+      "public_phone_email_matches": 0,
+      "tracked_edits_or_comment_markers": 0
+    }
+  ],
+  "files": [
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21技术附录.docx",
+      "bytes": 4181579,
+      "sha256": "d671c63e4e591132abe7751ab971ca3c967d4fef0fade3678ae647af82ba4a0b"
+    },
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21技术附录.pdf",
+      "bytes": 2869768,
+      "sha256": "de32f1e0c2b2e76cf8ac083b8a3ca1547da92c5e071ba56423df3668a1142d90"
+    },
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21正文.docx",
+      "bytes": 906734,
+      "sha256": "ea2c9505a369348806d1caa1b9588e936db962f356e1de7d5313bb490b727fb4"
+    },
+    {
+      "path": "artifacts/material-review-20261117-r21/public/ICT-V31-r21正文.pdf",
+      "bytes": 1230457,
+      "sha256": "e579745881be2352b584c46436dacb8c329af17fe1e181fa1908906a8a2fbb67"
+    }
+  ],
+  "visual_qa": {
+    "all_pages_contact_sheet_reviewed": 86,
+    "changed_pages_full_size_reviewed": 32,
+    "pixel_identical_pages_reusing_prior_r20_visual_QA": 54,
+    "no_clipping_or_overlap_observed": true,
+    "prior_page_comparison": [
+      {
+        "name": "ICT-V31-r21技术附录.pdf",
+        "identical_to_prior_visually_reviewed_r20_pages": {
+          "2": 2,
+          "3": 3,
+          "4": 4,
+          "7": 7,
+          "8": 8,
+          "9": 9,
+          "10": 10,
+          "11": 11,
+          "12": 12,
+          "13": 13,
+          "14": 14,
+          "15": 15,
+          "16": 16,
+          "17": 17,
+          "18": 18,
+          "19": 19,
+          "20": 20,
+          "21": 21,
+          "22": 22,
+          "23": 23,
+          "24": 24,
+          "25": 25,
+          "26": 26,
+          "27": 27,
+          "28": 28,
+          "29": 29,
+          "30": 30,
+          "31": 31,
+          "32": 32,
+          "33": 33,
+          "34": 34,
+          "35": 35,
+          "36": 36,
+          "37": 37,
+          "38": 38,
+          "39": 39,
+          "40": 40,
+          "41": 41,
+          "42": 42,
+          "46": 46,
+          "48": 48,
+          "49": 49,
+          "50": 50,
+          "51": 51,
+          "53": 53
+        },
+        "changed_pages_requiring_full_size_review": [
+          1,
+          5,
+          6,
+          43,
+          44,
+          45,
+          47,
+          52,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65
+        ],
+        "baseline_pdf_sha256": "a32945c168ec3b8c8abc32817ebeec71e19f2269036b6d933ad6c3a76e52e329"
+      },
+      {
+        "name": "ICT-V31-r21正文.pdf",
+        "identical_to_prior_visually_reviewed_r20_pages": {
+          "2": 2,
+          "5": 5,
+          "6": 6,
+          "7": 7,
+          "8": 8,
+          "9": 9,
+          "10": 10,
+          "11": 11,
+          "21": 20
+        },
+        "changed_pages_requiring_full_size_review": [
+          1,
+          3,
+          4,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "baseline_pdf_sha256": "bf205dc2c456e3991b92bf93534ef261938df6173b8cde7d7bfc0ec517f41e1d"
+      }
+    ]
+  },
+  "M1_private_hashes_filled": true,
+  "M4_V1_U3_missing_disclosed": true,
+  "M5_limitations_disclosed": true,
+  "M6_numeric_evidence_table_in_appendix": true,
+  "M10_three_person_readthrough_completed": false,
+  "new_model_calls": 0,
+  "notes": [
+    "r20 originals preserved; historical experiments retain original tested versions",
+    "strict T4 byte-identity false retained; owner accepted disclosed plan A",
+    "new public material contains counts, hashes and paths only for private evaluation records",
+    "no full program regression: document-only task; package checks recorded separately"
+  ]
+}
