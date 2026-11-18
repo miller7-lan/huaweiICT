@@ -213,3 +213,32 @@ def test_submission_manifest_keeps_internal_planning_and_private_names_out():
     assert not any("任务清单" in name for name in chosen)
     assert all("任务清单" in name or "执行顺序" in name or "接续记录" in name or "分工" in name or "下一批任务" in name or "人工回交待办" in name
                for name in internal)
+
+
+def test_keyword_bot_returns_the_best_matching_unit_verbatim_and_never_calls_a_model():
+    import keyword_bot_baseline as bot
+    from test_frozen_qa_flow_v3 import UNITS
+    record = bot.ask("到期换领居民身份证的工本费是多少？", UNITS)
+    assert record["model"] == {"called": False, "calls": []} and record["result_kind"] == "answer"
+    final = record["final"]
+    assert final["answer"] == "到期换领居民身份证的，工本费20元，办理时限60个工作日。"
+    assert final["assertions"][0]["quote"] == final["answer"] and final["assertions"][0]["source_id"] == "DOC-RENEW"
+    # No scope gate, as in a traditional bot: an out-of-province question still gets the nearest unit.
+    assert bot.ask("南京到期换领居民身份证工本费多少", UNITS)["result_kind"] == "answer"
+    # Titles are never the whole answer; no literal overlap gives a fixed no-match reply.
+    assert bot.ask("完全无关的词语组合", [u for u in UNITS if u["evidence_kind"] == "source_title"])["result_kind"] == "stop"
+
+
+def test_review_pack_accepts_four_arms_including_the_keyword_bot(tmp_path):
+    import keyword_bot_baseline as bot
+    from test_flow_v3_review_pack import CORPUS, records
+    from test_frozen_qa_flow_v3 import UNITS
+    lines = records()
+    for qid in ("Q1", "Q2", "Q3"):
+        record = bot.ask("到期换领工本费", UNITS)
+        record.update(question_id=qid, compared_as="keyword_bot", question="问" + qid)
+        lines.append(json.dumps(record, ensure_ascii=False))
+    path = tmp_path / "records.jsonl"
+    path.write_text("\n".join(lines), "utf-8")
+    key = pack.build(pack.read_records(path), CORPUS, tmp_path / "pack", "s", ["r1", "r2"])
+    assert all(len(pair) == 3 and "keyword_bot" in pair.values() for pair in key.values())

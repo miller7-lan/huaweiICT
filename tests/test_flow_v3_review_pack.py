@@ -121,7 +121,7 @@ def test_reference_is_validated_before_a_run_and_only_its_hash_is_kept(tmp_path)
         path.write_text(json.dumps(broken, ensure_ascii=False), "utf-8")
         with pytest.raises(ValueError):
             compare.check_reference(path, questions)
-    assert compare.ARMS == {"baseline": 1, "single_shot": 1, "flow_v3": 3}
+    assert compare.ARMS == {"baseline": 1, "single_shot": 1, "flow_v3": 3, "keyword_bot": 0}
 
 
 def test_verification_stops_look_the_same_for_every_method(tmp_path):

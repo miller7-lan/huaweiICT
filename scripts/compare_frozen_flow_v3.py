@@ -5,7 +5,8 @@ object with "cases". Without --live nothing calls a model: the plan and the
 call ceiling are printed. With --live each question runs both methods in a
 seeded order through the existing DeepSeek profile, with no retries and a hard
 --max-calls budget (per question: baseline 1, single-shot 1, flow at most 3).
---arms picks the methods; --reference validates a private reference file and
+--arms picks the methods; keyword_bot is a traditional keyword-matching bot with no model
+call, kept only as a comparison arm (scripts/keyword_bot_baseline.py); --reference validates a private reference file and
 freezes its hash in plan.json so the run can be shown to follow the frozen set.
 
 Records with questions and answers stay in a new directory under .runtime.
@@ -26,10 +27,13 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from gov_mcp import frozen_qa, frozen_qa_flow_v3 as flow  # noqa: E402
 
+sys.path.insert(0, str(ROOT / "scripts"))
+import keyword_bot_baseline as keyword_bot  # noqa: E402
+
 SOURCES = ("frozen_qa.py", "frozen_retrieval.py", "frozen_qa_flow_v3.py", "claim_binding.py", "scope_gate_v2.py",
            "regional_scope.py")
 # Arm name -> most model calls one question can take.
-ARMS = {"baseline": 1, "single_shot": 1, "flow_v3": flow.MAX_MODEL_CALLS}
+ARMS = {"baseline": 1, "single_shot": 1, "flow_v3": flow.MAX_MODEL_CALLS, "keyword_bot": 0}
 CATEGORIES = ("comparison", "temporal", "inference", "should_stop")
 
 
@@ -69,7 +73,8 @@ def main():
     parser.add_argument("--seed", default="20261114")
     parser.add_argument("--live", action="store_true", help="Call the cloud model")
     parser.add_argument("--arms", nargs="+", choices=tuple(ARMS), default=["single_shot", "flow_v3"],
-                        help="Methods to run: baseline (no checks), single_shot (checks, stop on failure), flow_v3")
+                        help="Methods to run: baseline (no checks), single_shot (checks, stop on failure), flow_v3, "
+                         "keyword_bot (traditional keyword matching, no model call)")
     parser.add_argument("--reference", type=Path,
                         help="Private reference file; validated and its hash frozen in the plan, never copied")
     parser.add_argument("--flow-rules", choices=flow.RULE_PROFILES, default="strict",
@@ -121,7 +126,8 @@ def main():
                     "single_shot": lambda: frozen_qa.ask(item["question"], units, "proposed", bounded_chat, context=context),
                     "flow_v3": lambda: flow.ask(item["question"], units, bounded_chat, context=context,
                                                 follow_up_after_answer=args.follow_up_after_answer,
-                                                rules=args.flow_rules)}
+                                                rules=args.flow_rules),
+                    "keyword_bot": lambda: keyword_bot.ask(item["question"], units, context=context)}
             # Seeded per-question order, so neither method always runs first.
             for name in sorted(arms, key=lambda n: sha256(f"{args.seed}:{item['id']}:{n}".encode()).hexdigest()):
                 before = used["count"]
