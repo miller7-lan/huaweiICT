@@ -134,6 +134,13 @@ class EvidenceIndex:
         if POSTAL_COLLECTION.search(question) and CERTIFICATE_COLLECTION.search(question):
             postal_query = "居民身份证 邮寄领证 邮费 自费 邮寄服务 领取证件"
             lanes.append(("postal-collection", postal_query, self.rank(postal_query)))
+        if ("补领" in question and re.search(r"异地|省内通办", question)
+                and re.search(r"交验|证件.{0,12}提交|哪些.{0,12}证件|核实", question)):
+            admission = "居民身份证 异地受理 申请补领 交验 有效身份证件之一 受理地公安机关 核实"
+            matches = self.rank(admission)
+            relevant = [(unit, score) for unit, score in matches
+                        if "异地受理" in unit["text"] and re.search(r"申请补领的[，,]\s*交验", unit["text"])]
+            lanes.append(("replacement-admission", admission, relevant or matches))
         year_sources = {}
         for unit in self.units:
             if unit.get("evidence_kind") == "page_publication_date":
@@ -166,7 +173,7 @@ class EvidenceIndex:
 
         # Reserve a result for each intent/year before one verbose source can fill the packet.
         priority = [lane for lane in lanes
-                    if lane[0].startswith("year-") or lane[0] in {"table", "postal-collection"}]
+                    if lane[0].startswith("year-") or lane[0] in {"table", "postal-collection", "replacement-admission"}]
         priority += lanes[1:1 + len(queries)]
         for name, _, ranking in priority:
             if ranking and len(evidence) < body_limit:

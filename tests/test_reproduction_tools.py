@@ -24,9 +24,11 @@ def test_fingerprint_is_stable_and_names_what_differs():
 
 
 def test_replay_rows_are_part_of_the_fingerprint():
+    cited_unit = next(unit for unit in UNITS if (unit["source_id"], unit["locator"]) == RENEW[1:3])
     record = {"question_id": "Q1", "compared_as": "flow_v3", "question": QUESTION,
               "model_output": answer("到期换领工本费20元。", RENEW),
-              "retrieval": {"evidence": [{"rank": 1, "source_id": RENEW[1], "locator": RENEW[2]}]}}
+              "retrieval": {"evidence": [{"rank": 1, "source_id": cited_unit["source_id"],
+                                          "locator": cited_unit["locator"], "text_sha256": cited_unit["text_sha256"]}]}}
     good = fp.fingerprint(UNITS, {}, [record])
     assert good["replay"]["rows"][0]["replayed"] == "answer"
     bad = fp.fingerprint(UNITS, {}, [{**record, "model_output": answer("到期换领工本费60元。", WRONG)}])

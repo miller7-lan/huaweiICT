@@ -75,6 +75,8 @@ def test_salvage_keeps_verified_claims_and_never_shows_the_dropped_one():
     assert (record["claims_dropped"], record["claims_excerpted"]) == (0, 1)
     assert claims(record) == [TEMP[0], flow.EXCERPT_NOTE + UNITS[1]["text"]] and "60元" not in json_text(record["final"])
     assert "部分答复" in record["final"]["answer"] and "原文摘录" in record["final"]["answer"]
+    displayed = flow.native_display_text(record["final"], record["result_kind"])
+    assert "原文摘录" in displayed and "部分事项仍缺少可核验依据。" not in displayed
     # checks describes the last draft; final_checks describes what is displayed.
     assert not record["checks"]["passed"] and record["final_checks"]["passed"]
     pool = [dict(u, rank=i) for i, u in enumerate(UNITS, 1)]
@@ -174,6 +176,8 @@ def test_a_claim_with_an_invalid_citation_is_dropped_not_excerpted():
     record = flow.ask("临时居民身份证有效期限和到期换领的工本费分别是什么？", UNITS, scripted(mixed, mixed))
     assert record["result_kind"] == "partial_answer" and claims(record) == [TEMP[0]]
     assert (record["claims_dropped"], record["claims_excerpted"]) == (1, 0) and record["final"]["unknowns"]
+    displayed = flow.native_display_text(record["final"], record["result_kind"])
+    assert "部分事项仍缺少可核验依据。" in displayed and "未知项：" in displayed
 
 
 def test_excerpts_alone_never_make_an_answer():
@@ -191,6 +195,8 @@ def test_an_answer_with_gaps_is_returned_without_a_second_call_by_default():
     first = answer("到期换领工本费20元。", RENEW, unknowns=["户口迁移准予迁入证明"])
     record = flow.ask(QUESTION, UNITS, chat := scripted(first))
     assert record["result_kind"] == "answer_with_gaps" and len(chat.calls) == 1 and record["follow_ups_used"] == 0
+    displayed = flow.native_display_text(record["final"], record["result_kind"])
+    assert "部分事项仍缺少可核验依据。" in displayed and f"未知项：{flow.UNVERIFIED_GAP}" in displayed
 
 
 def test_settle_draft_replays_a_stored_draft_without_a_model():
@@ -235,8 +241,8 @@ def test_table_rows_get_column_names_from_the_header_of_their_own_sheet():
     header, row, sparse, other_sheet = table_units()
     pool = [dict(u, rank=i) for i, u in enumerate([header, row, sparse, other_sheet, UNITS[1]], 1)]
     guide = flow.column_guide(pool)
-    assert "[E2] 项目名称＝居民身份证工本费；设立依据＝财综[2007]34号；收费标准＝20元" in guide
-    assert "[E3] 项目名称＝临时居民身份证工本费；收费标准＝10元" in guide  # paired by column letter, not position
+    assert "[E2] 项目名称＝居民身份证工本费（单元格 D36）；设立依据＝财综[2007]34号（单元格 F36）；收费标准＝20元（单元格 G36）" in guide
+    assert "[E3] 项目名称＝临时居民身份证工本费（单元格 D37）；收费标准＝10元（单元格 G37）" in guide
     assert "[E4]" not in guide and "[E1]" not in guide and "[E5]" not in guide
     assert flow.column_guide([pool[1]]) == ""  # no header in the pool, no guess
     broken = [pool[0], {**pool[1], "cells": ["D36", "G36"]}]
@@ -295,3 +301,67 @@ def test_a_quoted_document_number_is_an_identifier_not_a_quantity():
                     (named.replace("〔", "[").replace("〕", "]"), spec["source_id"], scan[1]["locator"], quote), cited_title)
     assert flow.check(square, pool)["passed"]
     assert flow.mask_quoted_document_numbers(plain, pool)["answer"] != plain["answer"] and "16号" in plain["answer"]
+
+
+def test_final_summary_only_uses_checked_claims_for_single_source_and_equal_prices():
+    prohibition = ("申领居民身份证必须本人办理，不得代办", "DOC-AGENT", "正文段落1",
+                   "必须本人办理，不得代办")
+    draft = answer("可以委托他人代办。", prohibition)
+    record = flow.ask("申领居民身份证可以代办吗？", UNITS, scripted(draft))
+    assert record["final"]["answer"] == "- " + prohibition[0]
+    assert record["final_checks"]["passed"]
+
+    extra = unit("DOC-SECOND", "正文段落1", "补领居民身份证的工本费20元。")
+    same_fee = ("补领居民身份证的工本费20元", "DOC-SECOND", "正文段落1", extra["text"])
+    pool = UNITS + [extra]
+    settled = flow.settle_draft(answer("两项均免收。", RENEW, same_fee), pool, pool)
+    assert settled["result_kind"] == "answer" and settled["final_checks_passed"]
+    assert settled["final"]["answer"].splitlines() == ["- " + RENEW[0], "- " + same_fee[0]]
+
+
+def test_excerpt_preserves_conditions_after_a_whitespace_only_quote_change():
+    sentence = "仅对材料齐全的申请人，有条件的窗口收取工本费20元。"
+    text = sentence + "另有其他说明。" * 40
+    assert flow.sentence_around(text, "工本费 20元") == sentence
+
+
+def test_short_unknown_counts_as_gap_without_becoming_a_follow_up_query():
+    draft = answer("到期换领工本费20元。", RENEW, unknowns=["邮费"])
+    record = flow.ask(QUESTION, UNITS, scripted(draft), follow_up_after_answer=True)
+    assert record["result_kind"] == "answer_with_gaps"
+    assert record["follow_ups_used"] == 0
+    assert flow.settle_draft(draft, UNITS, UNITS)["result_kind"] == "answer_with_gaps"
+
+
+def test_document_year_check_does_not_cross_rendered_claims():
+    new_fee = unit("DOC-NEW", "正文段落1", "遗失补领工本费40元。")
+    new_title = unit("DOC-NEW", "网页标题", "2024年测试通知", "source_title")
+    units = UNITS + [new_fee, new_title]
+    draft = answer("换领20元；2024年通知记载遗失补领工本费40元。",
+                   ("到期换领工本费20元，原文未说明有效期", *RENEW[1:]),
+                   ("2024年通知记载遗失补领工本费40元", "DOC-NEW", new_fee["locator"], new_fee["text"]),
+                   (new_title["text"], "DOC-NEW", new_title["locator"], new_title["text"]))
+    settled = flow.settle_draft(draft, units, units)
+    assert settled["result_kind"] == "answer"
+    assert settled["final_checks_passed"]
+
+
+def test_a_rendered_answer_is_not_released_when_final_check_fails():
+    from unittest.mock import patch
+
+    check = flow.check
+
+    def reject_rendered(output, pool):
+        if output["outcome"] == "answer" and output["answer"].startswith("- "):
+            return {"passed": False, "failures": ["SYNTHETIC_FINAL_FAILURE"]}
+        return check(output, pool)
+
+    good = answer("到期换领工本费20元。", RENEW)
+    with patch.object(flow, "check", reject_rendered):
+        record = flow.ask(QUESTION, UNITS, scripted(good, good))
+        assert record["checks"]["failures"] == ["SYNTHETIC_FINAL_FAILURE"]
+        assert record["result_kind"] == record["final"]["outcome"] == "stop"
+        assert flow.settle_draft(good, UNITS, UNITS)["final"]["outcome"] == "stop"
+        verified, kind, cause, _ = flow.checked_final(flow.render(good), UNITS, "answer", None)
+        assert verified["outcome"] == kind == "stop"
+        assert cause == "FINAL_VERIFICATION_FAILED"

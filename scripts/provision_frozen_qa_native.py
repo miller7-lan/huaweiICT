@@ -28,6 +28,7 @@ OUTPUT = ROOT / "evidence/frozen-qa-20261030"
 SERVICE, PORT = "govkb_frozen_qa", 8786
 TOOLS = {"govkb_frozen_retrieve", "govkb_frozen_verify"}
 NAME, DISPLAY = "govfrozenqa_assistant", "河南冻结资料问答（草稿）"
+REFRESH_PROMPT = False
 PROMPT = """Use executable Python <code> actions only. Import no modules and emit no DSML.
 1. Call govkb_frozen_retrieve(question=<the user's question as a quoted string>) once and print it.
 2. If its status is STOP or BLOCKED, call final_answer with a short Chinese reply that gives the
@@ -52,7 +53,11 @@ def check_service(token):
         raise RuntimeError("FROZEN_QA_SERVICE_NOT_RUNNING")
 
     async def tools():
-        async with sse_client(f"http://127.0.0.1:{PORT}/sse", headers={"Authorization": "Bearer " + token}) as streams:
+        def local_client(**kwargs):
+            return httpx.AsyncClient(trust_env=False, **kwargs)
+
+        async with sse_client(f"http://127.0.0.1:{PORT}/sse", headers={"Authorization": "Bearer " + token},
+                              httpx_client_factory=local_client) as streams:
             async with ClientSession(*streams) as session:
                 await session.initialize()
                 return {tool.name for tool in (await session.list_tools()).tools}
@@ -120,6 +125,17 @@ def provision(api, saved, token):
                 "model_ids": info.get("model_ids", info.get("model_id")), "max_steps": info.get("max_steps")}
     if readback["name"] != NAME or readback["tools"] != sorted(TOOLS):
         raise RuntimeError("DRAFT_READBACK_MISMATCH")
+    prompt_fields = ("duty_prompt", "constraint_prompt")
+    if REFRESH_PROMPT and any(info.get(key) != draft[key] for key in prompt_fields):
+        agent_id = saved["agents"]["assistant"]
+        versions = api.call("GET", f"/agent/{agent_id}/versions")
+        if (readback["enabled"] is not False or readback["model_ids"] != [models[0]["model_id"]]
+                or saved.get("published") is not False or versions.get("total") != 0):
+            raise RuntimeError("REFUSE_TO_REFRESH_ACTIVE_DRAFT")
+        api.call("POST", "/agent/update", {"agent_id": agent_id, **{key: draft[key] for key in prompt_fields}})
+        updated = api.call("POST", "/agent/search_info", {"agent_id": agent_id, "version_no": 0})
+        if updated.get("enabled") is not False or any(updated.get(key) != draft[key] for key in prompt_fields):
+            raise RuntimeError("DRAFT_PROMPT_REFRESH_MISMATCH")
     if other_signatures(api, saved["agents"].values()) != before:
         raise RuntimeError("OTHER_AGENTS_CHANGED")
     return {"recorded_at": datetime.now(timezone.utc).isoformat(), "configured": True, "service": SERVICE,

@@ -47,12 +47,22 @@ def kinds(failures, with_values):
     return [code if with_values else re.sub(r"^A\d+_", "", code).split(":")[0] for code in failures]
 
 
-def rebuild_pool(record, corpus):
-    return [dict(corpus[key], rank=item["rank"]) for item in record["retrieval"]["evidence"]
-            if (key := (item["source_id"], item["locator"])) in corpus]
+def rebuild_pool(record, corpus, *, allow_corpus_drift=False):
+    pool = []
+    for item in record["retrieval"]["evidence"]:
+        key = (item["source_id"], item["locator"])
+        if key not in corpus:
+            if allow_corpus_drift:
+                continue
+            raise ValueError(f"REPLAY_EVIDENCE_MISSING: {key}")
+        unit = corpus[key]
+        if not allow_corpus_drift and sha256(unit["text"].encode()).hexdigest() != item.get("text_sha256"):
+            raise ValueError(f"REPLAY_EVIDENCE_CHANGED_OR_UNPINNED: {key}")
+        pool.append(dict(unit, rank=item["rank"]))
+    return pool
 
 
-def replay(record, corpus):
+def replay(record, corpus, *, allow_corpus_drift=False):
     """What the current code would display from the recorded last draft, with no model call.
 
     The scope gates are applied first, also to records of a method that ran without
@@ -67,7 +77,8 @@ def replay(record, corpus):
     draft = record.get("model_output")
     if not draft:
         return None
-    settled = flow.settle_draft(draft, rebuild_pool(record, corpus), list(corpus.values()))
+    pool = rebuild_pool(record, corpus, allow_corpus_drift=allow_corpus_drift)
+    settled = flow.settle_draft(draft, pool, list(corpus.values()) if allow_corpus_drift else pool)
     final = settled["final"]
     return {"result_kind": settled["result_kind"], "gate": None,
             "source_citations_used": settled["source_citations_used"],
@@ -78,12 +89,12 @@ def replay(record, corpus):
                               if item["claim"].startswith(flow.EXCERPT_NOTE)]}
 
 
-def claim_rows(record, corpus, with_values):
+def claim_rows(record, corpus, with_values, *, allow_corpus_drift=False):
     """Re-check each claim of the last draft alone, with the backend source citations."""
     draft = record.get("model_output")
     if not draft or draft["outcome"] != "answer":
         return []
-    pool = rebuild_pool(record, corpus)
+    pool = rebuild_pool(record, corpus, allow_corpus_drift=allow_corpus_drift)
     by_key = {(u["source_id"], u["locator"]): u for u in pool}
     draft = normalize_citation_locators(flow.clean(draft), pool)
     rows = []
@@ -93,7 +104,7 @@ def claim_rows(record, corpus, with_values):
                  "quote_not_in_source" if not compact(item["quote"]) or compact(item["quote"]) not in compact(unit["text"])
                  else "valid")
         alone = {**draft, "answer": item["claim"], "assertions": [item]}
-        supported = flow.attach_source_titles(alone, pool, list(corpus.values()))
+        supported = flow.attach_source_titles(alone, pool, list(corpus.values()) if allow_corpus_drift else pool)
         failures = flow.check(alone, pool)["failures"]
         rows.append({"claim": index, "citation": state, "unit_kind": unit.get("evidence_kind") if unit else None,
                      "claim_chars": len(item["claim"]), "quote_chars": len(item["quote"]),
@@ -109,6 +120,8 @@ def main():
     parser.add_argument("--corpus", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True, help="New JSON file under evidence/")
     parser.add_argument("--with-values", action="store_true")
+    parser.add_argument("--allow-corpus-drift", action="store_true",
+                        help="Explicitly re-evaluate old drafts against a different corpus, reporting changed units")
     parser.add_argument("--expected", type=Path,
                         help="Private JSON giving each question's expected outcome (answer or stop): a mapping "
                              "id -> outcome, or a list of objects with id and expected_outcome. Only counts "
@@ -126,7 +139,15 @@ def main():
         if calls is None:  # single-shot record
             calls = [{"outcome": (record.get("model_output") or {}).get("outcome"),
                       "failures": (record.get("checks") or {}).get("failures", [])}] if record["model"].get("called") else []
-        claims = claim_rows(record, corpus, args.with_values)
+        try:
+            pool = rebuild_pool(record, corpus, allow_corpus_drift=args.allow_corpus_drift)
+        except ValueError as error:
+            parser.error(str(error))
+        claims = claim_rows(record, corpus, args.with_values, allow_corpus_drift=args.allow_corpus_drift)
+        digests = {(unit["source_id"], unit["locator"]): sha256(unit["text"].encode()).hexdigest() for unit in pool}
+        recorded = {(item["source_id"], item["locator"]): item.get("text_sha256")
+                    for item in record["retrieval"]["evidence"]}
+        changed = sum(digest != recorded[key] for key, digest in digests.items())
         row = {"question_id": record.get("question_id"), "compared_as": name,
                "result_kind": record.get("result_kind") or final["outcome"],
                "stop_origin": record.get("stop_origin") or record.get("gate") or (
@@ -142,7 +163,8 @@ def main():
                                     for r in record["retrieval"].get("rounds", [])],
                "evidence_units": len(record["retrieval"]["evidence"]),
                # Not zero means --corpus is not the corpus of this run, or lacks some of its units.
-               "evidence_units_missing_in_corpus": len(record["retrieval"]["evidence"]) - len(rebuild_pool(record, corpus)),
+               "evidence_units_missing_in_corpus": len(record["retrieval"]["evidence"]) - len(pool),
+               "evidence_units_changed_or_unpinned": changed,
                "final_assertions": len(final["assertions"]),
                "final_sources": len({a["source_id"] for a in final["assertions"]}),
                "final_unknowns": len(final["unknowns"]),
@@ -150,7 +172,8 @@ def main():
                # Kinds of the units the displayed result cites: text, table row, scan transcription, metadata.
                "final_unit_kinds": sorted({corpus[key].get("evidence_kind") or "unknown" for item in final["assertions"]
                                            if (key := (item["source_id"], item["locator"])) in corpus}),
-               "last_draft_claims": claims, "last_draft_replayed": replay(record, corpus)}
+               "last_draft_claims": claims,
+               "last_draft_replayed": replay(record, corpus, allow_corpus_drift=args.allow_corpus_drift)}
         rows.append(row)
         if expected:
             if row["question_id"] not in expected:
@@ -183,7 +206,8 @@ def main():
                 counts["claim_fails_alone"] += 1
                 counts["claim_fixed_by_source_citations"] += not claim["fails_with_source_citations"]
     result = {"scope": "ids, counts and failure-code kinds only; no question, answer, claim, quote or evidence text",
-              "with_values": args.with_values, "records_sha256": file_sha(args.records),
+              "with_values": args.with_values, "replay_mode": "corpus_comparison" if args.allow_corpus_drift else "pinned",
+              "records_sha256": file_sha(args.records),
               "corpus_sha256": file_sha(args.corpus),
               "flow_sha256": file_sha(ROOT / "src/gov_mcp/frozen_qa_flow_v3.py"),
               "totals": {name: dict(sorted(counts.items())) for name, counts in totals.items()}, "records": rows}

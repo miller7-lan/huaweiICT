@@ -2,6 +2,7 @@
 import json
 from types import SimpleNamespace
 
+import frozen_flow_native
 import run_frozen_qa_native as runner
 
 
@@ -11,7 +12,7 @@ def test_public_receipt_omits_private_content():
               "usage_events": [{"detail": "private synthetic event"}],
               "tool_order": ["govkb_flow_open", "private synthetic tool", None, "govkb_flow_submit"],
               "model_starts": 2, "events": 9}
-    public = runner.public_receipt(report)
+    public = frozen_flow_native.runner().public_receipt(report)
     assert public == {"passed": True, "tool_order": ["govkb_flow_open", "govkb_flow_submit"],
                       "other_tool_events": 2, "model_starts": 2, "events": 9}
     assert "private" not in json.dumps(public)

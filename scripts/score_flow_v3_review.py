@@ -5,7 +5,7 @@ The output holds, per method and column, how many rows took each value, how
 often the two reviewers agree, and the question ids where they differ. It
 holds no question, answer or remark text. When both sheets carry the PDF
 form's two extra judgements in the remark column, stop judgements and
-reference-answer flags are counted too; other remark text is never read.
+reference-answer flags are counted too. Free-text remarks are checked for presence only.
 
 A sheet that breaks the filling rules is listed row by row and nothing is scored:
 it goes back to its reviewer. Use --check on a single sheet when it comes in.
@@ -44,13 +44,20 @@ def read_sheet(path, key):
     expected = {(q, label) for q, pair in key.items() for label in pair}
     if {(r["question_id"], r["label"]) for r in rows} != expected or len(rows) != len(expected):
         raise ValueError("SHEET_ROWS_DO_NOT_MATCH_KEY: " + str(path))
+    reviewers = {(r.get("reviewer") or "").strip().casefold() for r in rows}
+    if len(reviewers) != 1 or not next(iter(reviewers)):
+        raise ValueError("SHEET_REQUIRES_ONE_REVIEWER: " + str(path))
     for row in rows:
         for column, allowed in CHOICES.items():
             if row[column].strip() not in allowed:
                 raise ValueError(f"INVALID_VALUE: {path} {row['question_id']}{row['label']} {column}")
     result = {}
     for row in rows:
-        values = {**{c: row[c].strip() for c in CHOICES}, **extras(row.get("remark"))}
+        remark = row.get("remark") or ""
+        has_remark = any(part.strip() and part.partition("=")[0].strip() not in {label for label, _ in EXTRA.values()}
+                         for part in remark.split("；"))
+        values = {**{c: row[c].strip() for c in CHOICES}, **extras(remark),
+                  "reviewer": next(iter(reviewers)), "has_remark": has_remark}
         for column, allowed in EXTRA_CHOICES.items():  # a real column wins over the remark
             if (row.get(column) or "").strip():
                 if row[column].strip() not in allowed:
@@ -85,6 +92,8 @@ def row_problems(sheet, rows):
         flags = {row.get("reference_issue") for (q, _), row in sheet.items() if q == question_id}
         if len(flags) > 1:
             problems.append(f"{question_id} reference_issue: 同一题的各份输出应填相同的值")
+        if "有误" in flags and not any(row["has_remark"] for (q, _), row in sheet.items() if q == question_id):
+            problems.append(f"{question_id} reference_issue: 标为有误时应在备注写明理由")
     return problems
 
 
@@ -98,12 +107,18 @@ def main():
     args = parser.parse_args()
     key = json.loads((args.pack / "key.json").read_text("utf-8"))
     rows_path = args.pack / "rows.json"
-    rows = json.loads(rows_path.read_text("utf-8")) if rows_path.is_file() else None
+    if not rows_path.is_file():
+        parser.error("REVIEW_ROW_RULES_REQUIRED")
+    rows = json.loads(rows_path.read_text("utf-8"))
+    if set(rows) != set(key) or any(set(rows[q]) != set(key[q]) for q in key):
+        parser.error("REVIEW_ROW_RULES_DO_NOT_MATCH_KEY")
     try:
         sheets = [read_sheet(path, key) for path in args.sheets]
     except ValueError as error:
         parser.error(str(error))
-    problems = {str(path): row_problems(sheet, rows) for path, sheet in zip(args.sheets, sheets)} if rows else {}
+    if len({next(iter(sheet.values()))["reviewer"] for sheet in sheets}) != len(sheets):
+        parser.error("DISTINCT_REVIEWERS_REQUIRED")
+    problems = {str(path): row_problems(sheet, rows) for path, sheet in zip(args.sheets, sheets)}
     if any(problems.values()) or args.check:
         # Count-free: reviewers get this list back and correct their own sheet.
         print(json.dumps({"checked": [str(path) for path in args.sheets], "rules_available": rows is not None,

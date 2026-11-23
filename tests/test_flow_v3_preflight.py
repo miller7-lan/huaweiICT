@@ -5,6 +5,21 @@ import flow_v3_preflight as preflight
 
 FACTS = {fact: True for fact in preflight.INDEPENDENCE}
 BASE = {"round": "r", "commit": "abc1234", "rules": "strict", "arms": ["baseline", "single_shot", "flow_v3"], **FACTS}
+UNITS = [{"source_id": "D", "locator": "段1", "text": "甲"}]
+
+
+def frozen_inputs(tmp_path):
+    from gov_mcp import frozen_qa
+
+    questions = [{"id": f"X{i}", "question": f"题{i}"} for i in range(1, 5)]
+    reference = [{"id": f"X{i}", "expected_outcome": "answer" if i < 4 else "stop", "category": category,
+                  "key_points": ["甲"] if i < 4 else []}
+                 for i, category in enumerate(("comparison", "temporal", "inference", "should_stop"), 1)]
+    paths = {name: tmp_path / (name + ".json") for name in ("questions", "reference", "corpus")}
+    for name, value in (("questions", questions), ("reference", reference), ("corpus", {"units": UNITS})):
+        paths[name].write_text(json.dumps(value, ensure_ascii=False), "utf-8")
+    digest = frozen_qa.sha(json.dumps(UNITS, ensure_ascii=False, sort_keys=True))
+    return {**BASE, "corpus_unit_sha256": digest}, paths
 
 
 def run(declared, **observed):
@@ -12,14 +27,15 @@ def run(declared, **observed):
                               **observed)
 
 
-def test_all_conditions_true_is_formal_and_any_unknown_downgrades():
-    assert run(BASE)["label"] == "formal" and run(BASE)["name_to_use"] == "正式评测"
+def test_all_conditions_true_is_formal_and_any_unknown_downgrades(tmp_path):
+    declared, paths = frozen_inputs(tmp_path)
+    assert run(declared, **paths)["label"] == "formal" and run(declared, **paths)["name_to_use"] == "正式评测"
     for fact, consequence in preflight.INDEPENDENCE.items():
         for value in (False, None, "yes", 1):
-            result = run({**BASE, fact: value})
+            result = run({**declared, fact: value}, **paths)
             assert result["label"] == "development" and result["discounts"] == [consequence]
-        missing = {k: v for k, v in BASE.items() if k != fact}
-        assert run(missing)["name_to_use"] == "开发对比"
+        missing = {k: v for k, v in declared.items() if k != fact}
+        assert run(missing, **paths)["name_to_use"] == "开发对比"
 
 
 def test_unfrozen_profile_wrong_commit_or_dirty_tree_blocks():
@@ -30,33 +46,29 @@ def test_unfrozen_profile_wrong_commit_or_dirty_tree_blocks():
 
 
 def test_questions_need_a_valid_reference_with_enough_should_stop(tmp_path):
-    questions = [{"id": f"X{i}", "question": f"题{i}"} for i in range(1, 5)]
-    reference = [{"id": "X1", "expected_outcome": "answer", "category": "comparison", "key_points": ["甲"]},
-                 {"id": "X2", "expected_outcome": "answer", "category": "temporal", "key_points": ["乙"]},
-                 {"id": "X3", "expected_outcome": "answer", "category": "inference", "key_points": ["丙"]},
-                 {"id": "X4", "expected_outcome": "stop", "category": "should_stop", "key_points": []}]
-    q, r = tmp_path / "q.json", tmp_path / "r.json"
-    q.write_text(json.dumps(questions, ensure_ascii=False), "utf-8")
-    r.write_text(json.dumps(reference, ensure_ascii=False), "utf-8")
-    good = run(BASE, questions=q, reference=r)
+    declared, paths = frozen_inputs(tmp_path)
+    good = run(declared, **paths)
     assert good["label"] == "formal" and good["observed"]["reference"]["expected"] == {"answer": 3, "stop": 1}
     assert "甲" not in json.dumps(good, ensure_ascii=False)
-    assert "REFERENCE_REQUIRED" in run(BASE, questions=q)["blocked"][0]
-    reference[3] = {"id": "X4", "expected_outcome": "answer", "category": "comparison", "key_points": ["丁"]}
+    for name in paths:
+        result = run(declared, **{key: path for key, path in paths.items() if key != name})
+        assert result["label"] == "BLOCKED" and any(code.startswith(name.upper() + "_REQUIRED") for code in result["blocked"])
+    r = paths["reference"]
+    reference = json.loads(r.read_text("utf-8"))
+    reference[3].update(expected_outcome="answer", key_points=["丁"])
     r.write_text(json.dumps(reference, ensure_ascii=False), "utf-8")
-    assert "TOO_FEW_SHOULD_STOP_QUESTIONS" in run(BASE, questions=q, reference=r)["blocked"]
+    assert any("REFERENCE_STOP_CATEGORY_MISMATCH" in code for code in run(declared, **paths)["blocked"])
+    reference[3]["category"] = "comparison"
+    r.write_text(json.dumps(reference, ensure_ascii=False), "utf-8")
+    assert "TOO_FEW_SHOULD_STOP_QUESTIONS" in run(declared, **paths)["blocked"]
 
 
 def test_service_profile_and_corpus_must_match_the_round(tmp_path):
-    from gov_mcp import frozen_qa
-    units = [{"source_id": "D", "locator": "段1", "text": "甲"}]
-    corpus = tmp_path / "corpus.json"
-    corpus.write_text(json.dumps({"units": units}, ensure_ascii=False), "utf-8")
-    unit_sha = frozen_qa.sha(json.dumps(units, ensure_ascii=False, sort_keys=True))
-    declared = {**BASE, "corpus_unit_sha256": unit_sha}
-    assert run(declared, corpus=corpus, health={"rules": "strict", "corpus_sha256": unit_sha})["label"] == "formal"
-    mismatch = run(declared, corpus=corpus, health={"rules": "light", "corpus_sha256": unit_sha})
+    declared, paths = frozen_inputs(tmp_path)
+    unit_sha = declared["corpus_unit_sha256"]
+    assert run(declared, **paths, health={"rules": "strict", "corpus_sha256": unit_sha})["label"] == "formal"
+    mismatch = run(declared, **paths, health={"rules": "light", "corpus_sha256": unit_sha})
     assert mismatch["label"] == "BLOCKED" and "SERVICE_RULES_MISMATCH" in mismatch["blocked"][0]
-    assert "SERVICE_CORPUS_MISMATCH" in run(declared, corpus=corpus,
+    assert "SERVICE_CORPUS_MISMATCH" in run(declared, **paths,
                                             health={"rules": "strict", "corpus_sha256": "0" * 64})["blocked"][0]
-    assert "CORPUS_MISMATCH" in run(BASE, corpus=corpus)["blocked"][0]
+    assert "CORPUS_MISMATCH" in run(BASE, **paths)["blocked"][0]

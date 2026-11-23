@@ -63,31 +63,40 @@ def evaluate(declared, *, commit, dirty, questions=None, reference=None, corpus=
         blocked.append(f"COMMIT_MISMATCH: declared {declared.get('commit')}, checked out {commit}")
     if dirty:
         blocked.append("WORKING_TREE_NOT_CLEAN: " + ", ".join(dirty[:5]))
+    if questions is None:
+        blocked.append("QUESTIONS_REQUIRED")
+    if reference is None:
+        blocked.append("REFERENCE_REQUIRED: a frozen reference decides expected outcomes, never earlier results")
     if questions is not None:
         try:
             items = frozen_qa.validate_questions(json.loads(Path(questions).read_text("utf-8")))
             observed["questions"] = len(items)
             observed["questions_sha256"] = sha256(Path(questions).read_bytes()).hexdigest()
-            if reference is None:
-                blocked.append("REFERENCE_REQUIRED: a frozen reference decides expected outcomes, never earlier results")
-            else:
+            if reference is not None:
                 frozen = check_reference(reference, items)
                 observed["reference"] = frozen
                 for category, share in MIN_SHARE.items():
-                    if frozen["categories"][category] < share * len(items):
+                    if frozen["expected"]["stop"] < share * len(items):
                         blocked.append(f"TOO_FEW_{category.upper()}_QUESTIONS")
                 if any(count == 0 for count in frozen["categories"].values()):
                     discounts.append("四类题型没有全部覆盖")
-        except (ValueError, KeyError, TypeError) as error:
+        except (OSError, ValueError, KeyError, TypeError) as error:
             blocked.append("QUESTIONS_OR_REFERENCE_INVALID: " + str(error)[:120])
-    if corpus is not None:
-        data = json.loads(Path(corpus).read_text("utf-8"))
-        unit_sha = frozen_qa.sha(json.dumps(data["units"], ensure_ascii=False, sort_keys=True))
-        observed["corpus_units"], observed["corpus_unit_sha256"] = len(data["units"]), unit_sha
-        if declared.get("corpus_unit_sha256") != unit_sha:
-            blocked.append("CORPUS_MISMATCH: declared corpus_unit_sha256 differs from this corpus")
-        if health is not None and health.get("corpus_sha256") != unit_sha:
-            blocked.append("SERVICE_CORPUS_MISMATCH: the running service serves another corpus")
+    if corpus is None:
+        blocked.append("CORPUS_REQUIRED")
+    else:
+        try:
+            units = json.loads(Path(corpus).read_text("utf-8"))["units"]
+            if not isinstance(units, list) or not units:
+                raise ValueError("Frozen corpus has no units")
+            unit_sha = frozen_qa.sha(json.dumps(units, ensure_ascii=False, sort_keys=True))
+            observed["corpus_units"], observed["corpus_unit_sha256"] = len(units), unit_sha
+            if declared.get("corpus_unit_sha256") != unit_sha:
+                blocked.append("CORPUS_MISMATCH: declared corpus_unit_sha256 differs from this corpus")
+            if health is not None and health.get("corpus_sha256") != unit_sha:
+                blocked.append("SERVICE_CORPUS_MISMATCH: the running service serves another corpus")
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            blocked.append("CORPUS_INVALID: " + str(error)[:120])
     if health is not None:
         observed["service_rules"] = health.get("rules")
         if health.get("rules") != rules:

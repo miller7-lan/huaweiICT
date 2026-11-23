@@ -8,6 +8,8 @@ import json
 import random
 import re
 import time
+import unicodedata
+from datetime import date
 from typing import Literal
 
 from gov_mcp.json_output import StrictOutput
@@ -17,25 +19,40 @@ from gov_mcp.knowledge_retrieval import VERSION as RETRIEVAL_VERSION, query_gram
 METHODS = ("baseline", "proposed")
 TOP_K = 5
 from gov_mcp.frozen_retrieval import (
-    FIRST_ISSUE_EFFECTIVE_DATE, FIRST_ISSUE_FEE, FIRST_ISSUE_WAIVER,
-    VERSION as PROPOSED_RETRIEVAL_VERSION, compound_queries, query_hints, retrieve_evidence, retrieve_with_plan,
+    FIRST_ISSUE_EFFECTIVE_DATE, FIRST_ISSUE_FEE, FIRST_ISSUE_WAIVER, TABLE_ROW,
+    VERSION as PROPOSED_RETRIEVAL_VERSION, compound_queries, query_hints, retrieve_evidence, retrieve_with_plan, source_key,
 )
 # Provinces outside the frozen Henan scope, plus the city used by an older demo.
 OTHER_REGIONS = ("北京", "天津", "上海", "重庆", "河北", "山西", "内蒙古", "辽宁", "吉林", "黑龙江",
                  "江苏", "南京", "浙江", "安徽", "福建", "江西", "山东", "湖北", "湖南", "广东", "广西",
-                 "海南", "四川", "贵州", "云南", "西藏", "陕西", "甘肃", "青海", "宁夏", "新疆")
+                 "海南", "四川", "贵州", "云南", "西藏", "陕西", "甘肃", "青海", "宁夏", "新疆",
+                 "香港", "澳门", "台湾", "杭州", "宁波", "温州", "苏州", "无锡", "合肥", "福州", "厦门",
+                 "南昌", "济南", "青岛", "武汉", "长沙", "广州", "深圳", "珠海", "东莞", "南宁", "海口",
+                 "成都", "贵阳", "昆明", "拉萨", "西安", "兰州", "西宁", "银川", "乌鲁木齐", "石家庄",
+                 "太原", "呼和浩特", "沈阳", "大连", "长春", "哈尔滨")
 CURRENT = ("现在", "目前", "如今", "现行", "今天", "当前", "最新", "今年")
-PERSONAL_ID = re.compile(r"\d{17}[\dXx]")
+PERSONAL_ID = re.compile(r"(?:\d[ \t\u00a0\u3000\-－–—]*){17}[\dXxＸｘ]")
+CURRENT_QUESTION = re.compile(r"还(?:有效|生效|适用|执行|能办|能用|在用|在执行)|是否(?:已经|仍然|仍|已)?(?:废止|失效|有效|适用)|有没有(?:废止|失效)")
+ACTION_REQUEST = re.compile(
+    r"^(?:并\s*)?(?:请(?:你)?(?:帮我|替我|代我)?|帮我|替我|代我|麻烦(?:你)?(?:帮我|替我|代我)?)"
+    r"\s*(?:直接|在线)?\s*(?:提交[^，。；！？]{0,30}申请|缴费|付款|预约[^，。；！？]{0,30}办理)"
+)
+REGION_EXCLUSION = re.compile(
+    r"(?:只读归档\s*)?(?:不涉及|不问|不讨论|排除|不含|不包括)\s*(?:"
+    + "|".join(OTHER_REGIONS) + r")(?:省|市|地区)?(?:的)?(?:业务|事项|规定|政策)?"
+)
 NUMBER = re.compile(r"[+\-−＋－]?(?:\d+(?:[,，]\d+)*(?:\.\d+)?|\.\d+)")
 # Positional references such as 第36行, 第5页 or 正文段落4 point at a source; they are not facts to quote.
 REFERENCE = re.compile(r"第\s*\d+\s*[行页条项款段]|段落\s*\d+")
+SCAN_SECTION = re.compile(r"第\s*(?P<number>\d+|[零〇一二两三四五六七八九十百千]+)\s*项")
+SCAN_PAGE = re.compile(r"PDF\s*第\s*(?P<pdf>\d+)\s*页|印刷页码\s*(?:为|是|[：:])?\s*(?P<printed>\d+)")
 DAY_UNITS = ("工作日", "自然日")
 YEAR = re.compile(r"(?<!\d)\d{4}(?=\s*年)")
 DOCUMENT_YEAR = re.compile(
-    r"(?<![\d.+\-−＋－])\d{4}\s*年(?=\s*(?:版|文件|通知|资料|政策解读|财政部|河南公安|收费记载|《|[\u4e00-\u9fff]{0,16}(?:措施|条款|通知|文件)))"
+    r"(?<![\d.+\-−＋－])\d{4}\s*年(?=\s*(?:版|文件|通知|资料|政策解读|财政部|河南公安|收费记载|《|[\u4e00-\u9fff]{0,16}(?:措施|举措|条款|通知|文件)))"
 )
 LEADING_DOCUMENT_YEAR = re.compile(r"(?:^|[；;。])\s*(?:归档的|按)?(?P<year>\d{4})年")
-DURATION_PREFIX = re.compile(r"(?:期限|时限|年限|有效期|为期|持续|年龄|年满)[^，。；;]{0,8}$")
+DURATION_PREFIX = re.compile(r"(?:期限|时限|年限|有效期|为期|持续|年龄|年满)[^，。；;\n]{0,8}$")
 DOCUMENT_HEADING = re.compile(r"\d{4}年\d{1,2}月\d{1,2}日\s*\S+[〔\[]\d{4}[〕\]]\d+号")
 DATE_ROLES = {
     "page_publication_date": r"(?:网页)?(?:发布日期|发布日|发布时间|发布于|公布于|发布)",
@@ -50,9 +67,19 @@ TYPED_DATE = re.compile(
     rf"|(?<!\d)(?:自|于)?\s*(?P<last>{CALENDAR_VALUE})\s*(?:起|开始|为|是)?\s*(?P<suffix>{DATE_ROLE})"
 )
 METADATA_KINDS = {"source_title", "page_publication_date", "page_modified_date"}
-QUANTITY_UNIT = re.compile(r"\s*(?:个\s*)?(?P<unit>元|工作日|自然日|天|年|日)")
+QUANTITY_UNIT = re.compile(r"\s*(?:个\s*)?(?P<unit>万元|元|工作日|自然日|小时|分钟|周|天|年|月|日|次|份|张|项|种|岁|人|%)")
 QUANTITY = re.compile(rf"(?P<number>{NUMBER.pattern}|[零〇一二两三四五六七八九十百千万亿]+){QUANTITY_UNIT.pattern}")
 CALENDAR_DATE = re.compile(r"\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日|\d{4}-\d{2}-\d{2}")
+CELL_ADDRESS = re.compile(r"(?<![A-Za-z0-9])\$?[A-Z]{1,3}\$?[1-9]\d*(?![A-Za-z0-9])")
+SHEET_CELL = re.compile(r"(?:Excel)?工作表(?P<sheet>[^，。；;！？\s!！]{1,64})[!！]"
+                        rf"(?P<address>{CELL_ADDRESS.pattern})")
+BUSINESS_BRANCH = re.compile(r"首次(?:申请)?(?:申领|领取|办理)|到期换领|损坏换领|遗失补领|丢失补领|临时(?:居民)?(?:身份)?证|换领|补领")
+LIMITATION = re.compile(
+    r"有条件|(?:仅限|只限|仅对|仅适用(?:于)?|限于)[^，。；;,\n]{1,30}"
+    r"|(?:除[^，。；\n]{1,24}外)|[^，。；\n]{1,18}除外"
+)
+CHINESE_DIGITS = dict(zip("零〇一二两三四五六七八九", (0, 0, 1, 2, 2, 3, 4, 5, 6, 7, 8, 9)))
+CHINESE_POWERS = {"十": 10, "百": 100, "千": 1000}
 QUESTION_KEYS = {"id", "question", "context"}
 STATUS = {"business_conclusion_status": "PAUSED_UNREVIEWED", "current_applicability": "unknown",
           "formal_approval": False, "archive_explanation_only": True}
@@ -105,7 +132,8 @@ def current_validity_asked(question):
     """True when some clause other than a pure disclaimer mentions the present."""
     for clause in CLAUSE.split(question):
         clause = clause.strip()
-        if not any(word in clause for word in CURRENT):
+        explicit_present = any(word in clause for word in CURRENT)
+        if not explicit_present and (not CURRENT_QUESTION.search(clause) or re.search(r"当时|彼时|历史上", clause)):
             continue
         if DISCLAIMER.match(clause) and not CLAUSE_QUESTION.search(clause):
             continue
@@ -116,8 +144,14 @@ def current_validity_asked(question):
 def scope_gate(question):
     if PERSONAL_ID.search(question):
         return "PRIVATE_FACT_NOT_ACCEPTED"
-    if any(region in question for region in OTHER_REGIONS):
-        return "OUTSIDE_HENAN_SCOPE"
+    for clause in CLAUSE.split(question):
+        clause = clause.strip()
+        if REGION_EXCLUSION.fullmatch(clause):
+            continue
+        if ACTION_REQUEST.match(clause):
+            return "ACTION_NOT_SUPPORTED"
+        if any(region in clause for region in OTHER_REGIONS):
+            return "OUTSIDE_HENAN_SCOPE"
     if current_validity_asked(question):
         return "CURRENT_VALIDITY_NOT_ESTABLISHED"
     return None
@@ -126,7 +160,8 @@ def scope_gate(question):
 GATE_MESSAGES = {
     "PRIVATE_FACT_NOT_ACCEPTED": "问题含有疑似身份证号等个人信息，本系统不接收个人事实。",
     "OUTSIDE_HENAN_SCOPE": "问题涉及河南以外的地区，冻结资料只覆盖河南本省户籍事项。",
-    "CURRENT_VALIDITY_NOT_ESTABLISHED": "冻结资料是历史归档，尚未核定现行效力，不能判断现在或今天的规定；下列相关归档原文可供人工核对。",
+    "CURRENT_VALIDITY_NOT_ESTABLISHED": "冻结资料是历史归档，尚未核定现行效力，不能判断现在或今天的规定。",
+    "ACTION_NOT_SUPPORTED": "本系统只解释冻结归档资料，不能代为提交申请、缴费或预约。",
 }
 
 COMMON_RULES = (
@@ -167,9 +202,77 @@ def build_messages(question, evidence, method, context="", retrieval_plan=None):
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
+def canonical_number(value):
+    value = unicodedata.normalize("NFKC", value)
+    if not 1 <= len(value) <= 32:
+        return value
+
+    def chinese(text):
+        for marker, scale in (("亿", 100000000), ("万", 10000)):
+            if marker in text:
+                left, right = text.split(marker, 1)
+                return chinese(left) * scale + chinese(right)
+        if all(c in CHINESE_DIGITS for c in text):
+            return int("".join(str(CHINESE_DIGITS[c]) for c in text) or "0")
+        total, digit = 0, None
+        for char in text:
+            if char in CHINESE_DIGITS:
+                digit = CHINESE_DIGITS[char]
+            else:
+                total += (1 if digit is None else digit) * CHINESE_POWERS[char]
+                digit = None
+        return total + (digit or 0)
+
+    if all(char in CHINESE_DIGITS or char in CHINESE_POWERS or char in "万亿" for char in value):
+        return str(chinese(value))
+    return value
+
+
+def quantity_matches(text):
+    return QUANTITY.finditer(CALENDAR_DATE.sub(lambda match: " " * len(match.group()), text))
+
+
 def quantity_pairs(text):
-    text = CALENDAR_DATE.sub(" ", text)
-    return {(match["number"], match["unit"]) for match in QUANTITY.finditer(text)}
+    return {(canonical_number(match["number"]), match["unit"]) for match in quantity_matches(text)}
+
+
+def date_value(text):
+    try:
+        return date(*(int(value) for value in re.findall(r"\d+", text))).isoformat()
+    except (TypeError, ValueError):
+        return None
+
+
+def branch_quantities(text):
+    scoped = {}
+    for clause in re.split(r"[。；;！？\n]", text):
+        offset, branches = 0, set()
+        for match in quantity_matches(clause):
+            names = BUSINESS_BRANCH.findall(clause[offset:match.start()])
+            if names:
+                branches = {"首次申领" if name.startswith("首次") else
+                            "临时证" if name.startswith("临时") else
+                            "遗失补领" if name == "丢失补领" else name for name in names}
+            scoped.setdefault((canonical_number(match["number"]), match["unit"]), set()).update(branches)
+            offset = match.end()
+    return scoped
+
+
+def scope_failures(claim, quote, original):
+    failures = []
+    needle = compact(quote).rstrip("。；;！？")
+    clauses = [part for part in re.split(r"[。；;！？]", compact(original)) if needle in part]
+    context = clauses[0] if len(clauses) == 1 else compact(quote)
+    scopes = branch_quantities(context)
+    for quantity, branches in branch_quantities(claim).items():
+        supported = scopes.get(quantity)
+        if supported and any(branch not in supported and not
+                             (branch == "到期换领" and "换领" in supported) for branch in branches):
+            failures.append("QUANTITY_BRANCH_MISMATCH")
+            break
+    if any(limitation.group() not in compact(claim) for limitation in LIMITATION.finditer(context)):
+        failures.append("CLAIM_OMITS_SOURCE_LIMITATION")
+    return failures
 
 
 def has_cross_document_quantities(output):
@@ -198,7 +301,7 @@ def first_issue_fee_failures(output, cited):
     supported = {(unit["source_id"], unit["locator"]) for unit, _ in cited}
     if FIRST_ISSUE_FEE not in supported:
         return []
-    old_charge = re.compile(r"首次[^，,。；;！？\n]{0,35}(?<![\d.])(?:20|二十)\s*元")
+    old_charge = re.compile(r"首次[^。；;！？\n]{0,35}(?<![\d.])(?:20|二十)\s*元")
     old_document = re.compile(r"2007年(?:的)?(?:财政部|财政|收费)?(?:通知|文件)")
     # Check the actual displayed answer and the individually exposed assertions.
     displayed = render_verified_answer(output)["answer"]
@@ -233,7 +336,7 @@ def verify(output, evidence):
         return {"passed": not failures, "failures": failures}
     if not output["assertions"]:
         failures.append("ANSWER_WITHOUT_ASSERTIONS")
-    cited, locators, claim_quantities = [], [], {}
+    cited, citations, claim_quantities = [], {}, {}
     for index, item in enumerate(output["assertions"], 1):
         unit = units.get((item["source_id"], item["locator"]))
         if unit is None:
@@ -241,23 +344,20 @@ def verify(output, evidence):
         elif not compact(item["quote"]) or compact(item["quote"]) not in compact(unit["text"]):
             failures.append(f"A{index}_QUOTE_NOT_IN_SOURCE")
         else:
-            locators.append(item["locator"])
+            citations[index] = unit, item["quote"]
             cited.append((unit, item["quote"]))
             if unit.get("evidence_kind") not in METADATA_KINDS and not DOCUMENT_HEADING.fullmatch(unit["text"]):
                 claim_quantities[index] = quantity_pairs(item["quote"]) & quantity_pairs(unit["text"])
+                failures.extend(f"A{index}_{reason}" for reason in scope_failures(item["claim"], item["quote"], unit["text"]))
     failures.extend(first_issue_fee_failures(output, cited))
     quotes = [quote for unit, quote in cited if unit.get("evidence_kind") not in METADATA_KINDS]
     quoted = [compact(quote) for quote in quotes]
     texts = [output["answer"], *(item["claim"] for item in output["assertions"])]
     text = "".join(texts)
-    quoted_numbers = {number for quote in quotes for number in NUMBER.findall(quote)}
-    policy_numbers = {number for unit, quote in cited
-                      if unit.get("evidence_kind") not in METADATA_KINDS and not DOCUMENT_HEADING.fullmatch(unit["text"])
-                      for number in NUMBER.findall(quote)}
     document_years = {}
     date_support = {}
     for unit, quote in cited:
-        source_id = unit["source_id"]
+        source_id = source_key(unit)
         kind = unit.get("evidence_kind")
         calendar_date = unit.get("calendar_date")
         if kind == "source_title" or DOCUMENT_HEADING.fullmatch(unit["text"]):
@@ -272,27 +372,62 @@ def verify(output, evidence):
             timestamp = re.search(re.escape(calendar_date) + r"[ T]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?", quote)
             if timestamp:
                 date_support[source_id, kind].add(timestamp.group().replace("T", " "))
-            if kind == "page_publication_date":
-                document_years.setdefault(source_id, set()).add(calendar_date[:4])
         elif kind not in METADATA_KINDS:
             for match in TYPED_DATE.finditer(quote):
                 date_kind, value = typed_date(match)
                 date_support.setdefault((source_id, date_kind), set()).add(value)
 
-    def facts(part):
-        # Drop verified citation locators and positional references before reading numbers.
-        for locator in locators:
+    def facts(part, available):
+        for locator in {unit["locator"] for unit, _ in available}:
             if NUMBER.search(locator):
                 part = part.replace(locator, "")
+        if any(unit.get("evidence_kind") == "attributed_ai_transcription" for unit, _ in available):
+            sections = {canonical_number(match["number"]) for unit, quote in available
+                        for match in SCAN_SECTION.finditer(unit["locator"] + "\n" + quote)}
+            pages = {(match.lastgroup, int(match.group(match.lastgroup))) for unit, _ in available
+                     if unit.get("evidence_kind") == "attributed_ai_transcription"
+                     for match in SCAN_PAGE.finditer(unit["locator"])}
+
+            def check_section(match):
+                if canonical_number(match["number"]) not in sections:
+                    failures.append("SCAN_SECTION_NOT_CITED")
+                return " "
+
+            part = SCAN_SECTION.sub(check_section, part)
+
+            def check_scan_page(match):
+                if (match.lastgroup, int(match.group(match.lastgroup))) not in pages:
+                    failures.append("SCAN_PAGE_NOT_CITED")
+                return " "
+
+            part = SCAN_PAGE.sub(check_scan_page, part)
+        addresses = {address.replace("$", "") for unit, _ in available for address in unit.get("cells", ())}
+        if any(unit.get("evidence_kind") == "xlsx_row" for unit, _ in cited):
+            sheet_cells = {(row[1], address.replace("$", ""))
+                           for unit, _ in available if (row := TABLE_ROW.fullmatch(unit["locator"]))
+                           for address in unit.get("cells", ())}
+
+            def check_sheet_cell(match):
+                sheet, address = match["sheet"], match["address"].replace("$", "")
+                if (sheet, address) not in sheet_cells:
+                    failures.append(f"CELL_NOT_CITED:{sheet}!{address}")
+                return " "
+
+            def check_address(match):
+                address = match.group().replace("$", "")
+                if address not in addresses and not any(match.group() in quote for _, quote in available):
+                    failures.append(f"CELL_NOT_CITED:{address}")
+                return " "
+
+            part = CELL_ADDRESS.sub(check_address, SHEET_CELL.sub(check_sheet_cell, part))
         return REFERENCE.sub("", part)
 
     answer_numbers = set()
     answer_quantities, stated_quantities = set(), set()
-    source_ids = {unit["source_id"] for unit, _ in cited}
     all_quantities = set().union(*claim_quantities.values())
-    for index, (part, allowed_sources) in enumerate([(output["answer"], source_ids)] + [
-        (item["claim"], {item["source_id"]}) for item in output["assertions"]
-    ]):
+    for index, part in enumerate(texts):
+        available = cited if not index else [citations[index]] if index in citations else []
+        allowed_sources = {source_key(unit) for unit, _ in available}
         def check_date(match):
             kind, value = typed_date(match)
             supported = set().union(*(date_support.get((source_id, kind), set()) for source_id in allowed_sources))
@@ -302,7 +437,7 @@ def verify(output, evidence):
                 failures.append(f"DATE_NOT_QUOTED:{kind}:{value}")
             return " "
 
-        remaining = TYPED_DATE.sub(check_date, facts(part))
+        remaining = TYPED_DATE.sub(check_date, facts(part, available))
         if index:
             assertion = output["assertions"][index - 1]
             heading = units.get((assertion["source_id"], assertion["locator"]))
@@ -317,8 +452,18 @@ def verify(output, evidence):
                                        + r"(?!\d)", " ", remaining)
                     remaining = remaining.replace(f"{printed_date}的{document_number}", document_number)
         for unit, quote in cited:
-            if unit["source_id"] in allowed_sources and unit.get("evidence_kind") == "source_title" and len(quote) > 5:
+            if source_key(unit) in allowed_sources and unit.get("evidence_kind") == "source_title" and len(quote) > 5:
                 remaining = remaining.replace(quote, " ")
+
+        dates = {date_value(match.group()) for _, quote in available for match in CALENDAR_DATE.finditer(quote)}
+
+        def check_calendar_date(match):
+            value = date_value(match.group())
+            if value is None or value not in dates:
+                failures.append(f"DATE_NOT_QUOTED:calendar_date:{value or match.group()}")
+            return " "
+
+        remaining = CALENDAR_DATE.sub(check_calendar_date, remaining)
         years = set().union(*(document_years.get(source_id, set()) for source_id in allowed_sources))
         spans = [(m.start(), m.end()) for m in DOCUMENT_YEAR.finditer(remaining)
                  if not DURATION_PREFIX.search(remaining[:m.start()]) and YEAR.search(m.group()).group() in years]
@@ -326,7 +471,6 @@ def verify(output, evidence):
             # This summary is rendered from verified claims, rather than trusted as a new relation.
             spans.extend((m.start("year"), m.end()) for m in LEADING_DOCUMENT_YEAR.finditer(remaining)
                          if m["year"] in years)
-        named_years = {start for start, _ in spans}
         quantity_text = remaining
         for start, end in sorted(set(spans), reverse=True):
             quantity_text = quantity_text[:start] + " " * (end - start) + quantity_text[end:]
@@ -339,12 +483,14 @@ def verify(output, evidence):
         for number, unit in sorted(quantities - supported_quantities):
             label = f"A{index}" if index else "ANSWER"
             failures.append(f"{label}_QUANTITY_NOT_QUOTED:{number}{unit}")
-        for match in NUMBER.finditer(remaining):
-            number = match.group()
-            if number not in years or match.start() not in named_years:
-                supporting_numbers = policy_numbers if QUANTITY_UNIT.match(remaining, match.end()) else quoted_numbers
-                if number not in supporting_numbers:
-                    answer_numbers.add(number)
+        available_numbers = {canonical_number(number) for unit, quote in available
+                             if unit.get("evidence_kind") not in METADATA_KINDS
+                             for number in NUMBER.findall(quote)}
+        supported_starts = {match.start("number") for match in quantity_matches(quantity_text)
+                            if (canonical_number(match["number"]), match["unit"]) in supported_quantities}
+        for match in NUMBER.finditer(quantity_text):
+            if match.start() not in supported_starts and canonical_number(match.group()) not in available_numbers:
+                answer_numbers.add(match.group())
     if has_cross_document_quantities(output):
         for number, unit in sorted(answer_quantities - stated_quantities):
             failures.append(f"ANSWER_QUANTITY_WITHOUT_CLAIM:{number}{unit}")
