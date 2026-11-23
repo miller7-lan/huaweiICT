@@ -1,6 +1,7 @@
 """Blind review pack and scoring for the paired run (synthetic data)."""
 import csv
 import json
+import sys
 
 import pytest
 
@@ -43,6 +44,41 @@ def test_incomplete_pair_is_rejected(tmp_path):
     path.write_text("\n".join(records(("Q1", "Q2"))[:3]), "utf-8")
     with pytest.raises(ValueError, match="INCOMPLETE_PAIR"):
         pack.read_records(path)
+
+
+def test_review_pack_rejects_duplicate_methods_and_mixed_prompts(tmp_path):
+    path = tmp_path / "records.jsonl"
+    valid = records(("Q1",))
+    path.write_text("\n".join([*valid, valid[1]]), "utf-8")
+    with pytest.raises(ValueError, match="DUPLICATE_METHOD_RECORD"):
+        pack.read_records(path)
+    first, second = map(json.loads, valid)
+    second["context"] = "仅用冻结归档"
+    path.write_text("\n".join(map(json.dumps, (first, second))), "utf-8")
+    with pytest.raises(ValueError, match="QUESTION_OR_CONTEXT_MISMATCH"):
+        pack.read_records(path)
+    first["context"] = second["context"]
+    path.write_text("\n".join(map(json.dumps, (first, second))), "utf-8")
+    pack.build(pack.read_records(path), CORPUS, tmp_path / "pack", "s", ["r1", "r2"])
+    text = (tmp_path / "pack/review.md").read_text("utf-8")
+    assert "仅用冻结归档" in text and "六项判断" in text and "填四列" not in text
+
+
+def test_cli_rejects_duplicate_reviewers_and_missing_rules(tmp_path, monkeypatch, capsys):
+    make(tmp_path, ("Q1",))
+    directory = tmp_path / "pack"
+    sheet = directory / "sheet-r1.csv"
+    fill(sheet, {"conclusions_correct": "是", "missing_points": "否",
+                 "citations_support": "是", "excerpt_relevant": "无摘录"})
+    monkeypatch.setattr(sys, "argv", ["score", "--pack", str(directory), "--sheets", str(sheet), str(sheet), "--check"])
+    with pytest.raises(SystemExit) as duplicate:
+        score.main()
+    assert duplicate.value.code == 2 and "DISTINCT_REVIEWERS_REQUIRED" in capsys.readouterr().err
+    (directory / "rows.json").unlink()
+    monkeypatch.setattr(sys, "argv", ["score", "--pack", str(directory), "--sheets", str(sheet), "--check"])
+    with pytest.raises(SystemExit) as missing:
+        score.main()
+    assert missing.value.code == 2 and "REVIEW_ROW_RULES_REQUIRED" in capsys.readouterr().err
 
 
 def fill(path, values):
@@ -163,3 +199,4 @@ def test_a_sheet_that_breaks_the_filling_rules_is_listed_for_its_reviewer(tmp_pa
     assert any(p.startswith(where + " stop_judgment") for p in problems)
     assert any("conclusions_correct" in p and "不适用" in p for p in problems)
     assert any("reference_issue: 同一题" in p for p in problems)
+    assert any("标为有误时应在备注写明理由" in p for p in problems)

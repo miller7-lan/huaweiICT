@@ -46,6 +46,8 @@ def check_reference(path, questions):
     for item in reference:
         if item.get("expected_outcome") not in ("answer", "stop") or item.get("category") not in CATEGORIES:
             raise ValueError("REFERENCE_OUTCOME_OR_CATEGORY_INVALID: " + item["id"])
+        if (item["category"] == "should_stop") != (item["expected_outcome"] == "stop"):
+            raise ValueError("REFERENCE_STOP_CATEGORY_MISMATCH: " + item["id"])
         points = item.get("key_points", [])
         if not isinstance(points, list) or any(type(p) is not str or not p.strip() for p in points) \
                 or (item["expected_outcome"] == "answer" and not points):
@@ -125,7 +127,7 @@ def main():
             for name in sorted(arms, key=lambda n: sha256(f"{args.seed}:{item['id']}:{n}".encode()).hexdigest()):
                 before = used["count"]
                 record = runs[name]()
-                record.update(question_id=item["id"], compared_as=name)
+                record.update(question_id=item["id"], compared_as=name, context=item.get("context", ""))
                 handle.write(json.dumps(record, ensure_ascii=False) + "\n")
                 handle.flush()
                 counts = summary[name]

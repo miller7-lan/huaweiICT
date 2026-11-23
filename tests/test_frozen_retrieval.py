@@ -23,6 +23,17 @@ def test_distinct_subquestions_retain_low_frequency_fee_evidence():
     assert result["plan"]["semantic_coverage_verified"] is False
 
 
+def test_replacement_admission_keeps_the_remote_rule_before_general_materials():
+    general = unit("RULE", "第一百五十九条", "申请补领的，交验户口簿或有效身份证件之一。", "html_article")
+    remote = unit("RULE", "第一百六十六条", "居民身份证异地受理。申请补领的，交验有效身份证件之一。", "html_article")
+    measure = unit("SCAN", "第二项", "证件丢失后省内异地补领，无需回户籍地，可就近申请。",
+                   "attributed_ai_transcription")
+    packet = EvidenceIndex([general, remote, measure]).retrieve(
+        "证件丢失后在河南省内异地补领需要回户籍地吗？异地受理可交验哪些证件？")
+    assert packet["evidence"][0]["locator"] == remote["locator"]
+    assert measure["locator"] in {item["locator"] for item in packet["evidence"]}
+
+
 def test_context_preserves_exact_originals_and_no_input_mutation():
     units = [unit("RULE", "正文段落1", "特殊办理适用以下条件。"),
              unit("RULE", "正文段落2", "仅限测试范围；例外情况仍需人工核对。"),

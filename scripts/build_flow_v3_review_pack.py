@@ -37,12 +37,12 @@ EXTRA_CHOICES = {"stop_judgment": ("合理", "不合理", "待确认", "不适�
 LABELS = "ABCDEF"
 RULES = """# 评审说明
 
-每份输出一行，在你自己的表里填四列取值（备注列自己留，不上传）。**独立评，不与另一位评审讨论，评完前不要看 key.json。**
+每份输出一行，在你自己的表里完成下列六项判断。参考答案标为“有误”时，请在备注写明依据。**独立评，不与另一位评审讨论，评完前不要看 key.json。**
 输出里偶尔会有提示它来自哪种方法的措辞（如“部分答复”“原文摘录”）。不要据此猜方法，也不要因此给分。
 
 | 列 | 取值 | 怎么填 |
 | --- | --- | --- |
-| conclusions_correct 保留的结论是否正确 | 是 / 否 / 部分 / 不适用 | 对照下方原文和你的参考答案。输出是停止时填“不适用”；该停止的题，停止是否合理写在备注里 |
+| conclusions_correct 保留的结论是否正确 | 是 / 否 / 部分 / 不适用 | 对照下方原文和参考答案。停止的输出填“不适用” |
 | missing_points 是否漏掉必答要点 | 否 / 漏次要 / 漏核心 / 不适用 | 对照参考答案的必答要点。漏核心 = 问题要问的主要内容没答到。停止时填“不适用” |
 | citations_support 引文是否支持结论中的条件和限定语 | 是 / 否 / 不适用 | 重点看“有条件”“仅限”“除外”这类限定语有没有被引文覆盖。停止时填“不适用” |
 | excerpt_relevant 以“原文摘录：”开头的条目是否与问题相关 | 是 / 否 / 无摘录 | **只看结论文字以“原文摘录：”开头的条目。输出里没有这样的条目就填“无摘录”，这是多数情况。** 它问的不是普通引文是否相关 |
@@ -55,13 +55,21 @@ def read_records(path):
     rows = [json.loads(line) for line in Path(path).read_text("utf-8").splitlines() if line.strip()]
     by_question = {}
     for record in rows:
-        by_question.setdefault(record["question_id"], {})[record["compared_as"]] = record
+        question_id, method = record["question_id"], record["compared_as"]
+        pair = by_question.setdefault(question_id, {})
+        if method in pair:
+            raise ValueError(f"DUPLICATE_METHOD_RECORD: {question_id} {method}")
+        pair[method] = record
+    if not by_question:
+        raise ValueError("REVIEW_RECORDS_REQUIRED")
     methods = set(next(iter(by_question.values())))
     if not 2 <= len(methods) <= len(LABELS):
         raise ValueError("TWO_TO_SIX_METHODS_REQUIRED")
     for question_id, pair in by_question.items():
         if set(pair) != methods:
             raise ValueError("INCOMPLETE_PAIR: " + question_id)
+        if len({(record["question"], record.get("context", "")) for record in pair.values()}) != 1:
+            raise ValueError("QUESTION_OR_CONTEXT_MISMATCH: " + question_id)
     return by_question
 
 
@@ -112,7 +120,10 @@ def build(records, corpus, output, seed, reviewers, reference=None):
         labels = sorted(pair)
         random.Random(f"{seed}:{question_id}:blind").shuffle(labels)
         key[question_id] = dict(zip(LABELS, labels))
-        parts += [f"## {question_id}", "", f"**问题**：{pair[labels[0]]['question']}", ""]
+        prompt = pair[labels[0]]
+        parts += [f"## {question_id}", "", f"**问题**：{prompt['question']}", ""]
+        if prompt.get("context"):
+            parts += [f"**情境**：{prompt['context']}", ""]
         if reference is not None:
             parts += render_reference(reference[question_id])
         for label, method in zip(LABELS, labels):

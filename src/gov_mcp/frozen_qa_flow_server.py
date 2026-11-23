@@ -38,7 +38,7 @@ SERVICE = "govkb_frozen_flow"
 PORT = 8787
 TASK_ID = re.compile(r"[A-Za-z0-9_-]{20,64}")
 SOURCES = ("frozen_qa.py", "frozen_qa_flow_v3.py", "frozen_qa_flow_server.py", "frozen_retrieval.py",
-           "knowledge_retrieval.py")
+           "knowledge_retrieval.py", "json_output.py")
 REVISE_FAILED = ("未通过确定性核验。请只依据同一任务的证据重写完整草稿后再次提交：source_id 与 locator 照抄证据标注；"
                  "quote 必须是该证据原文的连续片段；每条 claim 的金额、期限、日期及单位必须出现在它自己的 quote 中；"
                  "原文为否定的不得写成可以。无法改正的结论请删除，并把对应缺项写入 unknowns。")
@@ -62,6 +62,8 @@ class FlowService:
         self.index = EvidenceIndex(units)
         self.units, self.corpus_sha256, self.rules = list(self.index.units), corpus_sha256, rules
         self.follow_up_after_answer = follow_up_after_answer
+        self.task_binding = {"workflow_version": flow.WORKFLOW, "source_sha256": code_fingerprints(),
+                             "follow_up_after_answer": follow_up_after_answer}
         self.task_dir = Path(task_dir)
         self.task_dir.mkdir(parents=True, exist_ok=True)
         self.lock = threading.Lock()  # one draft at a time; the service is a single process
@@ -83,6 +85,7 @@ class FlowService:
     def _result(self, task, replayed=False):
         return {"status": "OK", "action": "final", "task_id": task["task_id"], "result_kind": task["result_kind"],
                 "stop_origin": task["stop_origin"], "final": task["final"], "final_checks": task["final_checks"],
+                "display_text": flow.native_display_text(task["final"], task["result_kind"]),
                 "drafts_used": task["state"]["calls"], "claims_dropped": task["state"]["claims_dropped"],
                 "claims_excerpted": task["state"]["claims_excerpted"], "replayed": replayed, **frozen_qa.STATUS}
 
@@ -98,7 +101,7 @@ class FlowService:
         state["pool"] = packet["evidence"]
         state["rounds"].append({"kind": "initial", "added": len(state["pool"])})
         task = {"task_id": secrets.token_urlsafe(24), "question": question, "corpus_sha256": self.corpus_sha256,
-                "rules": self.rules, "state": state, "drafts": [], "final": None, "result_kind": None,
+                "rules": self.rules, "binding": self.task_binding, "state": state, "drafts": [], "final": None, "result_kind": None,
                 "stop_origin": None, "final_checks": None}
         with self.lock:
             self._save(task)
@@ -125,8 +128,16 @@ class FlowService:
             task = json.loads(path.read_text("utf-8"))
             if task["corpus_sha256"] != self.corpus_sha256 or task["rules"] != self.rules:
                 return {"status": "BLOCKED", "error": "TASK_BELONGS_TO_ANOTHER_CORPUS_OR_PROFILE"}
+            if task.get("binding") != self.task_binding:
+                return {"status": "BLOCKED", "error": "TASK_RUNTIME_BINDING_MISMATCH"}
             if task["final"] is not None:
-                return self._result(task, replayed=True)
+                final = task["final"]
+                if final["outcome"] == "answer" and task["result_kind"] != "partial_answer":
+                    final = flow.render(final)
+                final, kind, origin, checks = flow.checked_final(
+                    final, task["state"]["pool"], task["result_kind"], task["stop_origin"])
+                return self._result({**task, "final": final, "result_kind": kind, "stop_origin": origin,
+                                     "final_checks": checks}, replayed=True)
             if len(task["drafts"]) >= flow.MAX_MODEL_CALLS:
                 # Reserved by an earlier attempt that never finished (for example a crash).
                 return self._finish(task, frozen_qa._stop("DRAFT_BUDGET_EXHAUSTED", "本任务的草稿次数已用完，未形成可核验的答复。"),
@@ -148,9 +159,9 @@ class FlowService:
                     "instructions": REVISE_EVIDENCE}
 
     def _finish(self, task, final, kind, origin):
-        pool = task["state"]["pool"]
-        task.update(final=final, result_kind=flow.label_kind(final, kind), stop_origin=origin,
-                    final_checks=flow.check(final, pool) if final["outcome"] == "answer" else None)
+        final, kind, origin, checks = flow.checked_final(final, task["state"]["pool"], kind, origin,
+                                                         question=task["question"])
+        task.update(final=final, result_kind=kind, stop_origin=origin, final_checks=checks)
         self._save(task)
         return self._result(task)
 
@@ -162,7 +173,7 @@ def create_app(service, token, port=PORT):
         allowed_hosts=["localhost:*", "127.0.0.1:*", f"host.docker.internal:{port}"],
         allowed_origins=["http://localhost:*", "http://127.0.0.1:*"])
     mcp = FastMCP(SERVICE, transport_security=security)
-    startup = code_fingerprints()
+    startup = service.task_binding["source_sha256"]
 
     def execute(operation, *args):
         if code_fingerprints() != startup:

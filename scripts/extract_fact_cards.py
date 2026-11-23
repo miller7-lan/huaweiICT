@@ -102,6 +102,19 @@ def card(unit, kind, start, end, value, sentence_span, clause_span=None):
             "qualifiers": mentions(clause, QUALIFIERS), "extractor": VERSION}
 
 
+def table_spans(unit):
+    cells = unit.get("cells") or ()
+    values = unit["text"].split(" | ")
+    if len(cells) != len(values) or len(set(cells)) != len(cells):
+        return {}
+    spans, start = {}, 0
+    for address, value in zip(cells, values):
+        end = start + len(value)
+        spans[address] = (start, end)
+        start = end + len(" | ")
+    return spans
+
+
 def unit_cards(unit, columns=None):
     text, kind = unit["text"], unit.get("evidence_kind")
     spans = sentences(text)
@@ -136,11 +149,13 @@ def unit_cards(unit, columns=None):
             if free(match.start(), match.end()):
                 add(card_kind, match.start(), match.end(),
                     {"number": unit_number(match["number"]), "unit": match["unit"].lstrip("个")})
-    for name, value, address in (columns or []):
-        start = text.find(value)
-        if start >= 0:
-            cards.append({**card(unit, "table_cell", start, start + len(value), {"column": name, "cell": address},
-                                 (0, len(text))), "subjects": mentions(text, SUBJECTS)})
+    if columns:
+        offsets = table_spans(unit)
+        for name, _, address in columns:
+            if address in offsets:
+                start, end = offsets[address]
+                cards.append({**card(unit, "table_cell", start, end, {"column": name, "cell": address},
+                                     (0, len(text))), "subjects": mentions(text, SUBJECTS)})
     return sorted(cards, key=lambda c: (c["span"][0], c["type"]))
 
 
@@ -153,10 +168,16 @@ def extract(units):
 
 
 def verify_cards(cards, units):
-    """Every card's text must be the unit text at its span; returns the ids that are not."""
-    by_key = {(u["source_id"], u["locator"]): u["text"] for u in units}
-    return [c["card_id"] for c in cards
-            if by_key.get((c["source_id"], c["locator"]), "")[c["span"][0]:c["span"][1]] != c["text"]]
+    """Check the text span and, for a table value, its original cell address."""
+    by_key = {(u["source_id"], u["locator"]): u for u in units}
+    invalid = []
+    for card in cards:
+        unit = by_key.get((card["source_id"], card["locator"]))
+        start, end = card["span"]
+        if unit is None or unit["text"][start:end] != card["text"] or (
+                card["type"] == "table_cell" and table_spans(unit).get(card["value"]["cell"]) != (start, end)):
+            invalid.append(card["card_id"])
+    return invalid
 
 
 def summarize(cards, units):
@@ -193,16 +214,21 @@ def sample(cards, per_type, seed):
 
 def score(rows, cards):
     by_id = {c["card_id"]: c for c in cards}
-    problems, counts = [], {}
+    problems, counts, seen = [], {}, set()
     for row in rows:
-        if row["card_id"] not in by_id:
-            problems.append(row["card_id"] + ": 不是本批卡片")
+        card_id = row["card_id"]
+        if card_id in seen:
+            problems.append(card_id + ": 重复评分")
+            continue
+        seen.add(card_id)
+        if card_id not in by_id:
+            problems.append(card_id + ": 不是本批卡片")
             continue
         value = (row.get("correct") or "").strip()
         if value not in CORRECT:
             problems.append(f"{row['card_id']}: correct 应为 是/否/部分，现为“{value}”")
             continue
-        counts.setdefault(by_id[row["card_id"]]["type"], Counter())[value] += 1
+        counts.setdefault(by_id[card_id]["type"], Counter())[value] += 1
     return problems, {kind: dict(sorted(c.items())) | {"checked": sum(c.values())} for kind, c in sorted(counts.items())}
 
 

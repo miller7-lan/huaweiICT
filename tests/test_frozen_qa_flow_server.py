@@ -28,10 +28,11 @@ def test_open_gates_before_creating_a_task(tmp_path):
 def test_a_passing_draft_is_final_and_a_finished_task_only_replays(tmp_path):
     svc = service(tmp_path)
     task_id = svc.open(QUESTION)["task_id"]
-    good = answer("到期换领工本费20元。", RENEW)
+    good = {**answer("到期换领工本费20元。", RENEW), "answer": ""}
     first = svc.submit(task_id, good)
     assert (first["action"], first["result_kind"], first["drafts_used"]) == ("final", "answer", 1)
     assert first["final_checks"]["passed"] and first["replayed"] is False
+    assert "到期换领工本费20元" in first["final"]["answer"]
     again = svc.submit(task_id, answer("到期换领工本费60元。", WRONG))
     assert again["replayed"] is True and again["final"] == first["final"] and again["drafts_used"] == 1
 
@@ -106,3 +107,24 @@ def test_app_needs_a_dedicated_token(tmp_path):
     with pytest.raises(ValueError, match="DEDICATED_TOKEN_REQUIRED"):
         create_app(service(tmp_path), "short")
     assert create_app(service(tmp_path), "t" * 40) is not None
+
+
+def test_replayed_legacy_answer_renders_claims_and_rechecks_them(tmp_path):
+    svc = service(tmp_path)
+    task_id = svc.open(QUESTION)["task_id"]
+    good = answer("到期换领工本费20元。", RENEW)
+    assert svc.submit(task_id, good)["result_kind"] == "answer"
+
+    path = tmp_path / "tasks" / (task_id + ".json")
+    task = json.loads(path.read_text("utf-8"))
+    task["final"]["answer"] = "到期换领免收工本费。"
+    path.write_text(json.dumps(task, ensure_ascii=False), "utf-8")
+    replayed = svc.submit(task_id, good)
+    assert replayed["replayed"] and replayed["final_checks"]["passed"]
+    assert replayed["final"]["answer"] == "- " + RENEW[0]
+
+    task["final"] = answer("到期换领工本费60元。", WRONG)
+    path.write_text(json.dumps(task, ensure_ascii=False), "utf-8")
+    replayed = svc.submit(task_id, good)
+    assert replayed["replayed"] and replayed["final"]["outcome"] == "stop"
+    assert replayed["stop_origin"] == "FINAL_VERIFICATION_FAILED"
