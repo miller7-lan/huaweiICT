@@ -1,8 +1,7 @@
 """Ask the draft Nexent frozen-Q&A assistant one question through the runtime API.
 
-One debug run of the disabled, unpublished draft: bounded to 120 seconds, 2 MB
-of events and eight model starts. The raw SSE log stays private; a summary with
-the final answer, tool order and visible usage is written as evidence.
+One bounded debug run of the disabled, unpublished draft. The raw SSE log and
+full receipt stay in the private runtime. Only status and counts are public.
 """
 import argparse
 import json
@@ -24,6 +23,10 @@ from provision_crossdoc_native_preview import read, write  # noqa: E402
 RUNTIME = ROOT / ".runtime/frozen-qa-20261030"
 OUTPUT = ROOT / "evidence/frozen-qa-20261030"
 MAX_MODEL_STARTS = 8
+PUBLIC_TOOLS = {
+    "govkb_frozen_retrieve", "govkb_frozen_verify", "knowledge_base_search",
+    "govkb_frozen_verify_corpus", "govkb_flow_open", "govkb_flow_submit", "final_answer",
+}
 
 
 def summarize(events):
@@ -34,6 +37,15 @@ def summarize(events):
     return {"tool_order": tools, "model_starts": len(starts), "final_answers": len(finals),
             "final_answer": finals[-1] if finals else None, "events": len(events),
             "usage_events": usage[-3:]}
+
+
+def public_receipt(report):
+    fields = ("passed", "error", "stop_unconfirmed", "duration_ms", "model_starts",
+              "final_answers", "events", "recorded_at", "published", "agent_enabled")
+    tools = report["tool_order"]
+    known = [name for name in tools if isinstance(name, str) and name in PUBLIC_TOOLS]
+    return {**{key: report[key] for key in fields if key in report},
+            "tool_order": known, "other_tool_events": len(tools) - len(known)}
 
 
 def main():
@@ -72,7 +84,7 @@ def main():
                             raise ValueError("MODEL_START_LIMIT_EXCEEDED")
         report.update(duration_ms=round((time.monotonic() - started) * 1000, 1), passed=True)
     except Exception as error:
-        report.update(passed=False, error=str(error)[:200])
+        report.update(passed=False, error=type(error).__name__)
         if conversation is not None:
             try:
                 api.runtime_call("GET", "/agent/stop/" + str(conversation))
@@ -82,10 +94,11 @@ def main():
         api.close()
     report.update(summarize(events), recorded_at=datetime.now(timezone.utc).isoformat(),
                   conversation_id=conversation, published=False, agent_enabled=False)
+    write(RUNTIME / f"{prefix}-{stamp}-private.json", report)
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    write(OUTPUT / f"{prefix}-{stamp}.json", report)
-    print(json.dumps({k: report.get(k) for k in ("passed", "error", "tool_order", "model_starts", "duration_ms",
-                                                  "final_answer")}, ensure_ascii=False, indent=1))
+    receipt = public_receipt(report)
+    write(OUTPUT / f"{prefix}-{stamp}.json", receipt)
+    print(json.dumps(receipt, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":
