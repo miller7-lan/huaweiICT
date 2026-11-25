@@ -169,6 +169,7 @@ class FlowService:
         if self.region_profile is not None and regional_scope.unapproved_citations(final, self.region_profile):
             final, kind, origin = (frozen_qa._stop("REGION_SOURCE_NOT_APPROVED", "答复引用了本地区未批准的来源，已停止作答。"),
                                    "stop", "REGION_SOURCE_NOT_APPROVED")
+        final, kind, origin = flow.transition_gate(task["question"], final, kind, origin)
         task.update(final=flow.with_sources(final, pool), result_kind=flow.label_kind(final, kind), stop_origin=origin,
                     final_checks=flow.check(final, pool) if final["outcome"] == "answer" else None)
         self._save(task)

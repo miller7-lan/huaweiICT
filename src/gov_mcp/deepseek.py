@@ -17,7 +17,13 @@ PROFILES = {
                "model": "deepseek/deepseek-v4.1-flash", "credential_ref": "env:AI_GATEWAY_API_KEY"},
     "official": {"provider": "official", "base_url": "https://api.deepseek.com/v1",
                  "model": "deepseek-flash", "credential_ref": "env:DEEPSEEK_API_KEY"},
+    # V3.2: Kimi K3.1 Pro through Alibaba Cloud Bailian (OpenAI-compatible), thinking disabled.
+    # Chosen over deepseek-flash after two 24-question development runs (see docs).
+    "bailian": {"provider": "bailian", "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+                "model": "kimi-k3.1-pro", "credential_ref": "env:DASHSCOPE_API_KEY"},
 }
+CREDENTIAL_FILES = {"vercel": ".runtime/jev/credentials.json", "official": ".runtime/deepseek/credentials.json",
+                    "bailian": ".runtime/bailian/credentials.json"}
 
 
 class CloudError(ValueError):
@@ -41,7 +47,7 @@ def load_key(config, environment=None):
     key = env.get(name, "")
     # Injected test environments never read workstation secrets.
     if not key and environment is None:
-        path = ROOT/(".runtime/jev/credentials.json" if config["provider"] == "vercel" else ".runtime/deepseek/credentials.json")
+        path = ROOT/CREDENTIAL_FILES[config["provider"]]
         if path.exists():
             try: key = json.loads(path.read_text("utf-8-sig")).get(name, "")
             except (ValueError, OSError): raise CloudError("INVALID_DEEPSEEK_CREDENTIAL_FILE") from None
@@ -69,6 +75,7 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
             "temperature": temperature}
     if json_output: body["response_format"] = {"type": "json_object"}
     if config["provider"] == "official": body["thinking"] = {"type": "disabled"}
+    elif config["provider"] == "bailian": body["enable_thinking"] = False
     else:
         body["reasoning_effort"] = "none"
         body["providerOptions"] = {"gateway": {"only": ["deepseek"]}}
@@ -97,7 +104,9 @@ def chat(config, messages, *, client=None, environment=None, json_output=True, m
             choice = choices[0]
             if choice["finish_reason"] != "stop": raise CloudError("DEEPSEEK_OUTPUT_INCOMPLETE")
             actual = value["model"]
-            if not isinstance(actual, str) or not 1 <= len(actual) <= 120 or "deepseek" not in actual.lower():
+            served_ok = ("deepseek" in actual.lower() if config["provider"] != "bailian"
+                         else actual.lower().startswith(config["model"].split("-")[0])) if isinstance(actual, str) else False
+            if not isinstance(actual, str) or not 1 <= len(actual) <= 120 or not served_ok:
                 raise CloudError("UNEXPECTED_SERVED_MODEL")
             message = choice["message"]
             if not isinstance(message, dict) or not isinstance(message.get("content"), str):

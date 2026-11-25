@@ -82,6 +82,9 @@ def main():
     parser.add_argument("--follow-up-after-answer", action="store_true",
                         help="Also re-ask after an answer that passed but lists gaps (one more call)")
     parser.add_argument("--max-calls", type=int, default=0)
+    parser.add_argument("--model-profile", choices=("official", "bailian"), default="bailian",
+                        help="Cloud profile in gov_mcp.deepseek.PROFILES (V3.2 default: bailian kimi-k3.1-pro)")
+    parser.add_argument("--max-output-tokens", type=int, default=2048)
     args = parser.parse_args()
     if not args.output.resolve().is_relative_to((ROOT / ".runtime").resolve()):
         parser.error("PRIVATE_RUNTIME_OUTPUT_REQUIRED")
@@ -107,6 +110,8 @@ def main():
     units = json.loads(args.corpus.read_text("utf-8"))["units"]
     plan["corpus_sha256"] = file_sha(args.corpus)
     from gov_mcp.deepseek import PROFILES, chat
+    plan["model"] = {k: PROFILES[args.model_profile][k] for k in ("provider", "base_url", "model")}
+    plan["max_output_tokens"] = args.max_output_tokens
 
     used = {"count": 0}
 
@@ -114,7 +119,8 @@ def main():
         if used["count"] >= args.max_calls:
             raise RuntimeError("MODEL_CALL_BUDGET_EXHAUSTED")
         used["count"] += 1
-        return chat(PROFILES["official"], messages, response_model=frozen_qa.AnswerOutput, max_output_tokens=1024)
+        return chat(PROFILES[args.model_profile], messages, response_model=frozen_qa.AnswerOutput,
+                    max_output_tokens=args.max_output_tokens)
 
     args.output.mkdir(parents=True)
     (args.output / "plan.json").write_text(json.dumps(plan, ensure_ascii=False, indent=2), "utf-8")

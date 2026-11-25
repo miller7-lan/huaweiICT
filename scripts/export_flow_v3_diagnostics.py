@@ -60,7 +60,8 @@ def replay(record, corpus):
     them, so a draft from the unconstrained baseline shows what "that draft plus the
     gates and the claim-by-claim checks" would display.
     """
-    gate = scope_gate(record["question"] + ("\n" + record["context"] if record.get("context") else ""))
+    query = record["question"] + ("\n" + record["context"] if record.get("context") else "")
+    gate = scope_gate(query)
     if gate:
         return {"result_kind": "stop", "gate": gate, "source_citations_used": False, "claims_dropped": 0,
                 "claims_excerpted": 0, "final_checks_passed": None, "final_assertions": 0, "final_unknowns": 0,
@@ -68,7 +69,7 @@ def replay(record, corpus):
     draft = record.get("model_output")
     if not draft:
         return None
-    settled = flow.settle_draft(draft, rebuild_pool(record, corpus), list(corpus.values()))
+    settled = flow.settle_draft(draft, rebuild_pool(record, corpus), list(corpus.values()), question=query)
     final = settled["final"]
     return {"result_kind": settled["result_kind"], "gate": None,
             "source_citations_used": settled["source_citations_used"],

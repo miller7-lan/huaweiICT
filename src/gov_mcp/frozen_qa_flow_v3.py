@@ -379,7 +379,7 @@ def with_sources(final, pool):
     return {**final, "sources": sources, "display": "\n".join(lines + note)}
 
 
-def settle_draft(raw, pool, units):
+def settle_draft(raw, pool, units, question=None):
     """What one stored model draft becomes with no further model call.
 
     The same steps ``ask`` applies after its last call: clean, backend source
@@ -405,11 +405,45 @@ def settle_draft(raw, pool, units):
         kind = "partial_answer" if final else "stop"
     final = final or _stop("VERIFICATION_FAILED", "没有可通过引用与数字核验的结论。")  # failures stay in checks
     final = note_inference_gap(raw, final)
+    if question is not None:
+        final, kind, origin = transition_gate(question, final, kind)
+        if origin:
+            result["stop_origin"] = origin
     return {**result, "result_kind": label_kind(final, kind), "final": with_sources(final, pool),
             "final_checks_passed": check(final, pool, units)["passed"] if kind != "stop" else None}
 
 
+# Transition gate (V3.2). A question that asks whether an earlier-filed matter falls under the
+# new or the old rule cannot be answered from archived texts that state neither a transition
+# clause nor an effective date. When the model's own unknowns say exactly that, the answer
+# would only restate both rules, so it is shown as a stop. Generic wording, no question ids.
+TRANSITION_QUESTION = re.compile(
+    r"过渡|已(?:经)?受理|之前(?:已)?(?:申请|提交|受理|递交)|发布前|施行前|生效前|实施前"
+    r"|(?:按|适用|执行)(?:新|旧)(?:规|标准|措施|时限|办法)|还(?:按|适用|执行)"
+    r"|新(?:规|措施|办法|标准).{0,8}(?:适用|管)|适用(?:哪|新|旧)")
+TRANSITION_GAP = re.compile(
+    r"过渡(?:条款|规定|安排|办法)|施行日期|生效日期|实施日期|施行时间|生效时间"
+    r"|适用哪(?:一|个|种)?|是否适用|能否适用|能否认定")
+TRANSITION_STOP = "TRANSITION_NOT_ESTABLISHED"
+
+
+def transition_unsettled(question, final):
+    """True when an answer to a transition question names the missing transition basis itself."""
+    return (isinstance(question, str) and final.get("outcome") == "answer"
+            and bool(TRANSITION_QUESTION.search(question))
+            and any(TRANSITION_GAP.search(text) for text in final.get("unknowns") or []))
+
+
+def transition_gate(question, final, kind, origin=None):
+    """Apply the transition gate to a finished result; returns (final, kind, origin)."""
+    if not transition_unsettled(question, final):
+        return final, kind, origin
+    unknowns, _ = claim_binding.displayable_unknowns(final.get("unknowns") or [])
+    return _stop(TRANSITION_STOP, STOP_MESSAGES[TRANSITION_STOP], unknowns), "stop", TRANSITION_STOP
+
+
 STOP_MESSAGES = {
+    "TRANSITION_NOT_ESTABLISHED": "归档资料没有写明过渡安排或施行日期，不能判断此前已受理的事项适用新规定还是旧规定，本题停止；请向办理机关确认。",
     "MODEL_STOP": "依据检索到的归档资料不能作答，本题停止。",
     "INSUFFICIENT_EVIDENCE_AFTER_FOLLOW_UP": "补查后仍没有能直接支持结论的归档原文，本题停止。",
     "MODEL_STOP_WITHOUT_MISSING_ITEMS": "依据检索到的归档资料不能作答，本题停止。",
@@ -581,6 +615,7 @@ def ask(question, units, chat, *, context="", follow_up_after_answer=False, rule
               "follow_ups_used": 0, "repairs_used": 0, "claims_dropped": 0, "claims_excerpted": 0, "status": dict(STATUS)}
 
     def finish(final, kind, origin=None):
+        final, kind, origin = transition_gate(query, final, kind, origin)
         # final_checks re-verifies what is displayed. An answer whose own unknowns still name a
         # retrievable gap passed the citation checks but does not cover the whole question.
         record.update(final=with_sources(final, pool), result_kind=label_kind(final, kind), stop_origin=origin,
