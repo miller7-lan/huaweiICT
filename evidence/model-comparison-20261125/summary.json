@@ -1,0 +1,402 @@
+{
+ "schema_version": 1,
+ "label": "development_comparison_not_formal_evaluation",
+ "date": "2026-11-25",
+ "question_set": {
+  "ids": "X01-X24",
+  "questions_sha256": "9ea19318362da0ab6d7282db7a78dfaa435a68ce80b6f878ef01195ce3c6c5a8",
+  "reference_sha256": "9aa497c2f4e7bbb0776cb3ed8e27156431442b3af857048e3f86b37f7143e6a7",
+  "categories": {
+   "comparison": 8,
+   "temporal": 4,
+   "inference": 4,
+   "should_stop": 8
+  }
+ },
+ "flow": {
+  "version": "V3.1 code 200a922 (core modules as 459e459)",
+  "rules": "strict",
+  "max_model_calls_per_question": 3,
+  "temperature": 0,
+  "thinking": "disabled",
+  "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05"
+ },
+ "runs": {
+  "deepseek-flash-run1": {
+   "model": "deepseek-flash",
+   "channel": "DeepSeek official API",
+   "max_output_tokens": 1024,
+   "answer_expected_answered": "14/16",
+   "kinds": {
+    "answer_with_gaps": 9,
+    "stop": 2,
+    "answer": 3,
+    "partial_answer": 2
+   },
+   "stop_expected_stopped": "7/8",
+   "required_source_cited": 0.671,
+   "key_point_overlap": 0.5,
+   "calls": 33,
+   "tokens_in": 84521,
+   "tokens_out": 13866,
+   "stop_expected_stopped_after_v32_transition_gate": "8/8",
+   "by_category": {
+    "comparison": {
+     "n": 8,
+     "answered": 7,
+     "answer_with_gaps": 6,
+     "false_stop": 1,
+     "answer": 1
+    },
+    "inference": {
+     "n": 4,
+     "answered": 4,
+     "answer": 1,
+     "partial_answer": 1,
+     "answer_with_gaps": 2
+    },
+    "should_stop": {
+     "n": 8,
+     "stopped": 7,
+     "leaked": 1
+    },
+    "temporal": {
+     "n": 4,
+     "false_stop": 1,
+     "answered": 3,
+     "partial_answer": 1,
+     "answer_with_gaps": 1,
+     "answer": 1
+    }
+   },
+   "per_question": {
+    "X01": "answer_with_gaps:1/2",
+    "X02": "answer_with_gaps:1/2",
+    "X03": "FALSE_STOP",
+    "X04": "answer_with_gaps:0/2",
+    "X05": "answer:2/2",
+    "X06": "answer_with_gaps:1/3",
+    "X07": "answer_with_gaps:1/2",
+    "X08": "answer_with_gaps:2/2",
+    "X09": "FALSE_STOP",
+    "X10": "partial_answer:0/2",
+    "X11": "answer_with_gaps:1/2",
+    "X12": "answer:2/2",
+    "X13": "answer:1/2",
+    "X14": "partial_answer:2/3",
+    "X15": "answer_with_gaps:3/3",
+    "X16": "answer_with_gaps:1/2",
+    "X17": "STOP",
+    "X18": "STOP",
+    "X19": "STOP",
+    "X20": "STOP",
+    "X21": "LEAK",
+    "X22": "STOP",
+    "X23": "STOP",
+    "X24": "STOP"
+   },
+   "repairs": 7,
+   "follow_ups": 5,
+   "claims_dropped": 10,
+   "claims_excerpted": 1,
+   "latency_seconds": {
+    "median": 4.0,
+    "max": 23.5
+   },
+   "draft_failure_codes_top": {
+    "QUANTITY_NOT_QUOTED": 18,
+    "NUMBER_NOT_QUOTED": 13,
+    "DOCUMENT_NUMBER_NOT_QUOTED": 8,
+    "ANSWER_DOCUMENT_NUMBER_NOT_QUOTED": 6,
+    "ANSWER_QUANTITY_NOT_QUOTED": 5,
+    "QUOTE_NOT_IN_SOURCE": 3
+   },
+   "cost_cny_at_bailian_list_price": 0.28,
+   "records_sha256": "bebcf7ef51f9bb3f4b561f0448af86403753ea0db9b1dbfb5a8be6426aed8f78"
+  },
+  "deepseek-flash-run2": {
+   "model": "deepseek-flash",
+   "channel": "DeepSeek official API",
+   "max_output_tokens": 1024,
+   "answer_expected_answered": "14/16",
+   "kinds": {
+    "partial_answer": 4,
+    "answer_with_gaps": 6,
+    "answer": 4,
+    "stop": 2
+   },
+   "stop_expected_stopped": "8/8",
+   "required_source_cited": 0.65,
+   "key_point_overlap": 0.438,
+   "calls": 32,
+   "tokens_in": 80790,
+   "tokens_out": 12811,
+   "stop_expected_stopped_after_v32_transition_gate": "8/8",
+   "by_category": {
+    "comparison": {
+     "n": 8,
+     "answered": 7,
+     "partial_answer": 2,
+     "answer_with_gaps": 3,
+     "answer": 2,
+     "false_stop": 1
+    },
+    "inference": {
+     "n": 4,
+     "answered": 4,
+     "answer": 1,
+     "partial_answer": 1,
+     "answer_with_gaps": 2
+    },
+    "should_stop": {
+     "n": 8,
+     "stopped": 8
+    },
+    "temporal": {
+     "n": 4,
+     "false_stop": 1,
+     "answered": 3,
+     "partial_answer": 1,
+     "answer_with_gaps": 1,
+     "answer": 1
+    }
+   },
+   "per_question": {
+    "X01": "partial_answer:1/2",
+    "X02": "answer_with_gaps:1/2",
+    "X03": "partial_answer:0/2",
+    "X04": "answer_with_gaps:0/2",
+    "X05": "answer:2/2",
+    "X06": "answer_with_gaps:1/3",
+    "X07": "FALSE_STOP",
+    "X08": "answer:2/2",
+    "X09": "FALSE_STOP",
+    "X10": "partial_answer:0/2",
+    "X11": "answer_with_gaps:1/2",
+    "X12": "answer:1/2",
+    "X13": "answer:1/2",
+    "X14": "partial_answer:2/3",
+    "X15": "answer_with_gaps:3/3",
+    "X16": "answer_with_gaps:1/2",
+    "X17": "STOP",
+    "X18": "STOP",
+    "X19": "STOP",
+    "X20": "STOP",
+    "X21": "STOP",
+    "X22": "STOP",
+    "X23": "STOP",
+    "X24": "STOP"
+   },
+   "repairs": 7,
+   "follow_ups": 5,
+   "claims_dropped": 10,
+   "claims_excerpted": 1,
+   "latency_seconds": {
+    "median": 4.5,
+    "max": 13.0
+   },
+   "draft_failure_codes_top": {
+    "NUMBER_NOT_QUOTED": 18,
+    "QUANTITY_NOT_QUOTED": 12,
+    "DOCUMENT_NUMBER_NOT_QUOTED": 9,
+    "ANSWER_DOCUMENT_NUMBER_NOT_QUOTED": 7,
+    "ANSWER_QUANTITY_NOT_QUOTED": 4,
+    "ANSWER_QUANTITY_WITHOUT_CLAIM": 4
+   },
+   "cost_cny_at_bailian_list_price": 0.26,
+   "records_sha256": "e93f7ed7b52c07552821e135789757c659e1d8239bbfb85f8033636d584741ee"
+  },
+  "kimi-k3.1-pro-run1": {
+   "model": "kimi-k3.1-pro",
+   "channel": "Alibaba Cloud Bailian (OpenAI-compatible)",
+   "max_output_tokens": "1024; X01 and X21 rerun at 2048 after truncation",
+   "answer_expected_answered": "16/16",
+   "kinds": {
+    "answer_with_gaps": 5,
+    "answer": 8,
+    "partial_answer": 3
+   },
+   "stop_expected_stopped": "7/8",
+   "required_source_cited": 0.785,
+   "key_point_overlap": 0.698,
+   "calls": 32,
+   "tokens_in": 77095,
+   "tokens_out": 16746,
+   "stop_expected_stopped_after_v32_transition_gate": "8/8",
+   "by_category": {
+    "comparison": {
+     "n": 8,
+     "answered": 8,
+     "answer_with_gaps": 4,
+     "answer": 3,
+     "partial_answer": 1
+    },
+    "inference": {
+     "n": 4,
+     "answered": 4,
+     "answer": 3,
+     "answer_with_gaps": 1
+    },
+    "should_stop": {
+     "n": 8,
+     "stopped": 7,
+     "leaked": 1
+    },
+    "temporal": {
+     "n": 4,
+     "answered": 4,
+     "partial_answer": 2,
+     "answer": 2
+    }
+   },
+   "per_question": {
+    "X01": "answer_with_gaps:1/2",
+    "X02": "answer:2/2",
+    "X03": "partial_answer:0/2",
+    "X04": "answer:2/2",
+    "X05": "answer:2/2",
+    "X06": "answer_with_gaps:2/3",
+    "X07": "answer_with_gaps:2/2",
+    "X08": "answer_with_gaps:1/2",
+    "X09": "partial_answer:0/2",
+    "X10": "partial_answer:0/2",
+    "X11": "answer:2/2",
+    "X12": "answer:2/2",
+    "X13": "answer:1/2",
+    "X14": "answer:3/3",
+    "X15": "answer:3/3",
+    "X16": "answer_with_gaps:2/2",
+    "X17": "STOP",
+    "X18": "STOP",
+    "X19": "STOP",
+    "X20": "STOP",
+    "X21": "LEAK",
+    "X22": "STOP",
+    "X23": "STOP",
+    "X24": "STOP"
+   },
+   "repairs": 5,
+   "follow_ups": 6,
+   "claims_dropped": 6,
+   "claims_excerpted": 1,
+   "latency_seconds": {
+    "median": 14.0,
+    "max": 47.7
+   },
+   "draft_failure_codes_top": {
+    "NUMBER_NOT_QUOTED": 13,
+    "DOCUMENT_NUMBER_NOT_QUOTED": 8,
+    "QUANTITY_NOT_QUOTED": 7,
+    "ANSWER_DOCUMENT_NUMBER_NOT_QUOTED": 6,
+    "ANSWER_QUANTITY_NOT_QUOTED": 3,
+    "QUANTITY_NOT_IN_OWN_QUOTE": 2
+   },
+   "cost_cny_at_bailian_list_price": 2.14,
+   "records_sha256": "ea4d3719546a0984ee7f1e9e4d24c8f24dbd72592e3fe4e2329a301156dbe8f0"
+  },
+  "kimi-k3.1-pro-run2": {
+   "model": "kimi-k3.1-pro",
+   "channel": "Alibaba Cloud Bailian (OpenAI-compatible)",
+   "max_output_tokens": 2048,
+   "answer_expected_answered": "16/16",
+   "kinds": {
+    "partial_answer": 4,
+    "answer": 8,
+    "answer_with_gaps": 4
+   },
+   "stop_expected_stopped": "7/8",
+   "required_source_cited": 0.754,
+   "key_point_overlap": 0.667,
+   "calls": 33,
+   "tokens_in": 80755,
+   "tokens_out": 15941,
+   "stop_expected_stopped_after_v32_transition_gate": "8/8",
+   "by_category": {
+    "comparison": {
+     "n": 8,
+     "answered": 8,
+     "partial_answer": 2,
+     "answer": 3,
+     "answer_with_gaps": 3
+    },
+    "inference": {
+     "n": 4,
+     "answered": 4,
+     "answer": 3,
+     "answer_with_gaps": 1
+    },
+    "should_stop": {
+     "n": 8,
+     "stopped": 7,
+     "leaked": 1
+    },
+    "temporal": {
+     "n": 4,
+     "answered": 4,
+     "partial_answer": 2,
+     "answer": 2
+    }
+   },
+   "per_question": {
+    "X01": "partial_answer:1/2",
+    "X02": "answer:2/2",
+    "X03": "partial_answer:0/2",
+    "X04": "answer:2/2",
+    "X05": "answer:2/2",
+    "X06": "answer_with_gaps:2/3",
+    "X07": "answer_with_gaps:2/2",
+    "X08": "answer_with_gaps:1/2",
+    "X09": "partial_answer:0/2",
+    "X10": "partial_answer:0/2",
+    "X11": "answer:1/2",
+    "X12": "answer:2/2",
+    "X13": "answer:1/2",
+    "X14": "answer:3/3",
+    "X15": "answer:3/3",
+    "X16": "answer_with_gaps:2/2",
+    "X17": "STOP",
+    "X18": "STOP",
+    "X19": "STOP",
+    "X20": "STOP",
+    "X21": "LEAK",
+    "X22": "STOP",
+    "X23": "STOP",
+    "X24": "STOP"
+   },
+   "repairs": 6,
+   "follow_ups": 6,
+   "claims_dropped": 8,
+   "claims_excerpted": 3,
+   "latency_seconds": {
+    "median": 12.5,
+    "max": 39.8
+   },
+   "draft_failure_codes_top": {
+    "NUMBER_NOT_QUOTED": 23,
+    "DOCUMENT_NUMBER_NOT_QUOTED": 14,
+    "ANSWER_DOCUMENT_NUMBER_NOT_QUOTED": 12,
+    "QUANTITY_NOT_QUOTED": 8,
+    "DATE_NOT_QUOTED": 5,
+    "ANSWER_QUANTITY_NOT_QUOTED": 4
+   },
+   "cost_cny_at_bailian_list_price": 2.13,
+   "records_sha256": "ec1eab9c26e2fa34322062a5552e07b3c5faae88d812de7c967ae266e0f64929"
+  }
+ },
+ "screened_out": {
+  "kimi-k3": "thinking-only; 1 of 2 recorded questions truncated at 8192 output tokens (DEEPSEEK_OUTPUT_INCOMPLETE), first call 175 s; run stopped",
+  "glm-5.3": "thinking-only on Bailian (enable_thinking restricted to true); 2 of 2 recorded questions truncated at 8192, 74-77 s per call; run stopped",
+  "qwen4-max": "single contract probe: returned a chat transcript instead of the AnswerOutput JSON and answered from its own knowledge; not run",
+  "deepseek-v4-pro": "not run; public benchmarks put V4.1-Flash ahead on 14 of 16 shared benchmarks"
+ },
+ "transition_gate_replay": {
+  "drafts_replayed": 210,
+  "changed": 3,
+  "changed_ids": [
+   "X21",
+   "X21",
+   "X21"
+  ],
+  "new_false_stops": 0
+ }
+}
