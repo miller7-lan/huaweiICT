@@ -1,0 +1,62 @@
+=== 第 3 步：测试 ===
+============================== warnings summary ===============================
+tests/test_frozen_qa_flow_server.py::test_app_needs_a_dedicated_token
+  <本机路径>\.venv\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+328 passed, 1 warning in 3.07s
+
+=== 第 4 步：解包原件与构建语料 ===
+注：输入 records 文件 SHA-256 为 64e839f3b94202d901952b64b393fccfccd3f9d544e51afa9e566fd47e3fc726（与文档一致）；原件压缩包复用本机 2026-11-15 交接的 originals.zip（外层 zip SHA-256 为 0fac888eddc7ca9df38eb96fc4333c3dc75b61e62c47a1714d4aa9bb8d4a7a4e），经 pack_frozen_originals.py unpack 逐一校验内部 6 份冻结原件的 SHA-256 全部与目录一致。
+{
+ "unpack": [
+  {
+   "source_id": "HN-FEE-CATALOG-XLSX-2025",
+   "sha256": "4aaddf9c385df36a3c53bd964b803a5c6d7ecca5d186cb8aee96a0e7d6e9562c",
+   "bytes": 33251
+  },
+  {
+   "source_id": "MOF-FEE-2007",
+   "sha256": "a77897e3863b5c61bbd0753d6d6feb48a3600a457624848a704f71145914ab66",
+   "bytes": 20865
+  },
+  {
+   "source_id": "MOF-FIRST-ISSUE-2018",
+   "sha256": "1034a5595b3a5f5cdf81b8e63773c35ef30fe1b333f0fba4c1a9ec40046ac595",
+   "bytes": 21072
+  },
+  {
+   "source_id": "HN-MEASURES-2026",
+   "sha256": "2fb241e0cd7b1f4d60d3a3f17ba364390fbf2df2179518a986c25660bb6ae55a",
+   "bytes": 17887
+  },
+  {
+   "source_id": "HN-NORM-PUBLISHER",
+   "sha256": "aae6df5924be7648137bd582c873d57507fb379f3a3c37e1ff462631c05fbacb",
+   "bytes": 119474
+  },
+  {
+   "source_id": "HN-MEASURES-2024-JY",
+   "sha256": "a4b1fb5ce282e2d8b18bb98e0f5dff68b25cb607bba577e129d745467ce0a6cc",
+   "bytes": 36086
+  }
+ ]
+}
+{"unit_count": 593, "corpus_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05", "sources": [["A2", 259, 0], ["A3", 3, 0], ["A4", 9, 5], ["A5", 10, 1], ["A6", 15, 1], ["A7", 272, 14], ["B1", 25, 1]]}
+
+=== 第 5 步：生成指纹并与原机比较 ===
+{
+ "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
+ "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+ "question_sets": {
+  "fresh-questions": "e508795ff0c41aa6a3052010cd3013044d7879b8d39703085fb4a9bcf182abbf",
+  "retrieval-probes": "cb353bce748b3c38436247e2542b5bbd446e0a852b8885b23b19f29fd37ef65c",
+  "dev-pilot-questions": "016a536e8f5bbe3d152b4c8fba107d129cc6876df5eb39c2ec48ec66dcd13276"
+ },
+ "replay": "5c1459a86ef7790f9de1335ea54f95bb87672ae4b6306915441661eb5e50f9b1"
+}
+{
+ "same": true,
+ "differ": []
+}
