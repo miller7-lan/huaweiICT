@@ -1,18 +1,18 @@
 {
  "scope": "r22 package unpacked and self-tested on Windows; same machine as the original Nexent host, so this is not a peer L1",
  "date": "2026-11-26",
- "zip_sha256": "4642a68ec5daf9239487fb5c1f8971ac4f3d0f2e6cfe1499b26dd051bda4f0b1",
+ "zip_sha256": "1417960715e857543a2875ad51dd7f6d3ee37051662527f9193832a1c5e87f00",
  "platform": "Windows-11-10.0.26200-SP0",
  "python": "3.12.14 (existing project venv; packages from requirements.lock)",
  "unpacked_into": "a new empty directory",
- "files_checked_against_SUBMISSION-MANIFEST": 699,
+ "files_checked_against_SUBMISSION-MANIFEST": 700,
  "hash_mismatches": 0,
  "self_test": {
   "command": "PYTHONPATH=src python -m pytest -q <12 core test files listed in SUBMISSION-MANIFEST>",
-  "summary": "324 passed, 1 warning",
+  "summary": "325 passed, 1 warning in 2.40s",
   "passed": true
  },
  "same_result_as_linux": true,
  "new_model_calls": 0,
- "revision": "rerun for package revision 4"
+ "revision": "rerun: 第 5 版: figures 1-2/2-1/2-2 redrawn for V4.0; appendix 2.3.1 text; figure 7-20 greeting; agent version 3 export"
 }
