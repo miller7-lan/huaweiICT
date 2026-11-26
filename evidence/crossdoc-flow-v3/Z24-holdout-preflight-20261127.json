@@ -1,0 +1,36 @@
+{
+ "round": "Z24-holdout-A1-20261127",
+ "label": "formal",
+ "name_to_use": "正式评测",
+ "blocked": [],
+ "discounts": [],
+ "frozen": {
+  "rules": "strict",
+  "arms": [
+   "baseline",
+   "single_shot",
+   "flow_v3"
+  ]
+ },
+ "observed": {
+  "commit": "2c702a8",
+  "dirty_files": [],
+  "questions": 19,
+  "questions_sha256": "ae73914da3c4e350b5264fe293c8da8945dd99066098e6570f07ee82d8da0450",
+  "reference": {
+   "reference_sha256": "270b23af5d0feef2762e21ddedd032b707e4a4a7908d1edabea433cc6d833bcc",
+   "expected": {
+    "answer": 12,
+    "stop": 7
+   },
+   "categories": {
+    "comparison": 8,
+    "temporal": 1,
+    "inference": 3,
+    "should_stop": 7
+   }
+  },
+  "corpus_units": 593,
+  "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05"
+ }
+}
