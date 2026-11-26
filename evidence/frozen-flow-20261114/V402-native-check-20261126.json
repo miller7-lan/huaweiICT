@@ -1,0 +1,53 @@
+{
+ "scope": "V4.0.2 native activation check on Windows Nexent; counts, ids and hashes only (no question or answer text)",
+ "date": "2026-11-26",
+ "question": "X08 (development question)",
+ "service_health": {
+  "service": "govkb_frozen_flow",
+  "status": "UP",
+  "rules": "strict",
+  "follow_up_after_answer": true,
+  "max_drafts": 3,
+  "corpus_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+  "startup_source_sha256_matches_V40_freeze": {
+   "frozen_qa_flow_v3.py": "5676b0075b6625db08e7f9bca47bc4eef27a1dde419ed5039b66f3dfc5e90a7d",
+   "claim_binding.py": "52ed7aa460de5fe48fbffb9eeeaae85baad845cfb4abe243f9d1a2122d95085d",
+   "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f"
+  }
+ },
+ "runner": "frozen_flow_native.py run (default --follow-up on), repository 07a4561",
+ "run": {
+  "passed": true,
+  "tool_order": [
+   "govkb_flow_open",
+   "govkb_flow_submit",
+   "govkb_flow_submit",
+   "final_answer"
+  ],
+  "model_starts": 4,
+  "duration_ms": 32266,
+  "rounds": [
+   {
+    "kind": "initial",
+    "added": 18
+   },
+   {
+    "kind": "follow_up",
+    "added": 6
+   }
+  ],
+  "follow_ups_used": 1,
+  "repairs_used": 0,
+  "drafts": [
+   "answer (with gaps)",
+   "answer"
+  ],
+  "result_kind": "answer"
+ },
+ "records_on_windows": {
+  "report": ".runtime/frozen-flow-20261114/native-run-20261126T151942Z-report.json",
+  "report_sha256": "38cc9a729d78579598d7cade02844b473ed6b97c488c5ed083a8431da3be9418",
+  "task_state_sha256": "f6b7a6be049cc83edffa9b5684c3aa0ed398f9a15bc12184263ff6e2395b6d6b"
+ },
+ "note": "One run only; shows the follow-up after a gap answer works through Nexent, not that it improves results in general."
+}
