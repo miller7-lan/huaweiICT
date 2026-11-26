@@ -129,17 +129,22 @@ def runner():
     return module
 
 
-def check_service_rules(health, expected):
-    """Refuse a native run when the running service does not use the expected prompt profile.
+def check_service_rules(health, expected, follow_up_after_answer=None):
+    """Refuse a native run when the running service does not use the expected prompt profile,
+    or (when given) the expected follow-up setting.
 
     The formal comparison and the command line use one profile; native evidence produced
-    under another one cannot be compared with them.
+    under another one cannot be compared with them. V4.0.2 serves with --follow-up-after-answer.
     """
     if health.get("service") != SERVICE or health.get("status") != "UP":
         raise RuntimeError("FLOW_SERVICE_NOT_RUNNING")
     if health.get("rules") != expected:
         raise RuntimeError(f"SERVICE_RULES_MISMATCH: service runs {health.get('rules')}, expected {expected}; "
                            "restart the service with the matching --rules")
+    if follow_up_after_answer is not None and health.get("follow_up_after_answer") is not follow_up_after_answer:
+        raise RuntimeError(f"SERVICE_FOLLOW_UP_MISMATCH: service runs follow_up_after_answer="
+                           f"{health.get('follow_up_after_answer')}, expected {follow_up_after_answer}; restart the "
+                           "service with the matching --follow-up-after-answer")
     return {"rules": health["rules"], "follow_up_after_answer": health.get("follow_up_after_answer"),
             "corpus_sha256": health.get("corpus_sha256")}
 
@@ -191,6 +196,8 @@ def main():
     run.add_argument("question")
     run.add_argument("--rules", choices=("strict", "light"), default="strict",
                      help="Prompt profile the running service must use; the run is refused otherwise")
+    run.add_argument("--follow-up", choices=("on", "off"), default="on",
+                     help="Follow-up after a gap answer the running service must use (V4.0.2: on; V4.0.1: off)")
     sub.add_parser("export")
     args = parser.parse_args()
     if args.command == "plan" or (args.command == "provision" and not args.apply):
@@ -200,7 +207,7 @@ def main():
         provisioner().main()
     elif args.command == "run":
         try:
-            service = check_service_rules(service_health(), args.rules)
+            service = check_service_rules(service_health(), args.rules, args.follow_up == "on")
         except RuntimeError as error:
             parser.error(str(error))
         print(json.dumps({"service": service, "max_model_starts": MAX_MODEL_STARTS}, ensure_ascii=False))

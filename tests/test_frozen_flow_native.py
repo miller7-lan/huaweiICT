@@ -1,4 +1,5 @@
 """Wiring of the flow's draft assistant reuses the existing scripts without changing them."""
+import pytest
 import frozen_flow_native as native
 import provision_frozen_qa_native as original
 import run_frozen_qa_native as original_run
@@ -99,3 +100,13 @@ def test_draft_body_carries_greeting_and_at_most_six_examples():
     body = module.body(2, {name: n for n, name in enumerate(sorted(native.TOOLS))}, 1)
     assert body["greeting_message"] == native.GREETING and "不代表现行政策" in native.GREETING
     assert body["example_questions"] == native.EXAMPLES and 1 <= len(native.EXAMPLES) <= 6
+
+
+def test_v402_follow_up_setting_must_match():
+    health = {"service": native.SERVICE, "status": "UP", "rules": "strict", "follow_up_after_answer": False}
+    assert native.check_service_rules(health, "strict")["follow_up_after_answer"] is False
+    assert native.check_service_rules(health, "strict", False)["rules"] == "strict"
+    with pytest.raises(RuntimeError, match="SERVICE_FOLLOW_UP_MISMATCH"):
+        native.check_service_rules(health, "strict", True)
+    with pytest.raises(RuntimeError, match="SERVICE_FOLLOW_UP_MISMATCH"):
+        native.check_service_rules({k: v for k, v in health.items() if k != "follow_up_after_answer"}, "strict", True)
