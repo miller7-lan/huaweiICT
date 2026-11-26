@@ -1,0 +1,146 @@
+{
+ "schema_version": 1,
+ "purpose": "held-out units for the low-resource construction re-test (B1 vs B2)",
+ "selection": {
+  "seed": "20261126-holdout",
+  "strata": [
+   {
+    "source": "HN-NORM-PUBLISHER",
+    "locator": "^第.+条$",
+    "count": 3
+   },
+   {
+    "source": "MOF-FIRST-ISSUE-2018",
+    "locator": "^正文段落",
+    "count": 1
+   },
+   {
+    "source": "HN-MEASURES-2024-JY",
+    "locator": "^正文段落",
+    "count": 1
+   },
+   {
+    "source": "HN-FEE-CATALOG-XLSX-2025",
+    "locator": "第\\d+行$",
+    "count": 1
+   }
+  ],
+  "chars": [
+   80,
+   800
+  ],
+  "excluded": "every locator of U1-U6",
+  "target_rule": [
+   "value",
+   "material",
+   "time_limit",
+   "condition"
+  ],
+  "script_sha256": "34785e5feebc1a5fd315f8fcde70d1be5d20fc7538f50943f8589bff67d565f5"
+ },
+ "corpus_unit_count": 591,
+ "units": [
+  {
+   "id": "H1",
+   "kind": "condition",
+   "seen_in_development": false,
+   "target": "适用条件：对象、条件、受理或核准机关及例外情形；条件结果只能取 true/false/unknown",
+   "sources": [
+    {
+     "source_id": "HN-NORM-PUBLISHER",
+     "locators": [
+      {
+       "locator": "第十二条",
+       "text_sha256": "c0fa299927a5d7a7cdaca96cf3b9339b7a5444a452afad7f6d3f9d18fb9a024a"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "H2",
+   "kind": "material",
+   "seen_in_development": false,
+   "target": "办理材料：按情形或分支区分需要提交或交验的材料；写成 Matter -requires-> Material，不跨分支合并",
+   "sources": [
+    {
+     "source_id": "HN-NORM-PUBLISHER",
+     "locators": [
+      {
+       "locator": "第一百五十条",
+       "text_sha256": "05df77ad65806988fdc1037b3468caa40d01fd2b2e579b5871413c5a043fe182"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "H3",
+   "kind": "material",
+   "seen_in_development": false,
+   "target": "办理材料：按情形或分支区分需要提交或交验的材料；写成 Matter -requires-> Material，不跨分支合并",
+   "sources": [
+    {
+     "source_id": "HN-NORM-PUBLISHER",
+     "locators": [
+      {
+       "locator": "第九十九条",
+       "text_sha256": "0f21847b59a941c3953aac109cd1a2281993e1a9fdc95cf61bb6edfe18dc3497"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "H4",
+   "kind": "time_limit",
+   "seen_in_development": false,
+   "target": "时限：取值、单位（工作日/自然日）、起算点和适用对象；不做单位换算",
+   "sources": [
+    {
+     "source_id": "MOF-FIRST-ISSUE-2018",
+     "locators": [
+      {
+       "locator": "正文段落6",
+       "text_sha256": "99baef96bd80caaa0e312b311f1e57aa326667393e2207178075ecd4d8992f7b"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "H5",
+   "kind": "material",
+   "seen_in_development": false,
+   "target": "办理材料：按情形或分支区分需要提交或交验的材料；写成 Matter -requires-> Material，不跨分支合并",
+   "sources": [
+    {
+     "source_id": "HN-MEASURES-2024-JY",
+     "locators": [
+      {
+       "locator": "正文段落12",
+       "text_sha256": "fe54d5ed0d52c654b68d04f82cd99fd9ee5b7b2d809c8c2ff89b842a48a49634"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "H6",
+   "kind": "condition",
+   "seen_in_development": false,
+   "target": "适用条件：对象、条件、受理或核准机关及例外情形；条件结果只能取 true/false/unknown",
+   "sources": [
+    {
+     "source_id": "HN-FEE-CATALOG-XLSX-2025",
+     "locators": [
+      {
+       "locator": "Excel工作表考试考务费!第83行",
+       "text_sha256": "61cb0455db8210e6e2e186b0e6ce121aaf4ba7a11f714886317a36dced1487be"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

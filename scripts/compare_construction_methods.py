@@ -176,8 +176,8 @@ def generic_prompt(texts):
             {"role": "user", "content": f"从下列政务原文中抽取知识图谱三元组，每条给出主体、关系、客体和依据原文。\n\n原文：\n{evidence}"}]
 
 
-def jobs(plan):
-    for method in METHODS:
+def jobs(plan, methods=None):
+    for method in (methods or list(METHODS)):
         for repeat in range(1, REPEATS + 1):
             for unit in plan["units"]:
                 for sample in range(1, (VOTE_SAMPLES if method == "B3" else 1) + 1):
@@ -282,23 +282,33 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--live", action="store_true", help="Call the cloud model for every planned job")
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--units", type=Path, default=UNITS, help="Unit plan; another plan skips the stored 11-05 record")
+    parser.add_argument("--corpus", type=Path, default=CORPUS)
+    parser.add_argument("--methods", nargs="+", choices=sorted(METHODS), help="Default: all four")
     args = parser.parse_args()
-    plan, seed = json.loads(UNITS.read_text("utf-8")), json.loads(SEED.read_text("utf-8"))
-    corpus = json.loads(CORPUS.read_text("utf-8"))["units"]
+    units_path, corpus_path = args.units.resolve(), args.corpus.resolve()
+    original = units_path == UNITS.resolve()
+    methods = args.methods or list(METHODS)
+    plan, seed = json.loads(units_path.read_text("utf-8")), json.loads(SEED.read_text("utf-8"))
+    corpus = json.loads(corpus_path.read_text("utf-8"))["units"]
     resolved = {unit["id"]: resolve(unit, corpus) for unit in plan["units"]}
     unit_elements = {key: elements(texts) for key, texts in resolved.items()}
-    receipt = json.loads(RECEIPT.read_text("utf-8"))
-    if sha256(STORED_METHOD_B) != receipt["private_file_sha256"]:
-        raise SystemExit("STORED_METHOD_B_RECORD_CHANGED")
-    stored = json.loads(STORED_METHOD_B.read_text("utf-8"))["units"]
-    stored_records = [{"method": "B1-stored", "repeat": 1, "sample": 1, "unit": key, "status": "ok",
-                       "usage": value["usage"], "latency_s": 0, "candidates": value["candidates"]}
-                      for key, value in stored.items()]
-    results = {"B1-stored": evaluate("B1", stored_records, resolved, unit_elements)}
-    planned = list(jobs(plan))
+    results, receipt = {}, None
+    if original:
+        receipt = json.loads(RECEIPT.read_text("utf-8"))
+        if sha256(STORED_METHOD_B) != receipt["private_file_sha256"]:
+            raise SystemExit("STORED_METHOD_B_RECORD_CHANGED")
+        stored = json.loads(STORED_METHOD_B.read_text("utf-8"))["units"]
+        stored_records = [{"method": "B1-stored", "repeat": 1, "sample": 1, "unit": key, "status": "ok",
+                           "usage": value["usage"], "latency_s": 0, "candidates": value["candidates"]}
+                          for key, value in stored.items()]
+        results["B1-stored"] = evaluate("B1", stored_records, resolved, unit_elements)
+    planned = list(jobs(plan, methods))
     if not args.live:
-        print(json.dumps({"dry_run": True, "elements": {k: len(v) for k, v in unit_elements.items()},
-                          "planned_model_calls": len(planned), "B1-stored": totals(results["B1-stored"])},
+        print(json.dumps({"dry_run": True, "units": [u["id"] for u in plan["units"]],
+                          "elements": {k: len(v) for k, v in unit_elements.items()},
+                          "planned_model_calls": len(planned),
+                          **({"B1-stored": totals(results["B1-stored"])} if original else {})},
                          ensure_ascii=False, indent=1))
         return
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -309,7 +319,7 @@ def main():
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         records = list(pool.map(lambda job: call(job, units[job["unit"]], resolved[job["unit"]], seed), planned))
     wall = round(time.perf_counter() - started, 1)
-    for method in METHODS:
+    for method in methods:
         results[method] = evaluate(method, [r for r in records if r["method"] == method], resolved, unit_elements)
     raw_path = private / "raw.json"
     raw_path.write_text(json.dumps({"stamp": stamp, "records": records, "elements": unit_elements},
@@ -319,21 +329,23 @@ def main():
         "recorded_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "stamp": stamp,
         "status": "machine_side_comparison_not_human_timing", "business_acceptance": False,
         "isolation": "frozen corpus and unit text only; no Nexent, knowledge base or ontology workspace access; raw candidates private",
-        "methods": METHODS, "repeats": REPEATS, "vote_samples": VOTE_SAMPLES, "vote_temperature": VOTE_TEMPERATURE,
+        "methods": {m: METHODS[m] for m in methods}, "unit_plan": units_path.relative_to(ROOT).as_posix(), "repeats": REPEATS, "vote_samples": VOTE_SAMPLES, "vote_temperature": VOTE_TEMPERATURE,
         "model": {"requested": "deepseek-flash", "served": served}, "wall_clock_s": wall,
         "model_calls": len(records), "errors": sum(r["status"] != "ok" for r in records),
-        "inputs": {"units_sha256": sha256(UNITS), "corpus_sha256": sha256(CORPUS), "seed_sha256": sha256(SEED),
+        "inputs": {"units_sha256": sha256(units_path), "corpus_file_sha256": sha256(corpus_path), "corpus_unit_count": len(corpus), "seed_sha256": sha256(SEED),
                    "script_sha256": sha256(__file__), "generator_sha256": sha256(Path(__file__).with_name("generate_unit_candidates.py")),
-                   "stored_method_b_sha256": receipt["private_file_sha256"]},
+                   "stored_method_b_sha256": receipt["private_file_sha256"] if receipt else None},
         "private_raw": {"path": raw_path.relative_to(ROOT).as_posix(), "sha256": sha256(raw_path)},
         "elements_per_unit": {k: len(v) for k, v in unit_elements.items()},
-        "seen_in_development": [u["id"] for u in plan["units"] if u["seen_in_development"]],
+        "seen_in_development": [u["id"] for u in plan["units"] if u.get("seen_in_development")],
         "totals": {method: totals(per_unit) for method, per_unit in results.items()},
         "per_unit": results,
         "limits": ["不测人工主动分钟，不能换算为效率提升百分比",
                    "要素召回按原文机械抽取的日期、数值、文号、标题和分支词计算，不判断语义正确",
-                   "U4—U6在开发中使用过，绑定事实来自开发期确认结果，结果可能偏乐观",
-                   "候选正文在两人方法A交回前不公开"]}
+                   *(["U4—U6在开发中使用过，绑定事实来自开发期确认结果，结果可能偏乐观",
+                      "候选正文在两人方法A交回前不公开"] if original else
+                     ["留出单元按固定种子机械选取，未用于构建方法开发；没有开发期确认的绑定事实，绑定项不计",
+                      "候选正文只存私有目录"])]}
     out = PUBLIC / f"architecture-comparison-{stamp}.json"
     out.write_text(json.dumps(public, ensure_ascii=False, indent=1), "utf-8")
     print(json.dumps({"evidence": out.relative_to(ROOT).as_posix(), "calls": len(records), "errors": public["errors"],
