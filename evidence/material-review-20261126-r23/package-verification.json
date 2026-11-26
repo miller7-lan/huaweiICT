@@ -1,0 +1,54 @@
+{
+ "scope": "r23 submission candidate package verification; offline core tests only, no new business acceptance",
+ "date": "2026-11-26",
+ "built_from_commit": "cc6e8d96f55fcd5590ad7ea7ed955d18d3b358d7",
+ "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
+ "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
+ "freeze_receipt": "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json",
+ "passed": true,
+ "problems": [],
+ "files": 728,
+ "bytes": 7598386,
+ "by_reason": {
+  "code": 572,
+  "extra": 135,
+  "linked from materials (level 1)": 2,
+  "linked from materials (level 2)": 9,
+  "materials": 3,
+  "test support": 7
+ },
+ "agent_export": "config/exports/frozen-flow-20261114/flow-agent.json (V4.0.1 agent, unchanged in V4.0.2)",
+ "service_setting": "V4.0.2: govkb_frozen_flow started with --follow-up-after-answer (no source change)",
+ "excluded_code_dirs": [
+  "data",
+  "evaluation"
+ ],
+ "excluded_internal_planning": [
+  "docs/competition/30题人工盲评分工-2026-11-05.md",
+  "docs/competition/materials-v31-20261117/人工回交待办.md"
+ ],
+ "zip_check": {
+  "zip": ".runtime/submission-r23/ICT-V40-r23提交候选包-20261126.zip",
+  "zip_sha256": "2975d3075df0ec131bc3323409d50d3e8de08ceda80f4662d4fab98c1ec7b98a",
+  "members": 728,
+  "members_mismatched": [],
+  "members_missing": [],
+  "self_test": {
+   "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
+   "exit_code": 0,
+   "summary": "326 passed, 1 warning in 4.69s",
+   "failed": [],
+   "passed": true
+  }
+ },
+ "documents_outside_package": {
+  "reason": "r23 Word/PDF contain V4.0.1 interface screenshots and stay in the private repository; uploaded alongside the package",
+  "sha256": {
+   "ICT-V40-r23正文.docx": "1a57c66d09ab2c78603d3d8d844865238dab4f019189b234f55fc088fa382163",
+   "ICT-V40-r23正文.pdf": "d24b4fa63370e215bf0372df21cd36d58474238e14e8906e13f0ee47259ca818",
+   "ICT-V40-r23技术附录.docx": "03946c47d96e653952bed6c6743ff751cdd945ba98290c865d235191f98f2da2",
+   "ICT-V40-r23技术附录.pdf": "244c13e60b9287548110d380e5f903e2ae8f663f3726c4f6a828da05b8d1cc11"
+  }
+ },
+ "new_model_calls": 0
+}
