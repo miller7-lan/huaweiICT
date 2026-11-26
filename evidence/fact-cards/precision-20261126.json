@@ -1,0 +1,55 @@
+{
+ "extractor": "fact-cards-v1",
+ "rows": 63,
+ "by_type": {
+  "amount": {
+   "是": 3,
+   "checked": 3
+  },
+  "count": {
+   "否": 5,
+   "是": 5,
+   "checked": 10
+  },
+  "date": {
+   "是": 10,
+   "checked": 10
+  },
+  "document_number": {
+   "是": 10,
+   "checked": 10
+  },
+  "duration": {
+   "否": 2,
+   "是": 8,
+   "checked": 10
+  },
+  "table_cell": {
+   "是": 10,
+   "checked": 10
+  },
+  "year": {
+   "是": 4,
+   "部分": 6,
+   "checked": 10
+  }
+ },
+ "cards_sha256": "855502bffe07af8de96defdf91bb1ecd128b53c983e2811d5b71c1508652c0ea",
+ "note": "Precision on a stratified sample marked by a person; recall is not measured.",
+ "population_by_type": {
+  "table_cell": 888,
+  "document_number": 1119,
+  "year": 22,
+  "duration": 73,
+  "date": 14,
+  "amount": 3,
+  "count": 20
+ },
+ "population": 2139,
+ "weighted_precision": {
+  "是": 0.982,
+  "是或部分": 0.988,
+  "method": "per-type sample precision weighted by the type's share of all cards; small samples (10 per type, 3 for amount), no confidence interval claimed"
+ },
+ "reviewer": "team lead (陈); 11 rows revised after review: 5 document-number rows 部分→是 (value.key is an internal comparison key), 6 year rows 否→部分 (year inside a document number)"
+}
