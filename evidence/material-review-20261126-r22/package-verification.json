@@ -1,14 +1,14 @@
 {
  "scope": "r22 submission candidate package verification; offline core tests only, no new business acceptance",
  "date": "2026-11-26",
- "built_from_commit": "378664fcfcf52cc5fc330da853ab44adb24ab499",
+ "built_from_commit": "10c250d7e441b3100c49f6f3e6aed16a2bed182b",
  "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
  "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
  "freeze_receipt": "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json",
  "passed": true,
  "problems": [],
  "files": 699,
- "bytes": 7418813,
+ "bytes": 7420442,
  "evidence_files": 101,
  "agent_export": "config/exports/frozen-flow-20261114/flow-agent.json (V4.0.1, published, sha256 53437c58…)",
  "excluded_code_dirs": [
@@ -22,14 +22,14 @@
  "evidence_selection": "every evidence file linked from the V4.0 and V3.1 material drafts, the model-selection and Y12 docs, plus every evidence file named in the r22 main text and appendix",
  "zip_check": {
   "zip": "ICT-V40-r22提交候选包-20261126.zip",
-  "zip_sha256": "07cb9f2b92b310de850185eae26852e4ca978a03f54eba34dd5124dd618ab88c",
+  "zip_sha256": "4642a68ec5daf9239487fb5c1f8971ac4f3d0f2e6cfe1499b26dd051bda4f0b1",
   "members": 699,
   "members_mismatched": [],
   "members_missing": [],
   "self_test": {
    "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
    "exit_code": 0,
-   "summary": "324 passed, 1 warning in 4.62s",
+   "summary": "324 passed, 1 warning in 4.50s",
    "passed": true
   }
  },
@@ -45,6 +45,6 @@
  "new_model_calls": 0,
  "src_changed": false,
  "official_submission_completed": false,
- "revision": "3: appendix 2.4/7.7/7.8 stale V3 statements fixed; drafts marked merged; V4.0 limitations page added; teammate task list kept out; package rebuilt",
+ "revision": "4: root README current-version section; appendix 2.4/7.7/7.8 fixed; drafts marked merged; V4.0 limitations page; package rebuilt",
  "note": "evidence files inside the package describe earlier builds; the records outside the package (this file) are authoritative"
 }
