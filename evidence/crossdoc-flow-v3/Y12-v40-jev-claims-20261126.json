@@ -1,0 +1,30 @@
+{
+ "model": "jev-1.13.0",
+ "thresholds": {
+  "supported": 0.7,
+  "unsupported": 0.3
+ },
+ "pairs": 108,
+ "judged": 108,
+ "skipped_too_large": 0,
+ "requests": 7,
+ "http_attempts": 7,
+ "errors": [],
+ "by_method": {
+  "baseline": {
+   "supported": 24,
+   "uncertain": 8
+  },
+  "flow_v3": {
+   "unsupported": 1,
+   "supported": 37,
+   "uncertain": 5
+  },
+  "single_shot": {
+   "supported": 25,
+   "unsupported": 1,
+   "uncertain": 7
+  }
+ },
+ "use": "second automatic judge; recorded only, changes no answer; compare with human review"
+}

@@ -1,0 +1,45 @@
+{
+ "round": "Y12-v40-20261126",
+ "label": "BLOCKED",
+ "name_to_use": null,
+ "blocked": [
+  "TOO_FEW_SHOULD_STOP_QUESTIONS"
+ ],
+ "discounts": [
+  "出题方接触过被测代码或诊断结果",
+  "出题与执行评测在同一会话或同一环境完成",
+  "题意是否与旧题重合，尚未经人工复核",
+  "参考答案与必答要点尚未经人工对照原文复核",
+  "没有两位未参与出题的评审",
+  "组织者（保管密钥者）参与了评分"
+ ],
+ "frozen": {
+  "rules": "strict",
+  "arms": [
+   "baseline",
+   "single_shot",
+   "flow_v3"
+  ]
+ },
+ "observed": {
+  "commit": "9b51110",
+  "dirty_files": [],
+  "questions": 12,
+  "questions_sha256": "d5e0cd04dcc2855963a274d8450e05d90f0c8a8e37ea2b206f398745a00490ee",
+  "reference": {
+   "reference_sha256": "23f2b7fb16e111a724ae0fc0899dc4c5ae4d5efb1ec630aabcb02f35f088f05a",
+   "expected": {
+    "answer": 9,
+    "stop": 3
+   },
+   "categories": {
+    "comparison": 3,
+    "temporal": 2,
+    "inference": 6,
+    "should_stop": 1
+   }
+  },
+  "corpus_units": 593,
+  "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05"
+ }
+}

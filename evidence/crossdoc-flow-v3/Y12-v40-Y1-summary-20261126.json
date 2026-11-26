@@ -1,0 +1,94 @@
+{
+ "round": "Y12-v40-20261126",
+ "label": "开发对比（预检 BLOCKED：should_stop 类题仅 1/12，低于 25%；应停止题按预期结果为 3/12）",
+ "commit": "9b51110",
+ "model": {
+  "provider": "bailian",
+  "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "model": "kimi-k3.1-pro"
+ },
+ "max_output_tokens": 2048,
+ "questions": 12,
+ "expected": {
+  "answer": 9,
+  "stop": 3
+ },
+ "first_attempt": "Y1-Y12-v40-20261126: credential not loaded, 0 requests served; not counted",
+ "model_calls": 44,
+ "by_method": {
+  "baseline": {
+   "outcomes": {
+    "answer→answer": 6,
+    "answer→stop": 3,
+    "stop→stop": 3
+   },
+   "per_question": {
+    "Y01": "answer",
+    "Y02": "stop",
+    "Y03": "stop",
+    "Y04": "answer",
+    "Y05": "answer",
+    "Y06": "answer",
+    "Y07": "stop",
+    "Y08": "answer",
+    "Y09": "stop",
+    "Y10": "stop",
+    "Y11": "answer",
+    "Y12": "stop"
+   },
+   "model_calls": 12,
+   "input_tokens": 13612,
+   "output_tokens": 5742
+  },
+  "single_shot": {
+   "outcomes": {
+    "answer→answer": 5,
+    "answer→stop": 4,
+    "stop→answer": 1,
+    "stop→stop": 2
+   },
+   "per_question": {
+    "Y01": "stop",
+    "Y02": "stop",
+    "Y03": "answer",
+    "Y04": "answer",
+    "Y05": "answer",
+    "Y06": "stop",
+    "Y07": "stop",
+    "Y08": "stop",
+    "Y09": "answer",
+    "Y10": "stop",
+    "Y11": "answer",
+    "Y12": "answer"
+   },
+   "model_calls": 12,
+   "input_tokens": 24042,
+   "output_tokens": 7716
+  },
+  "flow_v3": {
+   "outcomes": {
+    "answer→answer": 9,
+    "stop→answer": 2,
+    "stop→stop": 1
+   },
+   "per_question": {
+    "Y01": "answer",
+    "Y02": "answer",
+    "Y03": "answer",
+    "Y04": "answer",
+    "Y05": "answer",
+    "Y06": "answer",
+    "Y07": "answer",
+    "Y08": "answer",
+    "Y09": "answer",
+    "Y10": "stop",
+    "Y11": "answer",
+    "Y12": "answer"
+   },
+   "model_calls": 20,
+   "input_tokens": 53133,
+   "output_tokens": 12477
+  }
+ },
+ "source_matches_V40_freeze": true
+}
