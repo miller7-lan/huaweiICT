@@ -25,4 +25,14 @@
 **尚待。**
 - Y12 双人评审结果补入附录 8.8 和正文。
 - 三人通读。
-- 按 V4.0 重新生成提交候选包（`build_submission_manifest.py`）。
+
+## 提交候选包
+
+`ICT-V40-r22提交候选包-20261126.zip`，690 个文件，SHA-256 `b85f667a869eeef2c135905deb615a05f6d5d584da4347f76530538ee7274f24`。
+
+- 内容：V4.0 冻结源码（八个核心模块与冻结回执一致）、脚本、配置，以及 V4.0.1 智能体导出 `config/exports/frozen-flow-20261114/flow-agent.json`；另有 V4.0 与 V3.1 材料源稿，以及 98 份公开证据（两份源稿所链接的，加 r22 正文与附录中点名的）。
+- 排除：`data/`、`evaluation/` 和内部待办。
+- 核验：重新打开压缩包逐个比对散列，无不一致；在空目录解压后跑 12 个核心测试文件，324 项通过。
+- 记录：[package-verification.json](../../../evidence/material-review-20261126-r22/package-verification.json)。
+
+r22 Word/PDF 不在包内（含截图，放私有仓库），上传时与包一起提交。压缩包本身也存私有仓库 `materials-r22/`。
