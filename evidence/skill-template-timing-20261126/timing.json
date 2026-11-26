@@ -1,0 +1,21 @@
+{
+ "scope": "U-3 template reuse timing: workflow_template.py check and render, wall-clock including Python start-up; no network, no model call",
+ "date": "2026-11-26",
+ "measured_commit": "9d3392338672ae91a6bee5827b811d5f3a913c72",
+ "template_files_clean_at_commit": true,
+ "machine": "Linux test host (the same one used for the V4.0 L1)",
+ "runs_per_step": 5,
+ "render_target": "a fresh empty skills root per run (accepted Skills in config/skills are never overwritten)",
+ "results": {
+  "henan-multimodal": {"check_seconds_median": 0.084, "render_seconds_median": 0.084, "protocol_lines": 35,
+   "accepted_skill_status": "identical", "rendered_skill_sha256": "c4866dd89a65a9df3e7575879afaa0cc9793a85d74ad6da2f49fc531043644a5"},
+  "nanjing-ontology-crossdoc": {"check_seconds_median": 0.095, "render_seconds_median": 0.080, "protocol_lines": 29,
+   "accepted_skill_status": "differs", "note": "the accepted Nanjing Skill predates the template; render into the default root is refused rather than overwriting it"},
+  "demo-medical-guideline": {"check_seconds_median": 0.079, "render_seconds_median": 0.081, "protocol_lines": 30,
+   "accepted_skill_status": "missing", "note": "cross-industry demo profile; no execution layer, never run on the platform"}
+ },
+ "what_it_shows": "once a profile is filled, the orchestration, protocol, platform and tool layers are generated in under 0.1 s per step and the Henan output is byte-identical to the accepted Skill",
+ "not_measured": ["time to write a new profile", "source adapters, candidate building and plan operators for a new matter (code)", "isolated activation and native acceptance on Nexent"],
+ "command": ".venv/bin/python scripts/workflow_template.py --profile config/skill-templates/profiles/<profile>.json [--skills-root <fresh dir>] {check|render}",
+ "new_model_calls": 0
+}
