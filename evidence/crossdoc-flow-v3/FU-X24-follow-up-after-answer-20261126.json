@@ -1,0 +1,154 @@
+{
+ "scope": "counts and question ids only; X24 development questions, V4.0 frozen code, bailian kimi-k3.1-pro, one run each",
+ "runs": {
+  "off": ".runtime/crossdoc-flow-v3/FU-X24-off-20261126",
+  "on": ".runtime/crossdoc-flow-v3/FU-X24-on-20261126 (--follow-up-after-answer)"
+ },
+ "off": {
+  "source_sha256": {
+   "frozen_qa.py": "240445c4a5f95ecc6ab174d27988e9854cd65f520d273f24b44f389fa24a1717",
+   "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+   "frozen_qa_flow_v3.py": "5676b0075b6625db08e7f9bca47bc4eef27a1dde419ed5039b66f3dfc5e90a7d",
+   "claim_binding.py": "52ed7aa460de5fe48fbffb9eeeaae85baad845cfb4abe243f9d1a2122d95085d",
+   "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+   "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+  },
+  "follow_up_after_answer": false,
+  "by_expected": {
+   "answer": {
+    "partial_answer": {
+     "n": 5,
+     "ids": [
+      "X01",
+      "X03",
+      "X07",
+      "X09",
+      "X10"
+     ]
+    },
+    "answer": {
+     "n": 9,
+     "ids": [
+      "X02",
+      "X05",
+      "X06",
+      "X11",
+      "X12",
+      "X13",
+      "X14",
+      "X15",
+      "X16"
+     ]
+    },
+    "answer_with_gaps": {
+     "n": 2,
+     "ids": [
+      "X04",
+      "X08"
+     ]
+    }
+   },
+   "stop": {
+    "stop": {
+     "n": 7,
+     "ids": [
+      "X17",
+      "X18",
+      "X19",
+      "X20",
+      "X22",
+      "X23",
+      "X24"
+     ]
+    },
+    "partial_answer": {
+     "n": 1,
+     "ids": [
+      "X21"
+     ]
+    }
+   }
+  },
+  "model_calls": 32,
+  "follow_up_after_an_answer": []
+ },
+ "on": {
+  "source_sha256": {
+   "frozen_qa.py": "240445c4a5f95ecc6ab174d27988e9854cd65f520d273f24b44f389fa24a1717",
+   "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+   "frozen_qa_flow_v3.py": "5676b0075b6625db08e7f9bca47bc4eef27a1dde419ed5039b66f3dfc5e90a7d",
+   "claim_binding.py": "52ed7aa460de5fe48fbffb9eeeaae85baad845cfb4abe243f9d1a2122d95085d",
+   "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+   "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+  },
+  "follow_up_after_answer": true,
+  "by_expected": {
+   "answer": {
+    "partial_answer": {
+     "n": 6,
+     "ids": [
+      "X01",
+      "X03",
+      "X07",
+      "X09",
+      "X10",
+      "X13"
+     ]
+    },
+    "answer": {
+     "n": 9,
+     "ids": [
+      "X02",
+      "X04",
+      "X05",
+      "X08",
+      "X11",
+      "X12",
+      "X14",
+      "X15",
+      "X16"
+     ]
+    },
+    "answer_with_gaps": {
+     "n": 1,
+     "ids": [
+      "X06"
+     ]
+    }
+   },
+   "stop": {
+    "stop": {
+     "n": 8,
+     "ids": [
+      "X17",
+      "X18",
+      "X19",
+      "X20",
+      "X21",
+      "X22",
+      "X23",
+      "X24"
+     ]
+    }
+   }
+  },
+  "model_calls": 36,
+  "follow_up_after_an_answer": [
+   "X06",
+   "X08"
+  ]
+ },
+ "attribution": {
+  "switch_fired_on": [
+   "X06",
+   "X08"
+  ],
+  "X08": "answer_with_gaps -> answer",
+  "X06": "answer_with_gaps -> answer_with_gaps",
+  "changes_without_any_follow_up": [
+   "X13",
+   "X21"
+  ],
+  "note": "X02/X04 first drafts stopped in the on-run, so their follow-up is the existing stop rule, not the switch; result-kind differences without a follow-up are run-to-run model variation"
+ }
+}
