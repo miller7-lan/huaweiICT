@@ -258,14 +258,45 @@ def document_number_failures(output, units_by_id):
             for match in DOCUMENT_NUMBER.finditer(item["quote"]):
                 quoted.setdefault(item["source_id"], set()).add(document_number_key(match.group()))
     everything = set().union(*quoted.values()) if quoted else set()
+    claim_sources = {}  # a claim repeated with a quote from each of several sources rests on all of them
+    for item in output["assertions"]:
+        claim_sources.setdefault(compact(item["claim"]), set()).add(item["source_id"])
     for index, item in enumerate(output["assertions"], 1):
+        allowed = set().union(*(quoted.get(s, set()) for s in claim_sources[compact(item["claim"])]))
         for match in DOCUMENT_NUMBER.finditer(item["claim"]):
-            if document_number_key(match.group()) not in quoted.get(item["source_id"], set()):
+            if not document_number_quoted(match.group(), allowed):
                 failures.append(f"A{index}_DOCUMENT_NUMBER_NOT_QUOTED:{document_number_key(match.group())}")
     for match in DOCUMENT_NUMBER.finditer(output["answer"]):
-        if document_number_key(match.group()) not in everything:
+        if not document_number_quoted(match.group(), everything):
             failures.append(f"ANSWER_DOCUMENT_NUMBER_NOT_QUOTED:{document_number_key(match.group())}")
     return failures
+
+
+# Characters that end ordinary words written before an issuer, never an issuer's own name.
+LEAD_WORD_ENDS = set("的为是作和及与或据出照即见按了将把中在由对于、，：:（(《〈“\"")
+
+
+def document_number_quoted(text, quoted_keys):
+    """True when a quoted number has the same year and number and its issuer ends the stated one.
+
+    The pattern also takes the Chinese words written just before an issuer ("规范收费的财综〔2007〕34号"),
+    so the issuer quoted from the source ("财综") is matched as the end of the stated text. A different
+    issuer, year or number never matches.
+    """
+    key = document_number_key(text)
+    if key in quoted_keys:
+        return True
+    stated = re.fullmatch(r"(?P<issuer>[一-鿿]+)〔(?P<year>\d{4})〕(?P<number>\d+)号", key)
+    if stated is None:
+        return False
+    for quoted_key in quoted_keys:
+        got = re.fullmatch(r"(?P<issuer>[一-鿿]+)〔(?P<year>\d{4})〕(?P<number>\d+)号", quoted_key)
+        if (got and got["year"] == stated["year"] and got["number"] == stated["number"]
+                and len(got["issuer"]) >= 2 and stated["issuer"].endswith(got["issuer"])):
+            lead = stated["issuer"][:-len(got["issuer"])]
+            if not lead or lead[-1] in LEAD_WORD_ENDS:  # 粤财综 is another issuer; 收费的财综 is not
+                return True
+    return False
 
 
 def title_years(units):

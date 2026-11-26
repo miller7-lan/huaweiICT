@@ -256,6 +256,11 @@ def verify(output, evidence):
                       for number in NUMBER.findall(quote)}
     document_years = {}
     date_support = {}
+    quoted_dates = {}  # per source: the dates (and timestamps) its cited quotes print
+    for unit, quote in cited:
+        for m in FULL_DATE.finditer(quote):
+            key = full_date_key(m.group())
+            quoted_dates.setdefault(unit["source_id"], set()).update({key, key.split(" ")[0]})
     for unit, quote in cited:
         source_id = unit["source_id"]
         kind = unit.get("evidence_kind")
@@ -290,8 +295,12 @@ def verify(output, evidence):
     answer_quantities, stated_quantities = set(), set()
     source_ids = {unit["source_id"] for unit, _ in cited}
     all_quantities = set().union(*claim_quantities.values())
+    # A claim repeated with one quote from each of several sources (a comparison) rests on all of them.
+    claim_sources = {}
+    for item in output["assertions"]:
+        claim_sources.setdefault(compact(item["claim"]), set()).add(item["source_id"])
     for index, (part, allowed_sources) in enumerate([(output["answer"], source_ids)] + [
-        (item["claim"], {item["source_id"]}) for item in output["assertions"]
+        (item["claim"], claim_sources[compact(item["claim"])]) for item in output["assertions"]
     ]):
         def check_date(match):
             kind, value = typed_date(match)
@@ -303,6 +312,10 @@ def verify(output, evidence):
             return " "
 
         remaining = TYPED_DATE.sub(check_date, facts(part))
+        # A full date or timestamp written without a role word is a quoted fact when a cited quote
+        # prints exactly that date (or that timestamp); it is not read as loose numbers.
+        own_dates = set().union(*(quoted_dates.get(source_id, set()) for source_id in allowed_sources))
+        remaining = FULL_DATE.sub(lambda m: " " if full_date_key(m.group()) in own_dates else m.group(), remaining)
         if index:
             assertion = output["assertions"][index - 1]
             heading = units.get((assertion["source_id"], assertion["locator"]))
@@ -353,6 +366,17 @@ def verify(output, evidence):
         if day_unit in text and not any(day_unit in quote for quote in quoted):
             failures.append("DAY_UNIT_NOT_QUOTED:" + day_unit)
     return {"passed": not failures, "failures": list(dict.fromkeys(failures))}
+
+
+FULL_DATE = re.compile(r"\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日|\d{4}-\d{2}-\d{2}(?:[ T]\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?)?")
+
+
+def full_date_key(text):
+    """2018年4月12日 and 2018-04-12 read alike; a time, when written, is kept."""
+    text = compact(text).replace("T", " ") if "T" in text else text.strip()
+    date = re.match(r"(\d{4})\s*(?:年|-)\s*(\d{1,2})\s*(?:月|-)\s*(\d{1,2})\s*日?", text)
+    rest = text[date.end():].strip()
+    return f"{date[1]}-{int(date[2]):02d}-{int(date[3]):02d}" + (f" {rest}" if rest else "")
 
 
 def typed_date(match):
