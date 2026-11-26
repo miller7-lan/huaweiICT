@@ -1,7 +1,7 @@
 {
  "scope": "r23 package unpacked and self-tested on Windows; same machine as the original Nexent host, so this is not a peer L1",
  "date": "2026-11-26",
- "zip_sha256": "2975d3075df0ec131bc3323409d50d3e8de08ceda80f4662d4fab98c1ec7b98a",
+ "zip_sha256": "73d0e0109af11e66d828fc661033c9e8c859d76455a97b658b901ff5280783a7",
  "platform": "Windows-11-10.0.26200-SP0",
  "python": "3.12.14 (existing project venv; packages from requirements.lock)",
  "unpacked_into": "a new empty directory",
@@ -9,9 +9,10 @@
  "hash_mismatches": 0,
  "self_test": {
   "command": "PYTHONPATH=src python -m pytest -q <12 core test files listed in SUBMISSION-MANIFEST>",
-  "summary": "326 passed, 1 warning in 2.71s",
+  "summary": "326 passed, 1 warning in 2.24s",
   "passed": true
  },
  "same_result_as_linux": true,
- "new_model_calls": 0
+ "new_model_calls": 0,
+ "revision": "第 2 版: V-1 worked example (X08, V4.0.2 native) and V-2 wording"
 }
