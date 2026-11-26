@@ -93,6 +93,36 @@ def source_pins():
     return {**code_fingerprints(), **{name: sha(ROOT / name) for name in paths}}
 
 
+def bind_current_platform(provisioning, api):
+    """Point the shared provisioner at the reinstalled platform without editing old state files.
+
+    .runtime/nexent-state.json and the October draft ledgers describe the earlier Nexent install.
+    The current tenant is read from this project's own published flow agent (agent 1). Ledger IDs
+    that do not exist under the current tenant are skipped and listed; every agent that does exist
+    is still protected by the other-agent signature check.
+    """
+    flow = read(ROOT / ".runtime/frozen-flow-20261114/native-drafts.json")["agents"]["assistant"]
+    info = api.call("POST", "/agent/search_info", {"agent_id": flow, "version_no": 0})
+    tenant, state = str(info["tenant_id"]), read(ROOT / ".runtime/nexent-state.json")
+    if str(info.get("group_ids", state["group_id"])) != str(state["group_id"]):
+        raise ValueError("CURRENT_PLATFORM_GROUP_DIFFERS")
+    original_ids, original_read = provisioning.known_project_agent_ids, provisioning.read
+    provisioning._tenant_id = lambda: tenant
+    provisioning.read = lambda path: ({**original_read(path), "tenant_id": tenant}
+                                      if Path(path).name == "nexent-state.json" else original_read(path))
+    kept, skipped = set(), []
+    for identifier in sorted(original_ids()):
+        found = api.call("POST", "/agent/search_info", {"agent_id": identifier, "version_no": 0})
+        if isinstance(found, dict) and found.get("agent_id") == identifier and str(found.get("tenant_id")) == tenant:
+            kept.add(identifier)
+        else:
+            skipped.append(identifier)
+    provisioning.known_project_agent_ids = lambda: set(kept)
+    return {"tenant_matches_own_flow_agent": True, "state_file_tenant_stale": str(state["tenant_id"]) != tenant,
+            "group_id": state["group_id"], "protected_ledger_agent_ids": sorted(kept),
+            "stale_ledger_agent_ids_skipped": skipped}
+
+
 def prepare():
     previous = PREPARED_EVIDENCE
     artifact = read(previous / "candidate.json")
@@ -250,6 +280,7 @@ def live(reviewer):
         api.login(read(ROOT / ".runtime/accounts.json")["developer"])
         draft_path = RUNTIME / "native-drafts.json"
         saved = read(draft_path) if draft_path.exists() else {"agents": {}, "published": False}
+        report["platform_identity"] = bind_current_platform(provisioning, api)
         report["provisioning"] = provisioning.provision(api, saved, token)
         saved = read(draft_path)
         models = api.call("GET", "/model/list")["data"]
