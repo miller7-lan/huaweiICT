@@ -13,6 +13,7 @@ An empty or cut stream, a missing final answer or a missing tool is never a pass
 """
 import argparse
 import json
+import re
 import sys
 import time
 from hashlib import sha256
@@ -33,8 +34,12 @@ RUNTIME = ROOT / ".runtime/frozen-qa-20261030"
 OUTPUT = ROOT / "evidence/frozen-qa-20261030"
 MAX_MODEL_STARTS = 8
 REQUIRED_TOOLS = ()  # tool names that must appear in this order; set by the flow's private copy
+# (opening tool, tool that must follow) when the opening tool's first observation says "status": "OK".
+# A flow whose task opened normally must go through its checking tool and end with a final_answer
+# tool call; plain text that the platform promotes to the final answer skipped the checks.
+REQUIRED_AFTER_OK = None
 # The only fields an evidence receipt may hold.
-PUBLIC_FIELDS = ("agent_id", "question_sha256", "final_answer_sha256", "final_answer_chars", "tool_order",
+PUBLIC_FIELDS = ("agent_id", "first_status", "question_sha256", "final_answer_sha256", "final_answer_chars", "tool_order",
                  "model_starts", "final_answers", "events", "duration_ms", "transport_completed",
                  "protocol_valid", "workflow_verified", "passed", "failures", "error", "stop_unconfirmed",
                  "recorded_at", "conversation_id", "published", "agent_enabled", "private_report")
@@ -60,6 +65,10 @@ def judge(report, required=None):
         protocol_failures.append("FINAL_ANSWER_MISSING_OR_NOT_UNIQUE")
     workflow_failures = [] if in_order(report.get("tool_order", []), list(required)) \
         else ["REQUIRED_TOOLS_MISSING_OR_OUT_OF_ORDER"]
+    if REQUIRED_AFTER_OK and report.get("first_status") == "OK":
+        opened, follow = REQUIRED_AFTER_OK
+        if not in_order(report.get("tool_order", []), [opened, follow, "final_answer"]):
+            workflow_failures.append("CHECK_SKIPPED_AFTER_OPEN_OK")
     failures = ([] if transport else ["TRANSPORT_NOT_COMPLETED"]) + protocol_failures + workflow_failures
     protocol = transport and not protocol_failures
     report.update(protocol_valid=protocol, workflow_verified=protocol and not workflow_failures,
@@ -77,6 +86,15 @@ def public_receipt(report):
     return {name: merged[name] for name in PUBLIC_FIELDS if name in merged}
 
 
+def first_status(events):
+    """The "status" of the first tool observation, or None when there is none or it is not JSON."""
+    for event in events:
+        if event.get("type") == "execution_logs":
+            match = re.search(r'"status"\s*:\s*"([A-Z_]+)"', str(event.get("content", "")))
+            return match.group(1) if match else None
+    return None
+
+
 def summarize(events):
     tools = [e.get("tool_name") for e in events if e.get("type") == "tool"]
     finals = [e.get("content") for e in events if e.get("type") == "final_answer" and e.get("depth", 0) == 0]
@@ -84,7 +102,7 @@ def summarize(events):
     usage = [e for e in events if "token" in json.dumps(e).lower() and e.get("type") not in ("tool", "final_answer")]
     return {"tool_order": tools, "model_starts": len(starts), "final_answers": len(finals),
             "final_answer": finals[-1] if finals else None, "events": len(events),
-            "usage_events": usage[-3:]}
+            "usage_events": usage[-3:], "first_status": first_status(events)}
 
 
 def main():

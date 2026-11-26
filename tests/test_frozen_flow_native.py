@@ -39,3 +39,26 @@ def test_prompt_names_both_tools_and_the_plan_registers_nothing():
     assert "Never call govkb_flow_open twice" in native.PROMPT
     plan = native.plan()
     assert plan["enabled"] is False and plan["published"] is False and plan["tools"] == sorted(native.TOOLS)
+
+
+def test_open_ok_without_submit_is_not_a_pass():
+    """2026-11-26 X16 on kimi: open returned OK, the model never submitted, and the platform
+    promoted its plain reasoning to the final answer. That skipped every check."""
+    import frozen_flow_native as flow_native
+    module = flow_native.runner()
+    opened = {"type": "execution_logs", "content": '{\n  "status": "OK",\n  "task_id": "T"}'}
+    skipped = [{"type": "tool", "tool_name": "govkb_flow_open"}, opened,
+               {"type": "final_answer", "content": "思考：现提交逐条引文供核验。"}]
+    report = module.judge({"transport_completed": True, **module.summarize(skipped), "model_starts": 4})
+    assert report["first_status"] == "OK" and not report["passed"]
+    assert report["failures"] == ["CHECK_SKIPPED_AFTER_OPEN_OK"]
+    # X19: open, two submits, final_answer called as a tool.
+    checked = [{"type": "tool", "tool_name": "govkb_flow_open"}, opened,
+               {"type": "tool", "tool_name": "govkb_flow_submit"}, {"type": "tool", "tool_name": "govkb_flow_submit"},
+               {"type": "tool", "tool_name": "final_answer"}, {"type": "final_answer", "content": "本题停止。"}]
+    assert module.judge({"transport_completed": True, **module.summarize(checked), "model_starts": 5})["passed"]
+    # A scope stop at open legitimately ends without a submit.
+    stopped = [{"type": "tool", "tool_name": "govkb_flow_open"},
+               {"type": "execution_logs", "content": '{"status": "STOP"}'},
+               {"type": "final_answer", "content": "不在资料范围，停止。"}]
+    assert module.judge({"transport_completed": True, **module.summarize(stopped), "model_starts": 2})["passed"]
