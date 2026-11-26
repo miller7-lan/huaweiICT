@@ -114,7 +114,10 @@ def bind_current_platform(provisioning, api):
                                       if Path(path).name == "nexent-state.json" else original_read(path))
     kept, skipped = set(), []
     for identifier in sorted(original_ids()):
-        found = api.call("POST", "/agent/search_info", {"agent_id": identifier, "version_no": 0})
+        try:
+            found = api.call("POST", "/agent/search_info", {"agent_id": identifier, "version_no": 0})
+        except Exception:  # The reinstalled platform has no such agent.
+            found = None
         if isinstance(found, dict) and found.get("agent_id") == identifier and str(found.get("tenant_id")) == tenant:
             kept.add(identifier)
         else:
