@@ -6,16 +6,17 @@
 
 | 文件 | SHA-256 |
 | --- | --- |
-| ICT-V40-r22正文.docx | `7f74a80dcbfc814d0f59c170a1ab5980a9e47d0b9edd3c8a029ce4d97477f484` |
-| ICT-V40-r22正文.pdf（22 页） | `e43aef714540177ac522e250ff98d5ef6a97000801513719734bab6ba93b51fb` |
-| ICT-V40-r22技术附录.docx | `471b4e0f0cb898559eae9ff5a73a7cc55d9620dac37f3109365c6692d24c5118` |
-| ICT-V40-r22技术附录.pdf（71 页） | `c5d7016db292320bd5c687606e10d0055d9d78bcba9ca84644beea055f73c8e9` |
+| ICT-V40-r22正文.docx | `be4630e6d8edbc27e4920cea01b2e9877ccefb2a19422a9ec8a9f0c5e3ea2d01` |
+| ICT-V40-r22正文.pdf（22 页） | `e988bb94f75ebfc64db4a1c7aebd3181b12f56289a8538ab34199cc86deb87ba` |
+| ICT-V40-r22技术附录.docx | `b8de24a9e9d928363355b0353a717e808dae9d567892dad226939190e49edcda` |
+| ICT-V40-r22技术附录.pdf（71 页） | `68cee1f5842bab13421b5e4a8a189b279b98882be9859bb6de795fd2ddc2b442` |
 
 **改了什么。**
 - 正文：封面版本、摘要、智能体展示图与图注、阅读导航、状态说明、跨文档问答改进（V4.0 选型、Y12 开发对比、V4.0.1 原生）、复现、适用边界、代码说明、参考 [3]。
 - 技术附录：稿件日期与版本、阅读导航、1.4、表 1-1、2.4（模型与发布状态）、表 7-1、7.7 提交件、7.8 说明、8.5，8.7 的 V3.1 改标为“已由 V4.0 接替”。
 - 正文图 1-1 换为 V4.0 流程图（[源图](../assets/v4-figures/v4-flow.svg)，由 `scripts/draw_v4_flow.py` 生成）；正文与附录的 U-3 改为引用模板计时回执（[timing.json](../../../evidence/skill-template-timing-20261126/timing.json)）。
 - 正文图 1-2 与附录图 2-1、2-2 重画为 V4.0 版（源图 `docs/competition/assets/v4-figures/`，由 `scripts/draw_v4_arch.py` 生成），附录 2.3.1 文字同步；附录 7.9 加图 7-20（对话页开场白与示例问题），智能体为 Nexent 版本号 3（问答配置不变）。
+- 附录 4.5 加第二个事项（户口迁移）的模板部署实测，8.3 加“低资源”口径与留出单元复测；正文模板段同步一句。
 - 技术附录新增 7.9（V4.0.1 配置、调用关系、调试过程、图 7-17—7-19）和 8.8（V4.0 冻结、模型选型、Y12 开发对比）。
 
 **核验。**
@@ -30,9 +31,9 @@
 
 ## 提交候选包
 
-`ICT-V40-r22提交候选包-20261126.zip`，700 个文件，SHA-256 `1417960715e857543a2875ad51dd7f6d3ee37051662527f9193832a1c5e87f00`。
+`ICT-V40-r22提交候选包-20261126.zip`，720 个文件，SHA-256 `0c8231c98d83914930215af29a1662267cebca96b0effdbea0e8200b5e8ecbbc`。
 
-- 内容：V4.0 冻结源码（八个核心模块与冻结回执一致）、脚本、配置，以及 V4.0.1 智能体导出 `config/exports/frozen-flow-20261114/flow-agent.json`；另有 V4.0 与 V3.1 材料源稿，以及 101 份公开证据（两份源稿所链接的，加 r22 正文与附录中点名的）。
+- 内容：V4.0 冻结源码（八个核心模块与冻结回执一致）、脚本、配置，以及 V4.0.1 智能体导出 `config/exports/frozen-flow-20261114/flow-agent.json`；另有 V4.0 与 V3.1 材料源稿，以及 107 份公开证据（两份源稿所链接的，加 r22 正文与附录中点名的）。
 - 排除：`data/`、`evaluation/` 和内部待办。
 - 核验：重新打开压缩包逐个比对散列，无不一致；在空目录解压后跑 12 个核心测试文件，Linux 与 Windows 11 上均 325 项通过（[Windows 自测](../../../evidence/material-review-20261126-r22/windows-selftest.json)）。队友任务清单等内部文档不入包。
 - 记录：[package-verification.json](../../../evidence/material-review-20261126-r22/package-verification.json)。

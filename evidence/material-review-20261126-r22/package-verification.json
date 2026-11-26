@@ -1,15 +1,15 @@
 {
  "scope": "r22 submission candidate package verification; offline core tests only, no new business acceptance",
  "date": "2026-11-26",
- "built_from_commit": "4589f38d001687c9404820c561e43e9bb7e950bf",
+ "built_from_commit": "720b44bfc34067acb2d4dccc4d2ef14cb1756968",
  "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
  "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
  "freeze_receipt": "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json",
  "passed": true,
  "problems": [],
- "files": 700,
- "bytes": 7431914,
- "evidence_files": 101,
+ "files": 720,
+ "bytes": 7566475,
+ "evidence_files": 107,
  "agent_export": "config/exports/frozen-flow-20261114/flow-agent.json (V4.0.1, published, sha256 53437c58…)",
  "excluded_code_dirs": [
   "data",
@@ -22,29 +22,29 @@
  "evidence_selection": "every evidence file linked from the V4.0 and V3.1 material drafts, the model-selection and Y12 docs, plus every evidence file named in the r22 main text and appendix",
  "zip_check": {
   "zip": "ICT-V40-r22提交候选包-20261126.zip",
-  "zip_sha256": "1417960715e857543a2875ad51dd7f6d3ee37051662527f9193832a1c5e87f00",
-  "members": 700,
+  "zip_sha256": "0c8231c98d83914930215af29a1662267cebca96b0effdbea0e8200b5e8ecbbc",
+  "members": 720,
   "members_mismatched": [],
   "members_missing": [],
   "self_test": {
    "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
    "exit_code": 0,
-   "summary": "325 passed, 1 warning in 4.79s",
+   "summary": "325 passed, 1 warning in 4.51s",
    "passed": true
   }
  },
  "documents_outside_package": {
   "reason": "r22 Word/PDF contain the V4.0.1 interface screenshots and stay in the private repository; uploaded alongside the package",
   "sha256": {
-   "ICT-V40-r22技术附录.docx": "471b4e0f0cb898559eae9ff5a73a7cc55d9620dac37f3109365c6692d24c5118",
-   "ICT-V40-r22技术附录.pdf": "c5d7016db292320bd5c687606e10d0055d9d78bcba9ca84644beea055f73c8e9",
-   "ICT-V40-r22正文.docx": "7f74a80dcbfc814d0f59c170a1ab5980a9e47d0b9edd3c8a029ce4d97477f484",
-   "ICT-V40-r22正文.pdf": "e43aef714540177ac522e250ff98d5ef6a97000801513719734bab6ba93b51fb"
+   "ICT-V40-r22技术附录.docx": "b8de24a9e9d928363355b0353a717e808dae9d567892dad226939190e49edcda",
+   "ICT-V40-r22技术附录.pdf": "68cee1f5842bab13421b5e4a8a189b279b98882be9859bb6de795fd2ddc2b442",
+   "ICT-V40-r22正文.docx": "be4630e6d8edbc27e4920cea01b2e9877ccefb2a19422a9ec8a9f0c5e3ea2d01",
+   "ICT-V40-r22正文.pdf": "e988bb94f75ebfc64db4a1c7aebd3181b12f56289a8538ab34199cc86deb87ba"
   }
  },
  "new_model_calls": 0,
  "src_changed": false,
  "official_submission_completed": false,
- "revision": "第 5 版: figures 1-2/2-1/2-2 redrawn for V4.0; appendix 2.3.1 text; figure 7-20 greeting; agent version 3 export",
+ "revision": "第 6 版: second matter (household transfer) deployment and held-out low-resource re-test in appendix 4.5/8.3 and main text",
  "note": "evidence files inside the package describe earlier builds; the records outside the package (this file) are authoritative"
 }
