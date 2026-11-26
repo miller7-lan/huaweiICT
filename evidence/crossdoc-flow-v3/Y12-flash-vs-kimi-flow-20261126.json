@@ -1,0 +1,83 @@
+{
+ "scope": "Y12 flow only; counts and ids. Same V4.0 frozen code and retrieval; only the model profile differs. Not human-reviewed.",
+ "flash_v31_model_config": {
+  "model": {
+   "provider": "official",
+   "base_url": "https://api.deepseek.com/v1",
+   "model": "deepseek-flash"
+  },
+  "max_output_tokens": 1024,
+  "source_sha256": {
+   "frozen_qa.py": "240445c4a5f95ecc6ab174d27988e9854cd65f520d273f24b44f389fa24a1717",
+   "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+   "frozen_qa_flow_v3.py": "5676b0075b6625db08e7f9bca47bc4eef27a1dde419ed5039b66f3dfc5e90a7d",
+   "claim_binding.py": "52ed7aa460de5fe48fbffb9eeeaae85baad845cfb4abe243f9d1a2122d95085d",
+   "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+   "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+  },
+  "by_expected": {
+   "answer": {
+    "partial_answer": [
+     "Y01",
+     "Y02"
+    ],
+    "answer": [
+     "Y03",
+     "Y12"
+    ],
+    "answer_with_gaps": [
+     "Y04",
+     "Y05",
+     "Y06",
+     "Y08",
+     "Y11"
+    ]
+   },
+   "stop": {
+    "partial_answer": [
+     "Y07"
+    ],
+    "answer": [
+     "Y09"
+    ],
+    "stop": [
+     "Y10"
+    ]
+   }
+  },
+  "required_sources_cited_answer_questions": "19/26",
+  "model_calls": 20
+ },
+ "kimi_v40_Y1": {
+  "by_expected": {
+   "answer": {
+    "answer": [
+     "Y01",
+     "Y03",
+     "Y05",
+     "Y12"
+    ],
+    "answer_with_gaps": [
+     "Y02",
+     "Y04",
+     "Y08"
+    ],
+    "partial_answer": [
+     "Y06",
+     "Y11"
+    ]
+   },
+   "stop": {
+    "answer": [
+     "Y07",
+     "Y09"
+    ],
+    "stop": [
+     "Y10"
+    ]
+   }
+  },
+  "required_sources_cited_answer_questions": "20/26",
+  "model_calls": 20
+ }
+}
