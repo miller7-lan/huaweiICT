@@ -6,14 +6,15 @@
 
 | 文件 | SHA-256 |
 | --- | --- |
-| ICT-V40-r22正文.docx | `68a29511b7e7e4616bcf0d5ed634746f640221e81ce17e0bf90c2ee583d1aed8` |
-| ICT-V40-r22正文.pdf（22 页） | `88e88b4ff416d4cdc0bdc908bed8c647cb9bdaa5266c5ae3cf71963cfd9b33ea` |
-| ICT-V40-r22技术附录.docx | `e81936d2161b9db13eec5cb3043cafe518fd532d8cb0d71af45701665ad53a18` |
-| ICT-V40-r22技术附录.pdf（71 页） | `ef9a0502f00311ca8aad608c1ed63f815dacc3dc8b8ae63e95ac5a120baf1064` |
+| ICT-V40-r22正文.docx | `ac4e0047c0b172caba9004def04e235c0d7460c8711c94759a507bbb7efae3d3` |
+| ICT-V40-r22正文.pdf（22 页） | `a3bd422e615f00f74612b6603330c913b773d00c675d75d5a7d50afd17741841` |
+| ICT-V40-r22技术附录.docx | `17972a022127e7b7df3c0f79e6a5bbf6891fa90a0f63c3b7d42fcb6814991ba3` |
+| ICT-V40-r22技术附录.pdf（71 页） | `8fefe87aca4b858e547503c5502116fca16ba18fc6ad3cfea9f07b431eb8bd48` |
 
 **改了什么。**
 - 正文：封面版本、摘要、智能体展示图与图注、阅读导航、状态说明、跨文档问答改进（V4.0 选型、Y12 开发对比、V4.0.1 原生）、复现、适用边界、代码说明、参考 [3]。
 - 技术附录：稿件日期与版本、阅读导航、1.4、表 1-1、表 7-1、7.8 说明、8.5，8.7 的 V3.1 改标为“已由 V4.0 接替”。
+- 正文图 1-1 换为 V4.0 流程图（[源图](../assets/v4-figures/v4-flow.svg)，由 `scripts/draw_v4_flow.py` 生成）；正文与附录的 U-3 改为引用模板计时回执（[timing.json](../../../evidence/skill-template-timing-20261126/timing.json)）。
 - 技术附录新增 7.9（V4.0.1 配置、调用关系、调试过程、图 7-17—7-19）和 8.8（V4.0 冻结、模型选型、Y12 开发对比）。
 
 **核验。**
@@ -28,9 +29,9 @@
 
 ## 提交候选包
 
-`ICT-V40-r22提交候选包-20261126.zip`，690 个文件，SHA-256 `b85f667a869eeef2c135905deb615a05f6d5d584da4347f76530538ee7274f24`。
+`ICT-V40-r22提交候选包-20261126.zip`，694 个文件，SHA-256 `2467cb457c173f8649352aa2ed62398afb3571725156210bf60b4981ea52e3d0`。
 
-- 内容：V4.0 冻结源码（八个核心模块与冻结回执一致）、脚本、配置，以及 V4.0.1 智能体导出 `config/exports/frozen-flow-20261114/flow-agent.json`；另有 V4.0 与 V3.1 材料源稿，以及 98 份公开证据（两份源稿所链接的，加 r22 正文与附录中点名的）。
+- 内容：V4.0 冻结源码（八个核心模块与冻结回执一致）、脚本、配置，以及 V4.0.1 智能体导出 `config/exports/frozen-flow-20261114/flow-agent.json`；另有 V4.0 与 V3.1 材料源稿，以及 99 份公开证据（两份源稿所链接的，加 r22 正文与附录中点名的）。
 - 排除：`data/`、`evaluation/` 和内部待办。
 - 核验：重新打开压缩包逐个比对散列，无不一致；在空目录解压后跑 12 个核心测试文件，324 项通过。
 - 记录：[package-verification.json](../../../evidence/material-review-20261126-r22/package-verification.json)。
