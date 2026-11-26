@@ -70,3 +70,14 @@ def test_document_number_failures_use_the_fix():
     out = answer("见规范收费的财综〔2007〕34号。", claim(HEAD_B, "规范居民身份证收费的财综〔2007〕34号文头日期为2007年2月14日。"))
     units = {(HEAD_B["source_id"], HEAD_B["locator"]): HEAD_B}
     assert document_number_failures(out, units) == []
+
+
+def test_status_disclaimer_or_gap_wording_is_not_a_lost_inference():
+    from gov_mcp.frozen_qa_flow_v3 import INFERENCE_GAP, note_inference_gap
+    final = answer("- 可在全省任一窗口办理。", claim(MOD, "可在全省任一窗口办理。"))
+    for raw_answer in ("可在全省任一窗口办理。以上为归档资料记载，不代表现行政策。",
+                       "可在全省任一窗口办理。邮寄查询渠道现有证据未提供，不能据此作答；"):
+        raw = answer(raw_answer, claim(MOD, "可在全省任一窗口办理。"))
+        assert INFERENCE_GAP not in note_inference_gap(raw, final)["unknowns"]
+    raw = answer("可在全省任一窗口办理，但不能由受理地推出签发机关。", claim(MOD, "可在全省任一窗口办理。"))
+    assert INFERENCE_GAP in note_inference_gap(raw, final)["unknowns"]

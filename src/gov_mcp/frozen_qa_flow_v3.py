@@ -61,6 +61,9 @@ TITLE_NOTE = "【系统补充的来源标题】"
 EXCERPT_NOTE = "原文摘录："
 EXCERPT_WHOLE_UNIT = 200  # a unit this short is excerpted whole
 INFERENCE_CUE = re.compile(r"不能推出|不能推断|不能据|不能由|不能等同|不意味着|不代表|并非同一|不是同一")
+# Fixed wording that only states the archive's status or a named gap, not an inference: the
+# rendered answer drops it, which must not read as a lost inference.
+NOT_INFERENCE = re.compile(r"不代表(?:现行|当前|最新|目前)|不能据此(?:作答|回答|答复)(?=[，,。；;]|$)")
 INFERENCE_GAP = "草稿中的推理结论尚未形成可核验的独立结论，请对照原文人工确认；以上仅列已核验的归档事实。"
 FORBID = ("不得", "禁止", "不能", "不可", "不予", "严禁")
 PERMIT = ("可以", "允许", "准予")
@@ -149,7 +152,7 @@ def note_inference_gap(raw, final):
         return final
     proposed = [raw["answer"]] + [a["claim"] for a in raw["assertions"]]
     retained = final["answer"] + "\n" + "\n".join(a["claim"] for a in final["assertions"])
-    if any(INFERENCE_CUE.search(text) for text in proposed) and not INFERENCE_CUE.search(retained):
+    if any(INFERENCE_CUE.search(NOT_INFERENCE.sub("", text)) for text in proposed) and not INFERENCE_CUE.search(retained):
         return {**final, "unknowns": list(dict.fromkeys(final["unknowns"] + [INFERENCE_GAP]))}
     return final
 
