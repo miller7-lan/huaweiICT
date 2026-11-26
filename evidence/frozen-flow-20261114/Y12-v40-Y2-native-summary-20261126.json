@@ -1,0 +1,313 @@
+{
+ "round": "Y12-v40-20261126 Y2 (native Nexent, Windows)",
+ "label": "开发对比",
+ "agent": "published V4.0 (version 1): prompt 565bb31, kimi-k3.1-pro, output 2048, few-shot empty",
+ "corpus_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+ "runs": [
+  {
+   "question_id": "Y01",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T014820Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 5,
+   "result_kind": "answer"
+  },
+  {
+   "question_id": "Y02",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T014922Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 5,
+   "result_kind": "answer_with_gaps"
+  },
+  {
+   "question_id": "Y03",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T014957Z.json",
+   "passed": false,
+   "failures": [
+    "CHECK_SKIPPED_AFTER_OPEN_OK"
+   ],
+   "tool_order": [
+    "govkb_flow_open"
+   ],
+   "model_starts": 5,
+   "result_kind": null
+  },
+  {
+   "question_id": "Y04",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T015031Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 5,
+   "result_kind": "answer"
+  },
+  {
+   "question_id": "Y05",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T015117Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 4,
+   "result_kind": "answer"
+  },
+  {
+   "question_id": "Y06",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T015153Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 4,
+   "result_kind": "partial_answer"
+  },
+  {
+   "question_id": "Y07",
+   "expected_outcome": "stop",
+   "receipt": "native-run-20261126T015240Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 5,
+   "result_kind": "partial_answer"
+  },
+  {
+   "question_id": "Y08",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T015328Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 4,
+   "result_kind": "answer_with_gaps"
+  },
+  {
+   "question_id": "Y09",
+   "expected_outcome": "stop",
+   "receipt": "native-run-20261126T015409Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 3,
+   "result_kind": "answer"
+  },
+  {
+   "question_id": "Y10",
+   "expected_outcome": "stop",
+   "receipt": "native-run-20261126T015440Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 4,
+   "result_kind": "stop"
+  },
+  {
+   "question_id": "Y11",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T015506Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 5,
+   "result_kind": "answer_with_gaps"
+  },
+  {
+   "question_id": "Y12",
+   "expected_outcome": "answer",
+   "receipt": "native-run-20261126T021355Z.json",
+   "passed": true,
+   "failures": [],
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 6,
+   "result_kind": "answer"
+  }
+ ],
+ "summary": {
+  "protocol_passed": 11,
+  "protocol_failed": [
+   "Y03: open OK, model wrote a plan without code three times, platform showed unchecked text"
+  ],
+  "should_answer_9": "answer 4, answer_with_gaps 3, partial 1, protocol failure 1 (Y03)",
+  "should_stop_3": "stop 1 (Y10), partial_answer 1 (Y07), answer 1 (Y09)"
+ },
+ "model_starts_total": 55,
+ "after_run_experiment": {
+  "what": "shape-only example in few_shots_prompt to stop the plan-without-code failure",
+  "runs": [
+   {
+    "question_id": "Y03",
+    "variant": "few-shot v1",
+    "receipt": "native-run-20261126T021541Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 3
+   },
+   {
+    "question_id": "Y03",
+    "variant": "few-shot v1",
+    "receipt": "native-run-20261126T021614Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 3
+   },
+   {
+    "question_id": "Y03",
+    "variant": "few-shot v1",
+    "receipt": "native-run-20261126T021646Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 3
+   },
+   {
+    "question_id": "X16",
+    "variant": "few-shot v1",
+    "receipt": "native-run-20261126T021721Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 3
+   },
+   {
+    "question_id": "Y10",
+    "variant": "few-shot v1",
+    "receipt": "native-run-20261126T021749Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 3,
+    "result_kind": "answer_with_gaps"
+   },
+   {
+    "question_id": "Y10",
+    "variant": "few-shot v2",
+    "receipt": "native-run-20261126T021842Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 4,
+    "result_kind": "answer"
+   },
+   {
+    "question_id": "Y10",
+    "variant": "few-shot v2",
+    "receipt": "native-run-20261126T021929Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 3,
+    "result_kind": "answer"
+   },
+   {
+    "question_id": "Y03",
+    "variant": "few-shot v2",
+    "receipt": "native-run-20261126T021956Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 3,
+    "result_kind": "answer"
+   },
+   {
+    "question_id": "Y07",
+    "variant": "few-shot v2",
+    "receipt": "native-run-20261126T022026Z.json",
+    "passed": true,
+    "tool_order": [
+     "govkb_flow_open",
+     "govkb_flow_submit",
+     "govkb_flow_submit",
+     "final_answer"
+    ],
+    "model_starts": 4,
+    "result_kind": "partial_answer"
+   }
+  ],
+  "finding": "protocol 9/9, but Y10 (should stop) became answer 2/2 with the asked fee and days left out; tuning on evaluation questions also biases the round",
+  "decision": "reverted; agent restored to the evaluated V4.0 state; not counted in Y2"
+ }
+}
