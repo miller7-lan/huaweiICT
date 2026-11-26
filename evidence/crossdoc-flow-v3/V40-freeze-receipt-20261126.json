@@ -1,0 +1,44 @@
+{
+  "scope": "V40-frozen-origin-fingerprint-not-peer-acceptance",
+  "version": "V4.0",
+  "workflow_version": "crossdoc-flow-v4.0",
+  "supersedes": "evidence/crossdoc-flow-v3/V31-freeze-receipt-20261116.json",
+  "selected_by": "user_explicit_reply_20261126",
+  "model_profile": "bailian kimi-k3.1-pro, thinking off, max output 2048, at most 3 model calls per question",
+  "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
+  "frozen_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
+  "frozen_checkout_clean": true,
+  "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
+  "corpus_units": 593,
+  "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+  "module_sha256": {
+    "frozen_qa.py": "240445c4a5f95ecc6ab174d27988e9854cd65f520d273f24b44f389fa24a1717",
+    "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+    "frozen_qa_flow_v3.py": "5676b0075b6625db08e7f9bca47bc4eef27a1dde419ed5039b66f3dfc5e90a7d",
+    "frozen_qa_flow_server.py": "958db21f9bf16e66ef0dad61a3d27a639981430dbc3a156d77a54b08285a8231",
+    "knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479",
+    "claim_binding.py": "52ed7aa460de5fe48fbffb9eeeaae85baad845cfb4abe243f9d1a2122d95085d",
+    "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+    "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+  },
+  "questions": 27,
+  "replayed_historical_records": 72,
+  "history_round": "new24-8c49bbc",
+  "vs_V31_L1": {
+    "same_retrieval_and_gates": true,
+    "same_replay_kinds": true,
+    "differ": [
+      "modules"
+    ]
+  },
+  "local_fingerprint_file": "evidence/l1-linux-v40-20261126.json",
+  "peer_L1_completed": false,
+  "native_completed": false,
+  "new_model_calls": 0,
+  "full_suite": {
+    "passed": 2081,
+    "failed": 24,
+    "failed_reason": "23 need the Nexent upstream source; 1 manifest test pointed at the V3.1 receipt (fixed by this receipt)"
+  },
+  "known_gaps_disclosed": true
+}

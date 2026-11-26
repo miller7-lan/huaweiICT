@@ -1,0 +1,2320 @@
+{
+ "corpus_units": 593,
+ "corpus_unit_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+ "modules": {
+  "frozen_qa.py": "226c4242a3bb19112695a48f66de698b282fbdf22c86dbfa53ae8b3596606719",
+  "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+  "frozen_qa_flow_v3.py": "e4b250a2333b6e2d9cf7f06d088d91229fc22508f03917776fb3e29f971991c9",
+  "frozen_qa_flow_server.py": "f0bb8bd46db4b6adcbd1b6b1936d7923b81d32fe0d46d8c6ad6290c352dd130b",
+  "knowledge_retrieval.py": "1aed699e9eb747bdf4423ec5f4e31ffdf5a860116265a2ccc4c67e22f3caf479",
+  "claim_binding.py": "b6da96abafdde143f00aa001a8a9b92b1b8762dda687760bf47da5bd8bdd1a41",
+  "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+  "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+ },
+ "question_sets": {
+  "fresh-questions": {
+   "questions": 6,
+   "sha256": "e508795ff0c41aa6a3052010cd3013044d7879b8d39703085fb4a9bcf182abbf",
+   "rows": [
+    {
+     "id": "V01",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2021-PDF",
+       "PDF第5页右半页（印刷页码5），第二项",
+       "dd679b80bbaf96f36a231927e338f6e2dc2135b0f90119122feb698321a64dd9"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百二十二条",
+       "db7da60736594f45e43dbd11b467512306982ffbc7efe7919c4f48f6d413024f"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落4",
+       "6a2ba2fa2f0d74c98581748a66b594c11fd22305688fa5d5348efc99ca24eb3c"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百五十二条",
+       "4864d7087d314debf1d878c52940c1c91ce62f878cb999f9a9c9b81b0f224654"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十四条",
+       "82d52fcf92888814c9dba581962c99a63191b3b84934f3dfab312f838e3ff530"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第130行",
+       "0a438de4aba9a5f88b1e5e13e15a3b0dbf7e6ac2f4a0475a693367944d117fe3"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十六条",
+       "2b7e53255041050ed8b3a4900f9baaea8726e8fc00921b4cf7b231d4a5bf3696"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落5",
+       "68a1653e05db8ba2d269f266074a091245c46b67f2d87bf6041c2c99db182b05"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落3",
+       "0eed33a18e0bfc53b30c6e9a99d5488b611c278a7b7cbaefa7b5a52e7b468bd0"
+      ]
+     ],
+     "column_guide_sha256": "5043ef2635cdf152f63c2b28a86e3f6e00d54edee803381059c12a2b997b2d4f"
+    },
+    {
+     "id": "V02",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十一条",
+       "994d90b554217cd3a8ef6c1fa39104f5b459460b7c8e571c2756d09fac572dbf"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百五十七条",
+       "1e2bb14dcf88a6094476b8f4e9fed3778f05bef8faa2c673a7b85045b6c3e5a2"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十条",
+       "dfe36ac57b1adeda29564d8058583efdd38ca5901a8b6625d214fc95db9f619f"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落8",
+       "3e0418a232be282cb741411fb0e87c3ce84b8d4adeae7f9d6e379e89fca9695e"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百九十四条",
+       "37ccde777f6b641ab50cb9296fe0b2141df6602e26a43f3e6a385c024c9ce695"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落9",
+       "39ffa87f9daf0618625afd4dbaf14351914c17d3df6349108aec6ea8e591a796"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落7",
+       "1b829e5955e8cb587ecaee5f2006ded288b4c43883308fcb61ec6bfb75d28891"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "V03",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2026",
+       "正文段落3",
+       "0eed33a18e0bfc53b30c6e9a99d5488b611c278a7b7cbaefa7b5a52e7b468bd0"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落7",
+       "1b829e5955e8cb587ecaee5f2006ded288b4c43883308fcb61ec6bfb75d28891"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落5",
+       "9d1d8ded78bbb1db6db1e0c50759dcc20040960c24affea409afa66dc128d1bf"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百三十一条",
+       "5eb2efbd397ae93b24dacb7712fcf2a8d67546837d340e2d1afa968196500e14"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十四条",
+       "ee059f01921575a460b52e29a7f39cca98a76610516b97c392f32d10d080fb2b"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十三条",
+       "60aac497610dd973c08372927ea44ed1f5fc278600858583e87ef1f4579f6f5f"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第十二条",
+       "c0fa299927a5d7a7cdaca96cf3b9339b7a5444a452afad7f6d3f9d18fb9a024a"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页标题（meta:ArticleTitle）",
+       "9aa3d1e58188023bde403dee14e8fe0fd4668816bcdaeea3e3cb0bd51bfe7374"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页发布日期（meta:PubDate）",
+       "5e70919a7981a997a16457b959e6cbb1b2769f00e983e9fe73ae33360406f414"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "f2e8d6aa05adf1bf14137029eb36f00eb4c45123c6cbb2b53f43e14bbf33d53d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页标题（meta:ArticleTitle）",
+       "a675b9a923311c04c10de503eee40f931d385d09815a7e57d8173c1bd69c3716"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页发布日期（meta:PubDate）",
+       "d383515c230ae6ae839c4f3df1ea247eac9095a078454e1650ed7e2f1baf9132"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落4",
+       "6a2ba2fa2f0d74c98581748a66b594c11fd22305688fa5d5348efc99ca24eb3c"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落8",
+       "3e0418a232be282cb741411fb0e87c3ce84b8d4adeae7f9d6e379e89fca9695e"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落6",
+       "85103c435d556979db92ce2015bf68b6280258198e986e0e14cb127c4147df29"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "V04",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十四条",
+       "ee059f01921575a460b52e29a7f39cca98a76610516b97c392f32d10d080fb2b"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十七条",
+       "2b3111c381d5f1ad4e122ad6f3893a94e73c180a469bba856e0f0d80bcb3215f"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十三条",
+       "929bc79de001643a6efd7dc0d5665373e40e15c378b03f6f86fa401a8ab152bc"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百四十一条",
+       "2ecd7cda4f2dc7fdc310ba6ae6c3a04f47136b17499c511e969137f9c7ca8003"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十条",
+       "d931cd59374a4678049dde5cf599af15562bc785784f520f9856994aa625324d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十一条",
+       "fbd4c34d95f133c96320817e41fbb732ebeead4a6beec6cf6e8044e6a5d60c3f"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落3",
+       "2e3ba78bbc38432c3fd32d612fa22a9b8a55c1d4116b69a0324ae64152039d26"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落1",
+       "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "V05",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十九条",
+       "fd588d901a57faf3017ea8a3d0568ed65d3d9e28e4b5da6522928735b5a077c1"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落4",
+       "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十四条",
+       "82d52fcf92888814c9dba581962c99a63191b3b84934f3dfab312f838e3ff530"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百四十六条",
+       "0979a745eb81f63b4065f29891157eefc1fdfa5597dfe4a08ef883a8d8be878e"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第二百一十三条",
+       "c93a241c6fda48b52fc4d6b52576aa0049716c2eb8bb6a4be503dda4860c3350"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落1",
+       "7941bbfccf38072579361622080c76508c3e729c426f9d4aaa53374f79bc0bc7"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落1",
+       "49a8c0ac9be61ecd5acc9664f048b24966a9275b85f7ed95475ecbe0be5b1d61"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落5",
+       "b9bb4ca6d989bccb93f1cbf143e618ea56e1eb0346ae1281d97a53d302bf97d8"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落3",
+       "5a438b1b39127c6e7b33766510f5e46ebbd3b41211894bf8f10de46cbf8f2f5f"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落2",
+       "46e594ba03618cb679dd55cd4bd539042edf77faf50b30e39bf0ed74a6a20611"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "V06",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十条",
+       "d931cd59374a4678049dde5cf599af15562bc785784f520f9856994aa625324d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十六条",
+       "2b7e53255041050ed8b3a4900f9baaea8726e8fc00921b4cf7b231d4a5bf3696"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百四十七条",
+       "94edcca9c7e5ef27b36d359cad1f042836f1259605abfa001e22e8cbd279cd0f"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第九十一条",
+       "893f7c000db3643a89beb637172096b910e4eb7d07afd607e5ff61c097ce396b"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百九十七条",
+       "219e2bf1cd2e375c58c29261b70a035753cccbf62627b8310d3f151efd9d78e2"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十八条",
+       "4d4522cee8bed7889727a0a605ccc9a5dfbfffb936e0797c83c8f5216f227f40"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第八十二条",
+       "8df9a7324201beedf10ad2e8893923cdbfa8e075e32d1885a59641152c57343e"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+   ]
+  },
+  "retrieval-probes": {
+   "questions": 13,
+   "sha256": "cb353bce748b3c38436247e2542b5bbd446e0a852b8885b23b19f29fd37ef65c",
+   "rows": [
+    {
+     "id": "R01",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十五条",
+       "de371f67f9bb30392282433c37fda3de8da2b8e6ca3c56202ab0be24d8c3aede"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十一条",
+       "fbd4c34d95f133c96320817e41fbb732ebeead4a6beec6cf6e8044e6a5d60c3f"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第36行",
+       "51633bf125da6c6bba34f22949ad052afee0d993ff1228fb7f3f8149d5bf7dec"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十七条",
+       "2b3111c381d5f1ad4e122ad6f3893a94e73c180a469bba856e0f0d80bcb3215f"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落4",
+       "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第22行",
+       "137f08702da1b8ab6601f1c7de90f6f0f9a7ff58975e84d13e40c704e9e9594f"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落5",
+       "b9bb4ca6d989bccb93f1cbf143e618ea56e1eb0346ae1281d97a53d302bf97d8"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落3",
+       "5a438b1b39127c6e7b33766510f5e46ebbd3b41211894bf8f10de46cbf8f2f5f"
+      ]
+     ],
+     "column_guide_sha256": "d6019ba509ade33660c7486f559436da38177031572803083a2348871171aac1"
+    },
+    {
+     "id": "R02",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十二条",
+       "b70c090782d470fc24b202420eba471038317665b41221327dcc2c6f1b16aa5c"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落6",
+       "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第七十条",
+       "d8339c8a337c37b85938edb8912bde7dfc9ba96f7d797be4db17cfc99e258d35"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十条",
+       "d931cd59374a4678049dde5cf599af15562bc785784f520f9856994aa625324d"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第59行",
+       "50555ed5f47c5033f2adc037c5286a82fe0f952768a5148c86b8ab7080c43721"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百四十条",
+       "a14bcc2e5a1ec85c9c139f4985e4a6eaf420ca074049cff22ba1513284f42285"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第五十条",
+       "ee5d27f479485ac47cedf8b8d42bab3ec6ab91f12e17513f57d68ebe12a638fc"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落7",
+       "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ]
+     ],
+     "column_guide_sha256": "bbede4c06f6adf85a3719578898f38b86ec30f2bad10ce3215fefab969b6616a"
+    },
+    {
+     "id": "R03",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落4",
+       "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第22行",
+       "137f08702da1b8ab6601f1c7de90f6f0f9a7ff58975e84d13e40c704e9e9594f"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落7",
+       "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落3",
+       "5a438b1b39127c6e7b33766510f5e46ebbd3b41211894bf8f10de46cbf8f2f5f"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落5",
+       "b9bb4ca6d989bccb93f1cbf143e618ea56e1eb0346ae1281d97a53d302bf97d8"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落1",
+       "7941bbfccf38072579361622080c76508c3e729c426f9d4aaa53374f79bc0bc7"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落1",
+       "49a8c0ac9be61ecd5acc9664f048b24966a9275b85f7ed95475ecbe0be5b1d61"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "ba215845028ef8d4b6be2040fb7e97708094250008b31c494a9dd4cc33c351d2"
+      ],
+      [
+       "MOF-FEE-2007",
+       "网页标题（meta:ArticleTitle）",
+       "ccf4b301e1756da69db02f78c689aeacf57810ced48251da93cb7f34be59e8b9"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "网页标题（meta:ArticleTitle）",
+       "9c9a1b3b4e81dcb3a534d15b762a68709a0e44f1c9b67618005c6672ad02776f"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落8",
+       "96429f1770f982df4cbf2ca5f2cf31dd8d5b860a34c2573b6bfde01a509e3148"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落6",
+       "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落2",
+       "6befdecf82d4bddaefee99296afcfdc7274e22120e0bf82b3c06d03202f64eab"
+      ]
+     ],
+     "column_guide_sha256": "7b701912a7ed54df64036d1a95a9d785a431ce22edf6f4cf7b21e5cb9c30e425"
+    },
+    {
+     "id": "R04",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落1",
+       "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落1",
+       "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第九十一条",
+       "893f7c000db3643a89beb637172096b910e4eb7d07afd607e5ff61c097ce396b"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第1行",
+       "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "HN-MEASURES-2021-PDF",
+       "PDF第5页右半页第三项标题至PDF第6页左半页（印刷页码6）首段",
+       "961e2ad77d08022b9b9a2e1b2b5e757bb657e9ec6aed02ade8cf4a9bbf2fefcd"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "ba215845028ef8d4b6be2040fb7e97708094250008b31c494a9dd4cc33c351d2"
+      ],
+      [
+       "HN-MEASURES-2021-PDF",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "207cb769a6d7b7a24877b4694dc1dc33d4c76ae44e82a30b4438c58598575bc9"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页标题（meta:ArticleTitle）",
+       "9aa3d1e58188023bde403dee14e8fe0fd4668816bcdaeea3e3cb0bd51bfe7374"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页发布日期（meta:PubDate）",
+       "5e70919a7981a997a16457b959e6cbb1b2769f00e983e9fe73ae33360406f414"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "f2e8d6aa05adf1bf14137029eb36f00eb4c45123c6cbb2b53f43e14bbf33d53d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页标题（meta:ArticleTitle）",
+       "a675b9a923311c04c10de503eee40f931d385d09815a7e57d8173c1bd69c3716"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页发布日期（meta:PubDate）",
+       "d383515c230ae6ae839c4f3df1ea247eac9095a078454e1650ed7e2f1baf9132"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落3",
+       "2e3ba78bbc38432c3fd32d612fa22a9b8a55c1d4116b69a0324ae64152039d26"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落3",
+       "0eed33a18e0bfc53b30c6e9a99d5488b611c278a7b7cbaefa7b5a52e7b468bd0"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "R05",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落3",
+       "2e3ba78bbc38432c3fd32d612fa22a9b8a55c1d4116b69a0324ae64152039d26"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落1",
+       "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第13行",
+       "28a60cf0aac27c43966d628201b5257955f9a2ab17b16ab41290d4768bf14724"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百九十一条",
+       "3d118cfe8f770e6b2cdbde5e68a8542588af6369dfa64053b7375a5996d6d694"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "正文段落435",
+       "567e00aec943a39236e21f1b6587e5598349c4027a8f08c1e884dbb7fede7239"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "ba215845028ef8d4b6be2040fb7e97708094250008b31c494a9dd4cc33c351d2"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页标题（meta:ArticleTitle）",
+       "9aa3d1e58188023bde403dee14e8fe0fd4668816bcdaeea3e3cb0bd51bfe7374"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页发布日期（meta:PubDate）",
+       "5e70919a7981a997a16457b959e6cbb1b2769f00e983e9fe73ae33360406f414"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "f2e8d6aa05adf1bf14137029eb36f00eb4c45123c6cbb2b53f43e14bbf33d53d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页标题（meta:ArticleTitle）",
+       "a675b9a923311c04c10de503eee40f931d385d09815a7e57d8173c1bd69c3716"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页发布日期（meta:PubDate）",
+       "d383515c230ae6ae839c4f3df1ea247eac9095a078454e1650ed7e2f1baf9132"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落4",
+       "49c3fa211f1e0ae66de671a422996cf409a5872442876d48d38979f7c6b2e784"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落1",
+       "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+      ]
+     ],
+     "column_guide_sha256": "58ff217e80f61bf80f13433111b986e57a3bff7c2c1d66314db4e0faa6ec2a9f"
+    },
+    {
+     "id": "R06",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落4",
+       "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第1行",
+       "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第二百三十四条",
+       "a942f04eff1b2a31e2c351c5a56abfa03130a3969544699735fe789457c62c9d"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落6",
+       "99baef96bd80caaa0e312b311f1e57aa326667393e2207178075ecd4d8992f7b"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落3",
+       "5a438b1b39127c6e7b33766510f5e46ebbd3b41211894bf8f10de46cbf8f2f5f"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第36行",
+       "51633bf125da6c6bba34f22949ad052afee0d993ff1228fb7f3f8149d5bf7dec"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落1",
+       "7941bbfccf38072579361622080c76508c3e729c426f9d4aaa53374f79bc0bc7"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落1",
+       "49a8c0ac9be61ecd5acc9664f048b24966a9275b85f7ed95475ecbe0be5b1d61"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "ba215845028ef8d4b6be2040fb7e97708094250008b31c494a9dd4cc33c351d2"
+      ],
+      [
+       "MOF-FEE-2007",
+       "网页标题（meta:ArticleTitle）",
+       "ccf4b301e1756da69db02f78c689aeacf57810ced48251da93cb7f34be59e8b9"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "网页标题（meta:ArticleTitle）",
+       "9c9a1b3b4e81dcb3a534d15b762a68709a0e44f1c9b67618005c6672ad02776f"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落5",
+       "b9bb4ca6d989bccb93f1cbf143e618ea56e1eb0346ae1281d97a53d302bf97d8"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ]
+     ],
+     "column_guide_sha256": "9ef99b11d2371310846ce69bf670bc647e30370a4ba04242fb130dd7816e3f0e"
+    },
+    {
+     "id": "R07",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十五条",
+       "de371f67f9bb30392282433c37fda3de8da2b8e6ca3c56202ab0be24d8c3aede"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十一条",
+       "fbd4c34d95f133c96320817e41fbb732ebeead4a6beec6cf6e8044e6a5d60c3f"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落1",
+       "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落6",
+       "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落19",
+       "858f51fb0ec22fc154edef959a4a84a6e0dc5528ea9c4c9418355d3c6db44cb6"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落7",
+       "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落20",
+       "70740c065af6580d5520be5280e7e0bbc97a20ee32f0bc15c067a2464e814c42"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落18",
+       "d62389f3d76f7642dfe71ae8ac5076abd2b66399465093e969acc4b784a00f5f"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "R08",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落20",
+       "70740c065af6580d5520be5280e7e0bbc97a20ee32f0bc15c067a2464e814c42"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落8",
+       "3e0418a232be282cb741411fb0e87c3ce84b8d4adeae7f9d6e379e89fca9695e"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第36行",
+       "51633bf125da6c6bba34f22949ad052afee0d993ff1228fb7f3f8149d5bf7dec"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落19",
+       "858f51fb0ec22fc154edef959a4a84a6e0dc5528ea9c4c9418355d3c6db44cb6"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落6",
+       "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "ba215845028ef8d4b6be2040fb7e97708094250008b31c494a9dd4cc33c351d2"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落1",
+       "7941bbfccf38072579361622080c76508c3e729c426f9d4aaa53374f79bc0bc7"
+      ],
+      [
+       "MOF-FEE-2007",
+       "网页标题（meta:ArticleTitle）",
+       "ccf4b301e1756da69db02f78c689aeacf57810ced48251da93cb7f34be59e8b9"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页标题（meta:ArticleTitle）",
+       "a675b9a923311c04c10de503eee40f931d385d09815a7e57d8173c1bd69c3716"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页发布日期（meta:PubDate）",
+       "d383515c230ae6ae839c4f3df1ea247eac9095a078454e1650ed7e2f1baf9132"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落21",
+       "ac76bd88b8840b9bf47be40b94177481551e5ef32441cdfd8ef34647cf38b353"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落9",
+       "39ffa87f9daf0618625afd4dbaf14351914c17d3df6349108aec6ea8e591a796"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落7",
+       "1b829e5955e8cb587ecaee5f2006ded288b4c43883308fcb61ec6bfb75d28891"
+      ]
+     ],
+     "column_guide_sha256": "af2f0436714886804f2dc49e3e3e73c8e0e7105726686212d1875d119b5d9ecf"
+    },
+    {
+     "id": "R09",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第13行",
+       "28a60cf0aac27c43966d628201b5257955f9a2ab17b16ab41290d4768bf14724"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百三十一条",
+       "5eb2efbd397ae93b24dacb7712fcf2a8d67546837d340e2d1afa968196500e14"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第14行",
+       "a8b7760fa1b44e734a5461b88b2625e65196ab55317fd92de08919669786e873"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "正文段落435",
+       "567e00aec943a39236e21f1b6587e5598349c4027a8f08c1e884dbb7fede7239"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第65行",
+       "639a46ef55d282bf1f5a94aa2dd9eb8912e1eb155ea8bd0fe16fe508d496d1f3"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落9",
+       "0dda5162a8a237832d408d63989fc850126500cf1c75f06515426196f3482999"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第66行",
+       "b7501748a02130e1565b62a9ca1d4dc0d5567687585e4a8022fabb2c68ded7fa"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "ba215845028ef8d4b6be2040fb7e97708094250008b31c494a9dd4cc33c351d2"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落1",
+       "49a8c0ac9be61ecd5acc9664f048b24966a9275b85f7ed95475ecbe0be5b1d61"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "网页标题（meta:ArticleTitle）",
+       "9c9a1b3b4e81dcb3a534d15b762a68709a0e44f1c9b67618005c6672ad02776f"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页标题（meta:ArticleTitle）",
+       "9aa3d1e58188023bde403dee14e8fe0fd4668816bcdaeea3e3cb0bd51bfe7374"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页发布日期（meta:PubDate）",
+       "5e70919a7981a997a16457b959e6cbb1b2769f00e983e9fe73ae33360406f414"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "f2e8d6aa05adf1bf14137029eb36f00eb4c45123c6cbb2b53f43e14bbf33d53d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落8",
+       "4ed40049525688e96cfd41cfde62fdf83f289d6c016a7d65b65ddf0790dfa47e"
+      ]
+     ],
+     "column_guide_sha256": "ef2e32cd098d997b61087a084b27eb4070c5fd841da0be5409fe534572acb503"
+    },
+    {
+     "id": "R10",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落5",
+       "9d1d8ded78bbb1db6db1e0c50759dcc20040960c24affea409afa66dc128d1bf"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落7",
+       "1b829e5955e8cb587ecaee5f2006ded288b4c43883308fcb61ec6bfb75d28891"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落8",
+       "3e0418a232be282cb741411fb0e87c3ce84b8d4adeae7f9d6e379e89fca9695e"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落6",
+       "85103c435d556979db92ce2015bf68b6280258198e986e0e14cb127c4147df29"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百一十五条",
+       "0eeaefaa52ffb63db6a2e57d8d78ce780e0cbeea44f02f446437b9fd07f08af8"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百三十一条",
+       "5eb2efbd397ae93b24dacb7712fcf2a8d67546837d340e2d1afa968196500e14"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落17",
+       "6370c678b63439daba0be70dcd5f9b98af8fa13c7de25357f87405f80e56cb69"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页标题（meta:ArticleTitle）",
+       "a675b9a923311c04c10de503eee40f931d385d09815a7e57d8173c1bd69c3716"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页发布日期（meta:PubDate）",
+       "d383515c230ae6ae839c4f3df1ea247eac9095a078454e1650ed7e2f1baf9132"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落4",
+       "49c3fa211f1e0ae66de671a422996cf409a5872442876d48d38979f7c6b2e784"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落9",
+       "39ffa87f9daf0618625afd4dbaf14351914c17d3df6349108aec6ea8e591a796"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落18",
+       "d62389f3d76f7642dfe71ae8ac5076abd2b66399465093e969acc4b784a00f5f"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落16",
+       "c6802f8920d862822d18681d2720139bfe1907570f07c809eaa0fc1675c092f2"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "G01",
+     "gate": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+     "evidence": [],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "G02",
+     "gate": "OUTSIDE_HENAN_SCOPE",
+     "evidence": [],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "G03",
+     "gate": "PRIVATE_FACT_NOT_ACCEPTED",
+     "evidence": [],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+   ]
+  },
+  "dev-pilot-questions": {
+   "questions": 8,
+   "sha256": "016a536e8f5bbe3d152b4c8fba107d129cc6876df5eb39c2ec48ec66dcd13276",
+   "rows": [
+    {
+     "id": "DP1",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-NORM-PUBLISHER",
+       "第二百三十六条",
+       "610ea80302fec85817b8934c221f809aa2e68855912472cded1ed5bf2e785f5f"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一条",
+       "efadc1537deb3f46e4e162dd8ce476183f30c654a1d263bd0c98e386050abe79"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第二百一十八条",
+       "2909993574320bde155613439eacb8fd739cb76afea058f54693b8e3bf508245"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第二条",
+       "d38f4ec659ce3587c00212c90b5ffe9df22e41e165399819a00cfcd42720819b"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百七十四条",
+       "82d52fcf92888814c9dba581962c99a63191b3b84934f3dfab312f838e3ff530"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百二十九条",
+       "9694a6da874660ab87ce55f479d5828104ddf2e9bc960f19deb637c9d9f40854"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落1",
+       "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页标题（meta:ArticleTitle）",
+       "9aa3d1e58188023bde403dee14e8fe0fd4668816bcdaeea3e3cb0bd51bfe7374"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页发布日期（meta:PubDate）",
+       "5e70919a7981a997a16457b959e6cbb1b2769f00e983e9fe73ae33360406f414"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "f2e8d6aa05adf1bf14137029eb36f00eb4c45123c6cbb2b53f43e14bbf33d53d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "DP2",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第36行",
+       "51633bf125da6c6bba34f22949ad052afee0d993ff1228fb7f3f8149d5bf7dec"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第1行",
+       "9fb00cbed90cbe88bfd6ae83b7cfd96abdeae8fb083e0653f9f8a65259756a8a"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落7",
+       "5170487827057ceea24519d4126863b5f3f3a3bef6dc76154e4061618fdf62d6"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第22行",
+       "137f08702da1b8ab6601f1c7de90f6f0f9a7ff58975e84d13e40c704e9e9594f"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落4",
+       "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第41行",
+       "5b0d4fc9720181c764274ccad2138c7069c83f2570d57eeb3f0d67cb6ace02b9"
+      ],
+      [
+       "HN-FEE-CATALOG-XLSX-2025",
+       "Excel工作表行政事业性收费!第4行",
+       "0b91739c6adadfafb532cc283ec5ee70b4580816eb660dfd802b55306e1b6b96"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落8",
+       "96429f1770f982df4cbf2ca5f2cf31dd8d5b860a34c2573b6bfde01a509e3148"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落6",
+       "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+      ]
+     ],
+     "column_guide_sha256": "64342b76a5dfe926572fa74f5a6cf57556d22ea7a14ef528dccfd65a5177f66d"
+    },
+    {
+     "id": "DP3",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FEE-2007",
+       "正文段落4",
+       "83a1e2477938e0985e28fae2229804d69abe6b67bf88b6c5a338139cc26a6432"
+      ],
+      [
+       "HN-MEASURES-2021-PDF",
+       "PDF第5页右半页（印刷页码5），第二项",
+       "dd679b80bbaf96f36a231927e338f6e2dc2135b0f90119122feb698321a64dd9"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落4",
+       "68e9feca42b43a1064a3e1b669000c3dce188a39742ed7348d45442a0d6c99e5"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百五十七条",
+       "1e2bb14dcf88a6094476b8f4e9fed3778f05bef8faa2c673a7b85045b6c3e5a2"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十条",
+       "dfe36ac57b1adeda29564d8058583efdd38ca5901a8b6625d214fc95db9f619f"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落7",
+       "1b829e5955e8cb587ecaee5f2006ded288b4c43883308fcb61ec6bfb75d28891"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十五条",
+       "de371f67f9bb30392282433c37fda3de8da2b8e6ca3c56202ab0be24d8c3aede"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落1",
+       "7941bbfccf38072579361622080c76508c3e729c426f9d4aaa53374f79bc0bc7"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落1",
+       "49a8c0ac9be61ecd5acc9664f048b24966a9275b85f7ed95475ecbe0be5b1d61"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落3",
+       "08e3427ecc22340ff44679bdcb6237fe3f371a59f3a31eff7149c8a536e2bf2c"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落5",
+       "b9bb4ca6d989bccb93f1cbf143e618ea56e1eb0346ae1281d97a53d302bf97d8"
+      ],
+      [
+       "MOF-FIRST-ISSUE-2018",
+       "正文段落3",
+       "5a438b1b39127c6e7b33766510f5e46ebbd3b41211894bf8f10de46cbf8f2f5f"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "DP4",
+     "gate": null,
+     "evidence": [
+      [
+       "MOF-FEE-2007",
+       "正文段落5",
+       "172cec773684e9bc607422e000c00eff8472c619f0595c8f156d94c7499a7c36"
+      ],
+      [
+       "HN-MEASURES-2021-PDF",
+       "PDF第5页右半页第三项标题至PDF第6页左半页（印刷页码6）首段",
+       "961e2ad77d08022b9b9a2e1b2b5e757bb657e9ec6aed02ade8cf4a9bbf2fefcd"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十三条",
+       "929bc79de001643a6efd7dc0d5665373e40e15c378b03f6f86fa401a8ab152bc"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十七条",
+       "2b3111c381d5f1ad4e122ad6f3893a94e73c180a469bba856e0f0d80bcb3215f"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落4",
+       "49c3fa211f1e0ae66de671a422996cf409a5872442876d48d38979f7c6b2e784"
+      ],
+      [
+       "HN-MEASURES-2021-PDF",
+       "资料目录登记标题（目录元数据，未经人工对照原件）",
+       "207cb769a6d7b7a24877b4694dc1dc33d4c76ae44e82a30b4438c58598575bc9"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落1",
+       "7941bbfccf38072579361622080c76508c3e729c426f9d4aaa53374f79bc0bc7"
+      ],
+      [
+       "MOF-FEE-2007",
+       "网页标题（meta:ArticleTitle）",
+       "ccf4b301e1756da69db02f78c689aeacf57810ced48251da93cb7f34be59e8b9"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页标题（meta:ArticleTitle）",
+       "9aa3d1e58188023bde403dee14e8fe0fd4668816bcdaeea3e3cb0bd51bfe7374"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页发布日期（meta:PubDate）",
+       "5e70919a7981a997a16457b959e6cbb1b2769f00e983e9fe73ae33360406f414"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "f2e8d6aa05adf1bf14137029eb36f00eb4c45123c6cbb2b53f43e14bbf33d53d"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页标题（meta:ArticleTitle）",
+       "b4feeb95376f537710ded03e9a967ed56c9bb854d979f4de14422a3b53a773ea"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页发布日期（meta:PubDate）",
+       "f756d93aa7fb7bea6edd76e672e62107982bf1b832a2d0e082eecb770f6ec48a"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "网页最后修改日期（meta:lastmodifiedtime）",
+       "8aa7a91047b72cf1c189e3712fe4c986ef9f3ebf063befcdfe936eb26c2883af"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页标题（meta:ArticleTitle）",
+       "a675b9a923311c04c10de503eee40f931d385d09815a7e57d8173c1bd69c3716"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "网页发布日期（meta:PubDate）",
+       "d383515c230ae6ae839c4f3df1ea247eac9095a078454e1650ed7e2f1baf9132"
+      ],
+      [
+       "MOF-FEE-2007",
+       "正文段落6",
+       "dd619f0baaa7191d84dd50acfb2922fb74c84a8caf060a06981c44e6755e6083"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "DP5",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2026",
+       "正文段落1",
+       "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落3",
+       "2e3ba78bbc38432c3fd32d612fa22a9b8a55c1d4116b69a0324ae64152039d26"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落4",
+       "49c3fa211f1e0ae66de671a422996cf409a5872442876d48d38979f7c6b2e784"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第一百六十五条",
+       "de371f67f9bb30392282433c37fda3de8da2b8e6ca3c56202ab0be24d8c3aede"
+      ],
+      [
+       "HN-NORM-PUBLISHER",
+       "第六十七条",
+       "d34326ea04fb0d8596b2bd95f7d9d01c8aba59b5407a20c8ed5e38ded53c64e0"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落5",
+       "68a1653e05db8ba2d269f266074a091245c46b67f2d87bf6041c2c99db182b05"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落3",
+       "0eed33a18e0bfc53b30c6e9a99d5488b611c278a7b7cbaefa7b5a52e7b468bd0"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落5",
+       "9d1d8ded78bbb1db6db1e0c50759dcc20040960c24affea409afa66dc128d1bf"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落6",
+       "38b12d988c5c652b500e3bf7fcd286a3af22a7b3c87116f8d38d081bc96738ec"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "DP6",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2026",
+       "正文段落1",
+       "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+      ],
+      [
+       "HN-MEASURES-2021-PDF",
+       "PDF第5页右半页第三项标题至PDF第6页左半页（印刷页码6）首段",
+       "961e2ad77d08022b9b9a2e1b2b5e757bb657e9ec6aed02ade8cf4a9bbf2fefcd"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落1",
+       "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落5",
+       "68a1653e05db8ba2d269f266074a091245c46b67f2d87bf6041c2c99db182b05"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落19",
+       "858f51fb0ec22fc154edef959a4a84a6e0dc5528ea9c4c9418355d3c6db44cb6"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落3",
+       "0eed33a18e0bfc53b30c6e9a99d5488b611c278a7b7cbaefa7b5a52e7b468bd0"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落3",
+       "2e3ba78bbc38432c3fd32d612fa22a9b8a55c1d4116b69a0324ae64152039d26"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落6",
+       "38b12d988c5c652b500e3bf7fcd286a3af22a7b3c87116f8d38d081bc96738ec"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落4",
+       "6a2ba2fa2f0d74c98581748a66b594c11fd22305688fa5d5348efc99ca24eb3c"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "DP7",
+     "gate": null,
+     "evidence": [
+      [
+       "HN-MEASURES-2026",
+       "正文段落1",
+       "5a5fc962d57ef0baafb01cc2ed023c2926ac209abbaadea03c68d6a277bbc43e"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落2",
+       "6f8b6bd0d932b669a22cebc9f44be375ad94e895ccfadfce536bb153daa2deaa"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落1",
+       "dc52befd258de428c5ea5dadfbed907c025fffb5e033fb338385242cdf9955c5"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落5",
+       "68a1653e05db8ba2d269f266074a091245c46b67f2d87bf6041c2c99db182b05"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落2",
+       "b0105c307e4fb77167d1258966357242f86af1e2ca783a8062f68f22265a2201"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落3",
+       "2e3ba78bbc38432c3fd32d612fa22a9b8a55c1d4116b69a0324ae64152039d26"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落6",
+       "38b12d988c5c652b500e3bf7fcd286a3af22a7b3c87116f8d38d081bc96738ec"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落3",
+       "0eed33a18e0bfc53b30c6e9a99d5488b611c278a7b7cbaefa7b5a52e7b468bd0"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落4",
+       "6a2ba2fa2f0d74c98581748a66b594c11fd22305688fa5d5348efc99ca24eb3c"
+      ],
+      [
+       "HN-MEASURES-2024-JY",
+       "正文段落4",
+       "49c3fa211f1e0ae66de671a422996cf409a5872442876d48d38979f7c6b2e784"
+      ],
+      [
+       "HN-MEASURES-2026",
+       "正文段落7",
+       "2b9cf2d490b77c953c43f9b61fc8f011735c2387c23f70889aefefcaef677440"
+      ]
+     ],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+     "id": "DP8",
+     "gate": "CURRENT_VALIDITY_NOT_ESTABLISHED",
+     "evidence": [],
+     "column_guide_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+   ]
+  }
+ },
+ "replay": {
+  "records": 72,
+  "sha256": "5c1459a86ef7790f9de1335ea54f95bb87672ae4b6306915441661eb5e50f9b1",
+  "rows": [
+   {
+    "id": "N01",
+    "method": "baseline",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N01",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 1
+   },
+   {
+    "id": "N01",
+    "method": "single_shot",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 1
+   },
+   {
+    "id": "N02",
+    "method": "baseline",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N02",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N02",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N03",
+    "method": "baseline",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N03",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N03",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N04",
+    "method": "baseline",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N04",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N04",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N05",
+    "method": "baseline",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N05",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N05",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N06",
+    "method": "baseline",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N06",
+    "method": "flow_v3",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N06",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N07",
+    "method": "baseline",
+    "replayed": "partial_answer",
+    "excerpted": 2,
+    "dropped": 0
+   },
+   {
+    "id": "N07",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N07",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N08",
+    "method": "baseline",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N08",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N08",
+    "method": "single_shot",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N09",
+    "method": "baseline",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N09",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N09",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N10",
+    "method": "baseline",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N10",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N10",
+    "method": "single_shot",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N11",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N11",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N11",
+    "method": "single_shot",
+    "replayed": "answer",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N12",
+    "method": "baseline",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N12",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N12",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N13",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N13",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N13",
+    "method": "single_shot",
+    "replayed": "partial_answer",
+    "excerpted": 2,
+    "dropped": 0
+   },
+   {
+    "id": "N14",
+    "method": "baseline",
+    "replayed": "partial_answer",
+    "excerpted": 0,
+    "dropped": 1
+   },
+   {
+    "id": "N14",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N14",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N15",
+    "method": "baseline",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N15",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 0
+   },
+   {
+    "id": "N15",
+    "method": "single_shot",
+    "replayed": "partial_answer",
+    "excerpted": 3,
+    "dropped": 1
+   },
+   {
+    "id": "N16",
+    "method": "baseline",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N16",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N16",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N17",
+    "method": "baseline",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N17",
+    "method": "flow_v3",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N17",
+    "method": "single_shot",
+    "replayed": "answer_with_gaps",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N18",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N18",
+    "method": "flow_v3",
+    "replayed": "partial_answer",
+    "excerpted": 1,
+    "dropped": 1
+   },
+   {
+    "id": "N18",
+    "method": "single_shot",
+    "replayed": "partial_answer",
+    "excerpted": 2,
+    "dropped": 1
+   },
+   {
+    "id": "N19",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N19",
+    "method": "flow_v3",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N19",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N20",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N20",
+    "method": "flow_v3",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N20",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N21",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N21",
+    "method": "flow_v3",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N21",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N22",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N22",
+    "method": "flow_v3",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N22",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N23",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N23",
+    "method": "flow_v3",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N23",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N24",
+    "method": "baseline",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N24",
+    "method": "flow_v3",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   },
+   {
+    "id": "N24",
+    "method": "single_shot",
+    "replayed": "stop",
+    "excerpted": 0,
+    "dropped": 0
+   }
+  ]
+ },
+ "fingerprint": "3c79a2bb3835fb3ae8c5534aa87a74d46e4a67777896203f804f4cdb8830c22b"
+}

@@ -203,7 +203,7 @@ def test_submission_manifest_keeps_internal_planning_and_private_names_out():
     import json as _json
     import build_submission_manifest as m
     git_files = {"src/gov_mcp/frozen_qa.py", "docs/competition/全部任务清单-x.md", "evidence/x/records.jsonl"}
-    freeze = _json.loads((m.ROOT / "evidence/crossdoc-flow-v3/V31-freeze-receipt-20261116.json").read_text("utf-8"))
+    freeze = _json.loads((m.ROOT / "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json").read_text("utf-8"))
     assert [p for p in m.check({"src/gov_mcp/frozen_qa.py": "code"}, git_files, freeze) if p.startswith("MODULE")] == []
     problems = m.check({"evidence/x/records.jsonl": "linked", "docs/untracked.md": "linked"}, git_files, freeze)
     assert any(p.startswith("PRIVATE_NAME_SELECTED: evidence/x/records.jsonl") for p in problems)

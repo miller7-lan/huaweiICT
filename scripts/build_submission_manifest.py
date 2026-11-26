@@ -174,7 +174,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--materials", type=Path, default=ROOT / "docs/competition/materials-v31-20261117")
     parser.add_argument("--freeze-receipt", type=Path,
-                        default=ROOT / "evidence/crossdoc-flow-v3/V31-freeze-receipt-20261116.json")
+                        default=ROOT / "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json")
     parser.add_argument("--extra", nargs="*", default=[], help="Further repository-relative files, e.g. the merged Word/PDF")
     parser.add_argument("--output", type=Path, required=True, help="New manifest JSON (outside the package)")
     parser.add_argument("--zip", type=Path, help="Also write the package zip and re-check every member")
