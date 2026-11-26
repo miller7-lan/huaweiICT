@@ -21,27 +21,27 @@
      "Y01",
      "Y02"
     ],
-    "answer": [
-     "Y03",
-     "Y12"
-    ],
     "answer_with_gaps": [
      "Y04",
      "Y05",
      "Y06",
      "Y08",
      "Y11"
+    ],
+    "full_answer": [
+     "Y03",
+     "Y12"
     ]
    },
    "stop": {
     "partial_answer": [
      "Y07"
     ],
-    "answer": [
-     "Y09"
-    ],
     "stop": [
      "Y10"
+    ],
+    "full_answer": [
+     "Y09"
     ]
    }
   },
@@ -51,12 +51,6 @@
  "kimi_v40_Y1": {
   "by_expected": {
    "answer": {
-    "answer": [
-     "Y01",
-     "Y03",
-     "Y05",
-     "Y12"
-    ],
     "answer_with_gaps": [
      "Y02",
      "Y04",
@@ -65,19 +59,28 @@
     "partial_answer": [
      "Y06",
      "Y11"
+    ],
+    "full_answer": [
+     "Y01",
+     "Y03",
+     "Y05",
+     "Y12"
     ]
    },
    "stop": {
-    "answer": [
-     "Y07",
-     "Y09"
-    ],
     "stop": [
      "Y10"
+    ],
+    "full_answer": [
+     "Y07",
+     "Y09"
     ]
    }
   },
   "required_sources_cited_answer_questions": "20/26",
   "model_calls": 20
+ },
+ "kind_names": {
+  "full_answer": "result kind \"answer\" (complete)"
  }
 }
