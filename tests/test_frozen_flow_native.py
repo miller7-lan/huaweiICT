@@ -62,3 +62,33 @@ def test_open_ok_without_submit_is_not_a_pass():
                {"type": "execution_logs", "content": '{"status": "STOP"}'},
                {"type": "final_answer", "content": "不在资料范围，停止。"}]
     assert module.judge({"transport_completed": True, **module.summarize(stopped), "model_starts": 2})["passed"]
+
+
+def test_export_accepts_a_published_agent_only_when_allowed():
+    import json
+    import pytest
+    import export_frozen_qa_native as exporter
+
+    class Response:
+        def __init__(self, enabled):
+            body = {"data": {"agent_id": 1, "agent_info": {"1": {"name": native.NAME, "enabled": enabled, "tools": []}}}}
+            self.content = json.dumps(body).encode()
+            self._body = body
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return self._body
+
+    class Api:
+        base, token = "http://x", "t"
+
+        def __init__(self, enabled):
+            self.http = type("H", (), {"post": lambda _s, *a, **k: Response(enabled)})()
+
+    with pytest.raises(ValueError, match="DISABLED_DRAFT"):
+        exporter.export(Api(True), 1, native.NAME)
+    assert exporter.export(Api(True), 1, native.NAME, allow_enabled=True)[2]["enabled"] is True
+    with pytest.raises(ValueError, match="RECORDED_AGENT"):
+        exporter.export(Api(False), 1, "other_name", allow_enabled=True)

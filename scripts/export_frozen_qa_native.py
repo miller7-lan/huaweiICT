@@ -25,7 +25,8 @@ ARCHIVE = ROOT / "artifacts/frozen-qa-exports-20261105"
 OUTPUT = ROOT / "evidence/frozen-qa-20261030/native-export-20261105.json"
 
 
-def export(api, agent_id, name):
+def export(api, agent_id, name, allow_enabled=False):
+    """Export one agent; only a disabled draft unless allow_enabled (a deliberately published agent)."""
     response = api.http.post(api.base + "/agent/export", json={"agent_id": agent_id},
                              headers={"Authorization": "Bearer " + api.token})
     response.raise_for_status()
@@ -40,7 +41,9 @@ def export(api, agent_id, name):
         bundle.writestr("agent.json", agent_bytes)
     raw = buffer.getvalue()
     info = exported["agent_info"][str(agent_id)]
-    if exported["agent_id"] != agent_id or info.get("name") != name or info.get("enabled") not in (False, None):
+    if exported["agent_id"] != agent_id or info.get("name") != name:
+        raise ValueError("EXPORT_IS_NOT_THE_RECORDED_AGENT")
+    if not allow_enabled and info.get("enabled") not in (False, None):
         raise ValueError("EXPORT_IS_NOT_THE_RECORDED_DISABLED_DRAFT")
     return raw, agent_bytes, info
 

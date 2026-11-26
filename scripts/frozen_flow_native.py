@@ -149,7 +149,7 @@ def export_draft():
     api = NexentAPI()
     try:
         api.login(module.read(ROOT / ".runtime/accounts.json")["developer"])
-        raw, agent_bytes, info = module.export(api, agent_id, NAME)
+        raw, agent_bytes, info = module.export(api, agent_id, NAME, allow_enabled=True)
     finally:
         api.close()
     PUBLIC.mkdir(parents=True, exist_ok=True)
@@ -160,7 +160,8 @@ def export_draft():
               "agent_json_sha256": module.sha(agent_bytes),
               "tools": sorted(t.get("name", "") for t in info.get("tools", [])),
               "public_json": "config/exports/frozen-flow-20261114/flow-agent.json",
-              "model_calls": 0, "published": False, "credentials_scan_passed": True}
+              "display_name": info.get("display_name"), "enabled": bool(info.get("enabled")),
+              "model_calls": 0, "credentials_scan_passed": True}
     module.write(OUTPUT / "native-export.json", report)
     return report
 
