@@ -83,7 +83,7 @@ def main():
                         help="Also re-ask after an answer that passed but lists gaps (one more call)")
     parser.add_argument("--max-calls", type=int, default=0)
     parser.add_argument("--model-profile", choices=("official", "bailian"), default="bailian",
-                        help="Cloud profile in gov_mcp.deepseek.PROFILES (V3.2 default: bailian kimi-k3.1-pro)")
+                        help="Cloud profile in gov_mcp.deepseek.PROFILES (V4.0 default: bailian kimi-k3.1-pro)")
     parser.add_argument("--max-output-tokens", type=int, default=2048)
     args = parser.parse_args()
     if not args.output.resolve().is_relative_to((ROOT / ".runtime").resolve()):

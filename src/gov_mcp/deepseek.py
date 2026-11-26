@@ -17,7 +17,7 @@ PROFILES = {
                "model": "deepseek/deepseek-v4.1-flash", "credential_ref": "env:AI_GATEWAY_API_KEY"},
     "official": {"provider": "official", "base_url": "https://api.deepseek.com/v1",
                  "model": "deepseek-flash", "credential_ref": "env:DEEPSEEK_API_KEY"},
-    # V3.2: Kimi K3.1 Pro through Alibaba Cloud Bailian (OpenAI-compatible), thinking disabled.
+    # V4.0: Kimi K3.1 Pro through Alibaba Cloud Bailian (OpenAI-compatible), thinking disabled.
     # Chosen over deepseek-flash after two 24-question development runs (see docs).
     "bailian": {"provider": "bailian", "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
                 "model": "kimi-k3.1-pro", "credential_ref": "env:DASHSCOPE_API_KEY"},

@@ -1,4 +1,4 @@
-"""V3.2: transition gate and the Bailian (Kimi) cloud profile."""
+"""V4.0: transition gate and the Bailian (Kimi) cloud profile."""
 import json
 
 import httpx

@@ -43,7 +43,7 @@ from gov_mcp.frozen_retrieval import (TABLE_ROW, VERSION as RETRIEVAL_VERSION, E
                                       retrieve_with_plan, source_key)
 
 
-WORKFLOW = "crossdoc-flow-v3.1"
+WORKFLOW = "crossdoc-flow-v4.0"
 MAX_FOLLOW_UPS = 1
 MAX_REPAIRS = 1
 MAX_MODEL_CALLS = 1 + MAX_FOLLOW_UPS + MAX_REPAIRS
@@ -413,7 +413,7 @@ def settle_draft(raw, pool, units, question=None):
             "final_checks_passed": check(final, pool, units)["passed"] if kind != "stop" else None}
 
 
-# Transition gate (V3.2). A question that asks whether an earlier-filed matter falls under the
+# Transition gate (V4.0). A question that asks whether an earlier-filed matter falls under the
 # new or the old rule cannot be answered from archived texts that state neither a transition
 # clause nor an effective date. When the model's own unknowns say exactly that, the answer
 # would only restate both rules, so it is shown as a stop. Generic wording, no question ids.
