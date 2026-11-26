@@ -79,6 +79,14 @@ def open_preview(runtime):
             ("preparation_root", "observation_path", "extraction_path", "gates_path")))
         workspace = HenanMultimodalWorkspace(Path(config["ontology_root"]), source)
         return HenanMultimodalPreview(runtime, workspace, config["expected_version"])
+    if config.get("profile") == "henan-archived-household-transfer-v1":
+        from gov_mcp.henan_transfer import HenanTransferWorkspace
+        from gov_mcp.henan_transfer_preview import HenanTransferPreview
+        from gov_mcp.henan_transfer_sources import ArchivedHenanTransferSource
+        paths = config["transfer_source"]
+        source = ArchivedHenanTransferSource(Path(paths["originals_dir"]), Path(paths["gates_path"]))
+        workspace = HenanTransferWorkspace(Path(config["ontology_root"]), source)
+        return HenanTransferPreview(runtime, workspace, config["expected_version"])
     if config.get("profile") not in (None, "nanjing-archive-interval-plan-v1"):
         raise ValueError("UNRELATED_ONTOLOGY_EXECUTION_PROFILE")
     source = ArchivedCrossdocSource(runtime)
