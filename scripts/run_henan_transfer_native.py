@@ -104,7 +104,9 @@ def bind_current_platform(provisioning, api):
     flow = read(ROOT / ".runtime/frozen-flow-20261114/native-drafts.json")["agents"]["assistant"]
     info = api.call("POST", "/agent/search_info", {"agent_id": flow, "version_no": 0})
     tenant, state = str(info["tenant_id"]), read(ROOT / ".runtime/nexent-state.json")
-    if str(info.get("group_ids", state["group_id"])) != str(state["group_id"]):
+    groups = info.get("group_ids")
+    groups = groups if isinstance(groups, list) else str(groups).split(",")
+    if str(state["group_id"]) not in {str(g).strip() for g in groups}:
         raise ValueError("CURRENT_PLATFORM_GROUP_DIFFERS")
     original_ids, original_read = provisioning.known_project_agent_ids, provisioning.read
     provisioning._tenant_id = lambda: tenant
