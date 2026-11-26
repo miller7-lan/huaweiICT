@@ -92,3 +92,10 @@ def test_export_accepts_a_published_agent_only_when_allowed():
     assert exporter.export(Api(True), 1, native.NAME, allow_enabled=True)[2]["enabled"] is True
     with pytest.raises(ValueError, match="RECORDED_AGENT"):
         exporter.export(Api(False), 1, "other_name", allow_enabled=True)
+
+
+def test_draft_body_carries_greeting_and_at_most_six_examples():
+    module = native.provisioner()
+    body = module.body(2, {name: n for n, name in enumerate(sorted(native.TOOLS))}, 1)
+    assert body["greeting_message"] == native.GREETING and "不代表现行政策" in native.GREETING
+    assert body["example_questions"] == native.EXAMPLES and 1 <= len(native.EXAMPLES) <= 6

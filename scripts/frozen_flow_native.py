@@ -85,6 +85,15 @@ result = govkb_flow_submit(task_id=<task_id>, outcome=<"answer" 或 "stop">, ans
 print(result)
 </code>"""
 
+# Shown on the chat page before the first question (Nexent greeting_message / example_questions).
+# The examples demonstrate an answer, a cross-region case and an out-of-scope stop; none is an evaluation question.
+GREETING = ("您好，我是河南冻结资料跨文档问答助手。我只依据七份河南冻结归档资料作答，每条结论都附原文和出处；"
+            "资料不足或问题超出河南归档范围时，我会说明缺少什么并停止作答。答复是历史归档解释，不代表现行政策，办理前请向办理机关确认。")
+EXAMPLES = ["只按冻结归档：申领临时居民身份证要带什么材料，工本费是多少？",
+            "按归档资料，异地申领居民身份证期间急用证件，可以怎么办？",
+            "上海现在补领居民户口簿需要哪些材料？"]
+
+
 def private_copy(name):
     """A separate instance of an existing script module, so its globals can be set for the flow."""
     spec = importlib.util.spec_from_file_location("frozen_flow_" + name, ROOT / "scripts" / (name + ".py"))
@@ -102,6 +111,7 @@ def provisioner():
 
     def body(*args):
         return {**original(*args), "max_steps": MAX_STEPS, "few_shots_prompt": FEW_SHOTS,
+                "greeting_message": GREETING, "example_questions": EXAMPLES,
                 "description": "Cross-document questions over seven frozen Henan archive sources: bounded "
                                "revision, claim-by-claim checks and verified quotes; draft.",
                 "constraint_prompt": "Only the two flow tools. No imports, files, memory, credentials, "
