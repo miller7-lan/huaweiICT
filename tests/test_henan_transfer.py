@@ -85,3 +85,16 @@ def test_an_invented_amount_in_the_catalogue_is_refused(source):
             segment["text_sha256"] = hashlib.sha256(segment["text"].encode()).hexdigest()
     with pytest.raises(ValueError, match="INVENTED_AMOUNTS"):
         transfer.build_candidate(documents)
+
+
+def test_native_campaign_is_built_from_the_template_profile():
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import run_henan_transfer_native as native
+    from workflow_template import load_profile, profile_provisioner
+    plan = native.plan()
+    assert plan["scenario_id"] == "henan_household_transfer_archive" and plan["native_runs_max"] == 1
+    module = profile_provisioner(load_profile(native.PROFILE_PATH), native.RUNTIME, native.OUTPUT)
+    assert module.SKILL == "govkb-henan-household-transfer-preview"
+    assert module.NAMES["controller"] == "govhenantransfer_controller"
+    assert "henan_household_transfer_archive" in module.first_action()
