@@ -1,0 +1,37 @@
+{
+ "scope": "Jev claim judge vs human citations_support; counts and question ids only",
+ "jev_rule": "是 = all claims supported; 否 = any unsupported; 不确定 = otherwise",
+ "jev_claims": 108,
+ "by_reviewer": {
+  "李": {
+   "matrix": {
+    "人工是/Jev不确定": 13,
+    "人工是/Jev否": 2,
+    "人工是/Jev是": 8
+   },
+   "agreement_when_jev_decided": "8/10",
+   "disagreements": [
+    "Y01:flow_v3",
+    "Y04:single_shot"
+   ]
+  },
+  "程": {
+   "matrix": {
+    "人工否/Jev不确定": 3,
+    "人工否/Jev是": 2,
+    "人工是/Jev不确定": 10,
+    "人工是/Jev否": 2,
+    "人工是/Jev是": 6
+   },
+   "agreement_when_jev_decided": "6/10",
+   "disagreements": [
+    "Y01:flow_v3",
+    "Y04:single_shot",
+    "Y05:flow_v3",
+    "Y08:flow_v3"
+   ]
+  }
+ },
+ "skipped_no_jev_claims": 0,
+ "use": "decides whether Jev may be cited as a second automatic measure; changes no answer"
+}

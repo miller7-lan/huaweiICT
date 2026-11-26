@@ -1,0 +1,143 @@
+{
+ "scope": "counts and question ids only",
+ "sheets_passed_rule_check_unchanged": true,
+ "legacy_pack_rules_not_checked": false,
+ "reviewers_distinct": true,
+ "questions": 12,
+ "rows_per_sheet": 36,
+ "methods": [
+  "baseline",
+  "flow_v3",
+  "single_shot"
+ ],
+ "ratings_per_method_and_column": 24,
+ "by_method": {
+  "baseline": {
+   "conclusions_correct": {
+    "不适用": 12,
+    "是": 10,
+    "部分": 2
+   },
+   "missing_points": {
+    "不适用": 12,
+    "否": 12
+   },
+   "citations_support": {
+    "不适用": 12,
+    "否": 2,
+    "是": 10
+   },
+   "excerpt_relevant": {
+    "无摘录": 24
+   }
+  },
+  "flow_v3": {
+   "conclusions_correct": {
+    "不适用": 2,
+    "是": 20,
+    "部分": 2
+   },
+   "missing_points": {
+    "不适用": 2,
+    "否": 9,
+    "漏核心": 8,
+    "漏次要": 5
+   },
+   "citations_support": {
+    "不适用": 2,
+    "否": 2,
+    "是": 20
+   },
+   "excerpt_relevant": {
+    "无摘录": 20,
+    "是": 4
+   }
+  },
+  "single_shot": {
+   "conclusions_correct": {
+    "不适用": 12,
+    "是": 11,
+    "部分": 1
+   },
+   "missing_points": {
+    "不适用": 12,
+    "否": 10,
+    "漏次要": 2
+   },
+   "citations_support": {
+    "不适用": 12,
+    "否": 1,
+    "是": 11
+   },
+   "excerpt_relevant": {
+    "无摘录": 24
+   }
+  }
+ },
+ "reviewer_agreement": {
+  "conclusions_correct": "31/36",
+  "missing_points": "35/36",
+  "citations_support": "31/36",
+  "excerpt_relevant": "36/36"
+ },
+ "disagreements": {
+  "conclusions_correct": [
+   "Y05A",
+   "Y05B",
+   "Y05C",
+   "Y06C",
+   "Y08B"
+  ],
+  "missing_points": [
+   "Y11A"
+  ],
+  "citations_support": [
+   "Y05A",
+   "Y05B",
+   "Y05C",
+   "Y06C",
+   "Y08B"
+  ],
+  "excerpt_relevant": []
+ },
+ "stop_judgment_by_method": {
+  "baseline": {
+   "不合理": 6,
+   "不适用": 12,
+   "合理": 6
+  },
+  "flow_v3": {
+   "不适用": 22,
+   "合理": 2
+  },
+  "single_shot": {
+   "不合理": 8,
+   "不适用": 12,
+   "合理": 4
+  }
+ },
+ "stop_judgment_agreement": "36/36",
+ "stop_judgment_disagreements": [],
+ "reference_issue_questions": {
+  "未发现": [
+   "Y01",
+   "Y02",
+   "Y03",
+   "Y04",
+   "Y05",
+   "Y06",
+   "Y07",
+   "Y08",
+   "Y09",
+   "Y10",
+   "Y11",
+   "Y12"
+  ],
+  "有误": [],
+  "待确认": [
+   "Y02",
+   "Y05",
+   "Y06"
+  ]
+ }
+}
