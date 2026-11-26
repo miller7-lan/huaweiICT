@@ -2,6 +2,16 @@
 
 当前基线：2026-10-22。面向华为 ICT 大赛第三题，以居民身份证换领公开资料为试点，使用 Nexent MCP 与 Skills 串联资产登记、本体候选、检索推理和更新复核。目标是可演示、可复现、材料完整；[官方要求](docs/赛题3资料/官方赛题摘录.md)及[当前开发设计正文](docs/competition/当前开发设计正文-2026-10-21.md)是参赛范围入口。
 
+
+## 当前版本（2026-11-26）：V4.0 / 原生智能体 V4.0.1
+
+- **跨文档问答**：源码冻结 `460a2be`，复现指纹 `b50ffc5b…`，593 单元冻结语料。Nexent 智能体只调用两个 MCP 工具：`govkb_flow_open`（范围门与检索）和 `govkb_flow_submit`（逐条核验、修复一次、补查一次、逐条取舍），最终答复只用核验后的结果。模型为百炼 `kimi-k3.1-pro`，`deepseek-flash` 配置保留。
+- **入口**：[材料入口](docs/competition/README.md)、[r22 正文与技术附录](docs/competition/materials-r22/README.md)、[V4.0 局限与表述边界](docs/competition/已知局限与材料表述边界-V4.0-2026-11-26.md)、[智能体导出](config/exports/frozen-flow-20261114/README.md)、[冻结回执](evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json)。
+- **口径**：V4.0 的效果数字都是开发对比，不是独立评测。30 题盲评原结论（结果可接受 43/60，普通检索 51/60）不变。
+- **包内自测**：`PYTHONPATH=src python -m pytest -q` 加 `SUBMISSION-MANIFEST.json` 中 `core_tests` 所列 12 个文件，不调用模型。
+
+下文“已验证范围”为 10 月 22 日基线的固定情境结果，保留原日期。
+
 ## 已验证范围
 
 | 核心能力 | 当前结果与证据 |

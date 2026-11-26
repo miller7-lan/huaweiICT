@@ -1,13 +1,18 @@
 {
  "scope": "r22 package unpacked and self-tested on Windows; same machine as the original Nexent host, so this is not a peer L1",
  "date": "2026-11-26",
- "zip_sha256": "2467cb457c173f8649352aa2ed62398afb3571725156210bf60b4981ea52e3d0",
+ "zip_sha256": "07cb9f2b92b310de850185eae26852e4ca978a03f54eba34dd5124dd618ab88c",
  "platform": "Windows-11-10.0.26200-SP0",
  "python": "3.12.14 (existing project venv; packages from requirements.lock)",
  "unpacked_into": "a new empty directory",
- "files_checked_against_SUBMISSION-MANIFEST": 694,
+ "files_checked_against_SUBMISSION-MANIFEST": 699,
  "hash_mismatches": 0,
- "self_test": {"command": "PYTHONPATH=src python -m pytest -q <12 core test files listed in SUBMISSION-MANIFEST>", "summary": "324 passed, 1 warning", "passed": true},
+ "self_test": {
+  "command": "PYTHONPATH=src python -m pytest -q <12 core test files listed in SUBMISSION-MANIFEST>",
+  "summary": "324 passed, 1 warning",
+  "passed": true
+ },
  "same_result_as_linux": true,
- "new_model_calls": 0
+ "new_model_calls": 0,
+ "revision": "rerun for package revision 3"
 }

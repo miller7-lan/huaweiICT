@@ -1,15 +1,15 @@
 {
  "scope": "r22 submission candidate package verification; offline core tests only, no new business acceptance",
  "date": "2026-11-26",
- "built_from_commit": "dbbfbda1a13cc8fbed10c0ca4d45e4c44d95ccf5",
+ "built_from_commit": "378664fcfcf52cc5fc330da853ab44adb24ab499",
  "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
  "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
  "freeze_receipt": "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json",
  "passed": true,
  "problems": [],
- "files": 694,
- "bytes": 7402843,
- "evidence_files": 99,
+ "files": 699,
+ "bytes": 7418813,
+ "evidence_files": 101,
  "agent_export": "config/exports/frozen-flow-20261114/flow-agent.json (V4.0.1, published, sha256 53437c58…)",
  "excluded_code_dirs": [
   "data",
@@ -17,28 +17,27 @@
  ],
  "excluded_internal_planning": [
   "docs/competition/30题人工盲评分工-2026-11-05.md",
-  "docs/competition/materials-v31-20261117/人工回交待办.md",
-  "docs/competition/全部任务清单-V3.1与初赛交付.md"
+  "docs/competition/materials-v31-20261117/人工回交待办.md"
  ],
  "evidence_selection": "every evidence file linked from the V4.0 and V3.1 material drafts, the model-selection and Y12 docs, plus every evidence file named in the r22 main text and appendix",
  "zip_check": {
   "zip": "ICT-V40-r22提交候选包-20261126.zip",
-  "zip_sha256": "2467cb457c173f8649352aa2ed62398afb3571725156210bf60b4981ea52e3d0",
-  "members": 694,
+  "zip_sha256": "07cb9f2b92b310de850185eae26852e4ca978a03f54eba34dd5124dd618ab88c",
+  "members": 699,
   "members_mismatched": [],
   "members_missing": [],
   "self_test": {
    "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
    "exit_code": 0,
-   "summary": "324 passed, 1 warning in 5.26s",
+   "summary": "324 passed, 1 warning in 4.62s",
    "passed": true
   }
  },
  "documents_outside_package": {
   "reason": "r22 Word/PDF contain the V4.0.1 interface screenshots and stay in the private repository; uploaded alongside the package",
   "sha256": {
-   "ICT-V40-r22技术附录.docx": "17972a022127e7b7df3c0f79e6a5bbf6891fa90a0f63c3b7d42fcb6814991ba3",
-   "ICT-V40-r22技术附录.pdf": "8fefe87aca4b858e547503c5502116fca16ba18fc6ad3cfea9f07b431eb8bd48",
+   "ICT-V40-r22技术附录.docx": "dcbdf614d9dce03d762f99717f717ca6ce0226f184ebc5d44914bcb8df733381",
+   "ICT-V40-r22技术附录.pdf": "4cc379917fbc52caa3251b3f65a2dbce17f57ccb02b3c5b1850bce206b9b5fd6",
    "ICT-V40-r22正文.docx": "ac4e0047c0b172caba9004def04e235c0d7460c8711c94759a507bbb7efae3d3",
    "ICT-V40-r22正文.pdf": "a3bd422e615f00f74612b6603330c913b773d00c675d75d5a7d50afd17741841"
   }
@@ -46,5 +45,6 @@
  "new_model_calls": 0,
  "src_changed": false,
  "official_submission_completed": false,
- "revision": "2: figure 1-1 redrawn for V4.0; U-3 template timing receipt added; package rebuilt"
+ "revision": "3: appendix 2.4/7.7/7.8 stale V3 statements fixed; drafts marked merged; V4.0 limitations page added; teammate task list kept out; package rebuilt",
+ "note": "evidence files inside the package describe earlier builds; the records outside the package (this file) are authoritative"
 }
