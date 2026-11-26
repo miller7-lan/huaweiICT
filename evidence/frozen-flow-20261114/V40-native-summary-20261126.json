@@ -1,0 +1,87 @@
+{
+ "date": "2026-11-26",
+ "scope": "V4.0 native Nexent check on Windows, development questions; not a score",
+ "model": "kimi-k3.1-pro (Nexent model_id 2), requested_output_tokens 2048, thinking off",
+ "service_corpus_sha256": "5e30a8d4e2239be4b52c5585bb456a2ac7f431f1f959295f28a1ba4b22eb7e05",
+ "code": "src at 460a2be (V4.0 freeze); runner 5e33e0c; agent prompt 565bb31",
+ "runs": [
+  {
+   "receipt": "native-run-20261126T012223Z.json",
+   "question_id": "X16",
+   "expected_outcome": "answer",
+   "tool_order": [
+    "govkb_flow_open"
+   ],
+   "model_starts": 4,
+   "verdict": "fail",
+   "note": "old prompt; open OK, no submit, platform promoted plain text; recorded passed by the old runner, CHECK_SKIPPED_AFTER_OPEN_OK under 5e33e0c"
+  },
+  {
+   "receipt": "native-run-20261126T012418Z.json",
+   "question_id": "X19",
+   "expected_outcome": "stop",
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 5,
+   "verdict": "pass",
+   "note": "old prompt"
+  },
+  {
+   "receipt": "native-run-20261126T012932Z.json",
+   "question_id": "X16",
+   "expected_outcome": "answer",
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 3,
+   "verdict": "pass",
+   "note": "prompt 565bb31"
+  },
+  {
+   "receipt": "native-run-20261126T013005Z.json",
+   "question_id": "X16",
+   "expected_outcome": "answer",
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 3,
+   "verdict": "pass",
+   "note": "prompt 565bb31"
+  },
+  {
+   "receipt": "native-run-20261126T013040Z.json",
+   "question_id": "X16",
+   "expected_outcome": "answer",
+   "tool_order": [
+    "govkb_flow_open",
+    "govkb_flow_submit",
+    "final_answer"
+   ],
+   "model_starts": 4,
+   "verdict": "pass",
+   "note": "prompt 565bb31"
+  },
+  {
+   "receipt": "native-run-20261126T013123Z.json",
+   "question_id": "X22",
+   "expected_outcome": "stop",
+   "tool_order": [
+    "govkb_flow_open",
+    "final_answer"
+   ],
+   "model_starts": 4,
+   "verdict": "pass",
+   "note": "prompt 565bb31"
+  }
+ ],
+ "model_starts_total": 23,
+ "finding": "Before 565bb31, kimi skipped govkb_flow_submit on X16 and Nexent showed unchecked text. After the prompt fix, X16 went open-submit-final 3/3; stop questions unchanged."
+}
