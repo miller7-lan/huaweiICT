@@ -1,0 +1,141 @@
+{
+ "scope": "second matter deployed from the reviewed-ontology workflow template: Henan household transfer; counts, ids and hashes only",
+ "date": "2026-11-26",
+ "matter_selection": {
+  "rule": "everyday high-demand matters whose sources are in the frozen originals with at least two independent documents",
+  "pool": [
+   "居住证办理",
+   "户口迁移",
+   "居民户口簿补领"
+  ],
+  "seed": "20261126-second-matter",
+  "chosen": "户口迁移"
+ },
+ "candidate": {
+  "candidate_id": "a1c2b103076c37e49accfe6b1bcc18cc54d658aaa894151d9e8b8d3bbef65a10",
+  "expected_head": "32d0a07b75c6cb26703d32ee34b287c27d9d46137fe4d61bcaa959ab137f7881",
+  "source_binding": "c81e0bd327e4b0ee1b19f79abf52ba90301876a2402bbe3000a17c934d01b3b7",
+  "implementation": "3991358ae11061d63c1989e649a310626ec2e22e84723ee0dffdb67fca72048a",
+  "metrics": {
+   "located_segments": 16,
+   "model_calls": 0,
+   "plan_nodes": 5,
+   "source_documents": 2
+  },
+  "plan_nodes": [
+   "one_stop_scope",
+   "fallback_procedure",
+   "certificate_reissue",
+   "certificate_fee_basis",
+   "archive_answer"
+  ],
+  "unresolved": [
+   "current_applicability",
+   "certificate_fee_amount",
+   "local_transfer_policy_conditions",
+   "one_stop_availability_at_specific_offices",
+   "required_materials_by_case",
+   "later_normative_changes"
+  ],
+  "private_record_sha256": "ac1c74aa0512d7a109fffb12afd14f66753a344746252d0b359db6621c196d13"
+ },
+ "human_structure_review": {
+  "reviewer_role": "team captain",
+  "confirmed": true,
+  "meaning": "structure accepted for isolated trial activation; not business approval"
+ },
+ "local_demo": {
+  "status": "PASS_LOCAL_HENAN_TRANSFER_ARCHIVE_DEMO",
+  "checks": [
+   "archive_plan_executed",
+   "five_dependent_nodes",
+   "current_and_other_scopes_stop",
+   "rollback_disables_relation",
+   "old_originals_and_flags_unchanged"
+  ],
+  "private_record_sha256": "396567ccc38798afc822f44c386fc3fd0e9325e4f2ad376b757eb226196c580b"
+ },
+ "native_run": {
+  "status": "PASSED",
+  "observed_model_starts": 8,
+  "native_duration_ms": 17031.0,
+  "checks_passed": 15,
+  "checks_total": 15,
+  "model": "deepseek-flash",
+  "rolled_back": true,
+  "native_record": "evidence/henan-transfer-native-20261126/20261126T073949808623Z.json"
+ },
+ "timing_utc": [
+  {
+   "step": "start_design_approved",
+   "utc": "2026-11-26T07:30:21Z"
+  },
+  {
+   "step": "execution_layer_written_tests_pass",
+   "utc": "2026-11-26T07:33:10Z"
+  },
+  {
+   "step": "profile_written_start",
+   "utc": "2026-11-26T07:33:26Z"
+  },
+  {
+   "step": "skill_rendered",
+   "utc": "2026-11-26T07:33:27Z"
+  },
+  {
+   "step": "candidate_prepared_windows",
+   "utc": "2026-11-26T07:34:53Z"
+  },
+  {
+   "step": "native_runner_written",
+   "utc": "2026-11-26T07:36:12Z"
+  },
+  {
+   "step": "human_structure_confirmed",
+   "utc": "2026-11-26T07:37:31Z"
+  },
+  {
+   "step": "local_demo_passed",
+   "utc": "2026-11-26T07:37:40Z"
+  },
+  {
+   "step": "native_run_passed",
+   "utc": "2026-11-26T07:40:25Z"
+  }
+ ],
+ "elapsed": {
+  "design_approved_to_native_pass_s": 605,
+  "of_which_waiting_for_human_confirmation_s": 79,
+  "template_check_s": 0.09,
+  "template_render_s": 0.09,
+  "not_timed": "matter selection and scenario design (previous step, after 07:23Z)",
+  "who": "AI agent writing code with the team captain confirming the structure; not a measure of how long a person would take"
+ },
+ "code": {
+  "reused_unchanged": [
+   "SKILL template",
+   "controller protocol template",
+   "five MCP tools and their gates",
+   "Nexent provisioner (via workflow_template.profile_provisioner)",
+   "workspace activation and rollback",
+   "native run checks"
+  ],
+  "new_lines": {
+   "src/gov_mcp/henan_transfer.py": 235,
+   "src/gov_mcp/henan_transfer_sources.py": 138,
+   "src/gov_mcp/henan_transfer_preview.py": 131,
+   "scripts/run_henan_transfer.py": 141,
+   "scripts/run_henan_transfer_native.py": 425,
+   "tests/test_henan_transfer.py": 100,
+   "config/skill-templates/profiles/henan-household-transfer.json": 57
+  },
+  "changed_lines": {
+   "src/gov_mcp/ontology_crossdoc_preview_server.py": 8
+  },
+  "note": "the two run scripts and the preview are adapted copies of the Henan ones; the execution layer and source adapter are new"
+ },
+ "platform_note": "the Windows Nexent was reinstalled after October; the runner binds to the current tenant through the project's own agent and skips 27 stale ledger ids (agent 1, the published flow agent, stays protected) without editing the old files",
+ "new_model_calls": 8,
+ "business_approval": false,
+ "formally_published": false
+}
