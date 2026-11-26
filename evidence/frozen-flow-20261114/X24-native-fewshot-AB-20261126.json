@@ -1,0 +1,424 @@
+{
+ "date": "2026-11-26",
+ "scope": "development questions X01-X24 (24-ba99e5f), native Nexent on Windows, one run each; not a score",
+ "purpose": "fix kimi-k3.1-pro ending a step with a plan sentence and no code (Nexent then shows unchecked text)",
+ "A": {
+  "agent": "V4.0 published version 1: prompt 565bb31, few-shot empty",
+  "runs": [
+   {
+    "question_id": "X01",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "partial_answer",
+    "model_starts": 7,
+    "receipt": "native-run-20261126T023759Z.json"
+   },
+   {
+    "question_id": "X02",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": null,
+    "model_starts": 3,
+    "receipt": "native-run-20261126T023858Z.json"
+   },
+   {
+    "question_id": "X03",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 9,
+    "receipt": "native-run-20261126T023924Z.json"
+   },
+   {
+    "question_id": "X04",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024026Z.json"
+   },
+   {
+    "question_id": "X05",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024055Z.json"
+   },
+   {
+    "question_id": "X06",
+    "expected_outcome": "answer",
+    "passed": false,
+    "result_kind": null,
+    "model_starts": 5,
+    "receipt": "native-run-20261126T024129Z.json"
+   },
+   {
+    "question_id": "X07",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "partial_answer",
+    "model_starts": 5,
+    "receipt": "native-run-20261126T024157Z.json"
+   },
+   {
+    "question_id": "X08",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024253Z.json"
+   },
+   {
+    "question_id": "X09",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 5,
+    "receipt": "native-run-20261126T024330Z.json"
+   },
+   {
+    "question_id": "X10",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 6,
+    "receipt": "native-run-20261126T024410Z.json"
+   },
+   {
+    "question_id": "X11",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "partial_answer",
+    "model_starts": 8,
+    "receipt": "native-run-20261126T024454Z.json"
+   },
+   {
+    "question_id": "X12",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024552Z.json"
+   },
+   {
+    "question_id": "X13",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024622Z.json"
+   },
+   {
+    "question_id": "X14",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024649Z.json"
+   },
+   {
+    "question_id": "X15",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 5,
+    "receipt": "native-run-20261126T024718Z.json"
+   },
+   {
+    "question_id": "X16",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T024801Z.json"
+   },
+   {
+    "question_id": "X17",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024834Z.json"
+   },
+   {
+    "question_id": "X18",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024904Z.json"
+   },
+   {
+    "question_id": "X19",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T024928Z.json"
+   },
+   {
+    "question_id": "X20",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 5,
+    "receipt": "native-run-20261126T024959Z.json"
+   },
+   {
+    "question_id": "X21",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T025044Z.json"
+   },
+   {
+    "question_id": "X22",
+    "expected_outcome": "stop",
+    "passed": false,
+    "result_kind": null,
+    "model_starts": 3,
+    "receipt": "native-run-20261126T025128Z.json"
+   },
+   {
+    "question_id": "X23",
+    "expected_outcome": "stop",
+    "passed": false,
+    "result_kind": null,
+    "model_starts": 3,
+    "receipt": "native-run-20261126T025148Z.json"
+   },
+   {
+    "question_id": "X24",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop@open",
+    "model_starts": 2,
+    "receipt": "native-run-20261126T025210Z.json"
+   }
+  ],
+  "summary": {
+   "answer->None": 1,
+   "answer->answer": 8,
+   "answer->answer_with_gaps": 2,
+   "answer->partial_answer": 3,
+   "answer->stop": 1,
+   "protocol_fail": 3,
+   "stop->answer_with_gaps": 1,
+   "stop->stop": 5
+  }
+ },
+ "B": {
+  "agent": "draft with shape-only few-shot (all placeholders, all steps); published as V4.0.1 (version 2)",
+  "runs": [
+   {
+    "question_id": "X01",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T025308Z.json"
+   },
+   {
+    "question_id": "X02",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T025346Z.json"
+   },
+   {
+    "question_id": "X03",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "partial_answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T025410Z.json"
+   },
+   {
+    "question_id": "X04",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T025511Z.json"
+   },
+   {
+    "question_id": "X05",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T025536Z.json"
+   },
+   {
+    "question_id": "X06",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T025604Z.json"
+   },
+   {
+    "question_id": "X07",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "partial_answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T025641Z.json"
+   },
+   {
+    "question_id": "X08",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T025741Z.json"
+   },
+   {
+    "question_id": "X09",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 5,
+    "receipt": "native-run-20261126T025806Z.json"
+   },
+   {
+    "question_id": "X10",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T025904Z.json"
+   },
+   {
+    "question_id": "X11",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "partial_answer",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T025942Z.json"
+   },
+   {
+    "question_id": "X12",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T030016Z.json"
+   },
+   {
+    "question_id": "X13",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T030043Z.json"
+   },
+   {
+    "question_id": "X14",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": null,
+    "model_starts": 3,
+    "receipt": "native-run-20261126T030108Z.json"
+   },
+   {
+    "question_id": "X15",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T030136Z.json"
+   },
+   {
+    "question_id": "X16",
+    "expected_outcome": "answer",
+    "passed": true,
+    "result_kind": "answer",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T030213Z.json"
+   },
+   {
+    "question_id": "X17",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T030248Z.json"
+   },
+   {
+    "question_id": "X18",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T030311Z.json"
+   },
+   {
+    "question_id": "X19",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T030340Z.json"
+   },
+   {
+    "question_id": "X20",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "answer_with_gaps",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T030404Z.json"
+   },
+   {
+    "question_id": "X21",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop",
+    "model_starts": 4,
+    "receipt": "native-run-20261126T030441Z.json"
+   },
+   {
+    "question_id": "X22",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop@open",
+    "model_starts": 2,
+    "receipt": "native-run-20261126T030526Z.json"
+   },
+   {
+    "question_id": "X23",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop@open",
+    "model_starts": 2,
+    "receipt": "native-run-20261126T030540Z.json"
+   },
+   {
+    "question_id": "X24",
+    "expected_outcome": "stop",
+    "passed": true,
+    "result_kind": "stop@open",
+    "model_starts": 3,
+    "receipt": "native-run-20261126T030553Z.json"
+   }
+  ],
+  "summary": {
+   "answer->None": 1,
+   "answer->answer": 8,
+   "answer->answer_with_gaps": 4,
+   "answer->partial_answer": 3,
+   "stop->answer_with_gaps": 2,
+   "stop->stop": 6
+  }
+ },
+ "model_starts": {
+  "A": 109,
+  "B": 81
+ },
+ "finding": "protocol skips 3 -> 0; should-answer false stop 1 -> 0; should-stop stopped 5 -> 6; should-stop ended as answer_with_gaps 1 -> 2 (X19, X20: both state the asked values are absent and list them as unknowns; no value invented).",
+ "result_kind_note": "None for a passed run = the task record could not be matched by question and time",
+ "src": "unchanged (V4.0 freeze 460a2be); only the agent prompt configuration changed"
+}
