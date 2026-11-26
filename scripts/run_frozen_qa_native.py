@@ -103,7 +103,7 @@ def main():
         conversation = api.runtime_call("PUT", "/conversation/create", {"title": "河南冻结资料问答"})["data"]["conversation_id"]
         request = {"query": args.question, "conversation_id": conversation, "agent_id": saved["agents"]["assistant"],
                    "model_id": saved["model_id"], "version_no": 0, "is_debug": True, "history": [],
-                   "requested_output_tokens": 1024, "enable_plan": False, "enable_automation_tool": False}
+                   "requested_output_tokens": saved.get("requested_output_tokens", 1024), "enable_plan": False, "enable_automation_tool": False}
         started = time.monotonic()
         with api.http.stream("POST", api.runtime_base + "/agent/run", json=request,
                              headers={"Authorization": "Bearer " + api.token},
