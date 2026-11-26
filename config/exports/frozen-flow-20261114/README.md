@@ -1,6 +1,6 @@
 # 跨文档流程的 Nexent 接线说明
 
-**当前（2026-11-26）：V4.0.1。** `flow-agent.json` 为 Windows 本机 Nexent v2.7.0 上 1 号智能体 `govfrozenflow_assistant`（显示名“河南冻结资料跨文档问答”）的导出，已发布并启用；模型 `kimi-k3.1-pro`（关闭思考、温度 0、输出上限 2048），职责提示词与 `scripts/frozen_flow_native.py` 的 `PROMPT`（`565bb31`）、示例栏与 `FEW_SHOTS`（`5d79154`）逐字一致；MCP 服务 `govkb_frozen_flow`（`http://host.docker.internal:8787/sse`）。导出不调用模型，凭据扫描通过；散列见 [native-export.json](../../../evidence/frozen-flow-20261114/native-export.json)。配置、调试过程与截图说明见技术附录 7.9 与 [技术附录更新稿](../../../docs/competition/materials-v40-20261126/技术附录更新稿.md)。
+**当前（2026-11-26）：V4.0.1。** `flow-agent.json` 为 Windows 本机 Nexent v2.7.0 上 1 号智能体 `govfrozenflow_assistant`（显示名“河南冻结资料跨文档问答”）的导出，已发布并启用（Nexent 版本号 3，问答配置与版本号 2 相同，另加开场白与 3 个示例问题）；模型 `kimi-k3.1-pro`（关闭思考、温度 0、输出上限 2048），职责提示词与 `scripts/frozen_flow_native.py` 的 `PROMPT`（`565bb31`）、示例栏与 `FEW_SHOTS`（`5d79154`）逐字一致；MCP 服务 `govkb_frozen_flow`（`http://host.docker.internal:8787/sse`）。导出不调用模型，凭据扫描通过；散列见 [native-export.json](../../../evidence/frozen-flow-20261114/native-export.json)。配置、调试过程与截图说明见技术附录 7.9 与 [技术附录更新稿](../../../docs/competition/materials-v40-20261126/技术附录更新稿.md)。
 
 > 以下为 2026-11-14 首次接线时的说明，保留原样：当时登记为本机 41 号禁用草稿、模型 deepseek-flash、输出上限 1024；“禁用、不发布”的描述只适用于那一版。
 
