@@ -41,7 +41,7 @@ from verify_ontology_crossdoc_native import STAGES, child_invocations
 RUNTIME = ROOT / ".runtime/henan-transfer-native-20261126"
 OUTPUT = ROOT / "evidence/henan-transfer-native-20261126"
 PREPARED = ROOT / ".runtime/henan-transfer-20261126"
-PREPARED_EVIDENCE = ROOT / "evidence/henan-transfer-20261126"
+PREPARED_EVIDENCE = PREPARED / "evidence-private"
 OLD_ONTOLOGY = PREPARED / "ontology"
 PROFILE_PATH = ROOT / "config/skill-templates/profiles/henan-household-transfer.json"
 MAX_MODEL_STARTS = 14

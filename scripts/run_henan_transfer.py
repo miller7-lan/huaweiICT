@@ -19,7 +19,7 @@ from private_runtime import ensure_private_directory
 
 RUNTIME = ROOT / ".runtime/henan-transfer-20261126"
 ORIGINALS = ROOT / ".runtime/frozen-qa-20261030/originals"
-OUTPUT = ROOT / "evidence/henan-transfer-20261126"
+OUTPUT = ROOT / ".runtime/henan-transfer-20261126/evidence-private"  # holds source text: private
 
 
 def write_new(path, value):
