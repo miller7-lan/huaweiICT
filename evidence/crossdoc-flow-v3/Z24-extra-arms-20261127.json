@@ -1,0 +1,96 @@
+{
+ "round": "Z24-extra-arms-20261127",
+ "scope": "counts and question ids only; same 19 Z24 questions, system code unchanged",
+ "arms": {
+  "closed_book": {
+   "what": "same model (kimi-k3.1-pro, thinking off) answers with no corpus and no checks; plain assistant prompt asking to name the basis and to say so when unsure",
+   "script": "scripts/closed_book_baseline.py",
+   "model_calls": 19,
+   "errors": 0,
+   "output_tokens": 5007,
+   "duration_ms_median": 10708.0,
+   "questions_sha256": "ae73914da3c4e350b5264fe293c8da8945dd99066098e6570f07ee82d8da0450",
+   "answer_questions": {
+    "n": 12,
+    "conclusion": {
+     "部分": 6,
+     "是": 4,
+     "否": 2
+    },
+    "by_question": {
+     "Z01": "部分",
+     "Z02": "部分",
+     "Z03": "部分",
+     "Z04": "是",
+     "Z05": "否",
+     "Z06": "部分",
+     "Z07": "部分",
+     "Z08": "是",
+     "Z12": "否",
+     "Z14": "是",
+     "Z15": "部分",
+     "Z16": "是"
+    }
+   },
+   "stop_questions": {
+    "n": 7,
+    "stopped": 0,
+    "answered": 7
+   },
+   "unsupported_specifics_questions": [
+    "Z01",
+    "Z03",
+    "Z05",
+    "Z07",
+    "Z12",
+    "Z15",
+    "Z16",
+    "Z17",
+    "Z18",
+    "Z21",
+    "Z23",
+    "Z24"
+   ]
+  },
+  "keyword_bot": {
+   "what": "returns the single best literal-match unit of the frozen corpus verbatim; no gate, no synthesis, no model call",
+   "script": "scripts/keyword_bot_baseline.py",
+   "model_calls": 0,
+   "questions_sha256": "ae73914da3c4e350b5264fe293c8da8945dd99066098e6570f07ee82d8da0450",
+   "answer_questions": {
+    "n": 12,
+    "conclusion": {
+     "否": 5,
+     "部分": 7
+    },
+    "by_question": {
+     "Z01": "否",
+     "Z02": "否",
+     "Z03": "部分",
+     "Z04": "部分",
+     "Z05": "否",
+     "Z06": "否",
+     "Z07": "部分",
+     "Z08": "否",
+     "Z12": "部分",
+     "Z14": "部分",
+     "Z15": "部分",
+     "Z16": "部分"
+    }
+   },
+   "stop_questions": {
+    "n": 7,
+    "stopped": 0,
+    "answered": 7
+   },
+   "unsupported_specifics_questions": []
+  }
+ },
+ "judging": {
+  "who": "team lead (陈), single checker, not blind: AI preliminary judgments, each row confirmed or changed by the lead (3 changed, 5 annotated)",
+  "sheet_sha256": "fabd1e719106868d62e4ef898bd2ef457a48d6544a4996cee8011cebe13ec271",
+  "private_branch": "review/z24-extra-chen 87129e9",
+  "unsupported_specifics_rule": "amounts, dates, time limits or document numbers that the frozen corpus does not contain; article numbers not counted",
+  "not_comparable": "these two arms were judged by one non-blind checker; the three original arms by one blind reviewer; compare outcome types (stop/answer, unsupported specifics), not fine-grained correctness"
+ }
+}
