@@ -1,16 +1,16 @@
 {
  "scope": "r23 submission candidate package verification; offline core tests only, no new business acceptance",
  "date": "2026-11-26",
- "built_from_commit": "03c5248fac5adad33f132214c3fa8d8218720b21",
+ "built_from_commit": "7735650b6ef2ccf160e046a4352aade4855e6c06",
  "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
  "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
  "freeze_receipt": "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json",
  "passed": true,
  "problems": [],
- "files": 736,
- "bytes": 7686539,
+ "files": 737,
+ "bytes": 7704799,
  "by_reason": {
-  "code": 572,
+  "code": 573,
   "extra": 143,
   "linked from materials (level 1)": 2,
   "linked from materials (level 2)": 9,
@@ -29,14 +29,14 @@
  ],
  "zip_check": {
   "zip": ".runtime/submission-r23/ICT-V40-r23提交候选包-20261126.zip",
-  "zip_sha256": "b371dd395660d253bd78e9a2ba08117c4d84022275a710a2e10b61ff7303caea",
-  "members": 736,
+  "zip_sha256": "274a5e293b08d559ea7e696241e02d7e8a424975704b0ea9ec1bfb1ac43b2459",
+  "members": 737,
   "members_mismatched": [],
   "members_missing": [],
   "self_test": {
    "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
    "exit_code": 0,
-   "summary": "326 passed, 1 warning in 4.96s",
+   "summary": "326 passed, 1 warning in 5.07s",
    "failed": [],
    "passed": true
   }
@@ -44,12 +44,12 @@
  "documents_outside_package": {
   "reason": "r23 Word/PDF contain V4.0.1 interface screenshots and stay in the private repository; uploaded alongside the package",
   "sha256": {
-   "ICT-V40-r23技术附录.docx": "5827d1577d1ca22ee39cc0c2bd90632332520e8217fefd0cbcf42c4c68fbdde5",
-   "ICT-V40-r23正文.docx": "c4f74bd18ce714aeb7f6b747f37531c659dac455293cebbfa59f6805ff0cdffc",
-   "ICT-V40-r23技术附录.pdf": "df103a056086f583b8aa0c1965b999b1947ca5e3358dc14ffd48a13868f885bf",
-   "ICT-V40-r23正文.pdf": "dc56d6d51ea79e4603deb36c563bd4747ac4e0523b090a1e8cb04d5ed6a40c33"
+   "ICT-V40-r23技术附录.docx": "bf875edd5a344da95a9d0e49c4f6f9ad91a1c0fe322b6ac3183a69766eacc801",
+   "ICT-V40-r23正文.docx": "eb7880aa4d14526ce7e04182dee59cf82a71bafbc02846c56667742eb9523b19",
+   "ICT-V40-r23技术附录.pdf": "102eb8194db44a4a717dafee108e082ba93e0d2b0006addf5cf2c00dfce55d48",
+   "ICT-V40-r23正文.pdf": "b52c72b631b3fcebcd41b67e8285d3ff5267bd69af5823d477c3b11db58c08de"
   }
  },
  "new_model_calls": 0,
- "revision": "第 4 版: Z24 formal evaluation (appendix 8.9), V4.0 peer L1 passed, Li r22 readthrough (16 items)"
+ "revision": "第 5 版: formal result first, overview table, Z24 single blind reviewer correction, figure 1-1 for V4.0.2, layout"
 }

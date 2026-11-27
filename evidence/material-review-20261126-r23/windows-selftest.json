@@ -1,18 +1,18 @@
 {
  "scope": "r23 package unpacked and self-tested on Windows; same machine as the original Nexent host, so this is not a peer L1",
  "date": "2026-11-26",
- "zip_sha256": "b371dd395660d253bd78e9a2ba08117c4d84022275a710a2e10b61ff7303caea",
+ "zip_sha256": "274a5e293b08d559ea7e696241e02d7e8a424975704b0ea9ec1bfb1ac43b2459",
  "platform": "Windows-11-10.0.26200-SP0",
  "python": "3.12.14 (existing project venv; packages from requirements.lock)",
  "unpacked_into": "a new empty directory",
- "files_checked_against_SUBMISSION-MANIFEST": 736,
+ "files_checked_against_SUBMISSION-MANIFEST": 737,
  "hash_mismatches": 0,
  "self_test": {
   "command": "PYTHONPATH=src python -m pytest -q <12 core test files listed in SUBMISSION-MANIFEST>",
-  "summary": "326 passed, 1 warning in 3.03s",
+  "summary": "326 passed, 1 warning in 2.64s",
   "passed": true
  },
  "same_result_as_linux": true,
  "new_model_calls": 0,
- "revision": "第 4 版: Z24 formal evaluation (appendix 8.9), V4.0 peer L1 passed, Li r22 readthrough (16 items)"
+ "revision": "第 5 版: formal result first, overview table, Z24 single blind reviewer correction, figure 1-1 for V4.0.2, layout"
 }
