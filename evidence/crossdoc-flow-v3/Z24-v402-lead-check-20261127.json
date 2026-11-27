@@ -2,20 +2,56 @@
  "round": "Z24-A5-v402-20261127",
  "scope": "lead check of reviewer ratings against the frozen corpus (593 units, 5e30a8d4…); question ids and unit locators only; reviewer values are not changed",
  "reviewers": {
-  "李": {"private_commit": "8278482", "sheet_sha256": "c3e646ce5e7be657fda3c52e931c5e58bbf713508078dcb248bb16b137f82177"},
-  "程": {"private_commit": "3ded204", "note": "re-reviewed from the blank sheet; an earlier void return (a735817) had started from a sheet pre-filled by the first reviewer's agent, so 程 saw the first reviewer's values before the re-review; both reviewers state the final sheets were filled independently"}
+  "李": {
+   "private_commit": "8278482",
+   "sheet_sha256": "c3e646ce5e7be657fda3c52e931c5e58bbf713508078dcb248bb16b137f82177"
+  },
+  "程": {
+   "used": false,
+   "note": "second blind review not completed (see Z24-A5-sheet-receipts-20261127.json)"
+  }
  },
- "agreement_note": "the two final sheets agree on every value; because of the exposure above this is not used as evidence of rating reliability",
+ "agreement_note": "only one blind sheet is used; no agreement rate is reported",
  "reference_pending_resolved": {
-  "Z03": {"reviewers": "待确认", "lead": "reference correct", "basis": "Excel工作表行政事业性收费!第123—128行 list the six sub-items; the pack only carried units cited by some output, so reviewers could not see them; all three stops are wrong stops either way"},
-  "Z05": {"reviewers": "待确认", "lead": "reference correct", "basis": "Excel工作表考试考务费!第5行 carries the parent category"},
-  "Z14": {"reviewers": "待确认", "lead": "reference correct; minor", "basis": "the one-month filing period is 第二十二条; the question asks who reviews and how long processing takes, so omitting it is at most a minor miss"}
+  "Z03": {
+   "reviewers": "待确认",
+   "lead": "reference correct",
+   "basis": "Excel工作表行政事业性收费!第123—128行 list the six sub-items; the pack only carried units cited by some output, so reviewers could not see them; all three stops are wrong stops either way"
+  },
+  "Z05": {
+   "reviewers": "待确认",
+   "lead": "reference correct",
+   "basis": "Excel工作表考试考务费!第5行 carries the parent category"
+  },
+  "Z14": {
+   "reviewers": "待确认",
+   "lead": "reference correct; minor",
+   "basis": "the one-month filing period is 第二十二条; the question asks who reviews and how long processing takes, so omitting it is at most a minor miss"
+  }
  },
  "debatable_ratings": {
-  "Z19": {"reviewers": "reference wrong (expected stop); three 40-day answers rated complete", "lead": "reference defensible", "basis": "HN-MEASURES-2021-PDF says 承诺40日(自然日)→30日; HN-MEASURES-2024-JY 正文段落2 says 法定60日→30日; the outputs give 40 days without the 60-day figure", "reported": "both ways"},
-  "Z06_flow_v3": {"reviewers": "漏核心", "lead": "漏次要", "basis": "both sub-questions answered (online channel and mailing; 15 days, up to 30); missing qualifiers 暂住登记满半年 and 自费"},
-  "Z07_flow_v3": {"reviewers": "漏核心", "lead": "either is defensible", "basis": "2021 part complete; 2024 excerpt covers three of four conditions, missing 上次为省内现场办理且已采集指纹"},
-  "Z20": {"reviewers": "reference wrong (expected stop)", "lead": "agree", "basis": "HN-MEASURES-2024-JY 正文段落2: 群众可选择自费邮寄服务"}
+  "Z19": {
+   "reviewers": "reference wrong (expected stop); three 40-day answers rated complete",
+   "lead": "reference defensible",
+   "basis": "HN-MEASURES-2021-PDF says 承诺40日(自然日)→30日; HN-MEASURES-2024-JY 正文段落2 says 法定60日→30日; the outputs give 40 days without the 60-day figure",
+   "reported": "both ways"
+  },
+  "Z06_flow_v3": {
+   "reviewers": "漏核心",
+   "lead": "漏次要",
+   "basis": "both sub-questions answered (online channel and mailing; 15 days, up to 30); missing qualifiers 暂住登记满半年 and 自费"
+  },
+  "Z07_flow_v3": {
+   "reviewers": "漏核心",
+   "lead": "either is defensible",
+   "basis": "2021 part complete; 2024 excerpt covers three of four conditions, missing 上次为省内现场办理且已采集指纹"
+  },
+  "Z20": {
+   "reviewers": "reference wrong (expected stop)",
+   "lead": "agree",
+   "basis": "HN-MEASURES-2024-JY 正文段落2: 群众可选择自费邮寄服务"
+  }
  },
- "pack_limitation": "review pack showed only units cited by at least one output; a reference unit cited by no output was invisible to reviewers (Z03, Z05, Z14)"
+ "pack_limitation": "review pack showed only units cited by at least one output; a reference unit cited by no output was invisible to reviewers (Z03, Z05, Z14)",
+ "third_party_audit": "a friend of 程 outside the team re-checked a sheet with 李's values row by row (not blind): 45 pass, 4 doubtful, 8 pending of 57; questions not passed Z03, Z05, Z14, Z18, Z19 — see Z24-v402-review-li-20261127.json"
 }

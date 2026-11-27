@@ -1,0 +1,144 @@
+{
+ "round": "Z24-A5-v402-20261127",
+ "scope": "counts and question ids only",
+ "blind_reviewers": 1,
+ "reviewer": "李",
+ "sheet": {
+  "private_commit": "8278482",
+  "sha256": "c3e646ce5e7be657fda3c52e931c5e58bbf713508078dcb248bb16b137f82177",
+  "rule_check": "passed"
+ },
+ "second_reviewer": "not completed: 程 withdrew the returned sheet (review/z24-cheng2 reverted at 8789c88) and stated the blind review was not done; no second blind sheet is used",
+ "questions": 19,
+ "rows": 57,
+ "by_method": {
+  "single_shot": {
+   "conclusions_correct": {
+    "是": 7,
+    "不适用": 12
+   },
+   "missing_points": {
+    "否": 6,
+    "不适用": 12,
+    "漏次要": 1
+   },
+   "citations_support": {
+    "是": 7,
+    "不适用": 12
+   },
+   "excerpt_relevant": {
+    "无摘录": 19
+   },
+   "stop_judgment": {
+    "不适用": 7,
+    "待确认": 1,
+    "不合理": 6,
+    "合理": 5
+   }
+  },
+  "baseline": {
+   "conclusions_correct": {
+    "不适用": 16,
+    "是": 3
+   },
+   "missing_points": {
+    "不适用": 16,
+    "否": 3
+   },
+   "citations_support": {
+    "不适用": 16,
+    "是": 3
+   },
+   "excerpt_relevant": {
+    "无摘录": 19
+   },
+   "stop_judgment": {
+    "不合理": 10,
+    "待确认": 1,
+    "不适用": 3,
+    "合理": 5
+   }
+  },
+  "flow_v3": {
+   "conclusions_correct": {
+    "是": 14,
+    "不适用": 5
+   },
+   "missing_points": {
+    "否": 8,
+    "不适用": 5,
+    "漏次要": 3,
+    "漏核心": 3
+   },
+   "citations_support": {
+    "是": 14,
+    "不适用": 5
+   },
+   "excerpt_relevant": {
+    "无摘录": 16,
+    "是": 3
+   },
+   "stop_judgment": {
+    "不适用": 14,
+    "待确认": 1,
+    "合理": 4
+   }
+  }
+ },
+ "core_miss_questions": {
+  "flow_v3": [
+   "Z06",
+   "Z07",
+   "Z18"
+  ]
+ },
+ "reference_issue_questions": {
+  "未发现": [
+   "Z01",
+   "Z02",
+   "Z04",
+   "Z06",
+   "Z07",
+   "Z08",
+   "Z12",
+   "Z15",
+   "Z16",
+   "Z17",
+   "Z18",
+   "Z21",
+   "Z23",
+   "Z24"
+  ],
+  "待确认": [
+   "Z03",
+   "Z05",
+   "Z14"
+  ],
+  "有误": [
+   "Z19",
+   "Z20"
+  ]
+ },
+ "third_party_audit": {
+  "who": "a friend of 程 outside the team (name not recorded), entered by 程; saw the review pack and the sheet values, not the method key; not blind",
+  "rows": 57,
+  "result": {
+   "通过": 45,
+   "待确认": 8,
+   "有疑问": 4
+  },
+  "questions_not_passed": {
+   "待确认": [
+    "Z03",
+    "Z14",
+    "Z19"
+   ],
+   "有疑问": [
+    "Z03",
+    "Z05",
+    "Z18"
+   ]
+  },
+  "private_branch": "review/z24-cheng-friend-audit-20261127 6d84717"
+ }
+}
