@@ -1,18 +1,18 @@
 {
  "scope": "r23 package unpacked and self-tested on Windows; same machine as the original Nexent host, so this is not a peer L1",
  "date": "2026-11-26",
- "zip_sha256": "45d5ab9251619c195c0d1ee61cd793ad4ca3ff33a4e0b6a5bf13a75630a9b877",
+ "zip_sha256": "013db94f6c82a56436cca465779b55d547fb0edc2c94aea896204d775d202a87",
  "platform": "Windows-11-10.0.26200-SP0",
  "python": "3.12.14 (existing project venv; packages from requirements.lock)",
  "unpacked_into": "a new empty directory",
- "files_checked_against_SUBMISSION-MANIFEST": 738,
+ "files_checked_against_SUBMISSION-MANIFEST": 739,
  "hash_mismatches": 0,
  "self_test": {
   "command": "PYTHONPATH=src python -m pytest -q <12 core test files listed in SUBMISSION-MANIFEST>",
-  "summary": "326 passed, 1 warning in 2.78s",
+  "summary": "326 passed, 1 warning in 2.39s",
   "passed": true
  },
  "same_result_as_linux": true,
  "new_model_calls": 0,
- "revision": "第 7 版: closed-book and keyword-bot comparison, joint readthrough of rev 5 (14 items)"
+ "revision": "第 8 版: real-world problem paragraph with five verified external sources"
 }

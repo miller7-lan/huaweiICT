@@ -1,17 +1,17 @@
 {
  "scope": "r23 submission candidate package verification; offline core tests only, no new business acceptance",
  "date": "2026-11-26",
- "built_from_commit": "9523a3731ee43cd56c257781576e2ec6b68a4a57",
+ "built_from_commit": "107fb5297b995b4a7de03be626acdc6ddfc1fd06",
  "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
  "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
  "freeze_receipt": "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json",
  "passed": true,
  "problems": [],
- "files": 738,
- "bytes": 7711272,
+ "files": 739,
+ "bytes": 7725408,
  "by_reason": {
   "code": 573,
-  "extra": 144,
+  "extra": 145,
   "linked from materials (level 1)": 2,
   "linked from materials (level 2)": 9,
   "materials": 3,
@@ -29,14 +29,14 @@
  ],
  "zip_check": {
   "zip": ".runtime/submission-r23/ICT-V40-r23提交候选包-20261126.zip",
-  "zip_sha256": "45d5ab9251619c195c0d1ee61cd793ad4ca3ff33a4e0b6a5bf13a75630a9b877",
-  "members": 738,
+  "zip_sha256": "013db94f6c82a56436cca465779b55d547fb0edc2c94aea896204d775d202a87",
+  "members": 739,
   "members_mismatched": [],
   "members_missing": [],
   "self_test": {
    "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
    "exit_code": 0,
-   "summary": "326 passed, 1 warning in 4.83s",
+   "summary": "326 passed, 1 warning in 4.66s",
    "failed": [],
    "passed": true
   }
@@ -45,11 +45,11 @@
   "reason": "r23 Word/PDF contain V4.0.1 interface screenshots and stay in the private repository; uploaded alongside the package",
   "sha256": {
    "ICT-V40-r23技术附录.docx": "375684870a9e3af421d440f82dc2d01b0b82a7a0df956bf5d3e8f7e41700ea66",
-   "ICT-V40-r23正文.docx": "45977d4bcb8e1e53cd94af46071bfcf420223dc5d231533c9d9bc94bdcd83a7f",
+   "ICT-V40-r23正文.docx": "b7e2c855a476af75057df772d9434527c7d2b0475cf0a8ba96cbd51394573ed9",
    "ICT-V40-r23技术附录.pdf": "eae0f7e052e319e762e9c98ed4232521364b7f83f94d3b05efef5d4f9aee6ab5",
-   "ICT-V40-r23正文.pdf": "44422945da75b7d1c1026b758edc116ddf52c3f18a105afba38a694c2aaae238"
+   "ICT-V40-r23正文.pdf": "0409a21ce3d68578b3c2cff5ed6e040967e087f7a4d67ab67b62f1ed41ab39ad"
   }
  },
  "new_model_calls": 0,
- "revision": "第 7 版: closed-book and keyword-bot comparison, joint readthrough of rev 5 (14 items)"
+ "revision": "第 8 版: real-world problem paragraph with five verified external sources"
 }
