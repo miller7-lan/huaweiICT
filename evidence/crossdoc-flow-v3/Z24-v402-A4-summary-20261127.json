@@ -1,0 +1,133 @@
+{
+ "round": "Z24-A4-v402-20261127",
+ "label": "正式评测（预检 formal，evidence/crossdoc-flow-v3/Z24-holdout-preflight-20261127.json）",
+ "commit_at_run": "2c702a8",
+ "version": "V4.0.2（src 冻结 460a2be，服务补查 follow_up_after_answer=true）",
+ "model": {
+  "provider": "bailian",
+  "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "model": "kimi-k3.1-pro"
+ },
+ "max_output_tokens": 2048,
+ "seed": "20261114",
+ "questions": 19,
+ "expected": {
+  "answer": 12,
+  "stop": 7
+ },
+ "questions_sha256": "ae73914da3c4e350b5264fe293c8da8945dd99066098e6570f07ee82d8da0450",
+ "reference_sha256": "270b23af5d0feef2762e21ddedd032b707e4a4a7908d1edabea433cc6d833bcc",
+ "corpus_sha256": "b109974d27afead4683c3bc8c22e825abd782b6c8b48bceaa2c0c9617ad7ca83",
+ "source_sha256": {
+  "frozen_qa.py": "240445c4a5f95ecc6ab174d27988e9854cd65f520d273f24b44f389fa24a1717",
+  "frozen_retrieval.py": "f11557aa1acd16f7d44f068fbd87a2b2da3e126b993bef88a504bfa68c2c598f",
+  "frozen_qa_flow_v3.py": "5676b0075b6625db08e7f9bca47bc4eef27a1dde419ed5039b66f3dfc5e90a7d",
+  "claim_binding.py": "52ed7aa460de5fe48fbffb9eeeaae85baad845cfb4abe243f9d1a2122d95085d",
+  "scope_gate_v2.py": "9e813d9d0b580c60f02d7e00a2be2f5cde24d37d085debe9dc41f613372c7b97",
+  "regional_scope.py": "762108427f9d7dfd64e0375437d2027716339721997545176ac7091a71b2c7ca"
+ },
+ "model_calls": 65,
+ "model_calls_at_most": 95,
+ "retries": 0,
+ "by_method": {
+  "baseline": {
+   "outcomes": {
+    "answer→stop": 11,
+    "answer→answer": 1,
+    "stop→stop": 5,
+    "stop→answer": 2
+   },
+   "per_question": {
+    "Z01": "stop",
+    "Z02": "stop",
+    "Z03": "stop",
+    "Z04": "answer",
+    "Z05": "stop",
+    "Z06": "stop",
+    "Z07": "stop",
+    "Z08": "stop",
+    "Z12": "stop",
+    "Z14": "stop",
+    "Z15": "stop",
+    "Z16": "stop",
+    "Z17": "stop",
+    "Z18": "stop",
+    "Z19": "answer",
+    "Z20": "answer",
+    "Z21": "stop",
+    "Z23": "stop",
+    "Z24": "stop"
+   },
+   "input_tokens": 19439,
+   "model_calls": 19,
+   "output_tokens": 5432,
+   "duration_ms_median": 6655.3
+  },
+  "single_shot": {
+   "outcomes": {
+    "answer→answer": 5,
+    "answer→stop": 7,
+    "stop→stop": 5,
+    "stop→answer": 2
+   },
+   "per_question": {
+    "Z01": "answer",
+    "Z02": "answer",
+    "Z03": "stop",
+    "Z04": "answer",
+    "Z05": "answer",
+    "Z06": "stop",
+    "Z07": "stop",
+    "Z08": "stop",
+    "Z12": "answer",
+    "Z14": "stop",
+    "Z15": "stop",
+    "Z16": "stop",
+    "Z17": "stop",
+    "Z18": "stop",
+    "Z19": "answer",
+    "Z20": "answer",
+    "Z21": "stop",
+    "Z23": "stop",
+    "Z24": "stop"
+   },
+   "input_tokens": 32801,
+   "model_calls": 17,
+   "output_tokens": 7447,
+   "duration_ms_median": 8823.3
+  },
+  "flow_v3": {
+   "outcomes": {
+    "answer→answer": 11,
+    "answer→stop": 1,
+    "stop→stop": 4,
+    "stop→answer": 3
+   },
+   "per_question": {
+    "Z01": "answer",
+    "Z02": "answer",
+    "Z03": "stop",
+    "Z04": "answer",
+    "Z05": "answer",
+    "Z06": "answer",
+    "Z07": "answer",
+    "Z08": "answer",
+    "Z12": "answer",
+    "Z14": "answer",
+    "Z15": "answer",
+    "Z16": "answer",
+    "Z17": "stop",
+    "Z18": "answer",
+    "Z19": "answer",
+    "Z20": "answer",
+    "Z21": "stop",
+    "Z23": "stop",
+    "Z24": "stop"
+   },
+   "input_tokens": 67575,
+   "model_calls": 29,
+   "output_tokens": 10898,
+   "duration_ms_median": 13309.3
+  }
+ }
+}

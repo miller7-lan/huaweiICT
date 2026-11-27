@@ -11,10 +11,13 @@
       "note": "committed from the team lead's computer; values decided by 李 (confirmed by team lead)"
     },
     "程": {
-      "status": "pending",
+      "status": "final",
+      "private_repo_commit": "3ded20454055e6897c28b7d1177b344b0e80c497",
       "return_branch": "review/z24-cheng2",
-      "note": "an earlier return was void: it started from a sheet pre-filled by the first reviewer's agent; 程 re-reviews from the blank sheet and saw the first reviewer's values beforehand"
+      "rule_check": "passed",
+      "note": "re-reviewed from the blank sheet; an earlier return (a735817) was void because it started from a sheet pre-filled by the first reviewer's agent, so 程 saw the first reviewer's values before the re-review",
+      "sheet_sha256": "53ef99967fe83cc32d6d743603ab8e3ed5566bc376bcf7b8fca579136b899549"
     }
   },
-  "unblinding": "after both final sheets pass the rule check"
+  "unblinding": "done 2026-11-27: evidence/crossdoc-flow-v3/Z24-v402-human-review-20261127.json"
 }
