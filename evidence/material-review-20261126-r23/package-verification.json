@@ -1,17 +1,17 @@
 {
  "scope": "r23 submission candidate package verification; offline core tests only, no new business acceptance",
  "date": "2026-11-26",
- "built_from_commit": "2ff2030e0e9a4b928fbff554e958e733fb4263ca",
+ "built_from_commit": "03c5248fac5adad33f132214c3fa8d8218720b21",
  "src_freeze_commit": "460a2be6831a2ea4e1830a493345252e9c1035dd",
  "fingerprint": "b50ffc5b0b8cb8906ffa5a1ce411685632ff98a8b875ccb5b15f11cdafcc662e",
  "freeze_receipt": "evidence/crossdoc-flow-v3/V40-freeze-receipt-20261126.json",
  "passed": true,
  "problems": [],
- "files": 729,
- "bytes": 7600479,
+ "files": 736,
+ "bytes": 7686539,
  "by_reason": {
   "code": 572,
-  "extra": 136,
+  "extra": 143,
   "linked from materials (level 1)": 2,
   "linked from materials (level 2)": 9,
   "materials": 3,
@@ -29,14 +29,14 @@
  ],
  "zip_check": {
   "zip": ".runtime/submission-r23/ICT-V40-r23提交候选包-20261126.zip",
-  "zip_sha256": "1858b78f7c7e714c251cd77fde96eaa9aba984d213edefdaf191bd32452a8737",
-  "members": 729,
+  "zip_sha256": "b371dd395660d253bd78e9a2ba08117c4d84022275a710a2e10b61ff7303caea",
+  "members": 736,
   "members_mismatched": [],
   "members_missing": [],
   "self_test": {
    "command": "PYTHONPATH=src python -m pytest -q tests/test_claim_binding.py tests/test_evaluation_tools_audit.py tests/test_regional_scope.py tests/test_frozen_qa_flow_v3.py tests/test_frozen_qa_flow_server.py tests/test_frozen_flow_native.py tests/test_flow_v3_review_pack.py tests/test_flow_v3_preflight.py tests/test_crossdoc_native_wiring.py tests/test_frozen_qa.py tests/test_frozen_retrieval.py tests/test_extract_fact_cards.py",
    "exit_code": 0,
-   "summary": "326 passed, 1 warning in 4.62s",
+   "summary": "326 passed, 1 warning in 4.96s",
    "failed": [],
    "passed": true
   }
@@ -44,12 +44,12 @@
  "documents_outside_package": {
   "reason": "r23 Word/PDF contain V4.0.1 interface screenshots and stay in the private repository; uploaded alongside the package",
   "sha256": {
-   "ICT-V40-r23技术附录.docx": "41bfe12475c7f6261a69cc59c3af843632c68827dabff8d8014c7a1ab549147c",
-   "ICT-V40-r23正文.docx": "85e05efe0f8bf5159bee7afef6661f0238df9fa764f241e1a76fd23681bce0ff",
-   "ICT-V40-r23技术附录.pdf": "46ee321954d3bfc2e72b540bfff95863d7672057b0647abaaaf7d711327b1af3",
-   "ICT-V40-r23正文.pdf": "ce9989b5c3eb797bc7a1a19fe8934383bd7ec5aacc6d5a99e24f8adbb4a99576"
+   "ICT-V40-r23技术附录.docx": "5827d1577d1ca22ee39cc0c2bd90632332520e8217fefd0cbcf42c4c68fbdde5",
+   "ICT-V40-r23正文.docx": "c4f74bd18ce714aeb7f6b747f37531c659dac455293cebbfa59f6805ff0cdffc",
+   "ICT-V40-r23技术附录.pdf": "df103a056086f583b8aa0c1965b999b1947ca5e3358dc14ffd48a13868f885bf",
+   "ICT-V40-r23正文.pdf": "dc56d6d51ea79e4603deb36c563bd4747ac4e0523b090a1e8cb04d5ed6a40c33"
   }
  },
  "new_model_calls": 0,
- "revision": "第 3 版: fact-card precision (63-row stratified check) added"
+ "revision": "第 4 版: Z24 formal evaluation (appendix 8.9), V4.0 peer L1 passed, Li r22 readthrough (16 items)"
 }
