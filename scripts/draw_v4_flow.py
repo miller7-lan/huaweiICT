@@ -1,4 +1,4 @@
-"""Draw figure 1-1 for V4.0: the bounded cross-document flow as the Nexent agent runs it.
+"""Draw figure 1-1 for V4.0.2: the bounded cross-document flow as the Nexent agent runs it.
 
 Writes docs/competition/assets/v4-figures/v4-flow.svg. Layout follows the V3 figure; boxes and loops
 follow frozen_qa_flow_v3.py / frozen_qa_flow_server.py at the V4.0 freeze (460a2be).
@@ -47,7 +47,7 @@ def bracket(x1, x2, text, color):
 
 
 B, R, O, G, Yl = "#3A6EA5", "#A63C3C", "#B8691F", "#2E7D4A", "#B98A2A"
-parts.append(f'<text x="40" y="64" font-size="40" font-weight="bold" fill="#1F3F66">跨文档问答流程 V4.0：有出处才回答，证据不足就停止</text>')
+parts.append(f'<text x="40" y="64" font-size="40" font-weight="bold" fill="#1F3F66">跨文档问答流程 V4.0.2：有出处才回答，证据不足就停止</text>')
 bracket(X[1], X[2] + BW, "MCP 工具 govkb_flow_open（打开任务）", B)
 bracket(X[3], X[3] + BW, "智能体（kimi-k3.1-pro）", "#555")
 bracket(X[4], X[4] + BW, "govkb_flow_submit", O)
@@ -58,9 +58,9 @@ box(1, 1, "blue", "范围门", "地区·事项·隐私", "现行效力问题")
 box(2, 1, "blue", "检索", "593 单元冻结语料", "证据＋作答规则")
 box(3, 1, "blue", "模型草稿", "结论＋来源", "＋逐字引文")
 box(4, 1, "blue", "逐条核验", "引文·数字·单位", "日期·文号")
-box(5, 1, "green", "完整答复", "缺项列为未知项", "附原文与定位")
+box(5, 1, "green", "答复", "附原文与定位", "仍缺的列为未知项")
 box(1, 2, "red", "停止：超出范围", "说明缺少的依据")
-box(2, 2, "orange", "补查一次", "按模型列出的缺项")
+box(2, 2, "orange", "补查一次", "按模型列出的缺项", "停止或留缺口时")
 box(4, 2, "orange", "修复一次", "失败码退回模型重写")
 box(5, 2, "red", "停止：过渡不明", "问新旧规定适用", "且缺过渡条款")
 box(2, 3, "red", "停止", "没有新证据或仍不足")
@@ -75,7 +75,7 @@ path([mid(3, 1, "r"), mid(4, 1, "l")], B)
 path([mid(4, 1, "r"), mid(5, 1, "l")], G, "通过", (X[4] + BW + 6, Y[1] + 40))
 path([mid(1, 1, "b"), mid(1, 2, "t")], R, "命中", (X[1] + BW / 2 + 12, Y[1] + BH + 60))
 dx = X[3] + 70
-path([(dx, Y[1] + BH), (dx, Y[2] + BH / 2), mid(2, 2, "r")], O, "缺项待补", (dx + 12, Y[1] + BH + 60), dashed=True)
+path([(dx, Y[1] + BH), (dx, Y[2] + BH / 2), mid(2, 2, "r")], O, "列有缺项", (dx + 12, Y[1] + BH + 60), dashed=True)
 ux = X[2] + 70
 path([(ux, Y[2]), (ux, Y[1] + BH)], O, "有新证据，重新作答", (ux + 12, Y[1] + BH + 60), dashed=True)
 path([mid(2, 2, "b"), mid(2, 3, "t")], R, "没有", (X[2] + BW / 2 + 12, Y[2] + BH + 60))
@@ -100,7 +100,7 @@ path([mid(5, 3, "b"), mid(5, 5, "t")], Yl, "答复均附定位", (X[5] + BW / 2 
 path([(X[5] + BW, Y[1] + BH / 2 + 30), (W - 24, Y[1] + BH / 2 + 30), (W - 24, Y[5] + BH / 2), (X[5] + BW + 4, Y[5] + BH / 2)], Yl)
 
 notes = ["每题最多 3 次模型草稿，计数在服务端；智能体只调用两个 MCP 工具，最终答复只用核验后的 final 对象。",
-         "实线为主路径，虚线为回路。依据冻结提交 460a2be 的 frozen_qa_flow_v3.py 与 frozen_qa_flow_server.py 绘制。"]
+         "实线为主路径，虚线为回路。依据冻结提交 460a2be 的 frozen_qa_flow_v3.py 与 frozen_qa_flow_server.py 绘制；V4.0.2 只开启服务参数 follow_up_after_answer。"]
 for i, n in enumerate(notes):
     parts.append(f'<text x="40" y="{H - 62 + 36 * i}" font-size="24" fill="#555">{escape(n)}</text>')
 
